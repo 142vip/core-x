@@ -5,8 +5,11 @@
   "keywords": [
     "公众号搜：储凡"
   ],
-  "author": "mmdapl <mmdapl@163.com>",
-  "license": "MIT",
+  "scripts": {
+    "build": "npx tsc"
+  },
   "dependencies": {
-  }
+  },
+  "author": "mmdapl <mmdapl@163.com>",
+  "license": "MIT"
 }

@@ -3,8 +3,9 @@
   "private": false,
   "description": "公众号搜：储凡",
   "keywords": ["公众号搜：储凡"],
-  "author": "mmdapl <mmdapl@163.com>",
-  "license": "MIT",
+  "scripts": {
+    "build": "npx tsc"
+  },
   "devDependencies": {
     "@vuepress/client": "2.0.0-beta.67",
     "@vuepress/plugin-register-components": "2.0.0-beta.67",
@@ -15,5 +16,7 @@
     "vuepress-plugin-md-enhance": "2.0.0-beta.238",
     "vuepress-plugin-search-pro": "2.0.0-beta.238",
     "vuepress-theme-hope": "2.0.0-beta.238"
-  }
+  },
+  "author": "mmdapl <mmdapl@163.com>",
+  "license": "MIT"
 }

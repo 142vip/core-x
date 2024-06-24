@@ -9,7 +9,7 @@ import type {
   TypeOrmModuleAsyncOptions,
 } from '@nestjs/typeorm/dist/interfaces/typeorm-options.interface'
 import type { DataSource } from 'typeorm'
-import {TYPEORM_CUSTOM_REPOSITORY} from "./typeorm.constant";
+import { TYPEORM_CUSTOM_REPOSITORY } from './typeorm.constant'
 
 type EntitiesOrRepositories = (new (...args: any) => any)[]
 

@@ -4,12 +4,12 @@ name: CI
 # 触发条件
 on:
   # 提PR到next分支触发CI
-#  pull_request:
-#    branches:
-#      - next
-#  push:
-#    branches:
-#      - next
+  #  pull_request:
+  #    branches:
+  #      - next
+  #  push:
+  #    branches:
+  #      - next
 
   # 手动触发部署
   workflow_dispatch:
@@ -65,4 +65,3 @@ jobs:
       - name: Build Midway Example Code
         run: |
           ./scripts/build xxx
-

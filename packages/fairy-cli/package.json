@@ -5,7 +5,7 @@
   "description": "公众号搜：储凡、fairy-cli",
   "keywords": ["公众号搜：储凡"],
   "scripts": {
-    "build": "tsc"
+    "build": "npx tsc"
   },
   "devDependencies": {
     "shelljs": "^0.8.5"

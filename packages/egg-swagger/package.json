@@ -3,6 +3,9 @@
   "private": false,
   "description": "公众号搜：储凡",
   "keywords": ["公众号搜：储凡"],
+  "scripts": {
+    "build": "npx tsc"
+  },
   "author": "mmdapl <mmdapl@163.com>",
   "license": "MIT"
 }

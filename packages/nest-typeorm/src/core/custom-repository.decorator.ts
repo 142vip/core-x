@@ -1,6 +1,5 @@
 import { SetMetadata } from '@nestjs/common'
-import {TYPEORM_CUSTOM_REPOSITORY} from "./typeorm.constant";
-
+import { TYPEORM_CUSTOM_REPOSITORY } from './typeorm.constant'
 
 /**
  * 自定义Repo装饰器

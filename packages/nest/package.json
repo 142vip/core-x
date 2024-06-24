@@ -3,6 +3,9 @@
   "private": false,
   "description": "公众号搜：储凡",
   "keywords": ["公众号搜：储凡"],
+  "scripts": {
+    "build": "npx tsc"
+  },
   "dependencies": {
     "@nestjs/common": "^9.0.0",
     "@nestjs/core": "^9.0.0",

@@ -1,16 +1,14 @@
 {
-  "name": "@142vip/egg-axios",
+  "name": "@142vip/oauth2.0",
   "private": false,
   "description": "公众号搜：储凡",
-  "keywords": ["公众号搜：储凡"],
+  "keywords": [
+    "公众号搜：储凡"
+  ],
   "scripts": {
     "build": "npx tsc"
   },
   "dependencies": {
-
-  },
-  "devDependencies": {
-
   },
   "author": "mmdapl <mmdapl@163.com>",
   "license": "MIT"

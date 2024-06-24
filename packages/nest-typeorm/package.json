@@ -1,17 +1,19 @@
 {
-  "name": "@142vip/nest-redis",
+  "name": "@142vip/nest-typeorm",
   "private": false,
   "description": "公众号搜：储凡",
   "keywords": [
     "公众号搜：储凡"
   ],
-
-  "author": "mmdapl <mmdapl@163.com>",
-  "license": "MIT",
+  "scripts": {
+    "build": "npx tsc"
+  },
   "dependencies": {
     "@142vip/nest": "workspace:*",
     "@nestjs/typeorm": "^10.0.2",
     "mysql2": "^3.10.1",
     "typeorm": "^0.3.20"
-  }
+  },
+  "author": "mmdapl <mmdapl@163.com>",
+  "license": "MIT"
 }

@@ -2,7 +2,15 @@
   "name": "@142vip/egg-sequelize",
   "private": false,
   "description": "公众号搜：储凡",
-  "keywords": ["公众号搜：储凡"],
+  "keywords": [
+    "公众号搜：储凡"
+  ],
+  "scripts": {
+    "build": "npx tsc"
+  },
+  "dependencies": {
+    "egg-sequelize": "^6.0.0"
+  },
   "author": "mmdapl <mmdapl@163.com>",
   "license": "MIT"
 }
