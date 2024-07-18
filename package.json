@@ -14,7 +14,7 @@
     "homePage": "https://142vip.cn"
   },
   "scripts": {
-    "preinstall": "npx only-allow pnpm && chmod +x ./scripts/* && pnpm build",
+    "preinstall": "npx only-allow pnpm && chmod +x ./scripts/*",
     "dev": "npx turbo run dev",
     "build": "npx turbo run build --color --only",
     "clean": "npx fairy-cli clean --ignore-tips --all",

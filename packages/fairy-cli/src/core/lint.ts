@@ -1,3 +1,5 @@
+import { execCommand } from '../utils'
+
 export interface LintOptions {
   markdown: boolean
   fix: boolean
@@ -17,8 +19,8 @@ export function execLink(args: LintOptions) {
 /**
  * 代码格式化
  */
-export function doCodeLint() {
-
+export async function doCodeLint() {
+  await execCommand('npx eslint . --fix')
 }
 
 /**

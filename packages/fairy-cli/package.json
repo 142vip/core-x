@@ -36,7 +36,7 @@
     "@142vip/release-version": "workspace:*",
     "commander": "^12.1.0",
     "del": "^7.1.0",
-    "execa": "^8.0.1",
+    "@esm2cjs/execa": "6.1.1-cjs.1",
     "js-yaml": "^4.1.0"
   },
   "devDependencies": {

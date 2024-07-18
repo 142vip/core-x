@@ -28,7 +28,7 @@ program.version(version, '-v --version')
 // fairy-cli exec 命令执行器
 program
   .command('exec <command>')
-  .description('create a new template project')
+  .description('exec shell command')
   .option('-r, --react', 'react template')
   .action((projectName, options) => {
     console.log(projectName, options)
@@ -129,14 +129,11 @@ program
 // fairy-cli lint
 program
   .command(CliCommandEnum.LINT)
-  .description('lint code')
+  .description('根据Eslint检查代码风格，支持代码格式化')
   .option('-m,--markdown', 'lint markdown')
-  .option('-c,--config', 'registry address', 'packages')
-  .option('-f --fix', 'registry address', false)
-  // .option('--execute', 'registry address')
+  .option('-c,--config', 'Eslint配置文件路径')
+  .option('-f --fix', '支持自动修复', false)
   .action((args: LintOptions) => {
-    // 参考 @142vip/changelog模块
-    console.log(CliCommandEnum.LINT, args)
     execLink(args)
   })
 

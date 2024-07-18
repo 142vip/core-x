@@ -17,11 +17,11 @@ interface DockerOptions {
  */
 export async function publishDocker(args: DockerOptions) {
   // docker push xxx
-  await execCommand('docker', ['push', args.image])
+  await execCommand(`docker push ${args.image}`)
 
   // 清理本地
   if (args.cleanUp) {
-    await execCommand('docker', ['rmi', args.image])
+    await execCommand(`docker rmi ${args.image}`)
   }
 }
 
@@ -30,7 +30,7 @@ export async function publishDocker(args: DockerOptions) {
  */
 export async function publishNpm(args: NpmOptions) {
   // npm publish --access public --registry  https://registry.npmjs.org
-  await execCommand('npm', ['publish'])
+  await execCommand('npm publish')
 
   if (args.registry != null) {
     console.log('发布到指定地址')
