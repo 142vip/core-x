@@ -1,6 +1,6 @@
 // https://vitepress.dev/guide/custom-theme
-import { h } from 'vue'
-import type { Theme } from 'vitepress'
+import {h} from 'vue'
+import type {Theme} from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import './style.css'
 
@@ -11,7 +11,9 @@ export default {
       // https://vitepress.dev/guide/extending-default-theme#layout-slots
     })
   },
-  enhanceApp({ app, router, siteData }) {
+  // todo 查看这里的app、router、siteData的作用
+  enhanceApp() {
     // ...
-  }
+    // console.log('todo-->', app, router, siteData)
+  },
 } satisfies Theme

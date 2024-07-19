@@ -73,14 +73,14 @@ const partners = [];
 <div>
   <a href="https://github.com/ChiefPing" target="_blank" style="margin: 5px">
     <img
-        src="https://avatars2.githubusercontent.com/u/34122068?s=460&v=4"  
+        src="https://avatars2.githubusercontent.com/u/34122068?s=460&v=4"
         alt="ChiefPing"
         style="border-radius:5px;" width="50px"
     />
   </a>
   <a href="https://github.com/xiaoliuxin" target="_blank" style="margin: 5px">
     <img
-        src="https://avatars2.githubusercontent.com/u/60652527?s=460&v=4"  
+        src="https://avatars2.githubusercontent.com/u/60652527?s=460&v=4"
         alt="xiaoliuxin"
         style="border-radius:5px;" width="50px"
     />
@@ -112,8 +112,6 @@ const partners = [];
         style="border-radius: 5px"
     >
 </div>
-
-
 
 <ContactAuthor/>
 

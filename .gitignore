@@ -18,4 +18,5 @@ dist/
 **/.output/
 **/node_modules
 **/.vitepress/cache
+**/.vite
 
