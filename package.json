@@ -16,9 +16,9 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm && chmod +x ./scripts/* && pnpm build && npm link",
     "dev": "vitepress dev --port 8080 --host",
-    "build": "npx fairy-cli turbo --build",
+    "build": "npx fa turbo --build",
     "build:docs": "vitepress build",
-    "clean": "npx fairy-cli clean --ignore-tips --all",
+    "clean": "npx fa clean --ignore-tips --all",
     "lint": "npx eslint . --fix",
     "publish": "npx lerna publish --canary from-git",
     "preview": "vitepress preview"
