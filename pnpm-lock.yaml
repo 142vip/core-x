@@ -5,6 +5,7 @@ importers:
   .:
     specifiers:
       '@142vip/changelog': workspace:*
+      '@142vip/fairy-cli': workspace:*
       '@142vip/vitepress': workspace:*
       '@antfu/eslint-config': ^2.20.0
       '@lerna-lite/cli': ^3.5.1
@@ -30,6 +31,7 @@ importers:
       webpack: ^4.36
     devDependencies:
       '@142vip/changelog': link:packages/changelog
+      '@142vip/fairy-cli': link:packages/fairy-cli
       '@142vip/vitepress': link:packages/vitepress
       '@antfu/eslint-config': 2.23.0_pbxknroda33jdyycoywnewh6qu
       '@lerna-lite/cli': 3.7.1_ukf4asiuesntojcuxkt4aty5fq
