@@ -14,11 +14,11 @@
     "homePage": "https://142vip.cn"
   },
   "scripts": {
-    "preinstall": "npx only-allow pnpm && chmod +x ./scripts/* && pnpm build && npm link",
+    "preinstall": "npx only-allow pnpm && chmod +x ./scripts/* && pnpm build",
     "dev": "vitepress dev --port 8080 --host",
-    "build": "npx fa turbo --build",
+    "build": "fa turbo --build",
     "build:docs": "vitepress build",
-    "clean": "npx fa clean --ignore-tips --all",
+    "clean": "fa clean --ignore-tips --all",
     "lint": "npx eslint . --fix",
     "publish": "npx lerna publish --canary from-git",
     "preview": "vitepress preview"
