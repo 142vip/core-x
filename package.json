@@ -14,7 +14,7 @@
     "homePage": "https://142vip.cn"
   },
   "scripts": {
-    "preinstall": "npx only-allow pnpm && chmod +x ./scripts/* && pnpm build",
+    "preinstall": "npx only-allow pnpm && chmod +x ./scripts/* && pnpm build && npm link",
     "dev": "vitepress dev --port 8080 --host",
     "build": "npx fairy-cli turbo --build",
     "build:docs": "vitepress build",
