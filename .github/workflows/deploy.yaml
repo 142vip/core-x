@@ -30,7 +30,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0 # 如果未启用 lastUpdated，则不需要
-          
+
       - uses: pnpm/action-setup@v3
 
       - name: Setup Node
@@ -50,7 +50,7 @@ jobs:
       # 将README.md同步，利于github pages分支展示
       - name: Add Readme.md To Dist
         run: |
-          cp -f README.md docs/.vuepress/dist
+          cp -f README.md dist
 
       - name: Check GitHub Pages status
         uses: crazy-max/ghaction-github-status@v3
@@ -60,7 +60,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: docs/.vitepress/dist
+          path: dist
 
   # 部署工作
   deploy:
