@@ -1,18 +1,23 @@
 import * as process from 'node:process'
 import { Command } from 'commander'
 import { name, version } from '../package.json'
-import type { LoginOptions } from './core/login'
-import type { ReleaseOptions } from './core/release'
-import type { ChangelogOptions } from './core/changelog'
-import type { DeployOptions } from './core/deploy'
-import { execDeploy } from './core/deploy'
-import type { LintOptions } from './core/lint'
-import { execLink } from './core/lint'
-import type { CleanUpOptions } from './core/clean'
-import { execCleanUp } from './core/clean'
-import type { TurboPackOptions } from './core/turbopack'
-import { execTurboPack } from './core/turbopack'
-import { LoginPlatformEnum, execLogin } from './core/login'
+import type {
+  ChangelogOptions,
+  CleanUpOptions,
+  DeployOptions,
+  LintOptions,
+  LoginOptions,
+  ReleaseOptions,
+  TurboPackOptions,
+} from './commands'
+import {
+  LoginPlatformEnum,
+  execCleanUp,
+  execDeploy,
+  execLink,
+  execLogin,
+  execTurboPack,
+} from './commands'
 
 enum CliCommandEnum {
   LOGIN = 'login',

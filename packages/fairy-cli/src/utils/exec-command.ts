@@ -20,6 +20,9 @@ export interface SuccessfulExec extends CmdResult {
   code: number | null
 }
 
+/**
+ * 执行命令
+ */
 export async function execCommand(
   cmd: Command,
   opts?: Omit<childProcess.SpawnOptionsWithoutStdio, 'stdio' | 'cwd'>,
