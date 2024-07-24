@@ -4,9 +4,9 @@ name: CI
 # 触发条件
 on:
   # 提PR到next分支触发CI
-  #  pull_request:
-  #    branches:
-  #      - next
+  pull_request:
+    branches:
+      - next
   #  push:
   #    branches:
   #      - next
@@ -22,7 +22,7 @@ jobs:
   Base-Build:
     name: 基础编译构建
     runs-on: ubuntu-latest
-    if: github.repository == '142vip/142vip-oauth' &&  github.event_name == 'pull_request'
+    if: github.repository == '142vip/core-x' &&  github.event_name == 'pull_request'
     permissions:
       actions: read
       pull-requests: read
@@ -31,22 +31,21 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.TOKEN }}
           persist-credentials: false
           # “最近更新时间” 等 git 日志相关信息，需要拉取全部提交记录
           fetch-depth: 0
 
       # 安装PNPM
       - name: PNPM Install
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v4
         with:
           version: 7.33.2
 
       # 安装Node环境
       - name: Install Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 18.18.0
+          node-version: 20.12.2
           # 淘宝镜像加速
           registry-url: 'https://registry.npmmirror.com'
           # 缓存
@@ -62,6 +61,11 @@ jobs:
       #        run: |
       #          ./scripts/lint
 
-      - name: Build Midway Example Code
+      # 编译静态网站
+      - name: Build Core-X Docs
         run: |
-          ./scripts/build xxx
+          pnpm build:docs
+
+      - name: Build Code
+        run: |
+          pnpm build
