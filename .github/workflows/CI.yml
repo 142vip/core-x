@@ -56,10 +56,10 @@ jobs:
         run: |
           ./scripts/ci
 
-      # todo lint校验待优化
-      #      - name: Code LintFix
-      #        run: |
-      #          ./scripts/lint
+      # Eslint 检测
+      - name: Code LintFix
+        run: |
+          ./scripts/lint
 
       # 编译静态网站
       - name: Build Core-X Docs
