@@ -1,7 +1,7 @@
 name: 🐞 Bug提交
 description: 在使用软件或功能的过程中遇到了错误
 title: '[Bug]: '
-labels: [ "bug?" ]
+labels: [bug?]
 
 body:
   - type: markdown
