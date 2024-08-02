@@ -43,6 +43,7 @@ export async function parseArgs(): Promise<ParsedArgs> {
         execute: args.execute,
         recursive: !!args.recursive,
         changelog: !!args.changelog,
+        scopeName: args.scopeName,
       }),
     }
 
@@ -87,6 +88,7 @@ export function loadCliArgs(argv = process.argv) {
     .option('--changelog', 'generate CHANGELOG.md', { default: false })
     .option('-v, --version <version>', 'Target version')
     .option('--current-version <version>', 'Current version')
+    .option('--scopeName <scopeName>', 'Package name in monorepo')
     .option('-x, --execute <command>', 'Commands to execute after version bumps')
     .help()
 

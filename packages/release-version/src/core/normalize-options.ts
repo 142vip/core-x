@@ -65,6 +65,8 @@ export interface NormalizedOptions {
   customVersion?: VersionBumpOptions['customVersion']
   currentVersion?: string
   changelog?: boolean
+  // monorepo 模块名
+  scopeName?: string
 }
 
 /**
@@ -81,6 +83,8 @@ export async function normalizeOptions(raw: VersionBumpOptions): Promise<Normali
   const execute = raw.execute
   const recursive = Boolean(raw.recursive)
   const changelog = Boolean(raw.changelog)
+  // 允许用户不输入
+  const scopeName = raw.scopeName ?? undefined
 
   let release: Release
   if (!raw.release || raw.release === 'prompt')
@@ -182,5 +186,6 @@ export async function normalizeOptions(raw: VersionBumpOptions): Promise<Normali
     customVersion: raw.customVersion,
     currentVersion: raw.currentVersion,
     changelog,
+    scopeName,
   }
 }

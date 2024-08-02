@@ -53,7 +53,11 @@ export async function versionBump(arg: (VersionBumpOptions) | string = {}): Prom
   if (operation.options.changelog) {
     console.log(symbols.info, 'Generate CHANGELOG.md By @142vip/changelog', operation.options.execute)
     try {
-      await execShell({ command: `changelog --output CHANGELOG.md --name v${operation.state.newVersion}`, description: '生成CHANGELOG文档' })
+      const baseCommand = `changelog --output CHANGELOG.md --name v${operation.state.newVersion}`
+      // 支持monorepo子模块
+      await execShell(operation.options.scopeName != null
+        ? { command: `${baseCommand} --scopeName ${operation.options.scopeName}`, description: `MonoRepo模式，生成${operation.options.scopeName}模块的CHANGELOG文档` }
+        : { command: baseCommand, description: '普通模式，生成CHANGELOG文档' })
     }
     catch (e) {
       console.log(symbols.error, 'Happen Error In Generate CHANGELOG!!!')
