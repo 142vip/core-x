@@ -1,6 +1,6 @@
 {
   "name": "@142vip/release-version",
-  "version": "0.0.1-alpha.3",
+  "version": "0.0.1-alpha.4",
   "description": "版本迭代更新，Git提交信息、打标记并推送到远程",
   "keywords": [
     "@142vip/release-version",
@@ -38,8 +38,8 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@142vip/common": "latest",
-    "@142vip/changelog": "latest",
+    "@142vip/common": "^0.0.1-alpha.5",
+    "@142vip/changelog": "workspace:*",
     "c12": "^1.10.0",
     "cac": "^6.7.14",
     "escalade": "^3.1.2",

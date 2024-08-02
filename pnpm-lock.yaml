@@ -302,10 +302,10 @@ importers:
   packages/release-version:
     dependencies:
       '@142vip/changelog':
-        specifier: latest
-        version: 0.0.1-alpha.2
+        specifier: workspace:*
+        version: link:../changelog
       '@142vip/common':
-        specifier: latest
+        specifier: ^0.0.1-alpha.5
         version: 0.0.1-alpha.5
       c12:
         specifier: ^1.10.0
@@ -17665,7 +17665,7 @@ snapshots:
   jake@10.9.2:
     dependencies:
       async: 3.2.5
-      chalk: 4.1.0
+      chalk: 4.1.2
       filelist: 1.0.4
       minimatch: 3.1.2
 
