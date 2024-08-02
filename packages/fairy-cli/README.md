@@ -40,6 +40,18 @@ Commands:
   help [command]                    display help for command
 ```
 
+### sync
+
+同步`npm`仓库的模块包到`cnpm`仓库，支持同步多个模块，也可以访问[cnpm站点](https://npmmirror.com/)手动同步模块。
+
+```shell
+# 同步@142vip/fairy-cli
+fa sync @142vip/fairy-cli
+
+# 同步多个
+fa sync @142vip/fairy-cli @142vip/release-version
+```
+
 ## 相关
 
 - [rimraf](https://www.npmjs.com/package/rimraf)

@@ -38,6 +38,7 @@
     "@142vip/common": "^0.0.1-alpha.5",
     "@142vip/release-version": "workspace:*",
     "@esm2cjs/execa": "6.1.1-cjs.1",
+    "cnpm": "^9.4.0",
     "commander": "^12.1.0",
     "del": "^7.1.0",
     "js-yaml": "^4.1.0",

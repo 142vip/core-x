@@ -206,6 +206,9 @@ importers:
       '@esm2cjs/execa':
         specifier: 6.1.1-cjs.1
         version: 6.1.1-cjs.1
+      cnpm:
+        specifier: ^9.4.0
+        version: 9.4.0
       commander:
         specifier: ^12.1.0
         version: 12.1.0
@@ -300,7 +303,7 @@ importers:
     dependencies:
       '@142vip/changelog':
         specifier: latest
-        version: 0.0.1-alpha.1
+        version: 0.0.1-alpha.2
       '@142vip/common':
         specifier: latest
         version: 0.0.1-alpha.5
@@ -397,8 +400,8 @@ importers:
 
 packages:
 
-  '@142vip/changelog@0.0.1-alpha.1':
-    resolution: {integrity: sha512-HR6Oxw6PslPWP8ZhhbdQOy3miXW8i36o3JYPqQ0VaViegybiKOuJCKcEaz5/qcwGeNPwI1n9FNBzQaJ+vGMMGg==}
+  '@142vip/changelog@0.0.1-alpha.2':
+    resolution: {integrity: sha512-I+zOjWbExdvupH7zm0yTKGmrUWL9pqJysrJOW+4ryw4hjLFpqhEvagtvjLmnl2eSOw3KVDi9+0CyUjgO0lhSkg==}
     engines: {node: '>=16.0.0'}
     hasBin: true
 
@@ -3925,6 +3928,23 @@ packages:
   cmd-shim@6.0.3:
     resolution: {integrity: sha512-FMabTRlc5t5zjdenF6mS0MBeFZm0XqHqeOkcskKFb/LYCcRQ5fVgLOHVc4Lq9CqABd9zhjwPjMBCJvMCziSVtA==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
+
+  cnpm@9.4.0:
+    resolution: {integrity: sha512-oxvozguyEuXp/3Ie0JEtmHKt8+OayZfNH40/B1gmtok2+0dHTS0Kt4uUn5rZ8qIYNk5UzzFVmu1pZxEn0no/iQ==}
+    engines: {node: '>= 14.18.0'}
+    hasBin: true
+    bundledDependencies:
+      - auto-correct
+      - bagpipe
+      - commander
+      - cross-spawn
+      - giturl
+      - ini
+      - npm
+      - npm-request
+      - npminstall
+      - open
+      - urllib
 
   co@4.6.0:
     resolution: {integrity: sha512-QVb0dM5HvG+uaxitm8wONl7jltx8dqhfU33DcqtOZcLSVIKSDDLDi7+0LbAKiyI8hD9u42m2YxXSkMGWThaecQ==}
@@ -10308,7 +10328,7 @@ packages:
 
 snapshots:
 
-  '@142vip/changelog@0.0.1-alpha.1':
+  '@142vip/changelog@0.0.1-alpha.2':
     dependencies:
       '@antfu/utils': 0.7.10
       '@esm2cjs/execa': 6.1.1-cjs.1
@@ -14804,6 +14824,8 @@ snapshots:
   cluster-key-slot@1.1.2: {}
 
   cmd-shim@6.0.3: {}
+
+  cnpm@9.4.0: {}
 
   co@4.6.0: {}
 

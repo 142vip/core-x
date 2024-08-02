@@ -22,6 +22,7 @@ import {
   execPublish,
   execTurboPack,
 } from './commands'
+import { execSync } from './commands/sync'
 
 enum CliCommandEnum {
   LOGIN = 'login',
@@ -33,6 +34,7 @@ enum CliCommandEnum {
   DEPLOY = 'deploy',
   TURBO = 'turbo',
   INSTALL = 'install',
+  SYNC = 'sync',
 }
 
 const program = new Command(name)
@@ -122,6 +124,15 @@ program
   .option('--registry', 'npm registry address', 'https://registry.npmjs.org')
   .action(async (args: PublishOptions) => {
     await execPublish(args)
+  })
+
+// fairy-cli sync 推送
+program
+  .command(CliCommandEnum.SYNC)
+  .description('同步npm仓库的模块包到cnpm仓库')
+  .argument('[packageNames...]', '需要同步的模块包名称，支持多个，eg. @142vip/fairy-cli')
+  .action(async (packageNames: string[]) => {
+    await execSync(packageNames)
   })
 
 // fairy-cli deploy 部署
