@@ -44,7 +44,5 @@ export function isPackageLockManifest(
  */
 function isOptionalString(value: any): value is string | undefined {
   const type = typeof value
-  return value === null
-    || type === 'undefined'
-    || type === 'string'
+  return value === null || ['undefined', 'string'].includes(type)
 }

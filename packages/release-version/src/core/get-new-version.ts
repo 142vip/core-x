@@ -1,7 +1,7 @@
 import process from 'node:process'
-import c from 'picocolors'
 import prompts from 'prompts'
 import semver, { SemVer, clean as cleanVersion, valid as isValidVersion } from 'semver'
+import { bold, green } from 'kolorist'
 import type { BumpRelease, PromptRelease } from './normalize-options'
 import type { Operation } from './operation'
 import type { ReleaseType } from './release-type'
@@ -19,9 +19,7 @@ export async function getNewVersion(operation: Operation): Promise<Operation> {
       return promptForNewVersion(operation)
 
     case 'version':
-      return operation.update({
-        newVersion: new SemVer(release.version, true).version,
-      })
+      return operation.update({ newVersion: new SemVer(release.version, true).version })
 
     default:
       return operation.update({
@@ -93,22 +91,22 @@ async function promptForNewVersion(operation: Operation): Promise<Operation> {
     {
       type: 'autocomplete',
       name: 'release',
-      message: `Current version ${c.green(currentVersion)}`,
+      message: `Current version ${green(currentVersion)}`,
       initial: configCustomVersion ? 'config' : 'next',
       choices: [
-        { value: 'major', title: `${'major'.padStart(PADDING, ' ')} ${c.bold(next.major)}` },
-        { value: 'minor', title: `${'minor'.padStart(PADDING, ' ')} ${c.bold(next.minor)}` },
-        { value: 'patch', title: `${'patch'.padStart(PADDING, ' ')} ${c.bold(next.patch)}` },
-        { value: 'next', title: `${'next'.padStart(PADDING, ' ')} ${c.bold(next.next)}` },
+        { value: 'major', title: `${'major'.padStart(PADDING, ' ')} ${bold(next.major)}` },
+        { value: 'minor', title: `${'minor'.padStart(PADDING, ' ')} ${bold(next.minor)}` },
+        { value: 'patch', title: `${'patch'.padStart(PADDING, ' ')} ${bold(next.patch)}` },
+        { value: 'next', title: `${'next'.padStart(PADDING, ' ')} ${bold(next.next)}` },
         ...configCustomVersion
           ? [
-              { value: 'config', title: `${'from config'.padStart(PADDING, ' ')} ${c.bold(configCustomVersion)}` },
+              { value: 'config', title: `${'from config'.padStart(PADDING, ' ')} ${bold(configCustomVersion)}` },
             ]
           : [],
-        { value: 'prepatch', title: `${'pre-patch'.padStart(PADDING, ' ')} ${c.bold(next.prepatch)}` },
-        { value: 'preminor', title: `${'pre-minor'.padStart(PADDING, ' ')} ${c.bold(next.preminor)}` },
-        { value: 'premajor', title: `${'pre-major'.padStart(PADDING, ' ')} ${c.bold(next.premajor)}` },
-        { value: 'none', title: `${'as-is'.padStart(PADDING, ' ')} ${c.bold(currentVersion)}` },
+        { value: 'prepatch', title: `${'pre-patch'.padStart(PADDING, ' ')} ${bold(next.prepatch)}` },
+        { value: 'preminor', title: `${'pre-minor'.padStart(PADDING, ' ')} ${bold(next.preminor)}` },
+        { value: 'premajor', title: `${'pre-major'.padStart(PADDING, ' ')} ${bold(next.premajor)}` },
+        { value: 'none', title: `${'as-is'.padStart(PADDING, ' ')} ${bold(currentVersion)}` },
         { value: 'custom', title: 'custom ...'.padStart(PADDING + 4, ' ') },
       ],
     },

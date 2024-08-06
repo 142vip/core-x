@@ -10,12 +10,11 @@ import { isReleaseType } from './release-type'
 interface Interface {
   input?: NodeJS.ReadableStream | NodeJS.ReadStream | false
   output?: NodeJS.WritableStream | NodeJS.WriteStream | false
-
   [key: string]: unknown
 }
 
 /**
- * A specific version release.
+ * 特定版本发布
  */
 export interface VersionRelease {
   type: 'version'
@@ -23,7 +22,7 @@ export interface VersionRelease {
 }
 
 /**
- * Prompt the user for the release number.
+ * 提示用户输入版本号
  */
 export interface PromptRelease {
   type: 'prompt'
@@ -31,7 +30,7 @@ export interface PromptRelease {
 }
 
 /**
- * A bump release, relative to the current version number.
+ * 相对于当前版本号的发布版本
  */
 export interface BumpRelease {
   type: ReleaseType

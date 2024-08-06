@@ -37,7 +37,7 @@ export async function gitCommit(operation: Operation): Promise<Operation> {
 }
 
 /**
- * Tags the Git commit, if the `tag` option is enabled.
+ * 标记 Git 提交（如果启用了tag选项）
  */
 export async function gitTag(operation: Operation): Promise<Operation> {
   if (!operation.options.tag)
@@ -85,14 +85,10 @@ export async function gitPush(operation: Operation): Promise<Operation> {
 }
 
 /**
- * Accepts a version string template (e.g. "release v" or "This is the %s release").
- * If the template contains any "%s" placeholders, then they are replaced with the version number;
- * otherwise, the version number is appended to the string.
+ * 接受版本字符串模板（例如“release v”或“This is the %s release”）。
+ * - 如果模板包含任何“%s”占位符，则它们将替换为版本号;
+ * - 否则，版本号将追加到字符串
  */
 export function formatVersionString(template: string, newVersion: string): string {
-  if (template.includes('%s'))
-    return template.replace(/%s/g, newVersion)
-
-  else
-    return template + newVersion
+  return template.includes('%s') ? template.replace(/%s/g, newVersion) : `${template}${newVersion}`
 }

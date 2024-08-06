@@ -16,6 +16,12 @@ export const bumpConfigDefaults: VersionBumpOptions = {
   files: [],
 }
 
+/**
+ * 加载bumpx的配置
+ * 例如： bumpx.config.json
+ * @param overrides
+ * @param cwd
+ */
 export async function loadBumpXConfig(
   overrides?: Partial<VersionBumpOptions>,
   cwd = process.cwd(),
@@ -35,11 +41,17 @@ export async function loadBumpXConfig(
 
 /**
  * 自定义配置入口
+ * - 配置可选
  */
 export function defineBumpXConfig(config: Partial<VersionBumpOptions>): Partial<VersionBumpOptions> {
   return config
 }
 
+/**
+ * 找配置文件
+ * @param name
+ * @param cwd
+ */
 function findConfigFile(name: string, cwd: string) {
   let foundRepositoryRoot = false
   try {

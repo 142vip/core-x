@@ -5,10 +5,10 @@
   "keywords": [
     "@142vip/release-version",
     "version",
-    "bump",
     "bumpx",
     "package",
     "git",
+    "commit",
     "tag",
     "push"
   ],
@@ -57,17 +57,16 @@
     "detect-newline": "^4.0.1",
     "log-symbols": "^6.0.0",
     "npm-check": "^6.0.1",
-    "kolorist": "^1.8.0",
-    "rimraf": "^5.0.5"
+    "kolorist": "^1.8.0"
   },
   "author": {
     "name": "James Messinger",
     "url": "https://jamesmessinger.com"
   },
-  "homepage": "https://github.com/antfu/bumpp",
+  "homepage": "https://github.com/142vip/core-x/tree/main/packages/release-version",
   "repository": {
     "type": "git",
-    "url": "https://github.com/142vip/release-version.git"
+    "url": "https://github.com/142vip/core-x.git"
   },
   "publishConfig": {
     "access": "public",

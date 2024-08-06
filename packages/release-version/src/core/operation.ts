@@ -92,14 +92,14 @@ export class Operation {
   }
 
   /**
-   * Updates the operation state and results, and reports the updated progress to the user.
+   * 更新操作状态和结果，并将更新后的进度报告给上层
    */
   public update({ event, script, ...newState }: UpdateOperationState): this {
     // Update the operation state
     Object.assign(this.state, newState)
 
+    // Report the progress to the user
     if (event && this._progress) {
-      // Report the progress to the user
       this._progress({ event, script, ...this.results })
     }
 

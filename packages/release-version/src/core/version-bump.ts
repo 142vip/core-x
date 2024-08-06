@@ -13,12 +13,7 @@ import { runScript } from './npm-script'
 import { updateFiles } from './update-files'
 
 /**
- * Bumps the version number in one or more files, prompting the user if necessary.
- *
- * use:
- * - versionBump()：default to new version number
- * - versionBump(release: string): explicit the new version number ,e.g: 0.1.10
- * - versionBump(options: VersionBumpOptions)：Optionally also commits, tags, and pushes to git
+ * 版本发布
  */
 export async function versionBump(arg: (VersionBumpOptions) | string = {}): Promise<VersionBumpResults | undefined> {
   if (typeof arg === 'string')
@@ -64,10 +59,10 @@ export async function versionBump(arg: (VersionBumpOptions) | string = {}): Prom
       console.log(e)
       process.exit(1)
     }
-
     console.log(symbols.success, 'Generate CHANGELOG.md Finished')
   }
 
+  // 执行命令
   if (operation.options.execute) {
     console.log(symbols.info, 'Executing Script', operation.options.execute)
     await execShell({ command: operation.options.execute, description: '执行execute提供的命令' })
@@ -111,7 +106,6 @@ export async function versionBumpInfo(arg: VersionBumpOptions | string = {}): Pr
  * 打印参数
  */
 function printSummary(operation: Operation) {
-  console.log(333, operation)
   console.log()
   console.log(`   files ${operation.options.files.map(i => bold(i)).join('\n         ')}`)
 

@@ -64,7 +64,8 @@ export async function parseArgs(): Promise<ParsedArgs> {
   }
   catch (error) {
     // There was an error parsing the command-line args
-    return errorHandler(error as Error)
+    console.error(error)
+    return process.exit(ExitCodeEnum.InvalidArgument)
   }
 }
 
@@ -83,13 +84,13 @@ export function loadCliArgs(argv = process.argv) {
     .option('-y, --yes', `Skip confirmation (default: ${!bumpConfigDefaults.confirm})`)
     .option('-r, --recursive', `Bump package.json files recursively (default: ${bumpConfigDefaults.recursive})`)
     .option('--no-verify', 'Skip git verification')
-    .option('--ignore-scripts', `Ignore scripts (default: ${bumpConfigDefaults.ignoreScripts})`)
+    .option('--ignore-scripts', `Ignore scripts (default: ${bumpConfigDefaults.ignoreScripts})`, { default: bumpConfigDefaults.ignoreScripts })
     .option('-q, --quiet', 'Quiet mode')
-    .option('--changelog', 'generate CHANGELOG.md', { default: false })
     .option('-v, --version <version>', 'Target version')
     .option('--current-version <version>', 'Current version')
-    .option('--scopeName <scopeName>', 'Package name in monorepo')
     .option('-x, --execute <command>', 'Commands to execute after version bumps')
+    .option('--changelog', 'generate CHANGELOG.md', { default: false })
+    .option('--scopeName <scopeName>', 'Package name in monorepo')
     .help()
 
   const result = cli.parse(argv)
@@ -99,6 +100,7 @@ export function loadCliArgs(argv = process.argv) {
   // 这里避免ESLINT报错，功能问题查看git记录
   const COMMIT_REG = /(?:-c|--commit|--no-commit)(?:=.*|$)/
   const TAG_REG = /(?:-t|--tag|--no-tag)(?:=.*|$)/
+
   const hasCommitFlag = rawArgs.some(arg => COMMIT_REG.test(arg))
   const hasTagFlag = rawArgs.some(arg => TAG_REG.test(arg))
 
@@ -112,9 +114,4 @@ export function loadCliArgs(argv = process.argv) {
     } as { [k: string]: any },
     resultArgs: result.args,
   }
-}
-
-function errorHandler(error: Error): never {
-  console.error(error.message)
-  return process.exit(ExitCodeEnum.InvalidArgument)
 }

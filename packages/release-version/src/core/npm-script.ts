@@ -22,7 +22,6 @@ export async function runScript(script: NpmScript, operation: Operation): Promis
       operation.update({ event: ProgressEvent.NpmScript, script })
     }
   }
-
   return operation
 }
 

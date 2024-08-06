@@ -57,10 +57,7 @@ export function readTextFile(name: string, cwd: string): Promise<TextFile> {
         reject(err)
       }
       else {
-        resolve({
-          path: filePath,
-          data: text,
-        })
+        resolve({ path: filePath, data: text })
       }
     })
   })

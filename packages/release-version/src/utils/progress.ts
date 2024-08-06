@@ -4,20 +4,16 @@ import { ProgressEvent } from '../types'
 
 /**
  * 显示进度
- * @param event
- * @param script
- * @param updatedFiles
- * @param skippedFiles
- * @param newVersion
+ * @param progress
  */
-export function showProgress({ event, script, updatedFiles, skippedFiles, newVersion }: VersionBumpProgress) {
-  switch (event) {
+export function showProgress(progress: VersionBumpProgress) {
+  switch (progress.event) {
     case ProgressEvent.FileUpdated:
-      console.log(symbols.success, `Updated ${updatedFiles.pop()} to ${newVersion}`)
+      console.log(symbols.success, `Updated ${progress.updatedFiles.pop()} to ${progress.newVersion}`)
       break
 
     case ProgressEvent.FileSkipped:
-      console.log(symbols.info, `${skippedFiles.pop()} did not need to be updated`)
+      console.log(symbols.info, `${progress.skippedFiles.pop()} did not need to be updated`)
       break
 
     case ProgressEvent.GitCommit:
@@ -33,7 +29,7 @@ export function showProgress({ event, script, updatedFiles, skippedFiles, newVer
       break
 
     case ProgressEvent.NpmScript:
-      console.log(symbols.success, `Npm run ${script}`)
+      console.log(symbols.success, `Npm run ${progress.script}`)
       break
   }
 }

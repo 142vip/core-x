@@ -4,8 +4,9 @@ import { isManifest } from './manifest'
 import type { Operation } from './operation'
 
 /**
- * Finds the current version number from files such as package.json.
- * An error is thrown if no version number can be found.
+ * 从package.json等文件中查找当前版本号。
+ * 如果找不到版本号，则会抛出错误
+ * @param operation
  */
 export async function getCurrentVersion(operation: Operation): Promise<Operation> {
   if (operation.state.currentVersion)
@@ -22,35 +23,28 @@ export async function getCurrentVersion(operation: Operation): Promise<Operation
 
   // Check each file, in order, and return the first valid version number we find
   for (const file of filesToCheck) {
-    const version = await readVersion(file, cwd)
+    const currentVersion = await readVersion(file, cwd)
 
-    if (version) {
+    if (currentVersion) {
       // We found the current version number!
-      return operation.update({
-        currentVersionSource: file,
-        currentVersion: version,
-      })
+      return operation.update({ currentVersionSource: file, currentVersion })
     }
   }
 
   // If we get here, then no version number was found
-  throw new Error(
-    `Unable to determine the current version number. Checked ${filesToCheck.join(', ')}.`,
-  )
+  throw new Error(`Unable to determine the current version number. Checked ${filesToCheck.join(', ')}.`)
 }
 
 /**
- * Tries to read the version number from the specified JSON file.
- *
- * @returns - The version number, or undefined if the file doesn't have a version number
+ * 尝试从指定的 JSON 文件中读取版本号。
+ * 版本号，如果文件没有版本号，则未定义
  */
 async function readVersion(file: string, cwd: string): Promise<string | undefined> {
   try {
     const { data: manifest } = await readJsonFile(file, cwd)
 
-    if (isManifest(manifest)) {
-      if (isValidVersion(manifest.version))
-        return manifest.version
+    if (isManifest(manifest) && isValidVersion(manifest.version)) {
+      return manifest.version
     }
   }
   catch {
