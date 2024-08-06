@@ -109,8 +109,7 @@ jobs:
 
       # Npm 版本发布 注意：只发布packages中的模块
       - name: Publish New Npm Version
-        run: |
-          pnpm publish -r --filter "./packages/**"
+        run: pnpm publish -r --filter "./packages/**"
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
