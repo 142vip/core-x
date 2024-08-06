@@ -12,7 +12,6 @@ on:
   push:
     branches:
       - next
-      - feat/test-publish
   workflow_dispatch:
 
 # 设置 GITHUB_TOKEN 的权限，以允许部署到 GitHub Pages
@@ -48,12 +47,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20.12.2
-          # 淘宝镜像加速
-          registry-url: 'https://registry.npmmirror.com'
           # 缓存
           cache: pnpm
 
-      # 下载依赖，并执行初始化脚本：钩子函数、思维导图构建
+      # 基于国内镜像源下载依赖，并执行初始化脚本：钩子函数、思维导图构建
       - name: Install Dependencies
         run: |
           ./scripts/ci
@@ -72,7 +69,7 @@ jobs:
     name: 创建npm发布
     runs-on: ubuntu-latest
     # 主库next且执行release更新时执行
-    #    if: github.repository == '142vip/core-x' && startsWith(github.event.head_commit.message, 'release(@142vip/')
+    if: github.repository == '142vip/core-x' && startsWith(github.event.head_commit.message, 'release(@142vip/')
 
     steps:
       - name: Checkout Code
@@ -93,8 +90,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20.12.2
-          # 淘宝镜像加速
-#          registry-url: 'https://registry.npmmirror.com'
+          # npm包上传地址，用于注册，参考：https://github.com/actions/setup-node
           registry-url: 'https://registry.npmjs.org'
           # 缓存
           cache: pnpm
@@ -110,7 +106,8 @@ jobs:
 
       # Npm 版本发布 注意：只发布packages中的模块
       - name: Publish New Npm Version
-        run: pnpm publish -r --filter "./packages/**"
+        run: |
+          pnpm publish -r --filter "./packages/**"
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
@@ -122,7 +119,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     # todo 确定这里的触发条件
-    if: github.repository == '142vip/core-x' && startsWith(github.event.head_commit.message, 'chore(release):')
+    if: github.repository == '142vip/core-x'
     steps:
       # 拉取代码
       - name: Checkout
@@ -142,7 +139,6 @@ jobs:
         with:
           node-version: 20.12.2
           cache: pnpm
-          registry-url: https://registry.npmmirror.com
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -155,6 +151,7 @@ jobs:
       - name: Build with VitePress
         run: pnpm build:docs
 
+      # 上传dist文件
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
