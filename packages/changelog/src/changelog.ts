@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import process from 'node:process'
 import { blue, bold, cyan, dim, red, yellow } from 'kolorist'
 import { Command } from 'commander'
