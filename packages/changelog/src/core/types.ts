@@ -65,12 +65,12 @@ export interface ChangelogOptions extends Partial<ChangelogEnOptions> {
    */
   emoji?: boolean
   /**
-   * Github base url
+   * GitHub base url
    * @default github.com
    */
   baseUrl?: string
   /**
-   * Github base API url
+   * GitHub base API url
    * @default api.github.com
    */
   baseUrlApi?: string
@@ -80,6 +80,9 @@ export interface ChangelogOptions extends Partial<ChangelogEnOptions> {
 
 export type ResolvedChangelogOptions = Required<ChangelogOptions>
 
+/**
+ * 作者信息
+ */
 export interface AuthorInfo {
   commits: string[]
   login?: string

@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { $fetch } from 'ofetch'
 import { cyan, green } from 'kolorist'
 import { notNullish } from '@antfu/utils'
