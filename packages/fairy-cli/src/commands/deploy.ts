@@ -1,8 +1,11 @@
-export interface DeployOptions {
+import type { Command } from 'commander'
+import { CliCommandEnum } from '../shared'
+
+interface DeployOptions {
 
 }
 
-export function execDeploy(args: DeployOptions) {
+function execDeploy(args: DeployOptions) {
   console.log(args)
 }
 
@@ -10,6 +13,21 @@ export function execDeploy(args: DeployOptions) {
  * github page 静态页面部署
  * @constructor
  */
-export function DeployGithubPage() {
+function DeployGithubPage() {
 
+}
+
+/**
+ *
+ * @param program
+ */
+export async function deployMain(program: Command) {
+  program
+    .command(CliCommandEnum.DEPLOY)
+    .description('项目部署')
+    .option('-gh,--github-page', '部署到Github Pages', false)
+    .action((args: DeployOptions) => {
+      execDeploy(args)
+      DeployGithubPage()
+    })
 }

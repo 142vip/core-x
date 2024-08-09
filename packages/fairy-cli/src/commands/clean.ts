@@ -1,17 +1,19 @@
 import * as process from 'node:process'
 import confirm from '@inquirer/confirm'
 import { deleteAsync } from 'del'
+import type { Command } from 'commander'
+import { CliCommandEnum } from '../shared'
 
 /**
  * 删除配置
  */
-export interface DelOptions {
+interface DelOptions {
   dryRun?: boolean
   force?: boolean
   all?: boolean
 }
 
-export interface CleanUpOptions extends DelOptions {
+interface CleanUpOptions extends DelOptions {
   dist?: boolean
   nuxt?: boolean
   midway?: boolean
@@ -24,7 +26,7 @@ export interface CleanUpOptions extends DelOptions {
  * 删除文件或文件夹
  * - 恢复项目初始状态
  */
-export async function execCleanUp(args: CleanUpOptions) {
+async function execCleanUp(args: CleanUpOptions) {
   // 默认删除node_modules
   const dirPatterns = generateDirPatterns('node_modules', args.all)
 
@@ -98,4 +100,26 @@ function generateDirPatterns(dirName: string | string[], delAll?: boolean) {
   }
 
   return delDirs
+}
+
+/**
+ * fairy-cli clean 项目清理
+ * @param program
+ */
+export async function cleanUpMain(program: Command) {
+  program
+    .command(CliCommandEnum.CLEAN)
+    .description('清除开发、构建等环境下的无用目录')
+    .option('-n,--nuxt', '删除nuxt构建目录', false)
+    .option('-d,--dist', '删除dist目录', false)
+    .option('-m,--midway', '删除midway构建目录', false)
+    .option('-f,--force', '强制删除，默认值：false', false)
+    .option('--all', '深度删除所有', false)
+    .option('--ignore-tips', '忽略提示，直接删除', false)
+    .option('--dry-run', '试运行，不做实际删除操作', false)
+    .option('--turbo', '删除turbo缓存目录', true)
+    .option('--vite', '删除vite缓存目录', true)
+    .action(async (args: CleanUpOptions) => {
+      await execCleanUp(args)
+    })
 }

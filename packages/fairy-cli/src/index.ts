@@ -1,2 +1,1 @@
-export * from './commands'
-export * from './utils'
+export * from './fairy-cli'

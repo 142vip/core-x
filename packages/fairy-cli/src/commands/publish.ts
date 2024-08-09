@@ -1,4 +1,5 @@
-import { execCommand } from '../utils'
+import type { Command } from 'commander'
+import { CliCommandEnum, execCommand } from '../shared'
 
 export type PublishOptions = NpmOptions & DockerOptions
 
@@ -15,7 +16,7 @@ interface DockerOptions {
   clean: boolean
 }
 
-export async function execPublish(args: PublishOptions) {
+async function execPublish(args: PublishOptions) {
   // npm发包
   if (args.npm) {
     await publishNpm(args)
@@ -52,4 +53,21 @@ async function publishNpm(args: NpmOptions) {
   }
 
   await execCommand(`npm publish --access public --registry=${args.registry}`)
+}
+
+/**
+ * publish 命令入口
+ * @param program
+ */
+export async function publishMain(program: Command) {
+  program
+    .command(CliCommandEnum.PUBLISH)
+    .description('publish to remote platform，eg. Docker Image & Npm Package')
+    .option('-d,--docker', 'publish to Docker', false)
+    .option('-n,--npm', 'publish to Npm', false)
+    .option('-c --clean', 'clean after publishing', false)
+    .option('--registry', 'npm registry address', 'https://registry.npmjs.org')
+    .action(async (args: PublishOptions) => {
+      await execPublish(args)
+    })
 }

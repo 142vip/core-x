@@ -1,6 +1,7 @@
 import type { VersionBumpOptions } from '@142vip/release-version'
 import { versionBump } from '@142vip/release-version'
-import { getPackageListInMonorepo } from '../utils'
+import type { Command } from 'commander'
+import { CliCommandEnum, getPackageListInMonorepo } from '../shared'
 
 // export interface ReleaseOptions {
 //   preid: string
@@ -11,7 +12,7 @@ import { getPackageListInMonorepo } from '../utils'
 //   execute?: string
 //   package?: string
 // }
-export interface ReleaseOptions extends Pick<VersionBumpOptions, 'preid' | 'tag' | 'commit' | 'push' | 'all' | 'execute'> {
+interface ReleaseOptions extends Pick<VersionBumpOptions, 'preid' | 'tag' | 'commit' | 'push' | 'all' | 'execute'> {
   package?: string
 }
 
@@ -29,7 +30,7 @@ export interface ReleaseOptions extends Pick<VersionBumpOptions, 'preid' | 'tag'
  * 版本发布
  * @param args
  */
-export async function execRelease(args: ReleaseOptions) {
+async function execRelease(args: ReleaseOptions) {
   // 指定包
   if (args.package != null) {
     const packageJSONList = await getPackageListInMonorepo()
@@ -57,4 +58,22 @@ export async function execRelease(args: ReleaseOptions) {
     // 执行远程
     ...args.execute ? { execute: args.execute } : {},
   })
+}
+
+export async function releaseMain(program: Command) {
+  program
+    .command(CliCommandEnum.RELEASE)
+    .description('release npm version')
+    .option('--push', 'registry address', true)
+    .option('--preid <preid>', 'ID for prerelease')
+    .option('--commit <msg>', 'Commit message', false)
+    .option('--tag <tag>', 'Tag name', false)
+    .option('--skip-confirm', `Skip confirmation (default: false)`, false)
+    .option('-r, --recursive', `Bump package.json files recursively (default: false)`, false)
+    .option('--execute <command>', '版本更新后需要执行的命令')
+    .option('--package <package>', '指定需要发布的包')
+    .action(async (args: ReleaseOptions) => {
+      console.log(CliCommandEnum.RELEASE, args)
+      await execRelease(args)
+    })
 }

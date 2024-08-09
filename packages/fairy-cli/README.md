@@ -1,6 +1,6 @@
 # @142vip/fairy-cli
 
-`@142vip/fairy-cli`是一个工程化项目CLI工具，在终端中可以使用`fa`、`vae`两个别名执行命令。
+`@142vip/fairy-cli`是一个工程化项目CLI工具，在终端中可以使用别名`fa`执行命令。
 
 ## 快速使用
 
@@ -10,11 +10,9 @@ pnpm i @142vip/fairy-cli
 
 # 查看帮助
 npx fa -h
-npx vae -h
 
 # 查看版本
 npx fa -v
-npx vae -v
 ```
 
 ## 功能
