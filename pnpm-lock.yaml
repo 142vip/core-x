@@ -144,11 +144,7 @@ importers:
         specifier: ^1.11.11
         version: 1.11.12
 
-  packages/egg-mysql:
-    dependencies:
-      dayjs:
-        specifier: ^1.11.11
-        version: 1.11.12
+  packages/egg-mysql: {}
 
   packages/egg-redis:
     dependencies:
