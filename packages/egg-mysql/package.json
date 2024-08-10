@@ -15,7 +15,6 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "dayjs": "^1.11.11"
   },
   "publishConfig": {
     "access": "public",
