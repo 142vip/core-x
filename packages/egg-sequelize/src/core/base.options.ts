@@ -17,7 +17,7 @@ export const BaseOptions = {
     //     record.dataValues.modifyTime = new Date().getTime()
     // },
     // 强制为每一行都更新
-    beforeBulkUpdate: _options => ({
+    beforeBulkUpdate: () => ({
       options: { individualHooks: true },
     }),
   },

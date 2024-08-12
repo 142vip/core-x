@@ -6,7 +6,11 @@ export class BaseService {
     this.entity = entity
   }
 
+  /**
+   * 插入数据
+   */
   public async insertData() {
     // this.entity.
+    console.log(this.entity)
   }
 }
