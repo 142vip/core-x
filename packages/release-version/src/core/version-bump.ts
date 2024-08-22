@@ -1,4 +1,5 @@
 import process from 'node:process'
+import path from 'node:path'
 import symbols from 'log-symbols'
 import prompts from 'prompts'
 import { bold, cyan, green } from 'kolorist'
@@ -48,7 +49,8 @@ export async function versionBump(arg: (VersionBumpOptions) | string = {}): Prom
   if (operation.options.changelog) {
     console.log(symbols.info, 'Generate CHANGELOG.md By @142vip/changelog', operation.options.execute)
     try {
-      const baseCommand = `changelog --output CHANGELOG.md --name v${operation.state.newVersion}`
+      const filePath = path.join(operation.options.cwd, 'CHANGELOG.md')
+      const baseCommand = `changelog --output "${filePath}" --name v${operation.state.newVersion}`
       // 支持monorepo子模块
       await execShell(operation.options.scopeName != null
         ? { command: `${baseCommand} --scopeName ${operation.options.scopeName}`, description: `MonoRepo模式，生成${operation.options.scopeName}模块的CHANGELOG文档` }
