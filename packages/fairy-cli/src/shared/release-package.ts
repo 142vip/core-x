@@ -61,14 +61,18 @@ export async function releaseMonorepoPackage(pkg: PackageJSON) {
   console.log('aaaa dir-->', pkg.path)
 
   await versionBump({
+    preid: 'alpha',
     // 注意：在对应monorepo模块的目录中执行bump命令
     cwd: pkg.path,
-    changelog: true,
     execute,
-    commit: commitInfo,
+    changelog: true,
+    currentVersion: pkg.version,
     scopeName: pkg.name,
-    preid: 'alpha',
+    // 子模块发布，不支持tag标签
     tag: false,
+    commit: commitInfo,
+    push: true,
+
     all: true,
   })
 }
@@ -102,10 +106,11 @@ export async function releaseRoot() {
   console.log('等价命令-->', releaseCommand)
   // 执行命令，需要交互 shell执行
   await versionBump({
+    preid: 'alpha',
     changelog: true,
     execute,
     commit: commitInfo,
-    preid: 'alpha',
+    push: true,
     all: true,
   })
 }
