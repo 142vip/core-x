@@ -26,7 +26,8 @@
     "build:docs": "vitepress build",
     "preview": "vitepress preview",
     "clean": "npx fa clean --ignore-tips --all",
-    "lint": "npx fa lint --fix",
+    "lint": "npx fa lint",
+    "lint:fix": "npx fa lint --fix",
     "release:check": "npx fa release --check-release --vip",
     "release": "npx fa release --vip"
   },
