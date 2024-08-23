@@ -116,6 +116,8 @@ export async function releaseRoot() {
     preid: 'alpha',
     changelog: true,
     execute,
+    // 发布根模块，需要打标签
+    tag: true,
     commit: commitInfo,
     push: true,
     all: true,
