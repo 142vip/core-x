@@ -57,7 +57,7 @@ jobs:
       # Eslint 检测
       - name: Code LintFix By ESLint
         run: |
-          pnpm lint
+          npx eslint .
 
       # 编辑模块代码
       - name: Build Package Code
