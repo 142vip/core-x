@@ -24,8 +24,9 @@
     "postinstall": "simple-git-hooks",
     "clean": "npx fa clean --ignore-tips --all",
     "dev": "vitepress dev --port 8080 --host",
-    "build": "npx turbo run build --color --only",
+    "build:packages": "npx turbo run build --color --only",
     "build:docs": "vitepress build",
+    "build": "pnpm build:packages && pnpm build:docs",
     "preview": "vitepress preview",
     "lint": "npx fa lint",
     "lint:fix": "npx fa lint --fix",
@@ -61,7 +62,7 @@
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint",
-    "commit-msg": "node scripts/verify-commit.js",
-    "pre-push": "pnpm build"
+    "prepare-commit-msg": "pnpm build",
+    "commit-msg": "node verify-commit.js"
   }
 }

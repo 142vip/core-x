@@ -57,7 +57,7 @@ jobs:
 
       - name: Build All Packages
         run: |
-          pnpm build
+          pnpm build:packages
 
       # Github发布版本，并更新Release信息
       - name: Release New Version
@@ -102,7 +102,7 @@ jobs:
 
       - name: Build All Packages
         run: |
-          pnpm build
+          pnpm build:packages
 
       - name: Get Package Name By Commit Scope
         id: getPkgName
@@ -161,7 +161,7 @@ jobs:
       # 编译 打包成dist
       - name: Build with VitePress
         run: |
-          pnpm build && pnpm build:docs
+          pnpm build:docs
 
       # 上传dist文件
       - name: Upload artifact
