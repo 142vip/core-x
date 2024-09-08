@@ -50,7 +50,9 @@ export async function execShell(commands: ShellCommand[] | string | ShellCommand
     const execResult = await execCommand(command)
 
     // 打印输出结果
-    vipLog.info(`\n${execResult.stdout}\n`)
+    if (execResult.stdout != null) {
+      vipLog.info(`\n${execResult.stdout}\n`)
+    }
 
     // 脚本结束
     // vipLog.log('', {
