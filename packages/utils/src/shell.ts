@@ -1,6 +1,6 @@
 import chalk from 'chalk'
 import { name, version } from '../package.json'
-import { commandStandardExecutor } from './exec'
+import { execCommand } from './exec'
 import { VipLogger } from './logger'
 
 export interface ShellCommand {
@@ -46,8 +46,11 @@ export async function execShell(commands: ShellCommand[] | string | ShellCommand
     //   endLabel: `${description} (执行开始)`,
     // })
 
-    // 标准命令执行器
-    commandStandardExecutor(command)
+    // 同步执行，标准命令执行器
+    const execResult = await execCommand(command)
+
+    // 打印输出结果
+    vipLog.info(`\n${execResult.stdout}\n`)
 
     // 脚本结束
     // vipLog.log('', {
