@@ -20,6 +20,11 @@ export interface SuccessfulExec extends CmdResult {
   code: number | null
 }
 
+/**
+ * 同步执行命令，并返回结果
+ * @param cmd
+ * @param opts
+ */
 export async function execCommand(
   cmd: Command,
   opts?: Omit<childProcess.SpawnOptionsWithoutStdio, 'stdio' | 'cwd'>,
@@ -76,6 +81,7 @@ export async function execCommand(
 /**
  * 标准Linux命令执行器
  * - 支持打印结果
+ * - 异步
  * @param cmd
  */
 export function commandStandardExecutor(cmd: Command) {
@@ -106,12 +112,10 @@ export function commandStandardExecutor(cmd: Command) {
 
     // 出现错误
     child.on('error', (_error) => {
-
     })
 
     // 进程退出
     child.on('close', (_code) => {
-
     })
   }
   catch {
