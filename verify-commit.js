@@ -12,8 +12,8 @@ if (!isSuccess) {
       `invalid commit message format.`,
     )}\n\n${
       chalk.red(
-      `  Proper commit message format is required for automated changelog generation. Examples:\n\n`,
-    )
+        `  Proper commit message format is required for automated changelog generation. Examples:\n\n`,
+      )
     }    ${chalk.green(`feat(Github Actions): add CI/CD option`)}\n`
     + `    ${chalk.green(
       `docs: update wbe site (close #28)`,
