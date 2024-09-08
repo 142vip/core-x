@@ -112,12 +112,10 @@ export function commandStandardExecutor(cmd: Command) {
 
     // 出现错误
     child.on('error', (_error) => {
-      console.log('error-->', _error)
     })
 
     // 进程退出
     child.on('close', (_code) => {
-      console.log('close-->', _code)
     })
   }
   catch {
