@@ -71,7 +71,9 @@ defineComponent({
         >
           <ElImage :src="`https://img.shields.io/npm/v/${row.name}?labelColor=0b3d52&color=1da469`" :title="row.name" />
         </a>
-        <span v-if="row.private">私有</span>
+        <ElTag v-else type="danger">
+          私有
+        </ElTag>
       </template>
     </ElTableColumn>
     <ElTableColumn align="center" header-align="center" label="文档" width="150">
