@@ -5,11 +5,15 @@
 ##   ./scripts/ci
 ##
 
-# 安装pnpm版本
-COREPACK_NPM_REGISTRY=https://registry.npmmirror.com corepack enable pnpm
+
+NPM_REGISTRY="https://registry.npmmirror.com"
 
 ## 获取所有参数
-echo "运行命令: pnpm i --frozen-lockfile --registry https://registry.npmmirror.com $*"
+echo "运行命令: COREPACK_NPM_REGISTRY=$NPM_REGISTRY corepack enable pnpm && pnpm i --registry $NPM_REGISTRY --frozen-lockfile $*"
+
+# 安装pnpm版本
+COREPACK_NPM_REGISTRY=$NPM_REGISTRY corepack enable pnpm
+
 
 # 安装项目依赖 -w -F @142vip/fairy-cli
-pnpm i --frozen-lockfile --registry https://registry.npmmirror.com "$@"
+pnpm i  --registry $NPM_REGISTRY --frozen-lockfile "$@"
