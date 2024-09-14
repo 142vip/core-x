@@ -23,7 +23,7 @@
     "preinstall": "npx only-allow pnpm && chmod +x ./scripts/*",
     "postinstall": "simple-git-hooks",
     "clean": "npx fa clean --ignore-tips --dist --vite --turbo --all",
-    "dev": "vitepress dev --port 8080 --host",
+    "dev": "vitepress dev --port 8080 --host --force --strictPort",
     "build:packages": "npx turbo run build --color --only",
     "build:docs": "DEBUG=true vitepress build",
     "build": "pnpm build:packages && pnpm build:docs",
