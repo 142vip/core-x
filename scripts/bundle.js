@@ -1,3 +1,4 @@
+import process from 'node:process'
 import {
   VipDockerAddress,
   buildImage,
@@ -6,21 +7,18 @@ import {
   isExistImage,
   pushImage,
 } from '@142vip/utils'
-import process from 'node:process'
-import pkg from '../package.json' with {type: 'json'}
-
+import pkg from '../package.json'
 
 async function test() {
   // 1-获取参数
   const aaa = process.argv.slice(2)
-
-
+  console.log(111, aaa)
 
   // 镜像地址
   const imageName = `${VipDockerAddress}/docs:${pkg.name.split('/')[1]}-${pkg.version}`
 
   // 提交信息
-  const {hash: gitHash} = await getRecentGitCommit()
+  const { hash: gitHash } = await getRecentGitCommit()
 
   // 构建镜像
   await buildImage({
@@ -51,7 +49,8 @@ async function test() {
 ;(async () => {
   try {
     await test()
-  } catch (e) {
+  }
+  catch (e) {
     console.log('异常信息:', e)
   }
 })()
