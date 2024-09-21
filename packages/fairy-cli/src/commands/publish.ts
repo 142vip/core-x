@@ -1,5 +1,6 @@
 import type { Command } from 'commander'
-import { CliCommandEnum, execCommand } from '../shared'
+import { execCommand } from '@142vip/utils'
+import { CliCommandEnum } from '../shared'
 
 export type PublishOptions = NpmOptions & DockerOptions
 

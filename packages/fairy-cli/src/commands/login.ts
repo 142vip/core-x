@@ -1,6 +1,7 @@
 import process from 'node:process'
 import type { Command } from 'commander'
-import { CliCommandEnum, execChildProcess } from '../shared'
+import { commandStandardExecutor } from '@142vip/utils'
+import { CliCommandEnum } from '../shared'
 
 enum LoginPlatformEnum {
   DOCKER = 'docker',
@@ -28,18 +29,18 @@ interface DockerOptions extends LoginOptions {
 interface NpmOptions extends Omit<LoginOptions, 'userName' | 'password'> {
 }
 
-function execLogin(platform: LoginPlatformEnum, args: LoginOptions) {
+async function execLogin(platform: LoginPlatformEnum, args: LoginOptions) {
   if (LoginPlatformEnum.DOCKER === platform) {
-    loginDocker(args)
+    await loginDocker(args)
   }
 
   if (LoginPlatformEnum.NPM === platform) {
-    loginNpm(args)
+    await loginNpm(args)
   }
 }
 
 // docker 登录
-function loginDocker(args: DockerOptions) {
+async function loginDocker(args: DockerOptions) {
   let registryUrl = RegistryURLEnum.DOCKER as string
   if (args.registryUrl != null) {
     registryUrl = args.registryUrl
@@ -52,11 +53,11 @@ function loginDocker(args: DockerOptions) {
 
   //   docker login --username=142vip --password="$password"  registry.cn-hangzhou.aliyuncs.com
   const command = `docker login ${args.userName != null ? `--username=${args.userName}` : ''} ${args.password != null ? `--password=${args.password}` : ''}${registryUrl}`
-  execChildProcess(command)
+  await commandStandardExecutor(command)
 }
 
 // npm 登录
-function loginNpm(args: NpmOptions) {
+async function loginNpm(args: NpmOptions) {
   let registryUrl = RegistryURLEnum.NPM as string
   if (args.registryUrl != null) {
     registryUrl = args.registryUrl
@@ -67,7 +68,7 @@ function loginNpm(args: NpmOptions) {
   }
 
   // npm login --registry  https://registry.npmjs.org
-  execChildProcess(`npm login --registry ${registryUrl}`)
+  await commandStandardExecutor(`npm login --registry ${registryUrl}`)
 }
 
 /**
@@ -81,11 +82,12 @@ export async function loginMain(program: Command) {
     .option('-p,--password', '登录密码，docker登录时有效')
     .option('--registry-url', 'registry address')
     .option('--vip', '142vip专用业务账号', false)
-    .action((platform: LoginPlatformEnum, args: LoginOptions) => {
+    .action(async (platform: LoginPlatformEnum, args: LoginOptions) => {
       if (![LoginPlatformEnum.NPM, LoginPlatformEnum.DOCKER].includes(platform)) {
         console.error('login命令只支持Docker和Npm平台，使用格式 login docker|npm')
         process.exit(1)
       }
-      execLogin(platform, args)
+      await execLogin(platform, args)
+      JSON.stringify('aaa')
     })
 }

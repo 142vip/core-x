@@ -1,5 +1,6 @@
 import type { Command } from 'commander'
-import { CliCommandEnum, execChildProcess } from '../shared'
+import { commandStandardExecutor } from '@142vip/utils'
+import { CliCommandEnum } from '../shared'
 
 interface InstallOptions {
   pnpm: boolean
@@ -13,17 +14,17 @@ interface InstallOptions {
  * - npm
  * - pnpm
  */
-function execInstall(args: InstallOptions) {
+async function execInstall(args: InstallOptions) {
   console.log(111, args)
   // pnpm i --frozen-lockfile --registry https://registry.npmmirror.com
   // npm ci
   if (args.npm) {
     // 使用npm下载
-    execChildProcess(`npm ${args.update ? 'i' : 'ci'} --registry  ${args.registry}`)
+    await commandStandardExecutor(`npm ${args.update ? 'i' : 'ci'} --registry  ${args.registry}`)
   }
   else {
     // pnpm下载
-    execChildProcess(`pnpm i ${args.update ? '' : '--frozen-lockfile'} --registry ${args.registry}`)
+    await commandStandardExecutor(`pnpm i ${args.update ? '' : '--frozen-lockfile'} --registry ${args.registry}`)
   }
 }
 
