@@ -13,6 +13,17 @@
   "keywords": [
     "公众号搜：储凡"
   ],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "files": [
     "*.mjs",
     "dist"
@@ -22,7 +33,9 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "dayjs": "^1.11.11"
+    "@antfu/eslint-config": "^2.27.3",
+    "eslint": "8.55.0",
+    "eslint-plugin-format": "^0.1.2"
   },
   "publishConfig": {
     "access": "public",
