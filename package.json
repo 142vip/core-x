@@ -59,7 +59,7 @@
     "webpack": "^4.47.0"
   },
   "simple-git-hooks": {
-    "pre-commit": "pnpm lint",
+    "pre-commit": "pnpm lint:fix",
     "prepare-commit-msg": "pnpm build",
     "commit-msg": "node verify-commit.js"
   }
