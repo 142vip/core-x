@@ -1,5 +1,5 @@
 import process from 'node:process'
-import type { ChangelogOptions } from '../types/changelog.interface'
+import type { ChangelogOptions } from '../types'
 
 /**
  * 默认配置
@@ -29,7 +29,7 @@ export const ChangelogDefaultConfig: ChangelogOptions = {
 }
 
 /**
- * 定义@142vip/changelog模块的默认配置文件
+ * 定义配置文件
  */
 export function defineChangelogDefaultConfig(config: ChangelogOptions) {
   return config

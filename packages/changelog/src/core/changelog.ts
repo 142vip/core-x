@@ -64,7 +64,6 @@ async function resolveConfig(options: ChangelogOptions) {
 
 /**
  * 生成markdown文档信息
- * @param options
  */
 async function generate(options: ChangelogOptions) {
   const config = await resolveConfig(options)
@@ -102,6 +101,9 @@ async function generate(options: ChangelogOptions) {
   return { config, markdown, commits }
 }
 
+/**
+ * 处理changelog业务
+ */
 async function dealChangelog(args: ChangelogOptions) {
   args.token = args.token || process.env.GITHUB_TOKEN
 

@@ -49,7 +49,9 @@ function formatLine(commit: Commit, options: ResolvedChangelogOptions) {
   return [description, refs].filter(i => i?.trim()).join(' ')
 }
 
-// 标题
+/**
+ * 格式化标题
+ */
 function formatTitle(name: string, options: ResolvedChangelogOptions) {
   // 加表情包
   if (!options.emoji)
@@ -58,6 +60,9 @@ function formatTitle(name: string, options: ResolvedChangelogOptions) {
   return `### ${name.trim()}`
 }
 
+/**
+ * 格式化Section
+ */
 function formatSection(commits: Commit[], sectionName: string, options: ResolvedChangelogOptions) {
   if (!commits.length)
     return []
@@ -106,10 +111,12 @@ function formatSection(commits: Commit[], sectionName: string, options: Resolved
         .map(commit => `${padding}- ${prefix}${formatLine(commit, options)}`))
     })
   }
-
   return lines
 }
 
+/**
+ * 生成Markdown文档
+ */
 export async function generateMarkdown(commits: Commit[], options: ResolvedChangelogOptions) {
   const lines: string[] = []
 
@@ -154,7 +161,6 @@ export async function generateMarkdown(commits: Commit[], options: ResolvedChang
 /**
  * 年月日格式化当前时间
  * - 格式： 2024-08-09
- * @param date
  */
 function formatDateToYMD(date: Date = new Date()): string {
   const year = date.getFullYear()
@@ -166,9 +172,6 @@ function formatDateToYMD(date: Date = new Date()): string {
 
 /**
  * 更新changelog
- * @param outputPath
- * @param markdown
- * @param releaseVersionName
  */
 export async function updateChangelog(outputPath: string, markdown: string, releaseVersionName: string) {
   let changelogMD: string

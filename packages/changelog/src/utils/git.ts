@@ -1,5 +1,8 @@
 import semver from 'semver'
 
+/**
+ * 获取github仓库
+ */
 export async function getGitHubRepo(baseUrl: string) {
   const url = await execCommand('git', ['config', '--get', 'remote.origin.url'])
   const escapedBaseUrl = baseUrl.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
