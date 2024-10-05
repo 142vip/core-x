@@ -1,6 +1,6 @@
-import type DefaultTheme from 'vitepress/theme'
 import type { VipProject } from '@142vip/vitepress'
 import { VipLinks, pick } from '@142vip/vitepress'
+import type { DefaultTheme } from 'vitepress/types/default-theme'
 
 enum ProjectId {
   Tools = '通用工具',
