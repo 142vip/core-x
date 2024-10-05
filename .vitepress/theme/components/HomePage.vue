@@ -9,9 +9,11 @@ import {
 import { useData } from 'vitepress'
 import { ElImage } from 'element-plus'
 import { getCoreProjectData } from '../../sidebar'
+import vuepressDemo from '../../../apps/vuepress-demo/package.json'
 
 const { isDark } = useData()
 const tableData = ref<any[]>([])
+const exampleDemoTableData = ref()
 
 defineComponent({
   components: {
@@ -19,18 +21,38 @@ defineComponent({
   },
 })
 
+function pick<T, K extends keyof T>(obj: T, keys: K[]): Pick<T, K> {
+  const result: any = {}
+  for (const key of keys) {
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+      result[key] = obj[key]
+    }
+  }
+  return result as Pick<T, K>
+}
+
 /**
  * 异步加载表格数据
  */
 onMounted(async () => {
   tableData.value = await getCoreProjectData()
+  exampleDemoTableData.value = [
+    {
+      ...pick(vuepressDemo, ['name', 'description', 'version', 'private']),
+      id: '🤡',
+      changelog: '../apps/vuepress-demo/changelog.html',
+      readme: '../apps/vuepress-demo/index.html',
+      sourceCode: ``,
+    },
+  ]
 })
 </script>
 
 <!-- 首页 -->
 <template>
   <section id="version-table">
-    <VipProjectTable :data="tableData" title="开源" />
+    <VipProjectTable :data="exampleDemoTableData" title="示例项目" />
+    <VipProjectTable :data="tableData" title="开源模块" />
   </section>
 
   <VipTeam />
