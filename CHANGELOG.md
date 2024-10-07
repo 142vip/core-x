@@ -2,6 +2,43 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## v0.0.1-alpha.15 (2024-10-07)
+
+### ✨ Features
+
+- **@142vip/changelog**:
+  - 移除`qs`、`kolorist`模块，使用`@142vip/utils`进行替换 &nbsp;-&nbsp; by **chufan** [<samp>(22e66)</samp>](https://github.com/142vip/core-x/commit/22e6617)
+- **@142vip/utils**:
+  - 引入`qs`模块，导出`vipQs`对象，支持`stringify`、`parse`方法 &nbsp;-&nbsp; by **chufan** [<samp>(007fc)</samp>](https://github.com/142vip/core-x/commit/007fc90)
+  - 新增`OPEN_SOURCE`相关常量，优化结构 &nbsp;-&nbsp; by **chufan** [<samp>(30d96)</samp>](https://github.com/142vip/core-x/commit/30d9624)
+- **@142vip/vuepress**:
+  - 升级`vuepress`主题依赖，修复配置错误和`build`命令异常 &nbsp;-&nbsp; by **chufan** [<samp>(29328)</samp>](https://github.com/142vip/core-x/commit/293280a)
+  - 增加开源博客站点的`header`配置 &nbsp;-&nbsp; by **chufan** [<samp>(a8894)</samp>](https://github.com/142vip/core-x/commit/a8894aa)
+- **vuepress-demo**:
+  - 增加、优化`CHANGELOG`文档 &nbsp;-&nbsp; by **chufan** [<samp>(77d99)</samp>](https://github.com/142vip/core-x/commit/77d99cf)
+  - 升级`vuepress`模块，修改`demo`文档说明和样式 &nbsp;-&nbsp; by **chufan** [<samp>(a8635)</samp>](https://github.com/142vip/core-x/commit/a86357f)
+
+### 🔥 Performance
+
+- 移除`webpack`、`babel`等冗余模块，支持`build:apps`构建命令 &nbsp;-&nbsp; by **chufan** [<samp>(14824)</samp>](https://github.com/142vip/core-x/commit/14824ba)
+
+### 🐛 Bug Fixes
+
+- 修改`Dockerfile`的`Nginx`配置，修复构建时镜像平台异常 &nbsp;-&nbsp; by **chufan** [<samp>(2149b)</samp>](https://github.com/142vip/core-x/commit/2149bfc)
+- 修复`bundle`脚本构建异常，更新`Dockerfile` &nbsp;-&nbsp; by **chufan** [<samp>(3deba)</samp>](https://github.com/142vip/core-x/commit/3deba5e)
+
+### 😏 Release Packages
+
+- **@142vip/changelog**:
+  - Publish `v0.0.1-alpha.7` &nbsp;-&nbsp; by **chufan** [<samp>(ee71d)</samp>](https://github.com/142vip/core-x/commit/ee71dbf)
+- **@142vip/utils**:
+  - Publish `v0.0.1-alpha.6` &nbsp;-&nbsp; by **chufan** [<samp>(98174)</samp>](https://github.com/142vip/core-x/commit/98174ce)
+- **@142vip/vuepress**:
+  - Publish `v0.0.1-alpha.3` &nbsp;-&nbsp; by **chufan** [<samp>(b0471)</samp>](https://github.com/142vip/core-x/commit/b04715b)
+  - Publish `v0.0.1-alpha.4` &nbsp;-&nbsp; by **chufan** [<samp>(9e839)</samp>](https://github.com/142vip/core-x/commit/9e839e2)
+
+**Release New Version v0.0.1-alpha.15 [👉 View Changes On GitHub](https://github.com/142vip/core-x/compare/v0.0.1-alpha.14...v0.0.1-alpha.15)**
+
 ## v0.0.1-alpha.14 (2024-10-05)
 
 ### ✨ Features

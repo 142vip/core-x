@@ -25,9 +25,10 @@ COPY . .
 RUN apk add --no-cache git --repository http://mirrors.aliyun.com/alpine/v3.14/main/
 
 ## 基于容器自动构建
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store sh ./scripts/ci && pnpm build:packages && if [ "$NEED_PROXY" = "false" ];  \
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store sh ./scripts/ci && pnpm build:packages && \
+  if [ "$NEED_PROXY" = "false" ];  \
    then \
-    ls &&  pnpm build:docs; \
+    pnpm build:docs; \
    else \
       pnpm build:docs-proxy; \
    fi;
@@ -46,7 +47,7 @@ ARG GIT_HASH
 # 作者信息 & 项目信息 & Git信息
 LABEL "maintainer"="$AUTHOR <$EMAIL>"
 LABEL "repo.name"=$APP_NAME "repo.version"=$APP_VERSION  \
-      "repo.description"="$DESCRIPTION" "repo.homePage"="$HOME_PAGE"
+      "repo.description"="$APP_DESCRIPTION" "repo.homePage"="$HOME_PAGE"
 LABEL "git.hash"="$GIT_HASH"
 
 # 将dist文件中的内容复制到 /usr/share/nginx/html/ 这个目录下面 注意：--from参数

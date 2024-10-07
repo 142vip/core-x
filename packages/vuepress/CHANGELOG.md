@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.4 (2024-10-07)
+
+### ✨ Features
+
+- 增加开源博客站点的`header`配置 &nbsp;-&nbsp; by **chufan** [<samp>(a8894)</samp>](https://github.com/142vip/core-x/commit/a8894aa)
+
+**Release New Version v0.0.1-alpha.4 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/vuepress)**
+
 ## v0.0.1-alpha.3 (2024-10-06)
 
 ### ✨ Features

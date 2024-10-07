@@ -1,7 +1,7 @@
 {
   "name": "@142vip/utils",
   "type": "module",
-  "version": "0.0.1-alpha.5",
+  "version": "0.0.1-alpha.6",
   "private": false,
   "description": "基础工具集合",
   "author": "mmdapl <mmdapl@163.com>",
