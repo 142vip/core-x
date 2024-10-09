@@ -1,9 +1,9 @@
-import { navbar } from 'vuepress-theme-hope'
+import { navbar, sidebar } from 'vuepress-theme-hope'
 
 /**
- * 导航栏配置
+ * 导航栏
  */
-export default navbar([
+export const navbarConfig = navbar([
   {
     text: '🌐 首页',
     link: '/',
@@ -49,3 +49,30 @@ export default navbar([
     ],
   },
 ])
+
+/**
+ * 侧边栏
+ */
+export const sidebarConfig = sidebar({
+  '/example': [
+    {
+      text: '示例文档',
+      // prefix: 'example',
+      collapsible: false,
+      children: [
+        {
+          text: '示例文档-1',
+          link: 'test-1.md',
+        },
+        {
+          text: '示例文档-2',
+          link: 'test-2.md',
+        },
+        {
+          text: '示例文档-3',
+          link: 'test-3.md',
+        },
+      ],
+    },
+  ],
+})

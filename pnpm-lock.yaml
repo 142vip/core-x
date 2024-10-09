@@ -66,6 +66,9 @@ importers:
 
   apps/vuepress-demo:
     devDependencies:
+      '@142vip/utils':
+        specifier: workspace:*
+        version: link:../../packages/utils
       '@142vip/vuepress':
         specifier: workspace:*
         version: link:../../packages/vuepress
