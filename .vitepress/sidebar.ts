@@ -1,6 +1,6 @@
-import type DefaultTheme from 'vitepress/theme'
 import type { VipProject } from '@142vip/vitepress'
-import { VipLinks, pick } from '@142vip/vitepress'
+import type { DefaultTheme } from 'vitepress/types/default-theme'
+import { pick } from '@142vip/vitepress'
 
 enum ProjectId {
   Tools = '通用工具',
@@ -13,7 +13,7 @@ enum ProjectId {
 /**
  * 侧边栏
  */
-export const sidebarConfig: DefaultTheme.Sidebar = [
+export const sidebarConfig: DefaultTheme.SidebarItem[] = [
   {
     text: `🏆 ${ProjectId.Infra}`,
     items: [
@@ -89,7 +89,7 @@ export async function getCoreProjectData(): Promise<VipProject[]> {
         id: text.split(' ')[0],
         changelog: `../packages/${pkgDirName}/changelog.html`,
         readme: `../changelogs/${pkgDirName}/index.html`,
-        sourceCode: `${VipLinks.CoreXRepo}/tree/main/packages/${pkgDirName}/`,
+        sourceCode: `https://github.com/142vip/core-x/tree/main/packages/${pkgDirName}/`,
       })
     }
   }
