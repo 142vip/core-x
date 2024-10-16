@@ -6,7 +6,14 @@ import {
   ElTableColumn,
   ElTag,
 } from 'element-plus'
-import 'element-plus/dist/index.css'
+// import 'element-plus/dist/index.css'
+// 注意：这里手动导入样式
+import 'element-plus/theme-chalk/base.css'
+import 'element-plus/theme-chalk/el-empty.css'
+import 'element-plus/theme-chalk/el-table-column.css'
+import 'element-plus/theme-chalk/el-checkbox.css'
+import 'element-plus/theme-chalk/el-tag.css'
+import 'element-plus/theme-chalk/el-link.css'
 
 interface PackageJSON {
   name: string
@@ -49,6 +56,7 @@ defineComponent({
     fit
     flexible
     stripe
+    :show-header="false"
   >
     <!-- @142vip/core-x 表格 -->
     <ElTableColumn header-align="center" label="项目名称" min-width="180" prop="name" />
@@ -92,10 +100,10 @@ defineComponent({
   </ElTable>
 </template>
 
-<style>
+<style scoped>
 .core-table {
   width: 100%;
-  border-radius: 5px;
+  border-radius: 10px !important;
 }
 .version {
   cursor: pointer;
@@ -104,11 +112,7 @@ defineComponent({
 .vp-doc table {
   display: block;
   border-collapse: collapse;
-  margin: 0;
+  margin: 0 !important;
   overflow-x: auto;
-}
-
-.el-table thead {
-  display: none;
 }
 </style>

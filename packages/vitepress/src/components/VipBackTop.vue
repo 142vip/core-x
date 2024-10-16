@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 import { ElBacktop } from 'element-plus'
 import { defineComponent } from 'vue'
-import 'element-plus/dist/index.css'
+import 'element-plus/theme-chalk/base.css'
+import 'element-plus/theme-chalk/el-backtop.css'
 
 defineComponent({
   components: {

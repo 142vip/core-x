@@ -1,8 +1,8 @@
 import path from 'node:path'
-import process from 'node:process'
 import { defineConfig } from 'vitepress'
 import type { DefaultTheme } from 'vitepress/types/default-theme'
-import { VipLinks, getVipFooter, zhSearch } from '@142vip/vitepress'
+import { getThemeConfig, getVipFooter, zhSearch } from '@142vip/vitepress'
+import { OPEN_SOURCE_ADDRESS, getDocSiteBase } from '@142vip/utils'
 import { name as pkgName, version as pkgVersion } from '../package.json'
 import { getChangelogsSidebar, sidebarConfig } from './sidebar'
 
@@ -14,9 +14,13 @@ const navbarConfig: DefaultTheme.NavItem[] = [
     text: '🔥 首页',
     link: '/docs/index.md',
   },
+  // {
+  //   text: '🎬 自媒体',
+  //   link: '/docs/media.md',
+  // },
   {
-    text: '🎬 自媒体',
-    link: '/docs/media.md',
+    text: '💡 开源',
+    link: '/packages/fairy-cli/',
   },
   {
     text: '📌󠁦 󠁬󠁯󠁧󠁿变更日志',
@@ -27,11 +31,11 @@ const navbarConfig: DefaultTheme.NavItem[] = [
     items: [
       {
         text: '🎉 历史版本',
-        link: `${VipLinks.CoreXRepo}/releases`,
+        link: `${OPEN_SOURCE_ADDRESS.GITHUB_REPO_CORE_X}/releases`,
       },
       {
         text: '📄 更新日志',
-        link: `${VipLinks.CoreXRepo}/blob/main/CHANGELOG.md`,
+        link: `${OPEN_SOURCE_ADDRESS.GITHUB_REPO_CORE_X}/blob/main/CHANGELOG.md`,
       },
       {
         text: '🎯 开发计划',
@@ -42,18 +46,10 @@ const navbarConfig: DefaultTheme.NavItem[] = [
 ]
 
 /**
- * 用于区分base路径，是否nginx代理
- */
-function getSiteBase(): string {
-  const needProxy = process.env.NEED_PROXY || false
-  return needProxy ? `/core-x/` : '/'
-}
-
-/**
  * 所有配置
  */
 export default defineConfig({
-  base: getSiteBase(),
+  base: getDocSiteBase('core-x'),
   lang: 'zh-CN',
   title: '@142vip/core-x',
   titleTemplate: ':title - @142vip/core-x',
@@ -75,27 +71,20 @@ export default defineConfig({
     ['meta', { property: 'og:title', content: '@142vip/core-x' }],
     ['meta', { property: 'og:description', content: `${pkgName} - 一切都有可能` }],
   ],
+  // markdown
   markdown: {
     theme: {
       dark: 'dracula-soft',
       light: 'vitesse-light',
     },
-
     attrs: {
       leftDelimiter: '%{',
       rightDelimiter: '}%',
     },
 
   },
-  // 多语言配置
-  // locales: {
-  //   zh: {
-  //     lang: 'zh-CN',
-  //     label: '简体中文',
-  //     link: '/',
-  //   },
-  // },
-  themeConfig: {
+  // 配置主题
+  ...getThemeConfig({
     // 导航栏
     nav: navbarConfig,
     sidebar: {
@@ -107,10 +96,6 @@ export default defineConfig({
             text: '@142vip/core-x',
             link: '/changelogs/core-x/changelog.html',
           },
-          // {
-          //   text: '历史版本',
-          //   link: '/changelogs/core-x/changelog.html',
-          // },
           {
             text: '🏴 󠁡󠁡变更日志',
             items: getChangelogsSidebar(),
@@ -118,42 +103,16 @@ export default defineConfig({
         ],
       },
     },
-    // 单页右侧目录
-    aside: true,
-
     // 页脚
     footer: getVipFooter({
-      license: VipLinks.CoreXLicense,
+      license: OPEN_SOURCE_ADDRESS.GITHUB_REPO_CORE_X,
       pkgName,
       pkgVersion,
-      orgLink: VipLinks.VipOrg,
-      ownerLink: VipLinks.MainAccount,
+      orgLink: OPEN_SOURCE_ADDRESS.HOME_PAGE_VIP,
+      ownerLink: OPEN_SOURCE_ADDRESS.HOME_PAGE_MMDAPL,
     }),
-    lastUpdated: {
-      text: '最近更新',
-    },
-    notFound: {
-      title: '页面找不到啦',
-      quote: `但是，如果你不改变你的方向，如果你继续寻找，你最终可能会到达你要去的地方。`,
-      linkText: '返回首页',
-    },
-    editLink: {
-      pattern: `${VipLinks.CoreXRepo}/edit/next/:path`,
-      text: '在 Github 上对本页提出修改建议',
-    },
-    docFooter: {
-      prev: '上一篇',
-      next: '下一篇',
-    },
-    // 单页标题
-    outline: {
-      label: '本页内容',
-    },
-    // 一些链接
-    socialLinks: [
-      { icon: 'github', link: VipLinks.CoreXRepo },
-      { icon: 'npm', link: 'https://www.npmjs.com/~mmdapl' },
-    ],
+
+    // 搜索
     search: {
       provider: 'algolia',
       options: {
@@ -166,9 +125,17 @@ export default defineConfig({
         },
       },
     },
-    // 关闭外链图标
-    externalLinkIcon: false,
-  },
+    // 一些链接
+    socialLinks: [
+      { icon: 'github', link: OPEN_SOURCE_ADDRESS.GITHUB_REPO_CORE_X },
+      { icon: 'npm', link: 'https://www.npmjs.com/~mmdapl' },
+    ],
+    // 编辑链接
+    editLink: {
+      pattern: `${OPEN_SOURCE_ADDRESS.GITHUB_REPO_CORE_X}/edit/next/:path`,
+      text: '在 Github 上对本页提出修改建议',
+    },
+  }),
   // 路径重写
   rewrites: {
     ':packages/:pkg/README.md': ':packages/:pkg/index.md',

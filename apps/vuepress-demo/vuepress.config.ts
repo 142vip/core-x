@@ -7,20 +7,17 @@ import {
   exampleHeaders,
   getCopyRightText,
   getFooterHtml,
-  getSiteBase,
   getThemeConfig,
   getViteBundler,
 } from '@142vip/vuepress'
-import navbar from './docs/.vuepress/theme/navbar'
-import sidebar from './docs/.vuepress/theme/sidebar'
+import { getDocSiteBase } from '@142vip/utils'
 
-// 当前目录名
-const __dirname = getDirname(import.meta.url)
+import { navbarConfig, sidebarConfig } from './docs/theme.config'
 
 const pkg = createRequire(import.meta.url)('./package.json')
 
 export default defineUserConfig({
-  base: getSiteBase(),
+  base: getDocSiteBase(''),
   title: pkg.name,
   description: pkg.description,
   port: 5200,
@@ -30,6 +27,8 @@ export default defineUserConfig({
     // todo 引入代码文件时的路径替换 https://vuejs.press/zh/guide/markdown.html#%E5%AF%BC%E5%85%A5%E4%BB%A3%E7%A0%81%E5%9D%97
     importCode: {
       handleImportPath: (str) => {
+        // 当前目录名
+        const __dirname = getDirname(import.meta.url)
         if (str.includes('@code')) {
           return str.replace(/^@code/, path.resolve(__dirname, 'code/'))
         }
@@ -47,9 +46,9 @@ export default defineUserConfig({
   // 主题配置
   theme: hopeTheme(getThemeConfig({
     // 导航栏
-    navbar,
+    navbar: navbarConfig,
     // 侧边栏
-    sidebar,
+    sidebar: sidebarConfig,
     // 页脚
     footer: getFooterHtml({
       name: pkg.name,

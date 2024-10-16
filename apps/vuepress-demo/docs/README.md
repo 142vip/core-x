@@ -36,6 +36,9 @@ pnpm i @vuepress/bundler-vite@2.0.0-rc.17 -D
 
 # 安装@142vip/vuepress模块
 pnpm i @142vip/vuepress -D
+
+# 安装@142vip/utils模块
+pnpm i @142vip/utils -D
 ```
 
 ## 基本使用

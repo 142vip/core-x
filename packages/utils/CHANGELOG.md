@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## v0.0.1-alpha.9 (2024-10-15)
+
+### ✨ Features
+
+- Update deps，remove `dayjs` &nbsp;-&nbsp; by **chufan** [<samp>(84bf9)</samp>](https://github.com/142vip/core-x/commit/84bf9da)
+
+**Release New Version v0.0.1-alpha.9 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/utils)**
+
+## v0.0.1-alpha.8 (2024-10-12)
+
+### ✨ Features
+
+- 拓展`OPEN_SOURCE_ADDRESS`变量 &nbsp;-&nbsp; by **chufan** [<samp>(e3802)</samp>](https://github.com/142vip/core-x/commit/e380231)
+
+**Release New Version v0.0.1-alpha.8 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/utils)**
+
+## v0.0.1-alpha.7 (2024-10-09)
+
+### ✨ Features
+
+- 新增`getDocSiteBase`方法 &nbsp;-&nbsp; by **chufan** [<samp>(171f3)</samp>](https://github.com/142vip/core-x/commit/171f32a)
+
+**Release New Version v0.0.1-alpha.7 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/utils)**
+
 ## v0.0.1-alpha.6 (2024-10-06)
 
 ### ✨ Features

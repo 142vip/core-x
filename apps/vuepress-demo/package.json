@@ -1,7 +1,7 @@
 {
   "name": "vuepress-demo",
   "type": "module",
-  "version": "0.0.1-alpha.1",
+  "version": "0.0.1-alpha.2",
   "private": true,
   "packageManager": "pnpm@9.6.0",
   "description": "@142vip/vuepress包的使用Demo演示",
@@ -16,6 +16,7 @@
     "build": "vuepress build docs"
   },
   "devDependencies": {
+    "@142vip/utils": "workspace:*",
     "@142vip/vuepress": "workspace:*",
     "@vuepress/bundler-vite": "2.0.0-rc.17",
     "vuepress": "2.0.0-rc.17"

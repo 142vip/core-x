@@ -2,6 +2,36 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## v0.0.1-alpha.16 (2024-10-09)
+
+### ✨ Features
+
+- 修改导航栏配置，支持环境变量`NEED_PROXY`配置`base`路径 &nbsp;-&nbsp; by **chufan** [<samp>(9ae73)</samp>](https://github.com/142vip/core-x/commit/9ae7386)
+- **@142vip/utils**:
+  - 新增`getDocSiteBase`方法 &nbsp;-&nbsp; by **chufan** [<samp>(171f3)</samp>](https://github.com/142vip/core-x/commit/171f32a)
+- **@142vip/vuepress**:
+  - 移除`getSiteBase`方法，后续采用`@142vip/utils`模块中的`getDocSiteBase`方法 &nbsp;-&nbsp; by **chufan** [<samp>(bd31e)</samp>](https://github.com/142vip/core-x/commit/bd31eac)
+- **vuepress-demo**:
+  - 引入`@142vip/utils`模块，调整`Demo`基本结构和主题配置 &nbsp;-&nbsp; by **微信公众号：储凡** and **chufan** in https://github.com/142vip/core-x/issues/157 [<samp>(0bf7c)</samp>](https://github.com/142vip/core-x/commit/0bf7c90)
+
+### 🐛 Bug Fixes
+
+- **@142vip/vitepress**:
+  - 修复表格组件显示异常，调整`css`样式导入 &nbsp;-&nbsp; by **chufan** [<samp>(a5cd6)</samp>](https://github.com/142vip/core-x/commit/a5cd696)
+
+### 😏 Release Packages
+
+- **@142vip/utils**:
+  - Publish `v0.0.1-alpha.7` &nbsp;-&nbsp; by **chufan** [<samp>(b4e67)</samp>](https://github.com/142vip/core-x/commit/b4e6794)
+- **@142vip/vitepress**:
+  - Publish `v0.0.1-alpha.7` &nbsp;-&nbsp; by **chufan** [<samp>(6f58b)</samp>](https://github.com/142vip/core-x/commit/6f58b98)
+- **@142vip/vuepress**:
+  - Publish `v0.0.1-alpha.5` &nbsp;-&nbsp; by **chufan** [<samp>(afef6)</samp>](https://github.com/142vip/core-x/commit/afef6e1)
+- **vuepress-demo**:
+  - Publish `v0.0.1-alpha.2` &nbsp;-&nbsp; by **chufan** [<samp>(7211c)</samp>](https://github.com/142vip/core-x/commit/7211c25)
+
+**Release New Version v0.0.1-alpha.16 [👉 View Changes On GitHub](https://github.com/142vip/core-x/compare/v0.0.1-alpha.15...v0.0.1-alpha.16)**
+
 ## v0.0.1-alpha.15 (2024-10-07)
 
 ### ✨ Features

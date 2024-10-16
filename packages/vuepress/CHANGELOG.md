@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.5 (2024-10-09)
+
+### ✨ Features
+
+- 移除`getSiteBase`方法，后续采用`@142vip/utils`模块中的`getDocSiteBase`方法 &nbsp;-&nbsp; by **chufan** [<samp>(bd31e)</samp>](https://github.com/142vip/core-x/commit/bd31eac)
+
+**Release New Version v0.0.1-alpha.5 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/vuepress)**
+
 ## v0.0.1-alpha.4 (2024-10-07)
 
 ### ✨ Features

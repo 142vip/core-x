@@ -14,14 +14,15 @@ interface VipFooter {
 
 /**
  * 页脚
- * @param params
  */
 export const getVipFooter = function (params: FooterParams): VipFooter {
   return {
     message: `The License <a href="${params.license}">📖 MIT </a>`,
-    copyright: `Release ${params.pkgName}@${params.pkgVersion} 😏<br> Copyright © 2019-present.&nbsp;
+    copyright: `
+Release ${params.pkgName}@${params.pkgVersion} 😏<br> Copyright © 2019-present.&nbsp;
 Repo <a href="${params.orgLink}" style="margin-right:5px;">${params.orgName ?? '@142vip'}</a>&nbsp;
-Author <a href=${params.ownerLink}>👉${params.owner ?? '储凡'}</a>`,
+Author <a href=${params.ownerLink}>👉${params.owner ?? '储凡'}</a>
+`,
   }
 }
 
@@ -94,17 +95,4 @@ export interface VipProject extends VipPackageJSON {
   changelog: string
   readme: string
   sourceCode: string
-}
-
-/**
- * @142vip组织下的一些通用链接
- */
-export const VipLinks = {
-  VipOrg: 'https://github.com/142vip',
-  MainAccount: 'https://github.com/mmdapl',
-  CoreXRepo: 'https://github.com/142vip/core-x',
-  OauthRepo: 'https://github.com/142vip/142vip-oauth',
-  License: 'https://github.com/142vip/core-x/blob/main/LICENSE',
-  CoreXLicense: 'https://github.com/142vip/core-x/blob/main/LICENSE',
-  OAUTHLicense: 'https://github.com/142vip/142vip-oauth/blob/main/LICENSE',
 }
