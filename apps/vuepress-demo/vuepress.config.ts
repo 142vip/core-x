@@ -38,7 +38,6 @@ export default defineUserConfig({
         return str
       },
     },
-    // md doc formatter  headerDepth
     headers: {
       level: [2, 3, 4],
     },

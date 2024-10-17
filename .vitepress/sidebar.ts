@@ -8,6 +8,7 @@ enum ProjectId {
   Nest = 'Nest.js框架',
   Blog = '博客工具',
   Infra = '工程化',
+  Demo = '演示Demo',
 }
 
 /**
@@ -61,6 +62,13 @@ export const sidebarConfig: DefaultTheme.SidebarItem[] = [
       { text: '@142vip/vuepress', link: '/packages/vuepress/index.md' },
     ],
   },
+  {
+    text: `🎮 ${ProjectId.Demo}`,
+    items: [
+      { text: 'vitepress-demo', link: '/apps/vitepress-demo/index.md' },
+      { text: 'vuepress-demo', link: '/apps/vuepress-demo/index.md' },
+    ],
+  },
 ]
 
 /**
@@ -68,7 +76,19 @@ export const sidebarConfig: DefaultTheme.SidebarItem[] = [
  * - 注意目录格式，例如：@packages/utils
  */
 async function getBasePkgJSON(pkgDirName: string) {
+  // 参考格式：@packages/xxx @apps/xxx
+
   const pkgJSON = await import(`@packages/${pkgDirName}/package.json`)
+  return pick(pkgJSON, ['name', 'description', 'version', 'private'])
+}
+
+/**
+ * 获取apps目录下的模块
+ * - @apps/vitepress-demo
+ */
+async function getAppsPkgJSON(pkgDirName: string) {
+  // 参考格式：@packages/xxx @apps/xxx
+  const pkgJSON = await import(`@apps/${pkgDirName}/package.json`)
   return pick(pkgJSON, ['name', 'description', 'version', 'private'])
 }
 
@@ -79,6 +99,10 @@ async function getBasePkgJSON(pkgDirName: string) {
 export async function getCoreProjectData(): Promise<VipProject[]> {
   const coreProjects: VipProject[] = []
   for (const { items, text } of sidebarConfig) {
+    // 过滤掉apps下的模块
+    if (text?.includes(ProjectId.Demo)) {
+      continue
+    }
     for (const { text: pkgName } of items) {
       const pkgDirName = pkgName.split('@142vip/')[1]
       const basePkg = await getBasePkgJSON(`${pkgDirName}`)
@@ -96,13 +120,35 @@ export async function getCoreProjectData(): Promise<VipProject[]> {
 }
 
 /**
+ * demo项目
+ */
+export async function getExampleDemoTableData() {
+  const pkgNames = ['vuepress-demo', 'vitepress-demo']
+
+  const exampleDemos = []
+  for (const pkgDirName of pkgNames) {
+    const pkg = await getAppsPkgJSON(`${pkgDirName}`)
+    exampleDemos.push({
+      ...pkg,
+      private: true,
+      id: '🤡',
+      changelog: `../apps/${pkgDirName}/changelog.html`,
+      readme: `../apps/${pkgDirName}/index.html`,
+      sourceCode: `https://github.com/142vip/core-x/tree/main/apps/${pkgDirName}/`,
+    })
+  }
+  return exampleDemos
+}
+
+/**
  * 根据侧边栏获取变更日志侧边栏
  */
 export function getChangelogsSidebar() {
   const changelogsSidebar: DefaultTheme.SidebarItem[] = []
   for (const { items } of sidebarConfig) {
     for (const { text: pkgName } of items) {
-      const pkgDirName = pkgName.split('@142vip/')[1]
+      // 兼容apps目录
+      const pkgDirName = pkgName?.includes('@142vip') ? pkgName.split('@142vip/')[1] : pkgName
       changelogsSidebar.push({
         text: pkgName,
         link: `/changelogs/${pkgDirName}/changelog.md`,

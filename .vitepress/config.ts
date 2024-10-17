@@ -140,6 +140,8 @@ export default defineConfig({
   rewrites: {
     ':packages/:pkg/README.md': ':packages/:pkg/index.md',
     ':packages/:pkg/CHANGELOG.md': 'changelogs/:pkg/changelog.md',
+    ':apps/:pkg/README.md': ':apps/:pkg/index.md',
+    ':apps/:pkg/CHANGELOG.md': 'changelogs/:pkg/changelog.md',
     'CHANGELOG.md': 'changelogs/core-x/changelog.md',
     'README.md': 'index.md',
   },
@@ -148,6 +150,7 @@ export default defineConfig({
     resolve: {
       alias: {
         '@packages': path.resolve(__dirname, '../packages'),
+        '@apps': path.resolve(__dirname, '../apps'),
       },
     },
     plugins: [
