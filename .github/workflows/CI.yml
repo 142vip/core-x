@@ -8,9 +8,10 @@ on:
     branches:
       - next
       - feat/test1
-  #  push:
-  #    branches:
-  #      - next
+    push:
+      branches:
+        - next
+        - feat/test1
 
   # 手动触发部署
 #  workflow_dispatch:
