@@ -1,0 +1,17 @@
+{
+  "name": "vitepress-demo",
+  "type": "module",
+  "version": "0.0.1-alpha.1",
+  "private": true,
+  "packageManager": "pnpm@9.6.0",
+  "description": "@142vip/vitepress包的使用Demo演示",
+  "scripts": {
+    "dev": "npx vitepress dev --port 3080 --host --force --strictPort",
+    "build": "npx vitepress build --minify && pnpm build:proxy",
+    "build:proxy": "NEED_PROXY=true vitepress build --minify"
+  },
+  "devDependencies": {
+    "@142vip/utils": "workspace:*",
+    "@142vip/vitepress": "workspace:*"
+  }
+}

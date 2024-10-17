@@ -64,6 +64,15 @@ importers:
 
   apps/nest-demo: {}
 
+  apps/vitepress-demo:
+    devDependencies:
+      '@142vip/utils':
+        specifier: workspace:*
+        version: link:../../packages/utils
+      '@142vip/vitepress':
+        specifier: workspace:*
+        version: link:../../packages/vitepress
+
   apps/vuepress-demo:
     devDependencies:
       '@142vip/utils':

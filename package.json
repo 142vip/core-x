@@ -29,7 +29,7 @@
     "build:packages": "npx turbo run build --filter @142vip/* --color --only",
     "build:docs": "vitepress build --minify",
     "build:docs-proxy": "NEED_PROXY=true vitepress build",
-    "build": "pnpm build:packages && pnpm build:docs && pnpm build:docs-proxy",
+    "build": "pnpm build:packages && pnpm build:apps && pnpm build:docs && pnpm build:docs-proxy",
     "preview:docs": "pnpm build:docs && npx vitepress preview --port 8081",
     "preview:docs-proxy": "pnpm build:docs-proxy && npx vitepress preview --port 8082 --base '/core-x'",
     "lint": "npx fa lint",
