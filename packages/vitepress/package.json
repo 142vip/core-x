@@ -49,6 +49,7 @@
     "element-plus": "^2.8.1",
     "mkdist": "^1.5.5",
     "unplugin-element-plus": "^0.8.0",
-    "vue": "^3.4.23"
+    "vue": "^3.4.23",
+    "vitepress": "^1.4.1"
   }
 }
