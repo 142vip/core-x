@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.9 (2024-10-17)
+
+### ✨ Features
+
+- 锁定`vitepress`版本，支持模块调用 &nbsp;-&nbsp; by **142vip.cn** in https://github.com/142vip/core-x/issues/165 [<samp>(05feb)</samp>](https://github.com/142vip/core-x/commit/05feb26)
+
+**Release New Version v0.0.1-alpha.9 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/vitepress)**
+
 ## v0.0.1-alpha.8 (2024-10-12)
 
 ### ✨ Features
