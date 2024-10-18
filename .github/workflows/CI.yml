@@ -1,9 +1,7 @@
-# 代码检查
 name: CI
 
 # 触发条件
 on:
-  # 提PR到next分支触发CI
   pull_request:
     branches:
       - next
@@ -55,9 +53,9 @@ jobs:
           ./scripts/ci
 
       # Eslint 检测
-      #      - name: Code LintFix By ESLint
-      #        run: |
-      #          npx eslint .
+      - name: Code LintFix By ESLint
+        run: |
+          pnpm lint
 
       # 编辑模块代码
       - name: Build Package Code
