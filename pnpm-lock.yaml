@@ -366,22 +366,23 @@ importers:
         version: 6.13.0
 
   packages/vitepress:
-    devDependencies:
+    dependencies:
       element-plus:
         specifier: ^2.8.1
         version: 2.8.5(vue@3.5.12(typescript@5.6.3))
-      mkdist:
-        specifier: ^1.5.5
-        version: 1.6.0(typescript@5.6.3)
-      unplugin-element-plus:
-        specifier: ^0.8.0
-        version: 0.8.0(rollup@4.24.0)
       vitepress:
         specifier: ^1.4.1
         version: 1.4.1(@algolia/client-search@4.24.0)(@types/node@22.7.5)(async-validator@4.2.5)(axios@1.7.7)(postcss@8.4.47)(qrcode@1.5.4)(sass-embedded@1.79.5)(search-insights@2.17.2)(typescript@5.6.3)
       vue:
         specifier: ^3.4.23
         version: 3.5.12(typescript@5.6.3)
+    devDependencies:
+      mkdist:
+        specifier: ^1.5.5
+        version: 1.6.0(typescript@5.6.3)
+      unplugin-element-plus:
+        specifier: ^0.8.0
+        version: 0.8.0(rollup@4.24.0)
 
   packages/vuepress:
     devDependencies:

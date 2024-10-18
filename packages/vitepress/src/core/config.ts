@@ -1,5 +1,8 @@
 import type { DefaultTheme } from 'vitepress/types/default-theme'
 
+/**
+ * 中文语言包配置
+ */
 export const i18n = {
   search: '搜索',
   menu: '菜单',
@@ -34,6 +37,9 @@ export const i18n = {
   ariaSidebarNav: '侧边栏导航',
 }
 
+/**
+ * 搜索-中文
+ */
 export const zhSearch: DefaultTheme.AlgoliaSearchOptions['locales'] = {
   root: {
     placeholder: '搜索文档',
@@ -78,7 +84,9 @@ export const zhSearch: DefaultTheme.AlgoliaSearchOptions['locales'] = {
   },
 }
 
-// 默认主题配置
+/**
+ * 默认主题配置
+ */
 export const defaultThemeConfig = {
   lang: 'zh-CN',
   srcDir: 'manuscripts',

@@ -45,11 +45,13 @@
     "access": "public",
     "registry": "https://registry.npmjs.org"
   },
-  "devDependencies": {
+  "dependencies": {
     "element-plus": "^2.8.1",
-    "mkdist": "^1.5.5",
-    "unplugin-element-plus": "^0.8.0",
     "vitepress": "^1.4.1",
     "vue": "^3.4.23"
+  },
+  "devDependencies": {
+    "mkdist": "^1.5.5",
+    "unplugin-element-plus": "^0.8.0"
   }
 }

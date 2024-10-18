@@ -90,6 +90,9 @@ export interface VipPackageJSON {
   private?: boolean
 }
 
+/**
+ * 模块项目结构
+ */
 export interface VipProject extends VipPackageJSON {
   id: string
   changelog: string
