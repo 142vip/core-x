@@ -6,10 +6,16 @@
   "description": "公众号搜：储凡",
   "author": "mmdapl <mmdapl@163.com>",
   "license": "MIT",
-  "homepage": "https://github.com/142vip/core-x/tree/main/packages/changelog",
+  "homepage": "https://142vip.github.io/core-x/packages/changelog/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/142vip/core-x.git",
+    "directory": "packages/changelog"
+  },
   "keywords": [
     "公众号搜：储凡",
     "142vip",
+    "@142vip",
     "@142vip/changelog",
     "github",
     "release",

@@ -8,10 +8,18 @@
   "homepage": "https://142vip.github.io/core-x/packages/vuepress/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/142vip/core-x/tree/main/packages/vuepress"
+    "url": "git+https://github.com/142vip/core-x.git",
+    "directory": "packages/vuepress"
   },
   "keywords": [
-    "公众号搜：储凡"
+    "公众号搜：储凡",
+    "142vip",
+    "@142vip",
+    "@142vip/vuepress",
+    "@142vip/vitepress",
+    "vuepress",
+    "vuepress-theme-hope",
+    "vitepress"
   ],
   "sideEffects": false,
   "exports": {

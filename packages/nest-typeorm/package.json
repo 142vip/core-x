@@ -5,13 +5,19 @@
   "description": "公众号搜：储凡",
   "author": "mmdapl <mmdapl@163.com>",
   "license": "MIT",
-  "homepage": "https://github.com/142vip/core-x/tree/main/packages/nest-typeorm",
+  "homepage": "https://142vip.github.io/core-x/packages/nest-typeorm/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/142vip/core-x.git"
+    "url": "git+https://github.com/142vip/core-x.git",
+    "directory": "packages/nest-typeorm"
   },
   "keywords": [
-    "公众号搜：储凡"
+    "公众号搜：储凡",
+    "142vip",
+    "@142vip",
+    "@142vip/nest-typeorm",
+    "nest",
+    "typeorm"
   ],
   "sideEffects": false,
   "exports": {

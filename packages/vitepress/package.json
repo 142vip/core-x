@@ -12,7 +12,11 @@
     "url": "https://github.com/142vip/core-x.git"
   },
   "keywords": [
-    "公众号搜：储凡"
+    "公众号搜：储凡",
+    "142vip",
+    "@142vip",
+    "@142vip/vitepress",
+    "@142vip/vuepress"
   ],
   "sideEffects": false,
   "exports": {

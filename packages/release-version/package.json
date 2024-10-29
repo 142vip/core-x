@@ -7,20 +7,19 @@
     "url": "https://jamesmessinger.com"
   },
   "license": "MIT",
-  "homepage": "https://github.com/142vip/core-x/tree/main/packages/release-version",
+  "homepage": "https://142vip.github.io/core-x/packages/release-version/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/142vip/core-x.git"
+    "url": "git+https://github.com/142vip/core-x.git",
+    "directory": "packages/release-version"
   },
   "keywords": [
+    "公众号搜：储凡",
+    "142vip",
+    "@142vip",
     "@142vip/release-version",
-    "version",
     "bumpx",
-    "package",
-    "git",
-    "commit",
-    "tag",
-    "push"
+    "git"
   ],
   "sideEffects": false,
   "exports": {

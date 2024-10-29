@@ -20,7 +20,12 @@
   },
   "keywords": [
     "公众号搜：储凡",
-    "clean"
+    "142vip",
+    "@142vip",
+    "@142vip/fairy-cli",
+    "@142vip/release-version",
+    "@142vip/utils",
+    "turbo"
   ],
   "sideEffects": false,
   "exports": {

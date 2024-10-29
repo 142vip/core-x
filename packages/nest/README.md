@@ -5,7 +5,7 @@
 ## 参考资料
 
 - 官方文档：<https://docs.nestjs.com/>
-- 中文文档：<>
+- 中文文档：<https://nest.nodejs.cn/>
 
 ## 证书
 

@@ -6,9 +6,18 @@
   "description": "基础工具集合",
   "author": "mmdapl <mmdapl@163.com>",
   "license": "MIT",
-  "homepage": "https://github.com/142vip/core-x/tree/main/packages/utils",
+  "homepage": "https://142vip.github.io/core-x/packages/utils/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/142vip/core-x.git",
+    "directory": "packages/utils"
+  },
   "keywords": [
-    "公众号搜：储凡"
+    "公众号搜：储凡",
+    "142vip",
+    "@142vip",
+    "@142vip/utils",
+    "qs"
   ],
   "sideEffects": false,
   "exports": {
