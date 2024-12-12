@@ -6,7 +6,7 @@ import inquirer from 'inquirer'
  */
 
 /**
- * 终端选择交互，单选
+ * 终端交互选择，单选
  */
 export async function promptList(choiceList: string[], message?: string): Promise<string> {
   return (await inquirer.prompt([
@@ -34,4 +34,17 @@ export async function promptCheckBox(choiceList: string[], message?: string) {
     },
   ])
   ).app
+}
+
+/**
+ * 终端交互确认，确认框，可配置默认值
+ */
+export async function promptConfirm(message: string, defaultValue?: boolean) {
+  return (await inquirer.prompt({
+    type: 'confirm',
+    name: 'app',
+    message,
+    // 默认值
+    ...defaultValue != null ? { default: defaultValue } : {},
+  })).app
 }
