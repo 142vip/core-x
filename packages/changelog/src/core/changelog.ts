@@ -1,8 +1,7 @@
 /* eslint-disable no-console */
 import process from 'node:process'
-import { Command } from 'commander'
 import { getGitDiff, parseGitCommit } from 'changelogen'
-import { vipColor } from '@142vip/utils'
+import { VipCommander, vipColor } from '@142vip/utils'
 import { name as packageName, version as packageVersion } from '../../package.json'
 import {
   generateMarkdown,
@@ -18,10 +17,7 @@ import {
   sendRelease,
   updateChangelog,
 } from '../utils'
-import type {
-  ChangelogOptions,
-  ResolvedChangelogOptions,
-} from '../types'
+import type { ChangelogOptions, ResolvedChangelogOptions } from '../types'
 import { ChangelogDefaultConfig } from './config'
 
 /**
@@ -170,10 +166,7 @@ async function dealChangelog(args: ChangelogOptions) {
  * cli 入口
  */
 export function changelogMain() {
-  const program = new Command(packageName)
-
-  // 查看版本
-  program.version(packageVersion, '-v --version', 'Package Version')
+  const program = new VipCommander(packageName, packageVersion)
 
   // cli参数
   program
