@@ -37,7 +37,7 @@ importers:
         version: 14.18.63
       '@types/qs':
         specifier: ^6.9.15
-        version: 6.9.16
+        version: 6.9.17
       cross-env:
         specifier: ^6.0.3
         version: 6.0.3
@@ -2380,6 +2380,9 @@ packages:
 
   '@types/qs@6.9.16':
     resolution: {integrity: sha512-7i+zxXdPD0T4cKDuxCUXJ4wHcsJLwENa6Z3dCu8cfCK743OGy5Nu1RmAGqDPsoTDINVEcdXKRvR/zre+P2Ku1A==}
+
+  '@types/qs@6.9.17':
+    resolution: {integrity: sha512-rX4/bPcfmvxHDv0XjfJELTTr+iB+tn032nPILqHm5wbthUUUuVtNGGqzhya9XUxjTP8Fpr0qYgSZZKxGY++svQ==}
 
   '@types/range-parser@1.2.7':
     resolution: {integrity: sha512-hKormJbkJqzQGhziax5PItDUTMAM9uE2XXQmM37dyd4hVM+5aVl7oVxMVUiVQn2oCQFN/LKCZdvSM0pFRqbSmQ==}
@@ -9615,6 +9618,8 @@ snapshots:
       kleur: 3.0.3
 
   '@types/qs@6.9.16': {}
+
+  '@types/qs@6.9.17': {}
 
   '@types/range-parser@1.2.7': {}
 
