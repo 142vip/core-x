@@ -2,7 +2,7 @@
 {
   "extends": ["config:base"],
   "labels": ["PR:dependencies"],
-  "baseBranches": ["deps"],
+  "baseBranches": ["next"],
   "schedule": ["before 3am on Friday"],
   "additionalBranchPrefix": "{{parentDir}}/",
   "branchConcurrentLimit": 6,
