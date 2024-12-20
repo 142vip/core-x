@@ -1,6 +1,6 @@
 // 参考：https://docs.renovatebot.com/configuration-options/#configuration-options
 {
-  "extends": ["config:base"],
+//  "extends": ["config:base"],
   "labels": ["PR:dependencies"],
   "baseBranches": ["deps"],
   "schedule": ["before 3am on Friday"],
