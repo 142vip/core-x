@@ -8,7 +8,7 @@
   "branchConcurrentLimit": 6,
   // 触发CI流水线
   "requiredStatusChecks": [
-    "CI",
+    "CI"
   ],
   "packageRules": [
     {
@@ -19,6 +19,6 @@
       "platformAutomerge": true,
       "addLabels": ["devDependencies"],
       "automerge": false
-    },
+    }
   ]
 }
