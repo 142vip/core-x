@@ -45,6 +45,7 @@
     "@vuepress/plugin-markdown-image": "2.0.0-rc.30",
     "@vuepress/plugin-markdown-tab": "2.0.0-rc.47",
     "@vuepress/plugin-redirect": "2.0.0-rc.8",
+    "@vuepress/plugin-slimsearch": "2.0.0-rc.61",
     "dashjs": "^4.7.4",
     "hls.js": "^1.5.13",
     "mermaid": "^10.9.1 || ^11.0.0",
@@ -54,7 +55,6 @@
     "vidstack": "^1.11.30",
     "vue": "^3.5.8",
     "vuepress": "2.0.0-rc.19",
-    "vuepress-plugin-search-pro": "2.0.0-rc.59",
     "vuepress-theme-hope": "2.0.0-rc.66"
   },
   "devDependencies": {

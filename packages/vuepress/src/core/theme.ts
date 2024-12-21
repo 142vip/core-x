@@ -68,8 +68,54 @@ const baseThemeConfig = {
   //   version: '',
   // }),
   // copyright: getCopyRightText(''),
-  plugins: {
-    ...baseThemePluginOptions,
+  plugins: baseThemePluginOptions,
+  markdown: {
+    // 支持任务列表
+    tasklist: true,
+    playground: {
+      presets: ['ts', 'vue'],
+    },
+    sub: true,
+    sup: true,
+    vPre: true,
+    vuePlayground: true,
+    // 文件导入配置别名
+    include: true,
+    // mermaid
+    mermaid: true,
+    // 自定义对齐
+    align: true,
+    tabs: true,
+    codeTabs: true,
+    highlighter: {
+      // 参考：https://shiki.tmrs.site/languages
+      langs: [
+        'ts',
+        'js',
+        'vue',
+        'json',
+        'json5',
+        'jsonc',
+        'jsx',
+        'lua',
+        'shellscript',
+        'diff',
+        'c',
+        'c++',
+        'dockerfile',
+        'nginx',
+        'proto',
+        'java',
+        'javascript',
+        'typescript',
+        'yaml',
+        'text',
+        'graphql',
+        'http',
+        'python',
+        'xml',
+      ],
+    },
   },
 }
 

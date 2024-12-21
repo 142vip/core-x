@@ -55,45 +55,6 @@ export const baseThemePluginOptions = {
   //   // 启用图片大小
   //   size: true,
   // }),
-  // 代码块
-  mdEnhance: {
-    // 支持任务列表
-    tasklist: true,
-    playground: {
-      presets: ['ts', 'vue'],
-    },
-    // revealjs: [
-    //   'highlight',
-    //   'math',
-    //   'search',
-    //   'notes',
-    //   'zoom',
-    // ],
-    // stylize: [
-    //   {
-    //     matcher: 'Recommended',
-    //     replacer: ({ tag }) => {
-    //       if (tag === 'em') {
-    //         return {
-    //           tag: 'Badge',
-    //           attrs: { type: 'tip' },
-    //           content: 'Recommended',
-    //         }
-    //       }
-    //     },
-    //   },
-    // ],
-    sub: true,
-    sup: true,
-    vPre: true,
-    vuePlayground: true,
-    // 文件导入配置别名
-    include: true,
-    // mermaid
-    mermaid: true,
-    // 自定义对齐
-    align: true,
-  },
   copyCode: {
     showInMobile: true,
   },
@@ -112,48 +73,11 @@ export const baseThemePluginOptions = {
       'XiGua',
     ],
   },
-  searchPro: {
+  slimsearch: {
     // 参考：https://plugin-search-pro.vuejs.press/zh/config.html#locales
     locales: {
       '/': searchProCNLocals,
     },
   },
-  // 参考：https://theme-hope.vuejs.press/zh/config/plugins/others.html#markdowntab
-  markdownTab: true,
   nprogress: true,
-  // 代码高亮：https://theme-hope.vuejs.press/zh/guide/feature/code-block.html
-  shiki: {
-    // 参考：https://shiki.tmrs.site/languages
-    langs: [
-      'ts',
-      'js',
-      'vue',
-      'json',
-      'json5',
-      'jsonc',
-      'jsx',
-      'lua',
-      'shellscript',
-      'diff',
-      'c',
-      'c++',
-      'dockerfile',
-      'nginx',
-      'proto',
-      'java',
-      'javascript',
-      'typescript',
-      'yaml',
-      'text',
-      'graphql',
-      'http',
-      'python',
-      'xml',
-    ],
-    // 你想要使用的主题
-    themes: {
-      light: 'one-light',
-      dark: 'one-dark-pro',
-    },
-  },
 }
