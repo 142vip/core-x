@@ -47,7 +47,7 @@
   "devDependencies": {
     "@nestjs/schematics": "^9.0.0",
     "@nestjs/testing": "^9.0.0",
-    "@types/express": "^4.17.13"
+    "@types/express": "^5.0.0"
   },
   "publishConfig": {
     "access": "public",
