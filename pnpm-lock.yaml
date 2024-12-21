@@ -260,13 +260,13 @@ importers:
         version: link:../nest
       '@nestjs/typeorm':
         specifier: ^10.0.2
-        version: 10.0.2(@nestjs/common@9.4.3(reflect-metadata@0.2.2)(rxjs@7.8.1))(@nestjs/core@9.4.3(@nestjs/common@9.4.3(reflect-metadata@0.2.2)(rxjs@7.8.1))(@nestjs/platform-express@9.4.3)(reflect-metadata@0.2.2)(rxjs@7.8.1))(reflect-metadata@0.2.2)(rxjs@7.8.1)(typeorm@0.3.20(ioredis@5.4.2)(mysql2@3.11.3))
+        version: 10.0.2(@nestjs/common@9.4.3(reflect-metadata@0.2.2)(rxjs@7.8.1))(@nestjs/core@9.4.3(@nestjs/common@9.4.3(reflect-metadata@0.2.2)(rxjs@7.8.1))(@nestjs/platform-express@9.4.3)(reflect-metadata@0.2.2)(rxjs@7.8.1))(reflect-metadata@0.2.2)(rxjs@7.8.1)(typeorm@0.3.20(ioredis@5.4.2)(mysql2@3.11.5))
       mysql2:
         specifier: ^3.10.1
-        version: 3.11.3
+        version: 3.11.5
       typeorm:
         specifier: ^0.3.20
-        version: 0.3.20(ioredis@5.4.2)(mysql2@3.11.3)
+        version: 0.3.20(ioredis@5.4.2)(mysql2@3.11.5)
 
   packages/oauth:
     dependencies:
@@ -336,7 +336,7 @@ importers:
     dependencies:
       typeorm:
         specifier: ^0.3.20
-        version: 0.3.20(ioredis@5.4.2)(mysql2@3.11.3)
+        version: 0.3.20(ioredis@5.4.2)(mysql2@3.11.5)
 
   packages/utils:
     dependencies:
@@ -5671,8 +5671,8 @@ packages:
   mute-stream@0.0.8:
     resolution: {integrity: sha512-nnbWWOkoWyUsTjKrhgD0dcz22mdkSnpYqbEjIm2nhwhuxlSkpywJmBo8h0ZqJdkp73mb90SssHkN4rsRaBAfAA==}
 
-  mysql2@3.11.3:
-    resolution: {integrity: sha512-Qpu2ADfbKzyLdwC/5d4W7+5Yz7yBzCU05YWt5npWzACST37wJsB23wgOSo00qi043urkiRwXtEvJc9UnuLX/MQ==}
+  mysql2@3.11.5:
+    resolution: {integrity: sha512-0XFu8rUmFN9vC0ME36iBvCUObftiMHItrYFhlCRvFWbLgpNqtC4Br/NmZX1HNCszxT0GGy5QtP+k3Q3eCJPaYA==}
     engines: {node: '>= 8.0'}
 
   mz-modules@2.1.0:
@@ -9214,13 +9214,13 @@ snapshots:
     optionalDependencies:
       '@nestjs/platform-express': 9.4.3(@nestjs/common@9.4.3(reflect-metadata@0.1.14)(rxjs@7.8.1))(@nestjs/core@9.4.3)
 
-  '@nestjs/typeorm@10.0.2(@nestjs/common@9.4.3(reflect-metadata@0.2.2)(rxjs@7.8.1))(@nestjs/core@9.4.3(@nestjs/common@9.4.3(reflect-metadata@0.2.2)(rxjs@7.8.1))(@nestjs/platform-express@9.4.3)(reflect-metadata@0.2.2)(rxjs@7.8.1))(reflect-metadata@0.2.2)(rxjs@7.8.1)(typeorm@0.3.20(ioredis@5.4.2)(mysql2@3.11.3))':
+  '@nestjs/typeorm@10.0.2(@nestjs/common@9.4.3(reflect-metadata@0.2.2)(rxjs@7.8.1))(@nestjs/core@9.4.3(@nestjs/common@9.4.3(reflect-metadata@0.2.2)(rxjs@7.8.1))(@nestjs/platform-express@9.4.3)(reflect-metadata@0.2.2)(rxjs@7.8.1))(reflect-metadata@0.2.2)(rxjs@7.8.1)(typeorm@0.3.20(ioredis@5.4.2)(mysql2@3.11.5))':
     dependencies:
       '@nestjs/common': 9.4.3(reflect-metadata@0.2.2)(rxjs@7.8.1)
       '@nestjs/core': 9.4.3(@nestjs/common@9.4.3(reflect-metadata@0.2.2)(rxjs@7.8.1))(@nestjs/platform-express@9.4.3)(reflect-metadata@0.2.2)(rxjs@7.8.1)
       reflect-metadata: 0.2.2
       rxjs: 7.8.1
-      typeorm: 0.3.20(ioredis@5.4.2)(mysql2@3.11.3)
+      typeorm: 0.3.20(ioredis@5.4.2)(mysql2@3.11.5)
       uuid: 9.0.1
 
   '@nodelib/fs.scandir@2.1.5':
@@ -14065,7 +14065,7 @@ snapshots:
 
   mute-stream@0.0.8: {}
 
-  mysql2@3.11.3:
+  mysql2@3.11.5:
     dependencies:
       aws-ssl-profiles: 1.1.2
       denque: 2.1.0
@@ -15551,7 +15551,7 @@ snapshots:
 
   typedarray@0.0.6: {}
 
-  typeorm@0.3.20(ioredis@5.4.2)(mysql2@3.11.3):
+  typeorm@0.3.20(ioredis@5.4.2)(mysql2@3.11.5):
     dependencies:
       '@sqltools/formatter': 1.2.5
       app-root-path: 3.1.0
@@ -15570,7 +15570,7 @@ snapshots:
       yargs: 17.7.2
     optionalDependencies:
       ioredis: 5.4.2
-      mysql2: 3.11.3
+      mysql2: 3.11.5
     transitivePeerDependencies:
       - supports-color
 
