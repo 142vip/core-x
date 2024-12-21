@@ -400,7 +400,7 @@ importers:
         specifier: ^1.5.13
         version: 1.5.17
       mermaid:
-        specifier: ^10.9.1
+        specifier: ^10.9.1 || ^11.0.0
         version: 10.9.3
       reveal.js:
         specifier: ^5.1.0
@@ -13910,7 +13910,7 @@ snapshots:
   micromark@3.2.0:
     dependencies:
       '@types/debug': 4.1.12
-      debug: 4.3.7
+      debug: 4.4.0
       decode-named-character-reference: 1.0.2
       micromark-core-commonmark: 1.1.0
       micromark-factory-space: 1.1.0

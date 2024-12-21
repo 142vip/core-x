@@ -47,7 +47,7 @@
     "@vuepress/plugin-redirect": "2.0.0-rc.8",
     "dashjs": "^4.7.4",
     "hls.js": "^1.5.13",
-    "mermaid": "^10.9.1",
+    "mermaid": "^10.9.1 || ^11.0.0",
     "reveal.js": "^5.1.0",
     "sass-embedded": "^1.79.4",
     "unicorn-magic": "^0.3.0",
