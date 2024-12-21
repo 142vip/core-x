@@ -103,8 +103,8 @@ importers:
         specifier: 6.1.1-cjs.1
         version: 6.1.1-cjs.1
       c12:
-        specifier: ^1.11.1
-        version: 1.11.2
+        specifier: ^2.0.0
+        version: 2.0.1
       changelogen:
         specifier: 0.5.5
         version: 0.5.5
@@ -3227,6 +3227,14 @@ packages:
     resolution: {integrity: sha512-oBs8a4uvSDO9dm8b7OCFW7+dgtVrwmwnrVXYzLm43ta7ep2jCn/0MhoUFygIWtxhyy6+/MG7/agvpY0U1Iemew==}
     peerDependencies:
       magicast: ^0.3.4
+    peerDependenciesMeta:
+      magicast:
+        optional: true
+
+  c12@2.0.1:
+    resolution: {integrity: sha512-Z4JgsKXHG37C6PYUtIxCfLJZvo6FyhHJoClwwb9ftUkLpPSkuYqn6Tr+vnaN8hymm0kIbcg6Ey3kv/Q71k5w/A==}
+    peerDependencies:
+      magicast: ^0.3.5
     peerDependenciesMeta:
       magicast:
         optional: true
@@ -11021,6 +11029,21 @@ snapshots:
       pkg-types: 1.2.1
       rc9: 2.1.2
 
+  c12@2.0.1:
+    dependencies:
+      chokidar: 4.0.1
+      confbox: 0.1.8
+      defu: 6.1.4
+      dotenv: 16.4.5
+      giget: 1.2.3
+      jiti: 2.3.3
+      mlly: 1.7.3
+      ohash: 1.1.4
+      pathe: 1.1.2
+      perfect-debounce: 1.0.0
+      pkg-types: 1.2.1
+      rc9: 2.1.2
+
   cac@6.7.14: {}
 
   cacheable-request@6.1.0:
@@ -13556,7 +13579,7 @@ snapshots:
 
   local-pkg@0.5.0:
     dependencies:
-      mlly: 1.7.2
+      mlly: 1.7.3
       pkg-types: 1.2.1
 
   localforage@1.10.0:
