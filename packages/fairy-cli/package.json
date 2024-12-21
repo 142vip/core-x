@@ -55,7 +55,7 @@
   "dependencies": {
     "@142vip/release-version": "workspace:*",
     "@142vip/utils": "workspace:*",
-    "del": "^7.1.0",
+    "del": "^8.0.0",
     "js-yaml": "^4.1.0",
     "node-fetch": "^3.3.2",
     "turbo": "^2.1.1"

@@ -200,8 +200,8 @@ importers:
         specifier: workspace:*
         version: link:../utils
       del:
-        specifier: ^7.1.0
-        version: 7.1.0
+        specifier: ^8.0.0
+        version: 8.0.0
       js-yaml:
         specifier: ^4.1.0
         version: 4.1.0
@@ -2974,10 +2974,6 @@ packages:
     engines: {node: '>=0.4.0'}
     hasBin: true
 
-  aggregate-error@4.0.1:
-    resolution: {integrity: sha512-0poP0T7el6Vq3rstR8Mn4V/IQrpBLO6POkUSrN7RhyY+GF/InCFShQzsQ39T25gkHhLgSLByyAz+Kjb+c2L98w==}
-    engines: {node: '>=12'}
-
   ajv-formats@2.1.1:
     resolution: {integrity: sha512-Wx0Kx52hxE7C18hkMEggYlEifqWZtYaRgouJor+WMdPnQyEK13vgEWyVNup7SoeeoLMsr4kf5h6dOW11I15MUA==}
     peerDependencies:
@@ -3358,10 +3354,6 @@ packages:
   clean-regexp@1.0.0:
     resolution: {integrity: sha512-GfisEZEJvzKrmGWkvfhgzcz/BllN1USeqD2V6tg14OAOgaCD2Z/PUEuxnAZ/nPvmaHRG7a8y77p1T/IRQ4D1Hw==}
     engines: {node: '>=4'}
-
-  clean-stack@4.2.0:
-    resolution: {integrity: sha512-LYv6XPxoyODi36Dp976riBtSY27VmFo+MKqEU9QCCWyTrdEPDog+RWA7xQWHi6Vbp61j5c4cdzzX1NidnwtUWg==}
-    engines: {node: '>=12'}
 
   cli-boxes@2.2.1:
     resolution: {integrity: sha512-y4coMcylgSCdVinjiDBuR8PCC2bLjyGTwEmPb9NHR/QaNU6EUOXcTY/s6VjGMD6ENSEaeQYHCY0GNGS5jfMwPw==}
@@ -3861,9 +3853,9 @@ packages:
   defu@6.1.4:
     resolution: {integrity: sha512-mEQCMmwJu317oSz8CwdIOdwf3xMif1ttiM8LTufzc3g6kR+9Pe236twL8j3IYT1F7GfRgGcW6MWxzZjLIkuHIg==}
 
-  del@7.1.0:
-    resolution: {integrity: sha512-v2KyNk7efxhlyHpjEvfyxaAihKKK0nWCuf6ZtqZcFFpQRG0bJ12Qsr0RpvsICMjAAZ8DOVCxrlqpxISlMHC4Kg==}
-    engines: {node: '>=14.16'}
+  del@8.0.0:
+    resolution: {integrity: sha512-R6ep6JJ+eOBZsBr9esiNN1gxFbZE4Q2cULkUSFumGYecAiS6qodDvcPx/sFuWHMNul7DWmrtoEOpYSm7o6tbSA==}
+    engines: {node: '>=18'}
 
   delaunator@5.0.1:
     resolution: {integrity: sha512-8nvh+XBe96aCESrGOqMp/84b13H9cdKbG5P2ejQCh4d4sK9RL4371qou9drQjMhvnPmhWl5hnmqbEE0fXr9Xnw==}
@@ -4086,10 +4078,6 @@ packages:
   escape-string-regexp@4.0.0:
     resolution: {integrity: sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==}
     engines: {node: '>=10'}
-
-  escape-string-regexp@5.0.0:
-    resolution: {integrity: sha512-/veY75JbMK4j1yjvuUxuVsiS/hr/4iHs9FTT6cgTexxdE0Ly/glccBAkloH/DofkjRbZU3bnoj38mOmhkZ0lHw==}
-    engines: {node: '>=12'}
 
   eslint-compat-utils@0.5.1:
     resolution: {integrity: sha512-3z3vFexKIEnjHE3zCMRo6fn/e44U7T1khUjg+Hp0ZQMCigh28rALD0nPFBcGZuiLC5rLZa2ubQHDRln09JfU2Q==}
@@ -4747,10 +4735,6 @@ packages:
   indent-string@4.0.0:
     resolution: {integrity: sha512-EdDDZu4A2OyIK7Lr/2zG+w5jmbuk1DVBnEwREQvBzspBJkCEbRa8GxU1lghYcaGJCnRWibjDXlq779X1/y5xwg==}
     engines: {node: '>=8'}
-
-  indent-string@5.0.0:
-    resolution: {integrity: sha512-m6FAo/spmsW2Ab2fU35JTYwtOKa2yAwXSwgjSv1TJzh4Mh7mC3lzAOVLBprb72XsTrgkEIsl7YrFNAiDiRhIGg==}
-    engines: {node: '>=12'}
 
   inflection@1.13.4:
     resolution: {integrity: sha512-6I/HUDeYFfuNCVS3td055BaXBwKYuzw7K3ExVMStBowKo9oOAMJIXIHvdyR3iboTCp1b+1i5DSkIZTcwIktuDw==}
@@ -5872,9 +5856,9 @@ packages:
     resolution: {integrity: sha512-LaNjtRWUBY++zB5nE/NwcaoMylSPk+S+ZHNB1TzdbMJMny6dynpAGt7X/tl/QYq3TIeE6nxHppbo2LGymrG5Pw==}
     engines: {node: '>=10'}
 
-  p-map@5.5.0:
-    resolution: {integrity: sha512-VFqfGDHlx87K66yZrNdI4YGtD70IRyd+zSvgks6mzHPRNkoKy+9EKP4SFC77/vTTQYmRmti7dvqC+m5jBrBAcg==}
-    engines: {node: '>=12'}
+  p-map@7.0.3:
+    resolution: {integrity: sha512-VkndIv2fIB99swvQoA65bm+fsmt6UNdGeIB0oxBs+WhAhdh08QA04JXpI7rbB9r08/nkbysKoya9rtDERYOYMA==}
+    engines: {node: '>=18'}
 
   p-try@2.2.0:
     resolution: {integrity: sha512-R4nPAVTAU0B9D35/Gk3uJf/7XYbQcyohSKdvAxIRSNghFl4e71hVoGnBNQz9cWaXxO2I10KTC+3jMdvvoKw6dQ==}
@@ -10697,11 +10681,6 @@ snapshots:
 
   acorn@8.14.0: {}
 
-  aggregate-error@4.0.1:
-    dependencies:
-      clean-stack: 4.2.0
-      indent-string: 5.0.0
-
   ajv-formats@2.1.1(ajv@8.12.0):
     optionalDependencies:
       ajv: 8.12.0
@@ -11191,10 +11170,6 @@ snapshots:
   clean-regexp@1.0.0:
     dependencies:
       escape-string-regexp: 1.0.5
-
-  clean-stack@4.2.0:
-    dependencies:
-      escape-string-regexp: 5.0.0
 
   cli-boxes@2.2.1: {}
 
@@ -11720,16 +11695,14 @@ snapshots:
 
   defu@6.1.4: {}
 
-  del@7.1.0:
+  del@8.0.0:
     dependencies:
-      globby: 13.2.2
-      graceful-fs: 4.2.11
+      globby: 14.0.2
       is-glob: 4.0.3
       is-path-cwd: 3.0.0
       is-path-inside: 4.0.0
-      p-map: 5.5.0
-      rimraf: 3.0.2
-      slash: 4.0.0
+      p-map: 7.0.3
+      slash: 5.1.0
 
   delaunator@5.0.1:
     dependencies:
@@ -12040,8 +12013,6 @@ snapshots:
   escape-string-regexp@2.0.0: {}
 
   escape-string-regexp@4.0.0: {}
-
-  escape-string-regexp@5.0.0: {}
 
   eslint-compat-utils@0.5.1(eslint@8.55.0):
     dependencies:
@@ -12901,8 +12872,6 @@ snapshots:
   imurmurhash@0.1.4: {}
 
   indent-string@4.0.0: {}
-
-  indent-string@5.0.0: {}
 
   inflection@1.13.4: {}
 
@@ -14327,9 +14296,7 @@ snapshots:
     dependencies:
       p-limit: 3.1.0
 
-  p-map@5.5.0:
-    dependencies:
-      aggregate-error: 4.0.1
+  p-map@7.0.3: {}
 
   p-try@2.2.0: {}
 
