@@ -54,7 +54,7 @@
     "vidstack": "^1.11.30",
     "vue": "^3.5.8",
     "vuepress": "2.0.0-rc.19",
-    "vuepress-plugin-search-pro": "2.0.0-rc.57",
+    "vuepress-plugin-search-pro": "2.0.0-rc.59",
     "vuepress-theme-hope": "2.0.0-rc.66"
   },
   "devDependencies": {
