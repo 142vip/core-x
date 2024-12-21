@@ -39,8 +39,8 @@ importers:
         specifier: ^6.9.15
         version: 6.9.17
       cross-env:
-        specifier: ^6.0.3
-        version: 6.0.3
+        specifier: ^7.0.0
+        version: 7.0.3
       install:
         specifier: ^0.13.0
         version: 0.13.0
@@ -3543,9 +3543,9 @@ packages:
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     hasBin: true
 
-  cross-env@6.0.3:
-    resolution: {integrity: sha512-+KqxF6LCvfhWvADcDPqo64yVIB31gv/jQulX2NGzKS/g3GEVz6/pt4wjHFtFWsHMddebWD/sDthJemzM4MaAag==}
-    engines: {node: '>=8.0'}
+  cross-env@7.0.3:
+    resolution: {integrity: sha512-+/HKd6EgcQCJGh2PSjZuUitQBQynKor4wrFbRg4DtAgS1aWO+gU52xpH7M9ScGgXSYmAVS9bIJ8EzuaGw0oNAw==}
+    engines: {node: '>=10.14', npm: '>=6', yarn: '>=1'}
     hasBin: true
 
   cross-spawn@7.0.3:
@@ -11369,7 +11369,7 @@ snapshots:
       - supports-color
       - ts-node
 
-  cross-env@6.0.3:
+  cross-env@7.0.3:
     dependencies:
       cross-spawn: 7.0.3
 
