@@ -353,7 +353,7 @@ importers:
         specifier: '7'
         version: 7.3.3
       nanoid:
-        specifier: ^3.3.7
+        specifier: 3.3.7
         version: 3.3.7
       qs:
         specifier: 6.13.0
