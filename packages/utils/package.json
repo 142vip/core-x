@@ -45,6 +45,7 @@
     "commander": "12.1.0",
     "dayjs": "1.11.11",
     "inquirer": "7",
+    "nanoid": "3.3.7",
     "qs": "6.13.0"
   },
   "publishConfig": {
