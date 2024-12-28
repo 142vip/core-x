@@ -11,6 +11,9 @@
     "url": "git+https://github.com/142vip/core-x.git",
     "directory": "packages/egg-redis"
   },
+  "eggPlugin": {
+    "name": "mysql"
+  },
   "keywords": [
     "公众号搜：储凡",
     "142vip",
@@ -18,28 +21,19 @@
     "@142vip/egg-redis",
     "egg-redis",
     "redis",
-    "egg"
+    "egg",
+    "egg-plugin",
+    "eggPlugin"
   ],
-  "sideEffects": false,
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
-    }
-  },
-  "main": "./dist/index.mjs",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
   "files": [
+    "agent.js",
+    "app.js",
+    "core",
     "dist"
   ],
-  "scripts": {
-    "build": "unbuild",
-    "typecheck": "tsc --noEmit"
-  },
   "dependencies": {
-    "dayjs": "^1.11.11"
+    "@142vip/egg": "workspace:*",
+    "ioredis": "5.4.1"
   },
   "publishConfig": {
     "access": "public",
