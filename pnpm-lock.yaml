@@ -381,8 +381,8 @@ importers:
         specifier: 12.1.0
         version: 12.1.0
       dayjs:
-        specifier: 1.11.11
-        version: 1.11.11
+        specifier: 1.11.13
+        version: 1.11.13
       inquirer:
         specifier: '7'
         version: 7.3.3
@@ -4165,9 +4165,6 @@ packages:
   dateformat@4.6.3:
     resolution: {integrity: sha512-2P0p0pFGzHS5EMnhdxQi7aJN+iMheud0UhG4dlE1DLAlvL8JHjJJTX/CSm4JXwV0Ka5nGk3zC5mcb5bUQUxxMA==}
 
-  dayjs@1.11.11:
-    resolution: {integrity: sha512-okzr3f11N6WuqYtZSvm+F776mB41wRZMhKP+hc34YdW+KmtYYK9iqvHSwo2k9FEH3fhGXvOPV6yz2IcSrfRUDg==}
-
   dayjs@1.11.13:
     resolution: {integrity: sha512-oaMBel6gjolK862uaPQOVTA7q3TZhuSvuMQAAglQDOWYO9A91IrAOUJEyKVlqJlHE0vq5p5UXxzdPfMH/x6xNg==}
 
@@ -7349,10 +7346,6 @@ packages:
 
   qs@6.13.0:
     resolution: {integrity: sha512-+38qI9SOr8tfZ4QmJNplMUxqjbe7LKvvZgWdExBOmd+egZTtjLB67Gu0HRX3u/XOq7UU2Nx6nsjvS16Z9uwfpg==}
-    engines: {node: '>=0.6'}
-
-  qs@6.13.1:
-    resolution: {integrity: sha512-EJPeIn0CYrGu+hli1xilKAPXODtJ12T0sP63Ijx2/khC2JtuaN3JyNIpvmnkmaEtha9ocbG4A4cMcr+TvqvwQg==}
     engines: {node: '>=0.6'}
 
   queue-microtask@1.2.3:
@@ -12819,7 +12812,7 @@ snapshots:
     dependencies:
       '@hapi/bourne': 3.0.0
       inflation: 2.1.0
-      qs: 6.13.1
+      qs: 6.13.0
       raw-body: 2.5.2
       type-is: 1.6.18
 
@@ -13333,8 +13326,6 @@ snapshots:
 
   dateformat@4.6.3: {}
 
-  dayjs@1.11.11: {}
-
   dayjs@1.11.13: {}
 
   debounce@1.2.1: {}
@@ -13717,7 +13708,7 @@ snapshots:
   egg-multipart@3.4.0:
     dependencies:
       co-busboy: 2.0.1
-      dayjs: 1.11.11
+      dayjs: 1.11.13
       egg-path-matching: 1.1.0
       humanize-bytes: 1.0.1
 
@@ -16205,7 +16196,7 @@ snapshots:
       d3: 7.9.0
       d3-sankey: 0.12.3
       dagre-d3-es: 7.0.10
-      dayjs: 1.11.11
+      dayjs: 1.11.13
       dompurify: 3.1.6
       elkjs: 0.9.3
       katex: 0.16.11
@@ -17340,10 +17331,6 @@ snapshots:
       yargs: 15.4.1
 
   qs@6.13.0:
-    dependencies:
-      side-channel: 1.1.0
-
-  qs@6.13.1:
     dependencies:
       side-channel: 1.1.0
 
@@ -18677,7 +18664,7 @@ snapshots:
       formstream: 1.5.1
       mime-types: 2.1.35
       pump: 3.0.2
-      qs: 6.13.1
+      qs: 6.13.0
       type-fest: 4.31.0
       undici: 5.28.4
       ylru: 1.4.0
@@ -18687,7 +18674,7 @@ snapshots:
       form-data: 4.0.1
       formstream: 1.5.1
       mime-types: 2.1.35
-      qs: 6.13.1
+      qs: 6.13.0
       type-fest: 4.31.0
       undici: 7.2.0
       ylru: 2.0.0
