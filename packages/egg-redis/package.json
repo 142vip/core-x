@@ -34,7 +34,7 @@
   "dependencies": {
     "@142vip/egg": "workspace:*",
     "@142vip/utils": "workspace:*",
-    "ioredis": "5.4.1"
+    "ioredis": "5.4.2"
   },
   "publishConfig": {
     "access": "public",
