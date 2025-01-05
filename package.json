@@ -47,7 +47,7 @@
     "@142vip/utils": "workspace:*",
     "@142vip/vitepress": "workspace:*",
     "@types/jest": "29.5.13",
-    "@types/lodash": "4.17.10",
+    "@types/lodash": "4.17.14",
     "@types/node": "22.0.0",
     "@types/qs": "6.9.15",
     "cross-env": "7.0.0",
