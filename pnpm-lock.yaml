@@ -160,8 +160,8 @@ importers:
         specifier: 3.29.0
         version: 3.29.0
       egg-scripts:
-        specifier: '2'
-        version: 2.17.0
+        specifier: '3'
+        version: 3.1.0
       ioredis:
         specifier: 5.4.2
         version: 5.4.2
