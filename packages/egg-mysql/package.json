@@ -35,7 +35,7 @@
   "dependencies": {
     "@142vip/egg": "workspace:*",
     "@142vip/utils": "workspace:*",
-    "mysql2": "3.10.1"
+    "mysql2": "3.12.0"
   },
   "publishConfig": {
     "access": "public",
