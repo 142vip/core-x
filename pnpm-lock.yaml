@@ -465,7 +465,7 @@ importers:
     dependencies:
       element-plus:
         specifier: ^2.8.8
-        version: 2.9.2(vue@3.5.13(typescript@5.7.3))
+        version: 2.9.3(vue@3.5.13(typescript@5.7.3))
       vitepress:
         specifier: ^1.5.0
         version: 1.5.0(@algolia/client-search@5.15.0)(@types/node@22.10.7)(async-validator@4.2.5)(axios@1.7.9)(postcss@8.4.49)(qrcode@1.5.4)(sass-embedded@1.80.4)(search-insights@2.17.2)(typescript@5.7.3)
@@ -4727,8 +4727,8 @@ packages:
   electron-to-chromium@1.5.76:
     resolution: {integrity: sha512-CjVQyG7n7Sr+eBXE86HIulnL5N8xZY1sgmOPGuq/F0Rr0FJq63lg0kEtOIDfZBk44FnDLf6FUJ+dsJcuiUDdDQ==}
 
-  element-plus@2.9.2:
-    resolution: {integrity: sha512-HS+Cc5mmy70DixJuoN3cMxPPoNWXkjHzUw2PcGmysk6NHQzzUtwi2Vc+dlmbmRxj3eNqgC1xpPQV5Nf9uDtQRg==}
+  element-plus@2.9.3:
+    resolution: {integrity: sha512-6tSLp5XytDS4TMZ0P3aGZnr7MXTagfNycepNfIDitd9IgwM9y01+Ssu6mglNi8RiXYhek6LBWNOd/cvpIO12+w==}
     peerDependencies:
       vue: ^3.2.0
 
@@ -8710,16 +8710,16 @@ packages:
   undici-types@6.20.0:
     resolution: {integrity: sha512-Ny6QZ2Nju20vw1SRHe3d9jVu6gJ+4e3+MMpqu7pqE5HT6WsTSlce++GQmK5UXS8mzV8DSYHrQH+Xrf2jVcuKNg==}
 
-  undici@5.28.4:
-    resolution: {integrity: sha512-72RFADWFqKmUb2hmmvNODKL3p9hcB6Gt2DOQMis1SEBaV6a4MH8soBvzg+95CYhCKPFedut2JY9bMfrDl9D23g==}
+  undici@5.28.5:
+    resolution: {integrity: sha512-zICwjrDrcrUE0pyyJc1I2QzBkLM8FINsgOrt6WjA+BgajVq9Nxu2PbFFXUrAggLfDXlZGZBVZYw7WNV5KiBiBA==}
     engines: {node: '>=14.0'}
 
   undici@6.20.1:
     resolution: {integrity: sha512-AjQF1QsmqfJys+LXfGTNum+qw4S88CojRInG/6t31W/1fk6G59s92bnAvGz5Cmur+kQv2SURXEvvudLmbrE8QA==}
     engines: {node: '>=18.17'}
 
-  undici@7.2.2:
-    resolution: {integrity: sha512-j/M0BQelSQHcq2Fhc1fUMszXtLx+RsZR5IkXx07knZMICLTzRzsW0tbTI9e9N40RftPUkFP8j4qOjKJa5aTCzw==}
+  undici@7.2.3:
+    resolution: {integrity: sha512-2oSLHaDalSt2/O/wHA9M+/ZPAOcU2yrSP/cdBYJ+YxZskiPYDSqHbysLSlD7gq3JMqOoJI5O31RVU3BxX/MnAA==}
     engines: {node: '>=20.18.1'}
 
   unescape@1.0.1:
@@ -14116,7 +14116,7 @@ snapshots:
 
   electron-to-chromium@1.5.76: {}
 
-  element-plus@2.9.2(vue@3.5.13(typescript@5.7.3)):
+  element-plus@2.9.3(vue@3.5.13(typescript@5.7.3)):
     dependencies:
       '@ctrl/tinycolor': 3.6.1
       '@element-plus/icons-vue': 2.3.1(vue@3.5.13(typescript@5.7.3))
@@ -18718,13 +18718,13 @@ snapshots:
 
   undici-types@6.20.0: {}
 
-  undici@5.28.4:
+  undici@5.28.5:
     dependencies:
       '@fastify/busboy': 2.1.1
 
   undici@6.20.1: {}
 
-  undici@7.2.2: {}
+  undici@7.2.3: {}
 
   unescape@1.0.1:
     dependencies:
@@ -18882,7 +18882,7 @@ snapshots:
       pump: 3.0.2
       qs: 6.14.0
       type-fest: 4.32.0
-      undici: 5.28.4
+      undici: 5.28.5
       ylru: 1.4.0
 
   urllib@4.6.11:
@@ -18892,7 +18892,7 @@ snapshots:
       mime-types: 2.1.35
       qs: 6.14.0
       type-fest: 4.32.0
-      undici: 7.2.2
+      undici: 7.2.3
       ylru: 2.0.0
 
   util-deprecate@1.0.2: {}
