@@ -55,7 +55,7 @@
     "vidstack": "^1.11.30",
     "vue": "^3.5.8",
     "vuepress": "2.0.0-rc.19",
-    "vuepress-theme-hope": "2.0.0-rc.66"
+    "vuepress-theme-hope": "2.0.0-rc.70"
   },
   "devDependencies": {
     "typescript": "^5.5.4"
