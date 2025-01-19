@@ -20,9 +20,26 @@ interface BuildImageDockerOptions extends DockerOptions {
 }
 
 /**
+ * docker命令的通用执行器
+ */
+async function scriptExecutor(command: string) {
+  try {
+    const errorCode = await commandStandardExecutor(command)
+    if (errorCode !== 0) {
+      vipLog.error(`Error Code: ${errorCode}`, { startLabel: 'commandStandardExecutor' })
+      process.exit(1)
+    }
+  }
+  catch {
+    // 构建镜像出错时，直接退出
+    process.exit(1)
+  }
+}
+
+/**
  * 判断是否存在镜像
  */
-export async function isExistImage(imageName: string) {
+async function isExistImage(imageName: string) {
   const command = `docker images -q ${imageName}`
   const { code, stdout } = await execCommand(command)
   return code === 0 && stdout.trim() !== ''
@@ -31,7 +48,7 @@ export async function isExistImage(imageName: string) {
 /**
  * 删除Docker镜像
  */
-export async function deleteImage(imageName: string) {
+async function deleteImage(imageName: string) {
   const command = `docker rmi -f ${imageName}`
   return await execCommand(command)
 }
@@ -39,7 +56,7 @@ export async function deleteImage(imageName: string) {
 /**
  * 删除虚悬镜像
  */
-export async function deletePruneImages() {
+async function deletePruneImages() {
   const command = 'docker image prune -f'
   return await execCommand(command)
 }
@@ -47,7 +64,7 @@ export async function deletePruneImages() {
 /**
  * 判断容器是否存在
  */
-export async function isExistContainer(containerName: string) {
+async function isExistContainer(containerName: string) {
   const command = `docker ps -aq -f name=${containerName}`
   const { code, stdout } = await execCommand(command)
 
@@ -57,7 +74,7 @@ export async function isExistContainer(containerName: string) {
 /**
  * 删除容器
  */
-export async function deleteContainer(containerName: string) {
+async function deleteContainer(containerName: string) {
   const command = `docker rm -f ${containerName}`
   return await execCommand(command)
 }
@@ -65,7 +82,7 @@ export async function deleteContainer(containerName: string) {
 /**
  * 是否安装docker
  */
-export async function isInstallDocker(args?: DockerOptions) {
+async function isInstallDocker(args?: DockerOptions) {
   const command = 'docker -v'
   const { code, stdout, stderr } = await execCommand(command)
 
@@ -87,7 +104,7 @@ export async function isInstallDocker(args?: DockerOptions) {
 /**
  * 是否安装docker-compose
  */
-export async function isInstallDockerCompose(args?: DockerOptions) {
+async function isInstallDockerCompose(args?: DockerOptions) {
   const command = 'docker-compose -v'
   const { code, stdout, stderr } = await execCommand(command)
 
@@ -108,9 +125,9 @@ export async function isInstallDockerCompose(args?: DockerOptions) {
 /**
  * 推送Docker镜像到指定仓库
  */
-export async function pushImage(imageName: string) {
+async function pushImage(imageName: string) {
   const command = `docker push ${imageName}`
-  await dockerScriptExecutor(command)
+  await scriptExecutor(command)
 }
 
 /**
@@ -118,7 +135,7 @@ export async function pushImage(imageName: string) {
  * - 根据tag标记，推送到远程仓库
  * - 推送完成后，删除本地镜像
  */
-export async function buildImage(args: BuildImageDockerOptions) {
+async function buildImage(args: BuildImageDockerOptions) {
   // 构建参数
   let buildArg = ''
   if (args.buildArgs != null) {
@@ -144,7 +161,7 @@ export async function buildImage(args: BuildImageDockerOptions) {
   }
   vipLog.log(args.imageName, { startLabel: '构建镜像' })
 
-  await dockerScriptExecutor(command)
+  await scriptExecutor(command)
 
   if (args.push) {
     const exist = await isExistImage(args.imageName)
@@ -176,7 +193,7 @@ interface CreateContainerOptions extends DockerOptions {
 /**
  * 创建容器
  */
-export async function createContainer(args: CreateContainerOptions) {
+async function createContainer(args: CreateContainerOptions) {
   if (args.networkName && !args.ip) {
     console.log('只指定ip，没有指定容器局域网')
     process.exit(1)
@@ -189,18 +206,18 @@ export async function createContainer(args: CreateContainerOptions) {
 }
 
 /**
- * docker命令的通用执行器
+ * docker工具
  */
-async function dockerScriptExecutor(command: string) {
-  try {
-    const errorCode = await commandStandardExecutor(command)
-    if (errorCode !== 0) {
-      vipLog.error(`Error Code: ${errorCode}`, { startLabel: 'commandStandardExecutor' })
-      process.exit(1)
-    }
-  }
-  catch {
-    // 构建镜像出错时，直接退出
-    process.exit(1)
-  }
+export const VipDocker = {
+  isExistImage,
+  deleteImage,
+  deletePruneImages,
+  isExistContainer,
+  deleteContainer,
+  isInstallDocker,
+  isInstallDockerCompose,
+  pushImage,
+  buildImage,
+  createContainer,
+  scriptExecutor,
 }

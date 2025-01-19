@@ -11,8 +11,8 @@ import { createRequire } from 'node:module'
 import process from 'node:process'
 import {
   OPEN_SOURCE_ADDRESS,
-  buildImage,
   getRecentGitCommit,
+  VipDocker,
 } from '@142vip/utils'
 
 (async () => {
@@ -27,7 +27,7 @@ import {
     const { hash: gitHash } = await getRecentGitCommit()
 
     // 构建镜像
-    await buildImage({
+    await VipDocker.buildImage({
       imageName,
       buildArgs: [
         // 参数中是否包含 --proxy
