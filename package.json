@@ -38,7 +38,9 @@
     "publish:check": "pnpm publish -r --filter './packages/**' --dry-run --json --no-git-checks",
     "release:check": "npx fa release --check-release --vip -F './apps/*' -F './packages/*' ",
     "check": "pnpm release:check && pnpm publish:check",
-    "release": "pnpm clean:hooks && npx fa release --vip -F './apps/*' -F './packages/*' "
+    "release": "pnpm clean:hooks && npx fa release --vip -F './apps/*' -F './packages/*' ",
+    "test": "jest",
+    "test:coverage": "jest --coverage"
   },
   "devDependencies": {
     "@142vip/changelog": "workspace:*",
