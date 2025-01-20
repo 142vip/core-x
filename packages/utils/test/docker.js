@@ -1,8 +1,8 @@
 import { VipDocker } from '@142vip/utils';
 
 (async () => {
-  await VipDocker.isInstallDocker({ logger: true })
-  const exist = await VipDocker.isInstallDockerCompose({ logger: true })
+  await VipDocker.isExistDocker({ logger: true })
+  const exist = await VipDocker.isExistDockerCompose({ logger: true })
   console.log(111, exist)
   await VipDocker.buildImage({
     imageName: 'aaa',

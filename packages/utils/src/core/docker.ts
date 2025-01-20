@@ -82,7 +82,7 @@ async function deleteContainer(containerName: string) {
 /**
  * 是否安装docker
  */
-async function isInstallDocker(args?: DockerOptions) {
+async function isExistDocker(args?: DockerOptions) {
   const command = 'docker -v'
   const { code, stdout, stderr } = await execCommand(command)
 
@@ -104,7 +104,7 @@ async function isInstallDocker(args?: DockerOptions) {
 /**
  * 是否安装docker-compose
  */
-async function isInstallDockerCompose(args?: DockerOptions) {
+async function isExistDockerCompose(args?: DockerOptions) {
   const command = 'docker-compose -v'
   const { code, stdout, stderr } = await execCommand(command)
 
@@ -209,13 +209,13 @@ async function createContainer(args: CreateContainerOptions) {
  * docker工具
  */
 export const VipDocker = {
+  isExistDocker,
+  isExistDockerCompose,
   isExistImage,
+  isExistContainer,
   deleteImage,
   deletePruneImages,
-  isExistContainer,
   deleteContainer,
-  isInstallDocker,
-  isInstallDockerCompose,
   pushImage,
   buildImage,
   createContainer,
