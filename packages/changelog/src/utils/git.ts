@@ -22,8 +22,8 @@ export async function isRepoShallow(): Promise<boolean> {
 }
 
 export async function getGitTags(): Promise<string[]> {
-  return (await execCommand('git', ['--no-pager', 'tag', '-l', '--sort=creatordate']).then(r => r.split('\n')))
-    .reverse()
+  const tagInfo = await execCommand('git', ['--no-pager', 'tag', '-l', '--sort=creatordate'])
+  return tagInfo.split('\n').reverse()
 }
 
 function getTagWithoutPrefix(tag: string): string {

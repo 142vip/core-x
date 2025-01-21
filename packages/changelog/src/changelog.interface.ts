@@ -13,14 +13,27 @@ export interface GitHubAuth {
 }
 
 export interface Commit extends GitCommit {
-  resolvedAuthors?: AuthorInfo[]
+  resolvedAuthors?: GitAuthorInfo[]
+}
+
+export interface ChangelogCliOptions {
+  token?: string
+  from?: string
+  to?: string
+  github?: string
+  name?: string
+  prerelease?: boolean
+  output?: string
+  scopeName?: string
+  dryRun?: boolean
 }
 
 export interface ChangelogOptions extends Partial<ChangelogEnOptions> {
   /**
    * Dry run. Skip releasing to GitHub.
    */
-  dry?: boolean
+  dryRun?: boolean
+
   /**
    * Whether to include contributors in release notes.
    *
@@ -81,12 +94,10 @@ export interface ChangelogOptions extends Partial<ChangelogEnOptions> {
   scopeName?: string
 }
 
-export type ResolvedChangelogOptions = Required<ChangelogOptions>
-
 /**
  * 作者信息
  */
-export interface AuthorInfo {
+export interface GitAuthorInfo {
   commits: string[]
   login?: string
   email: string
