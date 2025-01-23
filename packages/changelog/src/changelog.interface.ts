@@ -1,21 +1,20 @@
-import type { ChangelogConfig, GitCommit } from 'changelogen'
-
-export type ChangelogEnOptions = ChangelogConfig
-
-export interface GitHubRepo {
-  owner: string
-  repo: string
-}
-
-export interface GitHubAuth {
-  token: string
-  url: string
-}
+import type { GitCommit, GitCommitAuthor } from './git'
 
 export interface Commit extends GitCommit {
   resolvedAuthors?: GitAuthorInfo[]
 }
 
+/**
+ * 作者信息
+ */
+export interface GitAuthorInfo extends GitCommitAuthor {
+  commits: string[]
+  login?: string
+}
+
+/**
+ * changelog cli
+ */
 export interface ChangelogCliOptions {
   token?: string
   from?: string
@@ -28,78 +27,49 @@ export interface ChangelogCliOptions {
   dryRun?: boolean
 }
 
-export interface ChangelogOptions extends Partial<ChangelogEnOptions> {
-  /**
-   * Dry run. Skip releasing to GitHub.
-   */
-  dryRun?: boolean
-
-  /**
-   * Whether to include contributors in release notes.
-   *
-   * @default true
-   */
-  contributors?: boolean
-  /**
-   * Name of the release
-   */
-  name?: string
-  /**
-   * Mark the release as a draft
-   */
-  draft?: boolean
-  /**
-   * Mark the release as prerelease
-   */
-  prerelease?: boolean
-  /**
-   * GitHub Token
-   */
-  token?: string
-  /**
-   * Custom titles
-   */
-  titles?: {
-    breakingChanges?: string
-  }
-  /**
-   * Capitalize commit messages
-   * @default true
-   */
-  capitalize?: boolean
-  /**
-   * Nest commit messages under their scopes
-   * @default true
-   */
-  group?: boolean | 'multiple'
-  /**
-   * Use emojis in section titles
-   * @default true
-   */
-  emoji?: boolean
-  /**
-   * GitHub base url
-   * @default github.com
-   */
-  baseUrl?: string
-  /**
-   * GitHub base API url
-   * @default api.github.com
-   */
-  baseUrlApi?: string
-
-  /**
-   * git commit scope name
-   */
-  scopeName?: string
+export enum SemverBumpType {
+  major = 'major',
+  premajor = 'premajor',
+  minor = 'minor',
+  preminor = 'preminor',
+  patch = 'patch',
+  prepatch = 'prepatch',
+  prerelease = 'prerelease',
 }
 
 /**
- * 作者信息
+ * 日志生成
  */
-export interface GitAuthorInfo {
-  commits: string[]
-  login?: string
-  email: string
+export interface ChangelogGenerateOptions {
+  // 出现在版本发布记录中的git类型
+  types: Record<string, {
+    title: string
+    semver?: SemverBumpType
+  }>
+  scopeMap: Record<string, string>
+
+  titles: {
+    breakingChanges?: string
+  }
+  // 标题
+  header?: string
+
+  scopeName?: string
+  dryRun?: boolean
+  output?: string
+
+  contributors: boolean
+  capitalize: boolean
+  group: boolean | 'multiple'
+  emoji: boolean
+
+  // 发布的版本
   name: string
+  baseUrlApi: string
+  baseUrl: string
+  from: string
+  to: string
+  // 是否预览版本
+  prerelease: boolean
+  repo: string
 }

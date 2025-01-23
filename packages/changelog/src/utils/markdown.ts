@@ -1,18 +1,19 @@
-import type { Reference } from 'changelogen'
 import { VipLodash } from '@142vip/utils'
 import type { Commit } from '../changelog.interface'
+import type { Reference } from '../git'
+import { GitCommitMessageType } from '../git'
 
 function formatReferences(references: Reference[], baseUrl: string, github: string, type: 'issues' | 'hash'): string {
   const refs = references
     .filter((i) => {
       if (type === 'issues')
-        return i.type === 'issue' || i.type === 'pull-request'
-      return i.type === 'hash'
+        return i.type === GitCommitMessageType.ISSUE || i.type === GitCommitMessageType.PULL_REQUEST
+      return i.type === GitCommitMessageType.HASH
     })
     .map((ref) => {
       if (!github)
         return ref.value
-      if (ref.type === 'pull-request' || ref.type === 'issue')
+      if (ref.type === GitCommitMessageType.PULL_REQUEST || ref.type === GitCommitMessageType.ISSUE)
         return `https://${baseUrl}/${github}/issues/${ref.value.slice(1)}`
 
       // 截取前面5个字符
@@ -78,7 +79,7 @@ function formatTitle(name: string, emoji: boolean): string {
 /**
  * 格式化Section
  */
-export function formatSection(commits: Commit[], options: {
+function formatSection(commits: Commit[], options: {
   emoji: boolean
   group?: boolean | 'multiple'
   scopeName?: string
@@ -94,7 +95,8 @@ export function formatSection(commits: Commit[], options: {
   // 注意空行
   const lines: string[] = ['', formatTitle(options.sectionName, options.emoji), '']
 
-  const scopes = VipLodash.groupBy(commits, 'scope')
+  const scopes = VipLodash.groupBy(commits, 'scope') as Record<string, Commit[]>
+
   const useScopeGroup = options.group
 
   // 生成monorepo中的md，只显示该模块的
@@ -115,7 +117,6 @@ export function formatSection(commits: Commit[], options: {
     Object.keys(scopes).sort().forEach((scope) => {
       let padding = ''
       let prefix = ''
-      // root dir
       const scopeText = `**${options.scopeMap[scope] || scope}**`
 
       // 按照scope分类
@@ -158,19 +159,19 @@ function join(array?: string[], glue = ', ', finalGlue = ' and '): string {
 /**
  * 无内容更新
  */
-export function getNoSignificantChanges(): string {
+function getNoSignificantChanges(): string {
   return '\n**No Significant Changes**'
 }
 
 /**
  * 获取npm版本描述
  */
-export function getNPMVersionDescription(pkgName: string, pkgVersion: string) {
+function getNPMVersionDescription(pkgName: string, pkgVersion: string) {
   const npmURI = `https://www.npmjs.com/package/${pkgName}`
   return `\n**Release New Version ${pkgVersion} [👉 View New Package On NPM](${npmURI})**`
 }
 
-export function getGithubVersionDescription({ baseUrl, repo, fromVersion, toVersion }: {
+function getGithubVersionDescription({ baseUrl, repo, fromVersion, toVersion }: {
   baseUrl: string
   repo: string
   fromVersion: string
@@ -178,4 +179,11 @@ export function getGithubVersionDescription({ baseUrl, repo, fromVersion, toVers
 }) {
   const url = `https://${baseUrl}/${repo}/compare/${fromVersion}...${toVersion}`
   return `\n**Release New Version ${toVersion} [👉 View Changes On GitHub](${url})**`
+}
+
+export const MarkdownAPI = {
+  formatSection,
+  getNoSignificantChanges,
+  getNPMVersionDescription,
+  getGithubVersionDescription,
 }

@@ -1,5 +1,3 @@
-import type { SemverBumpType } from 'changelogen'
-import { getGitDiff, parseGitCommit } from 'changelogen'
 import {
   HttpMethod,
   VipColor,
@@ -10,49 +8,9 @@ import {
 } from '@142vip/utils'
 import { convert } from 'convert-gitmoji'
 import { $fetch } from 'ofetch'
-import {
-  GithubAPI,
-  formatSection,
-  getGithubVersionDescription,
-  getNPMVersionDescription,
-  getNoSignificantChanges,
-  resolveAuthors,
-} from './utils'
-import type { Commit } from './changelog.interface'
-
-export interface ChangelogGenerateOptions {
-  // 出现在版本发布记录中的git类型
-  types: Record<string, {
-    title: string
-    semver?: SemverBumpType
-  }>
-  scopeMap: Record<string, string>
-
-  titles: {
-    breakingChanges?: string
-  }
-  // 标题
-  header?: string
-
-  scopeName?: string
-  dryRun?: boolean
-  output?: string
-
-  contributors: boolean
-  capitalize: boolean
-  group: boolean | 'multiple'
-  emoji: boolean
-
-  // 发布的版本
-  name: string
-  baseUrlApi: string
-  baseUrl: string
-  from: string
-  to: string
-  // 是否预览版本
-  prerelease: boolean
-  repo: string
-}
+import { GithubAPI, MarkdownAPI } from './utils'
+import type { ChangelogGenerateOptions, Commit } from './changelog.interface'
+import { getGitDiff, parseCommits } from './git'
 
 interface ChangelogGenerate {
   config: ChangelogGenerateOptions
@@ -65,23 +23,29 @@ interface ChangelogGenerate {
  * 处理git changelog记录生成
  */
 export async function changelogGenerate(config: ChangelogGenerateOptions): Promise<ChangelogGenerate> {
-  const rawCommits = await getGitDiff(config.from, config.to)
+  const rawCommits = await getGitDiff({
+    from: config.from,
+    to: config.to,
+  })
 
-  // 解析commit信息
-  const commits = rawCommits
-    .map(commit => parseGitCommit(commit, config as any))
-    .filter((v) => {
-      // 在monorepo模式下，去掉主目录下的更新
-      // 发布子模块时，需要考虑根模块迭代一个版本，子模块迭代多个版本但只需要记录一个版本
-      if (config.scopeName != null) {
-        return v != null && v.message.includes(`release(${config.scopeName})`)
-      }
-      return v != null
-    }).filter(v => v != null)
+  // 解析commit信息 todo 这里的参数类型需要明确
+  let commits = parseCommits(rawCommits, config.scopeMap)
+
+  // 在monorepo模式下，去掉主目录下的更新
+  // 发布子模块时，需要考虑根模块迭代一个版本，子模块迭代多个版本但只需要记录一个版本，去掉release信息
+  if (config.scopeName != null) {
+    commits = commits.filter(commit => !commit.message.includes(`release(${config.scopeName})`))
+  }
 
   // 添加贡献者
   if (config.contributors) {
-    await resolveAuthors(commits, config)
+    const token = VipNodeJS.getProcessEnv('GITHUB_TOKEN') || VipNodeJS.getProcessEnv('TOKEN')
+    console.log(444, VipNodeJS.getProcessEnv('GITHUB_TOKEN'), VipNodeJS.getProcessEnv('TOKEN'))
+    await GithubAPI.resolveAuthors(commits, {
+      token,
+      baseUrlApi: config.baseUrlApi,
+      repo: config.repo,
+    })
   }
   // 生成文档
   const markdown = await generateMarkdown(commits, config)
@@ -176,10 +140,10 @@ export async function sendGithubRelease(options: {
     prerelease: options.prerelease || true,
   }
   if (method === HttpMethod.POST) {
-    VipConsole.log(VipColor.cyan('Creating release notes...'))
+    VipConsole.log(VipColor.cyan('Creating Release Notes...'))
   }
   else {
-    VipConsole.log(VipColor.cyan('Updating release notes...'))
+    VipConsole.log(VipColor.cyan('Updating Release Notes...'))
   }
 
   const res = await $fetch(url, {
@@ -215,7 +179,7 @@ export async function generateMarkdown(commits: Commit[], options: {
   if (options.titles.breakingChanges != null) {
     const breaking = commits.filter(c => c.isBreaking)
     lines.push(
-      ...formatSection(breaking, {
+      ...MarkdownAPI.formatSection(breaking, {
         emoji: options.emoji,
         group: options.group,
         scopeName: options.scopeName,
@@ -234,7 +198,7 @@ export async function generateMarkdown(commits: Commit[], options: {
   for (const type of Object.keys(options.types)) {
     const items = group[type] || []
     lines.push(
-      ...formatSection(items, {
+      ...MarkdownAPI.formatSection(items, {
         emoji: options.emoji,
         group: options.group,
         scopeName: options.scopeName,
@@ -249,16 +213,16 @@ export async function generateMarkdown(commits: Commit[], options: {
 
   // 没有变更内容
   if (!lines.length) {
-    lines.push(getNoSignificantChanges())
+    lines.push(MarkdownAPI.getNoSignificantChanges())
   }
   else {
     // 发布模块包，添加NPM版本
     if (options.scopeName != null) {
-      lines.push(getNPMVersionDescription(options.scopeName, options.name))
+      lines.push(MarkdownAPI.getNPMVersionDescription(options.scopeName, options.name))
     }
     // 发布根目录，添加Github Release版本
     else {
-      lines.push(getGithubVersionDescription({
+      lines.push(MarkdownAPI.getGithubVersionDescription({
         baseUrl: options.baseUrl,
         repo: options.repo,
         fromVersion: options.from,
@@ -269,11 +233,4 @@ export async function generateMarkdown(commits: Commit[], options: {
 
   // commit提交信息排序翻转
   return convert(lines.join('\n').trim(), true)
-}
-
-// 导出
-export const ChangelogCli = {
-  changelogGenerate,
-  changelogUpdate,
-  sendGithubRelease,
 }

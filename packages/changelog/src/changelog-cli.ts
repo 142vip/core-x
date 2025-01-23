@@ -1,14 +1,15 @@
-import { VipColor, VipCommander, VipConsole, VipNodeJS } from '@142vip/utils'
+import { VipColor, VipCommander, VipConsole, VipGit, VipNodeJS } from '@142vip/utils'
 import { name as packageName, version as packageVersion } from '../package.json'
-import { GithubAPI, isRepoShallow } from './utils'
+import { GithubAPI } from './utils'
 import { mergeConfig } from './config'
-import { changelogGenerate, changelogUpdate } from './changelog'
+import { changelogGenerate, changelogUpdate, sendGithubRelease } from './changelog'
 import type { ChangelogCliOptions } from './changelog.interface'
 
 /**
  * 处理changelog业务
  */
 async function changelogHandler(cliOptions: ChangelogCliOptions): Promise<void> {
+  const releaseUrl = ''
   try {
     VipConsole.log()
     VipConsole.log(`${VipColor.dim(packageName)} ${VipColor.dim(`v${packageVersion}`)}`)
@@ -16,8 +17,6 @@ async function changelogHandler(cliOptions: ChangelogCliOptions): Promise<void> 
     const changelogConfig = await mergeConfig(cliOptions)
 
     const { markdown, commits, releaseUrl } = await changelogGenerate(changelogConfig)
-
-    console.log(111, changelogConfig)
 
     VipConsole.log(`${VipColor.cyan(changelogConfig.from)} ${VipColor.dim(' -> ')} ${VipColor.blue(changelogConfig.to)} ${VipColor.dim(` (${commits.length} commits)`)}`)
     VipConsole.log('\n')
@@ -48,21 +47,22 @@ async function changelogHandler(cliOptions: ChangelogCliOptions): Promise<void> 
     }
 
     // git记录很浅
-    if (commits.length === 0 && await isRepoShallow()) {
+    if (commits.length === 0 && VipGit.isRepoShallow()) {
       VipConsole.error(VipColor.yellow('存储库似乎克隆得很浅，这使得更改日志无法生成。您可能希望在 CI 配置中指定 \'fetch-depth： 0\'。'))
       GithubAPI.printReleaseUrl(releaseUrl)
       VipNodeJS.exitProcess(1)
+      return
     }
 
     // 调用api 直接发布
-    // await sendGithubRelease({
-    //   token: cliOptions.token,
-    //   repo: changelogConfig.repo,
-    //   baseUrlApi: changelogConfig.baseUrlApi,
-    //   name: changelogConfig.name || changelogConfig.to,
-    //   tag: changelogConfig.to,
-    //   content: markdown,
-    // })
+    await sendGithubRelease({
+      token: cliOptions.token,
+      repo: changelogConfig.repo,
+      baseUrlApi: changelogConfig.baseUrlApi,
+      name: changelogConfig.name || changelogConfig.to,
+      tag: changelogConfig.to,
+      content: markdown,
+    })
   }
   catch (e: any) {
     VipConsole.error(VipColor.red(String(e)))
@@ -70,7 +70,7 @@ async function changelogHandler(cliOptions: ChangelogCliOptions): Promise<void> 
       VipConsole.error(VipColor.dim(e.stack?.split('\n').slice(1).join('\n')))
 
     // 手动执行，创建release
-    // GithubAPI.printReleaseUrl(releaseUrl, false)
+    GithubAPI.printReleaseUrl(releaseUrl, false)
 
     // 异常退出
     VipNodeJS.exitProcess(1)
@@ -79,6 +79,7 @@ async function changelogHandler(cliOptions: ChangelogCliOptions): Promise<void> 
 
 /**
  * cli 入口
+ * - changelogen: https://www.npmjs.com/package/changelogen
  */
 function changelogMain(): void {
   const program = new VipCommander(packageName, packageVersion)
