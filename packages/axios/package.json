@@ -38,7 +38,7 @@
   },
   "dependencies": {
     "@142vip/utils": "workspace:*",
-    "axios": "1.7.3"
+    "axios": "1.7.9"
   },
   "publishConfig": {
     "access": "public",
