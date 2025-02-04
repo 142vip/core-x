@@ -201,8 +201,8 @@ importers:
         specifier: workspace:*
         version: link:../utils
       mysql2:
-        specifier: 3.10.1
-        version: 3.10.1
+        specifier: 3.12.0
+        version: 3.12.0
 
   packages/egg-redis:
     dependencies:
@@ -6210,10 +6210,6 @@ packages:
     resolution: {integrity: sha512-jumlc0BIUrS3qJGgIkWZsyfAM7NCWiBcCDhnd+3NNM5KbBmLTgHVfWBcg6W+rLUsIpzpERPsvwUP7CckAQSOoA==}
     engines: {node: '>=12'}
 
-  lru-cache@8.0.5:
-    resolution: {integrity: sha512-MhWWlVnuab1RG5/zMRRcVGXZLCXrZTgfwMikgzCegsPnG62yDQo5JnqKkrK4jO5iKqDAZGItAqN5CtKBCBWRUA==}
-    engines: {node: '>=16.14'}
-
   lru.min@1.1.1:
     resolution: {integrity: sha512-FbAj6lXil6t8z4z3j0E5mfRlPzxkySotzUHwRXjlpRh10vc6AI6WN62ehZj82VG7M20rqogJ0GLwar2Xa05a8Q==}
     engines: {bun: '>=1.0.0', deno: '>=1.30.0', node: '>=8.0.0'}
@@ -6523,10 +6519,6 @@ packages:
 
   mute-stream@0.0.8:
     resolution: {integrity: sha512-nnbWWOkoWyUsTjKrhgD0dcz22mdkSnpYqbEjIm2nhwhuxlSkpywJmBo8h0ZqJdkp73mb90SssHkN4rsRaBAfAA==}
-
-  mysql2@3.10.1:
-    resolution: {integrity: sha512-6zo1T3GILsXMCex3YEu7hCz2OXLUarxFsxvFcUHWMpkPtmZLeTTWgRdc1gWyNJiYt6AxITmIf9bZDRy/jAfWew==}
-    engines: {node: '>= 8.0'}
 
   mysql2@3.12.0:
     resolution: {integrity: sha512-C8fWhVysZoH63tJbX8d10IAoYCyXy4fdRFz2Ihrt9jtPILYynFEKUUzpp1U7qxzDc3tMbotvaBH+sl6bFnGZiw==}
@@ -7287,10 +7279,6 @@ packages:
 
   qs@6.13.1:
     resolution: {integrity: sha512-EJPeIn0CYrGu+hli1xilKAPXODtJ12T0sP63Ijx2/khC2JtuaN3JyNIpvmnkmaEtha9ocbG4A4cMcr+TvqvwQg==}
-    engines: {node: '>=0.6'}
-
-  qs@6.14.0:
-    resolution: {integrity: sha512-YWWTjgABSKcvs/nWBi9PycY/JiPJqOD4JA6o9Sej2AtvSGarXxKC3OQSk4pAarbdQlKAh5D4FCQkJNkW+GAn3w==}
     engines: {node: '>=0.6'}
 
   queue-microtask@1.2.3:
@@ -16000,8 +15988,6 @@ snapshots:
 
   lru-cache@7.18.3: {}
 
-  lru-cache@8.0.5: {}
-
   lru.min@1.1.1: {}
 
   magic-string@0.30.17:
@@ -16358,17 +16344,6 @@ snapshots:
   mustache@2.3.2: {}
 
   mute-stream@0.0.8: {}
-
-  mysql2@3.10.1:
-    dependencies:
-      denque: 2.1.0
-      generate-function: 2.3.1
-      iconv-lite: 0.6.3
-      long: 5.2.4
-      lru-cache: 8.0.5
-      named-placeholders: 1.1.3
-      seq-queue: 0.0.5
-      sqlstring: 2.3.3
 
   mysql2@3.12.0:
     dependencies:
@@ -17133,10 +17108,6 @@ snapshots:
       side-channel: 1.1.0
 
   qs@6.13.1:
-    dependencies:
-      side-channel: 1.1.0
-
-  qs@6.14.0:
     dependencies:
       side-channel: 1.1.0
 
@@ -18528,7 +18499,7 @@ snapshots:
       formstream: 1.5.1
       mime-types: 2.1.35
       pump: 3.0.2
-      qs: 6.14.0
+      qs: 6.13.1
       type-fest: 4.33.0
       undici: 5.28.5
       ylru: 1.4.0
@@ -18538,7 +18509,7 @@ snapshots:
       form-data: 4.0.1
       formstream: 1.5.1
       mime-types: 2.1.35
-      qs: 6.14.0
+      qs: 6.13.1
       type-fest: 4.33.0
       undici: 7.3.0
       ylru: 2.0.0
