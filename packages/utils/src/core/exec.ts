@@ -1,6 +1,7 @@
 import * as childProcess from 'node:child_process'
 import { Buffer } from 'node:buffer'
 import * as process from 'node:process'
+import { execSync } from 'node:child_process'
 
 type Command = string | string[]
 
@@ -118,4 +119,12 @@ export function commandStandardExecutor(cmd: Command) {
       reject(error)
     })
   })
+}
+
+function execCommandSync(cmd: string, cwd?: string): string {
+  return execSync(cmd, { encoding: 'utf8', cwd }).trim()
+}
+
+export const VipExecutor = {
+  execCommandSync,
 }

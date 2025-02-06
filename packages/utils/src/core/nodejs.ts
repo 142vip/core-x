@@ -3,6 +3,7 @@ import type { PathLike } from 'node:fs'
 import { existsSync, promises } from 'node:fs'
 import type { FileHandle } from 'node:fs/promises'
 import type { Stream } from 'node:stream'
+import path from 'node:path'
 
 /**
  * 进程参数
@@ -61,6 +62,14 @@ function getCPUArch(): NodeJS.Architecture {
 }
 
 /**
+ * 路径拼接
+ * - path.join()
+ */
+function pathJoin(...paths: string[]): string {
+  return path.join(...paths)
+}
+
+/**
  * 进程退出
  */
 function exitProcess(exitCode?: number): void {
@@ -94,6 +103,7 @@ async function writeFileByUTF8(filePath: PathLike | FileHandle, data:
 }
 
 export interface IVipNodeJS {
+  // process
   getProcessFirstArgv: typeof getProcessFirstArgv
   getProcessArgv: typeof getProcessArgv
   getCPUArch: typeof getCPUArch
@@ -103,9 +113,14 @@ export interface IVipNodeJS {
   getProcessCwd: typeof getProcessCwd
   getProcessVersions: typeof getProcessVersions
   exitProcess: typeof exitProcess
+
+  // fs
   exitPath: typeof exitPath
   readFileToStrByUTF8: typeof readFileToStrByUTF8
   writeFileByUTF8: typeof writeFileByUTF8
+
+  // path
+  pathJoin: typeof pathJoin
 }
 
 export const VipNodeJS: IVipNodeJS = {
@@ -121,4 +136,5 @@ export const VipNodeJS: IVipNodeJS = {
   exitPath,
   readFileToStrByUTF8,
   writeFileByUTF8,
+  pathJoin,
 }

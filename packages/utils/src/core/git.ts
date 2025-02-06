@@ -1,9 +1,5 @@
-import { execSync } from 'node:child_process'
-import semver from 'semver'
-
-function execCommand(cmd: string, cwd?: string) {
-  return execSync(cmd, { encoding: 'utf8', cwd }).trim()
-}
+import { VipSemver } from '../pkgs'
+import { VipExecutor } from './exec'
 
 /**
  * Git提交信息
@@ -18,7 +14,7 @@ export interface GitInfo {
  * - 提交信息
  */
 function getRecentCommit(): GitInfo {
-  const gitLog = execCommand('git log --no-merges -1 --pretty=format:"%h||%s"')
+  const gitLog = VipExecutor.execCommandSync('git log --no-merges -1 --pretty=format:"%h||%s"')
 
   // 分割输出字符串以获取哈希值和消息
   const [commitHash, ...commitMessage] = gitLog.split('||')
@@ -34,14 +30,14 @@ function getRecentCommit(): GitInfo {
  * 获取最近一次提交的哈希值
  */
 function getFirstCommitHash(): string {
-  return execCommand('git rev-list --max-parents=0 HEAD')
+  return VipExecutor.execCommandSync('git rev-list --max-parents=0 HEAD')
 }
 
 /**
  * 获取github仓库
  */
 function getGitHubRepo(baseUrl: string): string {
-  const url = execCommand('git config --get remote.origin.url')
+  const url = VipExecutor.execCommandSync('git config --get remote.origin.url')
   const escapedBaseUrl = baseUrl.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
   const regex = new RegExp(`${escapedBaseUrl}[\/:]([\\w\\d._-]+?)\\/([\\w\\d._-]+?)(\\.git)?$`, 'i')
   const match = regex.exec(url)
@@ -54,21 +50,21 @@ function getGitHubRepo(baseUrl: string): string {
  * 获取当前分支
  */
 function getCurrentBranch(): string {
-  return execCommand('git rev-parse --abbrev-ref HEAD')
+  return VipExecutor.execCommandSync('git rev-parse --abbrev-ref HEAD')
 }
 
 /**
  * 判断仓库是否克隆太浅
  */
 function isRepoShallow(): boolean {
-  return execCommand('git rev-parse --is-shallow-repository') === 'true'
+  return VipExecutor.execCommandSync('git rev-parse --is-shallow-repository') === 'true'
 }
 
 /**
  * 获取所有tag标签
  */
 function getTags(): string[] {
-  const tagStr = execCommand('git --no-pager tag -l --sort=creatordate')
+  const tagStr = VipExecutor.execCommandSync('git --no-pager tag -l --sort=creatordate')
   return tagStr.split('\n').reverse()
 }
 
@@ -77,8 +73,8 @@ function getTags(): string[] {
  */
 export function getLastMatchingTag(inputTag: string): string | undefined {
   const inputTagWithoutPrefix = inputTag.replace(/^v/, '')
-  const isVersion = semver.valid(inputTagWithoutPrefix) !== null
-  const isPrerelease = semver.prerelease(inputTag) !== null
+  const isVersion = VipSemver.valid(inputTagWithoutPrefix) !== null
+  const isPrerelease = VipSemver.prerelease(inputTag) !== null
   const tags = getTags()
 
   let tag: string | undefined
@@ -88,8 +84,8 @@ export function getLastMatchingTag(inputTag: string): string | undefined {
       const tagWithoutPrefix = tag.replace(/^v/, '')
 
       return tagWithoutPrefix !== inputTagWithoutPrefix
-        && semver.valid(tagWithoutPrefix) !== null
-        && semver.prerelease(tagWithoutPrefix) === null
+        && VipSemver.valid(tagWithoutPrefix) !== null
+        && VipSemver.prerelease(tagWithoutPrefix) === null
     })
   }
 
@@ -103,6 +99,29 @@ function isPrerelease(version: string): boolean {
   return !/^[^.]*(?:\.[\d.]*|\d)$/.test(version)
 }
 
+/**
+ * 提交操作
+ */
+function execCommit(args: string[]): void {
+  VipExecutor.execCommandSync(`git commit ${args.join(' ')}`)
+}
+
+/**
+ * 标签操作
+ */
+function execTag(args: string[]): void {
+  VipExecutor.execCommandSync(`git tag ${args.join(' ')}`)
+}
+
+/**
+ * 推送操作
+ * - 推送分支
+ * - 推送tag标签  --tags
+ */
+function execPush(args: string[]): void {
+  VipExecutor.execCommandSync(`git push ${args.join(' ')}`)
+}
+
 export interface IVipGit {
   getRecentCommit: typeof getRecentCommit
   getFirstCommitHash: typeof getFirstCommitHash
@@ -112,6 +131,9 @@ export interface IVipGit {
   getTags: typeof getTags
   getLastMatchingTag: typeof getLastMatchingTag
   isPrerelease: typeof isPrerelease
+  execCommit: typeof execCommit
+  execTag: typeof execTag
+  execPush: typeof execPush
 }
 
 export const VipGit: IVipGit = {
@@ -123,4 +145,7 @@ export const VipGit: IVipGit = {
   getTags,
   getLastMatchingTag,
   isPrerelease,
+  execCommit,
+  execTag,
+  execPush,
 }
