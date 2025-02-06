@@ -43,7 +43,7 @@
   },
   "dependencies": {
     "@142vip/utils": "workspace:*",
-    "egg": "3.29.0",
+    "egg": "3.30.1",
     "egg-scripts": "3",
     "ioredis": "5.4.2",
     "sequelize": "6.37.5"
