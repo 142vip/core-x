@@ -55,7 +55,7 @@
     "changelogen": "0.5.5",
     "convert-gitmoji": "0.1.5",
     "ofetch": "1.3.4",
-    "semver": "7.6.2"
+    "semver": "7.7.1"
   },
   "publishConfig": {
     "access": "public",
