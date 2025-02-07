@@ -347,8 +347,8 @@ importers:
   packages/oauth:
     dependencies:
       dayjs:
-        specifier: 1.11.11
-        version: 1.11.11
+        specifier: 1.11.13
+        version: 1.11.13
 
   packages/redis:
     dependencies:
@@ -4357,9 +4357,6 @@ packages:
 
   dateformat@4.6.3:
     resolution: {integrity: sha512-2P0p0pFGzHS5EMnhdxQi7aJN+iMheud0UhG4dlE1DLAlvL8JHjJJTX/CSm4JXwV0Ka5nGk3zC5mcb5bUQUxxMA==}
-
-  dayjs@1.11.11:
-    resolution: {integrity: sha512-okzr3f11N6WuqYtZSvm+F776mB41wRZMhKP+hc34YdW+KmtYYK9iqvHSwo2k9FEH3fhGXvOPV6yz2IcSrfRUDg==}
 
   dayjs@1.11.13:
     resolution: {integrity: sha512-oaMBel6gjolK862uaPQOVTA7q3TZhuSvuMQAAglQDOWYO9A91IrAOUJEyKVlqJlHE0vq5p5UXxzdPfMH/x6xNg==}
@@ -13696,8 +13693,6 @@ snapshots:
   data-uri-to-buffer@4.0.1: {}
 
   dateformat@4.6.3: {}
-
-  dayjs@1.11.11: {}
 
   dayjs@1.11.13: {}
 

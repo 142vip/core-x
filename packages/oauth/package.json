@@ -37,7 +37,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "dayjs": "1.11.11"
+    "dayjs": "1.11.13"
   },
   "publishConfig": {
     "access": "public",
