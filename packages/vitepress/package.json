@@ -61,6 +61,6 @@
   },
   "devDependencies": {
     "mkdist": "2.2.0",
-    "unplugin-element-plus": "0.9.0"
+    "unplugin-element-plus": "0.9.1"
   }
 }
