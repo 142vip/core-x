@@ -3,6 +3,7 @@ import { defineUserConfig } from '@vuepress/cli'
 import { getDirname, path } from '@vuepress/utils'
 import { hopeTheme } from 'vuepress-theme-hope'
 import viteBundler from '@vuepress/bundler-vite'
+import { getDocSiteBase } from '@142vip/utils'
 import {
   exampleHeaders,
   getCopyRightText,
@@ -10,8 +11,6 @@ import {
   getThemeConfig,
   getViteBundler,
 } from '@142vip/vuepress'
-import { getDocSiteBase } from '@142vip/utils'
-
 import { navbarConfig, sidebarConfig } from './docs/theme.config'
 
 const pkg = createRequire(import.meta.url)('./package.json')

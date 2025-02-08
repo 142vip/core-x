@@ -1,18 +1,18 @@
 {
   "compileOnSave": true,
   "compilerOptions": {
-    "target": "es2018",
+    "target": "ESNext",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "baseUrl": ".",
+    "baseUrl": "./",
     "module": "commonjs",
     "moduleResolution": "node",
     "paths": {
       "@theme/*": [
         ".vitepress/theme/*"
       ],
-      "@packages/*": [
-        "packages/*"
+      "@142vip/*": [
+        "packages/*/src"
       ]
     },
     "typeRoots": [
@@ -30,6 +30,10 @@
     "skipLibCheck": true,
     "pretty": true
   },
+  "include": [
+    "apps",
+    "packages"
+  ],
   "exclude": [
     "dist",
     "node_modules",

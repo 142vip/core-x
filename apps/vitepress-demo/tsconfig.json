@@ -1,35 +1,5 @@
 {
-  "compileOnSave": true,
-  "compilerOptions": {
-    "target": "es2018",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "baseUrl": ".",
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "paths": {
-      "@theme/*": [
-        ".vitepress/theme/*"
-      ],
-      "@packages/*": [
-        "packages/*"
-      ]
-    },
-    "typeRoots": [
-      "./typings",
-      "./node_modules/@types"
-    ],
-    "strictNullChecks": true,
-    "noImplicitThis": true,
-    "noUnusedLocals": true,
-    "declaration": true,
-    "inlineSourceMap": true,
-    "stripInternal": true,
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true,
-    "pretty": true
-  },
+  "extends": "../../tsconfig.package.json",
   "exclude": [
     "dist",
     "node_modules",
