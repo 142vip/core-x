@@ -20,6 +20,20 @@ function getProcessFirstArgv(): string {
 }
 
 /**
+ * 根据索引获取进程参数
+ * node process-args.js one two=three four
+ * Would generate the output:
+ * 0: /usr/local/bin/node
+ * 1: /Users/mjr/work/node/process-args.js
+ * 2: one
+ * 3: two=three
+ * 4: fou
+ */
+function getProcessArgvByIndex(index: number): string {
+  return process.argv[index]
+}
+
+/**
  * 进程环境变量
  */
 function getProcessEnv(key: string): string | undefined {
@@ -105,6 +119,7 @@ async function writeFileByUTF8(filePath: PathLike | FileHandle, data:
 export const VipNodeJS = {
   getProcessFirstArgv,
   getProcessArgv,
+  getProcessArgvByIndex,
   getCPUArch,
   setProcessEnv,
   getProcessEnv,

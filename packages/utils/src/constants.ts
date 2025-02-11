@@ -32,6 +32,16 @@ export enum OPEN_SOURCE_ADDRESS {
   LICENCE_OAUTH = 'https://github.com/142vip/142vip-oauth/blob/main/LICENSE',
 }
 
+export interface VipAuthorInfo {
+  name: string
+  email: string
+  url: string
+  homePage: string
+  github: string
+  githubVip: string
+  gitee: string
+}
+
 /**
  * 开源作者
  */

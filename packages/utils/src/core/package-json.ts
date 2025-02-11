@@ -1,3 +1,4 @@
+import { createRequire } from 'node:module'
 import type { VipSemverReleaseType } from '@142vip/utils'
 import {
   VipConsole,
@@ -85,6 +86,12 @@ async function replaceOrAddToJSON(json: Record<string, unknown>, cwd?: string) {
   await VipNodeJS.writeFileByUTF8(pkgPath, VipJSON.stringify(pkgJSON))
 }
 
+function getPackageJSON<T>(cwd?: string): T & PackageJsonMainFest {
+  const pkgPath = isExistPackageJSON(cwd)
+  const pkg = createRequire(import.meta.url)(pkgPath)
+  return pkg as T & PackageJsonMainFest
+}
+
 /**
  * 判断package.json是否存在，存在则返回绝对路径
  */
@@ -133,4 +140,5 @@ export const VipPackageJSON = {
   isExistPackageJSON,
   isPackageJSON,
   replaceOrAddToJSON,
+  getPackageJSON,
 }
