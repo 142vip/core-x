@@ -1,9 +1,8 @@
-import { createRequire } from 'node:module'
 import { defineUserConfig } from '@vuepress/cli'
 import { getDirname, path } from '@vuepress/utils'
 import { hopeTheme } from 'vuepress-theme-hope'
 import viteBundler from '@vuepress/bundler-vite'
-import { getDocSiteBase } from '@142vip/utils'
+import { OPEN_SOURCE_AUTHOR, VipPackageJSON, getDocSiteBase } from '@142vip/utils'
 import {
   exampleHeaders,
   getCopyRightText,
@@ -13,7 +12,7 @@ import {
 } from '@142vip/vuepress'
 import { navbarConfig, sidebarConfig } from './docs/theme.config'
 
-const pkg = createRequire(import.meta.url)('./package.json')
+const pkg = VipPackageJSON.getPackageJSON()
 
 export default defineUserConfig({
   base: getDocSiteBase(''),
@@ -53,7 +52,7 @@ export default defineUserConfig({
       version: pkg.version,
     }),
     // 版权
-    copyright: getCopyRightText(pkg.authorInfo.name),
+    copyright: getCopyRightText(OPEN_SOURCE_AUTHOR.name),
     // 仓库
     repo: '142vip/core-x/tree/next/packages/vuepress',
     repoLabel: 'GitHub',
