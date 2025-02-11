@@ -70,9 +70,8 @@ function getTags(): string[] {
 /**
  * 获取指向当前提交（HEAD）的所有标签
  */
-function getTagsInHead(): string[] {
-  const tagStrInHead = VipExecutor.execCommandSync('git tag --points-at HEAD')
-  return tagStrInHead.split('\n').reverse()
+function getTagInHead(): string {
+  return VipExecutor.execCommandSync('git tag --points-at HEAD')
 }
 
 /**
@@ -136,7 +135,7 @@ export const VipGit = {
   getCurrentBranch,
   isRepoShallow,
   getTags,
-  getTagsInHead,
+  getTagInHead,
   getLastMatchingTag,
   isPrerelease,
   execCommit,

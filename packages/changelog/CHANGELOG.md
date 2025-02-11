@@ -11,7 +11,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### 🐛 Bug Fixes
 
-- 修复changelog命令，参数解析异常 &nbsp;-&nbsp; by **chufan** [<samp>(5448b)</samp>](https://github.com/142vip/core-x/commit/5448b84)
 - 修复`monorepo`下提交记录生成异常 &nbsp;-&nbsp; by **chufan** [<samp>(058e1)</samp>](https://github.com/142vip/core-x/commit/058e189)
 
 **Release New Version v0.0.1-alpha.12 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/changelog)**
