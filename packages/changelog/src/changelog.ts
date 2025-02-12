@@ -31,12 +31,6 @@ export async function changelogGenerate(config: ChangelogGenerateOptions): Promi
   // 解析commit信息 todo 这里的参数类型需要明确
   const commits = parseCommits(rawCommits, config.scopeMap)
 
-  // 在monorepo模式下，去掉主目录下的更新
-  // 发布子模块时，需要考虑根模块迭代一个版本，子模块迭代多个版本但只需要记录一个版本，去掉release信息
-  if (config.scopeName != null) {
-    // commits = commits.filter(commit => !commit.message.includes(`release(${config.scopeName})`))
-  }
-
   // 添加贡献者
   if (config.contributors) {
     const token = VipNodeJS.getProcessEnv('GITHUB_TOKEN') || VipNodeJS.getProcessEnv('TOKEN')
