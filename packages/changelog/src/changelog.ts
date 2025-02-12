@@ -29,12 +29,12 @@ export async function changelogGenerate(config: ChangelogGenerateOptions): Promi
   })
 
   // 解析commit信息 todo 这里的参数类型需要明确
-  let commits = parseCommits(rawCommits, config.scopeMap)
+  const commits = parseCommits(rawCommits, config.scopeMap)
 
   // 在monorepo模式下，去掉主目录下的更新
   // 发布子模块时，需要考虑根模块迭代一个版本，子模块迭代多个版本但只需要记录一个版本，去掉release信息
   if (config.scopeName != null) {
-    commits = commits.filter(commit => !commit.message.includes(`release(${config.scopeName})`))
+    // commits = commits.filter(commit => !commit.message.includes(`release(${config.scopeName})`))
   }
 
   // 添加贡献者
@@ -191,13 +191,39 @@ export async function generateMarkdown(commits: Commit[], options: {
     )
   }
 
-  const changes = commits.filter(c => !c.isBreaking)
+  let changes = commits.filter(c => !c.isBreaking)
+
+  if (options.scopeName != null) {
+    // 遇到第一个release就跳出，避免重复记录版本
+    const commitsInScopeName: Commit[] = []
+
+    for (const commit of commits) {
+      if (commit.type === 'release') {
+        break
+      }
+      commitsInScopeName.push(commit)
+    }
+    changes = commitsInScopeName
+  }
+
   // 普通提交
   const group = VipLodash.groupBy(changes, 'type')
-  for (const type of Object.keys(options.types)) {
-    const items = group[type] || []
+
+  let commitTypes = Object.keys(options.types)
+
+  // monorepo的子模块，不记录release信息
+  if (options.scopeName != null) {
+    commitTypes = commitTypes.filter(type => type !== 'release')
+  }
+  for (const type of commitTypes) {
+    // 子模块时，不记录发布信息
+    if (options.scopeName != null && type === 'release') {
+      break
+    }
+
+    const commitsByType = group[type] || []
     lines.push(
-      ...MarkdownAPI.formatSection(items, {
+      ...MarkdownAPI.formatSection(commitsByType, {
         emoji: options.emoji,
         group: options.group,
         scopeName: options.scopeName,

@@ -19,7 +19,7 @@ async function changelogHandler(cliOptions: ChangelogCliOptions): Promise<void> 
 
     const changelogConfig = await mergeConfig(cliOptions)
 
-    console.log(111, changelogConfig)
+    console.log('changelogConfig:', changelogConfig)
     const { markdown, commits, releaseUrl } = await changelogGenerate(changelogConfig)
 
     VipConsole.log(`${VipColor.cyan(changelogConfig.from)} ${VipColor.dim(' -> ')} ${VipColor.blue(changelogConfig.to)} ${VipColor.dim(` (${commits.length} commits)`)}`)
@@ -30,8 +30,14 @@ async function changelogHandler(cliOptions: ChangelogCliOptions): Promise<void> 
 
     // 试运行
     if (changelogConfig.dryRun) {
-      VipConsole.log(VipColor.yellow('试运行。已跳过版本发布。'))
-      GithubAPI.printReleaseUrl(releaseUrl)
+      if (changelogConfig.scopeName != null) {
+        // 子模块，不触发github release发布地址
+        VipConsole.log(VipColor.yellow('Monorepo模式的NPM包发布。不触发github release发布地址\n'))
+      }
+      else {
+        VipConsole.log(VipColor.yellow('试运行。已跳过版本发布'))
+        GithubAPI.printReleaseUrl(releaseUrl)
+      }
       return
     }
 

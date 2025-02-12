@@ -92,6 +92,12 @@ function formatSection(commits: Commit[], options: {
   if (!commits.length)
     return []
 
+  // monorepo模式下，不显示Release记录
+  if (options.scopeName != null) {
+    // 过滤出只包含子模块的提交记录
+    commits = commits.filter(commit => commit.scope === options.scopeName)
+  }
+
   // 注意空行
   const lines: string[] = ['', formatTitle(options.sectionName, options.emoji), '']
 
@@ -105,12 +111,14 @@ function formatSection(commits: Commit[], options: {
     if (scopes[options.scopeName] == null) {
       return []
     }
-    // lines里每条记录就是一次commit提交
-    lines.push(
-      ...scopes[options.scopeName]
-        .reverse()
-        .map(commit => `- ${formatLine(commit, VipLodash.pick(options, 'baseUrl', 'repo', 'capitalize'))}`),
-    )
+    // lines里每条记录就是一次commit提交，第一次遇到release(xxx)跳出，避免记录别的版本
+    const commits = scopes[options.scopeName].reverse()
+    for (const commit of commits) {
+      if (commit.type === 'release') {
+        break
+      }
+      lines.push(`- ${formatLine(commit, VipLodash.pick(options, 'baseUrl', 'repo', 'capitalize'))}`)
+    }
   }
   // root dir 普通模式
   else {
