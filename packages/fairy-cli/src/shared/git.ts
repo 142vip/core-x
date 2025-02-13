@@ -4,14 +4,6 @@ import path from 'node:path'
 import { readFileSync } from 'node:fs'
 
 /**
- * 获取当前分支名
- */
-export function getBranchName(): string {
-  const command = 'git rev-parse --abbrev-ref HEAD'
-  return execSync(command).toString().trim()
-}
-
-/**
  * 获取仓库的最新tag
  * - 优先从package.json中获取version
  * - version对应的tag不存在时，再从git记录中获取最新tag

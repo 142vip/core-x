@@ -1,10 +1,9 @@
 import type { VersionBumpOptions } from '@142vip/release-version'
 import { versionBump } from '@142vip/release-version'
 import type { VipCommander } from '@142vip/utils'
-import { VipColor, VipConsole, VipInquirer, VipNodeJS } from '@142vip/utils'
+import { VipColor, VipConsole, VipGit, VipInquirer, VipNodeJS } from '@142vip/utils'
 import {
   CliCommandEnum,
-  getBranchName,
   getPackageListInMonorepo,
   getReleasePkgJSON,
   printPreCheckRelease,
@@ -24,17 +23,6 @@ interface VipReleaseExtraOptions {
 }
 
 const defaultRepoName = 'main'
-
-/**
- * - 注意：
- * VersionBumpOptions中的files用来指定package.json文件路径
- * @param options
- */
-// export async function releaseVersion(options: VersionBumpOptions) {
-//   // const defaultOptions = {}
-//   await versionBump(options)
-// }
-
 /**
  * 版本发布
  */
@@ -116,31 +104,28 @@ function execVipRelease(args: VipReleaseExtraOptions): void {
 export async function releaseMain(program: VipCommander): Promise<void> {
   program
     .command(CliCommandEnum.RELEASE)
-    .description('release npm version')
-    .option('--push', 'registry address', true)
+    .description('发布NPM包，更新版本信息')
+    .option('--push', '推送到Git远程(默认: true)', true)
     .option('--preid <preid>', 'ID for prerelease')
-    .option('--commit <msg>', 'Commit message', false)
-    .option('--tag <tag>', 'Tag name', false)
-    .option('--skip-confirm', `Skip confirmation (default: false)`, false)
-    .option('-r, --recursive', `Bump package.json files recursively (default: false)`, false)
+    .option('--commit <msg>', '提交信息(默认: false)', false)
+    .option('--tag <tag>', '标签名(默认: false)', false)
+    .option('--skip-confirm', `跳过确认框二次确认 (默认: false)`, false)
+    .option('-r, --recursive', `递归更新所有package.json中的version字段信息(默认: false)`, false)
     .option('--execute <command>', '版本更新后需要执行的命令')
     .option('--package <package>', '指定需要发布的包')
-    .option('--branch <branch>', '指定分支进行发布')
-    .option('--check-release', '发布仓库主版本时，校验monorepo中子模块版本', false)
+    .option('--branch <branch>', '指定分支进行发布(默认分支：next)', 'next')
+    .option('--check-release', '发布仓库主版本时，校验Monorepo中子模块版本(默认: false)', false)
+    .option('--vip', '@142vip组织专用功能(默认: false)', false)
     .option('-F, --filter <filter>', '模块的路径，例如："./package/*"', (value: string, previous: string[]) => {
       if (!value)
         return [value]
       return previous.concat(value)
     }, [])
-    .option('--vip', '是否为@142vip组织专用功能', false)
     .action(async (args: ReleaseOptions & VipReleaseExtraOptions) => {
-      // 发布时校验分支
-      if (args.branch != null) {
-        const branchName = getBranchName()
-        if (branchName !== args.branch) {
-          VipConsole.log(`当前分支是：${branchName} ，版本迭代允许在next分支操作，并推送到远程！！！`)
-          return VipNodeJS.exitProcess(0)
-        }
+      // 发布时校验分支，避免误操作
+      if (VipGit.getCurrentBranch() !== args.branch) {
+        VipConsole.log(VipColor.red(`当前分支是：${VipGit.getCurrentBranch()} ，版本迭代允许在${args.branch}分支操作，并推送到远程！！！`))
+        return VipNodeJS.exitProcess(0)
       }
 
       // @142vip 组织专用Release
@@ -150,8 +135,8 @@ export async function releaseMain(program: VipCommander): Promise<void> {
           filter: args.filter,
         })
       }
+      // 普通release
       else {
-        // 普通release
         await execNormalRelease(args)
       }
     })
