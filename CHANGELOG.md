@@ -52,7 +52,7 @@ All notable changes to this project will be documented in this file. See [commit
   - Publish `v0.0.1-alpha.18` &nbsp;-&nbsp; by **chufan** [<samp>(7b314)</samp>](https://github.com/142vip/core-x/commit/7b31482)
   - Publish `v0.0.1-alpha.19` &nbsp;-&nbsp; by **chufan** [<samp>(92075)</samp>](https://github.com/142vip/core-x/commit/9207535)
 
-**Release New Version  [👉 View Changes On GitHub](https://github.com/142vip/core-x/compare/v0.0.1-alpha.22...)**
+**Release New Version v0.0.1-alpha.23 [👉 View Changes On GitHub](https://github.com/142vip/core-x/compare/v0.0.1-alpha.22...v0.0.1-alpha.23)**
 
 ## v0.0.1-alpha.22 (2025-02-07)
 

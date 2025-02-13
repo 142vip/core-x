@@ -245,7 +245,7 @@ export async function generateMarkdown(commits: Commit[], options: {
         baseUrl: options.baseUrl,
         repo: options.repo,
         fromVersion: options.from,
-        toVersion: options.to,
+        toVersion: options.name,
       }))
     }
   }
