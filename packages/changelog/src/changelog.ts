@@ -191,8 +191,8 @@ export async function generateMarkdown(commits: Commit[], options: {
     // 遇到第一个release就跳出，避免重复记录版本
     const commitsInScopeName: Commit[] = []
 
-    for (const commit of commits) {
-      if (commit.type === 'release') {
+    for (const commit of changes) {
+      if (commit.type === 'release' && commit.scope === options.scopeName) {
         break
       }
       commitsInScopeName.push(commit)
