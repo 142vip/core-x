@@ -6,6 +6,8 @@
       "DOM",
       "ESNext"
     ],
+    "emitDecoratorMetadata": true, // 启用装饰器元数据
+    "experimentalDecorators": true, // 启用装饰器
     "baseUrl": "./",
     "module": "ESNext",
     "moduleResolution": "node",
