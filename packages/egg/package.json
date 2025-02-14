@@ -23,6 +23,12 @@
     "@142vip/egg",
     "egg"
   ],
+  "authorInfo": {
+    "name": "微信公众号：储凡",
+    "email": "fairy_vip@2925.com",
+    "url": "https://github.com/142vip",
+    "homePage": "https://142vip.cn"
+  },
   "sideEffects": false,
   "exports": {
     ".": {

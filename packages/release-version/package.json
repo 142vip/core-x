@@ -46,6 +46,12 @@
     "build": "unbuild",
     "typecheck": "tsc --noEmit"
   },
+  "authorInfo": {
+    "name": "微信公众号：储凡",
+    "email": "fairy_vip@2925.com",
+    "url": "https://github.com/142vip",
+    "homePage": "https://142vip.cn"
+  },
   "dependencies": {
     "@142vip/changelog": "workspace:*",
     "@142vip/utils": "workspace:*",

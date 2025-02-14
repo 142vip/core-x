@@ -11,6 +11,12 @@
     "cov": "egg-bin cov",
     "ci": "npm run lint && npm run cov"
   },
+  "authorInfo": {
+    "name": "微信公众号：储凡",
+    "email": "fairy_vip@2925.com",
+    "url": "https://github.com/142vip",
+    "homePage": "https://142vip.cn"
+  },
   "dependencies": {
     "@142vip/egg-mysql": "workspace:*",
     "egg": "3.17.5",

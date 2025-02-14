@@ -10,16 +10,16 @@
 import {
   OPEN_SOURCE_ADDRESS,
   OPEN_SOURCE_AUTHOR,
-  VipGit,
   VipDocker,
+  VipGit,
   VipNodeJS,
-  VipPackageJSON
+  VipPackageJSON,
 } from '@142vip/utils'
 
 (async () => {
   try {
     // 获取package.json文件
-    const {name,version,description,authorInfo} =VipPackageJSON.getPackageJSON()
+    const { name, version, description } = VipPackageJSON.getPackageJSON()
 
     // 镜像地址
     const imageName = `${OPEN_SOURCE_ADDRESS.DOCKER_ALIYUNCS_VIP}/docs:${name.split('/')[1]}-${version}`
