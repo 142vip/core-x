@@ -46,7 +46,7 @@
     "homePage": "https://142vip.cn"
   },
   "peerDependencies": {
-    "@vue/repl": "4.5.0",
+    "@vue/repl": "4.5.1",
     "@vuepress/bundler-vite": "2.0.0-rc.19",
     "@vuepress/plugin-markdown-image": "2.0.0-rc.30",
     "@vuepress/plugin-markdown-tab": "2.0.0-rc.47",
