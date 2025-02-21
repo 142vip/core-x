@@ -1,5 +1,5 @@
-import { VipLodash } from '@142vip/utils'
 import type { CreatePluginInstance, EggApp } from '../egg.interface'
+import { VipLodash } from '@142vip/utils'
 
 /**
  * 注册的Egg插件key

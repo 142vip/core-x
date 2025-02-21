@@ -1,6 +1,6 @@
 import type { VersionBumpOptions } from '@142vip/release-version'
-import { versionBump } from '@142vip/release-version'
 import type { VipCommander } from '@142vip/utils'
+import { versionBump } from '@142vip/release-version'
 import { VipColor, VipConsole, VipGit, VipInquirer, VipNodeJS } from '@142vip/utils'
 import {
   CliCommandEnum,

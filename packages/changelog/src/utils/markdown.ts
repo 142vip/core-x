@@ -1,6 +1,6 @@
-import { VipLodash } from '@142vip/utils'
 import type { Commit } from '../changelog.interface'
 import type { Reference } from '../git'
+import { VipLodash } from '@142vip/utils'
 import { GitCommitMessageType } from '../git'
 
 function formatReferences(references: Reference[], baseUrl: string, github: string, type: 'issues' | 'hash'): string {

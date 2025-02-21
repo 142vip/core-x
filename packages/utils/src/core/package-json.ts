@@ -1,5 +1,5 @@
-import { createRequire } from 'node:module'
 import type { VipSemverReleaseType } from '@142vip/utils'
+import { createRequire } from 'node:module'
 import {
   VipConsole,
   VipExecutor,

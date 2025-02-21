@@ -21,8 +21,7 @@ export interface VipLoggerOptions {
  */
 export class VipLogger {
   private static logger: VipLogger
-  constructor(_opts?: VipLoggerOptions) {
-  }
+  constructor(_opts?: VipLoggerOptions) { }
 
   public static getInstance(opts?: VipLoggerOptions): VipLogger {
     if (this.logger == null) {

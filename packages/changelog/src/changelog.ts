@@ -1,3 +1,4 @@
+import type { ChangelogGenerateOptions, Commit } from './changelog.interface'
 import {
   HttpMethod,
   VipColor,
@@ -8,9 +9,8 @@ import {
 } from '@142vip/utils'
 import { convert } from 'convert-gitmoji'
 import { $fetch } from 'ofetch'
-import { GithubAPI, MarkdownAPI } from './utils'
-import type { ChangelogGenerateOptions, Commit } from './changelog.interface'
 import { getGitDiff, parseCommits } from './git'
+import { GithubAPI, MarkdownAPI } from './utils'
 
 interface ChangelogGenerate {
   config: ChangelogGenerateOptions

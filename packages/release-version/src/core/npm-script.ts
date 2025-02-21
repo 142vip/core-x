@@ -1,10 +1,10 @@
-import { VipExecutor } from '@142vip/utils'
 import type { NpmScript } from '../types'
+import type { Manifest } from './manifest'
+import type { Operation } from './operation'
+import { VipExecutor } from '@142vip/utils'
 import { ProgressEvent } from '../types'
 import { readJsonFile } from './fs'
-import type { Manifest } from './manifest'
 import { isManifest } from './manifest'
-import type { Operation } from './operation'
 
 /**
  * 执行package.json文件中的scripts中配置的钩子函数

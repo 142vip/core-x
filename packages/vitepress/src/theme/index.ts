@@ -1,9 +1,9 @@
-import DefaultTheme from 'vitepress/theme'
 import type { EnhanceAppContext } from 'vitepress/dist/client'
-import { ElBacktop, ElImage, ElTable, ElTableColumn, ElTag } from 'element-plus'
-import type { Component } from 'vue'
-import { h } from 'vue'
 import type { Awaitable } from 'vitepress/types/shared'
+import type { Component } from 'vue'
+import { ElBacktop, ElImage, ElTable, ElTableColumn, ElTag } from 'element-plus'
+import DefaultTheme from 'vitepress/theme'
+import { h } from 'vue'
 import { VipBackTop } from '../components'
 
 /**

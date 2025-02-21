@@ -1,7 +1,7 @@
+import type { Operation } from './operation'
 import { valid as isValidVersion } from 'semver'
 import { readJsonFile } from './fs'
 import { isManifest } from './manifest'
-import type { Operation } from './operation'
 
 /**
  * 从package.json等文件中查找当前版本号。

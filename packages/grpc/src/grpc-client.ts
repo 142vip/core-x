@@ -1,7 +1,7 @@
-import grpc from '@grpc/grpc-js'
 import type { ServiceClient } from '@grpc/grpc-js/build/src/make-client'
-import { Singleton } from './singleton'
 import type { ServiceClaDefinition } from './grpc.interface'
+import grpc from '@grpc/grpc-js'
+import { Singleton } from './singleton'
 
 type GrpcServices = Map<string, ServiceClient>
 

@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { onMounted, ref } from 'vue'
 import {
   VipBackTop,
   VipContactAuthor,
@@ -7,6 +6,7 @@ import {
   VipTeam,
 } from '@142vip/vitepress/components'
 import { useData } from 'vitepress'
+import { onMounted, ref } from 'vue'
 
 const { isDark } = useData()
 const tableData = ref<any[]>([])

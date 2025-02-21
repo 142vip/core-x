@@ -1,7 +1,7 @@
 import { execSync } from 'node:child_process'
-import process from 'node:process'
-import path from 'node:path'
 import { readFileSync } from 'node:fs'
+import path from 'node:path'
+import process from 'node:process'
 
 /**
  * 获取仓库的最新tag

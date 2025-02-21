@@ -1,10 +1,10 @@
-import process from 'node:process'
-import fs from 'node:fs/promises'
-import fsSync from 'node:fs'
-import fg from 'fast-glob'
-import yaml from 'js-yaml'
 import type { VersionBumpOptions } from '../types'
 import type { ReleaseType } from './release-type'
+import fsSync from 'node:fs'
+import fs from 'node:fs/promises'
+import process from 'node:process'
+import fg from 'fast-glob'
+import yaml from 'js-yaml'
 import { isReleaseType } from './release-type'
 
 interface Interface {

@@ -1,9 +1,9 @@
-import process from 'node:process'
 import type { PathLike } from 'node:fs'
-import { existsSync, promises } from 'node:fs'
 import type { FileHandle } from 'node:fs/promises'
 import type { Stream } from 'node:stream'
+import { existsSync, promises } from 'node:fs'
 import path from 'node:path'
+import process from 'node:process'
 
 /**
  * 进程参数

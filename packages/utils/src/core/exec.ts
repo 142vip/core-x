@@ -1,5 +1,5 @@
-import * as childProcess from 'node:child_process'
 import { Buffer } from 'node:buffer'
+import * as childProcess from 'node:child_process'
 import { execSync } from 'node:child_process'
 import { VipColor, VipConsole, VipLogger, VipNodeJS } from '@142vip/utils'
 import { name, version } from '../../package.json'

@@ -1,5 +1,5 @@
-import { VipConsole, VipSymbols } from '@142vip/utils'
 import type { VersionBumpProgress } from '../types'
+import { VipConsole, VipSymbols } from '@142vip/utils'
 import { ProgressEvent } from '../types'
 
 /**

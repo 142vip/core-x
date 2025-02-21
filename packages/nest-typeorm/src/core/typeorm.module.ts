@@ -2,15 +2,15 @@ import type { DynamicModule, Provider } from '@nestjs/common'
 import type {
   TypeOrmModuleOptions,
 } from '@nestjs/typeorm'
-import {
-  TypeOrmModule,
-  getDataSourceToken,
-  getRepositoryToken,
-} from '@nestjs/typeorm'
 import type {
   TypeOrmModuleAsyncOptions,
 } from '@nestjs/typeorm/dist/interfaces/typeorm-options.interface'
 import type { DataSource } from 'typeorm'
+import {
+  getDataSourceToken,
+  getRepositoryToken,
+  TypeOrmModule,
+} from '@nestjs/typeorm'
 import { TYPEORM_CUSTOM_REPOSITORY } from './typeorm.constant'
 
 type EntitiesOrRepositories = (new (...args: any) => any)[]

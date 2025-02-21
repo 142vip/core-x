@@ -1,7 +1,7 @@
-import process from 'node:process'
-import fetch from 'node-fetch'
 import type { VipCommander } from '@142vip/utils'
+import process from 'node:process'
 import { HttpMethod, VipConsole, VipNodeJS } from '@142vip/utils'
+import fetch from 'node-fetch'
 import { CliCommandEnum } from '../shared'
 
 /**

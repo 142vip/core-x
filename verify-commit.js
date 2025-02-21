@@ -1,8 +1,8 @@
-import { VipColor, VipNodeJS } from '@142vip/utils'
 import {
   getReleasePkgJSON,
   verifyCommit,
 } from '@142vip/fairy-cli'
+import { VipColor, VipNodeJS } from '@142vip/utils'
 
 const verifyRes = verifyCommit()
 

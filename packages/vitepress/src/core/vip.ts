@@ -15,7 +15,7 @@ interface VipFooter {
 /**
  * 页脚
  */
-export const getVipFooter = function (params: FooterParams): VipFooter {
+export function getVipFooter(params: FooterParams): VipFooter {
   return {
     message: `The License <a href="${params.license}">📖 MIT </a>`,
     copyright: `

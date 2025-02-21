@@ -1,5 +1,5 @@
-const { defaultPluginConfig } = require('@142vip/egg')
 const { defaultRequestInterceptor, defaultResponseInterceptor } = require('@142vip/axios')
+const { defaultPluginConfig } = require('@142vip/egg')
 const { name: pkgName } = require('../package.json')
 
 module.exports = {

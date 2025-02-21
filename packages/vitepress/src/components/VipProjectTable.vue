@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-import { defineComponent } from 'vue'
 import {
   ElImage,
   ElTable,
   ElTableColumn,
   ElTag,
 } from 'element-plus'
+import { defineComponent } from 'vue'
 // import 'element-plus/dist/index.css'
 // 注意：这里手动导入样式
 import 'element-plus/theme-chalk/base.css'

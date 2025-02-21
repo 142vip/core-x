@@ -1,6 +1,6 @@
+import type { Operation } from './operation'
 import { VipExecutor } from '@142vip/utils'
 import { ProgressEvent } from '../types'
-import type { Operation } from './operation'
 
 /**
  * Commits the modififed files to Git, if the `commit` option is enabled.

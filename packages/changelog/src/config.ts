@@ -1,5 +1,5 @@
-import { VipGit, VipLodash } from '@142vip/utils'
 import type { ChangelogCliOptions, ChangelogGenerateOptions } from './changelog.interface'
+import { VipGit, VipLodash } from '@142vip/utils'
 
 /**
  * 默认配置

@@ -1,10 +1,10 @@
-import process from 'node:process'
-import prompts from 'prompts'
-import semver, { SemVer, clean as cleanVersion, valid as isValidVersion } from 'semver'
-import { bold, green } from 'kolorist'
 import type { BumpRelease, PromptRelease } from './normalize-options'
 import type { Operation } from './operation'
 import type { ReleaseType } from './release-type'
+import process from 'node:process'
+import { bold, green } from 'kolorist'
+import prompts from 'prompts'
+import semver, { clean as cleanVersion, valid as isValidVersion, SemVer } from 'semver'
 import { isPrerelease, releaseTypes } from './release-type'
 
 /**

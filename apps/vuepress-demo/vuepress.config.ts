@@ -1,8 +1,4 @@
-import { defineUserConfig } from '@vuepress/cli'
-import { getDirname, path } from '@vuepress/utils'
-import { hopeTheme } from 'vuepress-theme-hope'
-import viteBundler from '@vuepress/bundler-vite'
-import { OPEN_SOURCE_AUTHOR, VipPackageJSON, getDocSiteBase } from '@142vip/utils'
+import { getDocSiteBase, OPEN_SOURCE_AUTHOR, VipPackageJSON } from '@142vip/utils'
 import {
   exampleHeaders,
   getCopyRightText,
@@ -10,6 +6,10 @@ import {
   getThemeConfig,
   getViteBundler,
 } from '@142vip/vuepress'
+import viteBundler from '@vuepress/bundler-vite'
+import { defineUserConfig } from '@vuepress/cli'
+import { getDirname, path } from '@vuepress/utils'
+import { hopeTheme } from 'vuepress-theme-hope'
 import { navbarConfig, sidebarConfig } from './docs/theme.config'
 
 const pkg = VipPackageJSON.getPackageJSON()

@@ -1,10 +1,10 @@
-const { VipEggPluginLogger } = require('@142vip/egg')
-const { VipLodash } = require('@142vip/utils')
 const {
   createAxiosInstance,
   defaultRequestInterceptor,
   defaultResponseInterceptor,
 } = require('@142vip/axios')
+const { VipEggPluginLogger } = require('@142vip/egg')
+const { VipLodash } = require('@142vip/utils')
 
 /**
  * 创建egg-axios实例

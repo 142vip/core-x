@@ -1,6 +1,6 @@
-import { deleteAsync } from 'del'
 import type { VipCommander } from '@142vip/utils'
 import { VipInquirer, VipNodeJS } from '@142vip/utils'
+import { deleteAsync } from 'del'
 import { CliCommandEnum } from '../shared'
 
 /**

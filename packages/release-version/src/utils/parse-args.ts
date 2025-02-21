@@ -1,10 +1,10 @@
+import type { VersionBumpOptions } from '../types'
 import process from 'node:process'
-import { valid as isValidVersion } from 'semver'
 import cac from 'cac'
 import { yellow } from 'kolorist'
-import { isReleaseType } from '../core/release-type'
-import type { VersionBumpOptions } from '../types'
+import { valid as isValidVersion } from 'semver'
 import { name, version } from '../../package.json'
+import { isReleaseType } from '../core/release-type'
 import { ExitCodeEnum } from '../types'
 import { bumpConfigDefaults, loadBumpXConfig } from './config'
 

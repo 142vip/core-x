@@ -1,8 +1,8 @@
-import Redis from 'ioredis'
-import type { ClusterOptions } from 'ioredis/built/cluster/ClusterOptions'
 import type { ClusterNode } from 'ioredis/built/cluster'
 import type Cluster from 'ioredis/built/cluster'
+import type { ClusterOptions } from 'ioredis/built/cluster/ClusterOptions'
 import type { RedisOptions } from 'ioredis/built/redis/RedisOptions'
+import Redis from 'ioredis'
 
 /**
  * io-redis支持的连接模式

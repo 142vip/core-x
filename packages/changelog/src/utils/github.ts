@@ -1,6 +1,6 @@
-import { $fetch } from 'ofetch'
-import { VipColor, VipConsole, VipQs } from '@142vip/utils'
 import type { Commit, GitAuthorInfo } from '../changelog.interface'
+import { VipColor, VipConsole, VipQs } from '@142vip/utils'
+import { $fetch } from 'ofetch'
 
 function getHeaders(token: string) {
   return {

@@ -1,8 +1,8 @@
+import type { Operation } from './operation'
 import * as path from 'node:path'
 import { ProgressEvent } from '../types'
 import { readJsonFile, readTextFile, writeJsonFile, writeTextFile } from './fs'
 import { isManifest, isPackageLockManifest } from './manifest'
-import type { Operation } from './operation'
 
 /**
  * Updates the version number in the specified files.

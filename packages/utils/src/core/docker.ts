@@ -1,11 +1,9 @@
 import {
   VipExecutor,
-  VipLogger,
+  vipLogger,
   VipNodeJS,
   VipSymbols,
 } from '@142vip/utils'
-
-const vipLog = new VipLogger()
 
 interface DockerOptions {
   logger?: boolean
@@ -28,7 +26,7 @@ async function scriptExecutor(command: string) {
   try {
     const errorCode = await VipExecutor.commandStandardExecutor(command)
     if (errorCode !== 0) {
-      vipLog.error(`Error Code: ${errorCode}`, { startLabel: 'commandStandardExecutor' })
+      vipLogger.error(`Error Code: ${errorCode}`, { startLabel: 'commandStandardExecutor' })
       VipNodeJS.exitProcess(1)
     }
   }
@@ -90,14 +88,13 @@ async function isExistDocker(args?: DockerOptions) {
 
   // 打印日志
   if (args?.logger) {
-    const vipLog = new VipLogger()
     if (code === 0) {
-      vipLog.log(`检测到docker，版本信息：\n`, { startLabel: VipSymbols.success })
-      vipLog.log(stdout)
+      vipLogger.log(`检测到docker，版本信息：\n`, { startLabel: VipSymbols.success })
+      vipLogger.log(stdout)
     }
     else {
-      vipLog.log(`未检测到docker，请先安装!!\n`, { startLabel: VipSymbols.error })
-      vipLog.error(stderr)
+      vipLogger.log(`未检测到docker，请先安装!!\n`, { startLabel: VipSymbols.error })
+      vipLogger.error(stderr)
     }
   }
   return code === 0 && stdout.includes('Docker')
@@ -113,12 +110,12 @@ async function isExistDockerCompose(args?: DockerOptions) {
   // 打印日志
   if (args?.logger) {
     if (code === 0) {
-      vipLog.log(`检测到docker-compose，版本信息：\n`, { startLabel: VipSymbols.success })
-      vipLog.log(stdout)
+      vipLogger.log(`检测到docker-compose，版本信息：\n`, { startLabel: VipSymbols.success })
+      vipLogger.log(stdout)
     }
     else {
-      vipLog.log(`未检测到docker-compose，请先安装!!\n`, { startLabel: VipSymbols.error })
-      vipLog.error(stderr)
+      vipLogger.log(`未检测到docker-compose，请先安装!!\n`, { startLabel: VipSymbols.error })
+      vipLogger.error(stderr)
     }
   }
   return code === 0 && stdout.includes('Docker Compose')
@@ -158,10 +155,10 @@ async function buildImage(args: BuildImageDockerOptions) {
   const command = `docker build ${buildArg} ${targetParams} ${memoryParams} -t '${args.imageName}' .`
 
   if (args.logger) {
-    vipLog.log(`执行的命令：\n`, { startLabel: VipSymbols.success })
-    vipLog.log(`${command}\n`, { startLabel: VipSymbols.success })
+    vipLogger.log(`执行的命令：\n`, { startLabel: VipSymbols.success })
+    vipLogger.log(`${command}\n`, { startLabel: VipSymbols.success })
   }
-  vipLog.log(args.imageName, { startLabel: '构建镜像' })
+  vipLogger.log(args.imageName, { startLabel: '构建镜像' })
 
   await scriptExecutor(command)
 
@@ -169,14 +166,14 @@ async function buildImage(args: BuildImageDockerOptions) {
     const exist = await isExistImage(args.imageName)
 
     if (exist) {
-      vipLog.log(args.imageName, { startLabel: '推送镜像' })
+      vipLogger.log(args.imageName, { startLabel: '推送镜像' })
       await pushImage(args.imageName)
     }
   }
 
   // 推送完删除
   if (args.push && args.delete) {
-    vipLog.log(args.imageName, { startLabel: '删除镜像' })
+    vipLogger.log(args.imageName, { startLabel: '删除镜像' })
     await deleteImage(args.imageName)
   }
 }

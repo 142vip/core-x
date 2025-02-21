@@ -1,9 +1,9 @@
-import path from 'node:path'
-import { defineConfig } from 'vitepress'
-import { OPEN_SOURCE_ADDRESS, getDocSiteBase } from '@142vip/utils'
 import type { NavbarConfig, SidebarConfig } from '@142vip/vitepress'
+import path from 'node:path'
+import { getDocSiteBase, OPEN_SOURCE_ADDRESS } from '@142vip/utils'
 import { getVipFooter, zhSearch } from '@142vip/vitepress'
 import { getThemeConfig } from '@142vip/vuepress'
+import { defineConfig } from 'vitepress'
 import { name as pkgName, version as pkgVersion } from '../package.json'
 
 /**

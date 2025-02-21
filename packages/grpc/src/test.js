@@ -1,6 +1,6 @@
+const { GrpcClient } = require('@142vip/grpc')
 const { loadPackageDefinition } = require('@grpc/grpc-js')
 const { loadSync } = require('@grpc/proto-loader')
-const { GrpcClient } = require('@142vip/grpc')
 
 const packageDefinition = loadSync('./test.proto', {})
 const test = loadPackageDefinition(packageDefinition)

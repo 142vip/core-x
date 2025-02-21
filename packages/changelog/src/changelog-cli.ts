@@ -1,9 +1,9 @@
+import type { ChangelogCliOptions } from './changelog.interface'
 import { VipColor, VipCommander, VipConsole, VipGit, VipNodeJS } from '@142vip/utils'
 import { name as packageName, version as packageVersion } from '../package.json'
-import { GithubAPI } from './utils'
-import { mergeConfig } from './config'
 import { changelogGenerate, changelogUpdate, sendGithubRelease } from './changelog'
-import type { ChangelogCliOptions } from './changelog.interface'
+import { mergeConfig } from './config'
+import { GithubAPI } from './utils'
 
 /**
  * 处理changelog业务

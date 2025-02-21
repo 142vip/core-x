@@ -1,9 +1,9 @@
 import process from 'node:process'
 import { VipConsole } from '@142vip/utils'
 import { version as packageVersion } from '../package.json'
-import { errorHandler, parseArgs, showProgress } from './utils'
 import { versionBump } from './core/version-bump'
 import { ExitCodeEnum } from './types'
+import { errorHandler, parseArgs, showProgress } from './utils'
 
 /**
  * cli入口

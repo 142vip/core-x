@@ -1,9 +1,9 @@
-import type protoLoader from '@grpc/proto-loader'
 import type { GrpcObject } from '@grpc/grpc-js/build/src/make-client'
+import type protoLoader from '@grpc/proto-loader'
+import type { ServiceClaDefinition } from './grpc.interface'
 import { loadPackageDefinition } from '@grpc/grpc-js'
 import { loadSync } from '@grpc/proto-loader'
 import { Singleton } from './singleton'
-import type { ServiceClaDefinition } from './grpc.interface'
 
 /**
  * proto文件加载器
