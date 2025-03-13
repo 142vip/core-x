@@ -30,8 +30,8 @@ importers:
         specifier: 29.5.14
         version: 29.5.14
       '@types/lodash':
-        specifier: 4.17.15
-        version: 4.17.15
+        specifier: 4.17.16
+        version: 4.17.16
       '@types/node':
         specifier: 22.10.7
         version: 22.10.7
@@ -3000,6 +3000,9 @@ packages:
 
   '@types/lodash@4.17.15':
     resolution: {integrity: sha512-w/P33JFeySuhN6JLkysYUK2gEmy9kHHFN7E8ro0tkfmlDOgxBDzWEZ/J8cWA+fHqFevpswDTFZnDx+R9lbL6xw==}
+
+  '@types/lodash@4.17.16':
+    resolution: {integrity: sha512-HX7Em5NYQAXKW+1T+FiuG27NGwzJfCX3s1GjOa7ujxZa52kjJLOr4FUxT+giF6Tgxv1e+/czV/iTtBw27WTU9g==}
 
   '@types/markdown-it-emoji@3.0.1':
     resolution: {integrity: sha512-cz1j8R35XivBqq9mwnsrP2fsz2yicLhB8+PDtuVkKOExwEdsVBNI+ROL3sbhtR5occRZ66vT0QnwFZCqdjf3pA==}
@@ -12030,9 +12033,11 @@ snapshots:
 
   '@types/lodash-es@4.17.12':
     dependencies:
-      '@types/lodash': 4.17.15
+      '@types/lodash': 4.17.16
 
   '@types/lodash@4.17.15': {}
+
+  '@types/lodash@4.17.16': {}
 
   '@types/markdown-it-emoji@3.0.1':
     dependencies:
@@ -13422,7 +13427,7 @@ snapshots:
   callsite-record@4.1.5:
     dependencies:
       '@devexpress/error-stack-parser': 2.0.6
-      '@types/lodash': 4.17.15
+      '@types/lodash': 4.17.16
       callsite: 1.0.0
       chalk: 2.4.2
       highlight-es: 1.0.3
