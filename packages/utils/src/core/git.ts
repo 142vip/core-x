@@ -1,4 +1,5 @@
-import { VipExecutor, VipSemver } from '@142vip/utils'
+import { VipSemver } from '../pkgs'
+import { VipExecutor } from './exec'
 
 /**
  * Git提交信息

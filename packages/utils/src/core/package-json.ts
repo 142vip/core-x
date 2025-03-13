@@ -1,12 +1,8 @@
-import type { VipSemverReleaseType } from '@142vip/utils'
+import type { VipSemverReleaseType } from '../pkgs'
 import { createRequire } from 'node:module'
-import {
-  VipConsole,
-  VipExecutor,
-  VipJSON,
-  VipNodeJS,
-  VipSemver,
-} from '@142vip/utils'
+import { VipConsole, VipJSON, VipSemver } from '../pkgs'
+import { VipExecutor } from './exec'
+import { VipNodeJS } from './nodejs'
 
 /**
  * 执行脚本

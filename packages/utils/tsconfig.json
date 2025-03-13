@@ -3,6 +3,14 @@
   "include": [
     "src/**/*"
   ],
+  "compilerOptions": {
+    // 临时修复，避免循环引入
+    "paths": {
+//      "@142vip/*": [
+//        "packages/*/src"
+//      ]
+    }
+  },
   "exclude": [
     "node_modules",
     "dist"

@@ -1,9 +1,7 @@
-import {
-  VipExecutor,
-  vipLogger,
-  VipNodeJS,
-  VipSymbols,
-} from '@142vip/utils'
+import { VipSymbols } from '../pkgs'
+import { VipExecutor } from './exec'
+import { vipLogger } from './logger'
+import { VipNodeJS } from './nodejs'
 
 interface DockerOptions {
   logger?: boolean

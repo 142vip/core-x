@@ -1,8 +1,10 @@
 import { Buffer } from 'node:buffer'
 import * as childProcess from 'node:child_process'
 import { execSync } from 'node:child_process'
-import { VipColor, VipConsole, VipLogger, VipNodeJS } from '@142vip/utils'
 import { name, version } from '../../package.json'
+import { VipColor, VipConsole } from '../pkgs'
+import { VipLogger } from './logger'
+import { VipNodeJS } from './nodejs'
 
 type Command = string | string[]
 

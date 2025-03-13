@@ -1,6 +1,7 @@
 import type { PathLike } from 'node:fs'
 import type { FileHandle } from 'node:fs/promises'
 import type { Stream } from 'node:stream'
+import { Buffer } from 'node:buffer'
 import { existsSync, promises } from 'node:fs'
 import path from 'node:path'
 import process from 'node:process'
@@ -116,6 +117,10 @@ async function writeFileByUTF8(filePath: PathLike | FileHandle, data:
   return promises.writeFile(filePath, data, 'utf-8')
 }
 
+function isBuffer(data: object): boolean {
+  return Buffer.isBuffer(data)
+}
+
 export const VipNodeJS = {
   getProcessFirstArgv,
   getProcessArgv,
@@ -131,4 +136,5 @@ export const VipNodeJS = {
   readFileToStrByUTF8,
   writeFileByUTF8,
   pathJoin,
+  isBuffer,
 }
