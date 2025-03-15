@@ -27,10 +27,18 @@ function getRecentCommit(): GitInfo {
 }
 
 /**
- * 获取最近一次提交的哈希值
+ * 获取最近一次提交的完整哈希值
  */
-function getFirstCommitHash(): string {
-  return VipExecutor.execCommandSync('git rev-list --max-parents=0 HEAD')
+function getRecentCommitHash(): string {
+  return VipExecutor.execCommandSync('git rev-parse HEAD')
+}
+
+/**
+ * 获取最近一次提交的短哈希值
+ */
+function getRecentCommitShortHash(): string {
+  const hash = getRecentCommitHash()
+  return hash.substring(0, 6)
 }
 
 /**
@@ -131,7 +139,8 @@ function execPush(args: string[]): void {
 
 export const VipGit = {
   getRecentCommit,
-  getFirstCommitHash,
+  getRecentCommitHash,
+  getRecentCommitShortHash,
   getGitHubRepo,
   getCurrentBranch,
   isRepoShallow,
