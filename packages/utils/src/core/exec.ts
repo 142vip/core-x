@@ -123,7 +123,7 @@ export interface ShellCommand {
 /**
  * 脚本执行器，执行shell命令
  */
-async function execShell(commands: ShellCommand[] | string | ShellCommand) {
+async function execShell(commands: ShellCommand[] | string | ShellCommand): Promise<void> {
   // 全局日志
   const vipLog = VipLogger.getInstance()
 

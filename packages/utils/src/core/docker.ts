@@ -1,3 +1,4 @@
+import type { CmdResult } from './exec'
 import { VipSymbols } from '../pkgs'
 import { VipExecutor } from './exec'
 import { vipLogger } from './logger'
@@ -7,6 +8,9 @@ interface DockerOptions {
   logger?: boolean
 }
 
+/**
+ * 构建镜像
+ */
 interface BuildImageDockerOptions extends DockerOptions {
   imageName: string
   buildArgs?: [string, number | boolean | string][]
@@ -18,9 +22,23 @@ interface BuildImageDockerOptions extends DockerOptions {
 }
 
 /**
+ * 创建容器
+ */
+interface CreateContainerOptions extends DockerOptions {
+  containerName: string
+  imageName: string
+  // 映射端口
+  port: Array<[number, number]>
+  // 自定义网络
+  networkName?: string
+  // 容器ip
+  ip?: string
+}
+
+/**
  * docker命令的通用执行器
  */
-async function scriptExecutor(command: string) {
+async function scriptExecutor(command: string): Promise<void> {
   try {
     const errorCode = await VipExecutor.commandStandardExecutor(command)
     if (errorCode !== 0) {
@@ -37,7 +55,7 @@ async function scriptExecutor(command: string) {
 /**
  * 判断是否存在镜像
  */
-async function isExistImage(imageName: string) {
+async function isExistImage(imageName: string): Promise<boolean> {
   const command = `docker images -q ${imageName}`
   const { code, stdout } = await VipExecutor.execCommand(command)
   return code === 0 && stdout.trim() !== ''
@@ -46,7 +64,7 @@ async function isExistImage(imageName: string) {
 /**
  * 删除Docker镜像
  */
-async function deleteImage(imageName: string) {
+async function deleteImage(imageName: string): Promise<CmdResult> {
   const command = `docker rmi -f ${imageName}`
   return await VipExecutor.execCommand(command)
 }
@@ -54,7 +72,7 @@ async function deleteImage(imageName: string) {
 /**
  * 删除虚悬镜像
  */
-async function deletePruneImages() {
+async function deletePruneImages(): Promise<CmdResult> {
   const command = 'docker image prune -f'
   return await VipExecutor.execCommand(command)
 }
@@ -62,7 +80,7 @@ async function deletePruneImages() {
 /**
  * 判断容器是否存在
  */
-async function isExistContainer(containerName: string) {
+async function isExistContainer(containerName: string): Promise<boolean> {
   const command = `docker ps -aq -f name=${containerName}`
   const { code, stdout } = await VipExecutor.execCommand(command)
 
@@ -72,15 +90,30 @@ async function isExistContainer(containerName: string) {
 /**
  * 删除容器
  */
-async function deleteContainer(containerName: string) {
+async function deleteContainer(containerName: string): Promise<CmdResult> {
   const command = `docker rm -f ${containerName}`
   return await VipExecutor.execCommand(command)
+}
+
+async function deleteForceContainer(containerName: string): Promise<void> {
+  const command = `docker rm -f ${containerName}`
+  await VipExecutor.execCommand(command)
+}
+
+async function getImageName(containerName: string): Promise<string | null> {
+  const command = `docker inspect ${containerName} --format "{{.Config.Image}}"`
+  const { code, stdout } = await VipExecutor.execCommand(command)
+  if (code === 0) {
+    return null
+  }
+  // 去掉 \n & 空格
+  return stdout.trim().replace(/\n/g, '')
 }
 
 /**
  * 是否安装docker
  */
-async function isExistDocker(args?: DockerOptions) {
+async function isExistDocker(args?: DockerOptions): Promise<boolean> {
   const command = 'docker -v'
   const { code, stdout, stderr } = await VipExecutor.execCommand(command)
 
@@ -101,7 +134,7 @@ async function isExistDocker(args?: DockerOptions) {
 /**
  * 是否安装docker-compose
  */
-async function isExistDockerCompose(args?: DockerOptions) {
+async function isExistDockerCompose(args?: DockerOptions): Promise<boolean> {
   const command = 'docker-compose -v'
   const { code, stdout, stderr } = await VipExecutor.execCommand(command)
 
@@ -122,7 +155,7 @@ async function isExistDockerCompose(args?: DockerOptions) {
 /**
  * 推送Docker镜像到指定仓库
  */
-async function pushImage(imageName: string) {
+async function pushImage(imageName: string): Promise<void> {
   const command = `docker push ${imageName}`
   await scriptExecutor(command)
 }
@@ -176,21 +209,10 @@ async function buildImage(args: BuildImageDockerOptions) {
   }
 }
 
-interface CreateContainerOptions extends DockerOptions {
-  containerName: string
-  imageName: string
-  // 映射端口
-  port: Array<[number, number]>
-  // 自定义网络
-  networkName?: string
-  // 容器ip
-  ip?: string
-}
-
 /**
  * 创建容器
  */
-async function createContainer(args: CreateContainerOptions) {
+async function createContainer(args: CreateContainerOptions): Promise<void> {
   if (args.networkName && !args.ip) {
     console.log('只指定ip，没有指定容器局域网')
     VipNodeJS.exitProcess(1)
@@ -200,6 +222,22 @@ async function createContainer(args: CreateContainerOptions) {
 
   const command = `docker run -d --name ${args.containerName} --restart=unless-stopped ${networkParams} ${args.imageName}`
   await VipExecutor.commandStandardExecutor(command)
+}
+
+/**
+ * 查询所有容器
+ */
+async function listContainer(): Promise<void> {
+  const command = `docker ps -a`
+  await scriptExecutor(command)
+}
+
+/**
+ * 查看正在运行的容器
+ */
+async function listRunningContainer(): Promise<void> {
+  const command = `docker ps`
+  await scriptExecutor(command)
 }
 
 /**
@@ -216,5 +254,9 @@ export const VipDocker = {
   pushImage,
   buildImage,
   createContainer,
+  listContainer,
+  listRunningContainer,
+  deleteForceContainer,
+  getImageName,
   scriptExecutor,
 }
