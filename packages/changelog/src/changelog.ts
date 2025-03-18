@@ -4,10 +4,10 @@ import {
   VipColor,
   VipConsole,
   VipDayjs,
+  VipGit,
   VipLodash,
   VipNodeJS,
 } from '@142vip/utils'
-import { convert } from 'convert-gitmoji'
 import { $fetch } from 'ofetch'
 import { getGitDiff, parseCommits } from './git'
 import { GithubAPI, MarkdownAPI } from './utils'
@@ -250,6 +250,6 @@ export async function generateMarkdown(commits: Commit[], options: {
     }
   }
 
-  // commit提交信息排序翻转
-  return convert(lines.join('\n').trim(), true)
+  // commit提交信息emoji表情转换
+  return VipGit.convertEmoji(lines.join('\n').trim(), true)
 }

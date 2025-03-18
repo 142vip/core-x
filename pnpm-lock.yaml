@@ -122,9 +122,6 @@ importers:
       changelogen:
         specifier: 0.5.5
         version: 0.5.5
-      convert-gitmoji:
-        specifier: 0.1.5
-        version: 0.1.5
       ofetch:
         specifier: 1.3.4
         version: 1.3.4
