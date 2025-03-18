@@ -1,6 +1,6 @@
+import { convert } from 'convert-gitmoji'
 import { VipSemver } from '../pkgs'
 import { VipExecutor } from './exec'
-
 /**
  * Git提交信息
  */
@@ -137,6 +137,14 @@ function execPush(args: string[]): void {
   VipExecutor.execCommandSync(`git push ${args.join(' ')}`)
 }
 
+/**
+ * git emoji表情转换
+ * 参考：https://www.npmjs.com/package/convert-gitmoji
+ */
+function convertEmoji(content: string, withSpace?: boolean | 'leading' | 'trailing' | 'both') {
+  return convert(content, withSpace)
+}
+
 export const VipGit = {
   getRecentCommit,
   getRecentCommitHash,
@@ -151,4 +159,5 @@ export const VipGit = {
   execCommit,
   execTag,
   execPush,
+  convertEmoji,
 }

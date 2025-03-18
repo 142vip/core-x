@@ -416,6 +416,9 @@ importers:
       commander:
         specifier: 12.1.0
         version: 12.1.0
+      convert-gitmoji:
+        specifier: 0.1.5
+        version: 0.1.5
       dayjs:
         specifier: 1.11.13
         version: 1.11.13
