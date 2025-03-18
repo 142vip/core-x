@@ -51,7 +51,7 @@
     "@vuepress/plugin-markdown-image": "2.0.0-rc.30",
     "@vuepress/plugin-markdown-tab": "2.0.0-rc.47",
     "@vuepress/plugin-redirect": "2.0.0-rc.8",
-    "@vuepress/plugin-slimsearch": "2.0.0-rc.61",
+    "@vuepress/plugin-slimsearch": "2.0.0-rc.70",
     "dashjs": "4.7.4",
     "hls.js": "1.5.13",
     "mermaid": "11.4.1",
@@ -60,8 +60,8 @@
     "unicorn-magic": "0.3.0",
     "vidstack": "1.12.12",
     "vue": "3.5.13",
-    "vuepress": "2.0.0-rc.20",
-    "vuepress-theme-hope": "2.0.0-rc.74"
+    "vuepress": "2.0.0-rc.19",
+    "vuepress-theme-hope": "2.0.0-rc.66"
   },
   "publishConfig": {
     "access": "public",
