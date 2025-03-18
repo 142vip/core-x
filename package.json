@@ -58,7 +58,7 @@
     "jest": "29.7.0",
     "only-allow": "1.2.1",
     "simple-git-hooks": "2.11.1",
-    "typescript": "5.7.3",
+    "typescript": "5.8.2",
     "unbuild": "3.5.0"
   },
   "simple-git-hooks": {
