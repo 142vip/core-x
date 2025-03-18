@@ -49,8 +49,20 @@ async function promptConfirm(message: string, defaultValue?: boolean): Promise<b
   })).app
 }
 
+/**
+ * 终端交互输入，输入框
+ */
+async function promptInput(message: string): Promise<string> {
+  return (await inquirer.prompt({
+    type: 'input',
+    name: 'app',
+    message,
+  })).app
+}
+
 export const VipInquirer = {
   promptList,
   promptCheckBox,
   promptConfirm,
+  promptInput,
 }
