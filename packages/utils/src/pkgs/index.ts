@@ -1,5 +1,6 @@
 export * from './color'
 export * from './commander'
+export * from './config'
 export * from './console'
 export * from './dayjs'
 export * from './inquirer'
