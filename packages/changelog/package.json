@@ -5,6 +5,12 @@
   "private": false,
   "description": "基于Git提交记录，生成漂亮的变更日志，输出Markdown格式的CHANGELOG.md文件，更加人性化",
   "author": "mmdapl <mmdapl@163.com>",
+  "authorInfo": {
+    "name": "微信公众号：储凡",
+    "email": "fairy_vip@2925.com",
+    "url": "https://github.com/142vip",
+    "homePage": "https://142vip.cn"
+  },
   "license": "MIT",
   "homepage": "https://142vip.github.io/core-x/packages/changelog/",
   "repository": {
@@ -41,12 +47,6 @@
     "*.mjs",
     "dist"
   ],
-  "authorInfo": {
-    "name": "微信公众号：储凡",
-    "email": "fairy_vip@2925.com",
-    "url": "https://github.com/142vip",
-    "homePage": "https://142vip.cn"
-  },
   "engines": {
     "node": ">=16.0.0"
   },
@@ -56,12 +56,10 @@
   },
   "dependencies": {
     "@142vip/utils": "workspace:*",
-    "@esm2cjs/execa": "6.1.1-cjs.1",
     "c12": "2.0.4",
     "changelogen": "0.5.5",
     "convert-gitmoji": "0.1.5",
-    "ofetch": "1.3.4",
-    "semver": "7.7.1"
+    "ofetch": "1.3.4"
   },
   "publishConfig": {
     "access": "public",
