@@ -18,7 +18,7 @@
   "devDependencies": {
     "@142vip/utils": "workspace:*",
     "@142vip/vuepress": "workspace:*",
-    "@vuepress/bundler-vite": "2.0.0-rc.19",
+    "@vuepress/bundler-vite": "2.0.0-rc.20",
     "vuepress": "2.0.0-rc.19"
   }
 }
