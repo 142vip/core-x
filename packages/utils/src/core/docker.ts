@@ -1,4 +1,5 @@
 import type { CmdResult } from './exec'
+import { RegistryAddressEnum } from '../enums'
 import { VipSymbols } from '../pkgs'
 import { VipExecutor } from './exec'
 import { vipLogger } from './logger'
@@ -19,6 +20,12 @@ interface BuildImageDockerOptions extends DockerOptions {
   target?: string
   // build命令时，GC限制内存大小
   memory?: number
+}
+
+interface UserLoginDockerOptions extends DockerOptions {
+  username: string
+  password: string
+  registry?: string
 }
 
 /**
@@ -78,6 +85,14 @@ async function deletePruneImages(): Promise<CmdResult> {
 }
 
 /**
+ * 列出虚线镜像
+ */
+async function listPruneImages() {
+  const command = 'docker images -f dangling=true'
+  await scriptExecutor(command)
+}
+
+/**
  * 判断容器是否存在
  */
 async function isExistContainer(containerName: string): Promise<boolean> {
@@ -88,19 +103,43 @@ async function isExistContainer(containerName: string): Promise<boolean> {
 }
 
 /**
+ * 用户登录
+ */
+async function userLogin(args: UserLoginDockerOptions): Promise<void> {
+  if (args.registry) {
+    // 杭州阿里云
+    args.registry = RegistryAddressEnum.VIP_DOCKER
+  }
+  //   docker login --username=142vip --password="$password"  registry.cn-hangzhou.aliyuncs.com
+  const command = `docker login --username=${args.username} --password="${args.password}" ${args.registry}`
+  await scriptExecutor(command)
+}
+
+/**
  * 删除容器
  */
-async function deleteContainer(containerName: string): Promise<CmdResult> {
+async function deleteContainer(containerName: string): Promise<boolean> {
   const command = `docker rm -f ${containerName}`
-  return await VipExecutor.execCommand(command)
+  const { code } = await VipExecutor.execCommand(command)
+  return code === 0
 }
 
-async function deleteForceContainer(containerName: string): Promise<void> {
-  const command = `docker rm -f ${containerName}`
-  await VipExecutor.execCommand(command)
+/**
+ * 强制删除容器，同时删除镜像
+ */
+async function deleteForceContainer(containerName: string): Promise<boolean> {
+  const imageAddress = await getImageAddress(containerName)
+  const success = await deleteContainer(containerName)
+  if (success && imageAddress != null) {
+    await deleteImage(imageAddress)
+  }
+  return success
 }
 
-async function getImageName(containerName: string): Promise<string | null> {
+/**
+ * 基于容器名获取镜像地址
+ */
+async function getImageAddress(containerName: string): Promise<string | null> {
   const command = `docker inspect ${containerName} --format "{{.Config.Image}}"`
   const { code, stdout } = await VipExecutor.execCommand(command)
   if (code === 0) {
@@ -160,6 +199,11 @@ async function pushImage(imageName: string): Promise<void> {
   await scriptExecutor(command)
 }
 
+async function pullImage(imageAddress: string): Promise<void> {
+  const command = `docker pull ${imageAddress}`
+  await scriptExecutor(command)
+}
+
 /**
  * 构建Docker镜像
  * - 根据tag标记，推送到远程仓库
@@ -214,13 +258,31 @@ async function buildImage(args: BuildImageDockerOptions) {
  */
 async function createContainer(args: CreateContainerOptions): Promise<void> {
   if (args.networkName && !args.ip) {
-    console.log('只指定ip，没有指定容器局域网')
+    vipLogger.error(`只指定IP，没有指定容器局域网名称，缺少--networkName参数`, { startLabel: '创建容器' })
     VipNodeJS.exitProcess(1)
   }
-  // 支持自定义网络
-  const networkParams = args.networkName && args.ip ? `--network ${args.networkName} --ip` : ''
 
-  const command = `docker run -d --name ${args.containerName} --restart=unless-stopped ${networkParams} ${args.imageName}`
+  // 支持自定义网络、IP地址
+  const networkParams = args.networkName && args.ip ? `--network ${args.networkName} --ip ${args.ip}` : ''
+
+  // 支持端口映射
+  const portStr = args.port ? args.port.map(port => `-p ${port}`).join(' ') : ''
+
+  // 命令
+  const runParams = [
+    'docker run -d',
+    `--name ${args.containerName}`,
+    '--restart=unless-stopped',
+    `${networkParams}`,
+    portStr,
+    args.imageName,
+  ]
+  const command = runParams.filter(s => s !== '').join(' ')
+
+  if (args.logger != null) {
+    vipLogger.log(`command：${command}`)
+  }
+
   await VipExecutor.commandStandardExecutor(command)
 }
 
@@ -251,12 +313,15 @@ export const VipDocker = {
   deleteImage,
   deletePruneImages,
   deleteContainer,
+  pullImage,
   pushImage,
   buildImage,
+  listPruneImages,
+  getImageAddress,
   createContainer,
   listContainer,
   listRunningContainer,
   deleteForceContainer,
-  getImageName,
+  userLogin,
   scriptExecutor,
 }
