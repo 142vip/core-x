@@ -73,7 +73,7 @@ async function promptPassword(message: string): Promise<string> {
  * 选择框
  * - https://github.com/SBoudrias/Inquirer.js/tree/main/packages/select
  */
-async function promptSelect<T>(message: string, choices: VipInquirerChoiceList<T> | string[], options?: VipInquirerOptions): Promise<T> {
+async function promptSelect<T extends string>(message: string, choices: VipInquirerChoiceList<T> | string[], options?: VipInquirerOptions): Promise<T> {
   return select({ message, choices, ...(options == null ? {} : options) })
 }
 

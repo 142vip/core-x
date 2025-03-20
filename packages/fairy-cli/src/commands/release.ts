@@ -59,7 +59,7 @@ async function execNormalRelease(args: ReleaseOptions): Promise<void> {
 /**
  * 执行142vip开源仓库迭代
  */
-function execVipRelease(args: VipReleaseExtraOptions): void {
+async function execVipRelease(args: VipReleaseExtraOptions): Promise<void> {
   // 获取pkg信息
   const pkgJSON = getReleasePkgJSON(args.filter)
   const packageNames = pkgJSON.map(pkg => pkg.name)
@@ -70,32 +70,32 @@ function execVipRelease(args: VipReleaseExtraOptions): void {
     return VipNodeJS.exitProcess(0)
   }
 
-  const choices = [
-    defaultRepoName,
-    ...packageNames,
-  ]
-  VipInquirer.promptList(choices, `选择需要使用${VipColor.red('Release')}命令发布的模块名称：`)
-    .then(async (packageName: string) => {
-      // 确认框
-      const isRelease = await VipInquirer.promptConfirm(`将对模块${VipColor.green(packageName)}进行版本迭代，是否继续操作？`)
+  try {
+    const packageName = await VipInquirer.promptSelect(`选择需要使用${VipColor.red('Release')}命令发布的模块名称：`, [
+      defaultRepoName,
+      ...packageNames,
+    ])
 
-      if (!isRelease) {
-        VipConsole.log(VipColor.yellow('用户取消发布操作！！'))
-        return VipNodeJS.exitProcess(0)
-      }
+    // 确认框
+    const isRelease = await VipInquirer.promptConfirm(`将对模块${VipColor.green(packageName)}进行版本迭代，是否继续操作？`)
 
-      // 发布子模块
-      if (packageName !== defaultRepoName) {
-        await releaseMonorepoPackage(pkgJSON.find(pkg => pkg.name === packageName)!)
-        return VipNodeJS.exitProcess(0)
-      }
+    if (!isRelease) {
+      VipConsole.log(VipColor.yellow('用户取消发布操作！！'))
+      return VipNodeJS.exitProcess(0)
+    }
 
-      // 发布根模块
-      await releaseRoot()
-    })
-    .catch(() => {
-      // 避免错误过分暴露
-    })
+    // 发布子模块
+    if (packageName !== defaultRepoName) {
+      await releaseMonorepoPackage(pkgJSON.find(pkg => pkg.name === packageName)!)
+      return VipNodeJS.exitProcess(0)
+    }
+
+    // 发布根模块
+    await releaseRoot()
+  }
+  catch {
+    // 避免错误过分暴露
+  }
 }
 
 /**
@@ -130,7 +130,7 @@ export async function releaseMain(program: VipCommander): Promise<void> {
 
       // @142vip 组织专用Release
       if (args.vip) {
-        execVipRelease({
+        await execVipRelease({
           checkRelease: args.checkRelease,
           filter: args.filter,
         })
