@@ -1,4 +1,5 @@
 import type { CmdResult } from './exec'
+import { VIP_DEPLOY_DOCKER_ENV } from '../constants'
 import { RegistryAddressEnum } from '../enums'
 import { VipSymbols } from '../pkgs'
 import { VipExecutor } from './exec'
@@ -40,6 +41,12 @@ interface CreateContainerOptions extends DockerOptions {
   networkName?: string
   // 容器ip
   ip?: string
+}
+
+interface CreateNetworkOptions extends DockerOptions {
+  networkName: string
+  subnet?: string
+  gateway?: string
 }
 
 /**
@@ -351,6 +358,40 @@ async function listContainerStatus(): Promise<{ name: string, running: boolean }
 }
 
 /**
+ * 判断网络是否存在
+ */
+async function isExistNetwork(networkName: string): Promise<boolean> {
+  const names = await listNetworkNames()
+  return names.includes(networkName)
+}
+
+/**
+ * 列举出所有的网络名称
+ */
+async function listNetworkNames(): Promise<string[]> {
+  const command = `docker network ls --format "{{.Name}}"`
+  const { code, stdout } = await VipExecutor.execCommand(command)
+  if (code !== 0) {
+    return []
+  }
+  return stdout.split('\n').filter(v => !!v)
+}
+
+/**
+ * 创建网络
+ */
+async function createNetwork(options: CreateNetworkOptions): Promise<boolean> {
+  // 默认的网关和子网掩码
+  if (options.gateway == null && options.subnet == null) {
+    options.gateway = VIP_DEPLOY_DOCKER_ENV.NETWORK_GATEWAY
+    options.subnet = VIP_DEPLOY_DOCKER_ENV.NETWORK_SUBNET
+  }
+  const command = `docker network create --subnet="${options.subnet}" --gateway="${options.gateway}" ${options.networkName}`
+  const { code } = await VipExecutor.execCommand(command)
+  return code === 0
+}
+
+/**
  * docker工具
  */
 export const VipDocker = {
@@ -375,5 +416,8 @@ export const VipDocker = {
   listContainerNames,
   listRunningContainerNames,
   listNoRunningContainerNames,
+  createNetwork,
+  listNetworkNames,
+  isExistNetwork,
   scriptExecutor,
 }

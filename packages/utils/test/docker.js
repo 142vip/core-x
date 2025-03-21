@@ -1,4 +1,4 @@
-import { VipDocker } from '@142vip/utils'
+import { VIP_DEPLOY_DOCKER_ENV, VipDocker } from '@142vip/utils'
 
 (async () => {
   await VipDocker.isExistDocker({ logger: true })
@@ -18,4 +18,6 @@ import { VipDocker } from '@142vip/utils'
   console.log(await VipDocker.listContainerStatus())
 
   console.log(await VipDocker.getImageAddress('gitlab'))
+  console.log(await VipDocker.listNetworkNames())
+  console.log(await VipDocker.isExistNetwork(VIP_DEPLOY_DOCKER_ENV.NETWORK_NAME))
 })()

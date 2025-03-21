@@ -36,7 +36,7 @@ interface VipInquirerOptions {
 /**
  * 搜索源
  */
-type SearchSource = <T>(input: T, opt: { signal: AbortSignal }) => Promise<ReadonlyArray<VipInquirerChoice<T> | Separator>>
+type SearchSource = <T>(input: T, opt?: { signal: AbortSignal }) => Promise<ReadonlyArray<VipInquirerChoice<T> | Separator>>
 
 /**
  * 输入框，只输入数字
@@ -103,7 +103,7 @@ async function promptSearch(message: string, source: SearchSource, pageSize?: nu
 /**
  * 搜索源简单处理
  */
-export function handleSimpleSearchSource(sources: string[]) {
+function handleSimpleSearchSource(sources: string[]) {
   return function (input: string) {
     return sources.filter(name => name.includes(input))
   }

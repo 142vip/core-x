@@ -66,3 +66,12 @@ export function getDocSiteBase(baseName: string): '/' | `/${string}/` {
 
   return needProxy ? `/${baseName}/` : '/'
 }
+
+export const VIP_DEPLOY_DOCKER_ENV = {
+  // 名称
+  NETWORK_NAME: 'service_env_net',
+  // 子网掩码
+  NETWORK_SUBNET: '172.30.0.0/24',
+  // 网关
+  NETWORK_GATEWAY: '172.30.0.1',
+}
