@@ -51,7 +51,7 @@
     "@vuepress/plugin-markdown-image": "2.0.0-rc.30",
     "@vuepress/plugin-markdown-tab": "2.0.0-rc.47",
     "@vuepress/plugin-redirect": "2.0.0-rc.8",
-    "@vuepress/plugin-slimsearch": "2.0.0-rc.70",
+    "@vuepress/plugin-slimsearch": "2.0.0-rc.86",
     "dashjs": "4.7.4",
     "hls.js": "1.5.13",
     "mermaid": "11.4.1",
