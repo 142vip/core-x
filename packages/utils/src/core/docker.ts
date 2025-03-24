@@ -280,10 +280,13 @@ async function createContainer(args: CreateContainerOptions): Promise<void> {
     'docker run -d',
     `--name ${args.containerName}`,
     '--restart=unless-stopped',
+    // 处理platform，兼容arm64、arm架构
+    VipNodeJS.getCPUArch().includes('arm') ? '--platform linux/arm64' : '--platform linux/amd64',
     `${networkParams}`,
     portStr,
     args.imageName,
   ]
+
   const command = runParams.filter(s => s !== '').join(' ')
 
   if (args.logger != null) {
