@@ -1,8 +1,14 @@
 import type { VipCommander } from '@142vip/utils'
-import process from 'node:process'
-import { HttpMethod, VipConsole, VipNodeJS } from '@142vip/utils'
+import {
+  HttpMethod,
+  VipColor,
+  VipConsole,
+  VipInquirer,
+  vipLogger,
+  VipNodeJS,
+} from '@142vip/utils'
 import fetch from 'node-fetch'
-import { CliCommandEnum } from '../shared'
+import { CliCommandEnum, getReleasePkgJSON } from '../shared'
 
 /**
  * cnpm 同步状态
@@ -53,8 +59,10 @@ async function requestSync(packageName: string): Promise<void> {
     VipNodeJS.exitProcess(1)
   }
   setTimeout(async () => {
-    const logUrl = await getPackageSyncState(packageName, logId)
-    await getPackageSyncLog(logUrl)
+    const logUrl = await getPackageSyncLogUrl(packageName, logId)
+    if (logUrl != null) {
+      await getPackageSyncLog(logUrl)
+    }
   }, 2000)
 }
 
@@ -69,7 +77,7 @@ interface SyncState {
 /**
  * 获取包的同步状态
  */
-async function getPackageSyncState(packageName: string, logId: string): Promise<string> {
+async function getPackageSyncLogUrl(packageName: string, logId: string): Promise<string | null> {
   const stateUrl = `https://registry.npmmirror.com/-/package/${packageName}/syncs/${logId}`
   const response = await fetch(stateUrl)
   const stateRes = await response.json() as SyncState
@@ -78,8 +86,9 @@ async function getPackageSyncState(packageName: string, logId: string): Promise<
   if (stateRes.ok) {
     return stateRes.logUrl
   }
-  console.log('getPackageSyncState-->err', stateRes)
-  process.exit(1)
+  vipLogger.error(`getPackageSyncState-->err:${stateRes}`)
+  VipNodeJS.exitProcess(1)
+  return null
 }
 
 async function getPackageSyncLog(logUrl: string): Promise<void> {
@@ -90,16 +99,37 @@ async function getPackageSyncLog(logUrl: string): Promise<void> {
 }
 
 /**
- * 同步到cnpm仓库
- * @param packageNames
+ * 同步到国内仓库
+ * - cnpm
  */
-async function execSync(packageNames: string[]): Promise<void> {
-  for (const packageName of packageNames) {
-    setTimeout(async () => {
-      VipConsole.log(`---------模块：${packageName} 开始同步 ------- \n`)
-      await requestSync(packageName)
-    }, 1000)
+async function execSync(packageName: string): Promise<void> {
+  setTimeout(async () => {
+    vipLogger.log(`---------【@142vip/fairy-cli】模块：${VipColor.red(packageName)}，开始同步 ------- `)
+    vipLogger.println()
+    await requestSync(packageName)
+  }, 1000)
+}
+
+/**
+ * 在线搜索npm包
+ */
+async function searchNpmPkgOnline(input: string, options: { signal: AbortSignal }) {
+  if (input == null) {
+    return []
   }
+  const response = await fetch(
+    `https://registry.npmjs.org/-/v1/search?text=${encodeURIComponent(input)}&size=20`,
+    { signal: options.signal },
+  )
+  const data = (await response.json()) as {
+    objects: ReadonlyArray<{ package: { name: string, description: string } }>
+  }
+
+  return data.objects.map(pkg => ({
+    name: pkg.package.name,
+    value: pkg.package.name,
+    description: pkg.package.description,
+  }))
 }
 
 /**
@@ -108,9 +138,23 @@ async function execSync(packageNames: string[]): Promise<void> {
 export async function syncMain(program: VipCommander): Promise<void> {
   program
     .command(CliCommandEnum.SYNC)
-    .description('同步npm仓库的模块包到cnpm仓库')
-    .argument('[packageNames...]', '需要同步的模块包名称，支持多个。例如： @142vip/fairy-cli')
-    .action(async (packageNames: string[]) => {
-      await execSync(packageNames)
+    .description('同步NPM仓库的模块包到CNPM仓库')
+    .argument('[packageName]', '需要同步的模块包名称')
+    .option('--vip', '142vip业务专用', false)
+    .action(async (packageName: string | undefined, options): Promise<void> => {
+      // 142vip本地业务
+      if (packageName == null && options.vip) {
+        const pkgJSON = getReleasePkgJSON('./packages/*')
+        const packageNames = pkgJSON.map(pkg => pkg.name)
+        packageName = await VipInquirer.promptSelect('请选择需要同步的模块包名称：', packageNames)
+      }
+      // 在线查询，搜索npm包
+      else {
+        packageName = await VipInquirer.promptSearch('请输入需要同步的模块包名称：', searchNpmPkgOnline as any)
+      }
+
+      if (packageName != null) {
+        await execSync(packageName)
+      }
     })
 }

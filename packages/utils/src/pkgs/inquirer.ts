@@ -96,8 +96,8 @@ async function promptConfirm(message: string, defaultValue?: boolean): Promise<b
  * 搜索框
  * - https://github.com/SBoudrias/Inquirer.js/tree/main/packages/search
  */
-async function promptSearch(message: string, source: SearchSource, pageSize?: number) {
-  return search({ message, source, pageSize })
+async function promptSearch(message: string, source: SearchSource, pageSize?: number): Promise<string | undefined> {
+  return search({ message, source, pageSize })!
 }
 
 /**
@@ -105,7 +105,7 @@ async function promptSearch(message: string, source: SearchSource, pageSize?: nu
  */
 function handleSimpleSearchSource(sources: string[]) {
   return function (input: string) {
-    return sources.filter(name => name.includes(input))
+    return sources.filter((name: string) => name.includes(input))
   }
 }
 
