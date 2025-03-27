@@ -1,7 +1,7 @@
 import type { VersionBumpOptions } from '../types'
 import { dirname } from 'node:path'
 import process from 'node:process'
-import { loadConfig } from 'c12'
+import { VipConfig } from '@142vip/utils'
 import escalade from 'escalade/sync'
 
 export const bumpConfigDefaults: VersionBumpOptions = {
@@ -19,8 +19,6 @@ export const bumpConfigDefaults: VersionBumpOptions = {
 /**
  * 加载bumpx的配置
  * 例如： bumpx.config.json
- * @param overrides
- * @param cwd
  */
 export async function loadBumpXConfig(
   overrides?: Partial<VersionBumpOptions>,
@@ -28,9 +26,15 @@ export async function loadBumpXConfig(
 ) {
   const name = 'bumpx'
   const configFile = findConfigFile(name, cwd)
-  const { config } = await loadConfig<VersionBumpOptions>({
-    name,
-    defaults: bumpConfigDefaults,
+  // const { config } = await loadConfig<VersionBumpOptions>({
+  //   name,
+  //   defaults: bumpConfigDefaults,
+  //   overrides: {
+  //     ...(overrides as VersionBumpOptions),
+  //   },
+  //   cwd: configFile ? dirname(configFile) : cwd,
+  // })
+  const config = await VipConfig.loadCliConfig<VersionBumpOptions>(name, bumpConfigDefaults, {
     overrides: {
       ...(overrides as VersionBumpOptions),
     },
@@ -49,8 +53,6 @@ export function defineBumpXConfig(config: Partial<VersionBumpOptions>): Partial<
 
 /**
  * 找配置文件
- * @param name
- * @param cwd
  */
 function findConfigFile(name: string, cwd: string) {
   let foundRepositoryRoot = false
