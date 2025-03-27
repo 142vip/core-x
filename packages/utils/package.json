@@ -54,13 +54,15 @@
     "lodash": "4.17.21",
     "nanoid": "3.3.8",
     "qs": "6.14.0",
-    "semver": "7.7.1"
+    "semver": "7.7.0"
+  },
+  "devDependencies": {
+    "@types/inquirer": "9.0.7",
+    "@types/semver": "7.7.0"
   },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org"
-  },
-  "devDependencies": {
-    "@types/inquirer": "9.0.7"
   }
+
 }
