@@ -41,7 +41,8 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "bin": {
-    "changelog": "./cli.mjs"
+    "changelog": "./cli.mjs",
+    "ch": "./cli.mjs"
   },
   "files": [
     "*.mjs",

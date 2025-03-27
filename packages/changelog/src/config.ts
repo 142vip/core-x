@@ -1,5 +1,5 @@
 import type { ChangelogCliOptions, ChangelogGenerateOptions } from './changelog.interface'
-import { VipGit, VipLodash } from '@142vip/utils'
+import { VipConfig, VipGit } from '@142vip/utils'
 
 /**
  * 默认配置
@@ -34,17 +34,25 @@ export const ChangelogDefaultConfig = {
  * 将用户自定义配置和默认配置合并
  */
 export async function mergeConfig(cliOptions: ChangelogCliOptions): Promise<ChangelogGenerateOptions> {
-  const { loadConfig } = await import('c12')
+  // const { loadConfig } = await import('c12')
 
   // 本地配置，形如：changelog.config.ts
-  const changelogConfig = await loadConfig<ChangelogGenerateOptions>({
-    // 配置文件名，eg: changelog.config.ts
-    name: 'changelog',
-    packageJson: true,
-  }).then(c => VipLodash.merge({}, ChangelogDefaultConfig, c.config))
+  // const changelogConfig = await loadConfig<ChangelogGenerateOptions>({
+  //   // 配置文件名，eg: changelog.config.ts
+  //   name: 'changelog',
+  //   packageJson: true,
+  // }).then(c => VipLodash.merge({}, ChangelogDefaultConfig, c.config))
 
   // cli配置合并
-  const config = VipLodash.merge({}, changelogConfig, cliOptions) as ChangelogGenerateOptions
+  // const config = VipLodash.merge({}, changelogConfig, cliOptions) as ChangelogGenerateOptions
+
+  // 新写法
+  const changelogConfig = await VipConfig.loadCliConfig<ChangelogGenerateOptions>('changelog', ChangelogDefaultConfig, {
+    packageJson: true,
+  })
+
+  // cli配置合并
+  const config = VipConfig.mergeCommanderConfig<ChangelogGenerateOptions>(changelogConfig, cliOptions)
 
   // 发布的版本
   if (config.to == null) {
