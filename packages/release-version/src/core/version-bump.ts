@@ -1,8 +1,12 @@
 import type { VersionBumpOptions, VersionBumpResults } from '../types'
 import path from 'node:path'
 import process from 'node:process'
-import { VipConsole, VipExecutor, VipSymbols } from '@142vip/utils'
-import { bold, cyan, green } from 'kolorist'
+import {
+  VipColor,
+  VipConsole,
+  VipExecutor,
+  VipSymbols,
+} from '@142vip/utils'
 import prompts from 'prompts'
 import { NpmScript } from '../types'
 import { getCurrentVersion } from './get-current-version'
@@ -57,7 +61,7 @@ export async function versionBump(arg: (VersionBumpOptions) | string = {}): Prom
     }
     catch (e) {
       VipConsole.log(`${VipSymbols.error} Happen Error In Generate CHANGELOG!!!`)
-      console.log(e)
+      VipConsole.error(e)
       process.exit(1)
     }
     VipConsole.log(`${VipSymbols.success} Generate CHANGELOG.md Finished`)
@@ -109,22 +113,22 @@ export async function versionBumpInfo(arg: VersionBumpOptions | string = {}): Pr
  */
 function printSummary(operation: Operation) {
   VipConsole.log()
-  VipConsole.log(`   files ${operation.options.files.map(i => bold(i)).join('\n         ')}`)
+  VipConsole.log(`   files ${operation.options.files.map(i => VipColor.bold(i)).join('\n         ')}`)
 
   // 生成CHANGELOG.md文档
   if (operation.options.changelog) {
     VipConsole.log(`  generate CHANGELOG.md`)
   }
   if (operation.options.commit)
-    VipConsole.log(`  commit ${bold(formatVersionString(operation.options.commit.message, operation.state.newVersion))}`)
+    VipConsole.log(`  commit ${VipColor.bold(formatVersionString(operation.options.commit.message, operation.state.newVersion))}`)
   if (operation.options.tag)
-    VipConsole.log(`     tag ${bold(formatVersionString(operation.options.tag.name, operation.state.newVersion))}`)
+    VipConsole.log(`     tag ${VipColor.bold(formatVersionString(operation.options.tag.name, operation.state.newVersion))}`)
   if (operation.options.execute)
-    VipConsole.log(` execute ${bold(operation.options.execute)}`)
+    VipConsole.log(` execute ${VipColor.bold(operation.options.execute)}`)
   if (operation.options.push)
-    VipConsole.log(`    push ${cyan(bold('yes'))}`)
+    VipConsole.log(`    push ${VipColor.cyan(VipColor.bold('yes'))}`)
   VipConsole.log()
-  VipConsole.log(`    from ${bold(operation.state.currentVersion)}`)
-  VipConsole.log(`      to ${green(bold(operation.state.newVersion))}`)
+  VipConsole.log(`    from ${VipColor.bold(operation.state.currentVersion)}`)
+  VipConsole.log(`      to ${VipColor.green(VipColor.bold(operation.state.newVersion))}`)
   VipConsole.log()
 }

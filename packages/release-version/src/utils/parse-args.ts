@@ -1,8 +1,11 @@
 import type { VersionBumpOptions } from '../types'
 import process from 'node:process'
-import { VipSemver } from '@142vip/utils'
+import {
+  VipColor,
+  VipConsole,
+  VipSemver,
+} from '@142vip/utils'
 import cac from 'cac'
-import { yellow } from 'kolorist'
 import { name, version } from '../../package.json'
 import { isReleaseType } from '../core/release-type'
 import { ExitCodeEnum } from '../types'
@@ -58,7 +61,7 @@ export async function parseArgs(): Promise<ParsedArgs> {
     }
 
     if (parsedArgs.options.recursive && parsedArgs.options.files?.length)
-      console.log(yellow('The --recursive option is ignored when files are specified'))
+      VipConsole.log(VipColor.yellow('The --recursive option is ignored when files are specified'))
 
     return parsedArgs
   }

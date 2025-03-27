@@ -67,7 +67,6 @@
     "@types/semver": "7.5.8",
     "detect-indent": "7.0.1",
     "detect-newline": "4.0.1",
-    "kolorist": "1.8.0",
     "npm-check": "6.0.1"
   },
   "publishConfig": {
