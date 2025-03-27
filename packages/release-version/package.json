@@ -64,7 +64,7 @@
   "devDependencies": {
     "@types/js-yaml": "4.0.9",
     "@types/prompts": "2.4.9",
-    "@types/semver": "7.5.8",
+    "@types/semver": "7.7.0",
     "detect-indent": "7.0.1",
     "detect-newline": "4.0.1",
     "kolorist": "1.8.0",
