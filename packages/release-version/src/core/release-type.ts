@@ -1,6 +1,6 @@
-import type { ReleaseType as SemverReleaseType } from 'semver'
+import type { VipSemverReleaseType } from '@142vip/utils'
 
-export type ReleaseType = SemverReleaseType | 'next'
+export type ReleaseType = VipSemverReleaseType | 'next'
 
 /**
  * The different types of pre-releases.

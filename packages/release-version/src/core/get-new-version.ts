@@ -2,9 +2,9 @@ import type { BumpRelease, PromptRelease } from './normalize-options'
 import type { Operation } from './operation'
 import type { ReleaseType } from './release-type'
 import process from 'node:process'
+import { VipSemver } from '@142vip/utils'
 import { bold, green } from 'kolorist'
 import prompts from 'prompts'
-import semver, { clean as cleanVersion, valid as isValidVersion, SemVer } from 'semver'
 import { isPrerelease, releaseTypes } from './release-type'
 
 /**
@@ -19,7 +19,7 @@ export async function getNewVersion(operation: Operation): Promise<Operation> {
       return promptForNewVersion(operation)
 
     case 'version':
-      return operation.update({ newVersion: new SemVer(release.version, true).version })
+      return operation.update({ newVersion: VipSemver.createSemver(release.version, true).version })
 
     default:
       return operation.update({
@@ -33,7 +33,7 @@ export async function getNewVersion(operation: Operation): Promise<Operation> {
  * Returns the next version number of the specified type.
  */
 function getNextVersion(currentVersion: string, bump: BumpRelease): string {
-  const oldSemVer = new SemVer(currentVersion)
+  const oldSemVer = VipSemver.createSemver(currentVersion)
 
   const type = bump.type === 'next'
     ? oldSemVer.prerelease.length ? 'prerelease' : 'patch'
@@ -64,7 +64,7 @@ function getNextVersion(currentVersion: string, bump: BumpRelease): string {
 function getNextVersions(currentVersion: string, preid: string): Record<ReleaseType, string> {
   const next: Record<string, string> = {}
 
-  const parse = semver.parse(currentVersion)
+  const parse = VipSemver.parse(currentVersion)
   if (typeof parse?.prerelease[0] === 'string')
     preid = parse?.prerelease[0] || 'preid'
 
@@ -84,7 +84,7 @@ async function promptForNewVersion(operation: Operation): Promise<Operation> {
   const release = operation.options.release as PromptRelease
 
   const next = getNextVersions(currentVersion, release.preid)
-  const configCustomVersion = await operation.options.customVersion?.(currentVersion, semver)
+  const configCustomVersion = await operation.options.customVersion?.(currentVersion, VipSemver.originImportSemVer)
 
   const PADDING = 13
   const answers = await prompts([
@@ -116,7 +116,7 @@ async function promptForNewVersion(operation: Operation): Promise<Operation> {
       message: 'Enter the new version number:',
       initial: currentVersion,
       validate: (custom: string) => {
-        return isValidVersion(custom) ? true : 'That\'s not a valid version number'
+        return VipSemver.valid(custom) ? true : 'That\'s not a valid version number'
       },
     },
   ]) as {
@@ -127,9 +127,9 @@ async function promptForNewVersion(operation: Operation): Promise<Operation> {
   const newVersion = answers.release === 'none'
     ? currentVersion
     : answers.release === 'custom'
-      ? cleanVersion(answers.custom!)!
+      ? VipSemver.clean(answers.custom!)!
       : answers.release === 'config'
-        ? cleanVersion(configCustomVersion!)
+        ? VipSemver.clean(configCustomVersion!)
         : next[answers.release]
 
   if (!newVersion)

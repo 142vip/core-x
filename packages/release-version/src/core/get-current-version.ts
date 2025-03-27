@@ -1,5 +1,5 @@
 import type { Operation } from './operation'
-import { valid as isValidVersion } from 'semver'
+import { VipSemver } from '@142vip/utils'
 import { readJsonFile } from './fs'
 import { isManifest } from './manifest'
 
@@ -43,7 +43,7 @@ async function readVersion(file: string, cwd: string): Promise<string | undefine
   try {
     const { data: manifest } = await readJsonFile(file, cwd)
 
-    if (isManifest(manifest) && isValidVersion(manifest.version)) {
+    if (isManifest(manifest) && VipSemver.valid(manifest.version)) {
       return manifest.version
     }
   }
