@@ -22,7 +22,10 @@ WORKDIR /core-x
 COPY . .
 
 ## 安装git，博客编译需要使用git信息
-RUN apk add --no-cache git --repository http://mirrors.aliyun.com/alpine/v3.14/main/
+RUN apk add --no-cache git --repository https://mirrors.aliyun.com/alpine/v3.14/main/
+
+# 参考：https://vercel.com/guides/corepack-errors-github-actions
+RUN npm install -g corepack@latest
 
 ## 基于容器自动构建
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store sh ./scripts/ci && pnpm build:packages && \

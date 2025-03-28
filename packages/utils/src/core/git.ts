@@ -141,7 +141,7 @@ function execPush(args: string[]): void {
  * git emoji表情转换
  * 参考：https://www.npmjs.com/package/convert-gitmoji
  */
-function convertEmoji(content: string, withSpace?: boolean | 'leading' | 'trailing' | 'both') {
+function convertEmoji(content: string, withSpace?: boolean | 'leading' | 'trailing' | 'both'): string {
   return convert(content, withSpace)
 }
 
