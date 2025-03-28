@@ -54,9 +54,10 @@ jobs:
         run: |
           ./scripts/ci
 
-      - name: Build All Packages
-        run: |
-          pnpm build:packages
+      # ci的hooks已经执行
+      #      - name: Build All Packages
+      #        run: |
+      #          pnpm build:packages
 
       # Github发布版本，并更新Release信息
       - name: Release New Version
@@ -98,10 +99,10 @@ jobs:
       - name: Install Dependencies
         run: |
           ./scripts/ci
-
-      - name: Build All Packages
-        run: |
-          pnpm build:packages
+      # ci的hooks已经执行
+      #      - name: Build All Packages
+      #        run: |
+      #          pnpm build:packages
 
       - name: Get Package Name By Commit Scope
         id: getPkgName
@@ -157,10 +158,10 @@ jobs:
         run: |
           ./scripts/ci
 
-      # 编译公共模块
-      - name: Build All Packages
-        run: |
-          pnpm build:packages
+      # ci的hooks已经执行
+      #      - name: Build All Packages
+      #        run: |
+      #          pnpm build:packages
 
       # 编译 打包成dist，支持代理
       - name: Build with VitePress

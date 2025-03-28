@@ -56,10 +56,10 @@ jobs:
         run: |
           pnpm lint
 
-      # 编辑模块代码
-      - name: Build Package Code
-        run: |
-          pnpm build:packages
+      # 编辑模块代码，ci的hooks已经执行
+      #      - name: Build Package Code
+      #        run: |
+      #          pnpm build:packages
 
       # 编译静态网站
       - name: Build Core-X Docs
