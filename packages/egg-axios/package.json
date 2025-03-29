@@ -41,7 +41,7 @@
     "@142vip/axios": "workspace:*",
     "@142vip/egg": "workspace:*",
     "@142vip/utils": "workspace:*",
-    "axios": "1.7.9"
+    "axios": "1.8.2"
   },
   "publishConfig": {
     "access": "public",
