@@ -37,7 +37,7 @@ async function changelogHandler(cliOptions: ChangelogCliOptions): Promise<void> 
     console.log('changelogConfig:', changelogConfig)
     const { markdown, commits, releaseUrl } = await changelogGenerate(changelogConfig)
 
-    VipConsole.log(`release: ${releaseUrl}`)
+    VipConsole.log(`release: <${VipColor.yellow(releaseUrl)}>`)
 
     VipConsole.log(`${VipColor.cyan(changelogConfig.from)} ${VipColor.dim(' -> ')} ${VipColor.blue(changelogConfig.to)} ${VipColor.dim(` (${commits.length} commits)`)}`)
     vipLogger.println()
@@ -95,7 +95,6 @@ async function changelogHandler(cliOptions: ChangelogCliOptions): Promise<void> 
     if (e?.stack)
       VipConsole.error(VipColor.dim(e.stack?.split('\n').slice(1).join('\n')))
 
-    console.log('catch -->', releaseUrl)
     // 手动执行，创建release
     GithubAPI.printReleaseUrl(releaseUrl, false)
 

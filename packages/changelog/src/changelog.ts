@@ -133,8 +133,7 @@ export async function sendGithubRelease(options: {
     name: options.name,
     tag_name: options.tag,
     // 草稿
-    // draft: options.draft || false,
-    draft: true,
+    draft: options.draft || false,
     // 预发布
     prerelease: options.prerelease || true,
   }
