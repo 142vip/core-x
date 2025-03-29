@@ -15,6 +15,7 @@ import {
 import {
   changelogGenerate,
   changelogUpdate,
+  sendGithubRelease,
 } from './changelog'
 import { mergeConfig } from './config'
 import { GithubAPI } from './utils'
@@ -80,14 +81,14 @@ async function changelogHandler(cliOptions: ChangelogCliOptions): Promise<void> 
     }
 
     // 调用api 直接发布
-    // await sendGithubRelease({
-    //   token: cliOptions.token,
-    //   repo: changelogConfig.repo,
-    //   baseUrlApi: changelogConfig.baseUrlApi,
-    //   name: changelogConfig.name || changelogConfig.to,
-    //   tag: changelogConfig.to,
-    //   content: markdown,
-    // })
+    await sendGithubRelease({
+      token: cliOptions.token,
+      repo: changelogConfig.repo,
+      baseUrlApi: changelogConfig.baseUrlApi,
+      name: changelogConfig.name || changelogConfig.to,
+      tag: changelogConfig.to,
+      content: markdown,
+    })
   }
   catch (e: any) {
     VipConsole.error(VipColor.red(String(e)))
