@@ -15,7 +15,6 @@ import {
 import {
   changelogGenerate,
   changelogUpdate,
-  sendGithubRelease,
 } from './changelog'
 import { mergeConfig } from './config'
 import { GithubAPI } from './utils'
@@ -36,6 +35,8 @@ async function changelogHandler(cliOptions: ChangelogCliOptions): Promise<void> 
 
     console.log('changelogConfig:', changelogConfig)
     const { markdown, commits, releaseUrl } = await changelogGenerate(changelogConfig)
+
+    console.log(111, releaseUrl)
 
     VipConsole.log(`${VipColor.cyan(changelogConfig.from)} ${VipColor.dim(' -> ')} ${VipColor.blue(changelogConfig.to)} ${VipColor.dim(` (${commits.length} commits)`)}`)
     vipLogger.println()
@@ -76,24 +77,24 @@ async function changelogHandler(cliOptions: ChangelogCliOptions): Promise<void> 
       VipConsole.error(VipColor.yellow('存储库似乎克隆得很浅，这使得更改日志无法生成。您可能希望在 CI 配置中指定 \'fetch-depth： 0\'。'))
       GithubAPI.printReleaseUrl(releaseUrl)
       VipNodeJS.exitProcess(1)
-      return
     }
 
     // 调用api 直接发布
-    await sendGithubRelease({
-      token: cliOptions.token,
-      repo: changelogConfig.repo,
-      baseUrlApi: changelogConfig.baseUrlApi,
-      name: changelogConfig.name || changelogConfig.to,
-      tag: changelogConfig.to,
-      content: markdown,
-    })
+    // await sendGithubRelease({
+    //   token: cliOptions.token,
+    //   repo: changelogConfig.repo,
+    //   baseUrlApi: changelogConfig.baseUrlApi,
+    //   name: changelogConfig.name || changelogConfig.to,
+    //   tag: changelogConfig.to,
+    //   content: markdown,
+    // })
   }
   catch (e: any) {
     VipConsole.error(VipColor.red(String(e)))
     if (e?.stack)
       VipConsole.error(VipColor.dim(e.stack?.split('\n').slice(1).join('\n')))
 
+    console.log('catch -->', releaseUrl)
     // 手动执行，创建release
     GithubAPI.printReleaseUrl(releaseUrl, false)
 

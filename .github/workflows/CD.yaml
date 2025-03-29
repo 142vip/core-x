@@ -11,7 +11,7 @@ name: CD
 on:
   push:
     branches:
-      - next
+      - fix/github
   workflow_dispatch:
 
 # 设置 GITHUB_TOKEN 的权限，以允许部署到 GitHub Pages
@@ -26,7 +26,8 @@ jobs:
     name: 创建Github发布
     runs-on: ubuntu-latest
     # 主库next且执行release更新时执行
-    if: github.repository == '142vip/core-x' && startsWith(github.event.head_commit.message, 'chore(release):')
+#    if: github.repository == '142vip/core-x' && startsWith(github.event.head_commit.message, 'chore(release):')
+    if: github.repository == '142vip/core-x'
 
     steps:
       - name: Checkout Code
@@ -65,116 +66,116 @@ jobs:
         env:
           GITHUB_TOKEN: ${{secrets.TOKEN}}
 
-  npm-release:
-    name: 创建npm发布
-    runs-on: ubuntu-latest
-    # 主库next且执行release更新时执行
-    if: github.repository == '142vip/core-x' && startsWith(github.event.head_commit.message, 'release(@142vip/')
-
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-        with:
-          persist-credentials: false
-          # “最近更新时间” 等 git 日志相关信息，需要拉取全部提交记录
-          fetch-depth: 0
-
-      # 安装PNPM
-      - name: PNPM Install
-        uses: pnpm/action-setup@v4
-        with:
-          version: 9.6.0
-
-      # 安装Node环境
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20.12.2
-          # npm包上传地址，用于注册，参考：https://github.com/actions/setup-node
-          registry-url: 'https://registry.npmjs.org'
-          # 缓存
-          cache: pnpm
-
-      # 下载依赖，并执行初始化脚本：钩子函数、思维导图构建
-      - name: Install Dependencies
-        run: |
-          ./scripts/ci
-      # ci的hooks已经执行
-      #      - name: Build All Packages
-      #        run: |
-      #          pnpm build:packages
-
-      - name: Get Package Name By Commit Scope
-        id: getPkgName
-        # 这里使用正则截取scope，获取包名
-        run: |
-          SCOPE=$(echo "${{ github.event.head_commit.message }}" | grep -o '@[^):]*')
-          echo "name=$SCOPE" >> $GITHUB_OUTPUT
-
-      - name: Use Package Name
-        run: |
-          echo "The pkgName is: ${{ steps.getPkgName.outputs.name }}"
-
-      # Npm 版本发布 注意：只发布packages中的模块
-      - name: Publish New Npm Version
-        run: |
-          pnpm publish --filter "${{ steps.getPkgName.outputs.name }}"
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-
-  # 构建并部署Dist
-  deploy-dist:
-    name: 部署到Github Pages
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    # todo 确定这里的触发条件
-    if: github.repository == '142vip/core-x'
-    steps:
-      # 拉取代码
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0 # 如果未启用 lastUpdated，则不需要
-
-      # 安装pnpm
-      - name: PNPM Install
-        uses: pnpm/action-setup@v4
-        with:
-          version: 9.6.0
-
-      # 安装Node
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20.12.2
-          cache: pnpm
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Install dependencies
-        run: |
-          ./scripts/ci
-
-      # ci的hooks已经执行
-      #      - name: Build All Packages
-      #        run: |
-      #          pnpm build:packages
-
-      # 编译 打包成dist，支持代理
-      - name: Build with VitePress
-        run: |
-          pnpm build:docs-proxy
-
-      # 上传dist文件
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist
-
-      # 部署
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+#  npm-release:
+#    name: 创建npm发布
+#    runs-on: ubuntu-latest
+#    # 主库next且执行release更新时执行
+#    if: github.repository == '142vip/core-x' && startsWith(github.event.head_commit.message, 'release(@142vip/')
+#
+#    steps:
+#      - name: Checkout Code
+#        uses: actions/checkout@v4
+#        with:
+#          persist-credentials: false
+#          # “最近更新时间” 等 git 日志相关信息，需要拉取全部提交记录
+#          fetch-depth: 0
+#
+#      # 安装PNPM
+#      - name: PNPM Install
+#        uses: pnpm/action-setup@v4
+#        with:
+#          version: 9.6.0
+#
+#      # 安装Node环境
+#      - name: Install Node.js
+#        uses: actions/setup-node@v4
+#        with:
+#          node-version: 20.12.2
+#          # npm包上传地址，用于注册，参考：https://github.com/actions/setup-node
+#          registry-url: 'https://registry.npmjs.org'
+#          # 缓存
+#          cache: pnpm
+#
+#      # 下载依赖，并执行初始化脚本：钩子函数、思维导图构建
+#      - name: Install Dependencies
+#        run: |
+#          ./scripts/ci
+#      # ci的hooks已经执行
+#      #      - name: Build All Packages
+#      #        run: |
+#      #          pnpm build:packages
+#
+#      - name: Get Package Name By Commit Scope
+#        id: getPkgName
+#        # 这里使用正则截取scope，获取包名
+#        run: |
+#          SCOPE=$(echo "${{ github.event.head_commit.message }}" | grep -o '@[^):]*')
+#          echo "name=$SCOPE" >> $GITHUB_OUTPUT
+#
+#      - name: Use Package Name
+#        run: |
+#          echo "The pkgName is: ${{ steps.getPkgName.outputs.name }}"
+#
+#      # Npm 版本发布 注意：只发布packages中的模块
+#      - name: Publish New Npm Version
+#        run: |
+#          pnpm publish --filter "${{ steps.getPkgName.outputs.name }}"
+#        env:
+#          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+#
+#  # 构建并部署Dist
+#  deploy-dist:
+#    name: 部署到Github Pages
+#    runs-on: ubuntu-latest
+#    environment:
+#      name: github-pages
+#      url: ${{ steps.deployment.outputs.page_url }}
+#    # todo 确定这里的触发条件
+#    if: github.repository == '142vip/core-x'
+#    steps:
+#      # 拉取代码
+#      - name: Checkout
+#        uses: actions/checkout@v4
+#        with:
+#          fetch-depth: 0 # 如果未启用 lastUpdated，则不需要
+#
+#      # 安装pnpm
+#      - name: PNPM Install
+#        uses: pnpm/action-setup@v4
+#        with:
+#          version: 9.6.0
+#
+#      # 安装Node
+#      - name: Setup Node
+#        uses: actions/setup-node@v4
+#        with:
+#          node-version: 20.12.2
+#          cache: pnpm
+#
+#      - name: Setup Pages
+#        uses: actions/configure-pages@v5
+#
+#      - name: Install dependencies
+#        run: |
+#          ./scripts/ci
+#
+#      # ci的hooks已经执行
+#      #      - name: Build All Packages
+#      #        run: |
+#      #          pnpm build:packages
+#
+#      # 编译 打包成dist，支持代理
+#      - name: Build with VitePress
+#        run: |
+#          pnpm build:docs-proxy
+#
+#      # 上传dist文件
+#      - name: Upload artifact
+#        uses: actions/upload-pages-artifact@v3
+#        with:
+#          path: dist
+#
+#      # 部署
+#      - name: Deploy to GitHub Pages
+#        id: deployment
+#        uses: actions/deploy-pages@v4
