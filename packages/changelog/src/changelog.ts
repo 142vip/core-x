@@ -136,8 +136,7 @@ export async function sendGithubRelease(options: {
     // draft: options.draft || false,
     draft: true,
     // 预发布
-    // prerelease: options.prerelease || true,
-    prerelease: true,
+    prerelease: options.prerelease || true,
   }
   if (method === HttpMethod.POST) {
     VipConsole.log(VipColor.cyan('Creating Release Notes...'))
@@ -151,7 +150,6 @@ export async function sendGithubRelease(options: {
     body: JSON.stringify(body),
     headers,
   })
-  console.log(333, res)
   VipConsole.log(VipColor.green(`Released on ${res.html_url}`))
 }
 

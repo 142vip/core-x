@@ -37,7 +37,7 @@ async function changelogHandler(cliOptions: ChangelogCliOptions): Promise<void> 
     console.log('changelogConfig:', changelogConfig)
     const { markdown, commits, releaseUrl } = await changelogGenerate(changelogConfig)
 
-    console.log(111, releaseUrl)
+    VipConsole.log(`release: ${releaseUrl}`)
 
     VipConsole.log(`${VipColor.cyan(changelogConfig.from)} ${VipColor.dim(' -> ')} ${VipColor.blue(changelogConfig.to)} ${VipColor.dim(` (${commits.length} commits)`)}`)
     vipLogger.println()

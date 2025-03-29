@@ -1,5 +1,5 @@
 import type { Commit, GitAuthorInfo } from '../changelog.interface'
-import { VipColor, VipConsole, VipQs } from '@142vip/utils'
+import { VipColor, VipConsole, vipLogger, VipQs } from '@142vip/utils'
 import { $fetch } from 'ofetch'
 
 function getHeaders(token: string) {
@@ -151,7 +151,10 @@ function printReleaseUrl(webUrl: string, success: boolean = true): void {
     ? `\n${VipColor.yellow('使用以下链接手动发布新的版本：')}\n`
     : `\n${VipColor.red('无法创建发布。使用以下链接手动创建：')}\n`
 
-  VipConsole.error(`${errMsg}\n${VipColor.yellow(webUrl)}\n`)
+  VipConsole.error(errMsg)
+  vipLogger.println()
+  VipConsole.error(`<${VipColor.yellow(webUrl)}>`)
+  vipLogger.println()
 }
 
 export const GithubAPI = {
