@@ -94,6 +94,7 @@ export async function changelogUpdate(
 
 /**
  * 发送github发布
+ * - https://docs.github.com/en/rest/releases/releases?apiVersion=2022-11-28
  */
 export async function sendGithubRelease(options: {
   token: string

@@ -153,7 +153,7 @@ function printReleaseUrl(webUrl: string, success: boolean = true): void {
 
   VipConsole.error(errMsg)
   vipLogger.println()
-  VipConsole.error(`<${VipColor.yellow(webUrl)}>`)
+  VipConsole.log(`<${VipColor.yellow(webUrl)}>`)
   vipLogger.println()
 }
 
