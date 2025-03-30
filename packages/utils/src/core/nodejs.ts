@@ -3,7 +3,8 @@ import type { FileHandle } from 'node:fs/promises'
 import type { Stream } from 'node:stream'
 import { Buffer } from 'node:buffer'
 import { existsSync, promises } from 'node:fs'
-import path from 'node:path'
+import * as fs from 'node:fs'
+import * as nodePath from 'node:path'
 import process from 'node:process'
 import { VipColor, VipConsole, VipSymbols } from '../pkgs'
 import { vipLogger } from './logger'
@@ -84,7 +85,18 @@ function getCPUArch(): NodeJS.Architecture {
  * - path.join()
  */
 function pathJoin(...paths: string[]): string {
-  return path.join(...paths)
+  return nodePath.join(...paths)
+}
+
+function pathDirname(dirPath: string): string {
+  return nodePath.dirname(dirPath)
+}
+
+/**
+ * 路径扩展名
+ */
+function pathExtname(path: string): string {
+  return nodePath.extname(path)
 }
 
 /**
@@ -111,6 +123,14 @@ function isExistFile(name: string, cwd?: string): boolean {
  */
 async function readFileToStrByUTF8(filePath: PathLike | FileHandle): Promise<string> {
   return promises.readFile(filePath, 'utf-8')
+}
+
+function readdirSync(path: PathLike, options?: {
+  encoding: BufferEncoding | null
+  withFileTypes?: false | undefined
+  recursive?: boolean | undefined
+} | BufferEncoding | null) {
+  return fs.readdirSync(path, options)
 }
 
 /**
@@ -178,9 +198,12 @@ export const VipNodeJS = {
   exitProcess,
   existPath,
   isExistFile,
+  readdirSync,
   readFileToStrByUTF8,
   writeFileByUTF8,
   pathJoin,
+  pathDirname,
+  pathExtname,
   isBuffer,
   printStandardNodeDevEnv,
 }
