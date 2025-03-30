@@ -79,8 +79,9 @@ function getTags(): string[] {
 /**
  * 获取指向当前提交（HEAD）的所有标签
  */
-function getTagInHead(): string {
-  return VipExecutor.execCommandSync('git tag --points-at HEAD')
+function getTagInHead(): string | null {
+  const tag = VipExecutor.execCommandSync('git tag --points-at HEAD')
+  return tag !== '' ? tag : null
 }
 
 /**
