@@ -49,7 +49,7 @@
     "@vue/repl": "4.5.1",
     "@vuepress/bundler-vite": "2.0.0-rc.20",
     "@vuepress/plugin-markdown-image": "2.0.0-rc.90",
-    "@vuepress/plugin-markdown-tab": "2.0.0-rc.90",
+    "@vuepress/plugin-markdown-tab": "2.0.0-rc.92",
     "@vuepress/plugin-redirect": "2.0.0-rc.90",
     "@vuepress/plugin-slimsearch": "2.0.0-rc.90",
     "@vueuse/shared": "13.0.0",
