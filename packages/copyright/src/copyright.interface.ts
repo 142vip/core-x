@@ -37,10 +37,6 @@ export interface DocumentSection {
  */
 export interface CopyrightOptions {
   /**
-   * 页数
-   */
-  pageCount?: number
-  /**
    * 每页最大行数
    */
   maxLineCountInPage?: number

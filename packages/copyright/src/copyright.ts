@@ -29,11 +29,6 @@ import {
  */
 export class VipCopyright {
   /**
-   * 最大页数
-   */
-  private readonly pageCount: number
-
-  /**
    * docx文档，一页的最大代码行数
    */
   private readonly maxLineCountInPage: number
@@ -75,7 +70,6 @@ export class VipCopyright {
     this.copyrightTitle = copyrightTitle
     this.copyrightVersion = copyrightVersion
 
-    this.pageCount = options?.pageCount ?? 30
     this.maxLineCountInPage = options?.maxLineCountInPage ?? 50
     this.maxScanSourceLineCount = options?.maxScanSourceLineCount ?? 2000
     this.consoleLogger = options?.logger ?? false
@@ -100,21 +94,21 @@ export class VipCopyright {
   public async generateDocx(sourceCodeDir: string, fileType: CopyrightFileType): Promise<void> {
     const storeDocxDir = VipNodeJS.getProcessCwd()
 
-    const beginSourceDocPath = VipNodeJS.pathJoin(storeDocxDir, `${this.copyrightTitle}${this.copyrightVersion}-代码(前${this.pageCount}页).docx`)
-    const endSourceDocPath = VipNodeJS.pathJoin(storeDocxDir, `${this.copyrightTitle}${this.copyrightVersion}-代码(后${this.pageCount}页).docx`)
-    const sourceDocPath = VipNodeJS.pathJoin(storeDocxDir, `${this.copyrightTitle}${this.copyrightVersion}-代码(前后${this.pageCount}页).docx`)
+    const beginSourceDocPath = VipNodeJS.pathJoin(storeDocxDir, `${this.copyrightTitle}${this.copyrightVersion}-代码(前30页).docx`)
+    const endSourceDocPath = VipNodeJS.pathJoin(storeDocxDir, `${this.copyrightTitle}${this.copyrightVersion}-代码(后30页).docx`)
+    const sourceDocPath = VipNodeJS.pathJoin(storeDocxDir, `${this.copyrightTitle}${this.copyrightVersion}-代码(前后30页).docx`)
 
     // 扫描
     const { beginSourceCode, endSourceCode, allSourceCode } = this.scanSourceCode(sourceCodeDir, fileType)
 
     // 前30页
-    await this.saveCodeToDocx(beginSourceDocPath, beginSourceCode, this.pageCount)
+    await this.saveCodeToDocx(beginSourceDocPath, beginSourceCode, 30)
 
     // 后30页
-    await this.saveCodeToDocx(endSourceDocPath, endSourceCode, this.pageCount)
+    await this.saveCodeToDocx(endSourceDocPath, endSourceCode, 30)
 
     // 整个代码
-    await this.saveCodeToDocx(sourceDocPath, allSourceCode, this.pageCount * 2)
+    await this.saveCodeToDocx(sourceDocPath, allSourceCode, 60)
 
     if (this.consoleLogger) {
       // 存放目录
