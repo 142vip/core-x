@@ -32,6 +32,7 @@ export const sidebarConfig: SidebarConfig = [
       { text: '@142vip/oauth', link: '/packages/oauth/index.md' },
       { text: '@142vip/redis', link: '/packages/redis/index.md' },
       { text: '@142vip/typeorm', link: '/packages/typeorm/index.md' },
+      { text: '@142vip/copyright', link: '/packages/copyright/index.md' },
     ],
   },
   {
