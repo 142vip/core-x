@@ -54,11 +54,19 @@ async function promptList<T extends string>(message: string, choices: VipInquire
 }
 
 /**
- * 终端交互输入，输入框
+ * 终端交互输入，输入框，可选
  * - https://github.com/SBoudrias/Inquirer.js/tree/main/packages/input
  */
 async function promptInput(message: string, defaultValue?: string): Promise<string> {
   return input({ message, default: defaultValue })
+}
+
+/**
+ * 终端交互输入，输入框，必填
+ * - https://github.com/SBoudrias/Inquirer.js/tree/main/packages/input
+ */
+async function promptInputRequired(message: string): Promise<string> {
+  return input({ message, required: true })
 }
 
 /**
@@ -122,6 +130,7 @@ function handleSimpleSearchSource(sources: string[]) {
 export const VipInquirer = {
   promptList,
   promptInput,
+  promptInputRequired,
   promptNumber,
   promptPassword,
   promptSelect,
