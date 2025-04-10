@@ -9,4 +9,5 @@ export enum CliCommandEnum {
   TURBO = 'turbo',
   INSTALL = 'install',
   SYNC = 'sync',
+  COPYRIGHT = 'copyright',
 }

@@ -40,6 +40,36 @@ Commands:
   help [command]                 display help for command
 ```
 
+### copyright命令
+
+软件著作权申请时，快速生成前后30页的源代码文档，用于审批
+
+#### 查看命令
+
+```shell
+# 查看copyright命令
+npx fa cr -h
+
+Usage: @142vip/fairy-cli copyright|cr [options]
+
+申请著作权登记的软件，快速生成源代码文档，包括源代码文档的前30页、后30页、前后30页
+
+Options:
+  -l,--max-line-count    每页最大行数
+  -s,--max-source-count  扫描的最大代码行数
+  --logger               开启日志追踪模式 (default: false)
+  --dry-run              试运行，生成软著源代码文档 (default: false)
+  -h, --help             display help for command
+```
+#### 使用示例
+
+```shell
+# 正式运行
+fa cr
+# 试运行
+fa cr --dry-run
+```
+
 ### sync
 
 同步`npm`仓库的模块包到`cnpm`仓库，支持同步多个模块，也可以访问[cnpm站点](https://npmmirror.com/)手动同步模块。

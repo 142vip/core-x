@@ -1,5 +1,6 @@
 export * from './changelog'
 export * from './clean'
+export * from './copyright'
 export * from './deploy'
 export * from './install'
 export * from './lint'
