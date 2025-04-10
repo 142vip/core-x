@@ -1,0 +1,54 @@
+{
+  "name": "@142vip/copyright",
+  "version": "0.0.1-alpha.0",
+  "private": false,
+  "description": "软著工具包，用于生成软著申请的文件材料",
+  "author": "mmdapl <mmdapl@163.com>",
+  "license": "MIT",
+  "homepage": "https://142vip.github.io/core-x/packages/copyright/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/142vip/core-x.git",
+    "directory": "packages/copyright"
+  },
+  "keywords": [
+    "公众号搜：储凡",
+    "142vip",
+    "@142vip",
+    "@142vip/copyright",
+    "软件著作",
+    "中国版权保护中心"
+  ],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "authorInfo": {
+    "name": "微信公众号：储凡",
+    "email": "fairy_vip@2925.com",
+    "url": "https://github.com/142vip",
+    "homePage": "https://142vip.cn"
+  },
+  "scripts": {
+    "build": "unbuild",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@142vip/utils": "workspace:*",
+    "docx": "9.2.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  }
+}
