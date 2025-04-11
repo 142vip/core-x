@@ -1,5 +1,8 @@
 import type { Footer, Header, Paragraph } from 'docx'
 
+/**
+ * 软著支持的源代码文件类型
+ */
 export enum CopyrightFileType {
   JAVA = 'java',
   JAVASCRIPT = 'js',
@@ -21,6 +24,9 @@ export enum CopyrightFileType {
   TEXT = 'txt',
 }
 
+/**
+ * 文档页
+ */
 export interface DocumentSection {
   headers: {
     default: Header

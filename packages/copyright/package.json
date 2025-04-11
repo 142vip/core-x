@@ -16,6 +16,7 @@
     "142vip",
     "@142vip",
     "@142vip/copyright",
+    "软著",
     "软件著作",
     "中国版权保护中心"
   ],
@@ -45,7 +46,7 @@
   },
   "dependencies": {
     "@142vip/utils": "workspace:*",
-    "docx": "9.2.0"
+    "docx": "9.3.0"
   },
   "publishConfig": {
     "access": "public",

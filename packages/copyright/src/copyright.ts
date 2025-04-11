@@ -49,7 +49,7 @@ export class VipCopyright {
   private readonly maxScanSourceLineCount: number
 
   /**
-   * 是否需要终端打印日志
+   * 是否需要终端打印日志，默认false
    */
   private readonly consoleLogger: boolean
 
