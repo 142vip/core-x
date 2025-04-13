@@ -10,4 +10,8 @@ export enum CliCommandEnum {
   INSTALL = 'install',
   SYNC = 'sync',
   COPYRIGHT = 'copyright',
+  /**
+   * 包含子命令
+   */
+  COMMIT = 'commit [vip]',
 }

@@ -4,6 +4,7 @@ import { description, name, version } from '../package.json'
 import {
   changelogMain,
   cleanUpMain,
+  commitMain,
   copyrightMain,
   deployMain,
   installMain,
@@ -52,6 +53,9 @@ async function fairyCliMain(): Promise<void> {
 
   // fairy-cli copyright
   await copyrightMain(program)
+
+  // fairy-cli commit
+  await commitMain(program)
 
   // 参数解析
   program.parse(process.argv)
