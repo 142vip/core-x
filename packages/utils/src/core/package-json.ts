@@ -11,7 +11,7 @@ import { VipNodeJS } from './nodejs'
 async function runScript(scriptName: string, cwd?: string): Promise<void> {
   const pkgPath = getPackagePath(cwd)
 
-  const pkgJSONStr = await VipNodeJS.readFileToStrByUTF8(pkgPath)
+  const pkgJSONStr = VipNodeJS.readFileToStrByUTF8(pkgPath)
   const data = JSON.parse(pkgJSONStr)
 
   if (!hasScript(data, scriptName)) {
@@ -87,7 +87,7 @@ function promptChoiceReleaseVersion(): void {
 async function replaceOrAddToJSON(json: Record<string, unknown>, cwd?: string) {
   const pkgPath = getPackagePath(cwd)
 
-  const pkgJSONStr = await VipNodeJS.readFileToStrByUTF8(pkgPath)
+  const pkgJSONStr = VipNodeJS.readFileToStrByUTF8(pkgPath)
 
   const pkgJSON = VipJSON.parse(pkgJSONStr, {}) as PackageJsonMainFest
 
@@ -97,7 +97,7 @@ async function replaceOrAddToJSON(json: Record<string, unknown>, cwd?: string) {
   }
 
   // 写回
-  await VipNodeJS.writeFileByUTF8(pkgPath, VipJSON.stringify(pkgJSON))
+  VipNodeJS.writeFileByUTF8(pkgPath, VipJSON.stringify(pkgJSON))
 }
 
 function getPackageJSON<T>(cwd?: string): T & PackageJsonMainFest {
