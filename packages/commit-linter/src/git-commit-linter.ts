@@ -9,9 +9,10 @@ const ErrorLabel = `${VipColor.white(VipColor.green(`【${name}】`))}`
 /**
  * Git Commit信息校验
  * @param params 校验参数 可选，传则需要自定义校验
+ * @param commit commit message 可选，不传则从git获取
  */
-export function commitLiner(params?: GitCommitLinterOptions): GitCommitLinter {
-  const commit = VipGit.getCommitFirstLineMsg()
+export function commitLiner(params?: GitCommitLinterOptions, commit?: string): GitCommitLinter {
+  commit = commit ?? VipGit.getCommitFirstLineMsg()
 
   const parsedMsg = VipGit.parseCommitMsg(commit)
 
@@ -32,27 +33,33 @@ export function commitLiner(params?: GitCommitLinterOptions): GitCommitLinter {
 
     // git commit type
     if (!supportTypes.includes(type)) {
+      vipLogger.println()
       VipConsole.error(`${ErrorLabel} ${VipColor.red(
         `invalid commit type , Examples: ${supportTypes.join('|')}`,
       )}`)
+      vipLogger.println()
       printStandardCommitMessage(commit)
       VipNodeJS.exitProcess(1)
     }
 
     // git commit scope
     if (scope != null && !supportScopes.includes(scope)) {
+      vipLogger.println()
       VipConsole.error(`${ErrorLabel} ${VipColor.red(
         `invalid commit scope name , Examples: \n${supportScopes.map(v => ` - ${v}`).join('\n')}`,
       )}`)
+      vipLogger.println()
       printStandardCommitMessage(commit)
       VipNodeJS.exitProcess(1)
     }
 
     // git commit subject
     if (subject == null || subject.length > 100 || subject.length < 8) {
+      vipLogger.println()
       VipConsole.error(`${ErrorLabel} ${VipColor.red(
         `invalid commit message length , min length is 5 , max length is 100`,
       )}`)
+      vipLogger.println()
       printStandardCommitMessage(commit)
       VipNodeJS.exitProcess(1)
     }
