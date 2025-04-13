@@ -5,6 +5,17 @@ import { VipExecutor } from './exec'
 import { VipNodeJS } from './nodejs'
 
 /**
+ * 获取某个分支上的commit日志
+ */
+function getCommitLogs(latestTag: string, branch?: string): string[] {
+  const command = `git log ${branch ?? ''} --pretty=format:"%s" --date=short "${latestTag}"..HEAD`
+  const commitLogs = VipExecutor.execCommandSync(command)
+
+  // 整理出git提交日志
+  return commitLogs.split('\n')
+}
+
+/**
  * 获取最近一次Git提交信息【包含merge信息】
  * - 短哈希值
  * - 提交信息
@@ -200,6 +211,7 @@ export const VipGit = {
   getRecentCommit,
   getRecentCommitHash,
   getRecentCommitShortHash,
+  getCommitLogs,
   getGitHubRepo,
   getCurrentBranch,
   isRepoShallow,
