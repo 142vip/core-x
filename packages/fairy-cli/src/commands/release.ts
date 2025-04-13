@@ -1,10 +1,16 @@
 import type { VersionBumpOptions } from '@142vip/release-version'
 import type { VipCommander } from '@142vip/utils'
 import { versionBump } from '@142vip/release-version'
-import { VipColor, VipConsole, VipGit, VipInquirer, VipNodeJS } from '@142vip/utils'
+import {
+  VipColor,
+  VipConsole,
+  VipGit,
+  VipInquirer,
+  VipMonorepo,
+  VipNodeJS,
+} from '@142vip/utils'
 import {
   CliCommandEnum,
-  getPackageListInMonorepo,
   getReleasePkgJSON,
   printPreCheckRelease,
   releaseMonorepoPackage,
@@ -23,22 +29,23 @@ interface VipReleaseExtraOptions {
 }
 
 const defaultRepoName = 'main'
+
 /**
  * 版本发布
  */
 async function execNormalRelease(args: ReleaseOptions): Promise<void> {
   // 指定包
   if (args.package != null) {
-    const packageJSONList = await getPackageListInMonorepo()
+    const packageJSONList = await VipMonorepo.getPackageJSONPathList()
     // const packageJSONList: string[] = []
     if (!packageJSONList.includes(`${args.package}/package.json`)) {
       // 抛错，提醒用户包在monorepo下找不到
-      VipConsole.log('正确')
+      VipConsole.log('release包在monorepo下找不到，请检查！！')
     }
   }
   else {
     // 对话框，用户自行选择
-    VipConsole.log('错误')
+    VipConsole.log('报错，暂未支持！！')
   }
 
   // 指定文件更新版本
@@ -66,7 +73,7 @@ async function execVipRelease(args: VipReleaseExtraOptions): Promise<void> {
 
   // 预先检查子模块
   if (args.checkRelease) {
-    printPreCheckRelease(packageNames)
+    await printPreCheckRelease(packageNames)
     return VipNodeJS.exitProcess(0)
   }
 
