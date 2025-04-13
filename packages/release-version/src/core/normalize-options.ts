@@ -1,10 +1,8 @@
 import type { VersionBumpOptions } from '../types'
 import type { ReleaseType } from './release-type'
-import fsSync from 'node:fs'
-import fs from 'node:fs/promises'
 import process from 'node:process'
+import { VipMonorepo } from '@142vip/utils'
 import fg from 'fast-glob'
-import yaml from 'js-yaml'
 import { isReleaseType } from './release-type'
 
 interface Interface {
@@ -118,26 +116,18 @@ export async function normalizeOptions(raw: VersionBumpOptions): Promise<Normali
       'jsr.json',
       'jsr.jsonc',
     ]
-
     // check if pnpm-workspace.yaml exists, if so, add all workspaces to files
-    if (fsSync.existsSync('pnpm-workspace.yaml')) {
-      // read pnpm-workspace.yaml
-      const pnpmWorkspace = await fs.readFile('pnpm-workspace.yaml', 'utf8')
-      // parse yaml
-      const workspaces = yaml.load(pnpmWorkspace) as { packages: string[] }
-      // append package.json to each workspace string
-      const workspacesWithPackageJson = workspaces.packages.map(workspace => `${workspace}/package.json`)
-      // start with ! or already in files should be excluded
-      const withoutExcludedWorkspaces = workspacesWithPackageJson.filter(workspace => !workspace.startsWith('!') && !raw.files?.includes(workspace))
-      // add to files
-      raw.files = raw.files.concat(withoutExcludedWorkspaces)
-    }
+    const packageJSONPaths = await VipMonorepo.getPackageJSONPathList()
+    raw.files = raw.files.concat(packageJSONPaths)
   }
   else {
     raw.files = raw.files?.length
       ? raw.files
       : ['package.json', 'package-lock.json', 'jsr.json', 'jsr.jsonc']
   }
+
+  // 对raw.files 进行去重
+  raw.files = [...new Set(raw.files)]
 
   const files = await fg(
     raw.files,

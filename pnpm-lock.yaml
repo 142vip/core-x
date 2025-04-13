@@ -379,16 +379,10 @@ importers:
       fast-glob:
         specifier: 3.3.2
         version: 3.3.2
-      js-yaml:
-        specifier: 4.1.0
-        version: 4.1.0
       prompts:
         specifier: 2.4.2
         version: 2.4.2
     devDependencies:
-      '@types/js-yaml':
-        specifier: 4.0.9
-        version: 4.0.9
       '@types/prompts':
         specifier: 2.4.9
         version: 2.4.9
