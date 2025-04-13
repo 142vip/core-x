@@ -1,11 +1,10 @@
-import fsSync from 'node:fs'
-import yaml from 'js-yaml'
+import { VipYaml } from '../pkgs'
 import { VipNodeJS } from './nodejs'
 
 /**
  * 获取monorepo下所有包的package.json，返回所有包的路径列表
  */
-async function getPackageJSONPathList() {
+async function getPackageJSONPathList(): Promise<string[]> {
   const pnpmYamlFileName = 'pnpm-workspace.yaml'
   const pnpmWorkspace = VipNodeJS.existPath(pnpmYamlFileName)
   const packageJSONList: string[] = []
@@ -15,7 +14,7 @@ async function getPackageJSONPathList() {
     // read pnpm-workspace.yaml
     const pnpmWorkspace = VipNodeJS.readFileToStrByUTF8(pnpmYamlFileName)
     // parse yaml
-    const workspaces = yaml.load(pnpmWorkspace) as { packages: string[] }
+    const workspaces = VipYaml.load(pnpmWorkspace) as { packages: string[] }
     // append package.json to each workspace string
     const workspacesWithPackageJson = workspaces.packages.map(workspace => `${workspace}/package.json`)
 
@@ -24,7 +23,7 @@ async function getPackageJSONPathList() {
   }
 
   // 如果根目录下的package.json存在，则返回根目录下的package.json
-  if (fsSync.existsSync('package.json')) {
+  if (VipNodeJS.existPath('package.json')) {
     packageJSONList.push('package.json')
   }
 
