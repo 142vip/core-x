@@ -1,8 +1,14 @@
 import { execSync } from 'node:child_process'
 import process from 'node:process'
 import { versionBump } from '@142vip/release-version'
-import { VipColor, VipConsole, VipSymbols } from '@142vip/utils'
-import { getCommitLogs, getLatestTagName } from './git'
+import {
+  VipColor,
+  VipConsole,
+  VipGit,
+  VipNodeJS,
+  VipPackageJSON,
+  VipSymbols,
+} from '@142vip/utils'
 
 interface PackageJSON {
   name: string
@@ -52,12 +58,12 @@ export function getReleasePkgJSON(filter?: string | string[]): PackageJSON[] {
 /**
  * 打印模块预检信息
  */
-export function printPreCheckRelease(packageNames: string[]): void {
+export async function printPreCheckRelease(packageNames: string[]): Promise<void> {
   // 标记是否能够发布主仓库，前提是所有子模块都进行版本更新
   let isRootRelease = true
   const packages: ValidatePkgJSON[] = []
   for (const packageName of packageNames) {
-    const isNeedRelease = validatePackage(packageName)
+    const isNeedRelease = await validatePackage(packageName)
     // 子模块没有进行版本更新
     if (isNeedRelease) {
       isRootRelease = false
@@ -87,9 +93,13 @@ export function printPreCheckRelease(packageNames: string[]): void {
  * 提交git当前节点到上个tag的所有提交记录
  * 分析、判断是否有公共模块，提醒及时对公共模块发布新的版本号
  */
-function validatePackage(packageNameInCommitScope: string, template?: string): boolean {
-  const latestTag = getLatestTagName()
-  const commitLogs = getCommitLogs(latestTag)
+async function validatePackage(packageNameInCommitScope: string, template?: string): Promise<boolean> {
+  const latestTag = await VipPackageJSON.getVersionGitTag()
+  if (latestTag == null) {
+    VipConsole.log(`仓库没有tag标签，请先打tag标签或配置version字段！！！`)
+    VipNodeJS.exitProcess(1)
+  }
+  const commitLogs = VipGit.getCommitLogs(latestTag!)
 
   // 整理出git提交日志
   const logsByPackage = commitLogs.filter(commit => commit.includes(`(${packageNameInCommitScope})`))
