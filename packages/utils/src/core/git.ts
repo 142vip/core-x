@@ -149,6 +149,14 @@ function execPush(args: string[]): void {
 }
 
 /**
+ * 列出所有的remote信息
+ */
+function getRemoteNames(): string[] {
+  const remoteStr = VipExecutor.execCommandSync('git remote')
+  return remoteStr.split('\n')
+}
+
+/**
  * git emoji表情转换
  * 参考：https://www.npmjs.com/package/convert-gitmoji
  */
@@ -226,4 +234,5 @@ export const VipGit = {
   getCommitTrimMsg,
   getCommitFirstLineMsg,
   parseCommitMsg,
+  getRemoteNames,
 }

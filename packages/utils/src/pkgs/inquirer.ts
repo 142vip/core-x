@@ -78,7 +78,7 @@ async function promptPassword(message: string): Promise<string> {
 }
 
 /**
- * 选择框
+ * 选择框，必选选择框
  * - https://github.com/SBoudrias/Inquirer.js/tree/main/packages/select
  */
 async function promptSelect<T extends string>(message: string, choices: VipInquirerChoiceList<T> | string[], options?: VipInquirerOptions): Promise<T> {
@@ -118,7 +118,7 @@ async function promptSearch(message: string, source: SearchSource, pageSize?: nu
 /**
  * 搜索源简单处理
  */
-function handleSimpleSearchSource(sources: string[]) {
+function handleSimpleSearchSource(sources: string[]): (input: string) => string[] {
   return function (input: string) {
     return sources.filter((name: string) => name.includes(input))
   }

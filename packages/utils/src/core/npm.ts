@@ -1,5 +1,6 @@
+import type { PackageJSON } from './package-json'
 import { RegistryAddressEnum } from '../enums'
-import { VipJSON } from '../pkgs'
+import { VipConsole, VipJSON } from '../pkgs'
 import { VipExecutor } from './exec'
 import { vipLogger } from './logger'
 import { VipNodeJS } from './nodejs'
@@ -82,6 +83,24 @@ async function getTurboPackApps(): Promise<string[]> {
 }
 
 /**
+ * 获取pnpm ls命令执行后的结果，并返回一个PackageJSON
+ * 参考：
+ * - pnpm 命令： https://pnpm.io/cli/list
+ * - filter参数： https://pnpm.io/filtering
+ */
+function getPackageJSONByPnpm(pnpmLsCommand: string): Array<PackageJSON> {
+  try {
+    const packageStr = VipExecutor.execCommandSync(pnpmLsCommand)
+    return JSON.parse(packageStr) as Array<PackageJSON>
+  }
+  catch (error) {
+    VipConsole.log('Failed to get the release package name, in function getPackageJSONByPnpm')
+    VipConsole.error(error)
+    return []
+  }
+}
+
+/**
  * 基于npm安装依赖
  */
 async function installByNpm(args: {
@@ -153,5 +172,6 @@ export const VipNpm = {
   isExistPnpm,
   installByNpm,
   installByPnpm,
+  getPackageJSONByPnpm,
   userLogin,
 }

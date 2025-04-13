@@ -150,7 +150,6 @@ async function printStandardNodeDevEnv(): Promise<void> {
   const npm = await VipNpm.getNpmVersion()
   const pnpm = await VipNpm.getPnpmVersion()
   const node = await VipNpm.getNodeVersion()
-  console.log(npm, node, pnpm)
 
   VipConsole.log(`Node.js开发环境，版本信息统计：`)
   vipLogger.println()
@@ -183,6 +182,17 @@ function pathResolve(...pathSegments: string[]): string {
   return nodePath.resolve(...pathSegments)
 }
 
+/**
+ *
+ */
+function getProcessStdin(): NodeJS.ReadStream {
+  return process.stdin
+}
+
+function getProcessStdout(): NodeJS.WriteStream {
+  return process.stdout
+}
+
 export const VipNodeJS = {
   getProcessFirstArgv,
   getProcessArgv,
@@ -193,6 +203,8 @@ export const VipNodeJS = {
   getProcessPlatform,
   getProcessCwd,
   getProcessVersions,
+  getProcessStdin,
+  getProcessStdout,
   exitProcess,
   existPath,
   isExistFile,

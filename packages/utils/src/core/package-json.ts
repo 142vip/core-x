@@ -26,7 +26,7 @@ async function runScript(scriptName: string, cwd?: string): Promise<void> {
 /**
  * 判断package.json文件中是否存在指定的脚本
  */
-function hasScript(packageJSON: PackageJsonMainFest, script: string) {
+function hasScript(packageJSON: PackageJSONMainFest, script: string) {
   const npmScripts = packageJSON.scripts as Record<string, string> | undefined
 
   if (npmScripts && typeof npmScripts === 'object')
@@ -43,7 +43,7 @@ async function getCurrentVersion(cwd?: string): Promise<string | null> {
 
   const pkgJSONStr = VipNodeJS.readFileToStrByUTF8(pkgPath)
 
-  const pkgJSON = VipJSON.parse(pkgJSONStr, {}) as PackageJsonMainFest
+  const pkgJSON = VipJSON.parse(pkgJSONStr, {}) as PackageJSONMainFest
 
   return pkgJSON.version ?? null
 }
@@ -89,7 +89,7 @@ async function replaceOrAddToJSON(json: Record<string, unknown>, cwd?: string) {
 
   const pkgJSONStr = VipNodeJS.readFileToStrByUTF8(pkgPath)
 
-  const pkgJSON = VipJSON.parse(pkgJSONStr, {}) as PackageJsonMainFest
+  const pkgJSON = VipJSON.parse(pkgJSONStr, {}) as PackageJSONMainFest
 
   // 遍历新增
   for (const [key, value] of Object.entries(json)) {
@@ -100,10 +100,10 @@ async function replaceOrAddToJSON(json: Record<string, unknown>, cwd?: string) {
   VipNodeJS.writeFileByUTF8(pkgPath, VipJSON.stringify(pkgJSON))
 }
 
-function getPackageJSON<T>(cwd?: string): T & PackageJsonMainFest {
+function getPackageJSON<T>(cwd?: string): T & PackageJSONMainFest {
   const pkgPath = getPackagePath(cwd)
   const pkg = createRequire(import.meta.url)(pkgPath)
-  return pkg as T & PackageJsonMainFest
+  return pkg as T & PackageJSONMainFest
 }
 
 /**
@@ -146,10 +146,13 @@ function isPackageJSON(packageJSON?: any): boolean {
     && packageJSON.description != null
 }
 
-export interface PackageJsonMainFest {
+export interface PackageJSON {
   name: string
   version: string
-  description: string
+  private: boolean
+}
+
+export interface PackageJSONMainFest extends PackageJSON {
   [key: string]: unknown
 }
 
