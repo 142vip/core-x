@@ -112,7 +112,7 @@ async function validatePackage(packageNameInCommitScope: string, template?: stri
  * 更新公共包
  * 生成changelog文档，更新version
  */
-export async function releaseMonorepoPackage(pkg: PackageJSON): Promise<void> {
+export async function releaseMonorepoPkg(pkg: PackageJSON): Promise<void> {
   const commitInfo = `release(${pkg.name}): publish \`v%s\``
   const execute = 'git add CHANGELOG.md'
   const rpCommand = `bumpx --preid alpha --changelog --commit '${commitInfo}'  --execute '${execute}' --scopeName '${pkg.name}' --no-tag --all`

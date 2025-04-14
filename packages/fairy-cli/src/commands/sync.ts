@@ -113,7 +113,7 @@ async function execSync(packageName: string): Promise<void> {
 /**
  * 在线搜索npm包
  */
-async function searchNpmPkgOnline(input: string, options: { signal: AbortSignal }) {
+async function searchNpmPkgOnline(input: string | undefined, options: { signal: AbortSignal }) {
   if (input == null) {
     return []
   }
@@ -151,7 +151,7 @@ export async function syncMain(program: VipCommander): Promise<void> {
       }
       // 在线查询，搜索npm包
       else {
-        packageName = await VipInquirer.promptSearch('请输入需要同步的模块包名称：', searchNpmPkgOnline as any)
+        packageName = await VipInquirer.promptSearch('请输入需要同步的模块包名称：', searchNpmPkgOnline)
       }
 
       if (packageName != null) {

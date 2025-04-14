@@ -42,7 +42,6 @@ export async function commitMain(program: VipCommander): Promise<void> {
     .option('--vip', '@142vip组织专用功能', false)
     .option('--push', '是否要推送到远程', true)
     .action(async (vip, args: CommitOptions): Promise<void> => {
-      console.log(111, vip, args)
       if (vip) {
         await execVipCodeCommit(args)
       }
@@ -54,7 +53,7 @@ async function execVipCodeCommit(args: CommitOptions): Promise<void> {
 
   // monorepo 获取packages目录下所有的模块名
   const pkgNames = VipMonorepo.getPkgNames(['./apps/*', './packages/*'])
-  const gitScope = await VipInquirer.promptSearch('提交范围：', ((scope: string) => {
+  const gitScope = await VipInquirer.promptSearch('提交范围：', (scope: string | undefined) => {
     const filterScopes = scope != null
       ? pkgNames.filter(pkg => pkg.includes(scope))
       : []
@@ -65,7 +64,7 @@ async function execVipCodeCommit(args: CommitOptions): Promise<void> {
       new VipInquirerSeparator(),
       ...GIT_COMMIT_DEFAULT_SCOPES,
     ]
-  }) as any, 40)
+  }, 40)
 
   const gitSubject = await VipInquirer.promptInputRequired('提交说明：')
 

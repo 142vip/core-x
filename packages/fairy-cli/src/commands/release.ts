@@ -2,18 +2,21 @@ import type { VersionBumpOptions } from '@142vip/release-version'
 import type { VipCommander } from '@142vip/utils'
 import { versionBump } from '@142vip/release-version'
 import {
+  DEFAULT_RELEASE_ROOT_NAME,
   VipColor,
   VipConsole,
   VipGit,
   VipInquirer,
+  vipLogger,
   VipMonorepo,
   VipNodeJS,
 } from '@142vip/utils'
+import { name } from '../../package.json'
 import {
   CliCommandEnum,
   getReleasePkgJSON,
   printPreCheckRelease,
-  releaseMonorepoPackage,
+  releaseMonorepoPkg,
   releaseRoot,
 } from '../shared'
 
@@ -27,8 +30,6 @@ interface VipReleaseExtraOptions {
   filter?: string[]
   vip?: boolean
 }
-
-const defaultRepoName = 'main'
 
 /**
  * 版本发布
@@ -69,36 +70,38 @@ async function execNormalRelease(args: ReleaseOptions): Promise<void> {
 async function execVipRelease(args: VipReleaseExtraOptions): Promise<void> {
   // 获取pkg信息
   const pkgJSON = getReleasePkgJSON(args.filter)
-  const packageNames = pkgJSON.map(pkg => pkg.name)
+  const packageNames = VipMonorepo.getPkgNames(args.filter)
 
   // 预先检查子模块
   if (args.checkRelease) {
     await printPreCheckRelease(packageNames)
-    return VipNodeJS.exitProcess(0)
+    VipNodeJS.exitProcess(0)
   }
 
   try {
-    const packageName = await VipInquirer.promptSelect(`选择需要使用${VipColor.red('Release')}命令发布的模块名称：`, [
-      defaultRepoName,
-      ...packageNames,
-    ])
+    const packageName = await VipInquirer.promptSearch(
+      `选择需要使用${VipColor.red(CliCommandEnum.RELEASE)}命令发布的模块名称：`,
+      (inputName: string | undefined) => [DEFAULT_RELEASE_ROOT_NAME, ...packageNames].filter(name => inputName && name.includes(inputName)),
+    )
 
     // 确认框
-    const isRelease = await VipInquirer.promptConfirm(`将对模块${VipColor.green(packageName)}进行版本迭代，是否继续操作？`)
+    const isRelease = await VipInquirer.promptConfirm(`模块 ${VipColor.green(packageName)} 将发布新的版本，是否继续操作？`)
 
     if (!isRelease) {
-      VipConsole.log(VipColor.yellow('用户取消发布操作！！'))
-      return VipNodeJS.exitProcess(0)
+      vipLogger.println()
+      VipConsole.log(`${VipColor.red(`【${name}】`)} ${VipColor.yellow('用户取消发布操作！！')}`)
+      vipLogger.println()
+      VipNodeJS.exitProcess(0)
     }
 
     // 发布子模块
-    if (packageName !== defaultRepoName) {
-      await releaseMonorepoPackage(pkgJSON.find(pkg => pkg.name === packageName)!)
-      return VipNodeJS.exitProcess(0)
+    if (packageName !== DEFAULT_RELEASE_ROOT_NAME) {
+      await releaseMonorepoPkg(pkgJSON.find(pkg => pkg.name === packageName)!)
     }
-
     // 发布根模块
-    await releaseRoot()
+    else {
+      await releaseRoot()
+    }
   }
   catch {
     // 避免错误过分暴露
@@ -111,9 +114,9 @@ async function execVipRelease(args: VipReleaseExtraOptions): Promise<void> {
 export async function releaseMain(program: VipCommander): Promise<void> {
   program
     .command(CliCommandEnum.RELEASE)
-    .alias('re')
-    .summary('发布NPM包')
-    .description('发布NPM包，更新版本信息')
+    .aliases(['re', 'rel'])
+    .summary('发布新的版本')
+    .description('发布新的版本，更新version字段信息，提交到Git仓库')
     .option('--push', '推送到Git远程', true)
     .option('--preid <preid>', 'ID for prerelease')
     .option('--commit <msg>', '提交信息', false)
@@ -130,7 +133,7 @@ export async function releaseMain(program: VipCommander): Promise<void> {
         return [value]
       return previous.concat(value)
     }, [])
-    .action(async (args: ReleaseOptions & VipReleaseExtraOptions) => {
+    .action(async (args: ReleaseOptions & VipReleaseExtraOptions): Promise<void> => {
       // 发布时校验分支，避免误操作
       if (VipGit.getCurrentBranch() !== args.branch) {
         VipConsole.log(VipColor.red(`当前分支是：${VipGit.getCurrentBranch()} ，版本迭代允许在${args.branch}分支操作，并推送到远程！！！`))
