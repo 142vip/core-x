@@ -57,7 +57,7 @@ export async function mergeConfig(cliOptions: ChangelogCliOptions): Promise<Chan
   // 发布的版本
   if (config.to == null) {
     // 标签 > 分支  优化一下： 分支的头可能没有tag
-    config.to = VipGit.getTags()[0] ?? VipGit.getCurrentBranch()
+    config.to = VipGit.getTagInHead() ?? VipGit.getCurrentBranch()
   }
 
   // release name

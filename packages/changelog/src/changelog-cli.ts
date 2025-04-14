@@ -34,10 +34,13 @@ async function changelogHandler(cliOptions: ChangelogCliOptions): Promise<void> 
 
     const changelogConfig = await mergeConfig(cliOptions)
 
-    console.log('changelogConfig:', changelogConfig)
+    VipConsole.trace('changelogConfig:', changelogConfig)
     const { markdown, commits, releaseUrl } = await changelogGenerate(changelogConfig)
 
-    VipConsole.log(`release: <${VipColor.yellow(releaseUrl)}>`)
+    // 打印release信息
+    if (changelogConfig.scopeName != null) {
+      VipConsole.log(`release: <${VipColor.yellow(releaseUrl)}>`)
+    }
 
     VipConsole.log(`${VipColor.cyan(changelogConfig.from)} ${VipColor.dim(' -> ')} ${VipColor.blue(changelogConfig.to)} ${VipColor.dim(` (${commits.length} commits)`)}`)
     vipLogger.println()

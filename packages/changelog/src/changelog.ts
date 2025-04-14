@@ -69,7 +69,7 @@ export async function changelogUpdate(
 
   if (exit) {
     VipConsole.log(`Updating ${outputPath}`)
-    changelogMD = await VipNodeJS.readFileToStrByUTF8(outputPath)
+    changelogMD = VipNodeJS.readFileToStrByUTF8(outputPath)
   }
   else {
     VipConsole.log(`Creating  ${outputPath}`)
@@ -89,7 +89,7 @@ export async function changelogUpdate(
   }
 
   // 写入文件
-  await VipNodeJS.writeFileByUTF8(outputPath, changelogMD)
+  VipNodeJS.writeFileByUTF8(outputPath, changelogMD)
 }
 
 /**
