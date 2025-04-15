@@ -13,13 +13,11 @@ pnpm i @142vip/commit-linter
 
 ## 使用
 
-
 ```ts
 const { type, scope, subject, commit } = commitLiner({
   // scopes 为可选参数
   scopes: ['release'],
 })
-
 
 // 配置
 /**
