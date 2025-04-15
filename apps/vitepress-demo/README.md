@@ -1,5 +1,7 @@
 # vitepress-demo
 
+`@142vip/vitepress`包的使用Demo演示
+
 ## 介绍
 
 ```bash

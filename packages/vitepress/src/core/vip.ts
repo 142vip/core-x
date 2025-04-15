@@ -48,26 +48,26 @@ export const vipTeamMembers = [
       { icon: 'github', link: 'https://github.com/mmdapl' },
     ],
   },
-  {
-    avatar: 'https://www.github.com/chufan443.png',
-    name: '微信公众号：储凡',
-    title: 'CodeReviewer',
-    org: '142vip',
-    orgLink: 'https://github.com/142vip',
-    links: [
-      { icon: 'github', link: 'https://github.com/chufan443' },
-    ],
-  },
-  {
-    avatar: 'https://www.github.com/lir0115.png',
-    name: '公众号：Rong姐姐好可爱',
-    title: 'Committer',
-    org: '142vip',
-    orgLink: 'https://github.com/142vip',
-    links: [
-      { icon: 'github', link: 'https://github.com/lir0115' },
-    ],
-  },
+  // {
+  //   avatar: 'https://www.github.com/chufan443.png',
+  //   name: '微信公众号：储凡',
+  //   title: 'CodeReviewer',
+  //   org: '142vip',
+  //   orgLink: 'https://github.com/142vip',
+  //   links: [
+  //     { icon: 'github', link: 'https://github.com/chufan443' },
+  //   ],
+  // },
+  // {
+  //   avatar: 'https://www.github.com/lir0115.png',
+  //   name: '公众号：Rong姐姐好可爱',
+  //   title: 'Committer',
+  //   org: '142vip',
+  //   orgLink: 'https://github.com/142vip',
+  //   links: [
+  //     { icon: 'github', link: 'https://github.com/lir0115' },
+  //   ],
+  // },
 ]
 
 export function pick<T, K extends keyof T>(obj: T, keys: K[]): Pick<T, K> {

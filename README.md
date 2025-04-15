@@ -17,6 +17,7 @@
 
 - [`@142vip/axios`](https://www.npmjs.com/package/@142vip/axios)
 - [`@142vip/changelog`](https://www.npmjs.com/package/@142vip/changelog)
+- [`@142vip/commit-linter`](https://www.npmjs.com/package/@142vip/commit-linter)
 - [`@142vip/copyright`](https://www.npmjs.com/package/@142vip/copyright)
 - [`@142vip/egg`](https://www.npmjs.com/package/@142vip/egg)
 - [`@142vip/egg-axios`](https://www.npmjs.com/package/@142vip/egg-axios)

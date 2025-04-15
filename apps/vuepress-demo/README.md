@@ -1,5 +1,7 @@
 # vuepress-demo
 
+`@142vip/vuepress`包的使用Demo演示
+
 ## 介绍
 
 ```bash

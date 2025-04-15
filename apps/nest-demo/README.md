@@ -1,5 +1,7 @@
 # nest-demo
 
+`@142vip/nest`相关包和插件的使用Demo
+
 ## 证书
 
 [MIT](https://opensource.org/license/MIT)
