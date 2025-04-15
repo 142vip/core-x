@@ -1,8 +1,8 @@
 {
   "name": "@142vip/commit-linter",
-  "version": "0.0.1-alpha.1",
+  "version": "0.0.1-alpha.0",
   "private": false,
-  "description": "软著工具包，用于生成软著申请的文件材料",
+  "description": "Git Commit 信息校验工具",
   "author": "mmdapl <mmdapl@163.com>",
   "license": "MIT",
   "homepage": "https://142vip.github.io/core-x/packages/commit-linter/",
@@ -16,9 +16,9 @@
     "142vip",
     "@142vip",
     "@142vip/commit-linter",
-    "软著",
-    "软件著作",
-    "中国版权保护中心"
+    "commit",
+    "git commit",
+    "commit lint"
   ],
   "sideEffects": false,
   "exports": {
@@ -45,8 +45,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@142vip/utils": "workspace:*",
-    "cli-table3": "0.6.5"
+    "@142vip/utils": "workspace:*"
   },
   "publishConfig": {
     "access": "public",

@@ -13,7 +13,29 @@ pnpm i @142vip/commit-linter
 
 ## 使用
 
-## 链接
+
+```ts
+const { type, scope, subject, commit } = commitLiner({
+  // scopes 为可选参数
+  scopes: ['release'],
+})
+
+
+// 配置
+/**
+ * Git Commit信息校验参数
+ */
+export interface GitCommitLinterOptions {
+  /**
+   * Git Commit支持的Type列表，默认支持：
+   */
+  types?: string[]
+  /**
+   * Git Commit支持的Scope列表
+   */
+  scopes?: string[]
+}
+```
 
 ## 证书
 
