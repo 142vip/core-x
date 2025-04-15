@@ -9,6 +9,8 @@ import {
   select,
   Separator,
 } from '@inquirer/prompts'
+import { name } from '../../package.json'
+import { vipLogger, VipPackageJSON } from '../core'
 
 /**
  * 参考：
@@ -33,18 +35,17 @@ interface VipInquirerOptions {
   loop?: false
 }
 
+type SearchSourceResponse<T> = (string | VipInquirerSeparator)[] | readonly (Separator | VipInquirerChoice<T>)[] | Promise<(string | VipInquirerSeparator)[]> | Promise<(VipInquirerSeparator | VipInquirerChoice<T>)[]>
+
 /**
  * 搜索源
  */
-type SearchSource<T> = (term: string | undefined, opt: {
-  signal: AbortSignal
-}) => (string | VipInquirerSeparator)[] | readonly (Separator | VipInquirerChoice<T>)[] | Promise<(string | VipInquirerSeparator)[]> | Promise<(VipInquirerSeparator | VipInquirerChoice<T>)[]>
+type SearchSource<T> = (term: string | undefined, opt: { signal: AbortSignal }) => SearchSourceResponse<T>
 
 /**
  * 简单搜索源
  */
-type SimpleSearchSource<T> = (input: T) => T[]
-
+type SimpleSearchSource<T> = (input: T | undefined) => SearchSourceResponse<T>
 /**
  * 输入框，只输入数字
  * - https://github.com/SBoudrias/Inquirer.js/tree/main/packages/number
@@ -126,24 +127,47 @@ async function promptSearch<T extends string>(message: string, source: SearchSou
  * 搜索源简单处理
  */
 function handleSimpleSearchSource(sources: string[]): SimpleSearchSource<string> {
-  return function (input: string) {
+  return function (input: string | undefined): string[] {
+    if (input == null) {
+      return sources
+    }
     return sources.filter((name: string) => name.includes(input))
   }
+}
+
+/**
+ * 使用try catch 处理Prompt退出时报错
+ * - ctrl+c 优雅地处理
+ */
+function withTryCatch<F extends (...args: any[]) => any>(fn: F): F {
+  return (async (...args: Parameters<F>) => {
+    try {
+      return await fn(...args)
+    }
+    catch (error) {
+      if (error instanceof Error && error.name === 'ExitPromptError') {
+        vipLogger.logByBlank(`${VipPackageJSON.getPkgGreenLabel(name)} 用户安全退出，欢迎下次使用👏🏻👏🏻👏🏻`)
+      }
+      else {
+        throw error
+      }
+    }
+  }) as F
 }
 
 /**
  * 终端交互
  */
 export const VipInquirer = {
-  promptList,
-  promptInput,
-  promptInputRequired,
-  promptNumber,
-  promptPassword,
-  promptSelect,
-  promptCheckBox,
-  promptConfirm,
-  promptSearch,
+  promptList: withTryCatch(promptList),
+  promptInput: withTryCatch(promptInput),
+  promptInputRequired: withTryCatch(promptInputRequired),
+  promptNumber: withTryCatch(promptNumber),
+  promptPassword: withTryCatch(promptPassword),
+  promptSelect: withTryCatch(promptSelect),
+  promptCheckBox: withTryCatch(promptCheckBox),
+  promptConfirm: withTryCatch(promptConfirm),
+  promptSearch: withTryCatch(promptSearch),
   handleSimpleSearchSource,
 }
 
