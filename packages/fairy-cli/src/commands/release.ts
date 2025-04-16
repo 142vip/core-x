@@ -13,12 +13,7 @@ import {
   VipPackageJSON,
 } from '@142vip/utils'
 import { name } from '../../package.json'
-import {
-  CliCommandEnum,
-  printPreCheckRelease,
-  releaseMonorepoPkg,
-  releaseRoot,
-} from '../shared'
+import { CliCommandEnum, printPreCheckRelease, releaseMonorepoPkg, releaseRoot } from '../shared'
 
 interface ReleaseOptions extends Pick<VersionBumpOptions, 'preid' | 'tag' | 'commit' | 'push' | 'all' | 'execute'> {
   package?: string
@@ -74,7 +69,7 @@ async function execVipRelease(args: VipReleaseExtraOptions): Promise<void> {
   try {
     const packageName = await VipInquirer.promptSearch(
       `选择需要使用${VipColor.red(CliCommandEnum.RELEASE)}命令发布的模块名称：`,
-      (inputName: string | undefined) => [DEFAULT_RELEASE_ROOT_NAME, ...packageNames].filter(name => inputName && name.includes(inputName)),
+      VipInquirer.handleSimpleSearchSource([DEFAULT_RELEASE_ROOT_NAME, ...packageNames]),
     )
 
     const isRelease = await VipInquirer.promptConfirm(`模块 ${VipColor.green(packageName)} 将发布新的版本，是否继续操作？`)
@@ -155,7 +150,7 @@ async function printPkgCommitLogs(pnpmFilter?: string | string[]): Promise<void>
   if (isCheck) {
     const pkgName = await VipInquirer.promptSearch(
       `请选择需要查看的模块：`,
-      (input: string | undefined) => VipMonorepo.getPkgNames(pnpmFilter).filter(name => input && name.includes(input)),
+      VipInquirer.handleSimpleSearchSource(VipMonorepo.getPkgNames(pnpmFilter)),
     )
     const commits = VipGit.getRecentCommitsByScope(pkgName)
 
