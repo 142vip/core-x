@@ -1,3 +1,4 @@
+export * from './cli-commander.interface'
 export * from './cpu-architecture.enum'
 export * from './exit-code.enum'
 export * from './git.interface'
