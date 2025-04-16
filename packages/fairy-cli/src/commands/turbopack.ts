@@ -1,6 +1,6 @@
 import type { VipCommander } from '@142vip/utils'
 import { VipColor, VipConsole, VipExecutor, VipInquirer, vipLogger, VipNodeJS, VipNpm } from '@142vip/utils'
-import { CliCommandEnum } from '../shared'
+import { CommandEnum, initFairyCliCommand } from '../enums'
 
 interface TurboPackOptions {
   mode?: string
@@ -48,11 +48,7 @@ function getFilterRepo(repoNames: string[]): string {
  * - npx fa turbo --build
  */
 export async function turboPackMain(program: VipCommander): Promise<void> {
-  program
-    .command(CliCommandEnum.TURBO)
-    .aliases(['tu', 'tur'])
-    .summary('通用型TurboPack管理工具')
-    .description('通用型TurboPack命令工具，支持dev、build命令')
+  initFairyCliCommand(program, CommandEnum.TURBO)
     .argument('[filters...]', '过滤器规则，参考：<https://turbo.build/repo/docs/crafting-your-repository/running-tasks#using-filters>')
     .option('-m,--mode', `命令的支持的模式`)
     .action(async (filters: string[], args: TurboPackOptions) => {

@@ -1,5 +1,4 @@
-import * as process from 'node:process'
-import { VipCommander } from '@142vip/utils'
+import { VipCommander, VipNodeJS } from '@142vip/utils'
 import { description, name, version } from '../package.json'
 import {
   changelogMain,
@@ -16,7 +15,7 @@ import {
   turboPackMain,
 } from './commands'
 
-async function fairyCliMain(): Promise<void> {
+export async function fairyCliMain(): Promise<void> {
   const program = new VipCommander(name, version, description)
 
   // fairy-cli create 创建 todo
@@ -58,8 +57,5 @@ async function fairyCliMain(): Promise<void> {
   await commitMain(program)
 
   // 参数解析
-  program.parse(process.argv)
+  program.parse(VipNodeJS.getProcessArgv())
 }
-
-// cli程序入口
-void fairyCliMain()

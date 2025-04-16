@@ -7,7 +7,7 @@ import {
   VipInquirer,
   vipLogger,
 } from '@142vip/utils'
-import { CliCommandEnum } from '../shared'
+import { CommandEnum, initFairyCliCommand } from '../enums'
 
 interface PublishOptions {
   registry?: string
@@ -41,10 +41,7 @@ async function publishNpm(args: PublishOptions): Promise<void> {
  * - npx fa publish
  */
 export async function publishMain(program: VipCommander): Promise<void> {
-  program
-    .command(CliCommandEnum.PUBLISH)
-    .summary('远程镜像推送')
-    .description('推送npm包')
+  initFairyCliCommand(program, CommandEnum.PUBLISH)
     .option('-r,--registry', `NPM包的仓库地址，默认: ${RegistryAddressEnum.NPM}`, RegistryAddressEnum.NPM)
     .option('-dry,--dry-run', '试运行，不会进行发布', false)
     .action(async (args: PublishOptions): Promise<void> => {

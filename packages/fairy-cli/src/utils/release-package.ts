@@ -1,6 +1,4 @@
-import type {
-  PackageJSONWithPath,
-} from '@142vip/utils'
+import type { PackageJSONWithPath } from '@142vip/utils'
 import { versionBump } from '@142vip/release-version'
 import {
   VipColor,

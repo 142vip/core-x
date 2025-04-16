@@ -9,7 +9,7 @@ import {
   VipNodeJS,
 } from '@142vip/utils'
 import fetch from 'node-fetch'
-import { CliCommandEnum } from '../shared'
+import { CommandEnum, initFairyCliCommand } from '../enums'
 
 /**
  * cnpm 同步状态
@@ -137,10 +137,7 @@ async function searchNpmPkgOnline(input: string | undefined, options: { signal: 
  * sync命令入口
  */
 export async function syncMain(program: VipCommander): Promise<void> {
-  program
-    .command(CliCommandEnum.SYNC)
-    .summary('同步NPM包')
-    .description('同步NPM仓库的模块包到CNPM仓库')
+  initFairyCliCommand(program, CommandEnum.SYNC)
     .argument('[packageName]', '需要同步的模块包名称')
     .option('--vip', '142vip业务专用', false)
     .action(async (packageName: string | undefined, options): Promise<void> => {

@@ -1,7 +1,7 @@
 import type { VipCommander } from '@142vip/utils'
 import { VipColor, VipConsole, VipInquirer, vipLogger, VipNodeJS } from '@142vip/utils'
 import { deleteAsync } from 'del'
-import { CliCommandEnum } from '../shared'
+import { CommandEnum, initFairyCliCommand } from '../enums'
 
 /**
  * 删除配置
@@ -129,10 +129,7 @@ async function execCleanUp(args: CleanUpOptions): Promise<void> {
  * fairy-cli clean 项目清理
  */
 export async function cleanUpMain(program: VipCommander): Promise<void> {
-  program
-    .command(CliCommandEnum.CLEAN)
-    .summary('快速清理项目')
-    .description('清除开发、构建环境下产生的无用文件')
+  initFairyCliCommand(program, CommandEnum.CLEAN)
     .option('-n,--nuxt', '删除nuxt构建目录，包括.nuxt、.output目录', false)
     .option('-d,--dist', '删除dist目录', false)
     .option('-m,--midway', '删除midway构建目录', false)

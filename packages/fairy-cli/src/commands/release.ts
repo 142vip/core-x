@@ -1,5 +1,6 @@
 import type { VersionBumpOptions } from '@142vip/release-version'
 import type { VipCommander } from '@142vip/utils'
+import { printPreCheckRelease, releaseMonorepoPkg, releaseRoot } from '@142vip/fairy-cli'
 import { versionBump } from '@142vip/release-version'
 import {
   DEFAULT_RELEASE_ROOT_NAME,
@@ -13,7 +14,7 @@ import {
   VipPackageJSON,
 } from '@142vip/utils'
 import { name } from '../../package.json'
-import { CliCommandEnum, printPreCheckRelease, releaseMonorepoPkg, releaseRoot } from '../shared'
+import { CommandEnum, initFairyCliCommand } from '../enums'
 
 interface ReleaseOptions extends Pick<VersionBumpOptions, 'preid' | 'tag' | 'commit' | 'push' | 'all' | 'execute'> {
   package?: string
@@ -68,7 +69,7 @@ async function execVipRelease(args: VipReleaseExtraOptions): Promise<void> {
 
   try {
     const packageName = await VipInquirer.promptSearch(
-      `选择需要使用${VipColor.red(CliCommandEnum.RELEASE)}命令发布的模块名称：`,
+      `选择需要使用${VipColor.red(CommandEnum.RELEASE)}命令发布的模块名称：`,
       VipInquirer.handleSimpleSearchSource([DEFAULT_RELEASE_ROOT_NAME, ...packageNames]),
     )
 
@@ -98,11 +99,7 @@ async function execVipRelease(args: VipReleaseExtraOptions): Promise<void> {
  * 功能迭代主功能
  */
 export async function releaseMain(program: VipCommander): Promise<void> {
-  program
-    .command(CliCommandEnum.RELEASE)
-    .aliases(['re', 'rel'])
-    .summary('发布新的版本')
-    .description('发布新的版本，更新version字段信息，提交到Git仓库')
+  initFairyCliCommand(program, CommandEnum.RELEASE)
     .option('--push', '推送到Git远程', true)
     .option('--preid <preid>', 'ID for prerelease')
     .option('--commit <msg>', '提交信息', false)

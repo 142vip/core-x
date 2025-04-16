@@ -1,6 +1,6 @@
 import type { VipCommander } from '@142vip/utils'
 import { RegistryAddressEnum, VipInquirer, VipNpm } from '@142vip/utils'
-import { CliCommandEnum } from '../shared'
+import { CommandEnum, initFairyCliCommand } from '../enums'
 
 interface InstallOptions {
   registry?: string
@@ -32,11 +32,7 @@ async function execInstall(installType: InstallTypeEnum, args: InstallOptions): 
  * install 命令入口
  */
 export async function installMain(program: VipCommander): Promise<void> {
-  program
-    .command(CliCommandEnum.INSTALL)
-    .aliases(['i', 'add'])
-    .summary('依赖安装')
-    .description('Node.js依赖管理，下载、升级依赖版本')
+  initFairyCliCommand(program, CommandEnum.INSTALL)
     .option('-f,--force', '强制lock文件更新', false)
     .option('--registry', `NPM模块的源地址，默认：${RegistryAddressEnum.VIP_NPM_ALIBABA}`, RegistryAddressEnum.VIP_NPM_ALIBABA)
     .action(async (args: InstallOptions): Promise<void> => {

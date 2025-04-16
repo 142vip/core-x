@@ -1,7 +1,7 @@
 import type { VipCommander } from '@142vip/utils'
 import { CopyrightFileType, VipCopyright } from '@142vip/copyright'
 import { VipColor, VipConsole, VipInquirer, vipLogger, VipNodeJS } from '@142vip/utils'
-import { CliCommandEnum } from '../shared'
+import { CommandEnum, initFairyCliCommand } from '../enums'
 
 interface CopyrightOptions {
   maxLineCount: number
@@ -15,11 +15,7 @@ interface CopyrightOptions {
  * - 参考 @142vip/copyright模块
  */
 export async function copyrightMain(program: VipCommander): Promise<void> {
-  program
-    .command(CliCommandEnum.COPYRIGHT)
-    .aliases(['cr', 'cri'])
-    .summary('软件著作权登记的源代码文档生成')
-    .description('申请著作权登记的软件，快速生成源代码文档，包括源代码文档的前30页、后30页、前后30页')
+  initFairyCliCommand(program, CommandEnum.COPYRIGHT)
     .option('-l,--max-line-count', '每页最大行数', value => Number.parseInt(value), 50)
     .option('-s,--max-source-count', '扫描的最大代码行数', value => Number.parseInt(value), 2000)
     .option('--logger', '开启日志追踪模式', true)

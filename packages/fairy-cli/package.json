@@ -39,7 +39,8 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "bin": {
-    "fa": "./cli.mjs"
+    "fa": "./cli.mjs",
+    "fairy": "./cli.mjs"
   },
   "files": [
     "*.mjs",
