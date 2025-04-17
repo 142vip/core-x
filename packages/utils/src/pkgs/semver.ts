@@ -12,12 +12,84 @@ import originImportSemVer, {
   SemVer,
   valid,
 } from 'semver'
+import { vipLogger } from '../core'
+import { VipColor } from './color'
+
+export type VipSemverReleaseType = ReleaseType
+
+/**
+ * 版本类型
+ */
+export type VipReleaseType = VipSemverReleaseType | 'next'
+
+/**
+ * The different types of pre-releases.
+ */
+export const prereleaseTypes: ReleaseType[] = ['premajor', 'preminor', 'prepatch', 'prerelease']
+
+/**
+ * All possible release types.
+ */
+export const releaseTypes: VipReleaseType[] = prereleaseTypes.concat(['major', 'minor', 'patch'])
 
 /**
  * 支持原生创建Semver实例
  */
 function createSemver(version: string | SemVer, optionsOrLoose?: boolean | RangeOptions): SemVer {
   return new SemVer(version, optionsOrLoose)
+}
+
+/**
+ * Determines whether the specified value is a pre-release.
+ */
+function isPrereleaseType(value: ReleaseType): boolean {
+  return prereleaseTypes.includes(value)
+}
+
+/**
+ * Determines whether the specified value is a valid ReleaseType string.
+ */
+function isReleaseType(value: ReleaseType): boolean {
+  return releaseTypes.includes(value)
+}
+
+export interface NextVersion {
+  major: string
+  minor: string
+  patch: string
+  preMajor: string
+  preMinor: string
+  prePatch: string
+  next: string
+}
+
+function getNextVersions(currentVersion: string, preid?: string): any | null {
+  // 判断是否是有效版本
+  const validVersion = valid(currentVersion)
+  if (validVersion) {
+    vipLogger.logByBlank(VipColor.red(`${currentVersion} is not a valid version number, please check it.`))
+    return null
+  }
+
+  const parsed = parse(validVersion)
+  if (parsed === null) {
+    return null
+  }
+  const { prerelease } = parsed
+  if (prerelease != null) {
+    const [currentPreid] = prerelease
+    preid = typeof currentPreid === 'string' ? currentPreid : preid
+  }
+
+  return {
+    major: inc(parsed, 'major'),
+    minor: inc(parsed, 'minor'),
+    patch: inc(parsed, 'patch'),
+    preMajor: inc(parsed, 'premajor', preid),
+    preMinor: inc(parsed, 'preminor', preid),
+    prePatch: inc(parsed, 'prepatch', preid),
+    next: inc(parsed, 'prerelease', preid),
+  }
 }
 
 /**
@@ -36,6 +108,7 @@ export const VipSemver = {
   prerelease,
   createSemver,
   originImportSemVer,
+  getNextVersions,
+  isPrereleaseType,
+  isReleaseType,
 }
-
-export type VipSemverReleaseType = ReleaseType
