@@ -9,14 +9,14 @@ import {
 (async () => {
   const pkgNames = VipMonorepo.getPkgNames(['@142vip/*', '*-demo'])
   const pkg = await VipInquirer.promptSearch('输入需要build的应用：', (input) => {
-    const res = pkgNames.filter(pkg => input && pkg.includes(input))
+    const filterNames = pkgNames.filter(pkg => input && pkg.includes(input))
     return [
+      ...filterNames,
+      new VipInquirerSeparator(),
       'docs',
       'docs-proxy',
-      new VipInquirerSeparator(),
-      ...res,
     ]
-  }, 40)
+  })
 
   if (pkg === 'docs') {
     await VipExecutor.commandStandardExecutor('npx vitepress build --minify')
