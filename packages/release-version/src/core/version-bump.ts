@@ -5,9 +5,11 @@ import {
   VipColor,
   VipConsole,
   VipExecutor,
+  VipInquirer,
+  vipLogger,
+  VipNodeJS,
   VipSymbols,
 } from '@142vip/utils'
-import prompts from 'prompts'
 import { NpmScript } from '../types'
 import { getCurrentVersion } from './get-current-version'
 import { getNewVersion } from './get-new-version'
@@ -33,13 +35,10 @@ export async function versionBump(arg: (VersionBumpOptions) | string = {}): Prom
   if (arg.confirm) {
     printSummary(operation)
 
-    if (!await prompts({
-      name: 'yes',
-      type: 'confirm',
-      message: '是否执行Bumpx命令，升级版本？',
-      initial: true,
-    }).then(r => r.yes)) {
-      process.exit(1)
+    const isRelease = await VipInquirer.promptConfirm(`是否执行 ${VipColor.redBright('Bumpx')}命令，升级版本？`, false)
+    if (!isRelease) {
+      vipLogger.logByBlank(VipColor.green('用户取消操作，安全退出，欢迎下次使用'))
+      VipNodeJS.exitProcess(0)
     }
   }
 
