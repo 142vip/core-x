@@ -54,7 +54,7 @@ export function commitLiner(params?: GitCommitLinterOptions, commit?: string): G
     }
 
     // git commit subject
-    if (subject == null || subject.length > 100 || subject.length < 8) {
+    if (subject == null || subject.length > 100 || subject.length < 5) {
       vipLogger.println()
       VipConsole.error(`${ErrorLabel} ${VipColor.red(
         `invalid commit message length , min length is 5 , max length is 100`,
