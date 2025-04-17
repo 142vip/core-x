@@ -36,7 +36,7 @@ export async function versionBump(arg: (VersionBumpOptions) | string = {}): Prom
     printSummary(operation)
 
     const isRelease = await VipInquirer.promptConfirm(`是否执行 ${VipColor.redBright('Bumpx')}命令，升级版本？`, false)
-    if (isRelease) {
+    if (!isRelease) {
       vipLogger.logByBlank(VipColor.green('用户取消操作，安全退出，欢迎下次使用'))
       VipNodeJS.exitProcess(0)
     }
