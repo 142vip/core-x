@@ -47,7 +47,8 @@ async function execNormalRelease(args: ReleaseOptions): Promise<void> {
 
   // 指定文件更新版本
   await versionBump({
-    files: [],
+    // todo 需要明确当前版本
+    currentVersion: '',
     ...args.preid ? { preid: args.preid } : { perid: 'alpha' },
     // 是否需要标记
     ...args.tag ? { tag: args.tag } : {},
@@ -118,10 +119,10 @@ export async function releaseMain(program: VipCommander): Promise<void> {
     }, [])
     .action(async (args: ReleaseOptions & VipReleaseExtraOptions): Promise<void> => {
       // 发布时校验分支，避免误操作
-      if (VipGit.getCurrentBranch() !== args.branch) {
-        VipConsole.log(VipColor.red(`当前分支是：${VipGit.getCurrentBranch()} ，版本迭代允许在${args.branch}分支操作，并推送到远程！！！`))
-        VipNodeJS.exitProcess(0)
-      }
+      // if (VipGit.getCurrentBranch() !== args.branch) {
+      //   VipConsole.log(VipColor.red(`当前分支是：${VipGit.getCurrentBranch()} ，版本迭代允许在${args.branch}分支操作，并推送到远程！！！`))
+      //   VipNodeJS.exitProcess(0)
+      // }
 
       // 检查包是否需要发布，弹出对话框，是否查看某个包信息
       if (args.checkRelease) {

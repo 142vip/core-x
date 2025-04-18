@@ -1,4 +1,4 @@
-import type { ReleaseType } from '../core/release-type'
+import type { VipReleaseType } from '@142vip/utils'
 
 /**
  * Information about the work that was performed by the `versionBump()` function.
@@ -7,7 +7,7 @@ export interface VersionBumpResults {
   /**
    * The release type that was used, or `undefined` if an explicit version number was used.
    */
-  release?: ReleaseType
+  release?: VipReleaseType
 
   /**
    * The previous version number in package.json.
@@ -32,14 +32,4 @@ export interface VersionBumpResults {
    * NOTE: This will never be an empty string.  It will always contain at least the new version number.
    */
   tag: string | false
-
-  /**
-   * The files that were actually modified.
-   */
-  updatedFiles: string[]
-
-  /**
-   * The files that were not updated because they did not contain the old version number.
-   */
-  skippedFiles: string[]
 }

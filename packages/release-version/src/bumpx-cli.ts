@@ -1,42 +1,56 @@
-import process from 'node:process'
-import { VipConsole } from '@142vip/utils'
-import { version as packageVersion } from '../package.json'
+import { VipConsole, VipNodeJS } from '@142vip/utils'
 import { versionBump } from './core/version-bump'
-import { ExitCodeEnum } from './types'
-import { errorHandler, parseArgs, showProgress } from './utils'
+import { parseArgs, showProgress } from './utils'
 
 /**
  * cli入口
  */
-export async function main() {
+export async function bumpXMain(): Promise<void> {
   try {
-    process.on('uncaughtException', errorHandler)
-    process.on('unhandledRejection', errorHandler)
-
     // 解析参数
-    const { help, version, quiet, options } = await parseArgs()
-
-    // 显示帮助信息
-    if (help) {
-      process.exit(ExitCodeEnum.Success)
-    }
-
-    // 查看版本
-    if (version) {
-      VipConsole.log(packageVersion)
-      process.exit(ExitCodeEnum.Success)
-    }
+    const { quiet, options } = await parseArgs()
 
     // 是否显示进度
     if (!quiet)
       options.progress = options.progress ?? showProgress
 
+    // const vipCommander = new VipCommander(packageName, packageVersion, packageDescription)
+    // vipCommander
+    //   .usage('[...files]')
+    //   .option('--preid <preid>', 'ID for prerelease', 'alpha')
+    //   .option('--all', `Include all files`, bumpConfigDefaults.all)
+    //   .option('-c, --commit [msg]', 'Commit message', true)
+    //   .option('--no-commit', 'Skip commit', false)
+    //   .option('-t, --tag [tag]', 'Tag name', true)
+    //   .option('--no-tag', 'Skip tag', false)
+    //   .option('-p, --push', `Push to remote`, bumpConfigDefaults.push)
+    //   .option('-y, --yes', `Skip confirmation`, bumpConfigDefaults.confirm)
+    //   .option('-r, --recursive', `Bump package.json files recursively`, bumpConfigDefaults.recursive)
+    //   .option('--no-verify', 'Skip git verification')
+    //   .option('--ignore-scripts', `Ignore scripts`, bumpConfigDefaults.ignoreScripts)
+    //   .option('-q, --quiet', 'Quiet mode')
+    //   .option('--current-version <version>', 'Current version')
+    //   .option('-x, --execute <command>', 'Commands to execute after version bumps')
+    //   .option('--changelog', 'generate CHANGELOG.md', false)
+    //   .option('--scopeName <scopeName>', 'Package name in monorepo')
+    //   .option('--dry-run', '试运行，软件版本更新', false)
+    //   .action(async (options: any) => {
+    //     console.log(111, options)
+    //     // 执行版本升级
+    //     await versionBump(options)
+    //   })
+
+    // vipCommander.parse(VipNodeJS.getProcessArgv())
+
     // 执行版本升级
     await versionBump(options)
   }
   catch (error) {
-    errorHandler(error as Error)
+    console.log(error)
+    const message = (error as Error).message || String(error)
+    VipConsole.error(message)
+    VipNodeJS.existErrorProcess()
   }
 }
 
-main()
+void bumpXMain()

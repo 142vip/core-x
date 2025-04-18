@@ -23,12 +23,12 @@ export type VipSemverReleaseType = ReleaseType
 export type VipReleaseType = VipSemverReleaseType | 'next'
 
 /**
- * The different types of pre-releases.
+ * 预发布版本类型
  */
 export const prereleaseTypes: ReleaseType[] = ['premajor', 'preminor', 'prepatch', 'prerelease']
 
 /**
- * All possible release types.
+ * 所有可能的发布版本
  */
 export const releaseTypes: VipReleaseType[] = prereleaseTypes.concat(['major', 'minor', 'patch'])
 
@@ -63,10 +63,13 @@ export interface NextVersion {
   next: string
 }
 
-function getNextVersions(currentVersion: string, preid?: string): any | null {
+/**
+ * 获取下一个版本
+ */
+function getNextVersions(currentVersion: string, preid?: string): NextVersion | null {
   // 判断是否是有效版本
   const validVersion = valid(currentVersion)
-  if (validVersion) {
+  if (validVersion == null) {
     vipLogger.logByBlank(VipColor.red(`${currentVersion} is not a valid version number, please check it.`))
     return null
   }
@@ -82,13 +85,13 @@ function getNextVersions(currentVersion: string, preid?: string): any | null {
   }
 
   return {
-    major: inc(parsed, 'major'),
-    minor: inc(parsed, 'minor'),
-    patch: inc(parsed, 'patch'),
-    preMajor: inc(parsed, 'premajor', preid),
-    preMinor: inc(parsed, 'preminor', preid),
-    prePatch: inc(parsed, 'prepatch', preid),
-    next: inc(parsed, 'prerelease', preid),
+    major: inc(parsed, 'major')!,
+    minor: inc(parsed, 'minor')!,
+    patch: inc(parsed, 'patch')!,
+    preMajor: inc(parsed, 'premajor', preid)!,
+    preMinor: inc(parsed, 'preminor', preid)!,
+    prePatch: inc(parsed, 'prepatch', preid)!,
+    next: inc(parsed, 'prerelease', preid)!,
   }
 }
 

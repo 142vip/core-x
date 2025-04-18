@@ -60,6 +60,7 @@
     "homePage": "https://142vip.cn"
   },
   "dependencies": {
+    "@142vip/commit-linter": "workspace:*",
     "@142vip/release-version": "workspace:*",
     "@142vip/utils": "workspace:*",
     "del": "8.0.0",

@@ -1,22 +1,13 @@
 import type { VersionBumpOptions } from '../types'
-import process from 'node:process'
-import {
-  VipColor,
-  VipConsole,
-  VipSemver,
-} from '@142vip/utils'
+import { VipNodeJS } from '@142vip/utils'
 import cac from 'cac'
 import { name, version } from '../../package.json'
-import { isReleaseType } from '../core/release-type'
-import { ExitCodeEnum } from '../types'
 import { bumpConfigDefaults, loadBumpXConfig } from './config'
 
 /**
  * The parsed command-line arguments
  */
 export interface ParsedArgs {
-  help?: boolean
-  version?: boolean
   quiet?: boolean
   options: VersionBumpOptions
 }
@@ -25,56 +16,30 @@ export interface ParsedArgs {
  * 解析脚手架的参数
  */
 export async function parseArgs(): Promise<ParsedArgs> {
-  try {
-    const { args, resultArgs } = loadCliArgs()
+  const { args } = loadCliArgs()
 
-    const parsedArgs: ParsedArgs = {
-      help: args.help as boolean,
-      version: args.version as boolean,
-      quiet: args.quiet as boolean,
-      options: await loadBumpXConfig({
-        preid: args.preid,
-        commit: args.commit,
-        tag: args.tag,
-        push: args.push,
-        all: args.all,
-        confirm: !args.yes,
-        noVerify: !args.verify,
-        files: [...(args['--'] || []), ...resultArgs],
-        ignoreScripts: args.ignoreScripts,
-        currentVersion: args.currentVersion,
-        execute: args.execute,
-        recursive: !!args.recursive,
-        changelog: !!args.changelog,
-        scopeName: args.scopeName,
-      }),
-    }
-
-    // If a version number or release type was specified, then it will mistakenly be added to the "files" array
-    if (parsedArgs.options.files && parsedArgs.options.files.length > 0) {
-      const firstArg = parsedArgs.options.files[0]
-
-      if (firstArg === 'prompt' || isReleaseType(firstArg) || VipSemver.valid(firstArg)) {
-        parsedArgs.options.release = firstArg
-        parsedArgs.options.files.shift()
-      }
-    }
-
-    if (parsedArgs.options.recursive && parsedArgs.options.files?.length)
-      VipConsole.log(VipColor.yellow('The --recursive option is ignored when files are specified'))
-
-    return parsedArgs
-  }
-  catch (error) {
-    // There was an error parsing the command-line args
-    console.error(error)
-    return process.exit(ExitCodeEnum.InvalidArgument)
+  return {
+    quiet: args.quiet as boolean,
+    options: await loadBumpXConfig({
+      preid: args.preid,
+      commit: args.commit,
+      tag: args.tag,
+      push: args.push,
+      all: args.all,
+      confirm: !args.yes,
+      noVerify: !args.verify,
+      ignoreScripts: args.ignoreScripts,
+      currentVersion: args.currentVersion,
+      execute: args.execute,
+      recursive: !!args.recursive,
+      changelog: !!args.changelog,
+      scopeName: args.scopeName,
+    }),
   }
 }
 
-export function loadCliArgs(argv = process.argv) {
+export function loadCliArgs() {
   const cli = cac(name)
-
   cli.version(version)
     .usage('[...files]')
     .option('--preid <preid>', 'ID for prerelease')
@@ -88,17 +53,17 @@ export function loadCliArgs(argv = process.argv) {
     .option('-r, --recursive', `Bump package.json files recursively (default: ${bumpConfigDefaults.recursive})`)
     .option('--no-verify', 'Skip git verification')
     .option('--ignore-scripts', `Ignore scripts (default: ${bumpConfigDefaults.ignoreScripts})`, { default: bumpConfigDefaults.ignoreScripts })
-    .option('-q, --quiet', 'Quiet mode')
-    .option('-v, --version <version>', 'Target version')
+    .option('-q, --quiet', 'Quiet mode', { default: true })
     .option('--current-version <version>', 'Current version')
     .option('-x, --execute <command>', 'Commands to execute after version bumps')
     .option('--changelog', 'generate CHANGELOG.md', { default: false })
     .option('--scopeName <scopeName>', 'Package name in monorepo')
+    .option('--dry-run', '试运行，软件版本更新', { default: false })
     .help()
 
-  const result = cli.parse(argv)
+  const result = cli.parse(VipNodeJS.getProcessArgv())
   const rawArgs = cli.rawArgs
-  const args = result.options
+  const args = cli.options
 
   // 这里避免ESLINT报错，功能问题查看git记录
   const COMMIT_REG = /(?:-c|--commit|--no-commit)(?:=.*|$)/

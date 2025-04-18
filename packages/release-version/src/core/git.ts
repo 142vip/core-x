@@ -1,35 +1,31 @@
-import type { Operation } from './operation'
+import type { ReleaseOperation } from './operation'
 import { VipExecutor } from '@142vip/utils'
 import { ProgressEvent } from '../types'
 
 /**
  * Commits the modififed files to Git, if the `commit` option is enabled.
  */
-export async function gitCommit(operation: Operation): Promise<Operation> {
+export async function gitCommit(operation: ReleaseOperation): Promise<ReleaseOperation> {
   if (!operation.options.commit)
     return operation
 
   const { all, noVerify, message } = operation.options.commit
-  const { updatedFiles, newVersion } = operation.state
-  let args = ['--allow-empty']
+  const { newVersion } = operation.state
+  const args = ['--allow-empty']
 
+  // Commit ALL files, not just the ones that were bumped
   if (all) {
-    // Commit ALL files, not just the ones that were bumped
     args.push('--all')
   }
 
+  // Bypass git commit hooks
   if (noVerify) {
-    // Bypass git commit hooks
     args.push('--no-verify')
   }
 
   // Create the commit message
   const commitMessage = formatVersionString(message, newVersion)
   args.push('--message', `'${commitMessage}'`)
-
-  // Append the file names last, as variadic arguments
-  if (!all)
-    args = args.concat(updatedFiles)
 
   await VipExecutor.execShell({ command: `git commit ${args.join(' ')}`, description: '提交git commit信息' })
 
@@ -39,7 +35,7 @@ export async function gitCommit(operation: Operation): Promise<Operation> {
 /**
  * 标记 Git 提交（如果启用了tag选项）
  */
-export async function gitTag(operation: Operation): Promise<Operation> {
+export async function gitTag(operation: ReleaseOperation): Promise<ReleaseOperation> {
   if (!operation.options.tag)
     return operation
 
@@ -69,7 +65,7 @@ export async function gitTag(operation: Operation): Promise<Operation> {
 /**
  * Pushes the Git commit and tag, if the `push` option is enabled.
  */
-export async function gitPush(operation: Operation): Promise<Operation> {
+export async function gitPush(operation: ReleaseOperation): Promise<ReleaseOperation> {
   if (!operation.options.push)
     return operation
 
