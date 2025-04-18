@@ -4,6 +4,7 @@ import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 import * as fs from 'node:fs'
 import * as nodePath from 'node:path'
 import process from 'node:process'
+import { ProcessExitCodeEnum } from '../enums'
 import { VipColor, VipConsole, VipSymbols } from '../pkgs'
 import { vipLogger } from './logger'
 import { VipNpm } from './npm'
@@ -102,6 +103,20 @@ function pathExtname(path: string): string {
  */
 function exitProcess(exitCode?: number): void {
   process.exit(exitCode)
+}
+
+/**
+ * 正常退出进程，退出码为0，异常无法捕获
+ */
+function existSuccessProcess() {
+  exitProcess(ProcessExitCodeEnum.SUCCESS)
+}
+
+/**
+ * 异常退出进程，错误码为1
+ */
+function existErrorProcess() {
+  exitProcess(ProcessExitCodeEnum.FatalError)
 }
 
 /**
@@ -206,6 +221,8 @@ export const VipNodeJS = {
   getProcessStdin,
   getProcessStdout,
   exitProcess,
+  existSuccessProcess,
+  existErrorProcess,
   existPath,
   isExistFile,
   readdirSync,

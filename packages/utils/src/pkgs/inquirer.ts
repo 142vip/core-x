@@ -31,7 +31,7 @@ type VipInquirerChoiceList<T> = Array<VipInquirerChoice<T>>
 
 interface VipInquirerOptions {
   default?: string
-  pageSize?: 10
+  pageSize?: number
   loop?: false
 }
 
