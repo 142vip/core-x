@@ -1,60 +1,7 @@
-# @142vip/release-version
+import type { VipReleaseType } from '@142vip/utils'
+import type { VersionHooksEnum } from './version-hooks.enum'
+import type { VersionProgressEventEnum } from './version-process-event.enum'
 
-[![NPM version](https://img.shields.io/npm/v/@142vip/release-version?labelColor=0b3d52&color=1da469&label=version)](https://www.npmjs.com/package/@142vip/release-version)
-
-## 安装
-
-```bash
-# 安装
-pnpm i @142vip/release-version -D
-
-# 查看版本
-npx bumpx -v
-```
-
-## 命令
-
-```text
-# 查看使用
-npx bumpx -h
-
-Usage: @142vip/release-version [...files]
-
-通用型版本迭代Cli工具，支持版本迭代更新，Git提交信息、打标记并推送到远程
-
-Options:
-  -v --version                 VipCommander Version By @142vip
-  --preid <preid>              预发布标记 (default: "alpha")
-  --all                        Include all files (default: false)
-  -c, --commit                 Commit message,also can skip commit (default: true)
-  -t, --tag                    Tag name,also can skip tag (default: false)
-  -p, --push                   Push to remote (default: true)
-  -y, --confirm                Skip confirmation (default: true)
-  -r, --recursive              Bump package.json files recursively (default: false)
-  --skip-git-verify            Skip git verification
-  --ignore-scripts             Ignore scripts (default: false)
-  --changelog                  generate CHANGELOG.md (default: false)
-  --current-version <version>  Current version
-  -x, --execute <command>      Commands to execute after version bumps
-  --scopeName <scopeName>      Package name in monorepo
-  --dry-run                    试运行 (default: false)
-  --vip                        @142vip组织专用功能 (default: false)
-  --logger                     开启日志追踪模式 (default: false)
-  -h, --help                   display help for command
-
-Commands:
-  help [command]               display help for command
-```
-
-## API
-
-- `versionBump(options: VersionBumpOptions)` 
-- `versionBumpDryRun(options: VersionBumpOptions)`
-- `versionBumpInfo(options: VersionBumpOptions)`
-
-
-## 类型
-```ts
 export interface VersionBumpOptions {
   /**
    * 预发行类型（例如 “alpha”、“beta”、“next”），默认：“alpha”
@@ -167,10 +114,11 @@ export interface VersionBumpResults {
    */
   tag: string | false
 }
-```
 
-## 证书
-
-[MIT](https://opensource.org/license/MIT)
-
-Copyright (c) 2019-present, 142vip 储凡
+/**
+ * Information about the progress of the `versionBump()` function.
+ */
+export interface VersionBumpProgress extends VersionBumpResults {
+  event: VersionProgressEventEnum
+  script?: VersionHooksEnum
+}

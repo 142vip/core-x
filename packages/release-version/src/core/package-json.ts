@@ -1,7 +1,14 @@
-import type { VersionBumpOptions } from '@142vip/release-version'
-import type { ReleaseOperation } from './operation'
-import { VipColor, VipExecutor, vipLogger, VipNodeJS, VipNpm, VipPackageJSON } from '@142vip/utils'
-import { NpmScript, ProgressEvent } from '../types'
+import type { VersionBumpOptions } from '../enums'
+import type { ReleaseOperation } from './version-operation'
+import {
+  VipColor,
+  VipExecutor,
+  vipLogger,
+  VipNodeJS,
+  VipNpm,
+  VipPackageJSON,
+} from '@142vip/utils'
+import { VersionHooksEnum, VersionProgressEventEnum } from '../enums'
 
 /**
  * 提示用户输入新版本号，支持用户自定义版本
@@ -15,15 +22,15 @@ export async function getNewVersion(operation: ReleaseOperation, preid: string):
   return operation.update({ newVersion })
 }
 
-export async function getCurrentVersion(operation: ReleaseOperation, arg: VersionBumpOptions) {
-  if (arg.currentVersion == null) {
-    const currentVersion = VipPackageJSON.getCurrentVersion(arg.cwd)
-    const file = VipPackageJSON.getPackagePath(arg.cwd)
+export async function getCurrentVersion(operation: ReleaseOperation, options: VersionBumpOptions) {
+  if (options.currentVersion == null) {
+    const currentVersion = VipPackageJSON.getCurrentVersion(options.cwd)
+    const file = VipPackageJSON.getPackagePath(options.cwd)
     if (currentVersion != null) {
       operation.update({ currentVersionSource: file, currentVersion })
     }
     else {
-      vipLogger.logByBlank(`Unable to determine the current version number. Checked file: ${file}.`)
+      vipLogger.logByBlank(`无法从项目中获取当前版本号， 检查文件: ${file}.`)
     }
   }
 }
@@ -38,7 +45,7 @@ export function updateVersion(operation: ReleaseOperation) {
 /**
  * 执行package.json文件中的scripts中配置的钩子函数
  */
-export async function runScript(script: NpmScript, operation: ReleaseOperation): Promise<ReleaseOperation> {
+export async function runScript(script: VersionHooksEnum, operation: ReleaseOperation): Promise<ReleaseOperation> {
   const { cwd, ignoreScripts } = operation.options
 
   if (!ignoreScripts) {
@@ -51,7 +58,7 @@ export async function runScript(script: NpmScript, operation: ReleaseOperation):
         VipNodeJS.existErrorProcess()
       }
       await VipExecutor.execShell({ command: `npm run ${script} --silent`, description: '运行脚本命令' })
-      operation.update({ event: ProgressEvent.NpmScript, script })
+      operation.update({ event: VersionProgressEventEnum.NpmScript, script })
     }
   }
   return operation
@@ -61,19 +68,19 @@ export async function runScript(script: NpmScript, operation: ReleaseOperation):
  * 运行preversion钩子函数
  */
 export async function runPreVersionScript(operation: ReleaseOperation): Promise<void> {
-  await runScript(NpmScript.PreVersion, operation)
+  await runScript(VersionHooksEnum.PreVersion, operation)
 }
 
 /**
  * 运行version钩子函数
  */
 export async function runVersionScript(operation: ReleaseOperation): Promise<void> {
-  await runScript(NpmScript.Version, operation)
+  await runScript(VersionHooksEnum.Version, operation)
 }
 
 /**
  * 运行postversion钩子函数
  */
 export async function runPostVersionScript(operation: ReleaseOperation): Promise<void> {
-  await runScript(NpmScript.PostVersion, operation)
+  await runScript(VersionHooksEnum.PostVersion, operation)
 }

@@ -1,3 +1,3 @@
 #!/usr/bin/env node
 
-import './dist/bumpx-cli.mjs'
+import './dist/release-version-cli.mjs'

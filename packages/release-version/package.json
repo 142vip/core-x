@@ -33,7 +33,8 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "bin": {
-    "bumpx": "./cli.mjs"
+    "bumpx": "./cli.mjs",
+    "bump": "./cli.mjs"
   },
   "files": [
     "*.mjs",
