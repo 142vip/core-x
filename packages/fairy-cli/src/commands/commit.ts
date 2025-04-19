@@ -1,5 +1,9 @@
 import type { VipCommander } from '@142vip/utils'
-import { commitLiner, GIT_COMMIT_DEFAULT_SCOPES, GIT_COMMIT_DEFAULT_TYPES } from '@142vip/commit-linter'
+import {
+  commitLiner,
+  GIT_COMMIT_DEFAULT_SCOPES,
+  GIT_COMMIT_DEFAULT_TYPES,
+} from '@142vip/commit-linter'
 import {
   VipColor,
   VipConsole,

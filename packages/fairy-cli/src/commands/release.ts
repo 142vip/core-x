@@ -47,8 +47,6 @@ async function execNormalRelease(args: ReleaseOptions): Promise<void> {
 
   // 指定文件更新版本
   await versionBump({
-    // todo 需要明确当前版本
-    currentVersion: '',
     ...args.preid ? { preid: args.preid } : { perid: 'alpha' },
     // 是否需要标记
     ...args.tag ? { tag: args.tag } : {},
