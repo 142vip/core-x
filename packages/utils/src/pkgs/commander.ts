@@ -15,6 +15,14 @@ export class VipCommander extends Command {
       this.description(description)
     }
 
+    /**
+     * 增加默认的一些参数
+     */
+    // this
+    //   .option('--dry-run', '试运行', false)
+    //   .option('--vip', '@142vip组织专用功能', false)
+    //   .option('--logger', '开启日志追踪模式', false)
+
     // 对命令增加help方法
     this.helpCommand(true)
   }

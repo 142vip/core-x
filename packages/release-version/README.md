@@ -48,10 +48,9 @@ Commands:
 
 ## API
 
-- `versionBump(options: VersionBumpOptions)` 
+- `versionBump(options: VersionBumpOptions)`
 - `versionBumpDryRun(options: VersionBumpOptions)`
 - `versionBumpInfo(options: VersionBumpOptions)`
-
 
 ## 类型
 ```ts
