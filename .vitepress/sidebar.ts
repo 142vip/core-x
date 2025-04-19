@@ -128,7 +128,7 @@ export async function getCoreProjectData(): Promise<VipProject[]> {
  * demo项目
  */
 export async function getExampleDemoTableData() {
-  const pkgNames = ['vuepress-demo', 'vitepress-demo']
+  const pkgNames = ['egg-demo', 'nest-demo', 'vuepress-demo', 'vitepress-demo']
 
   const exampleDemos = []
   for (const pkgDirName of pkgNames) {
