@@ -263,6 +263,9 @@ importers:
 
   packages/fairy-cli:
     dependencies:
+      '@142vip/commit-linter':
+        specifier: workspace:*
+        version: link:../commit-linter
       '@142vip/release-version':
         specifier: workspace:*
         version: link:../release-version
