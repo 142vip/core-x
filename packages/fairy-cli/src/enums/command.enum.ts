@@ -1,4 +1,4 @@
-import type { VipCommander } from '@142vip/utils'
+import type { VipCommanderDetailRecord } from '@142vip/utils'
 
 export enum CommandEnum {
   LOGIN = 'login',
@@ -15,7 +15,7 @@ export enum CommandEnum {
   COMMIT = 'commit',
 }
 
-export const CliCommandDetail = {
+export const CLI_COMMAND_DETAIL: VipCommanderDetailRecord<CommandEnum> = {
   [CommandEnum.LOGIN]: {
     command: 'login',
     summary: '登录平台',
@@ -88,16 +88,4 @@ export const CliCommandDetail = {
     description: '快速进行Git Commit 提交信息，并检验提交信息是否符合规范',
     aliases: ['co', 'com'],
   },
-}
-
-/**
- * cli命令初始化
- */
-export function initFairyCliCommand(program: VipCommander, commandEnum: CommandEnum): VipCommander {
-  const { command, aliases, summary, description } = CliCommandDetail[commandEnum]
-  // 初始化命令
-  return program.command(command)
-    .aliases(aliases)
-    .summary(summary)
-    .description(description)
 }

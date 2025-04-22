@@ -1,6 +1,11 @@
 import type { VersionBumpOptions } from '@142vip/release-version'
 import type { VipCommander } from '@142vip/utils'
-import { printPreCheckRelease, releaseMonorepoPkg, releaseRoot } from '@142vip/fairy-cli'
+import {
+  CLI_COMMAND_DETAIL,
+  printPreCheckRelease,
+  releaseMonorepoPkg,
+  releaseRoot,
+} from '@142vip/fairy-cli'
 import { versionBump } from '@142vip/release-version'
 import {
   DEFAULT_RELEASE_ROOT_NAME,
@@ -14,7 +19,7 @@ import {
   VipPackageJSON,
 } from '@142vip/utils'
 import { name } from '../../package.json'
-import { CommandEnum, initFairyCliCommand } from '../enums'
+import { CommandEnum } from '../enums'
 
 interface ReleaseOptions extends Pick<VersionBumpOptions, 'preid' | 'tag' | 'commit' | 'push' | 'all' | 'execute'> {
   package?: string
@@ -47,7 +52,6 @@ async function execNormalRelease(args: ReleaseOptions): Promise<void> {
 
   // 指定文件更新版本
   await versionBump({
-    files: [],
     ...args.preid ? { preid: args.preid } : { perid: 'alpha' },
     // 是否需要标记
     ...args.tag ? { tag: args.tag } : {},
@@ -99,7 +103,8 @@ async function execVipRelease(args: VipReleaseExtraOptions): Promise<void> {
  * 功能迭代主功能
  */
 export async function releaseMain(program: VipCommander): Promise<void> {
-  initFairyCliCommand(program, CommandEnum.RELEASE)
+  program
+    .initCommand(CLI_COMMAND_DETAIL[CommandEnum.RELEASE])
     .option('--push', '推送到Git远程', true)
     .option('--preid <preid>', 'ID for prerelease')
     .option('--commit <msg>', '提交信息', false)
@@ -110,7 +115,6 @@ export async function releaseMain(program: VipCommander): Promise<void> {
     .option('--package <package>', '指定需要发布的包')
     .option('--branch <branch>', '指定分支进行发布', 'next')
     .option('--check-release', '发布仓库主版本时，校验Monorepo中子模块版本', false)
-    .option('--vip', '@142vip组织专用功能', false)
     .option('-F, --filter <filter>', '模块的路径，例如："./package/*"', (value: string, previous: string[]) => {
       if (!value)
         return [value]

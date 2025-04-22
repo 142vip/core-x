@@ -14,7 +14,7 @@ import {
   VipMonorepo,
   VipNodeJS,
 } from '@142vip/utils'
-import { CommandEnum, initFairyCliCommand } from '../enums'
+import { CLI_COMMAND_DETAIL, CommandEnum } from '../enums'
 
 const GIT_NULL_SCOPE = '没有范围，那就选这个！！！'
 
@@ -39,9 +39,8 @@ interface CommitOptions {
  * - 基于@142vip/commit-linter
  */
 export async function commitMain(program: VipCommander): Promise<void> {
-  initFairyCliCommand(program, CommandEnum.COMMIT)
-    .option('--dry-run', '试运行，Git Commit 提交信息', false)
-    .option('--vip', '@142vip组织专用功能', false)
+  program
+    .initCommand(CLI_COMMAND_DETAIL[CommandEnum.COMMIT])
     .option('--push', '是否要推送到远程', false)
     .action(async (vip, args: CommitOptions): Promise<void> => {
       if (vip) {

@@ -1,6 +1,6 @@
 import type { VipCommander } from '@142vip/utils'
 import { VipConsole } from '@142vip/utils'
-import { CommandEnum, initFairyCliCommand } from '../enums'
+import { CLI_COMMAND_DETAIL, CommandEnum } from '../enums'
 
 interface DeployOptions {
   githubPage: boolean
@@ -19,7 +19,8 @@ function DeployGithubPage() {}
  * deploy命令
  */
 export async function deployMain(program: VipCommander): Promise<void> {
-  initFairyCliCommand(program, CommandEnum.DEPLOY)
+  program
+    .initCommand(CLI_COMMAND_DETAIL[CommandEnum.DEPLOY])
     .option('-gh,--github-page', '部署到Github Pages', false)
     .action((args: DeployOptions) => {
       execDeploy(args)

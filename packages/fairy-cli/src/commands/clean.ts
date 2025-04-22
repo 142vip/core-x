@@ -1,7 +1,13 @@
 import type { VipCommander } from '@142vip/utils'
-import { VipColor, VipConsole, VipInquirer, vipLogger, VipNodeJS } from '@142vip/utils'
+import {
+  VipColor,
+  VipConsole,
+  VipInquirer,
+  vipLogger,
+  VipNodeJS,
+} from '@142vip/utils'
 import { deleteAsync } from 'del'
-import { CommandEnum, initFairyCliCommand } from '../enums'
+import { CLI_COMMAND_DETAIL, CommandEnum } from '../enums'
 
 /**
  * 删除配置
@@ -129,7 +135,8 @@ async function execCleanUp(args: CleanUpOptions): Promise<void> {
  * fairy-cli clean 项目清理
  */
 export async function cleanUpMain(program: VipCommander): Promise<void> {
-  initFairyCliCommand(program, CommandEnum.CLEAN)
+  program
+    .initCommand(CLI_COMMAND_DETAIL[CommandEnum.CLEAN])
     .option('-n,--nuxt', '删除nuxt构建目录，包括.nuxt、.output目录', false)
     .option('-d,--dist', '删除dist目录', false)
     .option('-m,--midway', '删除midway构建目录', false)
@@ -141,8 +148,6 @@ export async function cleanUpMain(program: VipCommander): Promise<void> {
     .option('-f,--force', '强制删除，默认值：false', false)
     .option('-a,--all', '深度删除所有', false)
     .option('--ignore-tips', '忽略提示，直接删除', false)
-    .option('--logger', '开启日志追踪模式', false)
-    .option('--dry-run', '试运行，不做实际删除操作', false)
     .action(async (args: CleanUpOptions): Promise<void> => {
       await execCleanUp(args)
     })

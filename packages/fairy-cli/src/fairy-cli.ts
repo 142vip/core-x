@@ -57,5 +57,5 @@ export async function fairyCliMain(): Promise<void> {
   await commitMain(program)
 
   // 参数解析
-  program.parse(VipNodeJS.getProcessArgv())
+  await program.parseAsync(VipNodeJS.getProcessArgv())
 }
