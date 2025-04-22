@@ -112,7 +112,6 @@ export async function releaseMain(program: VipCommander): Promise<void> {
       vip: true,
     })
     .option('--preid <preid>', '用于预发布的版本增量标记')
-    .option('--commit <msg>', '提交信息', false)
     .option('--tag <tag>', '标签名', false)
     .option('--commit <msg>', '提交信息', false)
     .option('--push', '推送到Git远程', true)
