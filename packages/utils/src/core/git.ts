@@ -1,6 +1,6 @@
 import type { GitCommit, GitInfo } from '../enums'
 import { convert } from 'convert-gitmoji'
-import { VipColor, VipSemver } from '../pkgs'
+import { VipColor, VipConsole, VipSemver } from '../pkgs'
 import { VipExecutor } from './exec'
 import { vipLogger } from './logger'
 import { VipNodeJS } from './nodejs'
@@ -231,6 +231,21 @@ function parseCommitMsg(message: string): GitCommit | null {
 }
 
 /**
+ * 检测当前分支，是否允许操作的分支，默认：main|next|master
+ */
+function validateBranch(allowBranch?: string | string[]): void {
+  const currentBranch = getCurrentBranch()
+  if (allowBranch == null) {
+    allowBranch = ['main', 'next', 'master']
+  }
+  const branches = typeof allowBranch === 'string' ? [allowBranch] : allowBranch
+  if (!branches.includes(currentBranch)) {
+    VipConsole.log(VipColor.red(`当前分支是：${currentBranch} ，版本迭代允许在${branches.join('|')}分支操作，并推送到远程！！！`))
+    VipNodeJS.existSuccessProcess()
+  }
+}
+
+/**
  * Git业务相关
  */
 export const VipGit = {
@@ -254,4 +269,5 @@ export const VipGit = {
   getCommitFirstLineMsg,
   parseCommitMsg,
   getRemoteNames,
+  validateBranch,
 }
