@@ -155,7 +155,7 @@ async function execRelease(args: ReleaseMainOptions): Promise<void> {
  * 打印某个包的Git Commit信息
  */
 async function printPkgCommitLogs(pnpmFilter?: string | string[]): Promise<void> {
-  const isCheck = await VipInquirer.promptConfirm(`是否查看当前仓库的模块信息？`, false)
+  const isCheck = await VipInquirer.promptConfirm(`是否需要选择查看当前仓库特定模块的提交信息？`, false)
   if (isCheck) {
     const pkgName = await VipInquirer.promptSearch(
       `请选择需要查看的模块：`,

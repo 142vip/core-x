@@ -25,8 +25,6 @@ import { ReleaseOperation } from './version-operation'
  * 版本发布
  */
 export async function versionBump(options: VersionBumpOptions): Promise<VersionBumpResults | null> {
-  console.log('versionBump options:', options)
-
   const operation = await versionBumpDryRun(options)
   // 提交变更
   await gitCommit(operation)
@@ -61,9 +59,6 @@ export async function versionBumpDryRun(options: VersionBumpOptions): Promise<Re
 
   // 生成CHANGELOG.md文档
   await updateChangelogDoc(operation)
-
-  console.log(2222, operation)
-  VipNodeJS.existErrorProcess()
 
   // 执行命令
   await doExecute(operation)

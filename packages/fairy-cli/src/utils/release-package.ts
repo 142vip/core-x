@@ -99,6 +99,8 @@ export async function releasePackage(pkg?: PackageJSONWithPath): Promise<void> {
           currentVersion: pkg.version,
           scopeName: pkg.name,
           tag: false,
+          // 指定执行目录
+          cwd: pkg.path,
         }
       : {
           tag: true,
