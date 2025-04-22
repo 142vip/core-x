@@ -8,11 +8,29 @@ export interface VipCommanderDetailOptions {
 }
 
 export interface VipCommanderOptions {
+  /**
+   * 试运行
+   */
   dryRun?: boolean
-  trace?: boolean
+
+  /**
+   * 142vip 组织专用功能，用户标记是否用于142vip组织的项目
+   */
   vip?: boolean
+
+  /**
+   * 是否开启日志追踪模式，打印重要执行日志
+   */
+  trace?: boolean
+
+  /**
+   * 是否开启帮助模式，打印帮助信息
+   */
   help?: boolean
 }
+
+export type VipCommanderDetailRecord<T extends string> = Record<T, VipCommanderDetailOptions>
+
 /**
  * 终端交互
  * 参考：https://www.npmjs.com/package/commander
@@ -27,29 +45,19 @@ export class VipCommander extends Command {
     if (description != null) {
       this.description(description)
     }
-
-    /**
-     * 增加默认的一些参数
-     */
-    // this
-    //   .option('--dry-run', '试运行', false)
-    //   .option('--vip', '@142vip组织专用功能', false)
-    //   .option('--logger', '开启日志追踪模式', false)
-
-    // 对命令增加help方法
-    // this.helpCommand(true)
   }
 
   /**
    * 对命令初始化，增加aliases，summary，description等信息
+   * - 增加默认的一些参数
    */
   public initCommand(options: VipCommanderDetailOptions, {
     dryRun = true,
     trace = true,
     vip = false,
     help = false,
-  }: VipCommanderOptions): VipCommander {
-    const vipCommander = this.command(options.command, options.description)
+  }: VipCommanderOptions = {}): Command {
+    const vipCommander = this.command(options.command)
       .aliases(options.aliases)
       .summary(options.summary)
       .description(options.description)

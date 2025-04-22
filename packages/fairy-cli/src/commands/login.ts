@@ -1,6 +1,6 @@
 import type { VipCommander } from '@142vip/utils'
 import { VipColor, VipConsole, VipDocker, VipInquirer, vipLogger } from '@142vip/utils'
-import { CommandEnum, initFairyCliCommand } from '../enums'
+import { CLI_COMMAND_DETAIL, CommandEnum } from '../enums'
 
 enum LoginPlatformEnum {
   DOCKER = 'DOCKER',
@@ -48,7 +48,8 @@ async function loginNpm(): Promise<void> {
  * - npx fa login
  */
 export async function loginMain(program: VipCommander): Promise<void> {
-  initFairyCliCommand(program, CommandEnum.LOGIN)
+  program
+    .initCommand(CLI_COMMAND_DETAIL[CommandEnum.LOGIN])
     .action(async () => {
       const loginType = await VipInquirer.promptSelect('选择需要登录的平台：', Object.values(LoginPlatformEnum))
       if (loginType === LoginPlatformEnum.DOCKER) {

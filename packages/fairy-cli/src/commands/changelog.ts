@@ -1,6 +1,6 @@
 import type { VipCommander } from '@142vip/utils'
 import { VipExecutor } from '@142vip/utils'
-import { CommandEnum, initFairyCliCommand } from '../enums'
+import { CLI_COMMAND_DETAIL, CommandEnum } from '../enums'
 
 interface ChangelogOptions {
   dryRun?: boolean
@@ -19,8 +19,8 @@ async function generateChangelog(args: ChangelogOptions): Promise<void> {
  * - 生成CHANGELOG文档
  */
 export async function changelogMain(program: VipCommander): Promise<void> {
-  initFairyCliCommand(program, CommandEnum.CHANGELOG)
-    .option('--dry-run', '试运行，生成`CHANGELOG`文档', false)
+  program
+    .initCommand(CLI_COMMAND_DETAIL[CommandEnum.CHANGELOG])
     .action(async (args: ChangelogOptions): Promise<void> => {
       await generateChangelog(args)
     })
