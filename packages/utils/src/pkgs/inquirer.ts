@@ -10,7 +10,8 @@ import {
   Separator,
 } from '@inquirer/prompts'
 import { name } from '../../package.json'
-import { vipLogger, VipPackageJSON } from '../core'
+import { vipLogger, VipNodeJS, VipPackageJSON } from '../core'
+import { VipColor } from './color'
 
 /**
  * 参考：
@@ -116,6 +117,23 @@ async function promptConfirm(message: string, defaultValue?: boolean): Promise<b
 }
 
 /**
+ * 终端交互确认，支持安全退出、自定义信息
+ */
+async function promptConfirmWithSuccessExit(message: string, { exitMsg, defaultValue }: {
+  exitMsg?: string
+  defaultValue?: boolean
+}): Promise<void> {
+  const isContinue = await promptConfirm(message, defaultValue)
+
+  // 用户取消操作，安全退出
+  if (!isContinue) {
+    // 用户取消操作
+    vipLogger.logByBlank(exitMsg ?? `${VipColor.yellow('用户取消操作！！')}`)
+    VipNodeJS.existSuccessProcess()
+  }
+}
+
+/**
  * 搜索框
  * - https://github.com/SBoudrias/Inquirer.js/tree/main/packages/search
  */
@@ -167,6 +185,7 @@ export const VipInquirer = {
   promptSelect: withTryCatch(promptSelect),
   promptCheckBox: withTryCatch(promptCheckBox),
   promptConfirm: withTryCatch(promptConfirm),
+  promptConfirmWithSuccessExit: withTryCatch(promptConfirmWithSuccessExit),
   promptSearch: withTryCatch(promptSearch),
   handleSimpleSearchSource,
 }
@@ -175,3 +194,10 @@ export const VipInquirer = {
  * 分隔符
  */
 export class VipInquirerSeparator extends Separator {}
+
+/**
+ * option数组参数解析器，支持传多个
+ */
+export function VipInquirerDefaultArrayParser(value: string, previous: string[]): string[] {
+  return !value ? [value] : previous.concat(value)
+}

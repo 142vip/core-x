@@ -54,27 +54,38 @@ function validatePackage(packageNameInCommitScope: string, template?: string): b
 }
 
 /**
- * 更新公共包
- * 生成changelog文档，更新version
+ * 更新公共包、发布项目
+ * 生成changelog文档，更新version 【支持monorepo】
+ *  - 更新根目录下的version版本
+ *  - 提交commit信息
+ *  - 标记tag信息
  */
-export async function releaseMonorepoPkg(pkg: PackageJSONWithPath): Promise<void> {
-  const commitInfo = `release(${pkg.name}): publish \`v%s\``
-  const execute = 'git add CHANGELOG.md'
-  const rpCommand = `bumpx --preid alpha --changelog --commit '${commitInfo}'  --execute '${execute}' --scopeName '${pkg.name}' --no-tag --all`
-  const command = `pnpm --filter "${pkg.name}" --shell-mode exec "${rpCommand}"`
+export async function releasePackage(pkg?: PackageJSONWithPath): Promise<void> {
+  // git commit 信息
+  const commitInfo = pkg == null ? 'chore(release): publish v%s' : `release(${pkg.name}): publish \`v%s\``
 
-  VipConsole.log(`等价命令-->${command}`)
+  const executeInfo = 'git add CHANGELOG.md'
 
+  const releaseCommand = `npx bumpx --preid alpha --changelog --commit "${commitInfo}" --execute "${executeInfo}" ${
+    pkg == null
+      ? ''
+      : ` --scopeName "${pkg.name}"`} --all`
+
+  const command = `pnpm ${
+    pkg == null
+      ? ''
+      : `--filter "${pkg.name}"`
+  } --shell-mode exec "${releaseCommand}"`
+
+  VipConsole.log(`等价命令: ${VipColor.green(command)}`)
+
+  // 版本发布
   await versionBump({
     preid: 'alpha',
-    // 注意：在对应monorepo模块的目录中执行bump命令
-    cwd: pkg.path,
-    execute,
     changelog: true,
-    currentVersion: pkg.version,
-    scopeName: pkg.name,
-    // 子模块发布，不支持tag标签
-    tag: false,
+    // 执行命令
+    execute: executeInfo,
+    // 发布根模块，需要打标签
     commit: commitInfo,
     push: true,
     all: true,
@@ -82,28 +93,15 @@ export async function releaseMonorepoPkg(pkg: PackageJSONWithPath): Promise<void
     skipGitVerify: true,
     // 确认框
     // confirm: true,
-  })
-}
-/**
- * 发布项目
- * - 更新根目录下的version版本
- * - 提交commit信息
- * - 标记tag信息
- */
-export async function releaseRoot(): Promise<void> {
-  const commitInfo = 'chore(release): publish v%s'
-  const execute = 'git add CHANGELOG.md'
-  const releaseCommand = `npx bumpx --preid alpha --changelog --commit "${commitInfo}" --execute "${execute}" --all`
-  VipConsole.log(`等价命令-->${releaseCommand}`)
-  // 执行命令，需要交互 shell执行
-  await versionBump({
-    preid: 'alpha',
-    changelog: true,
-    execute,
-    // 发布根模块，需要打标签
-    tag: true,
-    commit: commitInfo,
-    push: true,
-    all: true,
+    // 注意：在对应monorepo模块的目录中执行bump命令
+    ...pkg != null
+      ? {
+          currentVersion: pkg.version,
+          scopeName: pkg.name,
+          tag: false,
+        }
+      : {
+          tag: true,
+        },
   })
 }
