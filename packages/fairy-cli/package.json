@@ -60,17 +60,15 @@
     "homePage": "https://142vip.cn"
   },
   "dependencies": {
+    "@142vip/changelog": "workspace:*",
     "@142vip/commit-linter": "workspace:*",
     "@142vip/release-version": "workspace:*",
     "@142vip/utils": "workspace:*",
     "del": "8.0.0",
-    "js-yaml": "4.1.0",
     "node-fetch": "3.3.2",
     "turbo": "2.4.4"
   },
-  "devDependencies": {
-    "@types/js-yaml": "4.0.9"
-  },
+  "devDependencies": { },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org"
