@@ -39,7 +39,7 @@
     "check:release": "npx fa release --check-release --vip -F './apps/*' -F './packages/*' ",
     "check:esm": "pnpx are-we-esm",
     "check": "pnpm release:check && pnpm publish:check",
-    "release": "npx fa release --vip -F './apps/*' -F './packages/*' ",
+    "release": "npx fa release --vip -F './apps/*' -F './packages/*' --check-branch next --check-branch main ",
     "test": "jest",
     "test:coverage": "jest --coverage"
   },

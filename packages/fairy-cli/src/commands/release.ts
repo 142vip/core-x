@@ -37,6 +37,7 @@ interface ReleaseMainOptions extends Omit<VipCommanderOptions, 'help'> {
   branch?: string
   checkRelease?: boolean
   filter?: string[]
+  checkBranch: string[]
 }
 
 /**
@@ -121,11 +122,14 @@ export async function releaseMain(program: VipCommander): Promise<void> {
     .option('--package <package>', '指定需要发布的包')
     .option('--branch <branch>', '指定分支进行发布', 'next')
     .option('--check-release', '发布仓库主版本时，校验Monorepo中子模块版本', false)
+    .option('--check-branch [checkBranch]', '发布版本时，是否校验分支', VipInquirerDefaultArrayParser, [])
     .option('-F,--filter <filter>', '模块的路径，例如："./package/*"', VipInquirerDefaultArrayParser, [])
     .action(async (args: ReleaseMainOptions): Promise<void> => {
       console.log('release:', args)
       // 发布时校验分支，避免误操作
-      VipGit.validateBranch()
+      if (args.checkBranch.length > 0) {
+        VipGit.validateBranch(args.checkBranch)
+      }
 
       // 发布
       await execRelease(args)

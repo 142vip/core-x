@@ -70,6 +70,55 @@ fa cr
 fa cr --dry-run
 ```
 
+### release
+
+发布新的版本，更新`version`字段信息，提交到`Git`仓库
+
+#### 查看命令
+
+```shell
+# 查看release命令参数
+npx fa release -h
+
+Usage: @142vip/fairy-cli release|re [options]
+
+发布新的版本，更新version字段信息，提交到Git仓库
+
+Options:
+  --trace                       开启日志追踪模式 (default: false)
+  --dry-run                     试运行 (default: false)
+  --vip                         @142vip组织专用功能 (default: false)
+  --preid <preid>               用于预发布的版本增量标记
+  --tag <tag>                   标签名 (default: false)
+  --commit <msg>                提交信息 (default: false)
+  --push                        推送到Git远程 (default: true)
+  --skip-confirm                跳过确认框二次确认 (default: false)
+  -r,--recursive                递归更新所有package.json中的version字段信息 (default: false)
+  --execute <command>           版本更新后需要执行的命令
+  --package <package>           指定需要发布的包
+  --branch <branch>             指定分支进行发布 (default: "next")
+  --check-release               发布仓库主版本时，校验Monorepo中子模块版本 (default: false)
+  --check-branch [checkBranch]  发布版本时，是否校验分支 (default: [])
+  -F,--filter <filter>          模块的路径，例如："./package/*" (default: [])
+  -h, --help                    display help for command
+```
+#### 使用示例
+
+```shell
+# 发布
+fa release
+
+# 发布试运行
+fa release --dry-run
+
+# 发布monorepo模式的仓库
+fa release --vip -F './apps/*' -F './packages/*' --check-branch next --check-branch main
+
+# 发布，并校验分支
+fa release --check-branch next
+fa release --check-branch next --check-branch main
+```
+
 ### sync
 
 同步`npm`仓库的模块包到`cnpm`仓库，支持同步多个模块，也可以访问[cnpm站点](https://npmmirror.com/)手动同步模块。
