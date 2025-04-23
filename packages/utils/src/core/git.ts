@@ -1,5 +1,6 @@
 import type { GitCommit, GitInfo } from '../enums'
 import { convert } from 'convert-gitmoji'
+import { GitGeneralBranch } from '../enums'
 import { VipColor, VipSemver } from '../pkgs'
 import { VipExecutor } from './exec'
 import { vipLogger } from './logger'
@@ -236,7 +237,7 @@ function parseCommitMsg(message: string): GitCommit | null {
 function validateBranch(allowBranch?: string | string[]): void {
   const currentBranch = getCurrentBranch()
   if (allowBranch == null) {
-    allowBranch = ['main', 'next', 'master']
+    allowBranch = [GitGeneralBranch.MASTER, GitGeneralBranch.NEXT, GitGeneralBranch.NEXT]
   }
   const branches = typeof allowBranch === 'string' ? [allowBranch] : allowBranch
   if (!branches.includes(currentBranch)) {
@@ -270,13 +271,4 @@ export const VipGit = {
   parseCommitMsg,
   getRemoteNames,
   validateBranch,
-}
-
-/**
- * 常用分支
- */
-export enum VipGitBranch {
-  main = 'main',
-  next = 'next',
-  master = 'master',
 }

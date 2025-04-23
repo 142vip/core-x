@@ -28,3 +28,12 @@ export interface GitCommit {
    */
   subject?: string
 }
+
+/**
+ * 常用分支
+ */
+export enum GitGeneralBranch {
+  MAIN = 'main',
+  NEXT = 'next',
+  MASTER = 'master',
+}
