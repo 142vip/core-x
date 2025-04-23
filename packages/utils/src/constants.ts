@@ -45,7 +45,7 @@ export interface VipAuthorInfo {
 /**
  * 开源作者
  */
-export const OPEN_SOURCE_AUTHOR = {
+export const OPEN_SOURCE_AUTHOR: VipAuthorInfo = {
   name: '微信公众号：储凡',
   email: 'fairy_vip@2925.com',
   url: 'https://github.com/142vip',
@@ -67,6 +67,9 @@ export function getDocSiteBase(baseName: string): '/' | `/${string}/` {
   return needProxy ? `/${baseName}/` : '/'
 }
 
+/**
+ * Docker部署自定义网络
+ */
 export const VIP_DEPLOY_DOCKER_ENV = {
   // 名称
   NETWORK_NAME: 'service_env_net',

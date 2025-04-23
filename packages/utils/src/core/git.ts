@@ -271,3 +271,12 @@ export const VipGit = {
   getRemoteNames,
   validateBranch,
 }
+
+/**
+ * 常用分支
+ */
+export enum VipGitBranch {
+  main = 'main',
+  next = 'next',
+  master = 'master',
+}

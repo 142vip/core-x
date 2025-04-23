@@ -126,9 +126,33 @@ function existPath(path: PathLike): boolean {
   return existsSync(path)
 }
 
+/**
+ * 是否存在文件
+ */
 function isExistFile(name: string, cwd?: string): boolean {
   const filePath = pathJoin(cwd ?? getProcessCwd(), name)
   return existPath(filePath)
+}
+
+/**
+ * 目录是否存在
+ */
+function isExistDir(name: string, cwd?: string): boolean {
+  const dirPath = pathJoin(cwd ?? getProcessCwd(), name)
+  return existPath(dirPath) && isDirectory(dirPath)
+}
+
+/**
+ * 是否为目录
+ */
+function isDirectory(path: PathLike): boolean {
+  try {
+    const stat = fs.statSync(path)
+    return stat.isDirectory()
+  }
+  catch {
+    return false
+  }
 }
 
 /**
@@ -138,6 +162,11 @@ function readFileToStrByUTF8(filePath: PathLike): string {
   return readFileSync(filePath, 'utf-8')
 }
 
+/**
+ * 读取目录
+ * @param path
+ * @param options
+ */
 function readdirSync(path: PathLike, options?: {
   encoding: BufferEncoding | null
   withFileTypes?: false | undefined
@@ -225,6 +254,8 @@ export const VipNodeJS = {
   existErrorProcess,
   existPath,
   isExistFile,
+  isExistDir,
+  isDirectory,
   readdirSync,
   readFileToStrByUTF8,
   writeFileByUTF8,
