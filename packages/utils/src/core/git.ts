@@ -241,7 +241,7 @@ function validateBranch(allowBranch?: string | string[]): void {
   }
   const branches = typeof allowBranch === 'string' ? [allowBranch] : allowBranch
   if (!branches.includes(currentBranch)) {
-    vipLogger.logByBlank(VipColor.red(`当前分支是：${currentBranch} ，版本迭代允许在${branches.join('|')}分支操作，并推送到远程！！！`))
+    vipLogger.logByBlank(VipColor.red(`当前分支是：${currentBranch} ，版本迭代允许在 ${VipColor.green(branches.join('|'))} 分支操作，并推送到远程！！！`))
     VipNodeJS.existSuccessProcess()
   }
 }
