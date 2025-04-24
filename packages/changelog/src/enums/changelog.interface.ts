@@ -1,6 +1,7 @@
-import type { GitCommit, GitCommitAuthor } from './git'
+import type { VipCommanderOptions, VipSemverReleaseType } from '@142vip/utils'
+import type { GitCommitAuthor, GitCommitRecord } from './git-commit.interface'
 
-export interface Commit extends GitCommit {
+export interface Commit extends GitCommitRecord {
   resolvedAuthors?: GitAuthorInfo[]
 }
 
@@ -15,7 +16,7 @@ export interface GitAuthorInfo extends GitCommitAuthor {
 /**
  * changelog cli
  */
-export interface ChangelogCliOptions {
+export interface ChangelogCliOptions extends VipCommanderOptions {
   token?: string
   from?: string
   to?: string
@@ -24,17 +25,6 @@ export interface ChangelogCliOptions {
   prerelease?: boolean
   output?: string
   scopeName?: string
-  dryRun?: boolean
-}
-
-export enum SemverBumpType {
-  major = 'major',
-  premajor = 'premajor',
-  minor = 'minor',
-  preminor = 'preminor',
-  patch = 'patch',
-  prepatch = 'prepatch',
-  prerelease = 'prerelease',
 }
 
 /**
@@ -44,7 +34,7 @@ export interface ChangelogGenerateOptions {
   // 出现在版本发布记录中的git类型
   types: Record<string, {
     title: string
-    semver?: SemverBumpType
+    semver?: VipSemverReleaseType
   }>
   scopeMap: Record<string, string>
 
@@ -72,4 +62,11 @@ export interface ChangelogGenerateOptions {
   // 是否预览版本
   prerelease: boolean
   repo: string
+}
+
+export interface GenerateChangelogResult {
+  config: ChangelogGenerateOptions
+  commits: Commit[]
+  markdown: string
+  releaseUrl: string
 }

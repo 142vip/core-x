@@ -23,11 +23,11 @@
     "142vip",
     "@142vip",
     "@142vip/changelog",
-    "github",
+    "changelog",
     "release",
     "releases",
-    "conventional",
-    "changelog"
+    "conventional"
+
   ],
   "sideEffects": false,
   "exports": {

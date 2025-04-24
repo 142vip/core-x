@@ -1,5 +1,5 @@
-import type { Commit, GitAuthorInfo } from '../changelog.interface'
-import { VipColor, VipConsole, vipLogger, VipQs } from '@142vip/utils'
+import type { Commit, GitAuthorInfo } from '@142vip/changelog'
+import { HttpMethod, VipColor, VipConsole, vipLogger, VipQs } from '@142vip/utils'
 import { $fetch } from 'ofetch'
 
 function getHeaders(token: string) {
@@ -143,6 +143,67 @@ function generateReleaseUrl(markdown: string, config: {
 }
 
 /**
+ * 发送github发布
+ * - https://docs.github.com/en/rest/releases/releases?apiVersion=2022-11-28
+ */
+async function createGithubRelease(options: {
+  token: string
+  repo: string
+  baseUrlApi: string
+  name: string
+  tag: string
+  content: string
+  draft?: boolean
+  prerelease?: boolean
+}) {
+  let url = `https://${options.baseUrlApi}/repos/${options.repo}/releases`
+  let method = HttpMethod.POST
+
+  // token信息
+  const headers = {
+    accept: 'application/vnd.github.v3+json',
+    authorization: `token ${options.token}`,
+  }
+
+  // 存在tag则更新
+  try {
+    const exists = await $fetch(`https://${options.baseUrlApi}/repos/${options.repo}/releases/tags/${options.tag}`, {
+      headers,
+    })
+    if (exists.url) {
+      url = exists.url
+      method = HttpMethod.PATCH
+    }
+  }
+  catch {
+    // 预发布存在异常，fix CI err
+  }
+
+  const body = {
+    body: options.content,
+    name: options.name,
+    tag_name: options.tag,
+    // 草稿
+    draft: options.draft || false,
+    // 预发布
+    prerelease: options.prerelease || true,
+  }
+  if (method === HttpMethod.POST) {
+    VipConsole.log(VipColor.cyan('Creating Release Notes...'))
+  }
+  else {
+    VipConsole.log(VipColor.cyan('Updating Release Notes...'))
+  }
+
+  const res = await $fetch(url, {
+    method,
+    body: JSON.stringify(body),
+    headers,
+  })
+  VipConsole.log(VipColor.green(`Released on ${res.html_url}`))
+}
+
+/**
  * 打印手动发布地址
  * - 默认成功输出
  */
@@ -152,9 +213,7 @@ function printReleaseUrl(webUrl: string, success: boolean = true): void {
     : `\n${VipColor.red('无法创建发布。使用以下链接手动创建：')}\n`
 
   VipConsole.error(errMsg)
-  vipLogger.println()
-  VipConsole.log(`<${VipColor.yellow(webUrl)}>`)
-  vipLogger.println()
+  vipLogger.logByBlank(`<${VipColor.yellow(webUrl)}>`)
 }
 
 export const GithubAPI = {
@@ -164,4 +223,5 @@ export const GithubAPI = {
   printReleaseUrl,
   getHeaders,
   resolveAuthors,
+  createGithubRelease,
 }

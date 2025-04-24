@@ -1,5 +1,7 @@
-import type { ChangelogCliOptions, ChangelogGenerateOptions } from './changelog.interface'
+import type { ChangelogCliOptions, ChangelogGenerateOptions } from '../enums'
 import { VipConfig, VipGit } from '@142vip/utils'
+
+export const CONFIG_DEFAULT_NAME: string = 'changelog'
 
 /**
  * 默认配置
@@ -7,6 +9,7 @@ import { VipConfig, VipGit } from '@142vip/utils'
 export const ChangelogDefaultConfig = {
   scopeMap: {},
   header: '# Changelog\n\nAll notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.\n',
+  // header: DEFAULT_CHANGELOG_HEADER,
   types: {
     feat: { title: '✨ Features', semver: 'minor' },
     perf: { title: '🔥 Performance', semver: 'patch' },
@@ -30,26 +33,29 @@ export const ChangelogDefaultConfig = {
 }
 
 /**
+ * 定义配置文件
+ * - 合并默认配置
+ */
+export function defineChangelogConfig(config: ChangelogGenerateOptions): ChangelogGenerateOptions {
+  return config
+}
+
+/**
+ * 加载配置，读取配置文件
+ */
+export async function loadChangelogConfig() {
+  return await VipConfig.loadCliConfig<ChangelogGenerateOptions>(CONFIG_DEFAULT_NAME, ChangelogDefaultConfig, {
+    packageJson: true,
+  })
+}
+
+/**
  * 加载配置
  * 将用户自定义配置和默认配置合并
  */
-export async function mergeConfig(cliOptions: ChangelogCliOptions): Promise<ChangelogGenerateOptions> {
-  // const { loadConfig } = await import('c12')
-
-  // 本地配置，形如：changelog.config.ts
-  // const changelogConfig = await loadConfig<ChangelogGenerateOptions>({
-  //   // 配置文件名，eg: changelog.config.ts
-  //   name: 'changelog',
-  //   packageJson: true,
-  // }).then(c => VipLodash.merge({}, ChangelogDefaultConfig, c.config))
-
-  // cli配置合并
-  // const config = VipLodash.merge({}, changelogConfig, cliOptions) as ChangelogGenerateOptions
-
+export async function parseCliOptions(cliOptions: ChangelogCliOptions): Promise<ChangelogGenerateOptions> {
   // 新写法
-  const changelogConfig = await VipConfig.loadCliConfig<ChangelogGenerateOptions>('changelog', ChangelogDefaultConfig, {
-    packageJson: true,
-  })
+  const changelogConfig = await loadChangelogConfig()
 
   // cli配置合并
   const config = VipConfig.mergeCommanderConfig<ChangelogGenerateOptions>(changelogConfig, cliOptions)
@@ -69,7 +75,7 @@ export async function mergeConfig(cliOptions: ChangelogCliOptions): Promise<Chan
     config.from = VipGit.getLastMatchingTag(config.to) || VipGit.getRecentCommitHash()
   }
 
-  // 仓库地址 todo 地址
+  // 仓库地址
   if (config.repo == null) {
     config.repo = VipGit.getGitHubRepo(config.baseUrl!)
   }
@@ -82,9 +88,5 @@ export async function mergeConfig(cliOptions: ChangelogCliOptions): Promise<Chan
   // todo 支持多个scope生成
   config.scopeName = cliOptions.scopeName
 
-  // if (typeof config.repo !== 'string')
-  //   throw new Error(`无效的 GitHub 存储库，需要一个字符串，但实际repo参数是： ${VipJSON.stringify(config.repo)}`)
-
-  // todo 处理这里的类型
   return config
 }

@@ -1,9 +1,8 @@
-import type { Commit } from '../changelog.interface'
-import type { Reference } from '../git'
+import type { Commit, GitCommitReference } from '../enums'
 import { VipLodash } from '@142vip/utils'
-import { GitCommitMessageType } from '../git'
+import { GitCommitMessageType } from '../enums'
 
-function formatReferences(references: Reference[], baseUrl: string, github: string, type: 'issues' | 'hash'): string {
+function formatReferences(references: GitCommitReference[], baseUrl: string, github: string, type: 'issues' | 'hash'): string {
   const refs = references
     .filter((i) => {
       if (type === 'issues')
