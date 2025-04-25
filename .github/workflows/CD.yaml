@@ -9,9 +9,10 @@
 name: CD
 
 on:
-#  push:
-#    branches:
-#      - next
+  push:
+    branches:
+      - next
+      - feat/go
   workflow_dispatch:
 
 # 设置 GITHUB_TOKEN 的权限，以允许部署到 GitHub Pages
