@@ -68,7 +68,6 @@
     "node-fetch": "3.3.2",
     "turbo": "2.4.4"
   },
-  "devDependencies": { },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org"

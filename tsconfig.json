@@ -5,7 +5,7 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "baseUrl": "./",
-    "module": "commonjs",
+    "module": "ESNext",
     "moduleResolution": "node",
     "paths": {
       "@theme/*": [

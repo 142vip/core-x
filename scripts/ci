@@ -1,9 +1,10 @@
 #!/bin/bash
-##
-## 依赖安装脚本
-## 使用:
-##   ./scripts/ci
-##
+
+#
+# 依赖安装脚本
+# 使用:
+#   ./scripts/ci
+#
 
 NPM_REGISTRY="https://mirrors.tencent.com/npm/"
 

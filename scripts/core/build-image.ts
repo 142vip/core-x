@@ -1,13 +1,9 @@
-import {
-  OPEN_SOURCE_ADDRESS,
-  OPEN_SOURCE_AUTHOR,
-  VipDocker,
-  VipGit,
-  VipNodeJS,
-  VipPackageJSON,
-} from '@142vip/utils';
+import { OPEN_SOURCE_ADDRESS, OPEN_SOURCE_AUTHOR, VipDocker, VipGit, VipNodeJS, VipPackageJSON } from '@142vip/utils'
 
-(async () => {
+/**
+ * 构建Docker镜像
+ */
+async function buildImageMain(): Promise<void> {
   try {
     // 获取package.json文件
     const { name, version, description } = VipPackageJSON.getPackageJSON<{ description: string }>()
@@ -40,4 +36,6 @@ import {
   catch (e) {
     console.log('异常信息:', e)
   }
-})()
+}
+
+void buildImageMain()

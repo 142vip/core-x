@@ -38,7 +38,8 @@
     "check:publish": "pnpm publish -r --filter './packages/**' --dry-run --json --no-git-checks",
     "check:release": "npx fa release --check-release --vip -F './apps/*' -F './packages/*' ",
     "check:esm": "pnpx are-we-esm",
-    "check": "pnpm release:check && pnpm publish:check",
+    "check:commit": "npx node --loader ts-node/esm --no-warnings scripts/core/verify-commit.ts",
+    "check": "pnpm check:release && pnpm check:publish",
     "release": "npx fa release --vip -F './apps/*' -F './packages/*' --check-branch next --check-branch main ",
     "test": "jest",
     "test:coverage": "jest --coverage"
@@ -64,6 +65,6 @@
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint:fix",
-    "commit-msg": "node --experimental-strip-types scripts/verify-commit.ts"
+    "commit-msg": "pnpm check:commit"
   }
 }
