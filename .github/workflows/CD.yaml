@@ -9,9 +9,9 @@
 name: CD
 
 on:
-  push:
-    branches:
-      - next
+#  push:
+#    branches:
+#      - next
   workflow_dispatch:
 
 # 设置 GITHUB_TOKEN 的权限，以允许部署到 GitHub Pages
@@ -166,7 +166,7 @@ jobs:
       # 编译 打包成dist，支持代理
       - name: Build with VitePress
         run: |
-          pnpm build:docs-proxy
+          pnpm build:docs-proxy && node test.js
 
       # 上传dist文件
       - name: Upload artifact

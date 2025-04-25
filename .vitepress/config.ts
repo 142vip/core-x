@@ -3,9 +3,9 @@ import path from 'node:path'
 import { getDocSiteBase, OPEN_SOURCE_ADDRESS } from '@142vip/utils'
 import { getThemeConfig, getVipFooter, zhSearch } from '@142vip/vitepress'
 import { defineConfig } from 'vitepress'
+// import typedocSidebar from '../apis/typedoc-sidebar.json'
 import { name as pkgName, version as pkgVersion } from '../package.json'
 import { getChangelogsSidebar, sidebarConfig } from './sidebar'
-
 /**
  * 导航栏
  */
@@ -18,6 +18,10 @@ const navbarConfig: NavbarConfig = [
   //   text: '🎬 自媒体',
   //   link: '/docs/media.md',
   // },
+  {
+    text: '🎬 API',
+    link: '/apis/',
+  },
   {
     text: '💡 开源',
     link: '/packages/fairy-cli/',
@@ -142,6 +146,7 @@ export default defineConfig({
     ':packages/:pkg/CHANGELOG.md': 'changelogs/:pkg/changelog.md',
     ':apps/:pkg/README.md': ':apps/:pkg/index.md',
     ':apps/:pkg/CHANGELOG.md': 'changelogs/:pkg/changelog.md',
+    ':apis/:pkg/:name.md': 'apis/:pkg/:name.md',
     'CHANGELOG.md': 'changelogs/core-x/changelog.md',
     'README.md': 'index.md',
   },
