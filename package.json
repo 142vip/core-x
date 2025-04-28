@@ -64,6 +64,7 @@
     "only-allow": "1.2.1",
     "simple-git-hooks": "2.13.0",
     "typedoc": "0.28.3",
+    "typedoc-github-theme": "^0.3.0",
     "typedoc-plugin-markdown": "4.6.3",
     "typedoc-vitepress-theme": "^1.1.2",
     "typescript": "5.8.3",
