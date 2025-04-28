@@ -21,6 +21,7 @@ const navbarConfig: NavbarConfig = [
   {
     text: '🎬 API',
     link: '/apis/',
+    target: '_blank',
   },
   {
     text: '💡 开源',
@@ -60,8 +61,7 @@ export default defineConfig({
   description: 'X一切都有可能',
   srcDir: './',
   // 排除部分
-  srcExclude: [
-  ],
+  srcExclude: [],
   // 编译输出目录
   outDir: './dist',
   // dev 模式下的缓存目录，默认cache
