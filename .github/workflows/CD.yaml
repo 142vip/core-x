@@ -12,7 +12,6 @@ on:
   push:
     branches:
       - next
-      - ci-test
   workflow_dispatch:
 
 # 设置 GITHUB_TOKEN 的权限，以允许部署到 GitHub Pages
@@ -167,7 +166,7 @@ jobs:
       # 编译 打包成dist，支持代理
       - name: Build with VitePress
         run: |
-          pnpm build:docs-proxy && node test.js
+          pnpm build:docs-proxy
 
       # 上传dist文件
       - name: Upload artifact

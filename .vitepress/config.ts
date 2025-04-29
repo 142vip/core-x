@@ -3,7 +3,7 @@ import path from 'node:path'
 import { getDocSiteBase, OPEN_SOURCE_ADDRESS } from '@142vip/utils'
 import { getThemeConfig, getVipFooter, zhSearch } from '@142vip/vitepress'
 import { defineConfig } from 'vitepress'
-// import typedocSidebar from '../apis/typedoc-sidebar.json'
+import typedocSidebar from '../docs/apis/typedoc-sidebar.json'
 import { name as pkgName, version as pkgVersion } from '../package.json'
 import { getChangelogsSidebar, sidebarConfig } from './sidebar'
 /**
@@ -14,21 +14,16 @@ const navbarConfig: NavbarConfig = [
     text: '🔥 首页',
     link: '/docs/index.md',
   },
-  // {
-  //   text: '🎬 自媒体',
-  //   link: '/docs/media.md',
-  // },
   {
-    text: '🎬 API',
-    link: '/apis/',
-    target: '_blank',
-  },
-  {
-    text: '💡 开源',
+    text: '💡 模块',
     link: '/packages/fairy-cli/',
   },
   {
-    text: '📌󠁦 󠁬󠁯󠁧󠁿变更日志',
+    text: '✨ API',
+    link: '/docs/apis/',
+  },
+  {
+    text: '🏴 󠁬󠁯󠁧󠁿更新记录',
     link: '/changelogs/core-x/changelog.md',
   },
   {
@@ -56,7 +51,7 @@ const navbarConfig: NavbarConfig = [
 export default defineConfig({
   base: getDocSiteBase('core-x'),
   lang: 'zh-CN',
-  title: '@142vip/core-x',
+  title: '@142vip工程化',
   titleTemplate: ':title - @142vip/core-x',
   description: 'X一切都有可能',
   srcDir: './',
@@ -93,6 +88,10 @@ export default defineConfig({
     nav: navbarConfig,
     sidebar: {
       '/': sidebarConfig,
+      '/docs/apis/': {
+        text: 'API',
+        items: typedocSidebar,
+      },
       '/changelogs/': {
         base: '',
         items: [
@@ -101,7 +100,7 @@ export default defineConfig({
             link: '/changelogs/core-x/changelog.html',
           },
           {
-            text: '🏴 󠁡󠁡变更日志',
+            text: '🏴 更新记录',
             items: getChangelogsSidebar(),
           },
         ],
@@ -146,7 +145,6 @@ export default defineConfig({
     ':packages/:pkg/CHANGELOG.md': 'changelogs/:pkg/changelog.md',
     ':apps/:pkg/README.md': ':apps/:pkg/index.md',
     ':apps/:pkg/CHANGELOG.md': 'changelogs/:pkg/changelog.md',
-    ':apis/:pkg/:name.md': 'apis/:pkg/:name.md',
     'CHANGELOG.md': 'changelogs/core-x/changelog.md',
     'README.md': 'index.md',
   },
