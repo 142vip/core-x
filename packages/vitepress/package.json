@@ -20,12 +20,6 @@
     "@142vip/vuepress",
     "vuepress"
   ],
-  "authorInfo": {
-    "name": "微信公众号：储凡",
-    "email": "fairy_vip@2925.com",
-    "url": "https://github.com/142vip",
-    "homePage": "https://142vip.cn"
-  },
   "sideEffects": false,
   "exports": {
     ".": {
@@ -47,6 +41,12 @@
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
+  "authorInfo": {
+    "name": "微信公众号：储凡",
+    "email": "fairy_vip@2925.com",
+    "url": "https://github.com/142vip",
+    "homePage": "https://142vip.cn"
+  },
   "files": [
     "components.d.ts",
     "dist",
@@ -67,6 +67,9 @@
   },
   "devDependencies": {
     "mkdist": "2.3.0",
+    "typedoc": "0.28.3",
+    "typedoc-plugin-markdown": "4.6.3",
+    "typedoc-vitepress-theme": "1.1.2",
     "unplugin-element-plus": "0.9.1"
   }
 }

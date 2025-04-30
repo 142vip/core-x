@@ -1,7 +1,6 @@
-/**
- * @type {Partial<import("typedoc").TypeDocOptions>}
- */
-export default {
+import { defineVipTypedocConfig } from '@142vip/vitepress'
+
+export default defineVipTypedocConfig({
   entryPointStrategy: 'packages',
   entryPoints: [
     'packages/axios',
@@ -22,52 +21,15 @@ export default {
   ],
   name: 'API 参考',
   out: 'docs/apis',
-  exclude: [
-    '**/*.test.ts',
-    '**/node_modules/**',
-  ],
   plugin: [
     'typedoc-plugin-markdown',
     'typedoc-vitepress-theme',
   ],
-  cleanOutputDir: true,
-  excludeNotDocumented: false,
-  excludeExternals: false,
-  hideGenerator: true,
-  categorizeByGroup: false,
-  // projectDocuments: ['CHANGELOG.md', 'README.md'],
-  packageOptions: {
-    includeVersion: true,
-    // projectDocuments: ['CHANGELOG.md', 'README.md'],
-    entryPoints: ['src/index.ts'],
-    readme: 'none', // 不生成 README 页面
-  },
-  readme: 'none', // 不生成 README 页面
-  lang: 'zh',
-  navigation: {
-    includeFolders: true,
-    includeCategories: false,
-    includeGroups: false,
-    compactFolders: false,
-    excludeReferences: false,
-  },
-  sluggerConfiguration: {
-    lowercase: true,
-  },
-  headings: {
-    readme: true,
-    document: true,
-  },
   sidebar: {
     autoConfiguration: true,
     format: 'vitepress',
     pretty: false,
     collapsed: true,
   },
-  locales: {
-    zh: {
-      theme_packages: '模块包',
-    },
-  },
   // logLevel: 'Verbose',
-}
+})
