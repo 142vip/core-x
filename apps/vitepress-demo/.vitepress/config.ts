@@ -1,9 +1,6 @@
 import type { NavbarConfig, SidebarConfig } from '@142vip/vitepress'
-import path from 'node:path'
-import { getDocSiteBase, OPEN_SOURCE_ADDRESS } from '@142vip/utils'
-import { getVipFooter, zhSearch } from '@142vip/vitepress'
-import { getThemeConfig } from '@142vip/vuepress'
-import { defineConfig } from 'vitepress'
+import { getDocSiteBase, OPEN_SOURCE_ADDRESS, VipNodeJS } from '@142vip/utils'
+import { defineVipVitepressConfig, getThemeConfig, getVipFooter, zhSearch } from '@142vip/vitepress'
 import { name as pkgName, version as pkgVersion } from '../package.json'
 
 /**
@@ -53,7 +50,7 @@ const sidebarConfig: SidebarConfig = [
 /**
  * 所有配置
  */
-export default defineConfig({
+export default defineVipVitepressConfig({
   base: getDocSiteBase('core-x'),
   lang: 'zh-CN',
   title: '@142vip/vitepress-demo',
@@ -136,7 +133,7 @@ export default defineConfig({
   vite: {
     resolve: {
       alias: {
-        '@packages': path.resolve(__dirname, '../packages'),
+        '@packages': VipNodeJS.pathResolve(__dirname, '../packages'),
       },
     },
     plugins: [],

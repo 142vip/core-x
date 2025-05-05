@@ -1,6 +1,4 @@
-import type { SidebarConfig, VipProject } from '@142vip/vitepress'
-import type { DefaultTheme } from 'vitepress/types/default-theme'
-import { pick } from '@142vip/vitepress'
+import type { SidebarConfig, VipPackageJSON, VipProject } from '@142vip/vitepress'
 
 enum ProjectId {
   Tools = '通用工具',
@@ -79,22 +77,20 @@ export const sidebarConfig: SidebarConfig = [
 /**
  * 获取基本包信息
  * - 注意目录格式，例如：@packages/utils
+ * @vite-ignore
  */
-async function getBasePkgJSON(pkgDirName: string) {
+async function getBasePkgJSON(pkgDirName: string): Promise<VipPackageJSON> {
   // 参考格式：@packages/xxx @apps/xxx
-
-  const pkgJSON = await import(`@packages/${pkgDirName}/package.json`)
-  return pick(pkgJSON, ['name', 'description', 'version', 'private'])
+  return await import(`@packages/${pkgDirName}/package.json`)
 }
 
 /**
  * 获取apps目录下的模块
  * - @apps/vitepress-demo
  */
-async function getAppsPkgJSON(pkgDirName: string) {
+async function getAppsPkgJSON(pkgDirName: string): Promise<VipPackageJSON> {
   // 参考格式：@packages/xxx @apps/xxx
-  const pkgJSON = await import(`@apps/${pkgDirName}/package.json`)
-  return pick(pkgJSON, ['name', 'description', 'version', 'private'])
+  return await import(`@apps/${pkgDirName}/package.json`)
 }
 
 /**
@@ -125,12 +121,12 @@ export async function getCoreProjectData(): Promise<VipProject[]> {
 }
 
 /**
- * demo项目
+ * demo项目，用于项目展示
  */
-export async function getExampleDemoTableData() {
+export async function getExampleDemoTableData(): Promise<VipProject[]> {
   const pkgNames = ['egg-demo', 'nest-demo', 'vuepress-demo', 'vitepress-demo']
 
-  const exampleDemos = []
+  const exampleDemos: VipProject[] = []
   for (const pkgDirName of pkgNames) {
     const pkg = await getAppsPkgJSON(`${pkgDirName}`)
     exampleDemos.push({
@@ -148,8 +144,8 @@ export async function getExampleDemoTableData() {
 /**
  * 根据侧边栏获取变更日志侧边栏
  */
-export function getChangelogsSidebar() {
-  const changelogsSidebar: DefaultTheme.SidebarItem[] = []
+export function getChangelogsSidebar(): SidebarConfig {
+  const changelogsSidebar: SidebarConfig = []
   for (const { items } of sidebarConfig) {
     for (const { text: pkgName } of items) {
       // 兼容apps目录

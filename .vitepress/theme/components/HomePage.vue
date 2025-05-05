@@ -25,7 +25,7 @@ onMounted(async () => {
 <!-- 首页 -->
 <template>
   <section id="version-table">
-    <VipProjectTable :data="exampleDemoTableData" title="演示Demo" />
+    <VipProjectTable :data="exampleDemoTableData" title="最佳实践" />
     <VipProjectTable :data="coreProjectTableData" title="开源模块" />
   </section>
 

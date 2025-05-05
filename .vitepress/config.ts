@@ -1,8 +1,6 @@
 import type { NavbarConfig } from '@142vip/vitepress'
-import path from 'node:path'
-import { getDocSiteBase, OPEN_SOURCE_ADDRESS } from '@142vip/utils'
-import { getThemeConfig, getVipFooter, zhSearch } from '@142vip/vitepress'
-import { defineConfig } from 'vitepress'
+import { getDocSiteBase, OPEN_SOURCE_ADDRESS, VipNodeJS } from '@142vip/utils'
+import { defineVipVitepressConfig, getThemeConfig, getVipFooter, zhSearch } from '@142vip/vitepress'
 import typedocSidebar from '../docs/apis/typedoc-sidebar.json'
 import { name as pkgName, version as pkgVersion } from '../package.json'
 import { getChangelogsSidebar, sidebarConfig } from './sidebar'
@@ -48,7 +46,7 @@ const navbarConfig: NavbarConfig = [
 /**
  * 所有配置
  */
-export default defineConfig({
+export default defineVipVitepressConfig({
   base: getDocSiteBase('core-x'),
   lang: 'zh-CN',
   title: '@142vip工程化',
@@ -152,8 +150,8 @@ export default defineConfig({
   vite: {
     resolve: {
       alias: {
-        '@packages': path.resolve(__dirname, '../packages'),
-        '@apps': path.resolve(__dirname, '../apps'),
+        '@packages': VipNodeJS.pathResolve(__dirname, '../packages'),
+        '@apps': VipNodeJS.pathResolve(__dirname, '../apps'),
       },
     },
     plugins: [

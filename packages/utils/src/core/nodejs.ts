@@ -237,6 +237,16 @@ function getProcessStdout(): NodeJS.WriteStream {
   return process.stdout
 }
 
+function pick<T, K extends keyof T>(obj: T, keys: K[]): Pick<T, K> {
+  const result: any = {}
+  for (const key of keys) {
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+      result[key] = obj[key]
+    }
+  }
+  return result as Pick<T, K>
+}
+
 export const VipNodeJS = {
   getProcessFirstArgv,
   getProcessArgv,
@@ -264,5 +274,6 @@ export const VipNodeJS = {
   pathDirname,
   pathExtname,
   isBuffer,
+  pick,
   printStandardNodeDevEnv,
 }
