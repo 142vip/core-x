@@ -1,9 +1,9 @@
 <script lang="ts" setup>
+import type { VipProject } from '@142vip/vitepress'
 import {
   ElImage,
   ElTable,
   ElTableColumn,
-  ElTag,
 } from 'element-plus'
 import { defineComponent } from 'vue'
 // import 'element-plus/dist/index.css'
@@ -12,27 +12,11 @@ import 'element-plus/theme-chalk/base.css'
 import 'element-plus/theme-chalk/el-empty.css'
 import 'element-plus/theme-chalk/el-table-column.css'
 import 'element-plus/theme-chalk/el-checkbox.css'
-import 'element-plus/theme-chalk/el-tag.css'
 import 'element-plus/theme-chalk/el-link.css'
-
-interface PackageJSON {
-  name: string
-  description: string
-  private: boolean
-  version: string
-}
-
-interface Project extends PackageJSON {
-  id?: string
-  npm?: string
-  changelog: string
-  readme: string
-  sourceCode: string
-}
 
 // 组件属性
 defineProps<{
-  data: Project[]
+  data: VipProject[]
   title?: string
 }>()
 
@@ -40,13 +24,11 @@ defineComponent({
   components: {
     ElTable,
     ElTableColumn,
-    ElTag,
     ElImage,
   },
 })
 </script>
 
-<!-- todo 支持light和dark两种模式 -->
 <template>
   <h2>{{ title ?? '核心业务' }}</h2>
   <ElTable
@@ -62,14 +44,7 @@ defineComponent({
     <ElTableColumn header-align="center" label="项目名称" min-width="180" prop="name" />
     <ElTableColumn align="center" header-align="center" label="项目代号" min-width="50" prop="id" />
     <ElTableColumn header-align="center" label="功能描述" min-width="300" prop="description" width="auto" />
-    <ElTableColumn align="center" header-align="center" label="当前版本" width="120">
-      <template #default="{ row }">
-        <ElTag class="version" type="primary" @click="() => console.log(333)">
-          {{ row.version }}
-        </ElTag>
-      </template>
-    </ElTableColumn>
-    <ElTableColumn align="center" header-align="center" label="NPM版本" min-width="120">
+    <ElTableColumn align="center" header-align="center" label="当前版本" min-width="120">
       <template #default="{ row }">
         <a
           v-if="!row.private"
@@ -77,11 +52,17 @@ defineComponent({
           :title="row.name"
           target="_blank"
         >
-          <ElImage :src="`https://img.shields.io/npm/v/${row.name}?labelColor=0b3d52&color=1da469`" :title="row.name" />
+          <ElImage
+            :src="`https://img.shields.io/npm/v/${row.name}?labelColor=0b3d52&color=1da469`"
+            :title="`${row.name} ${row.version}`"
+          />
         </a>
-        <ElTag v-else type="danger">
-          私有
-        </ElTag>
+
+        <ElImage
+          v-else
+          :src="`https://img.shields.io/badge/私有-${(row.version.replace('-', '--'))}-blue?labelColor=0b3d52&color=1da469`"
+          :title="`${row.name} ${row.version}`"
+        />
       </template>
     </ElTableColumn>
     <ElTableColumn align="center" header-align="center" label="文档" width="150">
@@ -104,9 +85,6 @@ defineComponent({
 .core-table {
   width: 100%;
   border-radius: 10px !important;
-}
-.version {
-  cursor: pointer;
 }
 /*避免重写table样式*/
 .vp-doc table {

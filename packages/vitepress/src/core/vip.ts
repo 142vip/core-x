@@ -1,3 +1,8 @@
+import type { PackageJSON } from '@142vip/utils'
+
+/**
+ * 页脚参数
+ */
 interface FooterParams {
   license: string
   pkgName: string
@@ -7,13 +12,17 @@ interface FooterParams {
   owner?: string
   ownerLink: string
 }
+
+/**
+ * 页脚
+ */
 interface VipFooter {
   message: string
   copyright: string
 }
 
 /**
- * 页脚
+ * 获取通用型页脚内容
  */
 export function getVipFooter(params: FooterParams): VipFooter {
   return {
@@ -70,23 +79,11 @@ export const vipTeamMembers = [
   // },
 ]
 
-export function pick<T, K extends keyof T>(obj: T, keys: K[]): Pick<T, K> {
-  const result: any = {}
-  for (const key of keys) {
-    if (Object.prototype.hasOwnProperty.call(obj, key)) {
-      result[key] = obj[key]
-    }
-  }
-  return result as Pick<T, K>
-}
-
 /**
  * 基本包结构
  */
-export interface VipPackageJSON {
-  name: string
+export interface VipPackageJSON extends Pick<PackageJSON, 'name' | 'version'> {
   description: string
-  version: string
   private?: boolean
 }
 
@@ -94,7 +91,8 @@ export interface VipPackageJSON {
  * 模块项目结构
  */
 export interface VipProject extends VipPackageJSON {
-  id: string
+  id?: string
+  npm?: string
   changelog: string
   readme: string
   sourceCode: string
