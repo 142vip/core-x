@@ -1,6 +1,6 @@
 import type { NavbarConfig } from '@142vip/vitepress'
 import { getDocSiteBase, OPEN_SOURCE_ADDRESS, VipNodeJS } from '@142vip/utils'
-import { defineVipVitepressConfig, getThemeConfig, getVipFooter, zhSearch } from '@142vip/vitepress'
+import { defineVipVitepressConfig, getVipFooter, getVipThemeConfig, zhSearch } from '@142vip/vitepress'
 import typedocSidebar from '../docs/apis/typedoc-sidebar.json'
 import { name as pkgName, version as pkgVersion } from '../package.json'
 import { getChangelogsSidebar, sidebarConfig } from './sidebar'
@@ -82,7 +82,7 @@ export default defineVipVitepressConfig({
 
   },
   // 配置主题
-  ...getThemeConfig({
+  themeConfig: getVipThemeConfig({
     // 导航栏
     nav: navbarConfig,
     logo: '/.vitepress/assets/logo.png',

@@ -87,7 +87,7 @@ export const zhSearch: ZhSearchConfig = {
 /**
  * 默认主题配置
  */
-export const defaultThemeConfig = {
+export const defaultVipThemeConfig = {
   lang: 'zh-CN',
   srcDir: 'manuscripts',
   // 编译输出目录
@@ -123,34 +123,33 @@ export const defaultThemeConfig = {
 
 /**
  * 获取主题配置
+ * - https://vitepress.dev/zh/reference/default-theme-config
  */
-export function getThemeConfig(themeConfig: any) {
+export function getVipThemeConfig(themeConfig: any) {
   return {
-    themeConfig: {
-      // 单页右侧目录
-      aside: true,
+    // 单页右侧目录
+    aside: true,
 
-      // 最近更新
-      lastUpdated: {
-        text: '最近更新',
-      },
-      notFound: {
-        title: '页面找不到啦',
-        quote: `但是，如果你不改变你的方向，如果你继续寻找，你最终可能会到达你要去的地方。`,
-        linkText: '返回首页',
-      },
-
-      docFooter: {
-        prev: '上一篇',
-        next: '下一篇',
-      },
-      // 单页标题
-      outline: {
-        label: '本页内容',
-      },
-      // 关闭外链图标
-      externalLinkIcon: false,
-      ...themeConfig,
+    // 最近更新
+    lastUpdated: {
+      text: '最近更新',
     },
+    notFound: {
+      title: '页面找不到啦',
+      quote: `但是，如果你不改变你的方向，如果你继续寻找，你最终可能会到达你要去的地方。`,
+      linkText: '返回首页',
+    },
+
+    docFooter: {
+      prev: '上一篇',
+      next: '下一篇',
+    },
+    // 单页标题
+    outline: {
+      label: '本页内容',
+    },
+    // 关闭外链图标
+    externalLinkIcon: false,
+    ...themeConfig,
   }
 }
