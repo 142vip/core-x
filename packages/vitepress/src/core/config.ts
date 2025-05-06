@@ -132,7 +132,7 @@ export function getVipThemeConfig(themeConfig: any) {
 
     // 最近更新
     lastUpdated: {
-      text: '最近更新',
+      text: '最后更新于',
     },
     notFound: {
       title: '页面找不到啦',

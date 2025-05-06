@@ -54,12 +54,12 @@ export default defineVipVitepressConfig({
   description: 'X一切都有可能',
   srcDir: './',
   // 排除部分
-  srcExclude: [],
+  srcExclude: ['node_modules', 'scripts'],
   // 编译输出目录
   outDir: './dist',
   // dev 模式下的缓存目录，默认cache
   cacheDir: './.vitepress/.vite',
-  assetsDir: './.vitepress/assets',
+  assetsDir: 'static',
   metaChunk: true,
   head: [
     ['meta', { name: 'theme-color', content: '#3c8772' }],
@@ -67,7 +67,7 @@ export default defineVipVitepressConfig({
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:title', content: '@142vip/core-x' }],
     ['meta', { property: 'og:description', content: `${pkgName} - 一切都有可能` }],
-    ['link', { rel: 'icon', href: '.vitepress/assets/favicon.ico' }],
+    ['link', { rel: 'icon', href: '/favicon.ico' }],
   ],
   // markdown
   markdown: {
@@ -85,7 +85,7 @@ export default defineVipVitepressConfig({
   themeConfig: getVipThemeConfig({
     // 导航栏
     nav: navbarConfig,
-    logo: '/.vitepress/assets/logo.png',
+    logo: '/logo.png',
     sidebar: {
       '/': sidebarConfig,
       '/docs/apis/': {
@@ -156,6 +156,9 @@ export default defineVipVitepressConfig({
         '@apps': VipNodeJS.pathResolve(__dirname, '../apps'),
       },
     },
+    // 配置静态资源目录
+    // 参考：https://cn.vitejs.dev/config/shared-options.html#publicdir
+    publicDir: VipNodeJS.pathResolve(__dirname, '../.vitepress/assets'),
     plugins: [
       // element-plus 自动导入，参考：https://element-plus.org/zh-CN/guide/quickstart.html
       // ElementPlus(),
