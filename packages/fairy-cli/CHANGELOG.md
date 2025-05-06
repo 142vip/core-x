@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
 
+## v0.0.3-alpha.24 (2025-05-06)
+
+### ✨ Features
+
+- 移除`js-yaml`等依赖模块 &nbsp;-&nbsp; by **142vip.cn** in https://github.com/142vip/core-x/issues/498 [<samp>(76de7)</samp>](https://github.com/142vip/core-x/commit/76de7b0)
+
+**Release New Version v0.0.3-alpha.24 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/fairy-cli)**
+
 ## v0.0.3-alpha.23 (2025-04-23)
 
 ### ✨ Features

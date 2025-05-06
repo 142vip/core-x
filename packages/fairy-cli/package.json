@@ -1,7 +1,7 @@
 {
   "name": "@142vip/fairy-cli",
   "type": "module",
-  "version": "0.0.3-alpha.23",
+  "version": "0.0.3-alpha.24",
   "private": false,
   "description": "通用型Cli助手、一站式工具，支持多种命令操作",
   "author": {
