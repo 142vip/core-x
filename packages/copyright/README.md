@@ -124,7 +124,6 @@ export interface CopyrightOptions {
 
 ## 链接
 
--
 - [中国版权保护中心](https://register.ccopyright.com.cn/login.html?linkBackUrl=https://register.ccopyright.com.cn/account.html)
 
 ## 证书
