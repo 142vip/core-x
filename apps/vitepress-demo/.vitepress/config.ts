@@ -54,7 +54,7 @@ export default defineVipVitepressConfig({
   base: getDocSiteBase('core-x'),
   lang: 'zh-CN',
   title: '@142vip/vitepress-demo',
-  titleTemplate: ':title - @142vip/core-x',
+  titleTemplate: ':title - 等等我呀，还在努力',
   description: '@142vip/vitepress模块包的使用Demo演示',
   srcDir: './',
   // 排除部分
@@ -96,8 +96,8 @@ export default defineVipVitepressConfig({
       license: OPEN_SOURCE_ADDRESS.GITHUB_REPO_CORE_X,
       pkgName,
       pkgVersion,
-      orgLink: OPEN_SOURCE_ADDRESS.HOME_PAGE_VIP,
-      ownerLink: OPEN_SOURCE_ADDRESS.HOME_PAGE_MMDAPL,
+      orgLink: OPEN_SOURCE_ADDRESS.HOME_PAGE_GITHUB_VIP,
+      ownerLink: OPEN_SOURCE_ADDRESS.HOME_PAGE_GITHUB_MMDAPL,
     }),
 
     // 搜索
@@ -115,8 +115,9 @@ export default defineVipVitepressConfig({
     },
     // 一些链接
     socialLinks: [
-      { icon: 'github', link: OPEN_SOURCE_ADDRESS.GITHUB_REPO_CORE_X },
-      { icon: 'npm', link: 'https://www.npmjs.com/~mmdapl' },
+      { icon: 'github', link: OPEN_SOURCE_ADDRESS.HOME_PAGE_GITHUB_VIP },
+      { icon: 'gitee', link: OPEN_SOURCE_ADDRESS.HOME_PAGE_GITEE_VIP },
+      { icon: 'npm', link: OPEN_SOURCE_ADDRESS.HOME_PAGE_NPM_MMDAPL },
     ],
     // 编辑链接
     editLink: {

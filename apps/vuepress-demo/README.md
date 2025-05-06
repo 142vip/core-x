@@ -2,6 +2,11 @@
 
 `@142vip/vuepress`包的使用Demo演示
 
+## 在线浏览
+
+- Netlify： <https://apps-vuepress-demo.netlify.app>
+- Vercel： <https://apps-vuepress-demo.vercel.app>
+
 ## 介绍
 
 ```bash

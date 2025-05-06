@@ -4,6 +4,7 @@ import { defineVipVitepressConfig, getVipFooter, getVipThemeConfig, zhSearch } f
 import typedocSidebar from '../docs/apis/typedoc-sidebar.json'
 import { name as pkgName, version as pkgVersion } from '../package.json'
 import { getChangelogsSidebar, sidebarConfig } from './sidebar'
+
 /**
  * 导航栏
  */
@@ -62,7 +63,7 @@ export default defineVipVitepressConfig({
   assetsDir: 'static',
   metaChunk: true,
   head: [
-    ['meta', { name: 'theme-color', content: '#3c8772' }],
+    // ['meta', { name: 'theme-color', content: '#3c8772' }],
     ['meta', { property: 'og:url', content: 'https://github.com/142vip/core-x' }],
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:title', content: '@142vip/core-x' }],
@@ -106,13 +107,16 @@ export default defineVipVitepressConfig({
         ],
       },
     },
+    returnToTopLabel: '返回顶部',
+    sidebarMenuLabel: '左侧菜单',
+    darkModeSwitchLabel: '切换主题',
     // 页脚
     footer: getVipFooter({
-      license: OPEN_SOURCE_ADDRESS.GITHUB_REPO_CORE_X,
+      license: OPEN_SOURCE_ADDRESS.LICENCE_CORE_X,
       pkgName,
       pkgVersion,
-      orgLink: OPEN_SOURCE_ADDRESS.HOME_PAGE_VIP,
-      ownerLink: OPEN_SOURCE_ADDRESS.HOME_PAGE_MMDAPL,
+      orgLink: OPEN_SOURCE_ADDRESS.HOME_PAGE_GITHUB_VIP,
+      ownerLink: OPEN_SOURCE_ADDRESS.HOME_PAGE_GITHUB_MMDAPL,
     }),
 
     // 搜索
@@ -131,7 +135,11 @@ export default defineVipVitepressConfig({
     // 一些链接
     socialLinks: [
       { icon: 'github', link: OPEN_SOURCE_ADDRESS.GITHUB_REPO_CORE_X },
-      { icon: 'npm', link: 'https://www.npmjs.com/~mmdapl' },
+      { icon: 'gitee', link: OPEN_SOURCE_ADDRESS.GITEE_REPO_CORE_X },
+      { icon: 'npm', link: OPEN_SOURCE_ADDRESS.HOME_PAGE_NPM_MMDAPL },
+      { icon: 'csdn', link: OPEN_SOURCE_ADDRESS.HOME_PAGE_CSDN },
+      { icon: 'bilibili', link: OPEN_SOURCE_ADDRESS.HOME_PAGE_BILIBILI },
+      { icon: 'juejin', link: OPEN_SOURCE_ADDRESS.HOME_PAGE_JUE_JIN },
     ],
     // 编辑链接
     editLink: {
