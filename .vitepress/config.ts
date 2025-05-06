@@ -67,7 +67,7 @@ export default defineVipVitepressConfig({
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:title', content: '@142vip/core-x' }],
     ['meta', { property: 'og:description', content: `${pkgName} - 一切都有可能` }],
-    ['link', { rel: 'icon', href: '/.vitepress/assets/favicon.ico' }],
+    ['link', { rel: 'icon', href: '.vitepress/assets/favicon.ico' }],
   ],
   // markdown
   markdown: {
