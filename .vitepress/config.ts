@@ -50,7 +50,7 @@ export default defineVipVitepressConfig({
   base: getDocSiteBase('core-x'),
   lang: 'zh-CN',
   title: '@142vip工程化',
-  titleTemplate: ':title - @142vip/core-x',
+  titleTemplate: ':title - 等等我呀，还在努力',
   description: 'X一切都有可能',
   srcDir: './',
   // 排除部分
@@ -59,7 +59,7 @@ export default defineVipVitepressConfig({
   outDir: './dist',
   // dev 模式下的缓存目录，默认cache
   cacheDir: './.vitepress/.vite',
-  assetsDir: 'static',
+  assetsDir: './.vitepress/assets',
   metaChunk: true,
   head: [
     ['meta', { name: 'theme-color', content: '#3c8772' }],
@@ -67,6 +67,7 @@ export default defineVipVitepressConfig({
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:title', content: '@142vip/core-x' }],
     ['meta', { property: 'og:description', content: `${pkgName} - 一切都有可能` }],
+    ['link', { rel: 'icon', href: '/.vitepress/assets/favicon.ico' }],
   ],
   // markdown
   markdown: {
@@ -84,6 +85,7 @@ export default defineVipVitepressConfig({
   ...getThemeConfig({
     // 导航栏
     nav: navbarConfig,
+    logo: '/.vitepress/assets/logo.png',
     sidebar: {
       '/': sidebarConfig,
       '/docs/apis/': {
