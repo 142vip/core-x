@@ -1,7 +1,7 @@
 {
   "name": "@142vip/changelog",
   "type": "module",
-  "version": "0.0.1-alpha.18",
+  "version": "0.0.1-alpha.19",
   "private": false,
   "description": "基于Git提交信息，生成变更记录，输出Markdown格式的日志文件",
   "author": "mmdapl <mmdapl@163.com>",
@@ -27,7 +27,6 @@
     "release",
     "releases",
     "conventional"
-
   ],
   "sideEffects": false,
   "exports": {

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.19 (2025-05-06)
+
+### 💅 Refactors
+
+- 重构`changelog`核心逻辑，调整模块的整体结构，支持更多API方法 &nbsp;-&nbsp; by **142vip.cn** in https://github.com/142vip/core-x/issues/501 [<samp>(fe60c)</samp>](https://github.com/142vip/core-x/commit/fe60c59)
+
+**Release New Version v0.0.1-alpha.19 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/changelog)**
+
 ## v0.0.1-alpha.18 (2025-04-15)
 
 ### ✨ Features
