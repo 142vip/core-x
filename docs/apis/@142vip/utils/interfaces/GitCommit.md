@@ -2,7 +2,7 @@
 
 # 接口: GitCommit
 
-定义于: [packages/utils/src/enums/git.interface.ts:15](https://github.com/142vip/core-x/blob/366c03709f86a3eb43798cad6f972465bd93322a/packages/utils/src/enums/git.interface.ts#L15)
+定义于: [packages/utils/src/enums/git.interface.ts:15](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/utils/src/enums/git.interface.ts#L15)
 
 git commit解析
 - 提交类型
@@ -19,7 +19,7 @@ git commit解析
 
 > `optional` **scope**: `string`
 
-定义于: [packages/utils/src/enums/git.interface.ts:24](https://github.com/142vip/core-x/blob/366c03709f86a3eb43798cad6f972465bd93322a/packages/utils/src/enums/git.interface.ts#L24)
+定义于: [packages/utils/src/enums/git.interface.ts:24](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/utils/src/enums/git.interface.ts#L24)
 
 提交范围
 
@@ -29,7 +29,7 @@ git commit解析
 
 > `optional` **subject**: `string`
 
-定义于: [packages/utils/src/enums/git.interface.ts:29](https://github.com/142vip/core-x/blob/366c03709f86a3eb43798cad6f972465bd93322a/packages/utils/src/enums/git.interface.ts#L29)
+定义于: [packages/utils/src/enums/git.interface.ts:29](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/utils/src/enums/git.interface.ts#L29)
 
 提交信息
 
@@ -39,6 +39,6 @@ git commit解析
 
 > **type**: `string`
 
-定义于: [packages/utils/src/enums/git.interface.ts:19](https://github.com/142vip/core-x/blob/366c03709f86a3eb43798cad6f972465bd93322a/packages/utils/src/enums/git.interface.ts#L19)
+定义于: [packages/utils/src/enums/git.interface.ts:19](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/utils/src/enums/git.interface.ts#L19)
 
 提交类型

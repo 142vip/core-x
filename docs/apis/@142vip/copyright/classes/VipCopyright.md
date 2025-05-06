@@ -2,7 +2,7 @@
 
 # 类: VipCopyright
 
-定义于: [copyright.ts:30](https://github.com/142vip/core-x/blob/366c03709f86a3eb43798cad6f972465bd93322a/packages/copyright/src/copyright.ts#L30)
+定义于: [copyright.ts:30](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/copyright/src/copyright.ts#L30)
 
 软著源代码生成器
 - 支持Java、JavaScript、TypeScript、Python、C、C++、Go、Swift、PHP、Rust、Shell、SQL、YAML、XML、HTML、Text等语言
@@ -15,7 +15,7 @@
 
 > **new VipCopyright**(`copyrightTitle`, `copyrightVersion`, `options?`): `VipCopyright`
 
-定义于: [copyright.ts:56](https://github.com/142vip/core-x/blob/366c03709f86a3eb43798cad6f972465bd93322a/packages/copyright/src/copyright.ts#L56)
+定义于: [copyright.ts:56](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/copyright/src/copyright.ts#L56)
 
 #### 参数
 
@@ -41,7 +41,7 @@
 
 > **generateDocx**(`sourceCodeDir`, `fileType`): `Promise`\<`void`\>
 
-定义于: [copyright.ts:94](https://github.com/142vip/core-x/blob/366c03709f86a3eb43798cad6f972465bd93322a/packages/copyright/src/copyright.ts#L94)
+定义于: [copyright.ts:94](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/copyright/src/copyright.ts#L94)
 
 生成源代码文档
 
@@ -65,7 +65,7 @@
 
 > **saveCodeToDocx**(`fileName`, `sourceLines`, `pageCount`): `Promise`\<`void`\>
 
-定义于: [copyright.ts:130](https://github.com/142vip/core-x/blob/366c03709f86a3eb43798cad6f972465bd93322a/packages/copyright/src/copyright.ts#L130)
+定义于: [copyright.ts:130](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/copyright/src/copyright.ts#L130)
 
 存储代码到文档中
 
@@ -93,7 +93,7 @@
 
 > **scanSourceCode**(`sourceCodeDir`, `fileType`): `object`
 
-定义于: [copyright.ts:157](https://github.com/142vip/core-x/blob/366c03709f86a3eb43798cad6f972465bd93322a/packages/copyright/src/copyright.ts#L157)
+定义于: [copyright.ts:157](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/copyright/src/copyright.ts#L157)
 
 根据文件路径，扫描源码
 
@@ -129,7 +129,7 @@
 
 > `static` **quickGenerateDocx**(`options`): `Promise`\<`void`\>
 
-定义于: [copyright.ts:81](https://github.com/142vip/core-x/blob/366c03709f86a3eb43798cad6f972465bd93322a/packages/copyright/src/copyright.ts#L81)
+定义于: [copyright.ts:81](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/copyright/src/copyright.ts#L81)
 
 快速生成文档
 

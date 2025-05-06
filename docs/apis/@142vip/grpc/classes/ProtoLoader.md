@@ -2,7 +2,7 @@
 
 # 类: ProtoLoader
 
-定义于: [proto-loader.ts:11](https://github.com/142vip/core-x/blob/366c03709f86a3eb43798cad6f972465bd93322a/packages/grpc/src/proto-loader.ts#L11)
+定义于: [proto-loader.ts:11](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/grpc/src/proto-loader.ts#L11)
 
 proto文件加载器
 
@@ -16,7 +16,7 @@ proto文件加载器
 
 > **new ProtoLoader**(`protoPath`, `loaderOptions`): `ProtoLoader`
 
-定义于: [proto-loader.ts:17](https://github.com/142vip/core-x/blob/366c03709f86a3eb43798cad6f972465bd93322a/packages/grpc/src/proto-loader.ts#L17)
+定义于: [proto-loader.ts:17](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/grpc/src/proto-loader.ts#L17)
 
 #### 参数
 
@@ -42,7 +42,7 @@ proto文件加载器
 
 > **getPackageName**(): `string`
 
-定义于: [proto-loader.ts:25](https://github.com/142vip/core-x/blob/366c03709f86a3eb43798cad6f972465bd93322a/packages/grpc/src/proto-loader.ts#L25)
+定义于: [proto-loader.ts:25](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/grpc/src/proto-loader.ts#L25)
 
 #### 返回
 
@@ -54,7 +54,7 @@ proto文件加载器
 
 > **getServiceClassDefinition**(): [`ServiceClaDefinition`](../interfaces/ServiceClaDefinition.md)[]
 
-定义于: [proto-loader.ts:32](https://github.com/142vip/core-x/blob/366c03709f86a3eb43798cad6f972465bd93322a/packages/grpc/src/proto-loader.ts#L32)
+定义于: [proto-loader.ts:32](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/grpc/src/proto-loader.ts#L32)
 
 获取rpc Service类定义
 
@@ -68,7 +68,7 @@ proto文件加载器
 
 > `static` **getInstance**\<`T`\>(`this`, ...`args`): `T`
 
-定义于: [singleton.ts:13](https://github.com/142vip/core-x/blob/366c03709f86a3eb43798cad6f972465bd93322a/packages/grpc/src/singleton.ts#L13)
+定义于: [singleton.ts:13](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/grpc/src/singleton.ts#L13)
 
 #### 类型参数
 

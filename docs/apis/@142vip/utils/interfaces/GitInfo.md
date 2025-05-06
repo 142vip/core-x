@@ -2,7 +2,7 @@
 
 # 接口: GitInfo
 
-定义于: [packages/utils/src/enums/git.interface.ts:4](https://github.com/142vip/core-x/blob/366c03709f86a3eb43798cad6f972465bd93322a/packages/utils/src/enums/git.interface.ts#L4)
+定义于: [packages/utils/src/enums/git.interface.ts:4](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/utils/src/enums/git.interface.ts#L4)
 
 Git提交信息
 
@@ -12,7 +12,7 @@ Git提交信息
 
 > **hash**: `string`
 
-定义于: [packages/utils/src/enums/git.interface.ts:5](https://github.com/142vip/core-x/blob/366c03709f86a3eb43798cad6f972465bd93322a/packages/utils/src/enums/git.interface.ts#L5)
+定义于: [packages/utils/src/enums/git.interface.ts:5](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/utils/src/enums/git.interface.ts#L5)
 
 ***
 
@@ -20,4 +20,4 @@ Git提交信息
 
 > **message**: `string`
 
-定义于: [packages/utils/src/enums/git.interface.ts:6](https://github.com/142vip/core-x/blob/366c03709f86a3eb43798cad6f972465bd93322a/packages/utils/src/enums/git.interface.ts#L6)
+定义于: [packages/utils/src/enums/git.interface.ts:6](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/utils/src/enums/git.interface.ts#L6)

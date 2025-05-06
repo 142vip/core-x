@@ -2,7 +2,7 @@
 
 # 接口: VipCommanderOptions
 
-定义于: [packages/utils/src/pkgs/commander.ts:10](https://github.com/142vip/core-x/blob/366c03709f86a3eb43798cad6f972465bd93322a/packages/utils/src/pkgs/commander.ts#L10)
+定义于: [packages/utils/src/pkgs/commander.ts:10](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/utils/src/pkgs/commander.ts#L10)
 
 ## theme_extended_by
 
@@ -14,7 +14,7 @@
 
 > `optional` **dryRun**: `boolean`
 
-定义于: [packages/utils/src/pkgs/commander.ts:14](https://github.com/142vip/core-x/blob/366c03709f86a3eb43798cad6f972465bd93322a/packages/utils/src/pkgs/commander.ts#L14)
+定义于: [packages/utils/src/pkgs/commander.ts:14](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/utils/src/pkgs/commander.ts#L14)
 
 试运行
 
@@ -24,7 +24,7 @@
 
 > `optional` **help**: `boolean`
 
-定义于: [packages/utils/src/pkgs/commander.ts:29](https://github.com/142vip/core-x/blob/366c03709f86a3eb43798cad6f972465bd93322a/packages/utils/src/pkgs/commander.ts#L29)
+定义于: [packages/utils/src/pkgs/commander.ts:29](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/utils/src/pkgs/commander.ts#L29)
 
 是否开启帮助模式，打印帮助信息
 
@@ -34,7 +34,7 @@
 
 > `optional` **trace**: `boolean`
 
-定义于: [packages/utils/src/pkgs/commander.ts:24](https://github.com/142vip/core-x/blob/366c03709f86a3eb43798cad6f972465bd93322a/packages/utils/src/pkgs/commander.ts#L24)
+定义于: [packages/utils/src/pkgs/commander.ts:24](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/utils/src/pkgs/commander.ts#L24)
 
 是否开启日志追踪模式，打印重要执行日志
 
@@ -44,6 +44,6 @@
 
 > `optional` **vip**: `boolean`
 
-定义于: [packages/utils/src/pkgs/commander.ts:19](https://github.com/142vip/core-x/blob/366c03709f86a3eb43798cad6f972465bd93322a/packages/utils/src/pkgs/commander.ts#L19)
+定义于: [packages/utils/src/pkgs/commander.ts:19](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/utils/src/pkgs/commander.ts#L19)
 
 142vip 组织专用功能，用户标记是否用于142vip组织的项目

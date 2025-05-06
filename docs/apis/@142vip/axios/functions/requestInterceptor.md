@@ -4,7 +4,7 @@
 
 > **requestInterceptor**(`config`): `AxiosRequestConfig`
 
-定义于: [interceptors.ts:15](https://github.com/142vip/core-x/blob/366c03709f86a3eb43798cad6f972465bd93322a/packages/axios/src/interceptors.ts#L15)
+定义于: [interceptors.ts:15](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/axios/src/interceptors.ts#L15)
 
 请求拦截器
 

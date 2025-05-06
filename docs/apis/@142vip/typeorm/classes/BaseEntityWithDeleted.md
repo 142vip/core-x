@@ -2,7 +2,7 @@
 
 # 类: BaseEntityWithDeleted
 
-定义于: [base.entity.ts:32](https://github.com/142vip/core-x/blob/366c03709f86a3eb43798cad6f972465bd93322a/packages/typeorm/src/base.entity.ts#L32)
+定义于: [base.entity.ts:32](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/typeorm/src/base.entity.ts#L32)
 
 带删除状态的实体
 
@@ -30,7 +30,7 @@
 
 > **createTime**: `Date`
 
-定义于: [base.entity.ts:18](https://github.com/142vip/core-x/blob/366c03709f86a3eb43798cad6f972465bd93322a/packages/typeorm/src/base.entity.ts#L18)
+定义于: [base.entity.ts:18](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/typeorm/src/base.entity.ts#L18)
 
 #### 继承自
 
@@ -42,7 +42,7 @@
 
 > **deleted**: `boolean`
 
-定义于: [base.entity.ts:37](https://github.com/142vip/core-x/blob/366c03709f86a3eb43798cad6f972465bd93322a/packages/typeorm/src/base.entity.ts#L37)
+定义于: [base.entity.ts:37](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/typeorm/src/base.entity.ts#L37)
 
 ***
 
@@ -50,7 +50,7 @@
 
 > **id**: `number`
 
-定义于: [base.entity.ts:13](https://github.com/142vip/core-x/blob/366c03709f86a3eb43798cad6f972465bd93322a/packages/typeorm/src/base.entity.ts#L13)
+定义于: [base.entity.ts:13](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/typeorm/src/base.entity.ts#L13)
 
 自增主键
 
@@ -64,7 +64,7 @@
 
 > **updateTime**: `Date`
 
-定义于: [base.entity.ts:26](https://github.com/142vip/core-x/blob/366c03709f86a3eb43798cad6f972465bd93322a/packages/typeorm/src/base.entity.ts#L26)
+定义于: [base.entity.ts:26](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/typeorm/src/base.entity.ts#L26)
 
 更新时间
 

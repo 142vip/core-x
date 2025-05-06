@@ -4,7 +4,7 @@
 
 > **CustomRepository**(`entity`): `ClassDecorator`
 
-定义于: [custom-repository.decorator.ts:8](https://github.com/142vip/core-x/blob/366c03709f86a3eb43798cad6f972465bd93322a/packages/nest-typeorm/src/core/custom-repository.decorator.ts#L8)
+定义于: [custom-repository.decorator.ts:8](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/nest-typeorm/src/core/custom-repository.decorator.ts#L8)
 
 自定义Repo装饰器
 

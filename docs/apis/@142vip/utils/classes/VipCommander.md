@@ -2,7 +2,7 @@
 
 # 类: VipCommander
 
-定义于: [packages/utils/src/pkgs/commander.ts:38](https://github.com/142vip/core-x/blob/366c03709f86a3eb43798cad6f972465bd93322a/packages/utils/src/pkgs/commander.ts#L38)
+定义于: [packages/utils/src/pkgs/commander.ts:38](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/utils/src/pkgs/commander.ts#L38)
 
 终端交互
 参考：https://www.npmjs.com/package/commander
@@ -17,7 +17,7 @@
 
 > **new VipCommander**(`name`, `version`, `description?`): `VipCommander`
 
-定义于: [packages/utils/src/pkgs/commander.ts:39](https://github.com/142vip/core-x/blob/366c03709f86a3eb43798cad6f972465bd93322a/packages/utils/src/pkgs/commander.ts#L39)
+定义于: [packages/utils/src/pkgs/commander.ts:39](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/utils/src/pkgs/commander.ts#L39)
 
 #### 参数
 
@@ -1529,7 +1529,7 @@ Add hook for life cycle event.
 
 > **init**(`options`, `args`): `Command`
 
-定义于: [packages/utils/src/pkgs/commander.ts:53](https://github.com/142vip/core-x/blob/366c03709f86a3eb43798cad6f972465bd93322a/packages/utils/src/pkgs/commander.ts#L53)
+定义于: [packages/utils/src/pkgs/commander.ts:53](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/utils/src/pkgs/commander.ts#L53)
 
 初始化，不包括命令
 
@@ -1553,7 +1553,7 @@ Add hook for life cycle event.
 
 > **initCommand**(`options`, `args`): `Command`
 
-定义于: [packages/utils/src/pkgs/commander.ts:63](https://github.com/142vip/core-x/blob/366c03709f86a3eb43798cad6f972465bd93322a/packages/utils/src/pkgs/commander.ts#L63)
+定义于: [packages/utils/src/pkgs/commander.ts:63](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/utils/src/pkgs/commander.ts#L63)
 
 对命令初始化，增加aliases，summary，description等信息
 - 增加默认的一些参数
