@@ -2,7 +2,7 @@
 
 # 接口: CliCommandBaseOptions
 
-定义于: [packages/utils/src/enums/cli-commander.interface.ts:1](https://github.com/142vip/core-x/blob/366c03709f86a3eb43798cad6f972465bd93322a/packages/utils/src/enums/cli-commander.interface.ts#L1)
+定义于: [packages/utils/src/enums/cli-commander.interface.ts:1](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/utils/src/enums/cli-commander.interface.ts#L1)
 
 ## 属性
 
@@ -10,7 +10,7 @@
 
 > `optional` **dryRun**: `boolean`
 
-定义于: [packages/utils/src/enums/cli-commander.interface.ts:5](https://github.com/142vip/core-x/blob/366c03709f86a3eb43798cad6f972465bd93322a/packages/utils/src/enums/cli-commander.interface.ts#L5)
+定义于: [packages/utils/src/enums/cli-commander.interface.ts:5](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/utils/src/enums/cli-commander.interface.ts#L5)
 
 试运行
 
@@ -20,7 +20,7 @@
 
 > `optional` **logger**: `boolean`
 
-定义于: [packages/utils/src/enums/cli-commander.interface.ts:15](https://github.com/142vip/core-x/blob/366c03709f86a3eb43798cad6f972465bd93322a/packages/utils/src/enums/cli-commander.interface.ts#L15)
+定义于: [packages/utils/src/enums/cli-commander.interface.ts:15](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/utils/src/enums/cli-commander.interface.ts#L15)
 
 是否开启日志追踪模式，打印重要执行日志
 
@@ -30,6 +30,6 @@
 
 > `optional` **vip**: `boolean`
 
-定义于: [packages/utils/src/enums/cli-commander.interface.ts:10](https://github.com/142vip/core-x/blob/366c03709f86a3eb43798cad6f972465bd93322a/packages/utils/src/enums/cli-commander.interface.ts#L10)
+定义于: [packages/utils/src/enums/cli-commander.interface.ts:10](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/utils/src/enums/cli-commander.interface.ts#L10)
 
 142vip 组织专用功能，用户标记是否用于142vip组织的项目

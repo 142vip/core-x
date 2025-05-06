@@ -2,7 +2,7 @@
 
 # 接口: GitCommitLinterOptions
 
-定义于: [commit-linter/src/git-commit.interface.ts:6](https://github.com/142vip/core-x/blob/366c03709f86a3eb43798cad6f972465bd93322a/packages/commit-linter/src/git-commit.interface.ts#L6)
+定义于: [commit-linter/src/git-commit.interface.ts:6](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/commit-linter/src/git-commit.interface.ts#L6)
 
 Git Commit信息校验参数
 
@@ -12,7 +12,7 @@ Git Commit信息校验参数
 
 > `optional` **scopes**: `string`[]
 
-定义于: [commit-linter/src/git-commit.interface.ts:14](https://github.com/142vip/core-x/blob/366c03709f86a3eb43798cad6f972465bd93322a/packages/commit-linter/src/git-commit.interface.ts#L14)
+定义于: [commit-linter/src/git-commit.interface.ts:14](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/commit-linter/src/git-commit.interface.ts#L14)
 
 Git Commit支持的Scope列表
 
@@ -22,6 +22,6 @@ Git Commit支持的Scope列表
 
 > `optional` **types**: `string`[]
 
-定义于: [commit-linter/src/git-commit.interface.ts:10](https://github.com/142vip/core-x/blob/366c03709f86a3eb43798cad6f972465bd93322a/packages/commit-linter/src/git-commit.interface.ts#L10)
+定义于: [commit-linter/src/git-commit.interface.ts:10](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/commit-linter/src/git-commit.interface.ts#L10)
 
 Git Commit支持的Type列表，默认支持：

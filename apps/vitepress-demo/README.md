@@ -5,7 +5,7 @@
 ## 在线浏览
 
 - Netlify： <https://apps-vitepress-demo.netlify.app>
-- Vercel： <https://apps-vitepress-demo.vercel.app/>
+- Vercel： <https://apps-vitepress-demo.vercel.app>
 
 ## 介绍
 

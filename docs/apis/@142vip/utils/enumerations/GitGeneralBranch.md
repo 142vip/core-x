@@ -2,7 +2,7 @@
 
 # 枚举: GitGeneralBranch
 
-定义于: [packages/utils/src/enums/git.interface.ts:35](https://github.com/142vip/core-x/blob/366c03709f86a3eb43798cad6f972465bd93322a/packages/utils/src/enums/git.interface.ts#L35)
+定义于: [packages/utils/src/enums/git.interface.ts:35](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/utils/src/enums/git.interface.ts#L35)
 
 常用分支
 
@@ -12,7 +12,7 @@
 
 > **MAIN**: `"main"`
 
-定义于: [packages/utils/src/enums/git.interface.ts:36](https://github.com/142vip/core-x/blob/366c03709f86a3eb43798cad6f972465bd93322a/packages/utils/src/enums/git.interface.ts#L36)
+定义于: [packages/utils/src/enums/git.interface.ts:36](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/utils/src/enums/git.interface.ts#L36)
 
 ***
 
@@ -20,7 +20,7 @@
 
 > **MASTER**: `"master"`
 
-定义于: [packages/utils/src/enums/git.interface.ts:38](https://github.com/142vip/core-x/blob/366c03709f86a3eb43798cad6f972465bd93322a/packages/utils/src/enums/git.interface.ts#L38)
+定义于: [packages/utils/src/enums/git.interface.ts:38](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/utils/src/enums/git.interface.ts#L38)
 
 ***
 
@@ -28,4 +28,4 @@
 
 > **NEXT**: `"next"`
 
-定义于: [packages/utils/src/enums/git.interface.ts:37](https://github.com/142vip/core-x/blob/366c03709f86a3eb43798cad6f972465bd93322a/packages/utils/src/enums/git.interface.ts#L37)
+定义于: [packages/utils/src/enums/git.interface.ts:37](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/utils/src/enums/git.interface.ts#L37)

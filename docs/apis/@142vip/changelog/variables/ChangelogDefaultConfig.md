@@ -4,7 +4,7 @@
 
 > `const` **ChangelogDefaultConfig**: `object`
 
-定义于: [changelog/src/shared/config.ts:9](https://github.com/142vip/core-x/blob/366c03709f86a3eb43798cad6f972465bd93322a/packages/changelog/src/shared/config.ts#L9)
+定义于: [changelog/src/shared/config.ts:9](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/changelog/src/shared/config.ts#L9)
 
 默认配置
 
