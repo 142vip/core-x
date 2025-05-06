@@ -4,6 +4,7 @@ import { defineVipVitepressConfig, getVipFooter, getVipThemeConfig, zhSearch } f
 import typedocSidebar from '../docs/apis/typedoc-sidebar.json'
 import { name as pkgName, version as pkgVersion } from '../package.json'
 import { getChangelogsSidebar, sidebarConfig } from './sidebar'
+
 /**
  * 导航栏
  */
@@ -108,11 +109,11 @@ export default defineVipVitepressConfig({
     },
     // 页脚
     footer: getVipFooter({
-      license: OPEN_SOURCE_ADDRESS.GITHUB_REPO_CORE_X,
+      license: OPEN_SOURCE_ADDRESS.LICENCE_CORE_X,
       pkgName,
       pkgVersion,
-      orgLink: OPEN_SOURCE_ADDRESS.HOME_PAGE_VIP,
-      ownerLink: OPEN_SOURCE_ADDRESS.HOME_PAGE_MMDAPL,
+      orgLink: OPEN_SOURCE_ADDRESS.HOME_PAGE_GITHUB_VIP,
+      ownerLink: OPEN_SOURCE_ADDRESS.HOME_PAGE_GITHUB_MMDAPL,
     }),
 
     // 搜索
@@ -131,7 +132,8 @@ export default defineVipVitepressConfig({
     // 一些链接
     socialLinks: [
       { icon: 'github', link: OPEN_SOURCE_ADDRESS.GITHUB_REPO_CORE_X },
-      { icon: 'npm', link: 'https://www.npmjs.com/~mmdapl' },
+      { icon: 'gitee', link: OPEN_SOURCE_ADDRESS.GITEE_REPO_CORE_X },
+      { icon: 'npm', link: OPEN_SOURCE_ADDRESS.HOME_PAGE_NPM_MMDAPL },
     ],
     // 编辑链接
     editLink: {
