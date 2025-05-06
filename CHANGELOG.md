@@ -2,6 +2,65 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## v0.0.1-alpha.30 (2025-05-06)
+
+### ✨ Features
+
+- 优化`scripts`脚本主体结构和逻辑 &nbsp;-&nbsp; by **142vip.cn** in https://github.com/142vip/core-x/issues/506 [<samp>(8ad41)</samp>](https://github.com/142vip/core-x/commit/8ad41ee)
+- 引入`typedoc`模块，支持全站模块的API文档 &nbsp;-&nbsp; by **142vip.cn** in https://github.com/142vip/core-x/issues/510 [<samp>(67692)</samp>](https://github.com/142vip/core-x/commit/67692ef)
+- 基于`@142vip/vitepress`模块优化站点配置 &nbsp;-&nbsp; by **142vip.cn** in https://github.com/142vip/core-x/issues/515 [<samp>(9b04d)</samp>](https://github.com/142vip/core-x/commit/9b04ddb)
+- 增加Github pull插件，解决fork仓库同步问题 &nbsp;-&nbsp; by **chufan** [<samp>(6ef88)</samp>](https://github.com/142vip/core-x/commit/6ef887d)
+- 站点增加logo图标等配置 &nbsp;-&nbsp; by **142vip.cn** in https://github.com/142vip/core-x/issues/516 [<samp>(4ed19)</samp>](https://github.com/142vip/core-x/commit/4ed1965)
+- 修改`vitepress`站点配置，更新文档介绍 &nbsp;-&nbsp; by **142vip.cn** in https://github.com/142vip/core-x/issues/526 [<samp>(1107b)</samp>](https://github.com/142vip/core-x/commit/1107bf1)
+- **@142vip/fairy-cli**:
+  - 移除`js-yaml`等依赖模块 &nbsp;-&nbsp; by **142vip.cn** in https://github.com/142vip/core-x/issues/498 [<samp>(76de7)</samp>](https://github.com/142vip/core-x/commit/76de7b0)
+- **@142vip/utils**:
+  - 优化`VipCommander`的命令、参数初始化逻辑 &nbsp;-&nbsp; by **chufan** [<samp>(27b37)</samp>](https://github.com/142vip/core-x/commit/27b376e)
+  - 拓展`OPEN_SOURCE_ADDRESS`枚举 &nbsp;-&nbsp; by **chufan** [<samp>(7e0ca)</samp>](https://github.com/142vip/core-x/commit/7e0ca0d)
+- **@142vip/vitepress**:
+  - 增加`typedoc`配置定义函数，优化配置和依赖 &nbsp;-&nbsp; by **142vip.cn** in https://github.com/142vip/core-x/issues/512 [<samp>(9acb9)</samp>](https://github.com/142vip/core-x/commit/9acb9a0)
+  - 增加`defineVipVitepressConfig`配置函数，优化类型支持 &nbsp;-&nbsp; by **142vip.cn** in https://github.com/142vip/core-x/issues/513 [<samp>(3662c)</samp>](https://github.com/142vip/core-x/commit/3662c1c)
+  - 优化表格组件，拓展类型支持 &nbsp;-&nbsp; by **142vip.cn** in https://github.com/142vip/core-x/issues/514 [<samp>(50ef3)</samp>](https://github.com/142vip/core-x/commit/50ef3bc)
+  - `themeConfig`入口优化，变量重命名 &nbsp;-&nbsp; by **142vip.cn** in https://github.com/142vip/core-x/issues/518 [<samp>(7f414)</samp>](https://github.com/142vip/core-x/commit/7f414e6)
+
+### 🐛 Bug Fixes
+
+- 修复站点ico预览异常 &nbsp;-&nbsp; by **142vip.cn** in https://github.com/142vip/core-x/issues/517 [<samp>(448cc)</samp>](https://github.com/142vip/core-x/commit/448ccfe)
+- 增加`publicDir`配置重写目录，支持`vite`编译静态资源目录 &nbsp;-&nbsp; by **142vip.cn** in https://github.com/142vip/core-x/issues/524 [<samp>(06df8)</samp>](https://github.com/142vip/core-x/commit/06df8d8)
+- **@142vip/utils**:
+  - 补充`@types`等模块类型依赖 &nbsp;-&nbsp; by **142vip.cn** in https://github.com/142vip/core-x/issues/522 [<samp>(bfe99)</samp>](https://github.com/142vip/core-x/commit/bfe99ac)
+- **@142vip/vitepress**:
+  - 修复`vue-sfc-transformer`导致的编译告警 &nbsp;-&nbsp; by **142vip.cn** in https://github.com/142vip/core-x/issues/519 [<samp>(c87d9)</samp>](https://github.com/142vip/core-x/commit/c87d9ab)
+- **vitepress-demo**:
+  - 修复`build`令编译异常 &nbsp;-&nbsp; by **chufan** [<samp>(1dc5d)</samp>](https://github.com/142vip/core-x/commit/1dc5d95)
+
+### 💅 Refactors
+
+- **@142vip/changelog**:
+  - 重构`changelog`核心逻辑，调整模块的整体结构，支持更多API方法 &nbsp;-&nbsp; by **142vip.cn** in https://github.com/142vip/core-x/issues/501 [<samp>(fe60c)</samp>](https://github.com/142vip/core-x/commit/fe60c59)
+
+### 📖 Documentation
+
+- 修改`typedoc`配置，更新`API`文档 &nbsp;-&nbsp; by **chufan** [<samp>(366c0)</samp>](https://github.com/142vip/core-x/commit/366c037)
+- Api update &nbsp;-&nbsp; by **chufan** [<samp>(bf5c5)</samp>](https://github.com/142vip/core-x/commit/bf5c5fd)
+- 基础的md文档更新 &nbsp;-&nbsp; by **chufan** [<samp>(f7d3d)</samp>](https://github.com/142vip/core-x/commit/f7d3d49)
+- Update typedoc api &nbsp;-&nbsp; by **142vip.cn** in https://github.com/142vip/core-x/issues/528 [<samp>(77ef9)</samp>](https://github.com/142vip/core-x/commit/77ef908)
+
+### 😏 Release Packages
+
+- **@142vip/changelog**:
+  - Publish `v0.0.1-alpha.19` &nbsp;-&nbsp; by **chufan** [<samp>(1f63c)</samp>](https://github.com/142vip/core-x/commit/1f63caa)
+- **@142vip/fairy-cli**:
+  - Publish `v0.0.3-alpha.24` &nbsp;-&nbsp; by **chufan** [<samp>(aa277)</samp>](https://github.com/142vip/core-x/commit/aa277c4)
+- **@142vip/utils**:
+  - Publish `v0.0.1-alpha.36` &nbsp;-&nbsp; by **chufan** [<samp>(afc5f)</samp>](https://github.com/142vip/core-x/commit/afc5f91)
+- **@142vip/vitepress**:
+  - Publish `v0.0.1-alpha.15` &nbsp;-&nbsp; by **chufan** [<samp>(40280)</samp>](https://github.com/142vip/core-x/commit/4028097)
+- **vitepress-demo**:
+  - Publish `v0.0.1-alpha.3` &nbsp;-&nbsp; by **chufan** [<samp>(a868d)</samp>](https://github.com/142vip/core-x/commit/a868d72)
+
+**Release New Version v0.0.1-alpha.30 [👉 View Changes On GitHub](https://github.com/142vip/core-x/compare/v0.0.1-alpha.29...v0.0.1-alpha.30)**
+
 ## v0.0.1-alpha.29 (2025-04-23)
 
 ### ✨ Features
