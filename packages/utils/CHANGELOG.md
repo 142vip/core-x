@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## v0.0.1-alpha.36 (2025-05-06)
+
+### ✨ Features
+
+- 优化`VipCommander`的命令、参数初始化逻辑 &nbsp;-&nbsp; by **chufan** [<samp>(27b37)</samp>](https://github.com/142vip/core-x/commit/27b376e)
+- 拓展`OPEN_SOURCE_ADDRESS`枚举 &nbsp;-&nbsp; by **chufan** [<samp>(7e0ca)</samp>](https://github.com/142vip/core-x/commit/7e0ca0d)
+
+### 🐛 Bug Fixes
+
+- 补充`@types`等模块类型依赖 &nbsp;-&nbsp; by **142vip.cn** in https://github.com/142vip/core-x/issues/522 [<samp>(bfe99)</samp>](https://github.com/142vip/core-x/commit/bfe99ac)
+
+**Release New Version v0.0.1-alpha.36 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/utils)**
+
 ## v0.0.1-alpha.35 (2025-04-23)
 
 ### ✨ Features
