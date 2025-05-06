@@ -33,7 +33,13 @@ export enum OPEN_SOURCE_ADDRESS {
 
   HOME_PAGE_GITEE_MMDAPL = 'https://gitee.com/mmdapl',
   HOME_PAGE_GITEE_VIP = 'https://gitee.com/chufan443',
+  // npm
   HOME_PAGE_NPM_MMDAPL = 'https://www.npmjs.com/~mmdapl',
+
+  // 自媒体主页
+  HOME_PAGE_BILIBILI = 'https://space.bilibili.com/350937042',
+  HOME_PAGE_CSDN = 'https://blog.csdn.net/Mmdapl',
+  HOME_PAGE_JUE_JIN = 'https://juejin.im/user/448256476724807',
 
   // 域名
   HOME_PAGE_DOMAIN_VIP = 'https://142vip.cn',
