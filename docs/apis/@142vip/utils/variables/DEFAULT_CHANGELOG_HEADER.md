@@ -4,4 +4,4 @@
 
 > `const` **DEFAULT\_CHANGELOG\_HEADER**: "# Changelog\n\nAll notable changes to this project will be documented in this file. See \[commit-and-tag-version\](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.\n\n"
 
-定义于: [packages/utils/src/constants.ts:105](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/utils/src/constants.ts#L105)
+定义于: [packages/utils/src/constants.ts:105](https://github.com/142vip/core-x/blob/1eb80b292cacf818428b26e34edc36554f5c80fb/packages/utils/src/constants.ts#L105)

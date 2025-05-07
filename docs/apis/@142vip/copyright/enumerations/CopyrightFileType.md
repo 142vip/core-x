@@ -2,7 +2,7 @@
 
 # 枚举: CopyrightFileType
 
-定义于: [copyright.interface.ts:6](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/copyright/src/copyright.interface.ts#L6)
+定义于: [copyright.interface.ts:6](https://github.com/142vip/core-x/blob/1eb80b292cacf818428b26e34edc36554f5c80fb/packages/copyright/src/copyright.interface.ts#L6)
 
 软著支持的源代码文件类型
 
@@ -12,7 +12,7 @@
 
 > **C**: `"c"`
 
-定义于: [copyright.interface.ts:11](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/copyright/src/copyright.interface.ts#L11)
+定义于: [copyright.interface.ts:11](https://github.com/142vip/core-x/blob/1eb80b292cacf818428b26e34edc36554f5c80fb/packages/copyright/src/copyright.interface.ts#L11)
 
 ***
 
@@ -20,7 +20,7 @@
 
 > **CPP**: `"cpp"`
 
-定义于: [copyright.interface.ts:12](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/copyright/src/copyright.interface.ts#L12)
+定义于: [copyright.interface.ts:12](https://github.com/142vip/core-x/blob/1eb80b292cacf818428b26e34edc36554f5c80fb/packages/copyright/src/copyright.interface.ts#L12)
 
 ***
 
@@ -28,7 +28,7 @@
 
 > **GO**: `"go"`
 
-定义于: [copyright.interface.ts:13](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/copyright/src/copyright.interface.ts#L13)
+定义于: [copyright.interface.ts:13](https://github.com/142vip/core-x/blob/1eb80b292cacf818428b26e34edc36554f5c80fb/packages/copyright/src/copyright.interface.ts#L13)
 
 ***
 
@@ -36,7 +36,7 @@
 
 > **HTML**: `"html"`
 
-定义于: [copyright.interface.ts:23](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/copyright/src/copyright.interface.ts#L23)
+定义于: [copyright.interface.ts:23](https://github.com/142vip/core-x/blob/1eb80b292cacf818428b26e34edc36554f5c80fb/packages/copyright/src/copyright.interface.ts#L23)
 
 ***
 
@@ -44,7 +44,7 @@
 
 > **JAVA**: `"java"`
 
-定义于: [copyright.interface.ts:7](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/copyright/src/copyright.interface.ts#L7)
+定义于: [copyright.interface.ts:7](https://github.com/142vip/core-x/blob/1eb80b292cacf818428b26e34edc36554f5c80fb/packages/copyright/src/copyright.interface.ts#L7)
 
 ***
 
@@ -52,7 +52,7 @@
 
 > **JAVASCRIPT**: `"js"`
 
-定义于: [copyright.interface.ts:8](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/copyright/src/copyright.interface.ts#L8)
+定义于: [copyright.interface.ts:8](https://github.com/142vip/core-x/blob/1eb80b292cacf818428b26e34edc36554f5c80fb/packages/copyright/src/copyright.interface.ts#L8)
 
 ***
 
@@ -60,7 +60,7 @@
 
 > **JSON**: `"json"`
 
-定义于: [copyright.interface.ts:21](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/copyright/src/copyright.interface.ts#L21)
+定义于: [copyright.interface.ts:21](https://github.com/142vip/core-x/blob/1eb80b292cacf818428b26e34edc36554f5c80fb/packages/copyright/src/copyright.interface.ts#L21)
 
 ***
 
@@ -68,7 +68,7 @@
 
 > **PHP**: `"php"`
 
-定义于: [copyright.interface.ts:15](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/copyright/src/copyright.interface.ts#L15)
+定义于: [copyright.interface.ts:15](https://github.com/142vip/core-x/blob/1eb80b292cacf818428b26e34edc36554f5c80fb/packages/copyright/src/copyright.interface.ts#L15)
 
 ***
 
@@ -76,7 +76,7 @@
 
 > **PYTHON**: `"py"`
 
-定义于: [copyright.interface.ts:10](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/copyright/src/copyright.interface.ts#L10)
+定义于: [copyright.interface.ts:10](https://github.com/142vip/core-x/blob/1eb80b292cacf818428b26e34edc36554f5c80fb/packages/copyright/src/copyright.interface.ts#L10)
 
 ***
 
@@ -84,7 +84,7 @@
 
 > **RUST**: `"rs"`
 
-定义于: [copyright.interface.ts:16](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/copyright/src/copyright.interface.ts#L16)
+定义于: [copyright.interface.ts:16](https://github.com/142vip/core-x/blob/1eb80b292cacf818428b26e34edc36554f5c80fb/packages/copyright/src/copyright.interface.ts#L16)
 
 ***
 
@@ -92,7 +92,7 @@
 
 > **SHELL**: `"sh"`
 
-定义于: [copyright.interface.ts:17](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/copyright/src/copyright.interface.ts#L17)
+定义于: [copyright.interface.ts:17](https://github.com/142vip/core-x/blob/1eb80b292cacf818428b26e34edc36554f5c80fb/packages/copyright/src/copyright.interface.ts#L17)
 
 ***
 
@@ -100,7 +100,7 @@
 
 > **SQL**: `"sql"`
 
-定义于: [copyright.interface.ts:18](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/copyright/src/copyright.interface.ts#L18)
+定义于: [copyright.interface.ts:18](https://github.com/142vip/core-x/blob/1eb80b292cacf818428b26e34edc36554f5c80fb/packages/copyright/src/copyright.interface.ts#L18)
 
 ***
 
@@ -108,7 +108,7 @@
 
 > **SWIFT**: `"swift"`
 
-定义于: [copyright.interface.ts:14](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/copyright/src/copyright.interface.ts#L14)
+定义于: [copyright.interface.ts:14](https://github.com/142vip/core-x/blob/1eb80b292cacf818428b26e34edc36554f5c80fb/packages/copyright/src/copyright.interface.ts#L14)
 
 ***
 
@@ -116,7 +116,7 @@
 
 > **TEXT**: `"txt"`
 
-定义于: [copyright.interface.ts:24](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/copyright/src/copyright.interface.ts#L24)
+定义于: [copyright.interface.ts:24](https://github.com/142vip/core-x/blob/1eb80b292cacf818428b26e34edc36554f5c80fb/packages/copyright/src/copyright.interface.ts#L24)
 
 ***
 
@@ -124,7 +124,7 @@
 
 > **TYPESCRIPT**: `"ts"`
 
-定义于: [copyright.interface.ts:9](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/copyright/src/copyright.interface.ts#L9)
+定义于: [copyright.interface.ts:9](https://github.com/142vip/core-x/blob/1eb80b292cacf818428b26e34edc36554f5c80fb/packages/copyright/src/copyright.interface.ts#L9)
 
 ***
 
@@ -132,7 +132,7 @@
 
 > **XML**: `"xml"`
 
-定义于: [copyright.interface.ts:22](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/copyright/src/copyright.interface.ts#L22)
+定义于: [copyright.interface.ts:22](https://github.com/142vip/core-x/blob/1eb80b292cacf818428b26e34edc36554f5c80fb/packages/copyright/src/copyright.interface.ts#L22)
 
 ***
 
@@ -140,7 +140,7 @@
 
 > **YAML**: `"yaml"`
 
-定义于: [copyright.interface.ts:19](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/copyright/src/copyright.interface.ts#L19)
+定义于: [copyright.interface.ts:19](https://github.com/142vip/core-x/blob/1eb80b292cacf818428b26e34edc36554f5c80fb/packages/copyright/src/copyright.interface.ts#L19)
 
 ***
 
@@ -148,4 +148,4 @@
 
 > **YML**: `"yml"`
 
-定义于: [copyright.interface.ts:20](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/copyright/src/copyright.interface.ts#L20)
+定义于: [copyright.interface.ts:20](https://github.com/142vip/core-x/blob/1eb80b292cacf818428b26e34edc36554f5c80fb/packages/copyright/src/copyright.interface.ts#L20)

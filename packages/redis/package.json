@@ -2,7 +2,7 @@
   "name": "@142vip/redis",
   "version": "0.0.1-alpha.3",
   "private": false,
-  "description": "Redis通用工具，基于ioredis的封装、时间按",
+  "description": "Redis通用工具，基于ioredis的封装",
   "author": "mmdapl <mmdapl@163.com>",
   "license": "MIT",
   "homepage": "https://142vip.github.io/core-x/packages/redis/",

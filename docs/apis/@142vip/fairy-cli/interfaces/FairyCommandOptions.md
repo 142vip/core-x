@@ -2,7 +2,7 @@
 
 # 接口: FairyCommandOptions
 
-定义于: [fairy-cli/src/enums/command.interface.ts:3](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/fairy-cli/src/enums/command.interface.ts#L3)
+定义于: [fairy-cli/src/enums/command.interface.ts:3](https://github.com/142vip/core-x/blob/1eb80b292cacf818428b26e34edc36554f5c80fb/packages/fairy-cli/src/enums/command.interface.ts#L3)
 
 ## theme_extends
 
@@ -14,7 +14,7 @@
 
 > `optional` **dryRun**: `boolean`
 
-定义于: [utils/src/pkgs/commander.ts:14](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/utils/src/pkgs/commander.ts#L14)
+定义于: [utils/src/pkgs/commander.ts:14](https://github.com/142vip/core-x/blob/1eb80b292cacf818428b26e34edc36554f5c80fb/packages/utils/src/pkgs/commander.ts#L14)
 
 试运行
 
@@ -28,7 +28,7 @@
 
 > `optional` **trace**: `boolean`
 
-定义于: [utils/src/pkgs/commander.ts:24](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/utils/src/pkgs/commander.ts#L24)
+定义于: [utils/src/pkgs/commander.ts:24](https://github.com/142vip/core-x/blob/1eb80b292cacf818428b26e34edc36554f5c80fb/packages/utils/src/pkgs/commander.ts#L24)
 
 是否开启日志追踪模式，打印重要执行日志
 
@@ -42,7 +42,7 @@
 
 > `optional` **vip**: `boolean`
 
-定义于: [utils/src/pkgs/commander.ts:19](https://github.com/142vip/core-x/blob/a868d72f351cc457f350d05d38d540d6494a8ff2/packages/utils/src/pkgs/commander.ts#L19)
+定义于: [utils/src/pkgs/commander.ts:19](https://github.com/142vip/core-x/blob/1eb80b292cacf818428b26e34edc36554f5c80fb/packages/utils/src/pkgs/commander.ts#L19)
 
 142vip 组织专用功能，用户标记是否用于142vip组织的项目
 
