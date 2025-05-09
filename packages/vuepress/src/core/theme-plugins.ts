@@ -61,18 +61,18 @@ export const baseThemePluginOptions = {
   // 不自动生成README目录
   catalog: false,
   // 参考：https://theme-hope.vuejs.press/zh/guide/markdown/components.html
-  components: {
-    components: [
-      'Badge',
-      'BiliBili',
-      'CodePen',
-      'PDF',
-      'StackBlitz',
-      'VidStack',
-      'Share',
-      'XiGua',
-    ],
-  },
+  // components: {
+  //   components: [
+  //     'Badge',
+  //     'BiliBili',
+  //     'CodePen',
+  //     'PDF',
+  //     'StackBlitz',
+  //     'VidStack',
+  //     'Share',
+  //     'XiGua',
+  //   ],
+  // },
   slimsearch: {
     // 参考：https://plugin-search-pro.vuejs.press/zh/config.html#locales
     locales: {

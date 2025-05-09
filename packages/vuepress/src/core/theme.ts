@@ -1,7 +1,11 @@
+import type { ThemeOptions } from 'vuepress-theme-hope'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+import { hopeTheme } from 'vuepress-theme-hope'
 import { i18n } from './i18n'
 import { baseThemePluginOptions } from './theme-plugins'
 
-const baseThemeConfig = {
+const baseThemeConfig: ThemeOptions = {
   locales: i18n,
   // navbarIcon: false,
   // 在深色模式和浅色模式之间切换
@@ -123,13 +127,36 @@ const baseThemeConfig = {
  * 主题相关配置
  * 参考：https://theme-hope.vuejs.press/zh/config/intro.html
  */
-export function getThemeConfig(userConfig: any) {
-  return {
+export function getVipHopeTheme(userConfig: ThemeOptions) {
+  return hopeTheme({
     ...baseThemeConfig,
     ...userConfig,
     plugins: {
       ...baseThemePluginOptions,
       ...userConfig.plugins,
     },
+  })
+}
+
+/**
+ * 引入代码文件时的路径替换
+ * https://vuejs.press/zh/guide/markdown.html#%E5%AF%BC%E5%85%A5%E4%BB%A3%E7%A0%81%E5%9D%97
+ * - 例如：引入的路径中包含@code，会替换为当前目录下的code目录
+ * @param pathArray 路径规则，旧路径，新路径
+ * @returns 新路径
+ */
+export function handleImportCodePath(pathArray: Array<[oldPath: string, newPath: string]>) {
+  return (str: string): string => {
+    // 当前目录名
+    const __dirname = path.dirname(fileURLToPath(import.meta.url))
+
+    for (const [oldPath, newPath] of pathArray) {
+      if (str.includes(oldPath)) {
+        return str.replace(`/^${oldPath}/`, path.resolve(__dirname, newPath))
+      }
+    }
+
+    // 原路径
+    return str
   }
 }
