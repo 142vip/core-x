@@ -28,12 +28,6 @@ features:
 ## 下载依赖
 
 ```bash:no-line-numbers
-# 安装vuepress
-pnpm i vuepress@2.0.0-rc.20 -D
-
-# 安装vite-bundle编译模块
-pnpm i @vuepress/bundler-vite@2.0.0-rc.20 -D
-
 # 安装@142vip/vuepress模块
 pnpm i @142vip/vuepress -D
 
