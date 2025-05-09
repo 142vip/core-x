@@ -2,7 +2,7 @@
 title: 变更记录
 permalink: /changelog.html
 sidebar: false
-headerDepth: 1
+levels: 1
 ---
 
 # 变更记录
