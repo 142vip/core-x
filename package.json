@@ -48,7 +48,8 @@
     "release": "npx fa release --vip -F './apps/*' -F './packages/*' --check-branch next --check-branch main ",
     "test": "jest",
     "test:coverage": "jest --coverage",
-    "docs:api": "npx typedoc && pnpm lint:fix"
+    "docs:api": "npx typedoc && pnpm lint:fix",
+    "sync:pkg": "npx fa sync --vip"
   },
   "devDependencies": {
     "@142vip/changelog": "workspace:*",

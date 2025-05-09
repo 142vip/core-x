@@ -138,14 +138,14 @@ async function searchNpmPkgOnline(input: string | undefined, options: { signal: 
  */
 export async function syncMain(program: VipCommander): Promise<void> {
   program
-    .initCommand(CLI_COMMAND_DETAIL[CommandEnum.SYNC])
+    .initCommand(CLI_COMMAND_DETAIL[CommandEnum.SYNC], { vip: true })
     .argument('[packageName]', '需要同步的模块包名称')
     .action(async (packageName: string | undefined, options): Promise<void> => {
       // 142vip本地业务
       if (packageName == null && options.vip) {
         const pkgJSON = VipMonorepo.getReleasePkgJSON('./packages/*')
         const packageNames = pkgJSON.map(pkg => pkg.name)
-        packageName = await VipInquirer.promptSelect('请选择需要同步的模块包名称：', packageNames)
+        packageName = await VipInquirer.promptSearch('请选择需要同步的模块包名称：', VipInquirer.handleSimpleSearchSource(packageNames))
       }
       // 在线查询，搜索npm包
       else {
