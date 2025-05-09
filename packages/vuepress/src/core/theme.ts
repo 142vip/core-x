@@ -1,5 +1,6 @@
 import type { ThemeOptions } from 'vuepress-theme-hope'
 import path from 'node:path'
+import process from 'node:process'
 import { hopeTheme } from 'vuepress-theme-hope'
 import { i18n } from './i18n'
 import { baseThemePluginOptions } from './theme-plugins'
