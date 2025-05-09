@@ -1,7 +1,7 @@
 {
   "name": "@142vip/vitepress",
   "type": "module",
-  "version": "0.0.1-alpha.15",
+  "version": "0.0.1-alpha.16",
   "private": false,
   "description": "基于vitepress框架搭建静态站点的常用工具包，提供ElementPlus相关组件和主题",
   "author": "mmdapl <mmdapl@163.com>",
