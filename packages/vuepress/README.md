@@ -7,9 +7,55 @@
 ```shell
 # 安装
 pnpm i @142vip/vuepress -D
+```
 
-# 安装vuepress
-pnpm i vuepress -D
+## 配置
+
+```ts
+import {
+  defineVipVuepressConfig,
+  getVipHopeTheme,
+  getVipViteBundler,
+
+  handleImportCodePath,
+} from '@142vip/vuepress'
+
+export default defineVipVuepressConfig({
+  // 基础配置
+  // ...
+
+  // markdown配置
+  markdown: {
+    // 导入代码
+    importCode: {
+      handleImportPath: handleImportCodePath([
+        ['@code', 'code/'],
+        ['~', ''],
+      ]),
+    },
+    headers: {
+      level: [2, 3, 4],
+    },
+  },
+  // 主题配置
+  theme: getVipHopeTheme({
+    // 一些主题配置
+    // ...
+  }),
+  // 编译
+  bundler: getVipViteBundler(),
+  shouldPrefetch: false,
+})
+```
+
+## 命令
+
+```shell
+# 本地开发
+npx vuepress dev
+
+# 编辑
+npx vuepress build
 ```
 
 ## 证书

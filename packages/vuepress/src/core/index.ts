@@ -1,4 +1,5 @@
 export * from './bundler'
+export * from './config'
 export * from './constant'
 export * from './headers'
 export * from './i18n'

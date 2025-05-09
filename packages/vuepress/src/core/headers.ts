@@ -6,7 +6,7 @@ import type { HeadConfig } from '../types'
 export const exampleHeaders: HeadConfig[] = [
   [
     'link',
-    { rel: 'icon', href: 'fight_favicon.ico' },
+    { rel: 'icon', href: 'favicon.ico' },
   ],
   // vercel统计 相关配置
   [
@@ -61,7 +61,7 @@ export const FamilyHeaders: HeadConfig[] = [
 export const JSCHeaders: HeadConfig[] = [
   [
     'link',
-    { rel: 'icon', href: 'fight_favicon.ico' },
+    { rel: 'icon', href: 'favicon.ico' },
   ],
   // vercel统计 相关配置
   [
