@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file. See [commit
 
 <!-- #region recent-alpha -->
 
+## v0.0.1-alpha.4 (2025-05-09)
+
+### ✨ Features
+
+- 优化依赖，简化demo站点配置 &nbsp;-&nbsp; by **chufan** [<samp>(05fdd)</samp>](https://github.com/142vip/core-x/commit/05fdd68)
+
+**Release New Version v0.0.1-alpha.4 [👉 View New Package On NPM](https://www.npmjs.com/package/vuepress-demo)**
+
 ## v0.0.1-alpha.3 (2025-03-30)
 
 **No Significant Changes**
