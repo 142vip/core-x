@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.14 (2025-05-10)
+
+### 🐛 Bug Fixes
+
+- 修复importCode配置替换文件路径异常 &nbsp;-&nbsp; by **142vip.cn** in https://github.com/142vip/core-x/issues/539 [<samp>(ddb93)</samp>](https://github.com/142vip/core-x/commit/ddb936f)
+
+**Release New Version v0.0.1-alpha.14 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/vuepress)**
+
 ## v0.0.1-alpha.13 (2025-05-09)
 
 ### ✨ Features
