@@ -123,6 +123,7 @@ export const defaultVipThemeConfig = {
 
 /**
  * 获取主题配置
+ * todo 优化类型
  * - https://vitepress.dev/zh/reference/default-theme-config
  */
 export function getVipThemeConfig(themeConfig: any) {
