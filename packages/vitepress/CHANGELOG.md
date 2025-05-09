@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.16 (2025-05-10)
+
+### ✨ Features
+
+- 支持导航栏、侧边栏配置函数式定义 &nbsp;-&nbsp; by **142vip.cn** in https://github.com/142vip/core-x/issues/537 [<samp>(cbd92)</samp>](https://github.com/142vip/core-x/commit/cbd928a)
+
+**Release New Version v0.0.1-alpha.16 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/vitepress)**
+
 ## v0.0.1-alpha.15 (2025-05-06)
 
 ### ✨ Features
