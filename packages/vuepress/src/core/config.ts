@@ -4,10 +4,15 @@ import { navbar, sidebar } from 'vuepress-theme-hope'
 import { getVipViteBundler } from './bundler'
 
 /**
+ * 用户配置
+ */
+export type VipVuepressUserConfig = UserConfig
+
+/**
  * 定义 vuepress 配置
  * @param config 配置
  */
-export function defineVipVuepressConfig(config: UserConfig): UserConfig {
+export function defineVipVuepressConfig(config: VipVuepressUserConfig): VipVuepressUserConfig {
   // 默认vite编译
   if (config.bundler == null) {
     config.bundler = getVipViteBundler()
