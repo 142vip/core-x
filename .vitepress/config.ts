@@ -44,11 +44,14 @@ const navbarConfig: NavbarConfig = [
   },
 ]
 
+// 站点的base路径
+const siteBase = getDocSiteBase('core-x')
+
 /**
  * 所有配置
  */
 export default defineVipVitepressConfig({
-  base: getDocSiteBase('core-x'),
+  base: siteBase,
   lang: 'zh-CN',
   title: '@142vip工程化',
   titleTemplate: ':title - 等等我呀，还在努力',
@@ -68,9 +71,9 @@ export default defineVipVitepressConfig({
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:title', content: '@142vip/core-x' }],
     ['meta', { property: 'og:description', content: `${pkgName} - 一切都有可能` }],
-    ['link', { rel: 'icon', href: '/favicon.ico' }],
+    // 注意：这里处理下路径
+    ['link', { rel: 'icon', href: `${siteBase}favicon.ico` }],
   ],
-  // markdown
   markdown: {
     theme: {
       dark: 'dracula-soft',
