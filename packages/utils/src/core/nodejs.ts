@@ -47,6 +47,11 @@ function getProcessEnv(key: string): string | undefined {
   return undefined
 }
 
+/**
+ * 设置当前京城环境变量
+ * @param key 键
+ * @param value 值
+ */
 function setProcessEnv(key: string, value: string): void {
   process.env[key] = value
 }
@@ -171,7 +176,7 @@ function readdirSync(path: PathLike, options?: {
   encoding: BufferEncoding | null
   withFileTypes?: false | undefined
   recursive?: boolean | undefined
-} | BufferEncoding | null) {
+} | BufferEncoding | null): string[] {
   return fs.readdirSync(path, options)
 }
 /**
@@ -183,8 +188,21 @@ function writeFileByUTF8(filePath: PathLike, data:
   return writeFileSync(filePath, data, 'utf-8')
 }
 
+/**
+ * 判断是否为Buffer类型
+ * @param data 输入数据
+ * @return boolean
+ */
 function isBuffer(data: object): boolean {
   return Buffer.isBuffer(data)
+}
+
+/**
+ * 创建目录
+ * @param path 目录路径
+ */
+function mkdirSync(path: PathLike): void {
+  fs.mkdirSync(path)
 }
 
 /**
@@ -269,6 +287,7 @@ export const VipNodeJS = {
   readdirSync,
   readFileToStrByUTF8,
   writeFileByUTF8,
+  mkdirSync,
   pathJoin,
   pathResolve,
   pathDirname,
