@@ -106,6 +106,15 @@ export default defineVipVuepressConfig({
     // docsBranch: 'next',
     // // 主题布局选项
     // docsRepo: RepoAddress,
+    plugins: {
+      // 水印
+      watermark: {
+        enabled: false,
+        watermarkOptions: {
+          content: OPEN_SOURCE_AUTHOR.name,
+        },
+      },
+    },
   }),
   // // 插件配置
   // ...pluginConfig,

@@ -492,6 +492,9 @@ importers:
       '@vuepress/plugin-slimsearch':
         specifier: 2.0.0-rc.102
         version: 2.0.0-rc.102(typescript@5.8.3)(vuepress@2.0.0-rc.22(@vuepress/bundler-vite@2.0.0-rc.22(@types/node@22.13.1)(jiti@2.4.2)(sass-embedded@1.87.0)(typescript@5.8.3)(yaml@2.7.1))(typescript@5.8.3)(vue@3.5.13(typescript@5.8.3)))
+      '@vuepress/plugin-watermark':
+        specifier: 2.0.0-rc.102
+        version: 2.0.0-rc.102(typescript@5.8.3)(vuepress@2.0.0-rc.22(@vuepress/bundler-vite@2.0.0-rc.22(@types/node@22.13.1)(jiti@2.4.2)(sass-embedded@1.87.0)(typescript@5.8.3)(yaml@2.7.1))(typescript@5.8.3)(vue@3.5.13(typescript@5.8.3)))
       '@vueuse/shared':
         specifier: 13.0.0
         version: 13.0.0(vue@3.5.13(typescript@5.8.3))
@@ -533,7 +536,7 @@ importers:
         version: 2.0.0-rc.22(@vuepress/bundler-vite@2.0.0-rc.22(@types/node@22.13.1)(jiti@2.4.2)(sass-embedded@1.87.0)(typescript@5.8.3)(yaml@2.7.1))(typescript@5.8.3)(vue@3.5.13(typescript@5.8.3))
       vuepress-theme-hope:
         specifier: 2.0.0-rc.87
-        version: 2.0.0-rc.87(@vue/repl@4.5.1)(@vuepress/plugin-slimsearch@2.0.0-rc.102(typescript@5.8.3)(vuepress@2.0.0-rc.22(@vuepress/bundler-vite@2.0.0-rc.22(@types/node@22.13.1)(jiti@2.4.2)(sass-embedded@1.87.0)(typescript@5.8.3)(yaml@2.7.1))(typescript@5.8.3)(vue@3.5.13(typescript@5.8.3))))(dashjs@4.7.4)(hls.js@1.5.13)(markdown-it@14.1.0)(mermaid@11.6.0)(sass-embedded@1.87.0)(typescript@5.8.3)(vidstack@1.12.12)(vuepress@2.0.0-rc.22(@vuepress/bundler-vite@2.0.0-rc.22(@types/node@22.13.1)(jiti@2.4.2)(sass-embedded@1.87.0)(typescript@5.8.3)(yaml@2.7.1))(typescript@5.8.3)(vue@3.5.13(typescript@5.8.3)))
+        version: 2.0.0-rc.87(@vue/repl@4.5.1)(@vuepress/plugin-slimsearch@2.0.0-rc.102(typescript@5.8.3)(vuepress@2.0.0-rc.22(@vuepress/bundler-vite@2.0.0-rc.22(@types/node@22.13.1)(jiti@2.4.2)(sass-embedded@1.87.0)(typescript@5.8.3)(yaml@2.7.1))(typescript@5.8.3)(vue@3.5.13(typescript@5.8.3))))(@vuepress/plugin-watermark@2.0.0-rc.102(typescript@5.8.3)(vuepress@2.0.0-rc.22(@vuepress/bundler-vite@2.0.0-rc.22(@types/node@22.13.1)(jiti@2.4.2)(sass-embedded@1.87.0)(typescript@5.8.3)(yaml@2.7.1))(typescript@5.8.3)(vue@3.5.13(typescript@5.8.3))))(dashjs@4.7.4)(hls.js@1.5.13)(markdown-it@14.1.0)(mermaid@11.6.0)(sass-embedded@1.87.0)(typescript@5.8.3)(vidstack@1.12.12)(vuepress@2.0.0-rc.22(@vuepress/bundler-vite@2.0.0-rc.22(@types/node@22.13.1)(jiti@2.4.2)(sass-embedded@1.87.0)(typescript@5.8.3)(yaml@2.7.1))(typescript@5.8.3)(vue@3.5.13(typescript@5.8.3)))
 
 packages:
 
@@ -3448,6 +3451,11 @@ packages:
 
   '@vuepress/plugin-theme-data@2.0.0-rc.102':
     resolution: {integrity: sha512-DRTakZUgrTvQBnXr79VpIn4lGt9yKv3drWHOB85FZC1zYttfQcqcuLxxffsSaUKG426DEs6eMOHJUhuQFNZiNg==}
+    peerDependencies:
+      vuepress: 2.0.0-rc.22
+
+  '@vuepress/plugin-watermark@2.0.0-rc.102':
+    resolution: {integrity: sha512-ZgZ3bWkCNsklCHv9BYQZuSNNpfRh4LM3Du0CTEmQTZmlrOv5b5M9WXNaVyAfgGUsU/eju7bVdSj5pTwjd8h1HA==}
     peerDependencies:
       vuepress: 2.0.0-rc.22
 
@@ -8961,6 +8969,9 @@ packages:
   walker@1.0.8:
     resolution: {integrity: sha512-ts/8E8l5b7kY0vlWLewOkDXMmPdLcVV4GmOQLyxuSswIJsweeFZtAsMF7k1Nszz+TYBQrlYRmzOnr398y1JemQ==}
 
+  watermark-js-plus@1.6.1:
+    resolution: {integrity: sha512-7oQdLq/SiNhkj8ViRBQQppvrRs9+nAXsG0j/i8xYIidhDOhljgXEoxm+nf6roLAiAdTYCGC8odSDYGBHJON+wg==}
+
   wcwidth@1.0.1:
     resolution: {integrity: sha512-XHPEwS0q6TaxcvG85+8EYkbiCux2XtWG2mkc47Ng2A77BQu9+DqIOJldST4HgPkuea7dvKSj5VgX3P1d4rW8Tg==}
 
@@ -12229,6 +12240,16 @@ snapshots:
       '@vue/devtools-api': 7.7.6
       vue: 3.5.13(typescript@5.8.3)
       vuepress: 2.0.0-rc.22(@vuepress/bundler-vite@2.0.0-rc.22(@types/node@22.13.1)(jiti@2.4.2)(sass-embedded@1.87.0)(typescript@5.8.3)(yaml@2.7.1))(typescript@5.8.3)(vue@3.5.13(typescript@5.8.3))
+    transitivePeerDependencies:
+      - typescript
+
+  '@vuepress/plugin-watermark@2.0.0-rc.102(typescript@5.8.3)(vuepress@2.0.0-rc.22(@vuepress/bundler-vite@2.0.0-rc.22(@types/node@22.13.1)(jiti@2.4.2)(sass-embedded@1.87.0)(typescript@5.8.3)(yaml@2.7.1))(typescript@5.8.3)(vue@3.5.13(typescript@5.8.3)))':
+    dependencies:
+      '@vuepress/helper': 2.0.0-rc.102(typescript@5.8.3)(vuepress@2.0.0-rc.22(@vuepress/bundler-vite@2.0.0-rc.22(@types/node@22.13.1)(jiti@2.4.2)(sass-embedded@1.87.0)(typescript@5.8.3)(yaml@2.7.1))(typescript@5.8.3)(vue@3.5.13(typescript@5.8.3)))
+      '@vueuse/core': 13.1.0(vue@3.5.13(typescript@5.8.3))
+      vue: 3.5.13(typescript@5.8.3)
+      vuepress: 2.0.0-rc.22(@vuepress/bundler-vite@2.0.0-rc.22(@types/node@22.13.1)(jiti@2.4.2)(sass-embedded@1.87.0)(typescript@5.8.3)(yaml@2.7.1))(typescript@5.8.3)(vue@3.5.13(typescript@5.8.3))
+      watermark-js-plus: 1.6.1
     transitivePeerDependencies:
       - typescript
 
@@ -18725,7 +18746,7 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
-  vuepress-theme-hope@2.0.0-rc.87(@vue/repl@4.5.1)(@vuepress/plugin-slimsearch@2.0.0-rc.102(typescript@5.8.3)(vuepress@2.0.0-rc.22(@vuepress/bundler-vite@2.0.0-rc.22(@types/node@22.13.1)(jiti@2.4.2)(sass-embedded@1.87.0)(typescript@5.8.3)(yaml@2.7.1))(typescript@5.8.3)(vue@3.5.13(typescript@5.8.3))))(dashjs@4.7.4)(hls.js@1.5.13)(markdown-it@14.1.0)(mermaid@11.6.0)(sass-embedded@1.87.0)(typescript@5.8.3)(vidstack@1.12.12)(vuepress@2.0.0-rc.22(@vuepress/bundler-vite@2.0.0-rc.22(@types/node@22.13.1)(jiti@2.4.2)(sass-embedded@1.87.0)(typescript@5.8.3)(yaml@2.7.1))(typescript@5.8.3)(vue@3.5.13(typescript@5.8.3))):
+  vuepress-theme-hope@2.0.0-rc.87(@vue/repl@4.5.1)(@vuepress/plugin-slimsearch@2.0.0-rc.102(typescript@5.8.3)(vuepress@2.0.0-rc.22(@vuepress/bundler-vite@2.0.0-rc.22(@types/node@22.13.1)(jiti@2.4.2)(sass-embedded@1.87.0)(typescript@5.8.3)(yaml@2.7.1))(typescript@5.8.3)(vue@3.5.13(typescript@5.8.3))))(@vuepress/plugin-watermark@2.0.0-rc.102(typescript@5.8.3)(vuepress@2.0.0-rc.22(@vuepress/bundler-vite@2.0.0-rc.22(@types/node@22.13.1)(jiti@2.4.2)(sass-embedded@1.87.0)(typescript@5.8.3)(yaml@2.7.1))(typescript@5.8.3)(vue@3.5.13(typescript@5.8.3))))(dashjs@4.7.4)(hls.js@1.5.13)(markdown-it@14.1.0)(mermaid@11.6.0)(sass-embedded@1.87.0)(typescript@5.8.3)(vidstack@1.12.12)(vuepress@2.0.0-rc.22(@vuepress/bundler-vite@2.0.0-rc.22(@types/node@22.13.1)(jiti@2.4.2)(sass-embedded@1.87.0)(typescript@5.8.3)(yaml@2.7.1))(typescript@5.8.3)(vue@3.5.13(typescript@5.8.3))):
     dependencies:
       '@vuepress/helper': 2.0.0-rc.103(typescript@5.8.3)(vuepress@2.0.0-rc.22(@vuepress/bundler-vite@2.0.0-rc.22(@types/node@22.13.1)(jiti@2.4.2)(sass-embedded@1.87.0)(typescript@5.8.3)(yaml@2.7.1))(typescript@5.8.3)(vue@3.5.13(typescript@5.8.3)))
       '@vuepress/plugin-active-header-links': 2.0.0-rc.98(typescript@5.8.3)(vuepress@2.0.0-rc.22(@vuepress/bundler-vite@2.0.0-rc.22(@types/node@22.13.1)(jiti@2.4.2)(sass-embedded@1.87.0)(typescript@5.8.3)(yaml@2.7.1))(typescript@5.8.3)(vue@3.5.13(typescript@5.8.3)))
@@ -18767,6 +18788,7 @@ snapshots:
       vuepress-shared: 2.0.0-rc.86(typescript@5.8.3)(vuepress@2.0.0-rc.22(@vuepress/bundler-vite@2.0.0-rc.22(@types/node@22.13.1)(jiti@2.4.2)(sass-embedded@1.87.0)(typescript@5.8.3)(yaml@2.7.1))(typescript@5.8.3)(vue@3.5.13(typescript@5.8.3)))
     optionalDependencies:
       '@vuepress/plugin-slimsearch': 2.0.0-rc.102(typescript@5.8.3)(vuepress@2.0.0-rc.22(@vuepress/bundler-vite@2.0.0-rc.22(@types/node@22.13.1)(jiti@2.4.2)(sass-embedded@1.87.0)(typescript@5.8.3)(yaml@2.7.1))(typescript@5.8.3)(vue@3.5.13(typescript@5.8.3)))
+      '@vuepress/plugin-watermark': 2.0.0-rc.102(typescript@5.8.3)(vuepress@2.0.0-rc.22(@vuepress/bundler-vite@2.0.0-rc.22(@types/node@22.13.1)(jiti@2.4.2)(sass-embedded@1.87.0)(typescript@5.8.3)(yaml@2.7.1))(typescript@5.8.3)(vue@3.5.13(typescript@5.8.3)))
       sass-embedded: 1.87.0
     transitivePeerDependencies:
       - '@vue/repl'
@@ -18810,6 +18832,8 @@ snapshots:
   walker@1.0.8:
     dependencies:
       makeerror: 1.0.12
+
+  watermark-js-plus@1.6.1: {}
 
   wcwidth@1.0.1:
     dependencies:
