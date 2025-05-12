@@ -14,6 +14,9 @@ export interface GitCommitLinterOptions {
   scopes?: string[]
 }
 
+/**
+ * Git Commit信息校验结果
+ */
 export interface GitCommitLinter extends GitCommit {
   commit: string
 }

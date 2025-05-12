@@ -1,6 +1,6 @@
 import type { GitCommitLinter, GitCommitLinterOptions } from './git-commit.interface'
 import { VipColor, VipConsole, VipGit, vipLogger, VipNodeJS } from '@142vip/utils'
-import { name } from '../package.json'
+import { name } from '../../package.json'
 import { printStandardCommitMessage } from './commit-template'
 import { GIT_COMMIT_DEFAULT_SCOPES, GIT_COMMIT_DEFAULT_TYPES } from './git-commit-type'
 

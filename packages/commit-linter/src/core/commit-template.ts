@@ -1,10 +1,9 @@
 import { VipColor, VipConsole, vipLogger } from '@142vip/utils'
-import { name } from '../package.json'
+import { name } from '../../package.json'
 import { gitCommitTypes } from './git-commit-type'
+
 /**
  * 打印错误信息
- */
-/**
  * 打印标准的Git Commit信息模板
  */
 export function printStandardCommitMessage(message?: string): void {
