@@ -43,6 +43,8 @@ export enum OPEN_SOURCE_ADDRESS {
 
   // 域名
   HOME_PAGE_DOMAIN_VIP = 'https://142vip.cn',
+  HOME_PAGE_DOMAIN_408 = 'https://408.142vip.cn',
+  // HOME_PAGE_DOMAIN_JSC = 'https://js.142vip.cn',
 
   // 证书
   LICENCE_GITHUB = 'https://github.com/142vip/LICENSE',
