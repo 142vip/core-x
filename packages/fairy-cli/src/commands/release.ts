@@ -47,7 +47,6 @@ async function execNormalRelease(args: ReleaseOptions): Promise<void> {
   // 指定包
   if (args.package != null) {
     const packageJSONList = VipMonorepo.getPackageJSONPathList()
-    // const packageJSONList: string[] = []
     if (!packageJSONList.includes(`${args.package}/package.json`)) {
       // 抛错，提醒用户包在monorepo下找不到
       VipConsole.log(VipColor.red('需要发布的包的package.json文件缺失！！'))
@@ -171,7 +170,7 @@ async function printPkgCommitLogs(pnpmFilter?: string | string[]): Promise<void>
       vipLogger.logByBlank(`${VipPackageJSON.getPkgRedLabel(pkgName)} ${VipColor.red('模块没有任何版本迭代信息！！')}`)
     }
     else {
-      VipConsole.log(`${VipPackageJSON.getPkgRedLabel(pkgName)} ${VipColor.green('模块的版本迭代信息：')}`)
+      vipLogger.logByBlank(`${VipPackageJSON.getPkgRedLabel(pkgName)} ${VipColor.green('模块的版本迭代信息：')}`)
       vipLogger.logByBlank(VipColor.green(commits.map(c => ` - ${c}`).join('\n')))
     }
   }

@@ -53,20 +53,23 @@ async function requestSync(packageName: string): Promise<void> {
   //
   // }
 
-  const { ok, id: logId } = await response.json() as RequestSync
+  const responseJSON = await response.json() as RequestSync
 
-  if (!ok) {
-    VipConsole.log(`requestSync--json : ${await response.json()}`)
-    VipNodeJS.exitProcess(1)
+  if (!responseJSON.ok) {
+    VipConsole.log(`requestSync--json : ${responseJSON}`)
+    VipNodeJS.existErrorProcess()
   }
   setTimeout(async () => {
-    const logUrl = await getPackageSyncLogUrl(packageName, logId)
+    const logUrl = await getPackageSyncLogUrl(packageName, responseJSON.id)
     if (logUrl != null) {
       await getPackageSyncLog(logUrl)
     }
   }, 2000)
 }
 
+/**
+ * 同步的状态
+ */
 interface SyncState {
   ok: boolean
   id: string
@@ -88,7 +91,7 @@ async function getPackageSyncLogUrl(packageName: string, logId: string): Promise
     return stateRes.logUrl
   }
   vipLogger.error(`getPackageSyncState-->err:${stateRes}`)
-  VipNodeJS.exitProcess(1)
+  VipNodeJS.existErrorProcess()
   return null
 }
 

@@ -1,5 +1,8 @@
 import type { VipCommanderDetailRecord } from '@142vip/utils'
 
+/**
+ * fairy-cli 命令枚举
+ */
 export enum CommandEnum {
   LOGIN = 'login',
   RELEASE = 'release',
@@ -15,6 +18,9 @@ export enum CommandEnum {
   COMMIT = 'commit',
 }
 
+/**
+ * 命令详细信息
+ */
 export const CLI_COMMAND_DETAIL: VipCommanderDetailRecord<CommandEnum> = {
   [CommandEnum.LOGIN]: {
     command: 'login',

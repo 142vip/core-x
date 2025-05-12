@@ -2,7 +2,6 @@ import type { VipCommander } from '@142vip/utils'
 import {
   RegistryAddressEnum,
   VipColor,
-  VipConsole,
   VipExecutor,
   VipInquirer,
   vipLogger,
@@ -26,9 +25,7 @@ async function publishNpm(args: PublishOptions): Promise<void> {
   const command = `npm publish --access public --registry=${args.registry ?? RegistryAddressEnum.NPM}`
 
   if (args.dryRun) {
-    vipLogger.println()
-    VipConsole.log(`试运行，不执行发布命令：${VipColor.green(command)}`)
-    vipLogger.println()
+    vipLogger.logByBlank(`试运行，不执行发布命令：${VipColor.green(command)}`)
   }
   else {
     await VipExecutor.commandStandardExecutor(command)

@@ -1,12 +1,18 @@
 import type { VipCommander } from '@142vip/utils'
-import { VipColor, VipConsole, VipDocker, VipInquirer, vipLogger } from '@142vip/utils'
+import { VipColor, VipDocker, VipInquirer, vipLogger } from '@142vip/utils'
 import { CLI_COMMAND_DETAIL, CommandEnum } from '../enums'
 
+/**
+ * 支持的登录平台枚举
+ */
 enum LoginPlatformEnum {
   DOCKER = 'DOCKER',
   NPM = 'NPM',
 }
 
+/**
+ * 支持的注册地址枚举
+ */
 enum RegistryURLEnum {
   DOCKER = 'https://registry.docker.io',
   NPM = 'https://registry.npmjs.org',
@@ -37,9 +43,7 @@ async function loginDocker(): Promise<void> {
 async function loginNpm(): Promise<void> {
   const registry = await VipInquirer.promptInput(`请输入NPM地址：`, RegistryURLEnum.NPM)
   const command = `npm login --registry ${registry}`
-  vipLogger.println()
-  VipConsole.log(`${VipColor.red('请粘贴到终端执行，NPM登录命令：')} ${VipColor.green(command)}`)
-  vipLogger.println()
+  vipLogger.logByBlank(`${VipColor.red('请粘贴到终端执行，NPM登录命令：')} ${VipColor.green(command)}`)
 }
 
 /**

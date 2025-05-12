@@ -31,6 +31,11 @@ interface CleanUpOptions extends DelOptions {
   gitHooks?: boolean
 }
 
+/**
+ * 生成删除目录匹配规则
+ * @param dirName 目录名
+ * @param delAll 是否深度删除，子目录中的文件也会被删除
+ */
 function generateDirPatterns(dirName: string | string[], delAll?: boolean): string[] {
   let delDirs: string[] = []
 
@@ -102,7 +107,7 @@ async function execCleanUp(args: CleanUpOptions): Promise<void> {
 
   if (dirPatterns.length === 0) {
     vipLogger.log(VipColor.red('删除规则为空，不做删除操作处理，请传入有效参数！！'))
-    return VipNodeJS.exitProcess(1)
+    return VipNodeJS.existErrorProcess()
   }
 
   // 删除前，对话框确认
@@ -111,7 +116,7 @@ async function execCleanUp(args: CleanUpOptions): Promise<void> {
 
     // 不删除，非0退出
     if (!deleted) {
-      return VipNodeJS.exitProcess(1)
+      return VipNodeJS.existErrorProcess()
     }
   }
 

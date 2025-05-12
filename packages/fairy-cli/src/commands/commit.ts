@@ -18,6 +18,9 @@ import { CLI_COMMAND_DETAIL, CommandEnum } from '../enums'
 
 const GIT_NULL_SCOPE = '没有范围，那就选这个！！！'
 
+/**
+ * commit子命令配置
+ */
 interface CommitOptions {
   /**
    * 试运行
@@ -71,7 +74,7 @@ async function execVipCodeCommit(args: CommitOptions): Promise<void> {
   const isYes = await VipInquirer.promptConfirm(`Git Commit信息：${VipColor.red(commitMsg)}，是否继续提交${VipColor.bold('所有变更')}？`, true)
   if (!isYes) {
     vipLogger.logByBlank(`${VipColor.redBright('用户取消提交，欢迎下次使用')}`)
-    VipNodeJS.exitProcess(1)
+    VipNodeJS.existErrorProcess()
   }
 
   // 校验

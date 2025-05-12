@@ -22,22 +22,27 @@ npx fa -v
 ```text
 Usage: @142vip/fairy-cli [options] [command]
 
+通用型Cli助手、一站式工具，支持多种命令操作
+
 Options:
-  -v --version                   output the version number
-  -h, --help                     display help for command
+  -v,--version                    VipCommander Version By @142vip
+  -h, --help                      display help for command
 
 Commands:
-  login [options] <platform>     登录远程平台，支持Docker和Npm
-  install|i [options]            pnpm ci dependencies
-  release [options]              release npm version
-  changelog [options]            快速使用@142vip/changelog模块
-  publish [options]              publish to remote platform，eg. Docker Image & Npm Package
-  sync [packageNames...]         同步npm仓库的模块包到cnpm仓库
-  deploy [options]               项目部署
-  lint [options]                 根据Eslint检查代码风格，支持代码格式化
-  turbo [options] [repoName...]  TurboPack工具命令
-  clean [options]                清除开发、构建等环境下的无用目录
-  help [command]                 display help for command
+  login|l [options]               登录平台
+  install|i [options]             安装依赖
+  release|re [options]            发布新的版本
+  changelog|c [options]           生成CHANGELOG文档
+  publish|p [options]             远程镜像推送
+  sync|s [options] [packageName]  同步NPM包
+  deploy|de [options]             项目部署
+  lint|li [options]               根据Eslint检查、格式化代码风格
+  turbo|t [options] [filters...]  通用型TurboPack管理工具
+  clean|cl [options]              快速清理项目
+  copyright|cr [options]          软件著作权登记的源代码文档生成
+  commit|co [options] [vip]       Git Commit 提交信息
+  help [command]                  display help for command
+
 ```
 
 ### copyright命令
@@ -190,8 +195,12 @@ npx fa clean --deps --ignore-tips --all
 
 ## 相关
 
-- [rimraf](https://www.npmjs.com/package/rimraf)
 - [del](https://www.npmjs.com/package/del)
+- [turbo](https://www.npmjs.com/package/turbo)
+- [@142vip/changelog](https://www.npmjs.com/package/@142vip/changelog)
+- [@142vip/commit-linter](https://www.npmjs.com/package/@142vip/commit-linter)
+- [@142vip/release-version](https://www.npmjs.com/package/@142vip/release-version)
+- [@142vip/utils](https://www.npmjs.com/package/@142vip/utils)
 
 ## 证书
 

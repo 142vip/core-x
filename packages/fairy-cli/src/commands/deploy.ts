@@ -17,6 +17,7 @@ function DeployGithubPage() {}
 
 /**
  * deploy命令
+ * - 支持部署github pages
  */
 export async function deployMain(program: VipCommander): Promise<void> {
   program

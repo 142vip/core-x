@@ -25,18 +25,22 @@ enum TurboPackCommandModeEnum {
 
 /**
  * 执行turbo命令
+ * @param repoNames 子模块名
+ * @param args turbo 命令参数
  */
 async function execTurboPack(repoNames: string[], args: TurboPackOptions): Promise<void> {
   // 判断当前目录下是否有turbo.json配置文件
   if (!VipNodeJS.isExistFile('turbo.json')) {
     VipConsole.log(VipColor.red('项目根目录下缺少turbo.json配置文件，查看Turborepo官网：<https://turbo.build/repo/docs>'))
-    VipNodeJS.exitProcess(1)
+    VipNodeJS.existErrorProcess()
   }
 
   const command = `${args.mode} ${getFilterRepo(repoNames)} --color --only`
   if (args.logger) {
     VipConsole.log(VipColor.yellow(`执行命令：${command}`))
   }
+
+  // 命令执行
   await VipExecutor.commandStandardExecutor(command)
 }
 
@@ -64,7 +68,7 @@ export async function turboPackMain(program: VipCommander): Promise<void> {
       const turboVersion = await VipNpm.getTurboPackVersion()
       if (turboVersion == null) {
         vipLogger.error('未检测到TurboPack环境，请全局安装turbo。命令：npm i -g turbo')
-        VipNodeJS.exitProcess(1)
+        VipNodeJS.existErrorProcess()
       }
       if (filters.length === 0) {
         const apps = await VipNpm.getTurboPackApps()

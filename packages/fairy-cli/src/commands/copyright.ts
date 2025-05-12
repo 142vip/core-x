@@ -35,8 +35,7 @@ export async function copyrightMain(program: VipCommander): Promise<void> {
         VipConsole.log(VipColor.dim(`源代码扫描目录：${sourceCodeDir}`))
         VipConsole.log(VipColor.dim(`源代码编程语言类型：${fileType}`))
         vipLogger.println()
-        // VipConsole.log(VipColor.red('著作权申请的一些小建议：'))
-        VipNodeJS.exitProcess(1)
+        VipNodeJS.existErrorProcess()
       }
 
       const vipCopyright = new VipCopyright(copyrightTitle, copyrightVersion, {
