@@ -1,12 +1,104 @@
-import type { ThemeOptions } from 'vuepress-theme-hope'
+import type { PluginsOptions, ThemeOptions } from 'vuepress-theme-hope'
 import path from 'node:path'
 import process from 'node:process'
+import { OPEN_SOURCE_AUTHOR } from '@142vip/utils'
+import { slimSearchCNLocals } from '@142vip/vuepress'
 import { hopeTheme } from 'vuepress-theme-hope'
-import { i18n } from './i18n'
-import { baseThemePluginOptions } from './theme-plugins'
 
-const baseThemeConfig: ThemeOptions = {
-  locales: i18n,
+/**
+ * 主题中插件的一些配置
+ */
+export const baseThemePluginOptions: PluginsOptions = {
+
+  // comment:{
+  //   provider: "Artalk",
+  //   server:"https://test.142vip.cn/",
+  //   site:'JavaScriptCollection',
+  // },
+
+  // 公告 参考：https://theme-hope.vuejs.press/zh/guide/feature/notice.html
+  // notice: [
+  //   {
+  //     path: '/',
+  //     title: '在线浏览',
+  //     content: '网站无法访问时，建议通过科学上网访问备用网络',
+  //     actions: [
+  //       {
+  //         text: '尝鲜版',
+  //         link: 'https://142vip.github.io/JavaScriptCollection',
+  //         type: 'default',
+  //       },
+  //       {
+  //         text: '稳定版',
+  //         link: 'https://code.142vip.cn',
+  //         type: 'primary',
+  //       },
+  //     ],
+  //     fullscreen: false,
+  //   },
+  // ],
+
+  // 阅读时间
+  readingTime: {
+    wordPerMinute: 100,
+  },
+  // 水印
+  watermark: {
+    enabled: false,
+  },
+  copyright: false,
+  // 开启博客功能
+  blog: false,
+  // 图片增强，参考：https://ecosystem.vuejs.press/zh/plugins/markdown/markdown-image.html
+  // markdownImage: markdownImagePlugin({
+  //   // 启用 figure
+  //   figure: true,
+  //   // 启用图片懒加载
+  //   lazyload: true,
+  //   // 启用图片标记
+  //   mark: true,
+  //   // 启用图片大小
+  //   size: true,
+  // }),
+  copyCode: {
+    showInMobile: true,
+  },
+  // 不自动生成README目录
+  catalog: false,
+  // 参考：https://theme-hope.vuejs.press/zh/guide/markdown/components.html
+  // components: {
+  //   components: [
+  //     'Badge',
+  //     'BiliBili',
+  //     'CodePen',
+  //     'PDF',
+  //     'StackBlitz',
+  //     'VidStack',
+  //     'Share',
+  //     'XiGua',
+  //   ],
+  // },
+  slimsearch: {
+    // 参考：https://ecosystem.vuejs.press/zh/plugins/search/slimsearch.html
+    locales: {
+      '/': slimSearchCNLocals,
+    },
+  },
+  nprogress: true,
+  // 开发环境，开启git记录
+  git: true,
+}
+
+/**
+ * 基础主题配置
+ */
+const baseThemeOptions: ThemeOptions = {
+  // 多语言配置
+  // locales: {
+  //   '/': {
+  //     lang: 'zh-CN',
+  //   },
+  // },
   // navbarIcon: false,
   // 在深色模式和浅色模式之间切换
   darkmode: 'toggle',
@@ -30,11 +122,8 @@ const baseThemeConfig: ThemeOptions = {
   // 打印按钮
   print: false,
   hostname: 'https://142vip.cn',
-  // author: {
-  //   name: '',
-  //   email: '',
-  //   url: '',
-  // },
+  // 默认作者，https://theme-hope.vuejs.press/zh/config/theme/basic.html#author
+  author: OPEN_SOURCE_AUTHOR,
   favicon: '/favicon.ico',
   logo: '/favicon.icon',
 
@@ -60,6 +149,11 @@ const baseThemeConfig: ThemeOptions = {
   // repoLabel: 'GitHub',
   // 是否在导航栏内显示仓库链接，默认为 `true`
   repoDisplay: true,
+
+  // https://ecosystem.vuejs.press/zh/plugins/development/git.html#changelog
+  changelog: true,
+  contributors: 'content',
+
   // 主题色选择器
   themeColor: true,
   // 是否显示外部链接图标
@@ -72,7 +166,11 @@ const baseThemeConfig: ThemeOptions = {
   //   version: '',
   // }),
   // copyright: getCopyRightText(''),
+
+  // 插件配置
   plugins: baseThemePluginOptions,
+
+  // 文档配置
   markdown: {
     // 支持任务列表
     tasklist: true,
@@ -102,7 +200,6 @@ const baseThemeConfig: ThemeOptions = {
         'jsonc',
         'jsx',
         'lua',
-        'shellscript',
         'diff',
         'c',
         'c++',
@@ -129,7 +226,7 @@ const baseThemeConfig: ThemeOptions = {
  */
 export function getVipHopeTheme(userConfig: ThemeOptions) {
   return hopeTheme({
-    ...baseThemeConfig,
+    ...baseThemeOptions,
     ...userConfig,
     plugins: {
       ...baseThemePluginOptions,
