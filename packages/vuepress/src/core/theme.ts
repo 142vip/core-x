@@ -1,7 +1,6 @@
 import type { PluginsOptions, ThemeOptions } from 'vuepress-theme-hope'
 import path from 'node:path'
 import process from 'node:process'
-import { OPEN_SOURCE_AUTHOR } from '@142vip/utils'
 import { slimSearchCNLocals } from '@142vip/vuepress'
 import { hopeTheme } from 'vuepress-theme-hope'
 
@@ -123,7 +122,7 @@ const baseThemeOptions: ThemeOptions = {
   print: false,
   hostname: 'https://142vip.cn',
   // 默认作者，https://theme-hope.vuejs.press/zh/config/theme/basic.html#author
-  author: OPEN_SOURCE_AUTHOR,
+  // author: OPEN_SOURCE_AUTHOR,
   favicon: '/favicon.ico',
   logo: '/favicon.icon',
 
