@@ -1,9 +1,8 @@
-import { getDocSiteBase, OPEN_SOURCE_AUTHOR, VipPackageJSON } from '@142vip/utils'
+import { getDocSiteBase, GitGeneralBranch, OPEN_SOURCE_AUTHOR, VipPackageJSON } from '@142vip/utils'
 import {
   defineVipNavbarConfig,
   defineVipSidebarConfig,
   defineVipVuepressConfig,
-  exampleHeaders,
   getCopyRightText,
   getFooterHtml,
   getVipHopeTheme,
@@ -16,7 +15,7 @@ const pkg = VipPackageJSON.getPackageJSON<{ description: string }>()
  * 导航栏
  */
 export const navbarConfig = defineVipNavbarConfig([
-  { text: '🌐 首页', link: '/' },
+  { text: '🔥 首页', link: '/' },
   {
     text: '💻 示例文档',
     children: [
@@ -33,8 +32,12 @@ export const navbarConfig = defineVipNavbarConfig([
         text: '开源博客',
         children: [
           {
-            text: '🤡 408CSFamily',
-            link: 'https://142vip-cn.feishu.cn/share/base/view/shrcnuuRDWBoHLmYaknXWFuhR4d',
+            text: '🤡 Core-X',
+            link: 'https://142vip.github.io/core-x/',
+          },
+          {
+            text: '📙 408CSFamily',
+            link: 'https://142vip.github.io/408CSFamily/',
           },
           {
             text: '📘 JavaScriptCollection',
@@ -66,14 +69,21 @@ export const sidebarConfig = defineVipSidebarConfig({
 })
 
 export default defineVipVuepressConfig({
+  locales: {
+    '/': {
+      lang: 'zh-CN',
+    },
+  },
   base: getDocSiteBase(''),
   title: pkg.name,
   description: pkg.description,
   port: 5200,
-  head: exampleHeaders,
+  // 默认会给
+  // head: [
+  //   ['link', { rel: 'icon', href: 'favicon.ico' }],
+  // ],
   source: '',
   markdown: {
-    // todo 引入代码文件时的路径替换 https://vuejs.press/zh/guide/markdown.html#%E5%AF%BC%E5%85%A5%E4%BB%A3%E7%A0%81%E5%9D%97
     importCode: {
       handleImportPath: handleImportCodePath([
         ['@code', 'code/'],
@@ -102,10 +112,14 @@ export default defineVipVuepressConfig({
     repoLabel: 'GitHub',
 
     // 文档路径，开启编辑功能
-    // docsDir: 'docs',
-    // docsBranch: 'next',
+    docsDir: 'docs',
+    docsBranch: GitGeneralBranch.NEXT,
     // // 主题布局选项
     // docsRepo: RepoAddress,
+
+    changelog: true,
+    contributors: true,
+
     plugins: {
       // 水印
       watermark: {
@@ -116,7 +130,4 @@ export default defineVipVuepressConfig({
       },
     },
   }),
-  // // 插件配置
-  // ...pluginConfig,
-  shouldPrefetch: false,
 })
