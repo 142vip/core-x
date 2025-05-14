@@ -16,6 +16,7 @@ export default defineVipTypedocConfig({
     'packages/oauth',
     'packages/redis',
     'packages/release-version',
+    'packages/open-source',
     'packages/typeorm',
     'packages/utils',
   ],

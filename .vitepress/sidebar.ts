@@ -20,6 +20,7 @@ export const sidebarConfig: SidebarConfig = [
       { text: '@142vip/changelog', link: '/packages/changelog/index.md' },
       { text: '@142vip/release-version', link: '/packages/release-version/index.md' },
       { text: '@142vip/eslint-config', link: '/packages/eslint-config/index.md' },
+      { text: '@142vip/open-source', link: '/packages/open-source/index.md' },
       { text: '@142vip/commit-linter', link: '/packages/commit-linter/index.md' },
     ],
   },

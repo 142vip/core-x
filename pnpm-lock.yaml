@@ -337,6 +337,8 @@ importers:
         specifier: workspace:*
         version: link:../utils
 
+  packages/open-source: {}
+
   packages/redis:
     dependencies:
       ioredis:

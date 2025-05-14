@@ -1,0 +1,48 @@
+{
+  "name": "@142vip/open-source",
+  "type": "module",
+  "private": false,
+  "description": "开源相关的常量、枚举、变量等汇总",
+  "author": "mmdapl <mmdapl@163.com>",
+  "license": "MIT",
+  "homepage": "https://142vip.github.io/core-x/packages/open-source/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/142vip/core-x.git",
+    "directory": "packages/open-source"
+  },
+  "keywords": [
+    "公众号搜：储凡",
+    "142vip",
+    "@142vip",
+    "@142vip/open-source"
+  ],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "unbuild",
+    "typecheck": "tsc --noEmit"
+  },
+  "authorInfo": {
+    "name": "微信公众号：储凡",
+    "email": "fairy_vip@2925.com",
+    "url": "https://github.com/142vip",
+    "homePage": "https://142vip.cn"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  }
+}
