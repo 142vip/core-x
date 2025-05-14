@@ -1,14 +1,24 @@
-import type { NavbarConfig } from '@142vip/vitepress'
-import { getDocSiteBase, OPEN_SOURCE_ADDRESS, VipNodeJS } from '@142vip/utils'
-import { defineVipVitepressConfig, getVipFooter, getVipThemeConfig, zhSearch } from '@142vip/vitepress'
+import { getDocSiteBase, OPEN_SOURCE_ADDRESS, VipNodeJS, VipPackageJSON } from '@142vip/utils'
+import {
+  defineVipNavbarConfig,
+  defineVipVitepressConfig,
+  getVipFooter,
+  getVipThemeConfig,
+  zhSearch,
+} from '@142vip/vitepress'
 import typedocSidebar from '../docs/apis/typedoc-sidebar.json'
-import { name as pkgName, version as pkgVersion } from '../package.json'
 import { getChangelogsSidebar, sidebarConfig } from './sidebar'
+
+// package.json 读取
+const pkg = VipPackageJSON.getPackageJSON<{ description: string }>()
+
+// 站点的base路径
+const siteBase = getDocSiteBase('core-x')
 
 /**
  * 导航栏
  */
-const navbarConfig: NavbarConfig = [
+const navbarConfig = defineVipNavbarConfig([
   {
     text: '🔥 首页',
     link: '/docs/index.md',
@@ -26,7 +36,7 @@ const navbarConfig: NavbarConfig = [
     link: '/changelogs/core-x/changelog.md',
   },
   {
-    text: `⚡ ${pkgVersion}`,
+    text: `⚡ ${pkg.version}`,
     items: [
       {
         text: '🎉 历史版本',
@@ -42,10 +52,7 @@ const navbarConfig: NavbarConfig = [
       },
     ],
   },
-]
-
-// 站点的base路径
-const siteBase = getDocSiteBase('core-x')
+])
 
 /**
  * 所有配置
@@ -70,7 +77,7 @@ export default defineVipVitepressConfig({
     ['meta', { property: 'og:url', content: 'https://github.com/142vip/core-x' }],
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:title', content: '@142vip/core-x' }],
-    ['meta', { property: 'og:description', content: `${pkgName} - 一切都有可能` }],
+    ['meta', { property: 'og:description', content: `${pkg.name} - 一切都有可能` }],
     // 注意：这里处理下路径
     ['link', { rel: 'icon', href: `${siteBase}favicon.ico` }],
   ],
@@ -116,8 +123,8 @@ export default defineVipVitepressConfig({
     // 页脚
     footer: getVipFooter({
       license: OPEN_SOURCE_ADDRESS.LICENCE_CORE_X,
-      pkgName,
-      pkgVersion,
+      pkgName: pkg.name,
+      pkgVersion: pkg.version,
       orgLink: OPEN_SOURCE_ADDRESS.HOME_PAGE_GITHUB_VIP,
       ownerLink: OPEN_SOURCE_ADDRESS.HOME_PAGE_GITHUB_MMDAPL,
     }),

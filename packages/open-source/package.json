@@ -1,6 +1,7 @@
 {
   "name": "@142vip/open-source",
   "type": "module",
+  "version": "0.0.1-alpha.0",
   "private": false,
   "description": "开源相关的常量、枚举、变量等汇总",
   "author": "mmdapl <mmdapl@163.com>",

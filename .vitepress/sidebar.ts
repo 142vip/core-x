@@ -1,4 +1,5 @@
 import type { SidebarConfig, VipPackageJSON, VipProject } from '@142vip/vitepress'
+import { defineVipSidebarConfig } from '@142vip/vitepress'
 
 enum ProjectId {
   Tools = '通用工具',
@@ -12,7 +13,7 @@ enum ProjectId {
 /**
  * 侧边栏
  */
-export const sidebarConfig: SidebarConfig = [
+export const sidebarConfig = defineVipSidebarConfig([
   {
     text: `🏆 ${ProjectId.Infra}`,
     items: [
@@ -73,7 +74,7 @@ export const sidebarConfig: SidebarConfig = [
       { text: 'vuepress-demo', link: '/apps/vuepress-demo/index.md' },
     ],
   },
-]
+])
 
 /**
  * 获取基本包信息
