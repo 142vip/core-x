@@ -142,6 +142,8 @@ async function execRelease(args: ReleaseMainOptions): Promise<void> {
   // 检查包是否需要发布，弹出对话框，是否查看某个包信息
   if (args.checkRelease) {
     await printPkgCommitLogs(args.filter)
+    // 安全退出
+    VipNodeJS.existSuccessProcess()
   }
 
   // @142vip 组织专用Release
@@ -155,10 +157,11 @@ async function execRelease(args: ReleaseMainOptions): Promise<void> {
 }
 
 /**
- * 打印某个包的Git Commit信息
+ * 打印某个子包的Git Commit信息
  */
 async function printPkgCommitLogs(pnpmFilter?: string | string[]): Promise<void> {
   const isCheck = await VipInquirer.promptConfirm(`是否需要选择查看当前仓库特定模块的提交信息？`, false)
+  // 预先检查子模块
   if (isCheck) {
     const pkgName = await VipInquirer.promptSearch(
       `请选择需要查看的模块：`,
@@ -170,17 +173,45 @@ async function printPkgCommitLogs(pnpmFilter?: string | string[]): Promise<void>
       vipLogger.logByBlank(`${VipPackageJSON.getPkgRedLabel(pkgName)} ${VipColor.red('模块没有任何版本迭代信息！！')}`)
     }
     else {
-      vipLogger.logByBlank(`${VipPackageJSON.getPkgRedLabel(pkgName)} ${VipColor.green('模块的版本迭代信息：')}`)
-      vipLogger.logByBlank(VipColor.green(commits.map(c => ` - ${c}`).join('\n')))
+      vipLogger.logByBlank(`${VipPackageJSON.getPkgRedLabel(pkgName)} ${VipColor.green('模块的版本迭代信息（待发布版本：绿色，已发布版本：灰色）：')}`)
+      printSplitPkgCommitLogs(pkgName, commits)
     }
   }
-
-  // 预先检查子模块
   else {
     const packageNames = VipMonorepo.getPkgNames(pnpmFilter)
     await printPreCheckRelease(packageNames)
   }
+}
 
-  // 安全退出
-  VipNodeJS.existSuccessProcess()
+/**
+ * 分割子模块的Git Commit信息，打印
+ * @param pkgName 子模块名称
+ * @param commits 提价信息
+ */
+function printSplitPkgCommitLogs(pkgName: string, commits: string[]): void {
+  const splitPkgCommits = commits.reduce<string[][]>((acc, item) => {
+    if (item.startsWith('release')) {
+      acc.push([item]) // 遇到 release 创建新数组
+    }
+    else {
+      // 确保 acc 不为空
+      if (acc.length === 0) {
+        acc.push([]) // 如果没有 release，先创建一个空数组
+      }
+      acc[acc.length - 1].push(item) // 将非 release 项添加到最后一个数组
+    }
+    return acc
+  }, [])
+
+  // 构建打印信息，新版本为绿色，旧版本为灰色
+  let commitMsgStr = ''
+  for (const [index, commitsByVersion] of splitPkgCommits.entries()) {
+    const msg = (index === 0 && !commitsByVersion.toString().includes(`release(${pkgName})`))
+      ? VipColor.green(commitsByVersion.map(c => ` - ${c}`).join('\n'))
+      : VipColor.gray(commitsByVersion.map(c => ` - ${c}`).join('\n'))
+
+    commitMsgStr += `${msg}\n`
+  }
+
+  vipLogger.logByBlank(commitMsgStr)
 }
