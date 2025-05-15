@@ -39,6 +39,7 @@
 - [`@142vip/nest-redis`](https://www.npmjs.com/package/@142vip/nest-redis)
 - [`@142vip/nest-typeorm`](https://www.npmjs.com/package/@142vip/nest-typeorm)
 - [`@142vip/oauth`](https://www.npmjs.com/package/@142vip/oauth)
+- [`@142vip/open-source`](https://www.npmjs.com/package/@142vip/open-source)
 - [`@142vip/redis`](https://www.npmjs.com/package/@142vip/redis)
 - [`@142vip/release-version`](https://www.npmjs.com/package/@142vip/release-version)
 - [`@142vip/typeorm`](https://www.npmjs.com/package/@142vip/typeorm)

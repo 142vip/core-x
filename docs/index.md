@@ -10,7 +10,7 @@ hero:
       text: 快速开始 🚀
       link: /packages/fairy-cli/index.html
     - theme: alt
-      text: 🤡 408CSFamily
+      text: 📙 408CSFamily
       link: https://github.com/142vip/408CSFamily
     - theme: alt
       text: 📘 JavaScriptCollection
