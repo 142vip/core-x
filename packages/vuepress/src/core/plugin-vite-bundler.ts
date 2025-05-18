@@ -1,9 +1,9 @@
 import viteBundler from '@vuepress/bundler-vite'
 
 /**
- * 获取vite编译
+ * 获取默认的vite编译配置
  */
-export function getVipViteBundler() {
+export function getVuepressDefaultViteBundler() {
   return viteBundler({
     viteOptions: {
       build: {

@@ -1,8 +1,8 @@
 import type { PluginsOptions, ThemeOptions } from 'vuepress-theme-hope'
 import path from 'node:path'
 import process from 'node:process'
-import { slimSearchCNLocals } from '@142vip/vuepress'
 import { hopeTheme } from 'vuepress-theme-hope'
+import { slimSearchCNLocals } from './core/plugin-slim-search'
 
 /**
  * 主题中插件的一些配置

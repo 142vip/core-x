@@ -11,18 +11,25 @@ pnpm i @142vip/vuepress -D
 
 ## 配置
 
+在根目录新建`vuepress.config.ts`文件，配置参考：
+
 ```ts
 import {
   defineVipVuepressConfig,
   getVipHopeTheme,
-  getVipViteBundler,
-
   handleImportCodePath,
 } from '@142vip/vuepress'
 
 export default defineVipVuepressConfig({
   // 基础配置
   // ...
+
+  // 支持中文
+  locales: {
+    '/': {
+      lang: 'zh-CN',
+    },
+  },
 
   // markdown配置
   markdown: {
@@ -41,10 +48,12 @@ export default defineVipVuepressConfig({
   theme: getVipHopeTheme({
     // 一些主题配置
     // ...
+
+    // changelog和贡献者
+    // changelog: true,
+    // contributors: true,
+
   }),
-  // 编译
-  bundler: getVipViteBundler(),
-  shouldPrefetch: false,
 })
 ```
 

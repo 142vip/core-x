@@ -1,7 +1,7 @@
 import type { UserConfig } from '@vuepress/cli'
 import type { NavbarOptions, SidebarOptions } from 'vuepress-theme-hope'
 import { navbar, sidebar } from 'vuepress-theme-hope'
-import { getVipViteBundler } from './plugin-vite-bundler'
+import { getVuepressDefaultViteBundler } from './core/plugin-vite-bundler'
 
 /**
  * 用户配置
@@ -20,7 +20,7 @@ export function defineVipVuepressConfig(config: VipVuepressUserConfig): VipVuepr
 
   // 默认vite编译
   if (config.bundler == null) {
-    config.bundler = getVipViteBundler()
+    config.bundler = getVuepressDefaultViteBundler()
   }
 
   // 配置ico
