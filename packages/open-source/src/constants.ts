@@ -59,6 +59,26 @@ export enum OPEN_SOURCE_ADDRESS {
   LICENCE_GITHUB = 'https://github.com/142vip/LICENSE',
   LICENCE_CORE_X = 'https://github.com/142vip/core-x/blob/main/LICENSE',
   LICENCE_OAUTH = 'https://github.com/142vip/142vip-oauth/blob/main/LICENSE',
+
+  // 百度统计
+  BAIDU_STATISTICS_URL = 'https://tongji.baidu.com/web/welcome/login',
+  BAIDU_STATISTICS_NAME = '百度统计',
+  // 备案
+  BEI_AN_NAME = '鄂ICP备17025193号-1',
+  BEI_AN_URL = 'https://beian.miit.gov.cn/#/Integrated/index',
+
+  // doc site站点
+  SITE_DEPLOY_CORE_X_GITHUB = 'https://142vip.github.io/core-x',
+  SITE_DEPLOY_CORE_X_VERCEL = 'https://pkg-x.vercel.app',
+  SITE_DEPLOY_CORE_X_NETLIFY = 'https://pkg-x.netlify.app',
+
+  SITE_DEPLOY_JavaScriptCollection_GITHUB = 'https://142vip.github.io/JavaScriptCollection',
+  SITE_DEPLOY_JavaScriptCollection_VERCEL = 'https://js-collection.netlify.app',
+  SITE_DEPLOY_JavaScriptCollection_NETLIFY = 'https://js-collection.vercel.app',
+
+  SITE_DEPLOY_408CS_FAMILY_GITHUB = 'https://142vip.github.io/408CSFamily',
+  SITE_DEPLOY_408CS_FAMILY_VERCEL = 'https://408-family.netlify.app',
+  SITE_DEPLOY_408CS_FAMILY_NETLIFY = 'https://408-family.vercel.app',
 }
 
 /**
