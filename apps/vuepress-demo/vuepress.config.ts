@@ -1,11 +1,9 @@
-import { OPEN_SOURCE_AUTHOR } from '@142vip/open-source'
+import { OPEN_SOURCE_ADDRESS, OPEN_SOURCE_AUTHOR } from '@142vip/open-source'
 import { GitGeneralBranch, vipDocSite, VipPackageJSON } from '@142vip/utils'
 import {
   defineVipNavbarConfig,
   defineVipSidebarConfig,
   defineVipVuepressConfig,
-  getCopyRightText,
-  getFooterHtml,
   getVipHopeTheme,
   handleImportCodePath,
 } from '@142vip/vuepress'
@@ -34,15 +32,15 @@ export const navbarConfig = defineVipNavbarConfig([
         children: [
           {
             text: '🤡 Core-X',
-            link: 'https://142vip.github.io/core-x/',
+            link: OPEN_SOURCE_ADDRESS.SITE_DEPLOY_CORE_X_GITHUB,
           },
           {
             text: '📙 408CSFamily',
-            link: 'https://142vip.github.io/408CSFamily/',
+            link: OPEN_SOURCE_ADDRESS.SITE_DEPLOY_408CS_FAMILY_GITHUB,
           },
           {
             text: '📘 JavaScriptCollection',
-            link: 'https://142vip.github.io/JavaScriptCollection/',
+            link: OPEN_SOURCE_ADDRESS.SITE_DEPLOY_JavaScriptCollection_GITHUB,
           },
         ],
       },
@@ -69,6 +67,33 @@ export const sidebarConfig = defineVipSidebarConfig({
   ],
 })
 
+/**
+ * 页脚
+ */
+const footerHtmlStr = `
+<div>
+    All Rights Reserved
+    <a href="https://github.com/142vip" target="_blank">@142vip</a> .
+    ${pkg.name}@v${pkg.version} 
+    &nbsp;&nbsp;
+</div>
+<div style="margin-top: 5px">
+  <a href="${OPEN_SOURCE_ADDRESS.BAIDU_STATISTICS_URL}" target="_blank">${OPEN_SOURCE_ADDRESS.BAIDU_STATISTICS_NAME}</a> 
+  <span style="margin: 0 5px;">|</span>
+  <a href="${OPEN_SOURCE_ADDRESS.BEI_AN_URL}" target="_blank">${OPEN_SOURCE_ADDRESS.BEI_AN_NAME} </a>
+</div>
+`
+
+/**
+ * 版权信息
+ */
+const copyrightHtmlStr = `
+<strong>MIT 协议</strong> | Copyrights © 2015-${new Date().getFullYear()} ${OPEN_SOURCE_AUTHOR.name}
+`
+
+/**
+ * 站点配置
+ */
 export default defineVipVuepressConfig({
   locales: {
     '/': {
@@ -102,12 +127,9 @@ export default defineVipVuepressConfig({
     // 侧边栏
     sidebar: sidebarConfig,
     // 页脚
-    footer: getFooterHtml({
-      name: pkg.name,
-      version: pkg.version,
-    }),
+    footer: footerHtmlStr,
     // 版权
-    copyright: getCopyRightText(OPEN_SOURCE_AUTHOR.name),
+    copyright: copyrightHtmlStr,
     // 仓库
     repo: '142vip/core-x/tree/next/packages/vuepress',
     repoLabel: 'GitHub',
