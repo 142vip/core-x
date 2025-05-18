@@ -4,7 +4,7 @@ import { VipColor, VipConsole, vipLogger, VipMonorepo } from '@142vip/utils'
 /**
  * 验证Git Commit信息
  */
-async function verifyCommitMain() {
+function verifyCommitMain(): void {
   const { type, scope, subject, commit } = commitLiner({
     // 获取packages目录下所有的模块名
     scopes: VipMonorepo.getPkgNames(['./apps/*', './packages/*']),

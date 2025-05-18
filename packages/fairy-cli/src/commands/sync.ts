@@ -108,8 +108,7 @@ async function getPackageSyncLog(logUrl: string): Promise<void> {
  */
 async function execSync(packageName: string): Promise<void> {
   setTimeout(async () => {
-    vipLogger.log(`---------【@142vip/fairy-cli】模块：${VipColor.red(packageName)}，开始同步 ------- `)
-    vipLogger.println()
+    vipLogger.logByBlank(`---------【@142vip/fairy-cli】模块：${VipColor.green(packageName)}，开始同步 ------- `)
     await requestSync(packageName)
   }, 1000)
 }
@@ -121,12 +120,16 @@ async function searchNpmPkgOnline(input: string | undefined, options: { signal: 
   if (input == null) {
     return []
   }
-  const response = await fetch(
-    `https://registry.npmjs.org/-/v1/search?text=${encodeURIComponent(input)}&size=20`,
-    { signal: options.signal },
-  )
-  const data = (await response.json()) as {
-    objects: ReadonlyArray<{ package: { name: string, description: string } }>
+  const response = await fetch(`https://registry.npmjs.org/-/v1/search?text=${encodeURIComponent(input)}&size=20`, {
+    signal: options.signal,
+  })
+  const data = await response.json() as {
+    objects: ReadonlyArray<{
+      package: {
+        name: string
+        description: string
+      }
+    }>
   }
 
   return data.objects.map(pkg => ({
