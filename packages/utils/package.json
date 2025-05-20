@@ -63,7 +63,7 @@
   "devDependencies": {
     "@types/inquirer": "9.0.7",
     "@types/js-yaml": "4.0.9",
-    "@types/lodash": "4.17.15",
+    "@types/lodash": "4.17.17",
     "@types/qs": "6.9.18",
     "@types/semver": "7.7.0"
   },
