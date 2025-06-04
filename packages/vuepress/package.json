@@ -48,7 +48,7 @@
   "peerDependencies": {
     "@vue/repl": "4.5.1",
     "@vuepress/bundler-vite": "2.0.0-rc.22",
-    "@vuepress/plugin-markdown-image": "2.0.0-rc.102",
+    "@vuepress/plugin-markdown-image": "2.0.0-rc.108",
     "@vuepress/plugin-markdown-tab": "2.0.0-rc.102",
     "@vuepress/plugin-redirect": "2.0.0-rc.102",
     "@vuepress/plugin-slimsearch": "2.0.0-rc.102",
