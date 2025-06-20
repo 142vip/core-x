@@ -68,7 +68,7 @@
   "devDependencies": {
     "mkdist": "2.3.0",
     "typedoc": "0.28.5",
-    "typedoc-plugin-markdown": "4.6.3",
+    "typedoc-plugin-markdown": "4.7.0",
     "typedoc-vitepress-theme": "1.1.2",
     "unplugin-element-plus": "0.9.1",
     "vue-sfc-transformer": "0.1.14"

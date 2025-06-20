@@ -469,16 +469,16 @@ importers:
     devDependencies:
       mkdist:
         specifier: 2.3.0
-        version: 2.3.0(typescript@5.8.3)(vue-sfc-transformer@0.1.14(@vue/compiler-core@3.5.13)(esbuild@0.25.4)(vue@3.5.13(typescript@5.8.3)))(vue@3.5.13(typescript@5.8.3))
+        version: 2.3.0(typescript@5.8.3)(vue-sfc-transformer@0.1.14(vue@3.5.13(typescript@5.8.3)))(vue@3.5.13(typescript@5.8.3))
       typedoc:
         specifier: 0.28.5
         version: 0.28.5(typescript@5.8.3)
       typedoc-plugin-markdown:
-        specifier: 4.6.3
-        version: 4.6.3(typedoc@0.28.5(typescript@5.8.3))
+        specifier: 4.7.0
+        version: 4.7.0(typedoc@0.28.5(typescript@5.8.3))
       typedoc-vitepress-theme:
         specifier: 1.1.2
-        version: 1.1.2(typedoc-plugin-markdown@4.6.3(typedoc@0.28.5(typescript@5.8.3)))
+        version: 1.1.2(typedoc-plugin-markdown@4.7.0(typedoc@0.28.5(typescript@5.8.3)))
       unplugin-element-plus:
         specifier: 0.9.1
         version: 0.9.1
@@ -8357,8 +8357,8 @@ packages:
   typedarray@0.0.6:
     resolution: {integrity: sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==}
 
-  typedoc-plugin-markdown@4.6.3:
-    resolution: {integrity: sha512-86oODyM2zajXwLs4Wok2mwVEfCwCnp756QyhLGX2IfsdRYr1DXLCgJgnLndaMUjJD7FBhnLk2okbNE9PdLxYRw==}
+  typedoc-plugin-markdown@4.7.0:
+    resolution: {integrity: sha512-PitbnAps2vpcqK2gargKoiFXLWFttvwUbyns/E6zGIFG5Gz8ZQJGttHnYR9csOlcSjB/uyjd8tnoayrtsXG17w==}
     engines: {node: '>= 18'}
     peerDependencies:
       typedoc: 0.28.x
@@ -16354,7 +16354,7 @@ snapshots:
     dependencies:
       minimist: 1.2.8
 
-  mkdist@2.3.0(typescript@5.8.3)(vue-sfc-transformer@0.1.14(@vue/compiler-core@3.5.13)(esbuild@0.25.4)(vue@3.5.13(typescript@5.8.3)))(vue@3.5.13(typescript@5.8.3)):
+  mkdist@2.3.0(typescript@5.8.3)(vue-sfc-transformer@0.1.14(vue@3.5.13(typescript@5.8.3)))(vue@3.5.13(typescript@5.8.3)):
     dependencies:
       autoprefixer: 10.4.21(postcss@8.5.3)
       citty: 0.1.6
@@ -18171,13 +18171,13 @@ snapshots:
 
   typedarray@0.0.6: {}
 
-  typedoc-plugin-markdown@4.6.3(typedoc@0.28.5(typescript@5.8.3)):
+  typedoc-plugin-markdown@4.7.0(typedoc@0.28.5(typescript@5.8.3)):
     dependencies:
       typedoc: 0.28.5(typescript@5.8.3)
 
-  typedoc-vitepress-theme@1.1.2(typedoc-plugin-markdown@4.6.3(typedoc@0.28.5(typescript@5.8.3))):
+  typedoc-vitepress-theme@1.1.2(typedoc-plugin-markdown@4.7.0(typedoc@0.28.5(typescript@5.8.3))):
     dependencies:
-      typedoc-plugin-markdown: 4.6.3(typedoc@0.28.5(typescript@5.8.3))
+      typedoc-plugin-markdown: 4.7.0(typedoc@0.28.5(typescript@5.8.3))
 
   typedoc@0.28.5(typescript@5.8.3):
     dependencies:
@@ -18245,7 +18245,7 @@ snapshots:
       hookable: 5.5.3
       jiti: 2.4.2
       magic-string: 0.30.17
-      mkdist: 2.3.0(typescript@5.8.3)(vue-sfc-transformer@0.1.14(@vue/compiler-core@3.5.13)(esbuild@0.25.4)(vue@3.5.13(typescript@5.8.3)))(vue@3.5.13(typescript@5.8.3))
+      mkdist: 2.3.0(typescript@5.8.3)(vue-sfc-transformer@0.1.14(vue@3.5.13(typescript@5.8.3)))(vue@3.5.13(typescript@5.8.3))
       mlly: 1.7.4
       pathe: 2.0.3
       pkg-types: 2.0.0
