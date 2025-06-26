@@ -33,7 +33,12 @@ function getProcessFirstArgv(): string {
  * 3: two=three
  * 4: fou
  */
-function getProcessArgvByIndex(index: number): string {
+function getProcessArgvByIndex(index: number): string | null {
+  const argv = getProcessArgv()
+  if (index < 0 || index >= argv.length) {
+    return null
+  }
+
   return process.argv[index]
 }
 
