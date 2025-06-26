@@ -21,6 +21,7 @@ interface BuildImageDockerOptions extends DockerOptions {
   target?: string
   // build命令时，GC限制内存大小
   memory?: number
+  platform?: string
 }
 
 interface UserLoginDockerOptions extends DockerOptions {
@@ -233,8 +234,9 @@ async function buildImage(args: BuildImageDockerOptions): Promise<void> {
   // 支持--target参数
   const targetParams = args.target != null ? `--target ${args.target}` : ''
   const memoryParams = args.memory != null ? `--memory=${args.memory}mb` : ''
+  const platformParams = args.platform != null ? `--platform=${args.platform}` : ''
 
-  const command = `docker build ${buildArg} ${targetParams} ${memoryParams} -t '${args.imageName}' .`
+  const command = `docker build ${buildArg} ${targetParams} ${memoryParams} ${platformParams} -t '${args.imageName}' .`
 
   if (args.logger) {
     vipLogger.log(`执行的命令：\n`, { startLabel: VipSymbols.success })
