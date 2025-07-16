@@ -1,28 +1,32 @@
 import { Buffer } from 'node:buffer'
 import * as childProcess from 'node:child_process'
-import { execSync } from 'node:child_process'
+import { execSync, spawn } from 'node:child_process'
+import path from 'node:path'
 import { name, version } from '../../package.json'
-import { VipColor, VipConsole } from '../pkgs'
-import { VipLogger } from './logger'
+import { VipColor } from '../pkgs'
+import { vipLogger, VipLogger } from './logger'
 import { VipNodeJS } from './nodejs'
 
-type Command = string | string[]
+export type Command = string | string[]
 
-export interface CmdResult {
-  code?: number | null
+/**
+ * 标准执行器响应结果
+ */
+export interface StandardExecutorResponse {
+  code: number | null
   stdout: string
   stderr: string
+}
+
+export interface CommandResponse extends StandardExecutorResponse {
   error?: Error
-  cmd: string
+  command: string
 }
 
 /**
- * 同步执行命令，并返回结果
+ * 异步执行命令，并返回结果
  */
-async function execCommand(
-  cmd: Command,
-  opts?: Omit<childProcess.SpawnOptionsWithoutStdio, 'stdio' | 'cwd'>,
-): Promise<CmdResult> {
+async function execCommand(cmd: Command, opts?: Omit<childProcess.SpawnOptionsWithoutStdio, 'stdio' | 'cwd'>): Promise<CommandResponse> {
   const executable = Array.isArray(cmd) ? cmd.join(';') : cmd
   const options: childProcess.SpawnOptionsWithoutStdio = {
     ...opts,
@@ -58,10 +62,11 @@ async function execCommand(
       const getDefaultResult = () => {
         const stderr = stderrList.join('\n')
         const stdout = stdoutList.join('\n')
-        return { stdout, stderr, cmd: executable }
+        return { stdout, stderr, command: executable }
       }
 
-      child.on('error', error => resolve({ ...getDefaultResult(), error }))
+      // 监听进程退出，发生错误，错误码110
+      child.on('error', error => resolve({ ...getDefaultResult(), error, code: 110 }))
       child.on('close', code => resolve({ ...getDefaultResult(), code }))
     })
   }
@@ -75,38 +80,78 @@ async function execCommand(
  * - 支持打印结果
  * - 异步
  */
-function commandStandardExecutor(cmd: Command) {
-  const executable = Array.isArray(cmd) ? cmd.join('&&') : cmd
-  const options: childProcess.SpawnOptionsWithoutStdio = {
-    stdio: 'pipe',
-    cwd: VipNodeJS.getProcessCwd(),
-  }
+async function commandStandardExecutor(cmd: Command): Promise<StandardExecutorResponse> {
+  const commandStr = Array.isArray(cmd) ? cmd.join('&&') : cmd
 
+  vipLogger.logByBlank(`执行命令：${VipColor.greenBright(commandStr)}`)
+
+  let stdout = ''
+  let stderr = ''
   return new Promise((resolve, reject) => {
     const cmd = VipNodeJS.getProcessPlatform() === 'win32' ? 'cmd' : 'sh'
     const arg = VipNodeJS.getProcessPlatform() === 'win32' ? '/C' : '-c'
-    const child = childProcess.spawn(cmd, [arg, executable], options)
 
-    child.stdout.on('data', (data: string) => {
-      if (Buffer.isBuffer(data)) {
-        VipConsole.log(data.toString())
-      }
+    const child = spawn(cmd, [arg, commandStr], {
+      stdio: 'inherit',
+      cwd: VipNodeJS.getProcessCwd(),
+      // 添加环境变量,避免命令找不到
+      env: {
+        ...VipNodeJS.getEnv(),
+        // ...VipNodeJS.getProcessEnv(),
+        PATH: `${path.join(VipNodeJS.getProcessCwd(), 'node_modules', '.bin')}${path.delimiter}${VipNodeJS.getProcessEnv('PATH')}`,
+      },
     })
 
-    child.stderr.on('data', (data) => {
-      if (Buffer.isBuffer(data)) {
-        VipConsole.log(data.toString())
-      }
-    })
+    if (child.stdout) {
+      child.stdout.on('data', (data) => {
+        stdout += data
+      })
+    }
+    if (child.stderr) {
+      child.stderr.on('data', (data) => {
+        stderr += data
+      })
+    }
 
     // 考虑进程非0退出
     child.on('close', (code) => {
-      resolve(code)
+      if (code === 0) {
+        resolve({ stdout, stderr, code })
+      }
+      else {
+        const error = new Error(`标准命令执行器，非零退出。退出码：${code}`)
+        Object.assign(error, { stdout, stderr, code })
+        reject(error)
+      }
     })
 
     // 出现错误
-    child.on('error', (error) => {
+    child.on('error', (error: Error) => {
+      Object.assign(error, { stdout, stderr, code: null })
       reject(error)
+    })
+
+    /**
+     * 监听Ctrl+C信号
+     */
+    VipNodeJS.getProcess().on('SIGINT', () => {
+      child.kill()
+      VipNodeJS.existSuccessProcess()
+    })
+
+    /**
+     * 监听kill命令
+     */
+    VipNodeJS.getProcess().on('SIGTERM', () => {
+      VipNodeJS.existSuccessProcess()
+    })
+
+    /**
+     * 监听进程退出
+     */
+    VipNodeJS.getProcess().on('exit', () => {
+      vipLogger.logByBlank(VipColor.greenBright('进程已安全退出，欢迎下次使用👏🏻👏🏻👏🏻'))
+      VipNodeJS.existSuccessProcess()
     })
   })
 }
@@ -123,7 +168,7 @@ export interface ShellCommand {
 /**
  * 脚本执行器，执行shell命令
  */
-async function execShell(commands: ShellCommand[] | string | ShellCommand): Promise<void> {
+async function execShell(commands: string | ShellCommand | ShellCommand[]): Promise<void> {
   // 全局日志
   const vipLog = VipLogger.getInstance()
 
@@ -178,5 +223,6 @@ export const VipExecutor = {
   execCommand,
   execShell,
   commandStandardExecutor,
+  // commandStandardAsyncExecutor,
   getCommandTrimResponse,
 }

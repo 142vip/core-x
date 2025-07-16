@@ -9,6 +9,17 @@ import { VipColor, VipConsole, VipSymbols } from '../pkgs'
 import { vipLogger } from './logger'
 import { VipNpm } from './npm'
 
+function getProcess() {
+  return process
+}
+
+/**
+ * 获取环境变量
+ */
+function getEnv() {
+  return process.env
+}
+
 /**
  * 进程参数
  */
@@ -271,6 +282,8 @@ function pick<T, K extends keyof T>(obj: T, keys: K[]): Pick<T, K> {
 }
 
 export const VipNodeJS = {
+  getProcess,
+  getEnv,
   getProcessFirstArgv,
   getProcessArgv,
   getProcessArgvByIndex,

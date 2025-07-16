@@ -1,4 +1,4 @@
-import type { CmdResult } from './exec'
+import type { CommandResponse } from './exec'
 import { OPEN_SOURCE_ADDRESS } from '@142vip/open-source'
 import { RegistryAddressEnum } from '../enums'
 import { VipSymbols } from '../pkgs'
@@ -55,9 +55,9 @@ interface CreateNetworkOptions extends DockerOptions {
  */
 async function scriptExecutor(command: string): Promise<void> {
   try {
-    const errorCode = await VipExecutor.commandStandardExecutor(command)
-    if (errorCode !== 0) {
-      vipLogger.error(`Error Code: ${errorCode}`, { startLabel: 'commandStandardExecutor' })
+    const { code } = await VipExecutor.commandStandardExecutor(command)
+    if (code !== 0) {
+      vipLogger.error(`Error Code: ${code}`, { startLabel: 'commandStandardExecutor' })
       VipNodeJS.exitProcess(1)
     }
   }
@@ -79,7 +79,7 @@ async function isExistImage(imageName: string): Promise<boolean> {
 /**
  * 删除Docker镜像
  */
-async function deleteImage(imageName: string): Promise<CmdResult> {
+async function deleteImage(imageName: string): Promise<CommandResponse> {
   const command = `docker rmi -f ${imageName}`
   return await VipExecutor.execCommand(command)
 }
@@ -87,7 +87,7 @@ async function deleteImage(imageName: string): Promise<CmdResult> {
 /**
  * 删除虚悬镜像
  */
-async function deletePruneImages(): Promise<CmdResult> {
+async function deletePruneImages(): Promise<CommandResponse> {
   const command = 'docker image prune -f'
   return await VipExecutor.execCommand(command)
 }
