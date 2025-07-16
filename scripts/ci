@@ -6,7 +6,8 @@
 #   ./scripts/ci
 #
 
-NPM_REGISTRY="https://mirrors.tencent.com/npm/"
+#NPM_REGISTRY="https://mirrors.tencent.com/npm/"
+NPM_REGISTRY="https://registry.npmmirror.com"
 
 ## 获取所有参数
 echo "运行命令: export COREPACK_NPM_REGISTRY=$NPM_REGISTRY && corepack enable pnpm && pnpm i --registry $NPM_REGISTRY --frozen-lockfile $*"
