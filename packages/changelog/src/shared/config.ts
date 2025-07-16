@@ -11,7 +11,7 @@ export const CONFIG_DEFAULT_NAME = 'changelog' as string
  */
 export const CONFIG_DEFAULT_HEADER = `# Changelog
 
-All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
+All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 ` as string
 
