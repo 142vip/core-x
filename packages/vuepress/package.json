@@ -65,7 +65,7 @@
     "unicorn-magic": "0.3.0",
     "vidstack": "1.12.12",
     "vue": "3.5.18",
-    "vuepress": "2.0.0-rc.22",
+    "vuepress": "2.0.0-rc.24",
     "vuepress-theme-hope": "2.0.0-rc.87"
   },
   "publishConfig": {
