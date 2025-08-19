@@ -1,0 +1,45 @@
+import type { DataSourceParseResponse } from '../../data-source.interface'
+import { DataSourceManager } from '@142vip/data-source'
+import mysql from 'mysql2/promise'
+import { handlerError } from '../../data-source.utils'
+
+interface MysqlOptions {
+  host: string
+  port: number
+  username: string
+  password: string
+  database: string
+  querySql: string
+}
+
+/**
+ * MySQL 数据源
+ */
+export class VipMysql extends DataSourceManager {
+  /**
+   * 获取连接数据
+   */
+  public override async getConnectionData(options: MysqlOptions): Promise<DataSourceParseResponse> {
+    let connection
+    try {
+      connection = await mysql.createConnection({
+        user: options.username,
+        password: options.password,
+        host: options.host,
+        port: options.port,
+        database: options.database,
+        // doris数据库不支持CONNECT_ATTRS flag
+        flags: ['-CONNECT_ATTRS'],
+      })
+      const response = await connection.query(options.querySql)
+      // 数据过滤
+      return { success: true, data: Array.isArray(response[0]) ? response[0] : response }
+    }
+    catch (err) {
+      return handlerError(err)
+    }
+    finally {
+      await connection?.end()
+    }
+  }
+}

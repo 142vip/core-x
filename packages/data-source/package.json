@@ -1,0 +1,69 @@
+{
+  "name": "@142vip/data-source",
+  "version": "0.0.1-alpha.0",
+  "private": false,
+  "description": "通用型数据源，支持多种数据库、API、CSV等形式的数据源管理",
+  "author": "mmdapl <mmdapl@163.com>",
+  "license": "MIT",
+  "homepage": "https://142vip.github.io/core-x/packages/data-source/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/142vip/core-x.git",
+    "directory": "packages/data-source"
+  },
+  "keywords": [
+    "公众号搜：储凡",
+    "142vip",
+    "@142vip",
+    "@142vip/data-source",
+    ""
+  ],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "unbuild",
+    "typecheck": "tsc --noEmit"
+  },
+  "authorInfo": {
+    "name": "微信公众号：储凡",
+    "email": "fairy_vip@2925.com",
+    "url": "https://github.com/142vip",
+    "homePage": "https://142vip.cn"
+  },
+  "peerDependencies": {
+    "clickhouse": "2.6.0",
+    "dmdb": "1.0.18856",
+    "ibm_db": "3.3.2",
+    "mssql": "10.0.0",
+    "oracledb": "6.1.0",
+    "axios": "1.11.0",
+    "csv-parse": "5.5.0",
+    "iconv-lite": "0.6.3",
+    "jschardet": "3.0.0",
+    "lodash": "4.17.21",
+    "pg": "8.11.3"
+  },
+  "dependencies": {
+    "@142vip/utils":"0.0.1-alpha.38"
+  },
+  "devDependencies": {
+    "@types/mssql": "^9.1.7",
+    "@types/pg": "^8.1.2"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  }
+}
