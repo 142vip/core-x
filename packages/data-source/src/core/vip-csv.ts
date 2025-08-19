@@ -5,6 +5,7 @@ import iconv from 'iconv-lite'
 import jsCharDet from 'jschardet'
 
 interface CSVOptions {
+  // eslint-disable-next-line node/prefer-global/buffer
   file: Buffer
   encode: string
 }

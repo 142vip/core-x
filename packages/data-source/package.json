@@ -43,20 +43,20 @@
     "homePage": "https://142vip.cn"
   },
   "peerDependencies": {
+    "axios": "1.11.0",
     "clickhouse": "2.6.0",
+    "csv-parse": "5.5.0",
     "dmdb": "1.0.18856",
     "ibm_db": "3.3.2",
-    "mssql": "10.0.0",
-    "oracledb": "6.1.0",
-    "axios": "1.11.0",
-    "csv-parse": "5.5.0",
     "iconv-lite": "0.6.3",
     "jschardet": "3.0.0",
     "lodash": "4.17.21",
+    "mssql": "10.0.0",
+    "oracledb": "6.1.0",
     "pg": "8.11.3"
   },
   "dependencies": {
-    "@142vip/utils":"0.0.1-alpha.38"
+    "@142vip/utils": "0.0.1-alpha.38"
   },
   "devDependencies": {
     "@types/mssql": "^9.1.7",
