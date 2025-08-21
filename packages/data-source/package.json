@@ -60,8 +60,8 @@
     "@142vip/utils": "0.0.1-alpha.38"
   },
   "devDependencies": {
-    "@types/mssql": "^9.1.7",
-    "@types/pg": "^8.1.2"
+    "@types/mssql": "9.1.7",
+    "@types/pg": "8.15.5"
   },
   "publishConfig": {
     "access": "public",

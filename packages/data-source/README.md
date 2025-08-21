@@ -15,8 +15,6 @@
 pnpm i @142vip/data-source
 ```
 
-
-
 ### 简单使用
 
 按照数据来源，将数据源分为CSV型、API型、SQL数据库型等类型。
@@ -36,7 +34,6 @@ pnpm i @142vip/data-source
   - [SQL Server数据库](docs/sql/vip-mssql.md)
   - [Oracle数据库](docs/sql/vip-oracle.md)
   - [PostgreSQL数据库](docs/sql/vip-postgresql.md)
-
 
 ### 新增数据源
 
