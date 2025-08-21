@@ -1,6 +1,7 @@
 import type { AxiosRequestConfig } from 'axios'
 import type { DataSourceParseResponse } from '../../data-source.interface'
-import { DataSourceManager } from '@142vip/data-source'
+import { DataSourceManager } from '../../data-source.manager'
+import { handlerDataSourceConnectError } from '../../data-source.utils'
 import { VipHttpApi } from './vip-http-api'
 
 export interface DTableAPIData {
@@ -15,8 +16,11 @@ export interface DTableAPIData {
  */
 export class VipDTableApi extends DataSourceManager {
   public override async getConnectionData(config: AxiosRequestConfig): Promise<DataSourceParseResponse<DTableAPIData>> {
-    const vipHttpApi = new VipHttpApi()
-
-    return await vipHttpApi.getConnectionData(config)
+    try {
+      return await new VipHttpApi().getConnectionData(config)
+    }
+    catch (error) {
+      return handlerDataSourceConnectError(VipDTableApi.name, error)
+    }
   }
 }

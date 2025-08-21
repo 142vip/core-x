@@ -43,6 +43,7 @@
     "homePage": "https://142vip.cn"
   },
   "peerDependencies": {
+    "aliyun-api-gateway": "1.1.6",
     "axios": "1.11.0",
     "clickhouse": "2.6.0",
     "csv-parse": "5.5.0",

@@ -1,7 +1,8 @@
-import type { DataSourceParseResponse, DataSourceResponseError } from '../../data-source.interface'
-import { DataSourceManager } from '@142vip/data-source'
+import type { DataSourceParseResponse } from '../../data-source.interface'
+
 import { ClickHouse } from 'clickhouse'
-import { isEmpty } from 'lodash'
+import { DataSourceManager } from '../../data-source.manager'
+import { handlerDataSourceConnectError } from '../../data-source.utils'
 
 interface ClickHouseOptions {
   host: string
@@ -36,11 +37,11 @@ export class VipClickhouse extends DataSourceManager {
       })
 
       const data = await ch.query(options.querySql).toPromise()
-      return { success: true, message: '执行成功', data }
+
+      return { success: true, data }
     }
-    catch (err) {
-      const error = err as DataSourceResponseError
-      return { success: false, message: isEmpty(error?.message) ? '执行sql语句失败' : JSON.stringify(error.message) }
+    catch (error) {
+      return handlerDataSourceConnectError(VipClickhouse.name, error)
     }
   }
 }

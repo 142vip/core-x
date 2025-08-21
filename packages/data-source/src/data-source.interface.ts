@@ -42,10 +42,10 @@ export interface ColumnComment {
  * API Query 配置
  */
 export interface ApiQueryConfig {
+  path: string
   params: string
   body: string
   headers: string
-  path: string
 }
 
 /**

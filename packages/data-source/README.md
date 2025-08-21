@@ -2,58 +2,64 @@
 
 [![NPM version](https://img.shields.io/npm/v/@142vip/data-source?labelColor=0b3d52&color=1da469&label=version)](https://www.npmjs.com/package/@142vip/data-source)
 
-**没数据源，可视化就是玩单机**
+**TIPS：没数据源，可视化、数字孪生就是玩单机**
 
 ## 介绍
 
-本模块是在`@antfu/data-source`模块基础上封装的，可以自定义配置`忽略文件`和`校验规则`，例如：
-
-```js
-import { defineVipEslintConfig } from '@142vip/data-source'
-
-export default defineVipEslintConfig({
-  ignores: [
-    '**/CHANGELOG.md',
-  ],
-  rules: {
-    // 用于在模块构建后基于dist导出时找不到文件，忽略校验
-    'antfu/no-import-dist': 1,
-  },
-})
-```
-
-同时，使用`eslint:8.55.0`版本，支持IDEA上配置使用
+`@142vip/data-source`模块可以用来连接多种数据源，支持从数据源快速获取数据
 
 ## 安装
 
 ```bash
 # 下载模块
-pnpm i @142vip/data-source -D
+pnpm i @142vip/data-source
 ```
 
-## 使用
 
-在项目根目录中的`package.json`文件中，添加如下命令，校验项目，例如：
 
-```json
-{
-  "lint": "npx eslint .",
-  "lint:fix": "npx eslint ."
-}
-```
+### 简单使用
 
-也可以配合`@142vip/fairy-cli`模块，配置命令换成：
+按照数据来源，将数据源分为CSV型、API型、SQL数据库型等类型。
 
-```json
-{
-  "lint": "npx fa lint",
-  "lint:fix": "npx fa lint --fix"
+- [CSV](./docs/csv.md)
+- API
+  - [ALI Gateway API](docs/apis/vip-ali-gateway-api.md)
+  - [DTable API](docs/apis/vip-dtable-api.md)
+  - [DTStack API](docs/apis/vip-dtstack-api.md)
+  - [HTTP API](docs/apis/vip-http-api.md)
+- SQL
+  - [ClickHouse数据库](docs/sql/vip-clickhouse.md)
+  - [达梦数据库](docs/sql/vip-dameng.md)
+  - [DB2数据库](docs/sql/vip-ibm-db.md)
+  - [KingBase金仓数据库](docs/sql/vip-kingbase.md)
+  - [MySQL数据库](docs/sql/vip-mysql.md)
+  - [SQL Server数据库](docs/sql/vip-mssql.md)
+  - [Oracle数据库](docs/sql/vip-oracle.md)
+  - [PostgreSQL数据库](docs/sql/vip-postgresql.md)
+
+
+### 新增数据源
+
+```ts
+import { DataSourceManager } from '@142vip/data-source'
+
+export class MyDataSource extends DataSourceManager {
+  // coding xxx
 }
 ```
 
 ## 参考
 
-- <https://github.com/antfu/data-source>
+- [aliyun-api-gateway](https://www.npmjs.com/package/aliyun-api-gateway)
+- [axios](https://www.npmjs.com/package/axios)
+- [clickhouse](https://www.npmjs.com/package/clickhouse)
+- [csv-parse](https://www.npmjs.com/package/csv-parse)
+- [dmdb](https://www.npmjs.com/package/dmdb)
+- [ibm_db](https://www.npmjs.com/package/ibm_db)
+- [iconv-lite](https://www.npmjs.com/package/iconv-lite)
+- [mssql](https://www.npmjs.com/package/mssql)
+- [oracledb](https://www.npmjs.com/package/oracledb)
+- [pg](https://www.npmjs.com/package/pg)
 
 ## 证书
 

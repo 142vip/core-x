@@ -2,12 +2,13 @@ import type { SidebarConfig, VipPackageJSON, VipProject } from '@142vip/vitepres
 import { defineVipSidebarConfig } from '@142vip/vitepress'
 
 enum ProjectId {
-  Tools = '通用工具',
-  Egg = 'Egg.js框架',
-  Nest = 'Nest.js框架',
-  Blog = '博客工具',
-  Infra = '工程化',
-  Demo = '演示Demo',
+  BUSINESS = '商业代码',
+  TOOLS = '通用工具',
+  EGG = 'Egg.js框架',
+  NEST = 'Nest.js框架',
+  BLOG = '博客工具',
+  INFRA = '工程化',
+  DEMO = '演示Demo',
 }
 
 /**
@@ -15,7 +16,13 @@ enum ProjectId {
  */
 export const sidebarConfig = defineVipSidebarConfig([
   {
-    text: `🏆 ${ProjectId.Infra}`,
+    text: `💵 ${ProjectId.BUSINESS}`,
+    items: [
+      { text: '@142vip/data-source', link: '/packages/data-source/index.md' },
+    ],
+  },
+  {
+    text: `🏆 ${ProjectId.INFRA}`,
     items: [
       { text: '@142vip/fairy-cli', link: '/packages/fairy-cli/index.md' },
       { text: '@142vip/changelog', link: '/packages/changelog/index.md' },
@@ -26,7 +33,7 @@ export const sidebarConfig = defineVipSidebarConfig([
     ],
   },
   {
-    text: `🛠 ${ProjectId.Tools}`,
+    text: `🛠 ${ProjectId.TOOLS}`,
     items: [
       { text: '@142vip/utils', link: '/packages/utils/index.md' },
       { text: '@142vip/axios', link: '/packages/axios/index.md' },
@@ -37,7 +44,7 @@ export const sidebarConfig = defineVipSidebarConfig([
     ],
   },
   {
-    text: `🐣 ${ProjectId.Egg}`,
+    text: `🐣 ${ProjectId.EGG}`,
     items: [
       { text: '@142vip/egg', link: '/packages/egg/index.md' },
       { text: '@142vip/egg-axios', link: '/packages/egg-axios/index.md' },
@@ -51,7 +58,7 @@ export const sidebarConfig = defineVipSidebarConfig([
     ],
   },
   {
-    text: `🦅 ${ProjectId.Nest}`,
+    text: `🦅 ${ProjectId.NEST}`,
     items: [
       { text: '@142vip/nest', link: '/packages/nest/index.md' },
       { text: '@142vip/nest-redis', link: '/packages/nest-redis/index.md' },
@@ -59,14 +66,14 @@ export const sidebarConfig = defineVipSidebarConfig([
     ],
   },
   {
-    text: `💻 ${ProjectId.Blog}`,
+    text: `💻 ${ProjectId.BLOG}`,
     items: [
       { text: '@142vip/vitepress', link: '/packages/vitepress/index.md' },
       { text: '@142vip/vuepress', link: '/packages/vuepress/index.md' },
     ],
   },
   {
-    text: `🎮 ${ProjectId.Demo}`,
+    text: `🎮 ${ProjectId.DEMO}`,
     items: [
       { text: 'egg-demo', link: '/apps/egg-demo/index.md' },
       { text: 'nest-demo', link: '/apps/nest-demo/index.md' },
@@ -103,7 +110,7 @@ export async function getCoreProjectData(): Promise<VipProject[]> {
   const coreProjects: VipProject[] = []
   for (const { items, text } of sidebarConfig) {
     // 过滤掉apps下的模块
-    if (text?.includes(ProjectId.Demo)) {
+    if (text?.includes(ProjectId.DEMO)) {
       continue
     }
     for (const { text: pkgName } of items) {

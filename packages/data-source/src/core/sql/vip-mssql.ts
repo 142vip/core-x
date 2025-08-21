@@ -1,8 +1,8 @@
 import type { config } from 'mssql'
 import type { DataSourceParseResponse } from '../../data-source.interface'
-import { DataSourceManager } from '@142vip/data-source'
 import { ConnectionPool } from 'mssql'
-import { handlerError } from '../../data-source.utils'
+import { DataSourceManager } from '../../data-source.manager'
+import { handlerDataSourceConnectError } from '../../data-source.utils'
 
 interface MsSQLOptions {
   host: string
@@ -16,7 +16,7 @@ interface MsSQLOptions {
 /**
  * SQL Server 数据源
  */
-export class VipMssql extends DataSourceManager {
+export class VipSqlServer extends DataSourceManager {
   /**
    * 获取连接数据
    */
@@ -43,8 +43,8 @@ export class VipMssql extends DataSourceManager {
 
       return { success: true, data: queryRes != null ? queryRes.recordset : [] }
     }
-    catch (err) {
-      return handlerError(err)
+    catch (error) {
+      return handlerDataSourceConnectError(VipSqlServer.name, error)
     }
     finally {
       await connection?.close()

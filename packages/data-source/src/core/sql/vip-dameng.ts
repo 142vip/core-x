@@ -1,6 +1,7 @@
-import type { DataSourceParseResponse, DataSourceResponseError } from '../../data-source.interface'
-import { DataSourceManager } from '@142vip/data-source'
-import _, { isEmpty } from 'lodash'
+import type { DataSourceParseResponse } from '../../data-source.interface'
+import { mapValues } from 'lodash'
+import { DataSourceManager } from '../../data-source.manager'
+import { handlerDataSourceConnectError } from '../../data-source.utils'
 
 interface DamengOptions {
   host: string
@@ -37,13 +38,16 @@ export class VipDameng extends DataSourceManager {
       })
 
       // 处理bigint数据
-      const data = result.rows?.map((item: Record<string, unknown>) => _.mapValues(item, value => typeof value === 'bigint' ? value.toString() : value))
+      const data = result.rows?.map((item: Record<string, unknown>) =>
+        mapValues(item, value => typeof value === 'bigint'
+          ? value.toString()
+          : value),
+      )
 
       return { success: true, data }
     }
-    catch (err) {
-      const error = err as DataSourceResponseError
-      return { success: false, message: isEmpty(error?.message) ? '执行sql语句失败' : JSON.stringify(error.message) }
+    catch (error) {
+      return handlerDataSourceConnectError(VipDameng.name, error)
     }
     finally {
       await dmPool?.close()

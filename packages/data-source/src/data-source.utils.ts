@@ -1,3 +1,5 @@
+import type { DataSourceParseResponse } from './data-source.interface'
+
 /**
  * 正则校验url
  */
@@ -20,11 +22,10 @@ function isEmpty(value: any): boolean {
 }
 
 /**
- * 处理错误
- * @param error
+ * 数据源处理错误
  */
-export function handlerError(error: any) {
-  let message = '执行SQL语句失败'
+export function handlerDataSourceConnectError<T>(dataSourceName: string, error: any): DataSourceParseResponse<T> {
+  let message = `${dataSourceName}数据源，执行失败`
   if (!isEmpty(error?.message)) {
     message = JSON.stringify(error.message)
   }

@@ -1,7 +1,7 @@
-import type { DataSourceParseResponse, DataSourceResponseError } from '../../data-source.interface'
+import type { DataSourceParseResponse } from '../../data-source.interface'
 import os from 'node:os'
-import { DataSourceManager } from '@142vip/data-source'
-import { isEmpty } from 'lodash'
+import { DataSourceManager } from '../../data-source.manager'
+import { handlerDataSourceConnectError } from '../../data-source.utils'
 
 interface OracleOptions {
   host: string
@@ -38,9 +38,8 @@ export class VipOracle extends DataSourceManager {
       const result = await connection.execute(options.querySql)
       return { success: true, data: result.rows }
     }
-    catch (err) {
-      const error = err as DataSourceResponseError
-      return { success: false, message: isEmpty(error?.message) ? '执行sql语句失败' : JSON.stringify(error.message) }
+    catch (error) {
+      return handlerDataSourceConnectError(VipOracle.name, error)
     }
     finally {
       await connection?.close()

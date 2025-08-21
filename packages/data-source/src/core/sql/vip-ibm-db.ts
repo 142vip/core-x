@@ -1,6 +1,7 @@
 import type { DataSourceParseResponse, DataSourceResponseError } from '../../data-source.interface'
-import { DataSourceManager } from '@142vip/data-source'
 import { isEmpty } from 'lodash'
+import { DataSourceManager } from '../../data-source.manager'
+import { handlerDataSourceConnectError } from '../../data-source.utils'
 
 interface IbmDBOptions {
   connectURL: string
@@ -31,9 +32,8 @@ export class VipIbmDB extends DataSourceManager {
       const data = await connection.query(options.querySql)
       return { success: true, data }
     }
-    catch (err) {
-      const error = err as DataSourceResponseError
-      return { success: false, message: isEmpty(error?.message) ? '执行sql语句失败' : JSON.stringify(error.message) }
+    catch (error) {
+      return handlerDataSourceConnectError(VipIbmDB.name, error)
     }
     finally {
       await connection.close()
