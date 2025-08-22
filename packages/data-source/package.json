@@ -16,7 +16,15 @@
     "142vip",
     "@142vip",
     "@142vip/data-source",
-    ""
+    "数据源",
+    "数据库",
+    "API",
+    "CSV",
+    "MySQL",
+    "PostgreSQL",
+    "SQL Server",
+    "Oracle",
+    "IBM_DB"
   ],
   "sideEffects": false,
   "exports": {

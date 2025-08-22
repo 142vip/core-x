@@ -60,11 +60,13 @@
     "@142vip/release-version": "workspace:*",
     "@142vip/utils": "workspace:*",
     "@142vip/vitepress": "workspace:*",
+    "@jest/globals": "^30.0.5",
     "@types/jest": "29.5.14",
     "@types/node": "22.10.7",
     "jest": "29.7.0",
     "only-allow": "1.2.1",
     "simple-git-hooks": "2.13.0",
+    "ts-jest": "^29.4.1",
     "typescript": "5.9.2",
     "unbuild": "3.5.0"
   },

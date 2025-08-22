@@ -6,6 +6,11 @@
 import type { Config } from 'jest'
 
 const config: Config = {
+  testEnvironment: 'node',
+  transform: {
+    '^.+.tsx?$': ['ts-jest', {}],
+  },
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 
@@ -163,7 +168,7 @@ const config: Config = {
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
   // testPathIgnorePatterns: [
-  //   "/node_modules/"
+  //   '/node_modules/',
   // ],
 
   // The regexp pattern or array of patterns that Jest uses to detect test files
@@ -180,8 +185,8 @@ const config: Config = {
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   // transformIgnorePatterns: [
-  //   "/node_modules/",
-  //   "\\.pnp\\.[^\\/]+$"
+  //   '/node_modules/',
+  //   '\\.pnp\\.[^\\/]+$',
   // ],
 
   // An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them

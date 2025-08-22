@@ -4,7 +4,7 @@ import { Client } from 'pg'
 import { DataSourceManager } from '../../data-source.manager'
 import { handlerDataSourceConnectError } from '../../data-source.utils'
 
-interface PostgreSqlOptions {
+export interface PostgreSqlOptions {
   connectURL: string
   querySql: string
 }
