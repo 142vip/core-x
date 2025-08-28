@@ -1,4 +1,6 @@
 import type { PackageJSONMainFest } from '../core'
+import detectIndent from 'detect-indent'
+import { detectNewline } from 'detect-newline'
 import { klona } from 'klona/json'
 import { VipNodeJS } from '../core'
 
