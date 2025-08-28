@@ -1,7 +1,7 @@
 {
   "name": "@142vip/data-source",
-  "version": "0.0.1-alpha.1",
   "type": "module",
+  "version": "0.0.1-alpha.1",
   "private": false,
   "description": "通用型数据源，支持多种数据库、API、CSV等形式的数据源管理",
   "author": "mmdapl <mmdapl@163.com>",

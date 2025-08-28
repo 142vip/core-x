@@ -26,7 +26,6 @@ const vipClickhouse = new VipClickhouse()
 const data = await vipClickhouse.getConnectionData(options)
 ```
 
-
 ## 单元测试
 
 ```ts
@@ -68,7 +67,6 @@ describe('vip-clickhouse', () => {
   })
 })
 ```
-
 
 ## 证书
 
