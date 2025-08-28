@@ -1,6 +1,4 @@
 import type { PackageJSONMainFest } from '../core'
-import detectIndent from 'detect-indent'
-import { detectNewline } from 'detect-newline'
 import { klona } from 'klona/json'
 import { VipNodeJS } from '../core'
 
@@ -44,8 +42,20 @@ function readFile(name: string, cwd: string): JSONFile {
   const filePath = VipNodeJS.pathJoin(cwd, name)
   const dataStr = VipNodeJS.readFileToStrByUTF8(filePath)
   const data = parse<PackageJSONMainFest>(dataStr, {})
-  const indent = detectIndent(dataStr).indent
-  const newline = detectNewline(dataStr)
+  // 1. 检测缩进（优先从第二行分析，兼容空文件或单行JSON）
+  const lines = dataStr.split(/\r?\n/)
+  let indent = '  ' // 默认2个空格
+  if (lines.length > 1) {
+    const firstContentLine = lines.find(line => line.trim() !== '')
+    if (firstContentLine) {
+      const indentMatch = firstContentLine.match(/^(\s+)/)
+      if (indentMatch)
+        indent = indentMatch[1]
+    }
+  }
+
+  // 2. 检测换行符（优先CRLF，其次LF）
+  const newline = dataStr.includes('\r\n') ? '\r\n' : '\n'
 
   return { path: filePath, data, indent, newline }
 }
