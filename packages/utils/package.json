@@ -51,6 +51,8 @@
     "commander": "12.1.0",
     "convert-gitmoji": "0.1.5",
     "dayjs": "1.11.13",
+    "detect-indent": "7.0.1",
+    "detect-newline": "4.0.1",
     "js-yaml": "4.1.0",
     "klona": "2.0.6",
     "lodash": "4.17.21",

@@ -62,7 +62,9 @@
     "prompts": "2.4.2"
   },
   "devDependencies": {
-    "@types/prompts": "2.4.9"
+    "@types/prompts": "2.4.9",
+    "detect-indent": "7.0.1",
+    "detect-newline": "4.0.1"
   },
   "publishConfig": {
     "access": "public",
