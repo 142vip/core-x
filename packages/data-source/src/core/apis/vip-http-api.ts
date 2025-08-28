@@ -1,5 +1,4 @@
 import type { AxiosRequestConfig } from 'axios'
-import { HttpStatus } from '@142vip/utils'
 import axios from 'axios'
 import { DataSourceManager } from '../../data-source.manager'
 
@@ -14,7 +13,7 @@ interface HttpApiOptions extends AxiosRequestConfig {
 export class VipHttpApi extends DataSourceManager {
   public override async getConnectionData(options: HttpApiOptions) {
     const { data, status } = await axios(options)
-    if (status === HttpStatus.OK) {
+    if (status === 200) {
       return { success: true, data }
     }
     return { success: false }

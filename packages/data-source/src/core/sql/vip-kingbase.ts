@@ -4,7 +4,7 @@ import { Pool } from 'pg'
 import { DataSourceManager } from '../../data-source.manager'
 import { handlerDataSourceConnectError } from '../../data-source.utils'
 
-interface KingBaseOptions {
+export interface KingBaseOptions {
   host: string
   port: number
   username: string

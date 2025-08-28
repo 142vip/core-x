@@ -11,7 +11,8 @@
 ## 安装
 
 ```bash
-# 下载模块
+npm install @142vip/data-source
+# 使用pnpm
 pnpm i @142vip/data-source
 ```
 
@@ -62,4 +63,4 @@ export class MyDataSource extends DataSourceManager {
 
 [MIT](https://opensource.org/license/MIT)
 
-Copyright (c) 2019-present, 142vip 储凡
+Copyright (c) 2019-present, @142vip 储凡

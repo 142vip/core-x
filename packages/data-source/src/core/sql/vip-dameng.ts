@@ -3,12 +3,11 @@ import { mapValues } from 'lodash'
 import { DataSourceManager } from '../../data-source.manager'
 import { handlerDataSourceConnectError } from '../../data-source.utils'
 
-interface DamengOptions {
+export interface DamengOptions {
   host: string
   port: number
   username: string
   password: string
-  database: string
   querySql: string
 }
 
@@ -26,6 +25,10 @@ export class VipDameng extends DataSourceManager {
     let connection
     let dmPool
     try {
+      // 全局设置，指定结果集中dmdb.CLOB, dmdb.BUFFER数据类型以String显示
+      dmdb.fetchAsString = [dmdb.CLOB, dmdb.BUFFER]
+      // 全局设置，指定结果集中dmdb.BLOB数据类型以Buffer显示
+      dmdb.fetchAsBuffer = [dmdb.BLOB]
       dmPool = await dmdb.createPool({
         connectString: `dm://${options.username}:${options.password}@${options.host}:${options.port}`,
         poolMax: 10,

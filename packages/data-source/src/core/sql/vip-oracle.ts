@@ -3,12 +3,13 @@ import os from 'node:os'
 import { DataSourceManager } from '../../data-source.manager'
 import { handlerDataSourceConnectError } from '../../data-source.utils'
 
-interface OracleOptions {
+export interface OracleOptions {
   host: string
   port: number
   username: string
   password: string
-  database: string
+  sid?: string
+  serviceName?: string
   querySql: string
 }
 
@@ -31,9 +32,7 @@ export class VipOracle extends DataSourceManager {
       connection = await oracledb.getConnection({
         user: options.username,
         password: options.password,
-        server: options.host,
-        port: options.port,
-        database: options.database,
+        connectString: `${options.host}:${options.port}/${options.sid == null ? options.serviceName : options.sid}`,
       })
       const result = await connection.execute(options.querySql)
       return { success: true, data: result.rows }

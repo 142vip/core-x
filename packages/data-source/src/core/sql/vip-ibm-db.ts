@@ -3,7 +3,7 @@ import { isEmpty } from 'lodash'
 import { DataSourceManager } from '../../data-source.manager'
 import { handlerDataSourceConnectError } from '../../data-source.utils'
 
-interface IbmDBOptions {
+export interface IbmDBOptions {
   connectURL: string
   querySql: string
 }

@@ -4,7 +4,7 @@ import { ClickHouse } from 'clickhouse'
 import { DataSourceManager } from '../../data-source.manager'
 import { handlerDataSourceConnectError } from '../../data-source.utils'
 
-interface ClickHouseOptions {
+export interface ClickHouseOptions {
   host: string
   port: number
   username: string
