@@ -25,4 +25,4 @@ import { OPEN_SOURCE_ADDRESS, OPEN_SOURCE_AUTHOR } from '@142vip/open-source'
 
 [MIT](https://opensource.org/license/MIT)
 
-Copyright (c) 2019-present, 142vip 储凡
+Copyright (c) 2019-present, @142vip 储凡
