@@ -1,4 +1,5 @@
 import type { DataSourceParseResponse } from '../../data-source.interface'
+import type { HttpApiOptions } from './vip-http-api'
 import crypto from 'node:crypto'
 import { DataSourceManager } from '../../data-source.manager'
 import { handlerDataSourceConnectError } from '../../data-source.utils'
@@ -9,16 +10,16 @@ import { VipHttpApi } from './vip-http-api'
  */
 interface DTStackAPIAuth {
   // 请求的api id，来源于actionId
-  apiId: string
-  appKey: string
+  apiId: number
+  appKey: number
   appSecret: string
 }
 
-interface DTStackAPIParams extends DTStackAPIAuth {
+export interface DTStackAPIOptions extends DTStackAPIAuth {
   url: string
-  method: 'get' | 'post'
+  method: 'GET' | 'POST'
   pathParams: string
-  headerParams: Record<string, string>
+  headerParams: Record<string, unknown>
   bodyParams: Record<string, unknown>
   queryParams: Record<string, unknown>
 }
@@ -27,9 +28,10 @@ interface DTStackAPIParams extends DTStackAPIAuth {
  * 数栈API
  */
 export class VipDtStackApi extends DataSourceManager {
-  public override async getConnectionData(apiParams: DTStackAPIParams): Promise<DataSourceParseResponse> {
+  public override async getConnectionData(options: DTStackAPIOptions): Promise<DataSourceParseResponse> {
     try {
-      const apiConfig = this.getConfig(apiParams)
+      const apiConfig = this.getConfig(options)
+      console.log(111, apiConfig)
       return new VipHttpApi().getConnectionData(apiConfig)
     }
     catch (error) {
@@ -42,7 +44,7 @@ export class VipDtStackApi extends DataSourceManager {
    * @param apiParams
    * @private
    */
-  private getConfig(apiParams: DTStackAPIParams) {
+  private getConfig(apiParams: DTStackAPIOptions): HttpApiOptions {
     const timestamp = new Date().getDate().toString()
     const signToStr = [
       ...Object.entries(apiParams.bodyParams),
@@ -58,9 +60,18 @@ export class VipDtStackApi extends DataSourceManager {
     // 加签
     const signature = this.getSignature(signToStr)
 
+    // 处理api地址拼接
+    const baseUrl = new URL(apiParams.url)
+    baseUrl.pathname = apiParams.pathParams.replace(/^\//, '')
+    const apiUrl = baseUrl.toString()
+
     return {
-      url: apiParams.url,
+      url: apiUrl,
       method: apiParams.method,
+      // query参数
+      params: apiParams.queryParams,
+      // body参数
+      data: apiParams.bodyParams,
       // timeout: APIDTSightConfig.API_TIMEOUT * 1000,
       headers: {
         ...apiParams.headerParams,
