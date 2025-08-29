@@ -1,11 +1,13 @@
-import type { DataSourceParseResponse, DataSourceResponseError } from '../../data-source.interface'
-import { isEmpty } from 'lodash'
+import type {
+  DataSourceConnectionOptions,
+  DataSourceParseResponse,
+  DataSourceResponseError,
+} from '../../data-source.interface'
 import { DataSourceManager } from '../../data-source.manager'
 import { handlerDataSourceConnectError } from '../../data-source.utils'
 
-export interface IbmDBOptions {
-  connectURL: string
-  querySql: string
+export interface IbmDBOptions extends DataSourceConnectionOptions {
+  database: string
 }
 
 /**
@@ -21,11 +23,12 @@ export class VipIbmDB extends DataSourceManager {
     let connection
     try {
       connection = ibmdb()
-      await connection.open(options.connectURL)
+      const connectURL = this.getConnectURL(options)
+      await connection.open(connectURL)
     }
     catch (err) {
       const error = err as DataSourceResponseError
-      return { success: false, message: isEmpty(error?.message) ? '数据库配置错误，连接失败' : JSON.stringify(error.message) }
+      return handlerDataSourceConnectError(VipIbmDB.name, error)
     }
 
     try {
@@ -38,5 +41,9 @@ export class VipIbmDB extends DataSourceManager {
     finally {
       await connection.close()
     }
+  }
+
+  private getConnectURL(options: IbmDBOptions): string {
+    return `DATABASE=${options.database};HOSTNAME=${options.host};PORT=${options.port};PROTOCOL=TCPIP;UID=${options.username};PWD=${options.password}`
   }
 }

@@ -1,15 +1,10 @@
-import type { DataSourceParseResponse } from '../../data-source.interface'
+import type { DataSourceConnectionOptions, DataSourceParseResponse } from '../../data-source.interface'
 import mysql from 'mysql2/promise'
 import { DataSourceManager } from '../../data-source.manager'
 import { handlerDataSourceConnectError } from '../../data-source.utils'
 
-export interface MysqlOptions {
-  host: string
-  port: number
-  username: string
-  password: string
+export interface MysqlOptions extends DataSourceConnectionOptions {
   database: string
-  querySql: string
 }
 
 /**

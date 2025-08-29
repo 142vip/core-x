@@ -1,15 +1,9 @@
-import type { DataSourceParseResponse } from '../../data-source.interface'
+import type { DataSourceConnectionOptions, DataSourceParseResponse } from '../../data-source.interface'
 import { mapValues } from 'lodash'
 import { DataSourceManager } from '../../data-source.manager'
 import { handlerDataSourceConnectError } from '../../data-source.utils'
 
-export interface DamengOptions {
-  host: string
-  port: number
-  username: string
-  password: string
-  querySql: string
-}
+export interface DamengOptions extends DataSourceConnectionOptions {}
 
 /**
  * 达梦数据库

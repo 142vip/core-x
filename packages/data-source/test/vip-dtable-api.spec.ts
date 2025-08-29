@@ -14,20 +14,21 @@ describe('vip-dtable-api', () => {
     const time = new Date().getTime()
     // 获取数据总量
     const total = await vipDTableApi.getPaginationTotal(options)
-    const data = await vipDTableApi.getConnectionData(options)
-    console.log('测试GET请求，同步获取耗时：', new Date().getTime() - time, JSON.stringify(data))
-    expect(data.success).toBe(true)
-    expect(data.data?.length).toBe(total)
+    const response = await vipDTableApi.getConnectionData(options)
+
+    console.log('测试GET请求，同步获取耗时：', new Date().getTime() - time, JSON.stringify(response))
+    expect(response.success).toBe(true)
+    expect(response.data?.length).toBe(total)
   })
 
   it('测试GET请求 - 并发获取', async () => {
     const time = new Date().getTime()
     // 获取数据总量
     const total = await vipDTableApi.getPaginationTotal(options)
-    const data = await vipDTableApi.getConnectionDataByConcurrency(options)
+    const response = await vipDTableApi.getConnectionDataByConcurrency(options)
 
-    console.log('测试GET请求，并发获取耗时：', new Date().getTime() - time, JSON.stringify(data))
-    expect(data.success).toBe(true)
-    expect(data.data?.length).toBe(total)
+    console.log('测试GET请求，并发获取耗时：', new Date().getTime() - time, JSON.stringify(response))
+    expect(response.success).toBe(true)
+    expect(response.data?.length).toBe(total)
   })
 })

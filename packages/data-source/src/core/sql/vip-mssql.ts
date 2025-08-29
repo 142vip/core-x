@@ -1,16 +1,11 @@
 import type { config } from 'mssql'
-import type { DataSourceParseResponse } from '../../data-source.interface'
+import type { DataSourceConnectionOptions, DataSourceParseResponse } from '../../data-source.interface'
 import { ConnectionPool } from 'mssql'
 import { DataSourceManager } from '../../data-source.manager'
 import { handlerDataSourceConnectError } from '../../data-source.utils'
 
-export interface MsSQLOptions {
-  host: string
-  port: number
-  username: string
-  password: string
+export interface MsSQLOptions extends DataSourceConnectionOptions {
   database: string
-  querySql: string
 }
 
 /**

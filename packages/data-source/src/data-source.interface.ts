@@ -49,13 +49,12 @@ export interface ApiQueryConfig {
 }
 
 /**
- * 连接配置
+ * SQL连接配置
  */
 export interface DataSourceConnectionOptions {
   host: string
   port: number
   username: string
   password: string
-  database: string
   querySql: string
 }

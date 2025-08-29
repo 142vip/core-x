@@ -1,16 +1,11 @@
-import type { DataSourceParseResponse } from '../../data-source.interface'
+import type { DataSourceConnectionOptions, DataSourceParseResponse } from '../../data-source.interface'
 
 import { ClickHouse } from 'clickhouse'
 import { DataSourceManager } from '../../data-source.manager'
 import { handlerDataSourceConnectError } from '../../data-source.utils'
 
-export interface ClickHouseOptions {
-  host: string
-  port: number
-  username: string
-  password: string
+export interface ClickHouseOptions extends DataSourceConnectionOptions {
   database: string
-  querySql: string
 }
 
 /**

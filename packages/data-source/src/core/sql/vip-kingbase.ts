@@ -1,16 +1,11 @@
 import type { QueryResult, QueryResultRow } from 'pg'
-import type { DataSourceParseResponse } from '../../data-source.interface'
+import type { DataSourceConnectionOptions, DataSourceParseResponse } from '../../data-source.interface'
 import { Pool } from 'pg'
 import { DataSourceManager } from '../../data-source.manager'
 import { handlerDataSourceConnectError } from '../../data-source.utils'
 
-export interface KingBaseOptions {
-  host: string
-  port: number
-  username: string
-  password: string
+export interface KingBaseOptions extends DataSourceConnectionOptions {
   database: string
-  querySql: string
 }
 
 /**

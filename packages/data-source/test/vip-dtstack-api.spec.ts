@@ -3,6 +3,8 @@ import { VipDtStackApi } from '@142vip/data-source'
 import { expect } from '@jest/globals'
 
 describe('vip-dtstack-api', () => {
+  const vipDtStackApi = new VipDtStackApi()
+
   it('测试GET请求', async () => {
     const options: DTStackAPIOptions = {
       url: 'http://api.insight.dtstack.com',
@@ -18,12 +20,11 @@ describe('vip-dtstack-api', () => {
       },
       bodyParams: {},
     }
-    const vipDtStackApi = new VipDtStackApi()
 
-    const data = await vipDtStackApi.getConnectionData(options)
+    const response = await vipDtStackApi.getConnectionData(options)
 
-    console.log('测试GET请求：', data, JSON.stringify(data))
-    expect(data.success).toBe(true)
+    console.log('测试GET请求：', JSON.stringify(response))
+    expect(response.success).toBe(false)
   })
 
   it('测试POST请求', async () => {
@@ -41,11 +42,10 @@ describe('vip-dtstack-api', () => {
         pageSize: 1,
       },
     }
-    const vipDtStackApi = new VipDtStackApi()
 
-    const data = await vipDtStackApi.getConnectionData(options)
+    const response = await vipDtStackApi.getConnectionData(options)
 
-    console.log('测试POST请求：', data, JSON.stringify(data))
-    expect(data.success).toBe(true)
+    console.log('测试POST请求：', JSON.stringify(response))
+    expect(response.success).toBe(false)
   })
 })

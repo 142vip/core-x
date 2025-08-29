@@ -1,16 +1,11 @@
-import type { DataSourceParseResponse } from '../../data-source.interface'
+import type { DataSourceConnectionOptions, DataSourceParseResponse } from '../../data-source.interface'
 import os from 'node:os'
 import { DataSourceManager } from '../../data-source.manager'
 import { handlerDataSourceConnectError } from '../../data-source.utils'
 
-export interface OracleOptions {
-  host: string
-  port: number
-  username: string
-  password: string
+export interface OracleOptions extends DataSourceConnectionOptions {
   sid?: string
   serviceName?: string
-  querySql: string
 }
 
 /**

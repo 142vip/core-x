@@ -5,7 +5,7 @@ import jsCharDet from 'jschardet'
 import { DataSourceManager } from '../data-source.manager'
 import { handlerDataSourceConnectError } from '../data-source.utils'
 
-interface CSVOptions {
+export interface CSVOptions {
   // eslint-disable-next-line node/prefer-global/buffer
   file: Buffer
   encode: string

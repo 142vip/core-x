@@ -10,11 +10,11 @@ interface AliGatewayAPIAuth {
   appSecret: string
 }
 
-interface AliGatewayApiParams extends AliGatewayAPIAuth {
-  method: string
+export interface AliGatewayApiOptions extends AliGatewayAPIAuth {
+  method: 'post' | 'get' | 'put' | 'delete'
   url: string
-  bodyParams: Record<string, unknown>
-  headerParams: Record<string, string>
+  bodyParams?: Record<string, unknown>
+  headerParams?: Record<string, unknown>
 }
 
 /**
@@ -22,7 +22,7 @@ interface AliGatewayApiParams extends AliGatewayAPIAuth {
  * 参考：https://www.npmjs.com/package/aliyun-api-gateway
  */
 export class VipAliGatewayApi extends DataSourceManager {
-  public override async getConnectionData(params: AliGatewayApiParams): Promise<DataSourceParseResponse> {
+  public override async getConnectionData(params: AliGatewayApiOptions): Promise<DataSourceParseResponse> {
     try {
       const aliClient = new Client(params.appKey, params.appSecret)
 

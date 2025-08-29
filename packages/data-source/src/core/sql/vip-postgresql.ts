@@ -1,12 +1,11 @@
 import type { QueryResult, QueryResultRow } from 'pg'
-import type { DataSourceParseResponse } from '../../data-source.interface'
+import type { DataSourceConnectionOptions, DataSourceParseResponse } from '../../data-source.interface'
 import { Client } from 'pg'
 import { DataSourceManager } from '../../data-source.manager'
 import { handlerDataSourceConnectError } from '../../data-source.utils'
 
-export interface PostgreSqlOptions {
-  connectURL: string
-  querySql: string
+export interface PostgreSqlOptions extends DataSourceConnectionOptions {
+  database: string
 }
 
 /**
@@ -20,7 +19,7 @@ export class VipPostgreSql extends DataSourceManager {
     let pgClient
     try {
       pgClient = new Client({
-        connectionString: options.connectURL,
+        connectionString: this.getConnectURL(options),
         statement_timeout: 5000,
       })
       // 连接
@@ -37,5 +36,13 @@ export class VipPostgreSql extends DataSourceManager {
     finally {
       await pgClient?.end()
     }
+  }
+
+  /**
+   * 获取连接地址
+   * @private
+   */
+  private getConnectURL(options: PostgreSqlOptions): string {
+    return `postgresql://${options.username}:${options.password}@${options.host}:${options.port}/${options.database}`
   }
 }
