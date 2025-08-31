@@ -52,7 +52,7 @@
     "@vuepress/plugin-markdown-tab": "2.0.0-rc.102",
     "@vuepress/plugin-redirect": "2.0.0-rc.102",
     "@vuepress/plugin-slimsearch": "2.0.0-rc.102",
-    "@vuepress/plugin-watermark": "2.0.0-rc.102",
+    "@vuepress/plugin-watermark": "2.0.0-rc.112",
     "@vueuse/shared": "13.0.0",
     "cli-spinners": "3.2.0",
     "dashjs": "4.7.4",
