@@ -47,7 +47,7 @@
     "axios": "1.11.0",
     "clickhouse": "2.6.0",
     "csv-parse": "5.5.0",
-    "dmdb": "1.0.18856",
+    "dmdb": "1.0.40189",
     "ibm_db": "3.3.2",
     "iconv-lite": "0.6.3",
     "jschardet": "3.0.0",
