@@ -1,6 +1,6 @@
+import type { DataSourceConnector } from '../../data-source.connector'
 import type { DataSourceConnectionOptions, DataSourceParseResponse } from '../../data-source.interface'
 import mysql from 'mysql2/promise'
-import { DataSourceManager } from '../../data-source.manager'
 import { handlerDataSourceConnectError } from '../../data-source.utils'
 
 export interface MysqlOptions extends DataSourceConnectionOptions {
@@ -10,11 +10,11 @@ export interface MysqlOptions extends DataSourceConnectionOptions {
 /**
  * MySQL 数据源
  */
-export class VipMysql extends DataSourceManager {
+export class VipMysql implements DataSourceConnector<MysqlOptions> {
   /**
    * 获取连接数据
    */
-  public override async getConnectionData(options: MysqlOptions): Promise<DataSourceParseResponse> {
+  public async getConnectionData(options: MysqlOptions): Promise<DataSourceParseResponse> {
     let connection
     try {
       connection = await mysql.createConnection({
@@ -27,8 +27,10 @@ export class VipMysql extends DataSourceManager {
         flags: ['-CONNECT_ATTRS'],
       })
       const response = await connection.query(options.querySql)
-      // 数据过滤
-      return { success: true, data: Array.isArray(response[0]) ? response[0] : response }
+      // 数据调整
+      const data = Array.isArray(response[0]) ? response[0] : response
+
+      return { success: true, data }
     }
     catch (error) {
       return handlerDataSourceConnectError(VipMysql.name, error)

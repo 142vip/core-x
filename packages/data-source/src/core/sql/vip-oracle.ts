@@ -1,6 +1,6 @@
+import type { DataSourceConnector } from '../../data-source.connector'
 import type { DataSourceConnectionOptions, DataSourceParseResponse } from '../../data-source.interface'
 import os from 'node:os'
-import { DataSourceManager } from '../../data-source.manager'
 import { handlerDataSourceConnectError } from '../../data-source.utils'
 
 export interface OracleOptions extends DataSourceConnectionOptions {
@@ -11,11 +11,11 @@ export interface OracleOptions extends DataSourceConnectionOptions {
 /**
  * Oracle 数据源
  */
-export class VipOracle extends DataSourceManager {
+export class VipOracle implements DataSourceConnector<OracleOptions> {
   /**
    * 获取连接数据
    */
-  public override async getConnectionData(options: OracleOptions): Promise<DataSourceParseResponse> {
+  public async getConnectionData(options: OracleOptions): Promise<DataSourceParseResponse> {
     // eslint-disable-next-line ts/no-require-imports
     const oracledb = require('oracledb')
     oracledb.outFormat = oracledb.OUT_FORMAT_OBJECT
@@ -29,8 +29,9 @@ export class VipOracle extends DataSourceManager {
         password: options.password,
         connectString: `${options.host}:${options.port}/${options.sid == null ? options.serviceName : options.sid}`,
       })
-      const result = await connection.execute(options.querySql)
-      return { success: true, data: result.rows }
+      const queryData = await connection.execute(options.querySql)
+
+      return { success: true, data: queryData.rows }
     }
     catch (error) {
       return handlerDataSourceConnectError(VipOracle.name, error)

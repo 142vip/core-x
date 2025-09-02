@@ -1,8 +1,8 @@
-import type { MsSQLOptions } from '@142vip/data-source'
+import type { SqlServerOptions } from '@142vip/data-source'
 import { VipSqlServer } from '@142vip/data-source'
 
-describe('vip-mssql', () => {
-  const options: MsSQLOptions = {
+describe('vip-sql-server', () => {
+  const options: SqlServerOptions = {
     host: '172.16.202.232',
     port: 1433,
     username: 'sa',

@@ -20,7 +20,7 @@ describe('vip-http-api', () => {
   async function testConnect(options: HttpApiOptions): Promise<void> {
     const response = await vipHttpApi.getConnectionData<HttpApiOptions>(options)
 
-    console.log(`测试${options.method}请求：`, response, JSON.stringify(response))
+    console.log(`测试${options.method}请求：`, JSON.stringify(response))
     expect(response.success).toBe(true)
     expect(response.data?.method).toEqual(options.method)
     expect(response.data?.params).toEqual({})

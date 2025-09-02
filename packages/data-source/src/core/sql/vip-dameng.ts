@@ -1,6 +1,6 @@
+import type { DataSourceConnector } from '../../data-source.connector'
 import type { DataSourceConnectionOptions, DataSourceParseResponse } from '../../data-source.interface'
 import { mapValues } from 'lodash'
-import { DataSourceManager } from '../../data-source.manager'
 import { handlerDataSourceConnectError } from '../../data-source.utils'
 
 export interface DamengOptions extends DataSourceConnectionOptions {}
@@ -8,7 +8,7 @@ export interface DamengOptions extends DataSourceConnectionOptions {}
 /**
  * 达梦数据库
  */
-export class VipDameng extends DataSourceManager {
+export class VipDameng implements DataSourceConnector<DamengOptions> {
   /**
    * 获取连接数据
    */

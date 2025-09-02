@@ -1,7 +1,7 @@
 import type { QueryResult, QueryResultRow } from 'pg'
+import type { DataSourceConnector } from '../../data-source.connector'
 import type { DataSourceConnectionOptions, DataSourceParseResponse } from '../../data-source.interface'
 import { Pool } from 'pg'
-import { DataSourceManager } from '../../data-source.manager'
 import { handlerDataSourceConnectError } from '../../data-source.utils'
 
 export interface KingBaseOptions extends DataSourceConnectionOptions {
@@ -11,11 +11,11 @@ export interface KingBaseOptions extends DataSourceConnectionOptions {
 /**
  * 金仓数据源
  */
-export class VipKingBase extends DataSourceManager {
+export class VipKingBase implements DataSourceConnector<KingBaseOptions> {
   /**
    * 获取连接数据
    */
-  public override async getConnectionData(options: KingBaseOptions): Promise<DataSourceParseResponse> {
+  public async getConnectionData(options: KingBaseOptions): Promise<DataSourceParseResponse> {
     let connection
     try {
       connection = new Pool({
@@ -27,9 +27,10 @@ export class VipKingBase extends DataSourceManager {
       })
       // 执行sql语句
       const queryResult: QueryResult<QueryResultRow> = await connection.query(options.querySql)
+      const data = queryResult.rows != null ? queryResult.rows : []
 
       // 处理数据格式
-      return { success: true, data: queryResult.rows != null ? queryResult.rows : [] }
+      return { success: true, data }
     }
     catch (error) {
       return handlerDataSourceConnectError(VipKingBase.name, error)

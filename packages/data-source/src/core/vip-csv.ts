@@ -1,8 +1,8 @@
+import type { DataSourceConnector } from '../data-source.connector'
 import type { DataSourceParseResponse } from '../data-source.interface'
 import { parse } from 'csv-parse/sync'
 import iconv from 'iconv-lite'
 import jsCharDet from 'jschardet'
-import { DataSourceManager } from '../data-source.manager'
 import { handlerDataSourceConnectError } from '../data-source.utils'
 
 export interface CSVOptions {
@@ -11,8 +11,11 @@ export interface CSVOptions {
   encode: string
 }
 
-export class VipCsv extends DataSourceManager {
-  public override async getConnectionData(options: CSVOptions): Promise<DataSourceParseResponse> {
+export class VipCsv implements DataSourceConnector<CSVOptions> {
+  /**
+   * 获取连接数据
+   */
+  public async getConnectionData(options: CSVOptions): Promise<DataSourceParseResponse> {
     try {
       // 获取编码 支持自动获取
       const charset = ['utf8', 'gbk'].includes(options.encode)
@@ -21,12 +24,12 @@ export class VipCsv extends DataSourceManager {
 
       const decodeStr = iconv.decode(options.file, charset)
 
-      const parseCsvData = parse(decodeStr, {
+      const data = parse(decodeStr, {
         columns: true,
         skip_empty_lines: true,
       })
 
-      return { success: true, data: parseCsvData }
+      return { success: true, data }
     }
     catch (error) {
       return handlerDataSourceConnectError(VipCsv.name, error)

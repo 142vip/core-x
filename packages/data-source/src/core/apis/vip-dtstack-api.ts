@@ -1,7 +1,7 @@
+import type { DataSourceConnector } from '../../data-source.connector'
 import type { DataSourceParseResponse } from '../../data-source.interface'
 import type { HttpApiOptions } from './vip-http-api'
 import crypto from 'node:crypto'
-import { DataSourceManager } from '../../data-source.manager'
 import { handlerDataSourceConnectError } from '../../data-source.utils'
 import { VipHttpApi } from './vip-http-api'
 
@@ -27,11 +27,13 @@ export interface DTStackAPIOptions extends DTStackAPIAuth {
 /**
  * 数栈API
  */
-export class VipDtStackApi extends DataSourceManager {
-  public override async getConnectionData(options: DTStackAPIOptions): Promise<DataSourceParseResponse> {
+export class VipDtStackApi implements DataSourceConnector<DTStackAPIOptions> {
+  /**
+   * 获取连接数据
+   */
+  public async getConnectionData(options: DTStackAPIOptions): Promise<DataSourceParseResponse> {
     try {
       const apiConfig = this.getConfig(options)
-      console.log(111, apiConfig)
       return new VipHttpApi().getConnectionData(apiConfig)
     }
     catch (error) {

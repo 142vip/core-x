@@ -1,9 +1,8 @@
+import type { DataSourceConnector } from '../../data-source.connector'
 import type {
   DataSourceConnectionOptions,
   DataSourceParseResponse,
-  DataSourceResponseError,
 } from '../../data-source.interface'
-import { DataSourceManager } from '../../data-source.manager'
 import { handlerDataSourceConnectError } from '../../data-source.utils'
 
 export interface IbmDBOptions extends DataSourceConnectionOptions {
@@ -13,21 +12,20 @@ export interface IbmDBOptions extends DataSourceConnectionOptions {
 /**
  * DB2 数据源
  */
-export class VipIbmDB extends DataSourceManager {
+export class VipIbmDB implements DataSourceConnector<IbmDBOptions> {
   /**
    * 获取连接数据
    */
-  public override async getConnectionData(options: IbmDBOptions): Promise<DataSourceParseResponse> {
+  public async getConnectionData(options: IbmDBOptions): Promise<DataSourceParseResponse> {
     // eslint-disable-next-line ts/no-require-imports
-    const ibmdb = require('ibm_db')
+    const ibmDB = require('ibm_db')
     let connection
     try {
-      connection = ibmdb()
+      connection = ibmDB()
       const connectURL = this.getConnectURL(options)
       await connection.open(connectURL)
     }
-    catch (err) {
-      const error = err as DataSourceResponseError
+    catch (error) {
       return handlerDataSourceConnectError(VipIbmDB.name, error)
     }
 
@@ -43,6 +41,11 @@ export class VipIbmDB extends DataSourceManager {
     }
   }
 
+  /**
+   * 获取链接URL
+   * @param options
+   * @private
+   */
   private getConnectURL(options: IbmDBOptions): string {
     return `DATABASE=${options.database};HOSTNAME=${options.host};PORT=${options.port};PROTOCOL=TCPIP;UID=${options.username};PWD=${options.password}`
   }

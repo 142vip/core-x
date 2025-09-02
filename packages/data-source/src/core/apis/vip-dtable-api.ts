@@ -1,10 +1,12 @@
+import type { DataSourceConnector } from '../../data-source.connector'
 import type { DataSourceParseResponse } from '../../data-source.interface'
 import type { HttpApiOptions } from './vip-http-api'
-import { DataSourceManager } from '../../data-source.manager'
 import { handlerDataSourceConnectError } from '../../data-source.utils'
 import { VipHttpApi } from './vip-http-api'
 
 const DEFAULT_DTABLE_API_URL = 'https://oapi.dtable.cloud/v0'
+
+// 接口最大分页数
 const DEFAULT_MAX_RECORDS = 1000
 
 type DTableRecords = unknown[]
@@ -43,9 +45,13 @@ export interface DTableApiOptions {
 /**
  * DTable API
  */
-export class VipDTableApi extends DataSourceManager {
+export class VipDTableApi implements DataSourceConnector<DTableApiOptions> {
   private vipHttpApi = new VipHttpApi()
-  public override async getConnectionData(options: DTableApiOptions): Promise<DataSourceParseResponse<DTableRecords>> {
+
+  /**
+   * 获取连接数据
+   */
+  public async getConnectionData(options: DTableApiOptions): Promise<DataSourceParseResponse<DTableRecords>> {
     try {
       const data = await this.getTableAllRecords(options)
       return { success: true, data }
@@ -55,6 +61,10 @@ export class VipDTableApi extends DataSourceManager {
     }
   }
 
+  /**
+   * 并发获取所有记录，提高获取速度
+   * @param options
+   */
   public async getConnectionDataByConcurrency(options: DTableApiOptions): Promise<DataSourceParseResponse<DTableRecords>> {
     try {
       const data = await this.getTableAllRecordsByConcurrency(options)
@@ -119,7 +129,6 @@ export class VipDTableApi extends DataSourceManager {
 
   /**
    * 分页最大数量
-   * @param maxRecords
    * @private
    */
   private getMaxPageSize(maxRecords?: number): number {

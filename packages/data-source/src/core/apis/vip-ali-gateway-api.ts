@@ -1,6 +1,6 @@
+import type { DataSourceConnector } from '../../data-source.connector'
 import type { DataSourceParseResponse } from '../../data-source.interface'
 import { Client } from 'aliyun-api-gateway'
-import { DataSourceManager } from '../../data-source.manager'
 import { handlerDataSourceConnectError } from '../../data-source.utils'
 
 const AliGateway_API_TIMEOUT = 30000 // API 请求超时时间  默认30s
@@ -11,6 +11,7 @@ interface AliGatewayAPIAuth {
 }
 
 export interface AliGatewayApiOptions extends AliGatewayAPIAuth {
+  // 这里必须全小写，aliyun-api-gateway 模块限制
   method: 'post' | 'get' | 'put' | 'delete'
   url: string
   bodyParams?: Record<string, unknown>
@@ -21,8 +22,11 @@ export interface AliGatewayApiOptions extends AliGatewayAPIAuth {
  * 阿里云网关API
  * 参考：https://www.npmjs.com/package/aliyun-api-gateway
  */
-export class VipAliGatewayApi extends DataSourceManager {
-  public override async getConnectionData(params: AliGatewayApiOptions): Promise<DataSourceParseResponse> {
+export class VipAliGatewayApi implements DataSourceConnector<AliGatewayApiOptions> {
+  /**
+   * 获取连接数据
+   */
+  public async getConnectionData(params: AliGatewayApiOptions): Promise<DataSourceParseResponse> {
     try {
       const aliClient = new Client(params.appKey, params.appSecret)
 

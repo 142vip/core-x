@@ -1,7 +1,7 @@
 import type { QueryResult, QueryResultRow } from 'pg'
+import type { DataSourceConnector } from '../../data-source.connector'
 import type { DataSourceConnectionOptions, DataSourceParseResponse } from '../../data-source.interface'
 import { Client } from 'pg'
-import { DataSourceManager } from '../../data-source.manager'
 import { handlerDataSourceConnectError } from '../../data-source.utils'
 
 export interface PostgreSqlOptions extends DataSourceConnectionOptions {
@@ -11,11 +11,11 @@ export interface PostgreSqlOptions extends DataSourceConnectionOptions {
 /**
  * PostgreSQL 数据源
  */
-export class VipPostgreSql extends DataSourceManager {
+export class VipPostgreSql implements DataSourceConnector<PostgreSqlOptions> {
   /**
    * 获取连接数据
    */
-  public override async getConnectionData(options: PostgreSqlOptions): Promise<DataSourceParseResponse> {
+  public async getConnectionData(options: PostgreSqlOptions): Promise<DataSourceParseResponse> {
     let pgClient
     try {
       pgClient = new Client({
@@ -27,8 +27,9 @@ export class VipPostgreSql extends DataSourceManager {
 
       // 查询
       const queryResult: QueryResult<QueryResultRow> = await pgClient.query(options.querySql)
+      const data = queryResult.rows != null ? queryResult.rows : []
 
-      return { success: true, data: queryResult.rows != null ? queryResult.rows : [] }
+      return { success: true, data }
     }
     catch (error) {
       return handlerDataSourceConnectError(VipPostgreSql.name, error)

@@ -38,11 +38,80 @@ pnpm i @142vip/data-source
 
 ### 新增数据源
 
-```ts
-import { DataSourceManager } from '@142vip/data-source'
+#### 定义接口类型
 
-export class MyDataSource extends DataSourceManager {
+```ts
+export interface MyDataSourceOptions {
   // coding xxx
+}
+```
+
+#### 初始化连接器
+
+```ts
+import { DataSourceConnector } from '@142vip/data-source'
+
+export class MyDataSource implements DataSourceConnector<MyDataSourceOptions> {
+  /**
+   * 获取连接数据
+   */
+  public async getConnectionData(options: MyDataSourceOptions): Promise<DataSourceParseResponse> {
+    try {
+      // coding xxx
+    }
+    catch (error) {
+      return handlerDataSourceConnectError(VipPostgreSql.name, error)
+    }
+    finally {
+      await pgClient?.end()
+    }
+  }
+}
+```
+
+#### 进一步拓展
+
+基于`DataSourceManager`接口，封装`parseData`、`testConnect`、`getDataBaseNames`等常用方法。
+
+```ts
+/**
+ * 自定义数据源
+ */
+export class MyDataSource implements DataSourceManager {
+  /**
+   * 解析数据
+   */
+  public async parseData(): Promise<DataSourceParseResponse> {
+    // coding xxx
+  }
+
+  /**
+   * 测试连接
+   */
+  public testConnect(): Promise<DataSourceParseResponse> {
+    // coding xxx
+  }
+
+  /**
+   * 获取表名列表
+   */
+  public getDataBaseNames(): Promise<DataSourceParseResponse<string[]>> {
+    // coding xxx
+  }
+
+  /**
+   * 获取表名列表
+   */
+  public getTableNames(): Promise<DataSourceParseResponse<DataSourceTable[]>> {
+    // coding xxx
+  }
+
+  /**
+   * 获取表字段列表
+   */
+  public getTableColumns(tableName: string, schema?: string): Promise<DataSourceParseResponse<DataSourceColumn[]>> {
+    // coding xxx
+  }
 }
 ```
 
