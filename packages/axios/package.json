@@ -2,7 +2,7 @@
   "name": "@142vip/axios",
   "version": "0.0.1-alpha.6",
   "private": false,
-  "description": "Http请求工具，基于axios二次封装，支持通用化的自定义拦截器",
+  "description": "Http请求工具，支持通用化的自定义拦截器、自定义参数、自定义配置",
   "author": "mmdapl <mmdapl@163.com>",
   "license": "MIT",
   "homepage": "https://142vip.github.io/core-x/packages/axios/",

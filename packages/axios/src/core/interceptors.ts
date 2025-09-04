@@ -1,5 +1,5 @@
 import type { AxiosRequestConfig, AxiosResponse } from 'axios'
-import { HttpStatus } from '@142vip/utils'
+import { HttpStatus } from '../enum/http-status.enum'
 
 /**
  * 拦截器类型
