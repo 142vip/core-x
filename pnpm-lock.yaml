@@ -107,9 +107,6 @@ importers:
 
   packages/axios:
     dependencies:
-      '@142vip/utils':
-        specifier: workspace:*
-        version: link:../utils
       axios:
         specifier: 1.8.4
         version: 1.8.4

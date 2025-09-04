@@ -43,7 +43,6 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@142vip/utils": "workspace:*",
     "axios": "1.8.4"
   },
   "publishConfig": {
