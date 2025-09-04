@@ -19,13 +19,15 @@ pnpm i @142vip/egg-axios
 ```js
 // config/config.default.js
 module.exports = {
-  headers: {
-    common: {
-      'Content-Type': 'application/json; charset=UTF-8',
+  axios:{
+    headers: {
+      common: {
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
     },
-  },
-  // default 5 seconds timeout
-  timeout: 5000,
+    // default 5 seconds timeout
+    timeout: 5000,
+  }
 }
 ```
 
@@ -67,7 +69,7 @@ exports.eggAxios = {
 // app/controller/post.js
 class PostController extends Controller {
   async list() {
-    const axios = await this.app.eggAxios
+    const axios = await this.app.axios
   }
 }
 ```
@@ -78,8 +80,8 @@ class PostController extends Controller {
 // app/controller/post.js
 class PostController extends Controller {
   async list() {
-    const axios1 = await this.app.eggAxios.get('axios1')
-    const axios2 = await this.app.eggAxios.get('axios2')
+    const axios1 = await this.app.axios.get('axios1')
+    const axios2 = await this.app.axios.get('axios2')
   }
 }
 ```
