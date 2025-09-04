@@ -1,5 +1,6 @@
 export * from './app'
 export * from './base.service'
+export * from './config'
 export * from './orm/sequelize'
 export * from './plugin'
 export * from './redis'
