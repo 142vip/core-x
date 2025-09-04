@@ -19,7 +19,7 @@ pnpm i @142vip/egg-axios
 ```js
 // config/config.default.js
 module.exports = {
-  axios:{
+  axios: {
     headers: {
       common: {
         'Content-Type': 'application/json; charset=UTF-8',
