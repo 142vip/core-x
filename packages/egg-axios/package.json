@@ -2,7 +2,7 @@
   "name": "@142vip/egg-axios",
   "version": "0.0.1-alpha.1",
   "private": false,
-  "description": "Egg.js框架下使用axios的插件，支持对axios的二次封装，简化Http请求配置",
+  "description": "Egg.js框架下使用@142vip/axios的插件，简化Http请求配置",
   "author": "mmdapl <mmdapl@163.com>",
   "license": "MIT",
   "homepage": "https://142vip.github.io/core-x/packages/egg-axios/",
@@ -19,7 +19,8 @@
     "142vip",
     "@142vip",
     "@142vip/egg-axios",
-    "axios",
+    "@142vip/axios",
+    "@142vip/egg",
     "egg-plugin",
     "eggPlugin",
     "egg"
@@ -39,9 +40,7 @@
   ],
   "dependencies": {
     "@142vip/axios": "workspace:*",
-    "@142vip/egg": "workspace:*",
-    "@142vip/utils": "workspace:*",
-    "axios": "1.8.4"
+    "@142vip/egg": "workspace:*"
   },
   "publishConfig": {
     "access": "public",
