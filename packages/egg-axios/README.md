@@ -6,9 +6,82 @@
 
 ## 安装
 
-```shell
-# 安装
+```bash
+# npm
+npm i @142vip/axios
+# pnpm
 pnpm i @142vip/egg-axios
+```
+
+## 配置
+
+### 单实例
+```js
+// config/config.default.js
+module.exports = {
+  headers: {
+    common: {
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+  },
+  // default 5 seconds timeout
+  timeout: 5000,
+}
+```
+
+### 多个实例
+
+```js
+// config/config.default.js
+exports.eggAxios = {
+  clients: {
+    // clientId，可通过 app.mysql.get('clientId') 访问客户端实例
+    axios1: {
+      headers: {
+        common: {
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+      },
+      // default 5 seconds timeout
+      timeout: 5000,
+    },
+    axios2: {
+      headers: {
+        common: {
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+      },
+    },
+  },
+  // 所有数据库的默认配置
+  default: {
+    timeout: 5000,
+  },
+}
+```
+
+## 使用
+
+### 单实例
+```js
+// app/controller/post.js
+class PostController extends Controller {
+  async list() {
+    const axios = await this.app.eggAxios
+  }
+}
+```
+
+### 多实例
+
+```js
+// app/controller/post.js
+class PostController extends Controller {
+  async list() {
+    const axios1 = await this.app.eggAxios.get('axios1')
+    const axios2 = await this.app.eggAxios.get('axios2')
+  }
+}
 ```
 
 ## 证书
