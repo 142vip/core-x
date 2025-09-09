@@ -82,7 +82,7 @@
     "pg": "8.11.3"
   },
   "devDependencies": {
-    "@types/mssql": "9.1.7",
+    "@types/mssql": "9.1.8",
     "@types/pg": "8.15.5"
   },
   "publishConfig": {
