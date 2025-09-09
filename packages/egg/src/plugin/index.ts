@@ -1,2 +1,5 @@
 export * from './logger'
+export * from './plugin.boot'
+export * from './plugin.interface'
+export * from './plugin.utils'
 export * from './register'

@@ -1,4 +1,5 @@
-import type { EggApp, EggCoreLogger, PluginConfig } from '../egg.interface'
+import type { EggApp, EggCoreLogger } from '../egg.interface'
+import type { PluginConfig } from './plugin.interface'
 
 /**
  * egg插件日志

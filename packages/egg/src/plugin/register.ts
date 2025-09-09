@@ -1,66 +1,12 @@
-import type { CreatePluginInstance, EggApp } from '../egg.interface'
-import { VipLodash } from '@142vip/utils'
-
-/**
- * 注册的Egg插件key
- */
-export enum RegisterEggPluginName {
-  EGG_AXIOS = 'axios',
-  EGG_MYSQL = 'mysql',
-  EGG_REDIS = 'redis',
-  EGG_SEQUELIZE = 'sequelize',
-  EGG_RABBIT = 'rabbit',
-  EGG_VALIDATE = 'validate',
-  EGG_SWAGGER = 'swagger',
-  EGG_GRPC_CLIENT = 'grpcClient',
-  EGG_GRPC_SERVER = 'grpcServer',
-}
-
-/**
- * 插件注册
- * @param name
- * @param app
- * @param createInstance
- */
-export function registerPlugin(name: RegisterEggPluginName, app: EggApp, createInstance: CreatePluginInstance) {
-  // 配置 agent 或者 app 才加载单例
-  if (app.config[name] != null) {
-    app.addSingleton(name, createInstance)
-  }
-}
-
-/**
- * 插件加载时机
- * - app.js 中
- * - agent.js 中
- */
-export enum PluginLoader {
-  APP = 'app',
-  AGENT = 'agent',
-}
-
-/**
- * 默认的插件配置
- * @param pkgName  模块包名
- * @param userConfig
- */
-export function defaultPluginConfig(pkgName: string, userConfig: any) {
-  const defaultConfig = {
-    default: {
-      pkgName,
-    },
-    // 默认app.js加载
-    loaders: [PluginLoader.APP],
-  }
-
-  return VipLodash.merge(defaultConfig, userConfig)
-}
+import type { CreatePluginInstance, EggApp, EggPluginInstance } from '../egg.interface'
+import type { RegisterEggPluginName } from './plugin.interface'
+import { PluginLoader } from './plugin.interface'
 
 /**
  * egg启动的生命周期
  * - 参考：https://www.eggjs.org/zh-CN/basics/app-start
  */
-export class EggPluginBoot {
+export class EggPluginBoot<T> {
   private readonly pluginName: RegisterEggPluginName
   private readonly appOrAgent: EggApp
   private readonly createEggPluginInstance: CreatePluginInstance
@@ -112,7 +58,6 @@ export class EggPluginBoot {
    * 应用已启动完毕
    */
   public async didReady(): Promise<void> {
-
   }
 
   /**
@@ -120,7 +65,6 @@ export class EggPluginBoot {
    * 此时可以从 app.server 获取 server 实例
    */
   public async serverDidReady(): Promise<void> {
-
   }
 
   /**
@@ -134,11 +78,54 @@ export class EggPluginBoot {
 
   /**
    * 注册插件
+   * - 区分单实例、多实例挂载
    */
   private registerPlugin(): void {
+    if (this.appOrAgent.config[this.pluginName] == null) {
+      return
+    }
+
+    console.log('插件注册', this.appOrAgent.config.env, this.appOrAgent.config[this.pluginName])
+
+    const { clients } = this.appOrAgent.config[this.pluginName]
+
     // 配置 agent 或者 app 才加载单例
-    if (this.appOrAgent.config[this.pluginName] != null) {
+    if (clients == null) {
+      // 单实例挂载
       this.appOrAgent.addSingleton(this.pluginName, this.createEggPluginInstance)
+      const instance = this.appOrAgent[this.pluginName] as T
+      console.log('单实例挂载', this.pluginName)
+      // this.appOrAgent[this.pluginName] = {
+      //   getInstance: (_name?: string) => instance,
+      //   getInstances: () => ({ default: instance }),
+      //   getInstanceNames: () => ['default'],
+      //   // 将第一个配置对应的实例，作为默认实例
+      //   ...instance,
+      // } as EggPluginInstance<T>
+
+      Object.assign(this.appOrAgent[this.pluginName] as EggPluginInstance<T>, {
+        getInstance: (_name?: string) => instance,
+        getInstances: () => ({ default: instance }),
+        getInstanceNames: () => ['default'],
+      })
+    }
+    else {
+      // 多实例挂载，考虑get方法冲突
+      const instances = {} as Record<string, any>
+      const instanceNames = Object.keys(clients)
+      console.log('多实例挂载', instanceNames)
+      instanceNames.forEach((name) => {
+        instances[name] = this.createEggPluginInstance(clients[name], this.appOrAgent)
+      })
+
+      // 挂载实例管理器，但使用不同的方法名来避免冲突
+      this.appOrAgent[this.pluginName] = {
+        getInstance: (name: string) => instances[name],
+        getInstances: () => instances,
+        getInstanceNames: () => instanceNames,
+        // 将第一个配置对应的实例，作为默认实例
+        ...instances[instanceNames[0]],
+      }
     }
   }
 }
