@@ -1,5 +1,5 @@
 import type { LoadConfigOptions } from 'c12'
-import { loadConfig } from 'c12'
+import { createRequire } from 'node:module'
 import { VipLodash } from './lodash'
 
 /**
@@ -8,6 +8,9 @@ import { VipLodash } from './lodash'
  * - 包配置，package.json中的xxx字段
  */
 async function loadCliConfig<T>(configName: string, defaultValue: any, c12Options?: LoadConfigOptions): Promise<T> {
+  const nodeRequire = createRequire(import.meta.url)
+  const { loadConfig } = nodeRequire('c12')
+
   const { config } = await loadConfig({
     name: configName,
     packageJson: true,

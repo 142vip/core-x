@@ -1,6 +1,5 @@
 import type { PackageJSONMainFest } from '../core'
-import detectIndent from 'detect-indent'
-import { detectNewline } from 'detect-newline'
+import { createRequire } from 'node:module'
 import { klona } from 'klona/json'
 import { VipNodeJS } from '../core'
 
@@ -44,7 +43,13 @@ function readFile(name: string, cwd: string): JSONFile {
   const filePath = VipNodeJS.pathJoin(cwd, name)
   const dataStr = VipNodeJS.readFileToStrByUTF8(filePath)
   const data = parse<PackageJSONMainFest>(dataStr, {})
+
+  // 特殊处理detect-indent和detect-newline在cjs下的使用
+  const nodeRequire = createRequire(import.meta.url)
+  const detectIndent = nodeRequire('detect-indent')
   const indent = detectIndent(dataStr).indent
+
+  const { detectNewline } = nodeRequire('detect-newline')
   const newline = detectNewline(dataStr)
 
   return { path: filePath, data, indent, newline }
