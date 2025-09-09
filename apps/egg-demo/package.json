@@ -7,10 +7,10 @@
     "dev": "egg-bin dev",
     "start": "egg-scripts start --daemon --title=egg-demo",
     "stop": "egg-scripts stop --title=egg-server-go",
-    "test": "npm run lint -- --fix && npm run test:local",
-    "test:local": "egg-bin test",
-    "cov": "egg-bin cov",
-    "ci": "npm run lint && npm run cov"
+    "test": "npx jest"
+  },
+  "egg": {
+    "declarations": true
   },
   "authorInfo": {
     "name": "微信公众号：储凡",
@@ -19,12 +19,13 @@
     "homePage": "https://142vip.cn"
   },
   "dependencies": {
+    "@142vip/egg": "workspace:*",
+    "@142vip/egg-axios": "workspace:*",
     "@142vip/egg-mysql": "workspace:*",
-    "egg": "3.17.5",
+    "egg-bin": "6.13.0",
     "egg-scripts": "3"
   },
   "devDependencies": {
-    "egg-bin": "6",
     "egg-mock": "5"
   }
 }

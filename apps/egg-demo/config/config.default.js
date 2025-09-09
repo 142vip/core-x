@@ -1,13 +1,14 @@
 module.exports = () => {
   // 配置
-  const config = {}
+  const config = {
+    keys: 'egg-demo-test',
+  }
 
-  // add your middleware config here
+  // 中间件配置
   config.middleware = []
 
   // add your user config here
   const userConfig = {
-    // myAppName: 'egg',
   }
 
   return {
