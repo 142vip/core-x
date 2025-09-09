@@ -2,8 +2,9 @@
 ## 安装
 
 ```bash
+# npm
 npm install @142vip/data-source
-# 使用pnpm
+# pnpm
 pnpm i @142vip/data-source
 ```
 
@@ -27,8 +28,7 @@ const data = await vipDameng.getConnectionData(options)
 
 ## 单元测试
 
-```ts
-``
+- [vip-clickhouse.spec.ts](../../test/sql/vip-dameng.spec.ts)
 
 ## 证书
 

@@ -11,8 +11,9 @@
 ## 安装
 
 ```bash
+# npm
 npm install @142vip/data-source
-# 使用pnpm
+# pnpm
 pnpm i @142vip/data-source
 ```
 
