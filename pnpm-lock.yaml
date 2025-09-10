@@ -162,7 +162,7 @@ importers:
         specifier: 4.17.21
         version: 4.17.21
       mongodb:
-        specifier: ^6.19.0
+        specifier: 6.19.0
         version: 6.19.0
       mssql:
         specifier: 11.0.1
