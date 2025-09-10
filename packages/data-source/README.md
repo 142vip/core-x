@@ -19,7 +19,7 @@ pnpm i @142vip/data-source
 
 ### 简单使用
 
-按照数据来源，将数据源分为CSV型、API型、SQL数据库型等类型。
+按照数据来源，将数据源分为CSV型、API型、SQL数据库型三种类型。
 
 - [CSV](./docs/csv.md)
 - API
@@ -36,6 +36,7 @@ pnpm i @142vip/data-source
   - [SQL Server数据库](docs/sql/vip-mssql.md)
   - [Oracle数据库](docs/sql/vip-oracle.md)
   - [PostgreSQL数据库](docs/sql/vip-postgresql.md)
+  - [MongoDB数据库](docs/sql/vip-mongo.md)
 
 ### 新增数据源
 
@@ -128,6 +129,7 @@ export class MyDataSource implements DataSourceManager {
 - [mssql](https://www.npmjs.com/package/mssql)
 - [oracledb](https://www.npmjs.com/package/oracledb)
 - [pg](https://www.npmjs.com/package/pg)
+- [mongodb](https://www.npmjs.com/package/mongodb)
 
 ## 证书
 

@@ -12,10 +12,10 @@
 
 ### 示例项目
 
-- `egg-demo`
-- `nest-demo`
-- `vitepress-demo`
-- `vuepress-demo`
+- [`egg-demo`](apps/egg-demo/README.md)
+- [`nest-demo`](apps/nest-demo/README.md)
+- [`vitepress-demo`](apps/vitepress-demo/README.md)
+- [`vuepress-demo`](apps/vuepress-demo/README.md)
 
 ### 开源模块
 
@@ -23,6 +23,7 @@
 - [`@142vip/changelog`](https://www.npmjs.com/package/@142vip/changelog)
 - [`@142vip/commit-linter`](https://www.npmjs.com/package/@142vip/commit-linter)
 - [`@142vip/copyright`](https://www.npmjs.com/package/@142vip/copyright)
+- [`@142vip/data-source`](https://www.npmjs.com/package/@142vip/data-source)
 - [`@142vip/egg`](https://www.npmjs.com/package/@142vip/egg)
 - [`@142vip/egg-axios`](https://www.npmjs.com/package/@142vip/egg-axios)
 - [`@142vip/egg-grpc-client`](https://www.npmjs.com/package/@142vip/egg-grpc-client)
