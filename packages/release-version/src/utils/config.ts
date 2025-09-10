@@ -1,5 +1,8 @@
 import type { VersionBumpOptions } from '../enums'
 
+/**
+ * bump工具，默认配置
+ */
 export const bumpConfigDefaults: VersionBumpOptions = {
   commit: true,
   push: true,
@@ -10,18 +13,15 @@ export const bumpConfigDefaults: VersionBumpOptions = {
   ignoreScripts: false,
   all: false,
 }
-
+/**
+ * 配置文件，默认文件名
+ */
 export const CONFIG_DEFAULT_NAME = 'bump'
-export const bumpDefaultConfig = {
-  commit: true,
-  push: true,
-  tag: true,
-  recursive: false,
-  skipGitVerify: false,
-  confirm: true,
-  ignoreScripts: false,
-  all: false,
-}
+
+/**
+ * bump工具，默认配置
+ */
+export const bumpDefaultConfig = bumpConfigDefaults
 
 /**
  * 加载bump默认配置

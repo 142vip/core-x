@@ -2,13 +2,20 @@
 
 [![NPM version](https://img.shields.io/npm/v/@142vip/release-version?labelColor=0b3d52&color=1da469&label=version)](https://www.npmjs.com/package/@142vip/release-version)
 
+通用型版本迭代工具，支持版本迭代更新，`Git`提交信息、打标记并推送到远程
+
 ## 安装
 
 ```bash
-# 安装
+# npm
+npm install @142vip/release-version -D
+# pnpm
 pnpm i @142vip/release-version -D
+```
 
-# 查看版本
+## 查看版本
+
+```bash
 npx bumpx -v
 ```
 

@@ -22,6 +22,9 @@ interface ReleaseVersionCliOptions extends CliCommandBaseOptions {
    * 当前版本
    */
   currentVersion?: string
+  /**
+   * 额外执行的命令
+   */
   execute?: string
 
   scopeName?: string

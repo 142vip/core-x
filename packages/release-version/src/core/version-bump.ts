@@ -24,28 +24,34 @@ import { ReleaseOperation } from './version-operation'
 /**
  * 版本发布
  */
-export async function versionBump(options: VersionBumpOptions): Promise<VersionBumpResults | null> {
-  const operation = await versionBumpDryRun(options)
-  // 提交变更
-  await gitCommit(operation)
+export async function versionBump(options: VersionBumpOptions): Promise<VersionBumpResults | undefined> {
+  console.log(111, options)
+  try {
+    const operation = await versionBumpDryRun(options)
+    // 提交变更
+    await gitCommit(operation)
 
-  // 打标记
-  await gitTag(operation)
+    // 打标记
+    await gitTag(operation)
 
-  // 运行钩子函数
-  await runPostVersionScript(operation)
+    // 运行钩子函数
+    await runPostVersionScript(operation)
 
-  // 推送git信息和标记到远程
-  await gitPush(operation)
+    // 推送git信息和标记到远程
+    await gitPush(operation)
 
-  return operation.results
+    return operation.results
+  }
+  catch (e) {
+    vipLogger.error('版本发布失败')
+    console.log(e)
+  }
 }
 /**
  * 试运行
  */
 export async function versionBumpDryRun(options: VersionBumpOptions): Promise<ReleaseOperation> {
   const operation = await versionBumpInfo(options)
-
   // 弹出框，手动确认
   if (options.confirm) {
     printSummary(operation)

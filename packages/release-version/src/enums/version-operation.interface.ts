@@ -16,6 +16,8 @@ export interface ReleaseOperationOptions {
   execute?: string
   currentVersion?: string
   changelog?: boolean
-  // monorepo模式下 模块名
+  /**
+   *  monorepo模式下 模块名
+   */
   scopeName?: string
 }

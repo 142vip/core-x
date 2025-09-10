@@ -44,6 +44,8 @@
     "node": ">=16"
   },
   "scripts": {
+    "test": "npx jest",
+    "test:coverage": "npx jest --coverage",
     "build": "unbuild",
     "typecheck": "tsc --noEmit"
   },
