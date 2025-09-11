@@ -23,8 +23,8 @@ jobs:
     runs-on: ubuntu-latest
     if: github.repository == '142vip/core-x' &&  github.event_name == 'pull_request'
     environment:
-      # 只在PR到main分支时应用环境保护规则
-      name: ${{ github.base_ref == 'main' && 'pr-approval' || '' }}
+      # 只在PR到main分支时应用pr-approval环境
+      name: ${{ (github.event_name == 'pull_request' && github.base_ref == 'main') && 'pr-approval' || '' }}
       url: ${{ github.event.pull_request.html_url }}
     permissions:
       actions: read
