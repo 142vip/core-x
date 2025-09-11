@@ -22,6 +22,10 @@ jobs:
     name: 基础编译构建
     runs-on: ubuntu-latest
     if: github.repository == '142vip/core-x' &&  github.event_name == 'pull_request'
+    environment:
+      # 只在PR到main分支时应用环境保护规则
+      name: ${{ github.base_ref == 'main' && 'pr-approval' || '' }}
+      url: ${{ github.event.pull_request.html_url }}
     permissions:
       actions: read
       pull-requests: read
