@@ -15,7 +15,7 @@
       "matchDepTypes": ["devDependencies"],
       "matchUpdateTypes": ["minor", "patch"],
       "schedule": ["at any time"],
-      "prConcurrentLimit": 4,
+      "prConcurrentLimit": 10,
       "platformAutomerge": true,
       "addLabels": ["devDependencies"],
       "automerge": false
