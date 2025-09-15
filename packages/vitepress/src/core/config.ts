@@ -151,6 +151,8 @@ export function getVipThemeConfig(themeConfig: any) {
     },
     // 关闭外链图标
     externalLinkIcon: false,
+    // 忽略死链接，参考：https://vitepress.dev/zh/reference/site-config#ignoredeadlinks
+    ignoreDeadLinks: 'localhostLinks',
     ...themeConfig,
   }
 }
