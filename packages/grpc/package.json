@@ -2,7 +2,7 @@
   "name": "@142vip/grpc",
   "version": "0.0.1-alpha.1",
   "private": false,
-  "description": "grpc工具包，支持proto文件加载",
+  "description": "Grpc工具包，支持proto文件加载、解析，Grpc客户端、服务端数据连接交互，支持健康检查",
   "author": "mmdapl <mmdapl@163.com>",
   "license": "MIT",
   "homepage": "https://142vip.github.io/core-x/packages/oauth/",
@@ -39,6 +39,10 @@
     "homePage": "https://142vip.cn"
   },
   "scripts": {
+    "dev:client": "node example-client.js",
+    "dev:server": "node example-server.js",
+    "test": "npx jest",
+    "test:coverage": "npx jest --coverage",
     "build": "unbuild",
     "typecheck": "tsc --noEmit"
   },

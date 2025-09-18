@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package vip.grpc.test.v1;
+
+
+service SimpleService {
+  rpc ClientToServer (Request) returns (Response) {}
+}
+
+service StreamService {
+  rpc ClientStreamToServer (stream Request) returns (Response) {}
+  rpc ClientToServerStream (Request) returns (stream Response) {}
+  rpc ClientStreamToServerStream (stream Request) returns (stream Response) {}
+}
+
+// 请求格式
+message Request {
+  string name = 1;
+}
+
+// 响应格式
+message Response {
+  string message = 1;
+}

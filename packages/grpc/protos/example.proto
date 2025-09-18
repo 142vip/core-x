@@ -1,0 +1,49 @@
+syntax = "proto3";
+import "main.proto";
+
+package vip.grpc.example.v1;
+
+/*  ------------------------ RPC 功能方法定义 ---------------------------- */
+
+service Example {
+  /**
+   * 服务端流式调用
+   */
+  rpc ClientToServer (ExampleRequestDataType) returns (ExampleResponseDataType) {}
+  /**
+   * 客户端流式调用
+   */
+  rpc ClientStreamToServer (stream ExampleRequestDataType) returns (ExampleResponseDataType) {}
+  /**
+   * 服务端流式调用
+   */
+  rpc ClientToServerStream (ExampleRequestDataType) returns (stream ExampleResponseDataType) {}
+
+  /**
+   * 客户端流式调用服务端流式调用
+   */
+  rpc ClientStreamToServerStream (stream ExampleRequestDataType) returns (stream ExampleResponseDataType) {}
+}
+
+/*  ------------------------ RPC 功能方法定义 ---------------------------- */
+
+
+
+/*  ------------------------ RPC 数据格式格式定义 ------------------------- */
+
+// 请求 - 数据格式
+message ExampleRequestDataType {
+  string name = 1;
+}
+
+// 响应 - 数据格式
+message ExampleResponseDataType {
+  message Data {
+    string message = 1;
+    string methodName = 2;
+  }
+  optional ErrorTrace error=1;
+  optional Data data=2;
+}
+
+/*  ------------------------ RPC 数据格式格式定义 ------------------------- */
