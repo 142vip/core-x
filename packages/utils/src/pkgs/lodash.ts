@@ -11,4 +11,5 @@ export const VipLodash = _.pick(_, [
   'pick',
   'pickBy',
   'groupBy',
+  'upperFirst',
 ])
