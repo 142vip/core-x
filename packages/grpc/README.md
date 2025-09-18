@@ -33,7 +33,6 @@ export const DEFAULT_LOADER_OPTIONS: VipProtoLoaderOptions = {
 
 ### GRPC客户端
 
-
 ## 最佳实践
 
 - [GRPC服务端示例](example-client.js)

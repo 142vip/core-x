@@ -1,13 +1,13 @@
 {
   "extends": "../../tsconfig.package.json",
-//  "compilerOptions": {
-//    // 临时修复，避免循环引入
-//    "paths": {
-//      //      "@142vip/*": [
-//      //        "packages/*/src"
-//      //      ]
-//    }
-//  },
+  //  "compilerOptions": {
+  //    // 临时修复，避免循环引入
+  //    "paths": {
+  //      //      "@142vip/*": [
+  //      //        "packages/*/src"
+  //      //      ]
+  //    }
+  //  },
   "include": [
     "src/**/*",
     "**/test/**/*.ts"

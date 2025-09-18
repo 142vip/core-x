@@ -16,7 +16,10 @@
     "142vip",
     "@142vip",
     "@142vip/grpc",
-    "grpc"
+    "grpc",
+    "proto",
+    "proto-loader",
+    "grpc-health"
   ],
   "sideEffects": false,
   "exports": {
@@ -30,7 +33,10 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "example-client.js",
+    "example-server.js",
+    "protos"
   ],
   "authorInfo": {
     "name": "微信公众号：储凡",
