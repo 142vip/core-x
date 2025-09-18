@@ -40,13 +40,13 @@ export const DEFAULT_LOADER_OPTIONS: VipProtoLoaderOptions = {
 
 ## 健康检查
 
-- [health.proto](./protos/health.proto)
+- [health.proto](https://github.com/142vip/core-x/tree/main/packages/grpc/protos/health.proto)
 
 ## 单元测试
 
-- [proto-loader.spec.ts](./test/proto-loader.spec.ts)
-- [grpc-client.spec.ts](./test/grpc-client.spec.ts)
-- [grpc-server.spec.ts](./test/grpc-server.spec.ts)
+- [proto-loader.spec.ts](https://github.com/142vip/core-x/tree/main/packages/grpc/test/proto-loader.spec.ts)
+- [grpc-client.spec.ts](https://github.com/142vip/core-x/tree/main/packages/grpc/test/grpc-client.spec.ts)
+- [grpc-server.spec.ts](https://github.com/142vip/core-x/tree/main/packages/grpc/test/grpc-server.spec.ts)
 
 ## 参考
 
