@@ -38,6 +38,7 @@ export const sidebarConfig = defineVipSidebarConfig([
       { text: '@142vip/utils', link: '/packages/utils/index.md' },
       { text: '@142vip/axios', link: '/packages/axios/index.md' },
       { text: '@142vip/oauth', link: '/packages/oauth/index.md' },
+      { text: '@142vip/grpc', link: '/packages/grpc/index.md' },
       { text: '@142vip/redis', link: '/packages/redis/index.md' },
       { text: '@142vip/typeorm', link: '/packages/typeorm/index.md' },
       { text: '@142vip/copyright', link: '/packages/copyright/index.md' },
