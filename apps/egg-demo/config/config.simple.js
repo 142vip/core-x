@@ -1,6 +1,8 @@
 /**
  * 插件的单实例配置
  */
+const { exampleProto } = require('@142vip/grpc')
+
 module.exports = {
   axios: {
     client: {
@@ -11,5 +13,13 @@ module.exports = {
       },
       timeout: 6000,
     },
+  },
+  grpcClient: {
+    client: {
+      protoPaths: [exampleProto],
+    },
+  },
+  grpcServer: {
+    protoPaths: [exampleProto],
   },
 }

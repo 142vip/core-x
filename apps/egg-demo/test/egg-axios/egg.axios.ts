@@ -4,12 +4,6 @@ import { HttpMethod, HttpStatus } from '@142vip/axios'
 import { PluginLoadType } from '@142vip/egg'
 import { app } from 'egg-mock/bootstrap'
 
-/**
- * @142vip/egg-axios 插件默认配置
- */
-// eslint-disable-next-line ts/no-require-imports
-export const defaultPluginConfig = require('@142vip/egg-axios/config/config.default').axios
-
 export const axiosSimpleConfig = {
   client: {
     headers: {

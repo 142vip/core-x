@@ -1,10 +1,10 @@
 import { PluginLoadEnv } from '@142vip/egg'
-import { describe, expect, it } from '@jest/globals'
+import { expect } from '@jest/globals'
 import { app } from 'egg-mock/bootstrap'
-import { defaultEggAxiosPluginConfig } from '../plugin.config'
+import { defaultEggGrpcClientPluginConfig } from '../plugin.config'
 
 /**
- * @142vip/egg-axios 测试
+ * @142vip/egg-grpc-client 测试
  */
 describe('默认环境加载插件配置', () => {
   process.env.EGG_SERVER_ENV = PluginLoadEnv.DEFAULT
@@ -21,8 +21,9 @@ describe('默认环境加载插件配置', () => {
   })
 
   it('插件默认配置测试', () => {
-    const config = app.config.axios
+    const config = app.config.grpcClient
     expect(config).toBeDefined()
-    expect(config).toEqual(defaultEggAxiosPluginConfig)
+    expect(config).toEqual(defaultEggGrpcClientPluginConfig)
+    console.log(111, config)
   })
 })

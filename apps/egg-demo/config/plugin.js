@@ -12,4 +12,14 @@ module.exports = {
     path: join(__dirname, '../../../packages/egg-axios'),
     // 单实例、多实例下加载
   },
+  grpcClient: {
+    enable: true,
+    package: '@142vip/egg-grpc-client',
+    path: join(__dirname, '../../../packages/egg-grpc-client'),
+  },
+  grpcServer: {
+    enable: true,
+    package: '@142vip/egg-grpc-server',
+    path: join(__dirname, '../../../packages/egg-grpc-server'),
+  },
 }
