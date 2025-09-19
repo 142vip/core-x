@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.17 (2025-09-19)
+
+### ✨ Features
+
+- 默认支持`ignoreDeadLinks`配置不校验本地死链接 &nbsp;-&nbsp; by **142vip.cn** in https://github.com/142vip/core-x/issues/639 [<samp>(b4e53)</samp>](https://github.com/142vip/core-x/commit/b4e53fd)
+
+**Release New Version v0.0.1-alpha.17 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/vitepress)**
+
 ## v0.0.1-alpha.16 (2025-05-10)
 
 ### ✨ Features
