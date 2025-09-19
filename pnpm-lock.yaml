@@ -129,8 +129,8 @@ importers:
         specifier: workspace:*
         version: link:../utils
       docx:
-        specifier: 9.3.0
-        version: 9.3.0
+        specifier: 9.5.1
+        version: 9.5.1
 
   packages/data-source:
     dependencies:
@@ -5149,8 +5149,8 @@ packages:
     resolution: {integrity: sha512-/l+zF4wGXDbQYFx40kwKICut9YB4FWHMBfcsT7s1Alny1SbHbmp1AOysxCf2QONjtX9fNOui/13WHWabL5Ohzw==}
     engines: {node: '>= 12'}
 
-  docx@9.3.0:
-    resolution: {integrity: sha512-IQwbSLBEMKNJmP9CDqSu3vJDhJps6tv/DlxsxuvfTclapd0JPCz1IFJTU//WdTjUenPMFaUD2Kg1nkQb/BWPIg==}
+  docx@9.5.1:
+    resolution: {integrity: sha512-ABDI7JEirFD2+bHhOBlsGZxaG1UgZb2M/QMKhLSDGgVNhxDesTCDcP+qoDnDGjZ4EOXTRfUjUgwHVuZ6VSTfWQ==}
     engines: {node: '>=10'}
 
   dom-serializer@2.0.0:
@@ -15309,9 +15309,9 @@ snapshots:
       iconv-lite: 0.5.2
       snappy: 7.3.1
 
-  docx@9.3.0:
+  docx@9.5.1:
     dependencies:
-      '@types/node': 22.10.7
+      '@types/node': 24.3.1
       hash.js: 1.1.7
       jszip: 3.10.1
       nanoid: 5.1.5
