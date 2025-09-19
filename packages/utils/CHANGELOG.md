@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.40 (2025-09-19)
+
+### ✨ Features
+
+- 增加`lodash`的`upperFirst`方法 &nbsp;-&nbsp; by **142vip.cn** in https://github.com/142vip/core-x/issues/643 [<samp>(6bdb1)</samp>](https://github.com/142vip/core-x/commit/6bdb135)
+- 重写方法，彻底解决`detect-*`等模块在cjs语法下的冲突 &nbsp;-&nbsp; by **142vip.cn** in https://github.com/142vip/core-x/issues/644 [<samp>(65f6d)</samp>](https://github.com/142vip/core-x/commit/65f6d8a)
+- 重写VipConfig，使用`cosmiconfig`替换`c12`模块，处理`c12`模块对cjs语法不支持 &nbsp;-&nbsp; by **chufan** [<samp>(dcece)</samp>](https://github.com/142vip/core-x/commit/dcece3d)
+- 拓展`vipLodash`工具导出，支持更多方法，简化配置合并逻辑 &nbsp;-&nbsp; by **142vip.cn** in https://github.com/142vip/core-x/issues/648 [<samp>(4ac27)</samp>](https://github.com/142vip/core-x/commit/4ac27f9)
+
+**Release New Version v0.0.1-alpha.40 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/utils)**
+
 ## v0.0.1-alpha.39 (2025-09-10)
 
 ### ✨ Features
