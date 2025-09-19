@@ -54,7 +54,7 @@
     "@vuepress/plugin-slimsearch": "2.0.0-rc.102",
     "@vuepress/plugin-watermark": "2.0.0-rc.102",
     "@vueuse/shared": "13.0.0",
-    "cli-spinners": "3.2.0",
+    "cli-spinners": "3.2.1",
     "dashjs": "4.7.4",
     "hls.js": "1.5.13",
     "markdown-it": "14.1.0",

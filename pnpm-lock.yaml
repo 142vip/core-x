@@ -548,8 +548,8 @@ importers:
         specifier: 13.0.0
         version: 13.0.0(vue@3.5.18(typescript@5.9.2))
       cli-spinners:
-        specifier: 3.2.0
-        version: 3.2.0
+        specifier: 3.2.1
+        version: 3.2.1
       dashjs:
         specifier: 4.7.4
         version: 4.7.4
@@ -4471,8 +4471,8 @@ packages:
     resolution: {integrity: sha512-ywqV+5MmyL4E7ybXgKys4DugZbX0FC6LnwrhjuykIjnK9k8OQacQ7axGKnjDXWNhns0xot3bZI5h55H8yo9cJg==}
     engines: {node: '>=6'}
 
-  cli-spinners@3.2.0:
-    resolution: {integrity: sha512-pXftdQloMZzjCr3pCTIRniDcys6dDzgpgVhAHHk6TKBDbRuP1MkuetTF5KSv4YUutbOPa7+7ZrAJ2kVtbMqyXA==}
+  cli-spinners@3.2.1:
+    resolution: {integrity: sha512-Xh+cRh7dzk9n7gYE+M1Lusy3yg5ADy9m6zOHqmcu9kSkWpo7ySWVUS3dXleR3konJOEOdHzsKjWkGed6g2eJuA==}
     engines: {node: '>=18.20'}
 
   cli-width@3.0.0:
@@ -14617,7 +14617,7 @@ snapshots:
 
   cli-spinners@2.9.2: {}
 
-  cli-spinners@3.2.0: {}
+  cli-spinners@3.2.1: {}
 
   cli-width@3.0.0: {}
 
