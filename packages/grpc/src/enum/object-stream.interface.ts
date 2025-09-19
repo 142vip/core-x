@@ -33,10 +33,7 @@ export interface IntermediateObjectReadable<T> extends Readable {
   read: (size?: number) => any & T
 }
 
-export type ObjectReadable<T> = {
-  read: (size?: number) => T
-} & EmitterAugmentation1<'data', T> &
-IntermediateObjectReadable<T>
+export type ObjectReadable<T> = { read: (size?: number) => T } & EmitterAugmentation1<'data', T> & IntermediateObjectReadable<T>
 
 export interface IntermediateObjectWritable<T> extends Writable {
   // eslint-disable-next-line ts/no-unsafe-function-type

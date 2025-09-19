@@ -84,7 +84,7 @@ async function changelogCoreHandler(cliOptions: ChangelogCliOptions): Promise<vo
   try {
     vipLogger.println()
 
-    const changelogConfig = await parseCliOptions(cliOptions)
+    const changelogConfig = parseCliOptions(cliOptions)
 
     VipConsole.trace('changelogConfig:', changelogConfig)
     const { markdown, commits, releaseUrl } = await generateChangelogInfo(changelogConfig)

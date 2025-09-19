@@ -1,5 +1,5 @@
 import type { ChangelogCliOptions, ChangelogGenerateOptions } from '../enums'
-import { VipConfig, VipGit } from '@142vip/utils'
+import { vipConfig, VipGit } from '@142vip/utils'
 
 /**
  * changelog默认的名称配置
@@ -54,22 +54,20 @@ export function defineChangelogConfig(config: ChangelogGenerateOptions): Changel
 /**
  * 加载配置，读取配置文件
  */
-export async function loadChangelogConfig() {
-  return await VipConfig.loadCliConfig<ChangelogGenerateOptions>(CONFIG_DEFAULT_NAME, ChangelogDefaultConfig, {
-    packageJson: true,
-  })
+export function loadChangelogConfig() {
+  return vipConfig.loadCliConfig<ChangelogGenerateOptions>(CONFIG_DEFAULT_NAME, ChangelogDefaultConfig)
 }
 
 /**
  * 加载配置
  * 将用户自定义配置和默认配置合并
  */
-export async function parseCliOptions(cliOptions: ChangelogCliOptions): Promise<ChangelogGenerateOptions> {
+export function parseCliOptions(cliOptions: ChangelogCliOptions): ChangelogGenerateOptions {
   // 新写法
-  const changelogConfig = await loadChangelogConfig()
+  const changelogConfig = loadChangelogConfig()
 
   // cli配置合并
-  const config = VipConfig.mergeCommanderConfig<ChangelogGenerateOptions>(changelogConfig, cliOptions)
+  const config = vipConfig.mergeCommanderConfig<ChangelogGenerateOptions>(changelogConfig, cliOptions)
 
   // 发布的版本
   if (config.to == null) {

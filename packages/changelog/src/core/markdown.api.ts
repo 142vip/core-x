@@ -1,5 +1,5 @@
 import type { Commit, GitCommitReference } from '../enums'
-import { VipLodash } from '@142vip/utils'
+import { vipLodash } from '@142vip/utils'
 import { GitCommitMessageType } from '../enums'
 
 function formatReferences(references: GitCommitReference[], baseUrl: string, github: string, type: 'issues' | 'hash'): string {
@@ -100,7 +100,7 @@ function formatSection(commits: Commit[], options: {
   // 注意空行
   const lines: string[] = ['', formatTitle(options.sectionName, options.emoji), '']
 
-  const scopes = VipLodash.groupBy(commits, 'scope') as Record<string, Commit[]>
+  const scopes = vipLodash.groupBy(commits, 'scope') as Record<string, Commit[]>
 
   const useScopeGroup = options.group
 
@@ -116,7 +116,7 @@ function formatSection(commits: Commit[], options: {
       if (commit.type === 'release') {
         break
       }
-      lines.push(`- ${formatLine(commit, VipLodash.pick(options, 'baseUrl', 'repo', 'capitalize'))}`)
+      lines.push(`- ${formatLine(commit, vipLodash.pick(options, 'baseUrl', 'repo', 'capitalize'))}`)
     }
   }
   // root dir 普通模式
@@ -139,7 +139,7 @@ function formatSection(commits: Commit[], options: {
       lines.push(
         ...scopes[scope]
           .reverse()
-          .map(commit => `${padding}- ${prefix}${formatLine(commit, VipLodash.pick(options, 'baseUrl', 'repo', 'capitalize'))}`),
+          .map(commit => `${padding}- ${prefix}${formatLine(commit, vipLodash.pick(options, 'baseUrl', 'repo', 'capitalize'))}`),
       )
     })
   }

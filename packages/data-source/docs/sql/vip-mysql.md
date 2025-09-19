@@ -13,6 +13,7 @@ pnpm i @142vip/data-source
 ```ts
 import type { MysqlOptions } from '@142vip/data-source'
 import { VipMysql } from '@142vip/data-source'
+
 const options: MysqlOptions = {
   host: '172.16.202.232',
   port: 3309,

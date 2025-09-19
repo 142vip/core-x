@@ -16,7 +16,7 @@ export const bumpConfigDefaults: VersionBumpOptions = {
 /**
  * 配置文件，默认文件名
  */
-export const CONFIG_DEFAULT_NAME = 'bump'
+export const CONFIG_DEFAULT_NAME = 'bumpx'
 
 /**
  * bump工具，默认配置

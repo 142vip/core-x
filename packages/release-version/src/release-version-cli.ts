@@ -1,10 +1,10 @@
 import type { ChangelogGenerateOptions } from '@142vip/changelog'
 import type { CliCommandBaseOptions } from '@142vip/utils'
 import type { VersionBumpOptions } from './enums'
-import { VipCommander, VipConfig, VipConsole, VipNodeJS } from '@142vip/utils'
+import { VipCommander, vipConfig, VipConsole, VipNodeJS } from '@142vip/utils'
 import { description, name, version } from '../package.json'
 import { versionBump, versionBumpDryRun } from './core/version-bump'
-import { bumpConfigDefaults } from './utils'
+import { bumpConfigDefaults, CONFIG_DEFAULT_NAME } from './utils'
 
 interface ReleaseVersionCliOptions extends CliCommandBaseOptions {
   all: boolean
@@ -35,11 +35,9 @@ interface ReleaseVersionCliOptions extends CliCommandBaseOptions {
  * @param cliOptions
  */
 async function mergeConfig(cliOptions: ReleaseVersionCliOptions): Promise<VersionBumpOptions> {
-  const releaseVersionConfig = await VipConfig.loadCliConfig<ChangelogGenerateOptions>('bumpx', bumpConfigDefaults, {
-    packageJson: true,
-  })
+  const releaseVersionConfig = await vipConfig.loadCliConfig<ChangelogGenerateOptions>(CONFIG_DEFAULT_NAME, bumpConfigDefaults)
 
-  const config = VipConfig.mergeCommanderConfig<VersionBumpOptions>(releaseVersionConfig, cliOptions)
+  const config = vipConfig.mergeCommanderConfig<VersionBumpOptions>(releaseVersionConfig, cliOptions)
 
   console.log('mergeConfig:', config)
 

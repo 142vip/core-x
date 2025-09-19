@@ -47,17 +47,17 @@ export type ServerUnaryCall<RequestType, ResponseType> = ServerSurfaceCall & {
   request: RequestType
 }
 // eslint-disable-next-line unused-imports/no-unused-vars
-type ServerReadableStream<RequestType, ResponseType> =
-  ServerSurfaceCall & ObjectReadable<RequestType>
-export type ServerWritableStream<RequestType, ResponseType> =
-  ServerSurfaceCall &
-  ObjectWritable<ResponseType> & {
-    request: RequestType
-    end: (metadata?: Metadata) => void
-  }
-type ServerDuplexStream<RequestType, ResponseType> = ServerSurfaceCall &
-  ObjectReadable<RequestType> &
-  ObjectWritable<ResponseType> & { end: (metadata?: Metadata) => void }
+type ServerReadableStream<RequestType, ResponseType>
+  = ServerSurfaceCall & ObjectReadable<RequestType>
+export type ServerWritableStream<RequestType, ResponseType>
+  = ServerSurfaceCall
+    & ObjectWritable<ResponseType> & {
+      request: RequestType
+      end: (metadata?: Metadata) => void
+    }
+type ServerDuplexStream<RequestType, ResponseType> = ServerSurfaceCall
+  & ObjectReadable<RequestType>
+  & ObjectWritable<ResponseType> & { end: (metadata?: Metadata) => void }
 
 // Unary response callback signature.
 export type sendUnaryData<ResponseType> = (
@@ -89,11 +89,11 @@ type handleBidiStreamingCall<RequestType, ResponseType> = (
   call: ServerDuplexStream<RequestType, ResponseType>
 ) => void
 
-export type HandleCall<RequestType, ResponseType> =
-  | handleUnaryCall<RequestType, ResponseType>
-  | handleClientStreamingCall<RequestType, ResponseType>
-  | handleServerStreamingCall<RequestType, ResponseType>
-  | handleBidiStreamingCall<RequestType, ResponseType>
+export type HandleCall<RequestType, ResponseType>
+  = | handleUnaryCall<RequestType, ResponseType>
+    | handleClientStreamingCall<RequestType, ResponseType>
+    | handleServerStreamingCall<RequestType, ResponseType>
+    | handleBidiStreamingCall<RequestType, ResponseType>
 
 export type UntypedHandleCall = HandleCall<any, any>
 export interface UntypedServiceImplementation {
