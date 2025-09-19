@@ -46,7 +46,7 @@
   },
   "dependencies": {
     "@142vip/utils": "workspace:*",
-    "docx": "9.3.0"
+    "docx": "9.5.1"
   },
   "publishConfig": {
     "access": "public",
