@@ -1,5 +1,5 @@
 import type { Commit, GitCommitAuthor, GitCommitDiffOptions, GitCommitRaw, GitCommitRecord, GitCommitReference } from '../enums'
-import { VipExecutor, VipGit, VipLodash } from '@142vip/utils'
+import { VipExecutor, VipGit, vipLodash } from '@142vip/utils'
 import { GitCommitMessageType } from '../enums'
 import { MarkdownAPI } from './markdown.api'
 
@@ -171,7 +171,7 @@ async function parseCommitsToMarkdownStr(commits: Commit[], options: {
   }
 
   // 普通提交
-  const group = VipLodash.groupBy(changes, 'type')
+  const group = vipLodash.groupBy(changes, 'type')
 
   let commitTypes = Object.keys(options.types)
 

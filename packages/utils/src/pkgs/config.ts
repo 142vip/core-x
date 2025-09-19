@@ -1,6 +1,6 @@
 import type { OptionsSync } from 'cosmiconfig/dist/types'
 import { cosmiconfigSync } from 'cosmiconfig'
-import { VipLodash } from './lodash'
+import { vipLodash } from './lodash'
 
 /**
  * 配置加载
@@ -16,7 +16,7 @@ export class VipConfig {
     if (cliConfig == null) {
       return defaultValue
     }
-    return VipLodash.merge({}, defaultValue, cliConfig) as T
+    return this.mergeConfig(defaultValue, cliConfig)
   }
 
   /**
@@ -41,7 +41,15 @@ export class VipConfig {
    * @param commanderConfig 用户在cli终端输入的配置
    */
   public mergeCommanderConfig<T>(cliConfig: Partial<T>, commanderConfig: Partial<T>): T {
-    return VipLodash.merge({}, cliConfig, commanderConfig) as T
+    return this.mergeConfig(cliConfig, commanderConfig)
+  }
+
+  /**
+   * 合并配置，后面配置覆盖前面的
+   * @private
+   */
+  private mergeConfig<T>(beforeConfig: Partial<T>, afterConfig: Partial<T>): T {
+    return vipLodash.merge({}, beforeConfig, afterConfig) as T
   }
 }
 
