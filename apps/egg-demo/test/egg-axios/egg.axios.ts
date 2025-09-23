@@ -3,6 +3,7 @@ import type { EggPluginInstance } from '@142vip/egg/src/egg.interface'
 import { HttpMethod, HttpStatus } from '@142vip/axios'
 import { PluginLoadType } from '@142vip/egg'
 import { app } from 'egg-mock/bootstrap'
+import { PluginInstanceName } from '../plugin.config'
 
 /**
  * @142vip/egg-axios 插件默认配置
@@ -48,13 +49,13 @@ function getEggAxios(type: PluginLoadType, instanceName?: string): EggVipAxios {
   let vipAxios: any
   if (type === PluginLoadType.SIMPLE) {
     const instanceNames = app.axios.getInstanceNames()
-    expect(instanceNames).toEqual(['default'])
+    expect(instanceNames).toEqual([PluginInstanceName.DEFAULT])
     vipAxios = app.axios
     expect(vipAxios).toBeDefined()
   }
   if (type === PluginLoadType.MULTIPLE) {
     const instanceNames = app.axios.getInstanceNames()
-    expect(instanceNames).toEqual(['axios1', 'axios2'])
+    expect(instanceNames).toEqual([PluginInstanceName.EXAMPLE1, PluginInstanceName.EXAMPLE2])
     vipAxios = app.axios.getInstance(instanceName)
     expect(vipAxios).toBeDefined()
   }
@@ -65,7 +66,7 @@ function getEggAxios(type: PluginLoadType, instanceName?: string): EggVipAxios {
 /**
  * 网络请求测试
  */
-export function testVipAxios(type: PluginLoadType, instanceName: string = 'default') {
+export function testVipAxios(type: PluginLoadType, instanceName: string = PluginInstanceName.DEFAULT) {
   // 支持2次重试
   jest.retryTimes(2)
 

@@ -1,6 +1,5 @@
 import { PluginLoadType } from '@142vip/egg'
 import { describe } from '@jest/globals'
-import { app } from 'egg-mock/bootstrap'
 import { EGG_SERVER_ENV } from '../plugin.config'
 import { testVipAxios } from './egg.axios'
 /**
@@ -9,8 +8,5 @@ import { testVipAxios } from './egg.axios'
 
 describe('网络请求测试 - 单实例 - @142vip/egg-axios', () => {
   process.env.EGG_SERVER_ENV = EGG_SERVER_ENV.AXIOS
-  it('a', () => {
-    console.log(111, app.axios.getInstanceNames())
-  })
   testVipAxios(PluginLoadType.SIMPLE)
 })
