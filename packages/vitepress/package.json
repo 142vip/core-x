@@ -71,6 +71,6 @@
     "typedoc-plugin-markdown": "4.9.0",
     "typedoc-vitepress-theme": "1.1.2",
     "unplugin-element-plus": "0.9.1",
-    "vue-sfc-transformer": "0.1.14"
+    "vue-sfc-transformer": "0.1.17"
   }
 }
