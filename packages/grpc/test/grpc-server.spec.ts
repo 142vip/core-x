@@ -45,21 +45,21 @@ describe('grpcServer服务器', () => {
   })
 
   it('连接地址', () => {
-    const connectUri = grpcServer.getConnectUri()
+    const connectUris = grpcServer.getConnectUris()
 
-    expect(connectUri).toBeDefined()
-    expect(connectUri).toHaveLength(1)
-    expect(connectUri).toContain(GrpcConnectURI.PORT_50001)
-    expect(connectUri).toEqual([GrpcConnectURI.PORT_50001])
+    expect(connectUris).toBeDefined()
+    expect(connectUris).toHaveLength(1)
+    expect(connectUris).toContain(GrpcConnectURI.PORT_50001)
+    expect(connectUris).toEqual([GrpcConnectURI.PORT_50001])
   })
 
   it('启动两个连接地址', async () => {
     await grpcServer.listen(GrpcConnectURI.PORT_50002)
-    const connectUri = grpcServer.getConnectUri()
-    expect(connectUri).toBeDefined()
-    expect(connectUri).toHaveLength(2)
-    expect(connectUri).toContain(GrpcConnectURI.PORT_50001)
-    expect(connectUri).toContain(GrpcConnectURI.PORT_50002)
+    const connectUris = grpcServer.getConnectUris()
+    expect(connectUris).toBeDefined()
+    expect(connectUris).toHaveLength(2)
+    expect(connectUris).toContain(GrpcConnectURI.PORT_50001)
+    expect(connectUris).toContain(GrpcConnectURI.PORT_50002)
   })
 
   it('默认配置', () => {
