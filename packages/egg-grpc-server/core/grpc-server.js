@@ -1,5 +1,5 @@
 const { join } = require('node:path')
-const { VipEggPluginLogger } = require('@142vip/egg')
+const { VipEggPluginLogger, PluginLoader } = require('@142vip/egg')
 const { GrpcServer, ProtoLoader } = require('@142vip/grpc')
 const { vipLodash } = require('@142vip/utils')
 
@@ -31,9 +31,16 @@ function bindServiceMethod(service, serviceMethod) {
  */
 function createEggGrpcServerInstance(pluginConfig, app) {
   const pluginLogger = VipEggPluginLogger.getInstance(pluginConfig, app)
+  const { connectUri, protoPaths, loaderOptions, grpcServicePath, instanceName = 'default' } = pluginConfig
+
+  // 避免用户错误配置，GrpcServer 只允许在agent.js上加载
+  const { loaders: pluginLoaders = [] } = app.config.grpcServer
+  if (pluginLoaders.includes(PluginLoader.APP)) {
+    pluginLogger.error('GrpcServer 只允许在agent.js上加载，避免端口占用冲突')
+    return
+  }
 
   const grpcServer = new GrpcServer()
-  const { connectUri, protoPaths, loaderOptions, grpcServicePath, instanceName = 'default' } = pluginConfig
 
   // 将grpc对应的实现类，挂载到ctx.service对象上，类似Egg框架的Service类写法
   const grpcPath = grpcServicePath ?? GRPC_SERVICE_PATH
