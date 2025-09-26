@@ -27,6 +27,8 @@ function createEggGrpcClientInstance(pluginConfig, app) {
 
   pluginLogger.log('plugin init')
 
+  // TODO 考虑将grpcClient实例挂载ctx上
+
   // grpc客户端实例
   return grpcClient
 }
