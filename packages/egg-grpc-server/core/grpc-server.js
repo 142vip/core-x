@@ -35,22 +35,33 @@ function createEggGrpcServerInstance(pluginConfig, app) {
   const grpcServer = new GrpcServer()
   const { connectUri, protoPaths, loaderOptions, grpcServicePath, instanceName = 'default' } = pluginConfig
 
-  // 将grpc对应的实现类，挂载app上，app.grpc
-  const grpcServiceDir = join(app.config.baseDir, grpcServicePath ?? GRPC_SERVICE_PATH)
-  app.loader.loadToApp(grpcServiceDir, GRPC_NAME, {
-    // 类加载时初始化
-    initializer(Service) {
-      return new Service(app)
-    },
+  // 将grpc对应的实现类，挂载到ctx.service对象上，类似Egg框架的Service类写法
+  const grpcPath = grpcServicePath ?? GRPC_SERVICE_PATH
+
+  //  获取所有的 loadUnit ，过滤掉node_modules
+  const servicePaths = app.loader
+    .getLoadUnits()
+    .map(unit => join(unit.path, grpcPath))
+    .filter(unit => !unit.includes('node_modules'))
+
+  app.loader.loadToContext(servicePaths, 'service', {
+    // service 需要继承 app.Service，因此需要 app 参数
+    // 设置 call 为 true，会在加载时调用函数，并返回 UserService
+    call: true,
+    // 将文件加载到 app.xx
+    fieldClass: GRPC_NAME,
   })
-
-  const grpcServiceMap = app[GRPC_NAME]
-
-  if (grpcServiceMap == null)
-    throw new Error('grpc service not found')
 
   try {
     const protoLoader = new ProtoLoader(protoPaths, loaderOptions)
+
+    // ctx对象
+    const ctx = app.createAnonymousContext()
+
+    const grpcServiceMap = ctx.service
+
+    if (grpcServiceMap == null)
+      throw new Error('grpc service not found')
 
     // 获取详情
     for (const { ServiceClientConstructor, serviceName } of protoLoader.getGrpcServiceDetail()) {
