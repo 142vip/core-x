@@ -18,7 +18,7 @@ import {
 export async function fairyCliMain(): Promise<void> {
   const program = new VipCommander(name, version, description)
 
-  // fairy-cli create 创建 todo
+  // fairy-cli create 创建 TODO
 
   // fairy-cli login 登录 docker npm
   await loginMain(program)

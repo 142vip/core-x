@@ -60,12 +60,12 @@
     "homePage": "https://142vip.cn"
   },
   "dependencies": {
+    "@142vip/axios": "workspace:*",
     "@142vip/changelog": "workspace:*",
     "@142vip/commit-linter": "workspace:*",
     "@142vip/release-version": "workspace:*",
     "@142vip/utils": "workspace:*",
     "del": "8.0.0",
-    "node-fetch": "3.3.2",
     "turbo": "2.5.6"
   },
   "publishConfig": {

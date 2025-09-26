@@ -1,6 +1,6 @@
 import type { VipCommander } from '@142vip/utils'
+import { vipAxios } from '@142vip/axios'
 import {
-  HttpMethod,
   VipColor,
   VipConsole,
   VipInquirer,
@@ -8,7 +8,6 @@ import {
   VipMonorepo,
   VipNodeJS,
 } from '@142vip/utils'
-import fetch from 'node-fetch'
 import { CLI_COMMAND_DETAIL, CommandEnum } from '../enums'
 
 /**
@@ -45,15 +44,11 @@ async function requestSync(packageName: string): Promise<void> {
   // `https://registry.npmmirror.com/${packageName}/sync`
   const syncUrl = `https://registry-direct.npmmirror.com/-/package/${packageName}/syncs`
 
-  const response = await fetch(syncUrl, {
-    method: HttpMethod.PUT,
-  })
+  const { data: responseJSON } = await vipAxios.put<RequestSync>(syncUrl)
 
   // if (response.status === 404 || !response.ok) {
   //
   // }
-
-  const responseJSON = await response.json() as RequestSync
 
   if (!responseJSON.ok) {
     VipConsole.log(`requestSync--json : ${responseJSON}`)
@@ -83,8 +78,7 @@ interface SyncState {
  */
 async function getPackageSyncLogUrl(packageName: string, logId: string): Promise<string | null> {
   const stateUrl = `https://registry.npmmirror.com/-/package/${packageName}/syncs/${logId}`
-  const response = await fetch(stateUrl)
-  const stateRes = await response.json() as SyncState
+  const { data: stateRes } = await vipAxios.get<SyncState>(stateUrl)
 
   // 正常的请求 && stateRes.state === CNPMPackageState.Success
   if (stateRes.ok) {
@@ -96,9 +90,8 @@ async function getPackageSyncLogUrl(packageName: string, logId: string): Promise
 }
 
 async function getPackageSyncLog(logUrl: string): Promise<void> {
-  const response = await fetch(logUrl)
+  const { data: syncLog } = await vipAxios.get(logUrl)
 
-  const syncLog = await response.text()
   VipConsole.log(`getPackageSyncLog: ${syncLog.toString()}`)
 }
 
@@ -120,17 +113,16 @@ async function searchNpmPkgOnline(input: string | undefined, options: { signal: 
   if (input == null) {
     return []
   }
-  const response = await fetch(`https://registry.npmjs.org/-/v1/search?text=${encodeURIComponent(input)}&size=20`, {
-    signal: options.signal,
-  })
-  const data = await response.json() as {
+  const { data } = await vipAxios.get<{
     objects: ReadonlyArray<{
       package: {
         name: string
         description: string
       }
     }>
-  }
+  }>(`https://registry.npmjs.org/-/v1/search?text=${encodeURIComponent(input)}&size=20`, {
+    signal: options.signal,
+  })
 
   return data.objects.map(pkg => ({
     name: pkg.package.name,
