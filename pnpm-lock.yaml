@@ -247,9 +247,6 @@ importers:
       '@142vip/utils':
         specifier: workspace:*
         version: link:../utils
-      mysql2:
-        specifier: 3.12.0
-        version: 3.12.0
 
   packages/egg-redis:
     dependencies:
