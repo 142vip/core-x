@@ -8,7 +8,7 @@ import {
   zhSearch,
 } from '@142vip/vitepress'
 import typedocSidebar from '../docs/apis/typedoc-sidebar.json'
-import { getChangelogsSidebar, sidebarConfig } from './sidebar'
+import { getDemoSideBarConfig, getOpenSourcePkgSideBarConfig, sidebarConfig } from './sidebar'
 
 // package.json 读取
 const pkg = VipPackageJSON.getPackageJSON<{ description: string }>()
@@ -112,9 +112,14 @@ export default defineVipVitepressConfig({
             link: '/changelogs/core-x/changelog.html',
           },
           {
-            text: '🏴 更新记录',
-            items: getChangelogsSidebar(),
+            text: '✔️ 最佳实践',
+            items: getDemoSideBarConfig(),
           },
+          {
+            text: '🧰 开源模块',
+            items: getOpenSourcePkgSideBarConfig(),
+          },
+
         ],
       },
     },

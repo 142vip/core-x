@@ -168,3 +168,19 @@ export function getChangelogsSidebar(): SidebarConfig {
   }
   return changelogsSidebar
 }
+
+/**
+ * 获取xxx-demo 相关左侧导航配置
+ */
+export function getDemoSideBarConfig() {
+  const sidebars = getChangelogsSidebar()
+  return sidebars.filter(item => item.text.includes('-demo'))
+}
+
+/**
+ *获取@142vip/xx 相关开源模块左侧导航配置
+ */
+export function getOpenSourcePkgSideBarConfig() {
+  const sidebars = getChangelogsSidebar()
+  return sidebars.filter(item => !item.text.includes('-demo'))
+}
