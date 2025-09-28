@@ -27,9 +27,9 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm && chmod +x ./scripts/*",
     "postinstall": "simple-git-hooks && pnpm build:packages",
-    "clean": "pnpm clean:cache && pnpm clean:deps",
-    "clean:cache": "npx fa clean --dist --vite --turbo --coverage --all --ignore-tips",
-    "clean:deps": "npx fa clean --deps --ignore-tips --all",
+    "clean": "npx fa clean --dist --vite --turbo --coverage --deps --all --ignore-tips",
+    "clean:cache": "npx fa clean --vite --dist --turbo --coverage --all --ignore-tips",
+    "clean:dist": "npx fa clean --dist --ignore-tips --all",
     "clean:hooks": "npx fa clean --git-hooks --all --ignore-tips",
     "dev": "npx vitepress dev --port 8080 --host --force --strictPort --open",
     "dev:proxy": "NEED_PROXY=true npx vitepress dev --port 8080 --host --force --strictPort --open",
