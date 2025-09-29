@@ -12,7 +12,6 @@ import {
   publishMain,
   releaseMain,
   syncMain,
-  turboPackMain,
 } from './commands'
 
 export async function fairyCliMain(): Promise<void> {
@@ -43,9 +42,6 @@ export async function fairyCliMain(): Promise<void> {
 
   // fairy-cli lint
   await lintMain(program)
-
-  // fairy-cli turbo 基于turborepo项目管理
-  await turboPackMain(program)
 
   // fairy-cli clean
   await cleanUpMain(program)

@@ -11,7 +11,6 @@ export enum CommandEnum {
   CLEAN = 'clean',
   LINT = 'lint',
   DEPLOY = 'deploy',
-  TURBO = 'turbo',
   INSTALL = 'install',
   SYNC = 'sync',
   COPYRIGHT = 'copyright',
@@ -63,12 +62,6 @@ export const CLI_COMMAND_DETAIL: VipCommanderDetailRecord<CommandEnum> = {
     summary: '项目部署',
     description: '项目部署',
     aliases: ['de', 'dep'],
-  },
-  [CommandEnum.TURBO]: {
-    command: 'turbo',
-    summary: '通用型TurboPack管理工具',
-    description: '通用型TurboPack命令工具，支持dev、build命令',
-    aliases: ['t', 'tu', 'tur'],
   },
   [CommandEnum.INSTALL]: {
     command: 'install',

@@ -24,8 +24,7 @@
     "@142vip",
     "@142vip/fairy-cli",
     "@142vip/release-version",
-    "@142vip/utils",
-    "turbo"
+    "@142vip/utils"
   ],
   "sideEffects": false,
   "exports": {
@@ -67,8 +66,7 @@
     "@142vip/commit-linter": "workspace:*",
     "@142vip/release-version": "workspace:*",
     "@142vip/utils": "workspace:*",
-    "del": "8.0.0",
-    "turbo": "2.5.6"
+    "del": "8.0.0"
   },
   "publishConfig": {
     "access": "public",

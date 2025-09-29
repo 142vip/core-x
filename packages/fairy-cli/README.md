@@ -42,7 +42,6 @@ Commands:
   sync|s [options] [packageName]  同步NPM包
   deploy|de [options]             项目部署
   lint|li [options]               根据Eslint检查、格式化代码风格
-  turbo|t [options] [filters...]  通用型TurboPack管理工具
   clean|cl [options]              快速清理项目
   copyright|cr [options]          软件著作权登记的源代码文档生成
   commit|co [options] [vip]       Git Commit 提交信息
@@ -176,7 +175,6 @@ Options:
   -n,--nuxt      删除nuxt构建目录，包括.nuxt、.output目录 (default: false)
   -d,--dist      删除dist目录 (default: false)
   -m,--midway    删除midway构建目录 (default: false)
-  --turbo        删除turbo缓存目录 (default: false)
   --vite         删除vite缓存目录 (default: false)
   --deps         删除node_modules目录 (default: false)
   --coverage     删除coverage目录 (default: false)
@@ -185,7 +183,6 @@ Options:
   --ignore-tips  忽略提示，直接删除 (default: false)
   --dry-run      试运行，不做实际删除操作 (default: false)
   -h, --help     display help for command
-
 ```
 
 #### 使用示例
@@ -201,7 +198,6 @@ npx fa clean --deps --ignore-tips --all
 ## 相关
 
 - [del](https://www.npmjs.com/package/del)
-- [turbo](https://www.npmjs.com/package/turbo)
 - [@142vip/changelog](https://www.npmjs.com/package/@142vip/changelog)
 - [@142vip/commit-linter](https://www.npmjs.com/package/@142vip/commit-linter)
 - [@142vip/release-version](https://www.npmjs.com/package/@142vip/release-version)
