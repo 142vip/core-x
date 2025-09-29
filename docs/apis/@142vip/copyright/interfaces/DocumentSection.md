@@ -2,7 +2,7 @@
 
 # 接口: DocumentSection
 
-定义于: [copyright.interface.ts:30](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/copyright/src/copyright.interface.ts#L30)
+定义于: [copyright.interface.ts:30](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/copyright/src/copyright.interface.ts#L30)
 
 文档页
 
@@ -12,7 +12,7 @@
 
 > **children**: `Paragraph`[]
 
-定义于: [copyright.interface.ts:37](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/copyright/src/copyright.interface.ts#L37)
+定义于: [copyright.interface.ts:37](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/copyright/src/copyright.interface.ts#L37)
 
 ***
 
@@ -20,7 +20,7 @@
 
 > **footers**: `object`
 
-定义于: [copyright.interface.ts:34](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/copyright/src/copyright.interface.ts#L34)
+定义于: [copyright.interface.ts:34](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/copyright/src/copyright.interface.ts#L34)
 
 #### default
 
@@ -32,7 +32,7 @@
 
 > **headers**: `object`
 
-定义于: [copyright.interface.ts:31](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/copyright/src/copyright.interface.ts#L31)
+定义于: [copyright.interface.ts:31](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/copyright/src/copyright.interface.ts#L31)
 
 #### default
 

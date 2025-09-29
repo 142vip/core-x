@@ -2,7 +2,7 @@
 
 # 接口: VipAxiosInstance()
 
-定义于: [packages/axios/src/core/axios.factory.ts:11](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/core/axios.factory.ts#L11)
+定义于: [packages/axios/src/core/axios.factory.ts:11](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/core/axios.factory.ts#L11)
 
 VipAxios实例类型
 - 继承自AxiosInstance，添加了自定义方法
@@ -17,7 +17,7 @@ VipAxios实例类型
 
 > **VipAxiosInstance**\<`T`, `R`, `D`\>(`config`): `Promise`\<`R`\>
 
-定义于: [packages/axios/src/core/axios.factory.ts:11](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/core/axios.factory.ts#L11)
+定义于: [packages/axios/src/core/axios.factory.ts:11](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/core/axios.factory.ts#L11)
 
 VipAxios实例类型
 - 继承自AxiosInstance，添加了自定义方法
@@ -52,7 +52,7 @@ VipAxios实例类型
 
 > **VipAxiosInstance**\<`T`, `R`, `D`\>(`url`, `config?`): `Promise`\<`R`\>
 
-定义于: [packages/axios/src/core/axios.factory.ts:11](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/core/axios.factory.ts#L11)
+定义于: [packages/axios/src/core/axios.factory.ts:11](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/core/axios.factory.ts#L11)
 
 VipAxios实例类型
 - 继承自AxiosInstance，添加了自定义方法
@@ -93,7 +93,7 @@ VipAxios实例类型
 
 > **clearInterceptor**: (`type`) => `void`
 
-定义于: [packages/axios/src/core/axios.factory.ts:12](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/core/axios.factory.ts#L12)
+定义于: [packages/axios/src/core/axios.factory.ts:12](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/core/axios.factory.ts#L12)
 
 #### 参数
 
@@ -129,7 +129,7 @@ VipAxios实例类型
 
 > **getConfig**: () => `undefined` \| `CreateAxiosDefaults`\<`any`\>
 
-定义于: [packages/axios/src/core/axios.factory.ts:13](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/core/axios.factory.ts#L13)
+定义于: [packages/axios/src/core/axios.factory.ts:13](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/core/axios.factory.ts#L13)
 
 #### 返回
 

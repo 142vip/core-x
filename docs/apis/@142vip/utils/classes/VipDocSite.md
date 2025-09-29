@@ -2,7 +2,7 @@
 
 # 类: VipDocSite
 
-定义于: [packages/utils/src/core/doc-site.ts:6](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/utils/src/core/doc-site.ts#L6)
+定义于: [packages/utils/src/core/doc-site.ts:6](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/core/doc-site.ts#L6)
 
 博客站点的工具方法
 
@@ -22,7 +22,7 @@
 
 > `readonly` **defaultEnvKey**: `string` = `'NEED_PROXY'`
 
-定义于: [packages/utils/src/core/doc-site.ts:10](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/utils/src/core/doc-site.ts#L10)
+定义于: [packages/utils/src/core/doc-site.ts:10](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/core/doc-site.ts#L10)
 
 默认的环境变量的键
 
@@ -32,7 +32,7 @@
 
 > **getBase**(`baseName`, `envKey?`): `` `/${string}/` `` \| `"/"`
 
-定义于: [packages/utils/src/core/doc-site.ts:19](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/utils/src/core/doc-site.ts#L19)
+定义于: [packages/utils/src/core/doc-site.ts:19](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/core/doc-site.ts#L19)
 
 用于区分base路径，是否nginx代理
 - 路径名称

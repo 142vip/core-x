@@ -2,7 +2,7 @@
 
 # 接口: VersionBumpResults
 
-定义于: [enums/version-bump.interface.ts:89](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/release-version/src/enums/version-bump.interface.ts#L89)
+定义于: [enums/version-bump.interface.ts:89](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/release-version/src/enums/version-bump.interface.ts#L89)
 
 Information about the work that was performed by the `versionBump()` function.
 
@@ -16,7 +16,7 @@ Information about the work that was performed by the `versionBump()` function.
 
 > **commit**: `string` \| `false`
 
-定义于: [enums/version-bump.interface.ts:109](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/release-version/src/enums/version-bump.interface.ts#L109)
+定义于: [enums/version-bump.interface.ts:109](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/release-version/src/enums/version-bump.interface.ts#L109)
 
 用于 git 提交的提交消息，如果未创建 git 提交，则为“false”。
 - 注意：这永远不会是空字符串。 它将始终至少包含新版本号。
@@ -27,7 +27,7 @@ Information about the work that was performed by the `versionBump()` function.
 
 > **currentVersion**: `string`
 
-定义于: [enums/version-bump.interface.ts:98](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/release-version/src/enums/version-bump.interface.ts#L98)
+定义于: [enums/version-bump.interface.ts:98](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/release-version/src/enums/version-bump.interface.ts#L98)
 
 package.json文件中对应的上一个版本号
 
@@ -37,7 +37,7 @@ package.json文件中对应的上一个版本号
 
 > **newVersion**: `string`
 
-定义于: [enums/version-bump.interface.ts:103](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/release-version/src/enums/version-bump.interface.ts#L103)
+定义于: [enums/version-bump.interface.ts:103](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/release-version/src/enums/version-bump.interface.ts#L103)
 
 发布的新的版本号
 
@@ -47,7 +47,7 @@ package.json文件中对应的上一个版本号
 
 > `optional` **release**: [`VipReleaseType`](../../utils/type-aliases/VipReleaseType.md)
 
-定义于: [enums/version-bump.interface.ts:93](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/release-version/src/enums/version-bump.interface.ts#L93)
+定义于: [enums/version-bump.interface.ts:93](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/release-version/src/enums/version-bump.interface.ts#L93)
 
 T使用的发布类型，如果使用了自定义版本号，则为 'undefined' .
 
@@ -57,7 +57,7 @@ T使用的发布类型，如果使用了自定义版本号，则为 'undefined' 
 
 > **tag**: `string` \| `false`
 
-定义于: [enums/version-bump.interface.ts:115](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/release-version/src/enums/version-bump.interface.ts#L115)
+定义于: [enums/version-bump.interface.ts:115](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/release-version/src/enums/version-bump.interface.ts#L115)
 
 用于 git 标签的标签名称，如果未创建 git 标签，则为 'false'。
 - 注意：这永远不会是空字符串。 它将始终至少包含新版本号。

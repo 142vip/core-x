@@ -2,7 +2,7 @@
 
 # 枚举: HttpStatus
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:4](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L4)
+定义于: [packages/axios/src/enum/http-status.enum.ts:4](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L4)
 
 Http协议状态码
 
@@ -12,7 +12,7 @@ Http协议状态码
 
 > **ACCEPTED**: `202`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:11](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L11)
+定义于: [packages/axios/src/enum/http-status.enum.ts:11](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L11)
 
 ***
 
@@ -20,7 +20,7 @@ Http协议状态码
 
 > **AMBIGUOUS**: `300`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:16](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L16)
+定义于: [packages/axios/src/enum/http-status.enum.ts:16](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L16)
 
 ***
 
@@ -28,7 +28,7 @@ Http协议状态码
 
 > **BAD\_GATEWAY**: `502`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:49](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L49)
+定义于: [packages/axios/src/enum/http-status.enum.ts:49](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L49)
 
 ***
 
@@ -36,7 +36,7 @@ Http协议状态码
 
 > **BAD\_REQUEST**: `400`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:23](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L23)
+定义于: [packages/axios/src/enum/http-status.enum.ts:23](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L23)
 
 ***
 
@@ -44,7 +44,7 @@ Http协议状态码
 
 > **CONFLICT**: `409`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:32](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L32)
+定义于: [packages/axios/src/enum/http-status.enum.ts:32](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L32)
 
 ***
 
@@ -52,7 +52,7 @@ Http协议状态码
 
 > **CONTINUE**: `100`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:5](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L5)
+定义于: [packages/axios/src/enum/http-status.enum.ts:5](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L5)
 
 ***
 
@@ -60,7 +60,7 @@ Http协议状态码
 
 > **CREATED**: `201`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:10](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L10)
+定义于: [packages/axios/src/enum/http-status.enum.ts:10](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L10)
 
 ***
 
@@ -68,7 +68,7 @@ Http协议状态码
 
 > **EARLY\_HINTS**: `103`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:8](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L8)
+定义于: [packages/axios/src/enum/http-status.enum.ts:8](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L8)
 
 ***
 
@@ -76,7 +76,7 @@ Http协议状态码
 
 > **EXPECTATION\_FAILED**: `417`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:40](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L40)
+定义于: [packages/axios/src/enum/http-status.enum.ts:40](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L40)
 
 ***
 
@@ -84,7 +84,7 @@ Http协议状态码
 
 > **FAILED\_DEPENDENCY**: `424`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:44](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L44)
+定义于: [packages/axios/src/enum/http-status.enum.ts:44](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L44)
 
 ***
 
@@ -92,7 +92,7 @@ Http协议状态码
 
 > **FORBIDDEN**: `403`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:26](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L26)
+定义于: [packages/axios/src/enum/http-status.enum.ts:26](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L26)
 
 ***
 
@@ -100,7 +100,7 @@ Http协议状态码
 
 > **FOUND**: `302`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:18](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L18)
+定义于: [packages/axios/src/enum/http-status.enum.ts:18](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L18)
 
 ***
 
@@ -108,7 +108,7 @@ Http协议状态码
 
 > **GATEWAY\_TIMEOUT**: `504`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:51](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L51)
+定义于: [packages/axios/src/enum/http-status.enum.ts:51](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L51)
 
 ***
 
@@ -116,7 +116,7 @@ Http协议状态码
 
 > **GONE**: `410`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:33](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L33)
+定义于: [packages/axios/src/enum/http-status.enum.ts:33](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L33)
 
 ***
 
@@ -124,7 +124,7 @@ Http协议状态码
 
 > **HTTP\_VERSION\_NOT\_SUPPORTED**: `505`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:52](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L52)
+定义于: [packages/axios/src/enum/http-status.enum.ts:52](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L52)
 
 ***
 
@@ -132,7 +132,7 @@ Http协议状态码
 
 > **I\_AM\_A\_TEAPOT**: `418`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:41](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L41)
+定义于: [packages/axios/src/enum/http-status.enum.ts:41](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L41)
 
 ***
 
@@ -140,7 +140,7 @@ Http协议状态码
 
 > **INSUFFICIENT\_STORAGE**: `507`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:54](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L54)
+定义于: [packages/axios/src/enum/http-status.enum.ts:54](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L54)
 
 ***
 
@@ -148,7 +148,7 @@ Http协议状态码
 
 > **INTERNAL\_SERVER\_ERROR**: `500`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:47](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L47)
+定义于: [packages/axios/src/enum/http-status.enum.ts:47](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L47)
 
 ***
 
@@ -156,7 +156,7 @@ Http协议状态码
 
 > **LENGTH\_REQUIRED**: `411`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:34](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L34)
+定义于: [packages/axios/src/enum/http-status.enum.ts:34](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L34)
 
 ***
 
@@ -164,7 +164,7 @@ Http协议状态码
 
 > **LOOP\_DETECTED**: `508`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:55](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L55)
+定义于: [packages/axios/src/enum/http-status.enum.ts:55](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L55)
 
 ***
 
@@ -172,7 +172,7 @@ Http协议状态码
 
 > **METHOD\_NOT\_ALLOWED**: `405`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:28](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L28)
+定义于: [packages/axios/src/enum/http-status.enum.ts:28](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L28)
 
 ***
 
@@ -180,7 +180,7 @@ Http协议状态码
 
 > **MISDIRECTED**: `421`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:42](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L42)
+定义于: [packages/axios/src/enum/http-status.enum.ts:42](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L42)
 
 ***
 
@@ -188,7 +188,7 @@ Http协议状态码
 
 > **MOVED\_PERMANENTLY**: `301`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:17](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L17)
+定义于: [packages/axios/src/enum/http-status.enum.ts:17](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L17)
 
 ***
 
@@ -196,7 +196,7 @@ Http协议状态码
 
 > **NETWORK\_AUTHENTICATION\_REQUIRED**: `511`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:57](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L57)
+定义于: [packages/axios/src/enum/http-status.enum.ts:57](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L57)
 
 ***
 
@@ -204,7 +204,7 @@ Http协议状态码
 
 > **NO\_CONTENT**: `204`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:13](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L13)
+定义于: [packages/axios/src/enum/http-status.enum.ts:13](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L13)
 
 ***
 
@@ -212,7 +212,7 @@ Http协议状态码
 
 > **NON\_AUTHORITATIVE\_INFORMATION**: `203`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:12](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L12)
+定义于: [packages/axios/src/enum/http-status.enum.ts:12](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L12)
 
 ***
 
@@ -220,7 +220,7 @@ Http协议状态码
 
 > **NOT\_ACCEPTABLE**: `406`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:29](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L29)
+定义于: [packages/axios/src/enum/http-status.enum.ts:29](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L29)
 
 ***
 
@@ -228,7 +228,7 @@ Http协议状态码
 
 > **NOT\_EXTENDED**: `510`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:56](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L56)
+定义于: [packages/axios/src/enum/http-status.enum.ts:56](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L56)
 
 ***
 
@@ -236,7 +236,7 @@ Http协议状态码
 
 > **NOT\_FOUND**: `404`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:27](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L27)
+定义于: [packages/axios/src/enum/http-status.enum.ts:27](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L27)
 
 ***
 
@@ -244,7 +244,7 @@ Http协议状态码
 
 > **NOT\_IMPLEMENTED**: `501`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:48](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L48)
+定义于: [packages/axios/src/enum/http-status.enum.ts:48](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L48)
 
 ***
 
@@ -252,7 +252,7 @@ Http协议状态码
 
 > **NOT\_MODIFIED**: `304`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:20](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L20)
+定义于: [packages/axios/src/enum/http-status.enum.ts:20](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L20)
 
 ***
 
@@ -260,7 +260,7 @@ Http协议状态码
 
 > **OK**: `200`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:9](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L9)
+定义于: [packages/axios/src/enum/http-status.enum.ts:9](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L9)
 
 ***
 
@@ -268,7 +268,7 @@ Http协议状态码
 
 > **PARTIAL\_CONTENT**: `206`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:15](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L15)
+定义于: [packages/axios/src/enum/http-status.enum.ts:15](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L15)
 
 ***
 
@@ -276,7 +276,7 @@ Http协议状态码
 
 > **PAYLOAD\_TOO\_LARGE**: `413`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:36](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L36)
+定义于: [packages/axios/src/enum/http-status.enum.ts:36](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L36)
 
 ***
 
@@ -284,7 +284,7 @@ Http协议状态码
 
 > **PAYMENT\_REQUIRED**: `402`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:25](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L25)
+定义于: [packages/axios/src/enum/http-status.enum.ts:25](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L25)
 
 ***
 
@@ -292,7 +292,7 @@ Http协议状态码
 
 > **PERMANENT\_REDIRECT**: `308`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:22](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L22)
+定义于: [packages/axios/src/enum/http-status.enum.ts:22](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L22)
 
 ***
 
@@ -300,7 +300,7 @@ Http协议状态码
 
 > **PRECONDITION\_FAILED**: `412`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:35](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L35)
+定义于: [packages/axios/src/enum/http-status.enum.ts:35](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L35)
 
 ***
 
@@ -308,7 +308,7 @@ Http协议状态码
 
 > **PRECONDITION\_REQUIRED**: `428`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:45](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L45)
+定义于: [packages/axios/src/enum/http-status.enum.ts:45](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L45)
 
 ***
 
@@ -316,7 +316,7 @@ Http协议状态码
 
 > **PROCESSING**: `102`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:7](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L7)
+定义于: [packages/axios/src/enum/http-status.enum.ts:7](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L7)
 
 ***
 
@@ -324,7 +324,7 @@ Http协议状态码
 
 > **PROXY\_AUTHENTICATION\_REQUIRED**: `407`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:30](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L30)
+定义于: [packages/axios/src/enum/http-status.enum.ts:30](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L30)
 
 ***
 
@@ -332,7 +332,7 @@ Http协议状态码
 
 > **REQUEST\_TIMEOUT**: `408`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:31](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L31)
+定义于: [packages/axios/src/enum/http-status.enum.ts:31](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L31)
 
 ***
 
@@ -340,7 +340,7 @@ Http协议状态码
 
 > **REQUESTED\_RANGE\_NOT\_SATISFIABLE**: `416`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:39](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L39)
+定义于: [packages/axios/src/enum/http-status.enum.ts:39](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L39)
 
 ***
 
@@ -348,7 +348,7 @@ Http协议状态码
 
 > **RESET\_CONTENT**: `205`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:14](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L14)
+定义于: [packages/axios/src/enum/http-status.enum.ts:14](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L14)
 
 ***
 
@@ -356,7 +356,7 @@ Http协议状态码
 
 > **SEE\_OTHER**: `303`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:19](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L19)
+定义于: [packages/axios/src/enum/http-status.enum.ts:19](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L19)
 
 ***
 
@@ -364,7 +364,7 @@ Http协议状态码
 
 > **SERVICE\_UNAVAILABLE**: `503`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:50](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L50)
+定义于: [packages/axios/src/enum/http-status.enum.ts:50](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L50)
 
 ***
 
@@ -372,7 +372,7 @@ Http协议状态码
 
 > **SWITCHING\_PROTOCOLS**: `101`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:6](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L6)
+定义于: [packages/axios/src/enum/http-status.enum.ts:6](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L6)
 
 ***
 
@@ -380,7 +380,7 @@ Http协议状态码
 
 > **TEMPORARY\_REDIRECT**: `307`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:21](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L21)
+定义于: [packages/axios/src/enum/http-status.enum.ts:21](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L21)
 
 ***
 
@@ -388,7 +388,7 @@ Http协议状态码
 
 > **TOO\_MANY\_REQUESTS**: `429`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:46](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L46)
+定义于: [packages/axios/src/enum/http-status.enum.ts:46](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L46)
 
 ***
 
@@ -396,7 +396,7 @@ Http协议状态码
 
 > **UNAUTHORIZED**: `401`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:24](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L24)
+定义于: [packages/axios/src/enum/http-status.enum.ts:24](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L24)
 
 ***
 
@@ -404,7 +404,7 @@ Http协议状态码
 
 > **UNPROCESSABLE\_ENTITY**: `422`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:43](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L43)
+定义于: [packages/axios/src/enum/http-status.enum.ts:43](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L43)
 
 ***
 
@@ -412,7 +412,7 @@ Http协议状态码
 
 > **UNSUPPORTED\_MEDIA\_TYPE**: `415`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:38](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L38)
+定义于: [packages/axios/src/enum/http-status.enum.ts:38](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L38)
 
 ***
 
@@ -420,7 +420,7 @@ Http协议状态码
 
 > **URI\_TOO\_LONG**: `414`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:37](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L37)
+定义于: [packages/axios/src/enum/http-status.enum.ts:37](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L37)
 
 ***
 
@@ -428,4 +428,4 @@ Http协议状态码
 
 > **VARIANT\_ALSO\_NEGOTIATES**: `506`
 
-定义于: [packages/axios/src/enum/http-status.enum.ts:53](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/enum/http-status.enum.ts#L53)
+定义于: [packages/axios/src/enum/http-status.enum.ts:53](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/enum/http-status.enum.ts#L53)

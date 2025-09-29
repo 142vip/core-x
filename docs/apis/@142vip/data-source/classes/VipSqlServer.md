@@ -2,7 +2,7 @@
 
 # 类: VipSqlServer
 
-定义于: [packages/data-source/src/core/sql/vip-sql-server.ts:13](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/data-source/src/core/sql/vip-sql-server.ts#L13)
+定义于: [packages/data-source/src/core/sql/vip-sql-server.ts:13](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/core/sql/vip-sql-server.ts#L13)
 
 SQL Server 数据源
 
@@ -26,7 +26,7 @@ SQL Server 数据源
 
 > **getConnectionData**(`options`): `Promise`\<[`DataSourceParseResponse`](../interfaces/DataSourceParseResponse.md)\<`unknown`\>\>
 
-定义于: [packages/data-source/src/core/sql/vip-sql-server.ts:17](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/data-source/src/core/sql/vip-sql-server.ts#L17)
+定义于: [packages/data-source/src/core/sql/vip-sql-server.ts:17](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/core/sql/vip-sql-server.ts#L17)
 
 获取连接数据
 

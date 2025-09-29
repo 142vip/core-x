@@ -2,7 +2,7 @@
 
 # 接口: ColumnComment
 
-定义于: [packages/data-source/src/data-source.interface.ts:38](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/data-source/src/data-source.interface.ts#L38)
+定义于: [packages/data-source/src/data-source.interface.ts:38](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/data-source.interface.ts#L38)
 
 表的列描述信息
 
@@ -12,7 +12,7 @@
 
 > **comment**: `string`
 
-定义于: [packages/data-source/src/data-source.interface.ts:40](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/data-source/src/data-source.interface.ts#L40)
+定义于: [packages/data-source/src/data-source.interface.ts:40](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/data-source.interface.ts#L40)
 
 ***
 
@@ -20,4 +20,4 @@
 
 > **name**: `string`
 
-定义于: [packages/data-source/src/data-source.interface.ts:39](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/data-source/src/data-source.interface.ts#L39)
+定义于: [packages/data-source/src/data-source.interface.ts:39](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/data-source.interface.ts#L39)

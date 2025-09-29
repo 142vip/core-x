@@ -4,7 +4,7 @@
 
 > **responseInterceptor**\<`T`\>(`response`): `T`
 
-定义于: [packages/axios/src/core/interceptors.ts:22](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/core/interceptors.ts#L22)
+定义于: [packages/axios/src/core/interceptors.ts:22](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/core/interceptors.ts#L22)
 
 响应拦截器
 

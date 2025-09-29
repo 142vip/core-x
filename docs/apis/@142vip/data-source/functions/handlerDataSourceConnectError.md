@@ -4,7 +4,7 @@
 
 > **handlerDataSourceConnectError**\<`T`\>(`dataSourceName`, `error`): [`DataSourceParseResponse`](../interfaces/DataSourceParseResponse.md)\<`T`\>
 
-定义于: [packages/data-source/src/data-source.utils.ts:27](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/data-source/src/data-source.utils.ts#L27)
+定义于: [packages/data-source/src/data-source.utils.ts:27](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/data-source.utils.ts#L27)
 
 数据源处理错误
 

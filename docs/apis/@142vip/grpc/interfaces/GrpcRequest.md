@@ -2,7 +2,7 @@
 
 # 接口: GrpcRequest
 
-定义于: [enum/grpc.interface.ts:70](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/grpc/src/enum/grpc.interface.ts#L70)
+定义于: [enum/grpc.interface.ts:70](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/enum/grpc.interface.ts#L70)
 
 Grpc 请求格式
 
@@ -16,4 +16,4 @@ Grpc 请求格式
 
 > `optional` **traceId**: `string`
 
-定义于: [enum/grpc.interface.ts:71](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/grpc/src/enum/grpc.interface.ts#L71)
+定义于: [enum/grpc.interface.ts:71](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/enum/grpc.interface.ts#L71)

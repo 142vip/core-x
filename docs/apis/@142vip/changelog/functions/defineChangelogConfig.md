@@ -4,7 +4,7 @@
 
 > **defineChangelogConfig**(`config`): [`ChangelogGenerateOptions`](../interfaces/ChangelogGenerateOptions.md)
 
-定义于: [changelog/src/shared/config.ts:50](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/changelog/src/shared/config.ts#L50)
+定义于: [changelog/src/shared/config.ts:50](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/shared/config.ts#L50)
 
 定义配置文件
 - 合并默认配置

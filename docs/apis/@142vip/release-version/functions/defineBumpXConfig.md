@@ -4,7 +4,7 @@
 
 > **defineBumpXConfig**(`config`): `Partial`\<[`VersionBumpOptions`](../interfaces/VersionBumpOptions.md)\>
 
-定义于: [utils/config.ts:37](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/release-version/src/utils/config.ts#L37)
+定义于: [utils/config.ts:37](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/release-version/src/utils/config.ts#L37)
 
 自定义配置入口
 - 配置可选

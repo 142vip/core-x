@@ -2,7 +2,7 @@
 
 # 接口: ReleaseOperationOptions
 
-定义于: [enums/version-operation.interface.ts:4](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/release-version/src/enums/version-operation.interface.ts#L4)
+定义于: [enums/version-operation.interface.ts:4](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/release-version/src/enums/version-operation.interface.ts#L4)
 
 Normalized and sanitized options
 
@@ -12,7 +12,7 @@ Normalized and sanitized options
 
 > `optional` **changelog**: `boolean`
 
-定义于: [enums/version-operation.interface.ts:18](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/release-version/src/enums/version-operation.interface.ts#L18)
+定义于: [enums/version-operation.interface.ts:18](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/release-version/src/enums/version-operation.interface.ts#L18)
 
 ***
 
@@ -20,7 +20,7 @@ Normalized and sanitized options
 
 > `optional` **commit**: `object`
 
-定义于: [enums/version-operation.interface.ts:5](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/release-version/src/enums/version-operation.interface.ts#L5)
+定义于: [enums/version-operation.interface.ts:5](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/release-version/src/enums/version-operation.interface.ts#L5)
 
 #### all
 
@@ -40,7 +40,7 @@ Normalized and sanitized options
 
 > `optional` **currentVersion**: `string`
 
-定义于: [enums/version-operation.interface.ts:17](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/release-version/src/enums/version-operation.interface.ts#L17)
+定义于: [enums/version-operation.interface.ts:17](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/release-version/src/enums/version-operation.interface.ts#L17)
 
 ***
 
@@ -48,7 +48,7 @@ Normalized and sanitized options
 
 > **cwd**: `string`
 
-定义于: [enums/version-operation.interface.ts:14](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/release-version/src/enums/version-operation.interface.ts#L14)
+定义于: [enums/version-operation.interface.ts:14](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/release-version/src/enums/version-operation.interface.ts#L14)
 
 ***
 
@@ -56,7 +56,7 @@ Normalized and sanitized options
 
 > `optional` **execute**: `string`
 
-定义于: [enums/version-operation.interface.ts:16](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/release-version/src/enums/version-operation.interface.ts#L16)
+定义于: [enums/version-operation.interface.ts:16](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/release-version/src/enums/version-operation.interface.ts#L16)
 
 ***
 
@@ -64,7 +64,7 @@ Normalized and sanitized options
 
 > **ignoreScripts**: `boolean`
 
-定义于: [enums/version-operation.interface.ts:15](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/release-version/src/enums/version-operation.interface.ts#L15)
+定义于: [enums/version-operation.interface.ts:15](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/release-version/src/enums/version-operation.interface.ts#L15)
 
 ***
 
@@ -72,7 +72,7 @@ Normalized and sanitized options
 
 > **push**: `boolean`
 
-定义于: [enums/version-operation.interface.ts:13](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/release-version/src/enums/version-operation.interface.ts#L13)
+定义于: [enums/version-operation.interface.ts:13](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/release-version/src/enums/version-operation.interface.ts#L13)
 
 ***
 
@@ -80,7 +80,7 @@ Normalized and sanitized options
 
 > `optional` **scopeName**: `string`
 
-定义于: [enums/version-operation.interface.ts:22](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/release-version/src/enums/version-operation.interface.ts#L22)
+定义于: [enums/version-operation.interface.ts:22](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/release-version/src/enums/version-operation.interface.ts#L22)
 
 monorepo模式下 模块名
 
@@ -90,7 +90,7 @@ monorepo模式下 模块名
 
 > `optional` **tag**: `object`
 
-定义于: [enums/version-operation.interface.ts:10](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/release-version/src/enums/version-operation.interface.ts#L10)
+定义于: [enums/version-operation.interface.ts:10](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/release-version/src/enums/version-operation.interface.ts#L10)
 
 #### name
 

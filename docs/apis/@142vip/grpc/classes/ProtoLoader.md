@@ -2,7 +2,7 @@
 
 # 类: ProtoLoader
 
-定义于: [core/proto-loader.ts:22](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/grpc/src/core/proto-loader.ts#L22)
+定义于: [core/proto-loader.ts:22](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/core/proto-loader.ts#L22)
 
 proto文件加载器
 
@@ -12,7 +12,7 @@ proto文件加载器
 
 > **new ProtoLoader**(`protoPath`, `loaderOptions?`): `ProtoLoader`
 
-定义于: [core/proto-loader.ts:32](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/grpc/src/core/proto-loader.ts#L32)
+定义于: [core/proto-loader.ts:32](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/core/proto-loader.ts#L32)
 
 #### 参数
 
@@ -34,7 +34,7 @@ proto文件加载器
 
 > **getClientServiceConstructor**(`servicePath`): `ServiceClientConstructor`
 
-定义于: [core/proto-loader.ts:112](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/grpc/src/core/proto-loader.ts#L112)
+定义于: [core/proto-loader.ts:112](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/core/proto-loader.ts#L112)
 
 获取client Service类定义，用于客户端
 
@@ -54,7 +54,7 @@ proto文件加载器
 
 > **getGrpcServiceDetail**(): `GrpcServiceDetail`[]
 
-定义于: [core/proto-loader.ts:77](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/grpc/src/core/proto-loader.ts#L77)
+定义于: [core/proto-loader.ts:77](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/core/proto-loader.ts#L77)
 
 获取grpc service详细信息
 
@@ -68,7 +68,7 @@ proto文件加载器
 
 > **getLoaderOptions**(): `VipProtoLoaderOptions`
 
-定义于: [core/proto-loader.ts:54](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/grpc/src/core/proto-loader.ts#L54)
+定义于: [core/proto-loader.ts:54](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/core/proto-loader.ts#L54)
 
 获取proto loader options
 
@@ -82,7 +82,7 @@ proto文件加载器
 
 > **getPackageNames**(): `string`[]
 
-定义于: [core/proto-loader.ts:40](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/grpc/src/core/proto-loader.ts#L40)
+定义于: [core/proto-loader.ts:40](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/core/proto-loader.ts#L40)
 
 #### 返回
 
@@ -94,7 +94,7 @@ proto文件加载器
 
 > **getServerServiceDefinition**(`servicePath`): `ServiceDefinition`
 
-定义于: [core/proto-loader.ts:100](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/grpc/src/core/proto-loader.ts#L100)
+定义于: [core/proto-loader.ts:100](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/core/proto-loader.ts#L100)
 
 获取rpc Service类定义
 
@@ -114,7 +114,7 @@ proto文件加载器
 
 > **getServiceDetail**(): `GrpcServicePath`[]
 
-定义于: [core/proto-loader.ts:65](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/grpc/src/core/proto-loader.ts#L65)
+定义于: [core/proto-loader.ts:65](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/core/proto-loader.ts#L65)
 
 #### 返回
 
@@ -126,7 +126,7 @@ proto文件加载器
 
 > **getServiceName**(`servicePath`): `string`
 
-定义于: [core/proto-loader.ts:47](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/grpc/src/core/proto-loader.ts#L47)
+定义于: [core/proto-loader.ts:47](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/core/proto-loader.ts#L47)
 
 获取grpc对应的service名称
 
@@ -146,7 +146,7 @@ proto文件加载器
 
 > **getServicePaths**(): `string`[]
 
-定义于: [core/proto-loader.ts:61](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/grpc/src/core/proto-loader.ts#L61)
+定义于: [core/proto-loader.ts:61](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/core/proto-loader.ts#L61)
 
 获取所有的路径定义
 
@@ -160,7 +160,7 @@ proto文件加载器
 
 > **isProtobufTypeDefinition**(`obj`): `obj is ProtobufTypeDefinition`
 
-定义于: [core/proto-loader.ts:123](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/grpc/src/core/proto-loader.ts#L123)
+定义于: [core/proto-loader.ts:123](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/core/proto-loader.ts#L123)
 
 判断是否是ProtobufTypeDefinition
 

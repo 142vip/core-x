@@ -2,7 +2,7 @@
 
 # 接口: GitCommitLinter
 
-定义于: [commit-linter/src/core/git-commit.interface.ts:20](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/commit-linter/src/core/git-commit.interface.ts#L20)
+定义于: [commit-linter/src/core/git-commit.interface.ts:20](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/commit-linter/src/core/git-commit.interface.ts#L20)
 
 Git Commit信息校验结果
 
@@ -16,7 +16,7 @@ Git Commit信息校验结果
 
 > **commit**: `string`
 
-定义于: [commit-linter/src/core/git-commit.interface.ts:21](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/commit-linter/src/core/git-commit.interface.ts#L21)
+定义于: [commit-linter/src/core/git-commit.interface.ts:21](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/commit-linter/src/core/git-commit.interface.ts#L21)
 
 ***
 
@@ -24,7 +24,7 @@ Git Commit信息校验结果
 
 > `optional` **scope**: `string`
 
-定义于: [utils/src/enums/git.interface.ts:24](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/utils/src/enums/git.interface.ts#L24)
+定义于: [utils/src/enums/git.interface.ts:24](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/enums/git.interface.ts#L24)
 
 提交范围
 
@@ -38,7 +38,7 @@ Git Commit信息校验结果
 
 > `optional` **subject**: `string`
 
-定义于: [utils/src/enums/git.interface.ts:29](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/utils/src/enums/git.interface.ts#L29)
+定义于: [utils/src/enums/git.interface.ts:29](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/enums/git.interface.ts#L29)
 
 提交信息
 
@@ -52,7 +52,7 @@ Git Commit信息校验结果
 
 > **type**: `string`
 
-定义于: [utils/src/enums/git.interface.ts:19](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/utils/src/enums/git.interface.ts#L19)
+定义于: [utils/src/enums/git.interface.ts:19](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/enums/git.interface.ts#L19)
 
 提交类型
 

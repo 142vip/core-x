@@ -2,7 +2,7 @@
 
 # 接口: ChangelogGenerateOptions
 
-定义于: [changelog/src/enums/changelog.interface.ts:33](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/changelog/src/enums/changelog.interface.ts#L33)
+定义于: [changelog/src/enums/changelog.interface.ts:33](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/changelog.interface.ts#L33)
 
 日志生成
 
@@ -12,7 +12,7 @@
 
 > **baseUrl**: `string`
 
-定义于: [changelog/src/enums/changelog.interface.ts:59](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/changelog/src/enums/changelog.interface.ts#L59)
+定义于: [changelog/src/enums/changelog.interface.ts:59](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/changelog.interface.ts#L59)
 
 ***
 
@@ -20,7 +20,7 @@
 
 > **baseUrlApi**: `string`
 
-定义于: [changelog/src/enums/changelog.interface.ts:58](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/changelog/src/enums/changelog.interface.ts#L58)
+定义于: [changelog/src/enums/changelog.interface.ts:58](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/changelog.interface.ts#L58)
 
 ***
 
@@ -28,7 +28,7 @@
 
 > **capitalize**: `boolean`
 
-定义于: [changelog/src/enums/changelog.interface.ts:52](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/changelog/src/enums/changelog.interface.ts#L52)
+定义于: [changelog/src/enums/changelog.interface.ts:52](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/changelog.interface.ts#L52)
 
 ***
 
@@ -36,7 +36,7 @@
 
 > **contributors**: `boolean`
 
-定义于: [changelog/src/enums/changelog.interface.ts:51](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/changelog/src/enums/changelog.interface.ts#L51)
+定义于: [changelog/src/enums/changelog.interface.ts:51](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/changelog.interface.ts#L51)
 
 ***
 
@@ -44,7 +44,7 @@
 
 > `optional` **dryRun**: `boolean`
 
-定义于: [changelog/src/enums/changelog.interface.ts:48](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/changelog/src/enums/changelog.interface.ts#L48)
+定义于: [changelog/src/enums/changelog.interface.ts:48](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/changelog.interface.ts#L48)
 
 ***
 
@@ -52,7 +52,7 @@
 
 > **emoji**: `boolean`
 
-定义于: [changelog/src/enums/changelog.interface.ts:54](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/changelog/src/enums/changelog.interface.ts#L54)
+定义于: [changelog/src/enums/changelog.interface.ts:54](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/changelog.interface.ts#L54)
 
 ***
 
@@ -60,7 +60,7 @@
 
 > **from**: `string`
 
-定义于: [changelog/src/enums/changelog.interface.ts:60](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/changelog/src/enums/changelog.interface.ts#L60)
+定义于: [changelog/src/enums/changelog.interface.ts:60](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/changelog.interface.ts#L60)
 
 ***
 
@@ -68,7 +68,7 @@
 
 > **group**: `boolean` \| `"multiple"`
 
-定义于: [changelog/src/enums/changelog.interface.ts:53](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/changelog/src/enums/changelog.interface.ts#L53)
+定义于: [changelog/src/enums/changelog.interface.ts:53](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/changelog.interface.ts#L53)
 
 ***
 
@@ -76,7 +76,7 @@
 
 > `optional` **header**: `string`
 
-定义于: [changelog/src/enums/changelog.interface.ts:45](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/changelog/src/enums/changelog.interface.ts#L45)
+定义于: [changelog/src/enums/changelog.interface.ts:45](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/changelog.interface.ts#L45)
 
 ***
 
@@ -84,7 +84,7 @@
 
 > **name**: `string`
 
-定义于: [changelog/src/enums/changelog.interface.ts:57](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/changelog/src/enums/changelog.interface.ts#L57)
+定义于: [changelog/src/enums/changelog.interface.ts:57](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/changelog.interface.ts#L57)
 
 ***
 
@@ -92,7 +92,7 @@
 
 > `optional` **output**: `string`
 
-定义于: [changelog/src/enums/changelog.interface.ts:49](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/changelog/src/enums/changelog.interface.ts#L49)
+定义于: [changelog/src/enums/changelog.interface.ts:49](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/changelog.interface.ts#L49)
 
 ***
 
@@ -100,7 +100,7 @@
 
 > **prerelease**: `boolean`
 
-定义于: [changelog/src/enums/changelog.interface.ts:63](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/changelog/src/enums/changelog.interface.ts#L63)
+定义于: [changelog/src/enums/changelog.interface.ts:63](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/changelog.interface.ts#L63)
 
 ***
 
@@ -108,7 +108,7 @@
 
 > **repo**: `string`
 
-定义于: [changelog/src/enums/changelog.interface.ts:64](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/changelog/src/enums/changelog.interface.ts#L64)
+定义于: [changelog/src/enums/changelog.interface.ts:64](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/changelog.interface.ts#L64)
 
 ***
 
@@ -116,7 +116,7 @@
 
 > **scopeMap**: `Record`\<`string`, `string`\>
 
-定义于: [changelog/src/enums/changelog.interface.ts:39](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/changelog/src/enums/changelog.interface.ts#L39)
+定义于: [changelog/src/enums/changelog.interface.ts:39](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/changelog.interface.ts#L39)
 
 ***
 
@@ -124,7 +124,7 @@
 
 > `optional` **scopeName**: `string`
 
-定义于: [changelog/src/enums/changelog.interface.ts:47](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/changelog/src/enums/changelog.interface.ts#L47)
+定义于: [changelog/src/enums/changelog.interface.ts:47](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/changelog.interface.ts#L47)
 
 ***
 
@@ -132,7 +132,7 @@
 
 > **titles**: `object`
 
-定义于: [changelog/src/enums/changelog.interface.ts:41](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/changelog/src/enums/changelog.interface.ts#L41)
+定义于: [changelog/src/enums/changelog.interface.ts:41](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/changelog.interface.ts#L41)
 
 #### breakingChanges?
 
@@ -144,7 +144,7 @@
 
 > **to**: `string`
 
-定义于: [changelog/src/enums/changelog.interface.ts:61](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/changelog/src/enums/changelog.interface.ts#L61)
+定义于: [changelog/src/enums/changelog.interface.ts:61](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/changelog.interface.ts#L61)
 
 ***
 
@@ -152,4 +152,4 @@
 
 > **types**: `Record`\<`string`, \{ `semver?`: [`VipSemverReleaseType`](../../utils/type-aliases/VipSemverReleaseType.md); `title`: `string`; \}\>
 
-定义于: [changelog/src/enums/changelog.interface.ts:35](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/changelog/src/enums/changelog.interface.ts#L35)
+定义于: [changelog/src/enums/changelog.interface.ts:35](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/changelog.interface.ts#L35)

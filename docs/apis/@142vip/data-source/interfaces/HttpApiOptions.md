@@ -2,7 +2,7 @@
 
 # 接口: HttpApiOptions
 
-定义于: [packages/data-source/src/core/apis/vip-http-api.ts:6](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/data-source/src/core/apis/vip-http-api.ts#L6)
+定义于: [packages/data-source/src/core/apis/vip-http-api.ts:6](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/core/apis/vip-http-api.ts#L6)
 
 ## theme_extends
 

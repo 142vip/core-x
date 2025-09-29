@@ -2,7 +2,7 @@
 
 # 接口: DataSourceColumn
 
-定义于: [packages/data-source/src/data-source.interface.ts:27](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/data-source/src/data-source.interface.ts#L27)
+定义于: [packages/data-source/src/data-source.interface.ts:27](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/data-source.interface.ts#L27)
 
 表的列信息
 
@@ -12,7 +12,7 @@
 
 > `optional` **comment**: `string`
 
-定义于: [packages/data-source/src/data-source.interface.ts:32](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/data-source/src/data-source.interface.ts#L32)
+定义于: [packages/data-source/src/data-source.interface.ts:32](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/data-source.interface.ts#L32)
 
 ***
 
@@ -20,7 +20,7 @@
 
 > **name**: `string`
 
-定义于: [packages/data-source/src/data-source.interface.ts:29](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/data-source/src/data-source.interface.ts#L29)
+定义于: [packages/data-source/src/data-source.interface.ts:29](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/data-source.interface.ts#L29)
 
 ***
 
@@ -28,7 +28,7 @@
 
 > **schema**: `string`
 
-定义于: [packages/data-source/src/data-source.interface.ts:30](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/data-source/src/data-source.interface.ts#L30)
+定义于: [packages/data-source/src/data-source.interface.ts:30](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/data-source.interface.ts#L30)
 
 ***
 
@@ -36,7 +36,7 @@
 
 > **table**: `string`
 
-定义于: [packages/data-source/src/data-source.interface.ts:28](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/data-source/src/data-source.interface.ts#L28)
+定义于: [packages/data-source/src/data-source.interface.ts:28](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/data-source.interface.ts#L28)
 
 ***
 
@@ -44,4 +44,4 @@
 
 > **type**: `string`
 
-定义于: [packages/data-source/src/data-source.interface.ts:31](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/data-source/src/data-source.interface.ts#L31)
+定义于: [packages/data-source/src/data-source.interface.ts:31](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/data-source.interface.ts#L31)

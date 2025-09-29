@@ -2,7 +2,7 @@
 
 # 接口: ApiQueryConfig
 
-定义于: [packages/data-source/src/data-source.interface.ts:46](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/data-source/src/data-source.interface.ts#L46)
+定义于: [packages/data-source/src/data-source.interface.ts:46](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/data-source.interface.ts#L46)
 
 API Query 配置
 
@@ -12,7 +12,7 @@ API Query 配置
 
 > **body**: `string`
 
-定义于: [packages/data-source/src/data-source.interface.ts:49](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/data-source/src/data-source.interface.ts#L49)
+定义于: [packages/data-source/src/data-source.interface.ts:49](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/data-source.interface.ts#L49)
 
 ***
 
@@ -20,7 +20,7 @@ API Query 配置
 
 > **headers**: `string`
 
-定义于: [packages/data-source/src/data-source.interface.ts:50](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/data-source/src/data-source.interface.ts#L50)
+定义于: [packages/data-source/src/data-source.interface.ts:50](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/data-source.interface.ts#L50)
 
 ***
 
@@ -28,7 +28,7 @@ API Query 配置
 
 > **params**: `string`
 
-定义于: [packages/data-source/src/data-source.interface.ts:48](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/data-source/src/data-source.interface.ts#L48)
+定义于: [packages/data-source/src/data-source.interface.ts:48](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/data-source.interface.ts#L48)
 
 ***
 
@@ -36,4 +36,4 @@ API Query 配置
 
 > **path**: `string`
 
-定义于: [packages/data-source/src/data-source.interface.ts:47](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/data-source/src/data-source.interface.ts#L47)
+定义于: [packages/data-source/src/data-source.interface.ts:47](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/data-source.interface.ts#L47)

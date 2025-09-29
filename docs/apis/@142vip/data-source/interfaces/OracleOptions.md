@@ -2,7 +2,7 @@
 
 # 接口: OracleOptions
 
-定义于: [packages/data-source/src/core/sql/vip-oracle.ts:6](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/data-source/src/core/sql/vip-oracle.ts#L6)
+定义于: [packages/data-source/src/core/sql/vip-oracle.ts:6](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/core/sql/vip-oracle.ts#L6)
 
 SQL连接基础配置
 
@@ -16,7 +16,7 @@ SQL连接基础配置
 
 > **host**: `string`
 
-定义于: [packages/data-source/src/data-source.interface.ts:57](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/data-source/src/data-source.interface.ts#L57)
+定义于: [packages/data-source/src/data-source.interface.ts:57](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/data-source.interface.ts#L57)
 
 #### 继承自
 
@@ -28,7 +28,7 @@ SQL连接基础配置
 
 > **password**: `string`
 
-定义于: [packages/data-source/src/data-source.interface.ts:60](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/data-source/src/data-source.interface.ts#L60)
+定义于: [packages/data-source/src/data-source.interface.ts:60](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/data-source.interface.ts#L60)
 
 #### 继承自
 
@@ -40,7 +40,7 @@ SQL连接基础配置
 
 > **port**: `number`
 
-定义于: [packages/data-source/src/data-source.interface.ts:58](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/data-source/src/data-source.interface.ts#L58)
+定义于: [packages/data-source/src/data-source.interface.ts:58](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/data-source.interface.ts#L58)
 
 #### 继承自
 
@@ -52,7 +52,7 @@ SQL连接基础配置
 
 > **querySql**: `string`
 
-定义于: [packages/data-source/src/data-source.interface.ts:61](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/data-source/src/data-source.interface.ts#L61)
+定义于: [packages/data-source/src/data-source.interface.ts:61](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/data-source.interface.ts#L61)
 
 #### 继承自
 
@@ -64,7 +64,7 @@ SQL连接基础配置
 
 > `optional` **serviceName**: `string`
 
-定义于: [packages/data-source/src/core/sql/vip-oracle.ts:8](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/data-source/src/core/sql/vip-oracle.ts#L8)
+定义于: [packages/data-source/src/core/sql/vip-oracle.ts:8](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/core/sql/vip-oracle.ts#L8)
 
 ***
 
@@ -72,7 +72,7 @@ SQL连接基础配置
 
 > `optional` **sid**: `string`
 
-定义于: [packages/data-source/src/core/sql/vip-oracle.ts:7](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/data-source/src/core/sql/vip-oracle.ts#L7)
+定义于: [packages/data-source/src/core/sql/vip-oracle.ts:7](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/core/sql/vip-oracle.ts#L7)
 
 ***
 
@@ -80,7 +80,7 @@ SQL连接基础配置
 
 > **username**: `string`
 
-定义于: [packages/data-source/src/data-source.interface.ts:59](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/data-source/src/data-source.interface.ts#L59)
+定义于: [packages/data-source/src/data-source.interface.ts:59](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/data-source.interface.ts#L59)
 
 #### 继承自
 

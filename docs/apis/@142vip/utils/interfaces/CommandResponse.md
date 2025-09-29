@@ -2,7 +2,7 @@
 
 # 接口: CommandResponse
 
-定义于: [packages/utils/src/core/exec.ts:21](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/utils/src/core/exec.ts#L21)
+定义于: [packages/utils/src/core/exec.ts:21](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/core/exec.ts#L21)
 
 标准执行器响应结果
 
@@ -16,7 +16,7 @@
 
 > **code**: `null` \| `number`
 
-定义于: [packages/utils/src/core/exec.ts:16](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/utils/src/core/exec.ts#L16)
+定义于: [packages/utils/src/core/exec.ts:16](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/core/exec.ts#L16)
 
 #### 继承自
 
@@ -28,7 +28,7 @@
 
 > **command**: `string`
 
-定义于: [packages/utils/src/core/exec.ts:23](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/utils/src/core/exec.ts#L23)
+定义于: [packages/utils/src/core/exec.ts:23](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/core/exec.ts#L23)
 
 ***
 
@@ -36,7 +36,7 @@
 
 > `optional` **error**: `Error`
 
-定义于: [packages/utils/src/core/exec.ts:22](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/utils/src/core/exec.ts#L22)
+定义于: [packages/utils/src/core/exec.ts:22](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/core/exec.ts#L22)
 
 ***
 
@@ -44,7 +44,7 @@
 
 > **stderr**: `string`
 
-定义于: [packages/utils/src/core/exec.ts:18](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/utils/src/core/exec.ts#L18)
+定义于: [packages/utils/src/core/exec.ts:18](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/core/exec.ts#L18)
 
 #### 继承自
 
@@ -56,7 +56,7 @@
 
 > **stdout**: `string`
 
-定义于: [packages/utils/src/core/exec.ts:17](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/utils/src/core/exec.ts#L17)
+定义于: [packages/utils/src/core/exec.ts:17](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/core/exec.ts#L17)
 
 #### 继承自
 

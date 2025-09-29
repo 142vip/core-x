@@ -2,7 +2,7 @@
 
 # 接口: ExampleRequestDataType
 
-定义于: [example.ts:6](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/grpc/src/example.ts#L6)
+定义于: [example.ts:6](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/example.ts#L6)
 
 这里的traceId，可以选择不继承，根据实际业务需要决定
 
@@ -16,7 +16,7 @@
 
 > `optional` **traceId**: `string`
 
-定义于: [enum/grpc.interface.ts:71](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/grpc/src/enum/grpc.interface.ts#L71)
+定义于: [enum/grpc.interface.ts:71](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/enum/grpc.interface.ts#L71)
 
 #### 继承自
 

@@ -2,7 +2,7 @@
 
 # 类: BaseDBService
 
-定义于: [base.service.ts:4](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/nest-typeorm/src/core/base.service.ts#L4)
+定义于: [base.service.ts:4](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/nest-typeorm/src/core/base.service.ts#L4)
 
 ## 构造函数
 
@@ -10,7 +10,7 @@
 
 > **new BaseDBService**(`entityManager`): `BaseDBService`
 
-定义于: [base.service.ts:8](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/nest-typeorm/src/core/base.service.ts#L8)
+定义于: [base.service.ts:8](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/nest-typeorm/src/core/base.service.ts#L8)
 
 #### 参数
 
@@ -28,4 +28,4 @@
 
 > `readonly` **entityManager**: `EntityManager`
 
-定义于: [base.service.ts:6](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/nest-typeorm/src/core/base.service.ts#L6)
+定义于: [base.service.ts:6](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/nest-typeorm/src/core/base.service.ts#L6)

@@ -4,7 +4,7 @@
 
 > `const` **VipDayjs**: `object`
 
-定义于: [packages/utils/src/pkgs/dayjs.ts:29](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/utils/src/pkgs/dayjs.ts#L29)
+定义于: [packages/utils/src/pkgs/dayjs.ts:29](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/pkgs/dayjs.ts#L29)
 
 ## 类型声明
 

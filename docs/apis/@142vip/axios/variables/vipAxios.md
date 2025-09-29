@@ -4,7 +4,7 @@
 
 > `const` **vipAxios**: [`VipAxiosInstance`](../interfaces/VipAxiosInstance.md)
 
-定义于: [packages/axios/src/core/axios.factory.ts:71](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/axios/src/core/axios.factory.ts#L71)
+定义于: [packages/axios/src/core/axios.factory.ts:71](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/core/axios.factory.ts#L71)
 
 按照默认配置创建vipAxios的实例
 - axios模块默认的实例对象

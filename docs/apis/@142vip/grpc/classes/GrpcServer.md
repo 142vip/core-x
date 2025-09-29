@@ -2,7 +2,7 @@
 
 # 类: GrpcServer
 
-定义于: [core/grpc-server.ts:29](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/grpc/src/core/grpc-server.ts#L29)
+定义于: [core/grpc-server.ts:29](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/core/grpc-server.ts#L29)
 
 Grpc 服务端
 
@@ -12,7 +12,7 @@ Grpc 服务端
 
 > **new GrpcServer**(): `GrpcServer`
 
-定义于: [core/grpc-server.ts:44](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/grpc/src/core/grpc-server.ts#L44)
+定义于: [core/grpc-server.ts:44](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/core/grpc-server.ts#L44)
 
 #### 返回
 
@@ -24,7 +24,7 @@ Grpc 服务端
 
 > **forceShutdown**(): `void`
 
-定义于: [core/grpc-server.ts:108](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/grpc/src/core/grpc-server.ts#L108)
+定义于: [core/grpc-server.ts:108](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/core/grpc-server.ts#L108)
 
 强制关闭连接
 
@@ -38,7 +38,7 @@ Grpc 服务端
 
 > **getConnectInfo**(): [`GrpcConnectInfo`](../interfaces/GrpcConnectInfo.md)[]
 
-定义于: [core/grpc-server.ts:101](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/grpc/src/core/grpc-server.ts#L101)
+定义于: [core/grpc-server.ts:101](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/core/grpc-server.ts#L101)
 
 #### 返回
 
@@ -50,7 +50,7 @@ Grpc 服务端
 
 > **getConnectUris**(): `string`[]
 
-定义于: [core/grpc-server.ts:97](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/grpc/src/core/grpc-server.ts#L97)
+定义于: [core/grpc-server.ts:97](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/core/grpc-server.ts#L97)
 
 获取连接地址
 
@@ -64,7 +64,7 @@ Grpc 服务端
 
 > **listen**(`connectUri`): `Promise`\<`number`\>
 
-定义于: [core/grpc-server.ts:52](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/grpc/src/core/grpc-server.ts#L52)
+定义于: [core/grpc-server.ts:52](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/core/grpc-server.ts#L52)
 
 监听端口，即启动
 
@@ -84,7 +84,7 @@ Grpc 服务端
 
 > **registerService**(`serviceDef`, `methodHandlers`): `void`
 
-定义于: [core/grpc-server.ts:88](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/grpc/src/core/grpc-server.ts#L88)
+定义于: [core/grpc-server.ts:88](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/core/grpc-server.ts#L88)
 
 添加服务
 
@@ -108,7 +108,7 @@ Grpc 服务端
 
 > **setHealthStatus**(`methodName`, `status`): `void`
 
-定义于: [core/grpc-server.ts:75](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/grpc/src/core/grpc-server.ts#L75)
+定义于: [core/grpc-server.ts:75](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/core/grpc-server.ts#L75)
 
 设置某个方法的健康状况
 

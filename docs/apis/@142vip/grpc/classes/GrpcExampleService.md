@@ -2,7 +2,7 @@
 
 # 类: GrpcExampleService
 
-定义于: [example.ts:23](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/grpc/src/example.ts#L23)
+定义于: [example.ts:23](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/example.ts#L23)
 
 ## 实现
 
@@ -24,7 +24,7 @@
 
 > **clientStreamToServer**(`requestData`): `Promise`\<[`ExampleResponseDataType`](../interfaces/ExampleResponseDataType.md)\>
 
-定义于: [example.ts:40](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/grpc/src/example.ts#L40)
+定义于: [example.ts:40](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/example.ts#L40)
 
 客户端流式
 
@@ -48,7 +48,7 @@
 
 > **clientStreamToServerStream**(`requestData`): `Promise`\<[`ExampleResponseDataType`](../interfaces/ExampleResponseDataType.md)\>
 
-定义于: [example.ts:64](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/grpc/src/example.ts#L64)
+定义于: [example.ts:64](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/example.ts#L64)
 
 客户端、服务端，流式
 
@@ -72,7 +72,7 @@
 
 > **clientToServer**(`requestData`): `Promise`\<[`ExampleResponseDataType`](../interfaces/ExampleResponseDataType.md)\>
 
-定义于: [example.ts:28](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/grpc/src/example.ts#L28)
+定义于: [example.ts:28](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/example.ts#L28)
 
 普通一元调用
 
@@ -96,7 +96,7 @@
 
 > **clientToServerStream**(`requestData`): `Promise`\<[`ExampleResponseDataType`](../interfaces/ExampleResponseDataType.md)\>
 
-定义于: [example.ts:52](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/grpc/src/example.ts#L52)
+定义于: [example.ts:52](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/example.ts#L52)
 
 服务端流式
 

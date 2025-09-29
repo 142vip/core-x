@@ -4,7 +4,7 @@
 
 > **ServiceMethodFuncImpl** = \<`RequestType`, `ResponseType`\>(`requestData`) => `Promise`\<`ResponseType`\>
 
-定义于: [enum/grpc.interface.ts:41](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/grpc/src/enum/grpc.interface.ts#L41)
+定义于: [enum/grpc.interface.ts:41](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/enum/grpc.interface.ts#L41)
 
 GRPC方法实现
 
