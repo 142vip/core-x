@@ -2,7 +2,7 @@
 
 # 类: TypeormModule
 
-定义于: [typeorm.module.ts:21](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/nest-typeorm/src/core/typeorm.module.ts#L21)
+定义于: [typeorm.module.ts:21](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/nest-typeorm/src/core/typeorm.module.ts#L21)
 
 ## 构造函数
 
@@ -20,7 +20,7 @@
 
 > `static` **forFeature**(`entitiesOrRepositories`, `token?`): `DynamicModule`
 
-定义于: [typeorm.module.ts:22](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/nest-typeorm/src/core/typeorm.module.ts#L22)
+定义于: [typeorm.module.ts:22](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/nest-typeorm/src/core/typeorm.module.ts#L22)
 
 #### 参数
 
@@ -42,7 +42,7 @@
 
 > `static` **forRoot**(`options`): `DynamicModule`
 
-定义于: [typeorm.module.ts:56](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/nest-typeorm/src/core/typeorm.module.ts#L56)
+定义于: [typeorm.module.ts:56](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/nest-typeorm/src/core/typeorm.module.ts#L56)
 
 #### 参数
 
@@ -60,7 +60,7 @@
 
 > `static` **forRootAsync**(`options`): `DynamicModule`
 
-定义于: [typeorm.module.ts:66](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/nest-typeorm/src/core/typeorm.module.ts#L66)
+定义于: [typeorm.module.ts:66](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/nest-typeorm/src/core/typeorm.module.ts#L66)
 
 #### 参数
 

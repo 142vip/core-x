@@ -2,7 +2,7 @@
 
 # 接口: DataSourceResponseError
 
-定义于: [packages/data-source/src/data-source.interface.ts:4](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/data-source/src/data-source.interface.ts#L4)
+定义于: [packages/data-source/src/data-source.interface.ts:4](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/data-source/src/data-source.interface.ts#L4)
 
 数据源请求失败时想赢结构
 
@@ -16,4 +16,4 @@
 
 > `optional` **message**: `string`
 
-定义于: [packages/data-source/src/data-source.interface.ts:5](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/data-source/src/data-source.interface.ts#L5)
+定义于: [packages/data-source/src/data-source.interface.ts:5](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/data-source/src/data-source.interface.ts#L5)

@@ -4,7 +4,7 @@
 
 > **versionBump**(`options`): `Promise`\<`undefined` \| [`VersionBumpResults`](../interfaces/VersionBumpResults.md)\>
 
-定义于: [core/version-bump.ts:27](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/release-version/src/core/version-bump.ts#L27)
+定义于: [core/version-bump.ts:27](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/release-version/src/core/version-bump.ts#L27)
 
 版本发布
 

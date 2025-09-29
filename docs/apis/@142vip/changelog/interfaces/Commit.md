@@ -2,7 +2,7 @@
 
 # 接口: Commit
 
-定义于: [changelog/src/enums/changelog.interface.ts:4](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/changelog/src/enums/changelog.interface.ts#L4)
+定义于: [changelog/src/enums/changelog.interface.ts:4](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/changelog/src/enums/changelog.interface.ts#L4)
 
 ## theme_extends
 
@@ -14,7 +14,7 @@
 
 > **author**: [`GitCommitAuthor`](GitCommitAuthor.md)
 
-定义于: [changelog/src/enums/git-commit.interface.ts:10](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/changelog/src/enums/git-commit.interface.ts#L10)
+定义于: [changelog/src/enums/git-commit.interface.ts:10](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/changelog/src/enums/git-commit.interface.ts#L10)
 
 #### 继承自
 
@@ -26,7 +26,7 @@
 
 > **authors**: [`GitCommitAuthor`](GitCommitAuthor.md)[]
 
-定义于: [changelog/src/enums/git-commit.interface.ts:29](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/changelog/src/enums/git-commit.interface.ts#L29)
+定义于: [changelog/src/enums/git-commit.interface.ts:29](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/changelog/src/enums/git-commit.interface.ts#L29)
 
 #### 继承自
 
@@ -38,7 +38,7 @@
 
 > **body**: `string`
 
-定义于: [changelog/src/enums/git-commit.interface.ts:8](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/changelog/src/enums/git-commit.interface.ts#L8)
+定义于: [changelog/src/enums/git-commit.interface.ts:8](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/changelog/src/enums/git-commit.interface.ts#L8)
 
 #### 继承自
 
@@ -50,7 +50,7 @@
 
 > **description**: `string`
 
-定义于: [changelog/src/enums/git-commit.interface.ts:25](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/changelog/src/enums/git-commit.interface.ts#L25)
+定义于: [changelog/src/enums/git-commit.interface.ts:25](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/changelog/src/enums/git-commit.interface.ts#L25)
 
 #### 继承自
 
@@ -62,7 +62,7 @@
 
 > **isBreaking**: `boolean`
 
-定义于: [changelog/src/enums/git-commit.interface.ts:30](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/changelog/src/enums/git-commit.interface.ts#L30)
+定义于: [changelog/src/enums/git-commit.interface.ts:30](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/changelog/src/enums/git-commit.interface.ts#L30)
 
 #### 继承自
 
@@ -74,7 +74,7 @@
 
 > **message**: `string`
 
-定义于: [changelog/src/enums/git-commit.interface.ts:7](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/changelog/src/enums/git-commit.interface.ts#L7)
+定义于: [changelog/src/enums/git-commit.interface.ts:7](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/changelog/src/enums/git-commit.interface.ts#L7)
 
 #### 继承自
 
@@ -86,7 +86,7 @@
 
 > **references**: [`GitCommitReference`](GitCommitReference.md)[]
 
-定义于: [changelog/src/enums/git-commit.interface.ts:28](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/changelog/src/enums/git-commit.interface.ts#L28)
+定义于: [changelog/src/enums/git-commit.interface.ts:28](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/changelog/src/enums/git-commit.interface.ts#L28)
 
 #### 继承自
 
@@ -98,7 +98,7 @@
 
 > `optional` **resolvedAuthors**: [`GitAuthorInfo`](GitAuthorInfo.md)[]
 
-定义于: [changelog/src/enums/changelog.interface.ts:5](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/changelog/src/enums/changelog.interface.ts#L5)
+定义于: [changelog/src/enums/changelog.interface.ts:5](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/changelog/src/enums/changelog.interface.ts#L5)
 
 ***
 
@@ -106,7 +106,7 @@
 
 > **scope**: `string`
 
-定义于: [changelog/src/enums/git-commit.interface.ts:27](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/changelog/src/enums/git-commit.interface.ts#L27)
+定义于: [changelog/src/enums/git-commit.interface.ts:27](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/changelog/src/enums/git-commit.interface.ts#L27)
 
 #### 继承自
 
@@ -118,7 +118,7 @@
 
 > **shortHash**: `string`
 
-定义于: [changelog/src/enums/git-commit.interface.ts:9](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/changelog/src/enums/git-commit.interface.ts#L9)
+定义于: [changelog/src/enums/git-commit.interface.ts:9](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/changelog/src/enums/git-commit.interface.ts#L9)
 
 #### 继承自
 
@@ -130,7 +130,7 @@
 
 > **type**: `string`
 
-定义于: [changelog/src/enums/git-commit.interface.ts:26](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/changelog/src/enums/git-commit.interface.ts#L26)
+定义于: [changelog/src/enums/git-commit.interface.ts:26](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/changelog/src/enums/git-commit.interface.ts#L26)
 
 #### 继承自
 

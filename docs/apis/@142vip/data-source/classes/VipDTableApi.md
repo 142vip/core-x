@@ -2,7 +2,7 @@
 
 # 类: VipDTableApi
 
-定义于: [packages/data-source/src/core/apis/vip-dtable-api.ts:48](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/data-source/src/core/apis/vip-dtable-api.ts#L48)
+定义于: [packages/data-source/src/core/apis/vip-dtable-api.ts:48](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/data-source/src/core/apis/vip-dtable-api.ts#L48)
 
 DTable API
 
@@ -26,7 +26,7 @@ DTable API
 
 > **getConnectionData**(`options`): `Promise`\<[`DataSourceParseResponse`](../interfaces/DataSourceParseResponse.md)\<`DTableRecords`\>\>
 
-定义于: [packages/data-source/src/core/apis/vip-dtable-api.ts:54](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/data-source/src/core/apis/vip-dtable-api.ts#L54)
+定义于: [packages/data-source/src/core/apis/vip-dtable-api.ts:54](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/data-source/src/core/apis/vip-dtable-api.ts#L54)
 
 获取连接数据
 
@@ -50,7 +50,7 @@ DTable API
 
 > **getConnectionDataByConcurrency**(`options`): `Promise`\<[`DataSourceParseResponse`](../interfaces/DataSourceParseResponse.md)\<`DTableRecords`\>\>
 
-定义于: [packages/data-source/src/core/apis/vip-dtable-api.ts:68](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/data-source/src/core/apis/vip-dtable-api.ts#L68)
+定义于: [packages/data-source/src/core/apis/vip-dtable-api.ts:68](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/data-source/src/core/apis/vip-dtable-api.ts#L68)
 
 并发获取所有记录，提高获取速度
 

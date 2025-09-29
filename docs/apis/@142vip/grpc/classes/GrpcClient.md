@@ -2,7 +2,7 @@
 
 # 类: GrpcClient
 
-定义于: [core/grpc-client.ts:11](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/grpc/src/core/grpc-client.ts#L11)
+定义于: [core/grpc-client.ts:11](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/grpc/src/core/grpc-client.ts#L11)
 
 Grpc 客户端
 
@@ -12,7 +12,7 @@ Grpc 客户端
 
 > **new GrpcClient**(`connectUri`): `GrpcClient`
 
-定义于: [core/grpc-client.ts:15](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/grpc/src/core/grpc-client.ts#L15)
+定义于: [core/grpc-client.ts:15](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/grpc/src/core/grpc-client.ts#L15)
 
 #### 参数
 
@@ -30,7 +30,7 @@ Grpc 客户端
 
 > **getConnectUri**(): `string`
 
-定义于: [core/grpc-client.ts:58](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/grpc/src/core/grpc-client.ts#L58)
+定义于: [core/grpc-client.ts:58](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/grpc/src/core/grpc-client.ts#L58)
 
 获取连接地址
 
@@ -44,7 +44,7 @@ Grpc 客户端
 
 > **getService**\<`T`\>(`servicePath`): `T`
 
-定义于: [core/grpc-client.ts:36](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/grpc/src/core/grpc-client.ts#L36)
+定义于: [core/grpc-client.ts:36](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/grpc/src/core/grpc-client.ts#L36)
 
 获取连接Service
 
@@ -70,7 +70,7 @@ Grpc 客户端
 
 > **getServicePaths**(): `string`[]
 
-定义于: [core/grpc-client.ts:65](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/grpc/src/core/grpc-client.ts#L65)
+定义于: [core/grpc-client.ts:65](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/grpc/src/core/grpc-client.ts#L65)
 
 获取所有的服务路径
 
@@ -84,7 +84,7 @@ Grpc 客户端
 
 > **getServiceSize**(): `number`
 
-定义于: [core/grpc-client.ts:72](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/grpc/src/core/grpc-client.ts#L72)
+定义于: [core/grpc-client.ts:72](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/grpc/src/core/grpc-client.ts#L72)
 
 获取连接数
 
@@ -98,7 +98,7 @@ Grpc 客户端
 
 > **registerService**(`servicePath`, `IServiceClientConstructor`): `void`
 
-定义于: [core/grpc-client.ts:24](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/grpc/src/core/grpc-client.ts#L24)
+定义于: [core/grpc-client.ts:24](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/grpc/src/core/grpc-client.ts#L24)
 
 建立连接
 
@@ -122,7 +122,7 @@ Grpc 客户端
 
 > **removeService**(`servicePath?`): `void`
 
-定义于: [core/grpc-client.ts:80](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/grpc/src/core/grpc-client.ts#L80)
+定义于: [core/grpc-client.ts:80](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/grpc/src/core/grpc-client.ts#L80)
 
 关闭gRPC连接
 - 异步关闭

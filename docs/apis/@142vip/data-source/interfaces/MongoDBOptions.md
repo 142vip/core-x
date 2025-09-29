@@ -2,7 +2,7 @@
 
 # 接口: MongoDBOptions
 
-定义于: [packages/data-source/src/core/sql/vip-mongo.ts:7](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/data-source/src/core/sql/vip-mongo.ts#L7)
+定义于: [packages/data-source/src/core/sql/vip-mongo.ts:7](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/data-source/src/core/sql/vip-mongo.ts#L7)
 
 ## theme_extends
 
@@ -14,7 +14,7 @@
 
 > **database**: `string`
 
-定义于: [packages/data-source/src/core/sql/vip-mongo.ts:8](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/data-source/src/core/sql/vip-mongo.ts#L8)
+定义于: [packages/data-source/src/core/sql/vip-mongo.ts:8](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/data-source/src/core/sql/vip-mongo.ts#L8)
 
 ***
 
@@ -22,7 +22,7 @@
 
 > `optional` **findFilter**: `Record`\<`string`, `any`\>
 
-定义于: [packages/data-source/src/core/sql/vip-mongo.ts:10](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/data-source/src/core/sql/vip-mongo.ts#L10)
+定义于: [packages/data-source/src/core/sql/vip-mongo.ts:10](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/data-source/src/core/sql/vip-mongo.ts#L10)
 
 ***
 
@@ -30,7 +30,7 @@
 
 > `optional` **findOptions**: `Record`\<`string`, `any`\>
 
-定义于: [packages/data-source/src/core/sql/vip-mongo.ts:11](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/data-source/src/core/sql/vip-mongo.ts#L11)
+定义于: [packages/data-source/src/core/sql/vip-mongo.ts:11](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/data-source/src/core/sql/vip-mongo.ts#L11)
 
 ***
 
@@ -38,7 +38,7 @@
 
 > **host**: `string`
 
-定义于: [packages/data-source/src/data-source.interface.ts:57](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/data-source/src/data-source.interface.ts#L57)
+定义于: [packages/data-source/src/data-source.interface.ts:57](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/data-source/src/data-source.interface.ts#L57)
 
 #### 继承自
 
@@ -50,7 +50,7 @@
 
 > **password**: `string`
 
-定义于: [packages/data-source/src/data-source.interface.ts:60](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/data-source/src/data-source.interface.ts#L60)
+定义于: [packages/data-source/src/data-source.interface.ts:60](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/data-source/src/data-source.interface.ts#L60)
 
 #### 继承自
 
@@ -62,7 +62,7 @@
 
 > **port**: `number`
 
-定义于: [packages/data-source/src/data-source.interface.ts:58](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/data-source/src/data-source.interface.ts#L58)
+定义于: [packages/data-source/src/data-source.interface.ts:58](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/data-source/src/data-source.interface.ts#L58)
 
 #### 继承自
 
@@ -74,7 +74,7 @@
 
 > **table**: `string`
 
-定义于: [packages/data-source/src/core/sql/vip-mongo.ts:9](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/data-source/src/core/sql/vip-mongo.ts#L9)
+定义于: [packages/data-source/src/core/sql/vip-mongo.ts:9](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/data-source/src/core/sql/vip-mongo.ts#L9)
 
 ***
 
@@ -82,7 +82,7 @@
 
 > **username**: `string`
 
-定义于: [packages/data-source/src/data-source.interface.ts:59](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/data-source/src/data-source.interface.ts#L59)
+定义于: [packages/data-source/src/data-source.interface.ts:59](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/data-source/src/data-source.interface.ts#L59)
 
 #### 继承自
 

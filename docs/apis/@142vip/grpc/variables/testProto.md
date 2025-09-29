@@ -4,4 +4,4 @@
 
 > `const` **testProto**: `string`
 
-定义于: [utils/proto.util.ts:4](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/grpc/src/utils/proto.util.ts#L4)
+定义于: [utils/proto.util.ts:4](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/grpc/src/utils/proto.util.ts#L4)

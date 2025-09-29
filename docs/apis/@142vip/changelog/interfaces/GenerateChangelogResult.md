@@ -2,7 +2,7 @@
 
 # 接口: GenerateChangelogResult
 
-定义于: [changelog/src/enums/changelog.interface.ts:67](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/changelog/src/enums/changelog.interface.ts#L67)
+定义于: [changelog/src/enums/changelog.interface.ts:67](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/changelog/src/enums/changelog.interface.ts#L67)
 
 ## 属性
 
@@ -10,7 +10,7 @@
 
 > **commits**: [`Commit`](Commit.md)[]
 
-定义于: [changelog/src/enums/changelog.interface.ts:69](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/changelog/src/enums/changelog.interface.ts#L69)
+定义于: [changelog/src/enums/changelog.interface.ts:69](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/changelog/src/enums/changelog.interface.ts#L69)
 
 ***
 
@@ -18,7 +18,7 @@
 
 > **config**: [`ChangelogGenerateOptions`](ChangelogGenerateOptions.md)
 
-定义于: [changelog/src/enums/changelog.interface.ts:68](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/changelog/src/enums/changelog.interface.ts#L68)
+定义于: [changelog/src/enums/changelog.interface.ts:68](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/changelog/src/enums/changelog.interface.ts#L68)
 
 ***
 
@@ -26,7 +26,7 @@
 
 > **markdown**: `string`
 
-定义于: [changelog/src/enums/changelog.interface.ts:70](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/changelog/src/enums/changelog.interface.ts#L70)
+定义于: [changelog/src/enums/changelog.interface.ts:70](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/changelog/src/enums/changelog.interface.ts#L70)
 
 ***
 
@@ -34,4 +34,4 @@
 
 > **releaseUrl**: `string`
 
-定义于: [changelog/src/enums/changelog.interface.ts:71](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/changelog/src/enums/changelog.interface.ts#L71)
+定义于: [changelog/src/enums/changelog.interface.ts:71](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/changelog/src/enums/changelog.interface.ts#L71)

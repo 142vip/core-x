@@ -2,7 +2,7 @@
 
 # 接口: GrpcTraceError
 
-定义于: [enum/grpc.interface.ts:53](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/grpc/src/enum/grpc.interface.ts#L53)
+定义于: [enum/grpc.interface.ts:53](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/grpc/src/enum/grpc.interface.ts#L53)
 
 Grpc服务调用，错误信息
 
@@ -12,7 +12,7 @@ Grpc服务调用，错误信息
 
 > `optional` **code**: `number`
 
-定义于: [enum/grpc.interface.ts:55](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/grpc/src/enum/grpc.interface.ts#L55)
+定义于: [enum/grpc.interface.ts:55](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/grpc/src/enum/grpc.interface.ts#L55)
 
 ***
 
@@ -20,7 +20,7 @@ Grpc服务调用，错误信息
 
 > **message**: `string`
 
-定义于: [enum/grpc.interface.ts:56](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/grpc/src/enum/grpc.interface.ts#L56)
+定义于: [enum/grpc.interface.ts:56](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/grpc/src/enum/grpc.interface.ts#L56)
 
 ***
 
@@ -28,4 +28,4 @@ Grpc服务调用，错误信息
 
 > **traceId**: `string`
 
-定义于: [enum/grpc.interface.ts:54](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/grpc/src/enum/grpc.interface.ts#L54)
+定义于: [enum/grpc.interface.ts:54](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/grpc/src/enum/grpc.interface.ts#L54)

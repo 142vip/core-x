@@ -2,7 +2,7 @@
 
 # 类: VipPostgreSql
 
-定义于: [packages/data-source/src/core/sql/vip-postgresql.ts:14](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/data-source/src/core/sql/vip-postgresql.ts#L14)
+定义于: [packages/data-source/src/core/sql/vip-postgresql.ts:14](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/data-source/src/core/sql/vip-postgresql.ts#L14)
 
 PostgreSQL 数据源
 
@@ -26,7 +26,7 @@ PostgreSQL 数据源
 
 > **getConnectionData**(`options`): `Promise`\<[`DataSourceParseResponse`](../interfaces/DataSourceParseResponse.md)\<`unknown`\>\>
 
-定义于: [packages/data-source/src/core/sql/vip-postgresql.ts:18](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/data-source/src/core/sql/vip-postgresql.ts#L18)
+定义于: [packages/data-source/src/core/sql/vip-postgresql.ts:18](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/data-source/src/core/sql/vip-postgresql.ts#L18)
 
 获取连接数据
 

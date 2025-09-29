@@ -2,7 +2,7 @@
 
 # 接口: MysqlOptions
 
-定义于: [packages/data-source/src/core/sql/vip-mysql.ts:6](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/data-source/src/core/sql/vip-mysql.ts#L6)
+定义于: [packages/data-source/src/core/sql/vip-mysql.ts:6](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/data-source/src/core/sql/vip-mysql.ts#L6)
 
 SQL连接基础配置
 
@@ -16,7 +16,7 @@ SQL连接基础配置
 
 > **database**: `string`
 
-定义于: [packages/data-source/src/core/sql/vip-mysql.ts:7](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/data-source/src/core/sql/vip-mysql.ts#L7)
+定义于: [packages/data-source/src/core/sql/vip-mysql.ts:7](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/data-source/src/core/sql/vip-mysql.ts#L7)
 
 ***
 
@@ -24,7 +24,7 @@ SQL连接基础配置
 
 > **host**: `string`
 
-定义于: [packages/data-source/src/data-source.interface.ts:57](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/data-source/src/data-source.interface.ts#L57)
+定义于: [packages/data-source/src/data-source.interface.ts:57](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/data-source/src/data-source.interface.ts#L57)
 
 #### 继承自
 
@@ -36,7 +36,7 @@ SQL连接基础配置
 
 > **password**: `string`
 
-定义于: [packages/data-source/src/data-source.interface.ts:60](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/data-source/src/data-source.interface.ts#L60)
+定义于: [packages/data-source/src/data-source.interface.ts:60](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/data-source/src/data-source.interface.ts#L60)
 
 #### 继承自
 
@@ -48,7 +48,7 @@ SQL连接基础配置
 
 > **port**: `number`
 
-定义于: [packages/data-source/src/data-source.interface.ts:58](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/data-source/src/data-source.interface.ts#L58)
+定义于: [packages/data-source/src/data-source.interface.ts:58](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/data-source/src/data-source.interface.ts#L58)
 
 #### 继承自
 
@@ -60,7 +60,7 @@ SQL连接基础配置
 
 > **querySql**: `string`
 
-定义于: [packages/data-source/src/data-source.interface.ts:61](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/data-source/src/data-source.interface.ts#L61)
+定义于: [packages/data-source/src/data-source.interface.ts:61](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/data-source/src/data-source.interface.ts#L61)
 
 #### 继承自
 
@@ -72,7 +72,7 @@ SQL连接基础配置
 
 > **username**: `string`
 
-定义于: [packages/data-source/src/data-source.interface.ts:59](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/data-source/src/data-source.interface.ts#L59)
+定义于: [packages/data-source/src/data-source.interface.ts:59](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/data-source/src/data-source.interface.ts#L59)
 
 #### 继承自
 

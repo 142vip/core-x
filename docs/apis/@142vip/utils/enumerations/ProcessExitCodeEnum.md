@@ -2,7 +2,7 @@
 
 # 枚举: ProcessExitCodeEnum
 
-定义于: [packages/utils/src/enums/exit-code.enum.ts:5](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/utils/src/enums/exit-code.enum.ts#L5)
+定义于: [packages/utils/src/enums/exit-code.enum.ts:5](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/utils/src/enums/exit-code.enum.ts#L5)
 
 CLI exit codes.
 
@@ -16,7 +16,7 @@ https://nodejs.org/api/process.html#process_exit_codes
 
 > **ConfigError**: `7`
 
-定义于: [packages/utils/src/enums/exit-code.enum.ts:19](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/utils/src/enums/exit-code.enum.ts#L19)
+定义于: [packages/utils/src/enums/exit-code.enum.ts:19](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/utils/src/enums/exit-code.enum.ts#L19)
 
 ***
 
@@ -24,7 +24,7 @@ https://nodejs.org/api/process.html#process_exit_codes
 
 > **DependencyError**: `8`
 
-定义于: [packages/utils/src/enums/exit-code.enum.ts:20](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/utils/src/enums/exit-code.enum.ts#L20)
+定义于: [packages/utils/src/enums/exit-code.enum.ts:20](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/utils/src/enums/exit-code.enum.ts#L20)
 
 ***
 
@@ -32,7 +32,7 @@ https://nodejs.org/api/process.html#process_exit_codes
 
 > **FatalError**: `1`
 
-定义于: [packages/utils/src/enums/exit-code.enum.ts:13](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/utils/src/enums/exit-code.enum.ts#L13)
+定义于: [packages/utils/src/enums/exit-code.enum.ts:13](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/utils/src/enums/exit-code.enum.ts#L13)
 
 程序异常退出
 
@@ -42,7 +42,7 @@ https://nodejs.org/api/process.html#process_exit_codes
 
 > **InternalError**: `4`
 
-定义于: [packages/utils/src/enums/exit-code.enum.ts:16](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/utils/src/enums/exit-code.enum.ts#L16)
+定义于: [packages/utils/src/enums/exit-code.enum.ts:16](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/utils/src/enums/exit-code.enum.ts#L16)
 
 ***
 
@@ -50,7 +50,7 @@ https://nodejs.org/api/process.html#process_exit_codes
 
 > **InvalidArgument**: `9`
 
-定义于: [packages/utils/src/enums/exit-code.enum.ts:21](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/utils/src/enums/exit-code.enum.ts#L21)
+定义于: [packages/utils/src/enums/exit-code.enum.ts:21](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/utils/src/enums/exit-code.enum.ts#L21)
 
 ***
 
@@ -58,7 +58,7 @@ https://nodejs.org/api/process.html#process_exit_codes
 
 > **IOError**: `5`
 
-定义于: [packages/utils/src/enums/exit-code.enum.ts:17](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/utils/src/enums/exit-code.enum.ts#L17)
+定义于: [packages/utils/src/enums/exit-code.enum.ts:17](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/utils/src/enums/exit-code.enum.ts#L17)
 
 ***
 
@@ -66,7 +66,7 @@ https://nodejs.org/api/process.html#process_exit_codes
 
 > **ParseError**: `3`
 
-定义于: [packages/utils/src/enums/exit-code.enum.ts:15](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/utils/src/enums/exit-code.enum.ts#L15)
+定义于: [packages/utils/src/enums/exit-code.enum.ts:15](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/utils/src/enums/exit-code.enum.ts#L15)
 
 ***
 
@@ -74,7 +74,7 @@ https://nodejs.org/api/process.html#process_exit_codes
 
 > **PermissionError**: `6`
 
-定义于: [packages/utils/src/enums/exit-code.enum.ts:18](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/utils/src/enums/exit-code.enum.ts#L18)
+定义于: [packages/utils/src/enums/exit-code.enum.ts:18](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/utils/src/enums/exit-code.enum.ts#L18)
 
 ***
 
@@ -82,7 +82,7 @@ https://nodejs.org/api/process.html#process_exit_codes
 
 > **SUCCESS**: `0`
 
-定义于: [packages/utils/src/enums/exit-code.enum.ts:9](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/utils/src/enums/exit-code.enum.ts#L9)
+定义于: [packages/utils/src/enums/exit-code.enum.ts:9](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/utils/src/enums/exit-code.enum.ts#L9)
 
 正常退出
 
@@ -92,7 +92,7 @@ https://nodejs.org/api/process.html#process_exit_codes
 
 > **TimeoutError**: `10`
 
-定义于: [packages/utils/src/enums/exit-code.enum.ts:22](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/utils/src/enums/exit-code.enum.ts#L22)
+定义于: [packages/utils/src/enums/exit-code.enum.ts:22](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/utils/src/enums/exit-code.enum.ts#L22)
 
 ***
 
@@ -100,4 +100,4 @@ https://nodejs.org/api/process.html#process_exit_codes
 
 > **UsageError**: `2`
 
-定义于: [packages/utils/src/enums/exit-code.enum.ts:14](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/utils/src/enums/exit-code.enum.ts#L14)
+定义于: [packages/utils/src/enums/exit-code.enum.ts:14](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/utils/src/enums/exit-code.enum.ts#L14)

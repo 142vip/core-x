@@ -4,7 +4,7 @@
 
 > **grpcSimpleHandler**(`methodFunc`): \<`RequestType`, `ResponseType`\>(`call`, `callback`) => `Promise`\<`void`\>
 
-定义于: [core/grpc.handler.ts:15](https://github.com/142vip/core-x/blob/7cfc2fa6b24172631d6526590fc6ea4be89357c6/packages/grpc/src/core/grpc.handler.ts#L15)
+定义于: [core/grpc.handler.ts:15](https://github.com/142vip/core-x/blob/724c9f80a9f43d7639fb0f15c0381f9ca258849b/packages/grpc/src/core/grpc.handler.ts#L15)
 
 处理GRPC一元调用，不涉及流
 - 异步抓换为同步处理
