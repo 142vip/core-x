@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 
+## v0.0.3-alpha.29 (2025-09-30)
+
+### ✨ Features
+
+- 移除`turbo`命令，清理相关逻辑 &nbsp;-&nbsp; by **142vip.cn** in https://github.com/142vip/core-x/issues/673 [<samp>(ed7e6)</samp>](https://github.com/142vip/core-x/commit/ed7e67b)
+
+**Release New Version v0.0.3-alpha.29 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/fairy-cli)**
+
 ## v0.0.3-alpha.28 (2025-09-27)
 
 ### ✨ Features
