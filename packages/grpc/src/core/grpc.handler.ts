@@ -15,8 +15,6 @@ import { ServiceMethodType } from '@142vip/grpc'
 export function grpcSimpleHandler(methodFunc: ServiceMethodFuncImpl) {
   /**
    * 处理一元调用，不涉及流
-   * @param call
-   * @param callback
    */
   async function handleUnaryCall<RequestType, ResponseType>(
     call: ServerUnaryCall<RequestType, ResponseType>,
@@ -29,9 +27,8 @@ export function grpcSimpleHandler(methodFunc: ServiceMethodFuncImpl) {
 
       callback(null, { data: responseData })
     }
-    catch (eee) {
-      console.log(3334, eee)
-      callback(null, { error: { message: 'handleUnaryCall', traceId: '123' } })
+    catch {
+      callback(null, { error: { message: handleUnaryCall.name, traceId: '123' } })
     }
   }
 
@@ -62,44 +59,50 @@ export function grpcStreamHandler(methodType: Omit<ServiceMethodType, 'unary'>, 
       try {
         // 执行
         const responseData = await methodFunc<RequestType, ResponseType>(requestData)
-
         callback(null, { data: responseData })
       }
       catch {
-        callback(null, { error: { message: 'handleUnaryCall', traceId: '123' } })
+        callback(null, { error: { message: handleClientStreamingCall.name, traceId: '123' } })
       }
     })
   }
 
   /**
    * 服务端流
-   * @param call
    */
   async function handleServerStreamingCall<RequestType, ResponseType>(
     call: ServerWritableStream<RequestType, GrpcResponse<ResponseType>>,
   ): Promise<void> {
     const requestData = call.request
 
-    const responseData = await methodFunc<RequestType, ResponseType>(requestData)
-    call.write({ data: responseData })
+    try {
+      const responseData = await methodFunc<RequestType, ResponseType>(requestData)
+      call.write({ data: responseData })
+    }
+    catch {
+      call.write({ error: { message: handleServerStreamingCall.name, traceId: '123' } })
+    }
+
+    // 结束
     call.end()
   }
 
   /**
    * 客户端、服务端，流式
-   * @param call
    */
   function handleBidiStreamingCall<RequestType, ResponseType>(
     call: ServerDuplexStream<RequestType, GrpcResponse<ResponseType>>,
   ): void {
+    // 流，接收数据
     call.on('data', async (requestData: RequestType) => {
       try {
         const responseData = await methodFunc<RequestType, ResponseType>(requestData)
         // 流写回
         call.write({ data: responseData })
       }
-      catch {
-        call.write({ error: { message: 'handleUnaryCall', traceId: '123' } })
+      catch (error) {
+        console.log(111, error)
+        call.write({ error: { message: handleBidiStreamingCall.name, traceId: '123' } })
       }
     })
 
