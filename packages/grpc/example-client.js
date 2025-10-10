@@ -16,6 +16,16 @@ function exampleClientMain() {
 
   console.log(333, exampleClient.clientStreamToServer)
 
+  exampleClient.clientToServer({ name: '123' }, (error, response) => {
+    if (error) {
+      console.error('Error calling clientToServer:', error)
+      throw error
+    }
+    else {
+      console.log('Response received:', response)
+    }
+  })
+
   console.log(grpcClient.getConnectUri(), grpcClient.getServiceSize())
 }
 
