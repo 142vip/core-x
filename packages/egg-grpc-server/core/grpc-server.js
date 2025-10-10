@@ -51,21 +51,24 @@ function createEggGrpcServerInstance(pluginConfig, app) {
     .map(unit => join(unit.path, grpcPath))
     .filter(unit => !unit.includes('node_modules'))
 
-  app.loader.loadToContext(servicePaths, 'service', {
-    // service 需要继承 app.Service，因此需要 app 参数
-    // 设置 call 为 true，会在加载时调用函数，并返回 UserService
-    call: true,
-    // 将文件加载到 app.xx
-    fieldClass: GRPC_NAME,
-  })
+  // 避免多实例时，重复加载
+  if (app[GRPC_NAME] == null) {
+    app.loader.loadToContext(servicePaths, 'service', {
+      // service 需要继承 app.Service，因此需要 app 参数
+      // 设置 call 为 true，会在加载时调用函数，并返回 UserService
+      call: true,
+      // 将文件加载到 app.xx
+      fieldClass: GRPC_NAME,
+    })
+  }
 
   try {
     const protoLoader = new ProtoLoader(protoPaths, loaderOptions)
 
     // ctx对象
-    const ctx = app.createAnonymousContext()
+    // const ctx = app.createAnonymousContext()
 
-    const grpcServiceMap = ctx.service
+    const grpcServiceMap = app[GRPC_NAME]
 
     if (grpcServiceMap == null)
       throw new Error('grpc service not found')
