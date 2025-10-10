@@ -17,6 +17,8 @@ class HomeController extends Controller {
     // 获取客户端挂载实例
     const grpcClientInCtx = ctx.grpcClient
     const grpcClientInApp = app.grpcClient
+    console.log('grpcClientInApp===>', grpcClientInApp.getInstanceNames())
+    console.log('grpcClientInCtx===>', grpcClientInApp.getInstance('default'))
 
     ctx.body = {
       grpcClientInCtx,

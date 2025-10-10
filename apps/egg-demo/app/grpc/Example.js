@@ -1,5 +1,9 @@
-const { clientToServer, clientToServerStream } = require('@142vip/egg-grpc-server/example/example-grpc')
-const { clientStreamToServer } = require('@142vip/grpc')
+const {
+  clientToServer,
+  clientToServerStream,
+  clientStreamToServerStream,
+  clientStreamToServer,
+} = require('@142vip/egg-grpc-server/example/example-grpc')
 const { Service } = require('egg')
 
 /**
@@ -29,7 +33,14 @@ class Example extends Service {
   async clientStreamToServer(requestData) {
     const { app } = this
     console.log(123123, app.service)
+    console.log(111, await clientStreamToServer(requestData))
     return await clientStreamToServer(requestData)
+  }
+
+  async clientStreamToServerStream(requestData) {
+    const { app } = this
+    console.log(123124, app.service)
+    return await clientStreamToServerStream(requestData)
   }
 }
 
