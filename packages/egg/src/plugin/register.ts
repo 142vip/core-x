@@ -32,15 +32,16 @@ export class EggPluginBoot<T> {
   /**
    * 所有配置已经加载完毕
    * 可以用来加载应用自定义的文件，启动自定义服务
+   * this.app.type 参考：https://github.com/eggjs/mysql/blob/master/src/boot.ts
    */
   public async didLoad(): Promise<void> {
     // app.加载
-    if (this.loaderPlugin(PluginLoader.APP) && this.appOrAgent.controller != null) {
+    if (this.loaderPlugin(PluginLoader.APP) && this.appOrAgent.type === 'application') {
       this.registerPlugin()
     }
 
     // agent.js加载。controller还没注入
-    if (this.loaderPlugin(PluginLoader.AGENT) && this.appOrAgent.controller == null) {
+    if (this.loaderPlugin(PluginLoader.AGENT) && this.appOrAgent.type === 'agent') {
       this.registerPlugin()
     }
   }
