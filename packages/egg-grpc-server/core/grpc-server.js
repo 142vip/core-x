@@ -16,11 +16,12 @@ function bindServiceMethod(service, serviceMethod) {
   for (const methodName of Object.keys(service)) {
     const methodNameLower = vipLodash.lowerFirst(methodName)
     const methodNameUpper = vipLodash.upperFirst(methodName)
+    // 方法
     const method = serviceMethod[methodName] ?? serviceMethod[methodNameLower] ?? serviceMethod[methodNameUpper]
-    // 绑定 this 上下文到 serviceMethod
+    // 绑定 this 上下文到 serviceMethod，兼容大小写
     handlers[methodNameLower] = method ? method.bind(serviceMethod) : undefined
+    handlers[methodNameUpper] = method ? method.bind(serviceMethod) : undefined
   }
-
   return handlers
 }
 
@@ -54,8 +55,8 @@ function createEggGrpcServerInstance(pluginConfig, app) {
   // 避免多实例时，重复加载
   if (app[GRPC_NAME] == null) {
     app.loader.loadToContext(servicePaths, 'service', {
-      // service 需要继承 app.Service，因此需要 app 参数
-      // 设置 call 为 true，会在加载时调用函数，并返回 UserService
+    // service 需要继承 app.Service，因此需要 app 参数
+    // 设置 call 为 true，会在加载时调用函数，并返回 UserService
       call: true,
       // 将文件加载到 app.xx
       fieldClass: GRPC_NAME,
@@ -65,10 +66,11 @@ function createEggGrpcServerInstance(pluginConfig, app) {
   try {
     const protoLoader = new ProtoLoader(protoPaths, loaderOptions)
 
-    // ctx对象
-    // const ctx = app.createAnonymousContext()
+    // 匿名 ctx对象
+    const ctx = app.createAnonymousContext()
 
-    const grpcServiceMap = app[GRPC_NAME]
+    // 这里不能直接从app上获取，避免插件挂载时，类没有实例化
+    const grpcServiceMap = ctx.service
 
     if (grpcServiceMap == null)
       throw new Error('grpc service not found')
@@ -81,7 +83,10 @@ function createEggGrpcServerInstance(pluginConfig, app) {
         return
       }
 
-      grpcServer.registerService(ServiceClientConstructor.service, bindServiceMethod(ServiceClientConstructor.service, serviceMethodHandler))
+      // 函数处理器
+      const methodHandlers = bindServiceMethod(ServiceClientConstructor.service, serviceMethodHandler)
+
+      grpcServer.registerService(ServiceClientConstructor.service, methodHandlers)
     }
 
     // app启动时，监听端口、多服务
