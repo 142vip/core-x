@@ -7,7 +7,7 @@ const { GrpcConnectURI } = require('@142vip/grpc')
 module.exports = {
   grpcServer: {
     client: {
-      connectUri: GrpcConnectURI.PORT_50001,
+      connectUri: GrpcConnectURI.PORT_50003,
       protoPaths: [exampleProto],
     },
   },

@@ -8,11 +8,11 @@ import { EGG_SERVER_ENV } from '../plugin.config'
  */
 describe('默认环境加载插件配置', () => {
   process.env.EGG_SERVER_ENV = EGG_SERVER_ENV.MYSQL
-  let mysql
+  let mysql: any
 
   beforeAll(() => {
     // 从agent.js加载的对象获取grpcServer
-    mysql = app.agent.mysql
+    mysql = app.mysql
     expect(mysql).toBeDefined()
   })
 
@@ -27,11 +27,9 @@ describe('默认环境加载插件配置', () => {
   })
 
   it('端口、连接地址检测', async () => {
-    // 从agent.js加载的对象获取grpcServer
-    const mysql = app.agent.mysql
-    const mysqlInstance = mysql.getInstance<MySQLPool>('default') as MySQLPool
+    const mysqlInstance = mysql.getInstance('default') as MySQLPool
     expect(mysqlInstance).toBeDefined()
-    expect(mysqlInstance).toHaveProperty('getInstances')
+    expect(mysql).toHaveProperty('getInstances')
 
     console.log(mysqlInstance.config)
   })

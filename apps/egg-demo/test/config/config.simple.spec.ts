@@ -22,7 +22,7 @@ describe('单实例配置测试 - @142vip/egg-axios', () => {
     expect(vipAxios.getInstanceNames()).toEqual([PluginInstanceName.DEFAULT])
 
     // axios实例的配置
-    const instanceConfig = vipAxios.getConfig()
+    const instanceConfig = vipAxios.getInstance(PluginInstanceName.DEFAULT).getConfig()
 
     expect(instanceConfig.timeout).toEqual(axiosSimpleConfig.client.timeout)
 

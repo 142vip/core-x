@@ -50,7 +50,7 @@ function getEggAxios(type: PluginLoadType, instanceName?: string): EggVipAxios {
   if (type === PluginLoadType.SIMPLE) {
     const instanceNames = app.axios.getInstanceNames()
     expect(instanceNames).toEqual([PluginInstanceName.DEFAULT])
-    vipAxios = app.axios
+    vipAxios = app.axios.getInstance(PluginInstanceName.DEFAULT)
     expect(vipAxios).toBeDefined()
   }
   if (type === PluginLoadType.MULTIPLE) {
