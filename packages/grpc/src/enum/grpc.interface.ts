@@ -22,6 +22,7 @@ export interface GrpcConnectInfo {
 export enum GrpcConnectURI {
   PORT_50001 = '127.0.0.1:50001',
   PORT_50002 = '127.0.0.1:50002',
+  PORT_50003 = '127.0.0.1:50003',
 }
 
 /**

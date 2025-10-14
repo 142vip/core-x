@@ -1,36 +1,17 @@
-import type { UntypedMethodImplementation } from '@142vip/grpc'
 import {
-  clientStreamToServer,
-  clientStreamToServerStream,
-  clientToServer,
-  clientToServerStream,
   DEFAULT_LOADER_OPTIONS,
   exampleProto,
-  exampleProtoServicePath,
   GrpcConnectURI,
-  GrpcServer,
+  GrpcExampleServerManager,
   ProtoLoader,
 } from '@142vip/grpc'
-import { afterAll, beforeAll, describe, expect, it } from '@jest/globals'
+import { afterAll, describe, expect, it } from '@jest/globals'
 
 /**
  * 测试grpcServer服务器
  */
 describe('grpcServer服务器', () => {
-  const handlers = {
-    clientToServer,
-    clientStreamToServer,
-    clientToServerStream,
-    clientStreamToServerStream,
-  }
-  const protoLoader = new ProtoLoader(exampleProto)
-
-  const grpcServer = new GrpcServer()
-
-  beforeAll(() => {
-    const serviceDef = protoLoader.getServerServiceDefinition(exampleProtoServicePath)
-    grpcServer.registerService(serviceDef, handlers as UntypedMethodImplementation)
-  })
+  const grpcServer = new GrpcExampleServerManager().getGrpcServer()
 
   // 强制清理端口
   afterAll(() => {
@@ -63,6 +44,7 @@ describe('grpcServer服务器', () => {
   })
 
   it('默认配置', () => {
+    const protoLoader = new ProtoLoader(exampleProto)
     const options = protoLoader.getLoaderOptions()
     expect(options).toBeDefined()
     expect(options).toEqual(DEFAULT_LOADER_OPTIONS)
