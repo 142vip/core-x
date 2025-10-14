@@ -1,4 +1,12 @@
-const { clientToServer, clientStreamToServer, clientToServerStream, clientStreamToServerStream, exampleProto, GrpcConnectURI } = require('@142vip/grpc')
+const {
+  clientToServer,
+  clientStreamToServer,
+  clientToServerStream,
+  clientStreamToServerStream,
+  exampleProto,
+  GrpcConnectURI,
+  GrpcExampleServerManager,
+} = require('@142vip/grpc')
 
 module.exports = {
   // 对应的proto定义路径
@@ -9,4 +17,7 @@ module.exports = {
   clientStreamToServer,
   clientToServerStream,
   clientStreamToServerStream,
+
+  // 示例服务管理器
+  GrpcExampleServerManager,
 }
