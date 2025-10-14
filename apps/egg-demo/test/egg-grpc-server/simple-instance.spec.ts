@@ -12,6 +12,7 @@ describe('@142vip/egg-grpc-server 测试 - 单实例 ', () => {
     // 从agent.js加载的对象获取grpcServer
     grpcServer = app.agent.grpcServer
     expect(grpcServer).toBeDefined()
+    console.log(1111, grpcServer)
   })
 
   afterAll(() => {
@@ -31,9 +32,9 @@ describe('@142vip/egg-grpc-server 测试 - 单实例 ', () => {
   it('端口、连接地址检测', async () => {
     // 从agent.js加载的对象获取grpcServer
     const grpcServer = app.agent.grpcServer
+    expect(grpcServer).toHaveProperty('getInstance')
     const grpcServerInstance = grpcServer.getInstance<GrpcServer>('default') as GrpcServer
     expect(grpcServerInstance).toBeDefined()
-    expect(grpcServerInstance).toHaveProperty('getInstance')
 
     // 连接地址
     const connectInfos = grpcServerInstance.getConnectInfo()

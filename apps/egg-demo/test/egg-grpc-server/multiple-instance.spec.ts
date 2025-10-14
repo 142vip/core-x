@@ -56,7 +56,7 @@ describe('@142vip/egg-grpc-server 测试 - 多实例 ', () => {
   it(`端口、连接地址检测 - ${PluginInstanceName.EXAMPLE2}`, async () => {
     // 从agent.js加载的对象获取grpcServer
     const grpcServer = app.agent.grpcServer
-    await checkInstancePort(grpcServer, PluginInstanceName.EXAMPLE1)
+    await checkInstancePort(grpcServer, PluginInstanceName.EXAMPLE2)
   })
 })
 
