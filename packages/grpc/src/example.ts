@@ -26,7 +26,7 @@ export class GrpcExampleService implements GrpcExampleServiceImpl {
    * @param requestData
    */
   public async clientToServer(requestData: ExampleRequestDataType): Promise<ExampleResponseDataType> {
-    console.log('call.handler.type--->clientToServer:', requestData)
+    console.log('request--->clientToServer:', requestData)
     return {
       message: JSON.stringify(requestData),
       methodName: 'clientToServer',
@@ -38,7 +38,7 @@ export class GrpcExampleService implements GrpcExampleServiceImpl {
    * @param requestData
    */
   public async clientStreamToServer(requestData: ExampleRequestDataType): Promise<ExampleResponseDataType> {
-    console.log('call.handler.type--->clientStreamToServer:', requestData)
+    console.log('request--->clientStreamToServer:', requestData)
     return {
       message: JSON.stringify(requestData),
       methodName: 'clientStreamToServer',

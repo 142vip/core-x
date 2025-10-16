@@ -1,7 +1,15 @@
+import type { ServiceClient } from '@grpc/grpc-js/build/src/make-client'
+
 import type { GrpcConnectURI, UntypedMethodImplementation } from './enum/grpc.interface'
+import { GrpcClient } from './core/grpc-client'
 import { GrpcServer } from './core/grpc-server'
 import { ProtoLoader } from './core/proto-loader'
-import { clientStreamToServer, clientStreamToServerStream, clientToServer, clientToServerStream } from './example'
+import {
+  clientStreamToServer,
+  clientStreamToServerStream,
+  clientToServer,
+  clientToServerStream,
+} from './example'
 import { exampleProto, exampleProtoServicePath } from './utils/proto.util'
 
 /**
@@ -9,6 +17,7 @@ import { exampleProto, exampleProtoServicePath } from './utils/proto.util'
  */
 export class GrpcExampleServerManager {
   private readonly grpcServer: GrpcServer
+  private readonly exampleProtoLoader = new ProtoLoader(exampleProto)
 
   constructor() {
     this.grpcServer = new GrpcServer()
@@ -21,8 +30,7 @@ export class GrpcExampleServerManager {
       clientToServerStream,
       clientStreamToServerStream,
     }
-    const protoLoader = new ProtoLoader(exampleProto)
-    const serviceDef = protoLoader.getServerServiceDefinition(exampleProtoServicePath)
+    const serviceDef = this.exampleProtoLoader.getServerServiceDefinition(exampleProtoServicePath)
     this.grpcServer.registerService(serviceDef, handlers as UntypedMethodImplementation)
   }
 
@@ -42,7 +50,22 @@ export class GrpcExampleServerManager {
   }
 
   /**
+   * 获取客户端
+   * @param connectUri
+   */
+  public getServiceClient(connectUri: GrpcConnectURI): ServiceClient {
+    const grpcClient = new GrpcClient(connectUri)
+
+    // 指定servicePath加载
+    const serviceClientConstructor = this.exampleProtoLoader.getClientServiceConstructor(exampleProtoServicePath)
+    grpcClient.registerService(exampleProtoServicePath, serviceClientConstructor)
+
+    return grpcClient.getService<ServiceClient>(exampleProtoServicePath)
+  }
+
+  /**
    * 关闭GRPC服务
+   * - 服务端
    */
   public shutdown(): void {
     this.grpcServer.forceShutdown()

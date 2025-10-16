@@ -1,4 +1,3 @@
-import type { GrpcResponse, ServiceMethodFuncImpl } from '@142vip/grpc'
 import type {
   sendUnaryData,
   ServerDuplexStream,
@@ -6,7 +5,10 @@ import type {
   ServerUnaryCall,
   ServerWritableStream,
 } from '@grpc/grpc-js'
-import { ServiceMethodType } from '@142vip/grpc'
+import type { GrpcRequest, GrpcResponse, ServiceMethodFuncImpl } from '../enum/grpc.interface'
+import { ServiceMethodType } from '../enum/grpc.interface'
+import { GRPC_ERROR_CODE, grpcErrorHandler, GrpcException } from './grpc-exception'
+
 /**
  * 处理GRPC一元调用，不涉及流
  * - 异步抓换为同步处理
@@ -16,19 +18,21 @@ export function grpcSimpleHandler(methodFunc: ServiceMethodFuncImpl) {
   /**
    * 处理一元调用，不涉及流
    */
-  async function handleUnaryCall<RequestType, ResponseType>(
+  async function handleUnaryCall<RequestType extends GrpcRequest, ResponseType>(
     call: ServerUnaryCall<RequestType, ResponseType>,
     callback: sendUnaryData<GrpcResponse<ResponseType>>,
   ): Promise<void> {
     const requestData = call.request
+
     try {
       // 执行
       const responseData = await methodFunc<RequestType, ResponseType>(requestData)
 
       callback(null, { data: responseData })
     }
-    catch {
-      callback(null, { error: { message: handleUnaryCall.name, traceId: '123' } })
+    catch (error) {
+      const e = new GrpcException(GRPC_ERROR_CODE.HANDLE_UNARY_CALL, error as Error)
+      callback(null, { error: grpcErrorHandler(e, requestData) })
     }
   }
 
@@ -42,7 +46,7 @@ export function grpcStreamHandler(methodType: Omit<ServiceMethodType, 'unary'>, 
   /**
    * 客户端流
    */
-  function handleClientStreamingCall<RequestType, ResponseType>(
+  function handleClientStreamingCall<RequestType extends GrpcRequest, ResponseType>(
     call: ServerReadableStream<RequestType, ResponseType>,
     callback: sendUnaryData<GrpcResponse<ResponseType>>,
   ): void {
@@ -61,8 +65,9 @@ export function grpcStreamHandler(methodType: Omit<ServiceMethodType, 'unary'>, 
         const responseData = await methodFunc<RequestType, ResponseType>(requestData)
         callback(null, { data: responseData })
       }
-      catch {
-        callback(null, { error: { message: handleClientStreamingCall.name, traceId: '123' } })
+      catch (error) {
+        const e = new GrpcException(GRPC_ERROR_CODE.HANDLE_CLIENT_STREAM_CALL, error as Error)
+        callback(null, { error: grpcErrorHandler(e, requestData) })
       }
     })
   }
@@ -70,7 +75,7 @@ export function grpcStreamHandler(methodType: Omit<ServiceMethodType, 'unary'>, 
   /**
    * 服务端流
    */
-  async function handleServerStreamingCall<RequestType, ResponseType>(
+  async function handleServerStreamingCall<RequestType extends GrpcRequest, ResponseType>(
     call: ServerWritableStream<RequestType, GrpcResponse<ResponseType>>,
   ): Promise<void> {
     const requestData = call.request
@@ -79,8 +84,9 @@ export function grpcStreamHandler(methodType: Omit<ServiceMethodType, 'unary'>, 
       const responseData = await methodFunc<RequestType, ResponseType>(requestData)
       call.write({ data: responseData })
     }
-    catch {
-      call.write({ error: { message: handleServerStreamingCall.name, traceId: '123' } })
+    catch (error) {
+      const e = new GrpcException(GRPC_ERROR_CODE.HANDLE_SERVER_STREAM_CELLl, error as Error)
+      call.write({ error: grpcErrorHandler(e, requestData) })
     }
 
     // 结束
@@ -90,7 +96,7 @@ export function grpcStreamHandler(methodType: Omit<ServiceMethodType, 'unary'>, 
   /**
    * 客户端、服务端，流式
    */
-  function handleBidiStreamingCall<RequestType, ResponseType>(
+  function handleBidiStreamingCall<RequestType extends GrpcRequest, ResponseType>(
     call: ServerDuplexStream<RequestType, GrpcResponse<ResponseType>>,
   ): void {
     // 流，接收数据
@@ -101,8 +107,8 @@ export function grpcStreamHandler(methodType: Omit<ServiceMethodType, 'unary'>, 
         call.write({ data: responseData })
       }
       catch (error) {
-        console.log(111, error)
-        call.write({ error: { message: handleBidiStreamingCall.name, traceId: '123' } })
+        const e = new GrpcException(GRPC_ERROR_CODE.HANDLE_BIDI_STREAM_CALL, error as Error)
+        call.write({ error: grpcErrorHandler(e, requestData) })
       }
     })
 
@@ -122,6 +128,7 @@ export function grpcStreamHandler(methodType: Omit<ServiceMethodType, 'unary'>, 
     return handleBidiStreamingCall
   }
   else {
-    throw new Error('grpc method type not support, reference: https://grpc.io/docs/languages/node/basics/')
+    const error = new Error('grpc method type not support, reference: https://grpc.io/docs/languages/node/basics/')
+    throw new GrpcException(GRPC_ERROR_CODE.HANDLE_UNKNOWN, error)
   }
 }

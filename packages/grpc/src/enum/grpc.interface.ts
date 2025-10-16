@@ -52,9 +52,9 @@ export interface UntypedMethodImplementation {
  * Grpc服务调用，错误信息
  */
 export interface GrpcTraceError {
-  traceId: string
-  code?: number
+  code: number
   message: string
+  traceId: string
 }
 
 /**

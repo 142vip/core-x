@@ -1,6 +1,7 @@
 import type { ServiceClientConstructor } from '@grpc/grpc-js'
 import type { ServiceClient } from '@grpc/grpc-js/build/src/make-client'
 import grpc from '@grpc/grpc-js'
+import { GRPC_ERROR_CODE, GrpcException } from './grpc-exception'
 
 type GrpcServices = Map<string, ServiceClient>
 type GrpcServiceConstructorMap = Map<string, ServiceClientConstructor>
@@ -41,7 +42,8 @@ export class GrpcClient {
 
     const IServiceClientConstructor = this.serviceConstructors.get(servicePath)
     if (!IServiceClientConstructor) {
-      throw new Error(`服务 ${servicePath} 未连接且未注册，请先调用registerService方法注册服务`)
+      const e = new Error(`服务 ${servicePath} 未连接且未注册，请先调用registerService方法注册服务`)
+      throw new GrpcException(GRPC_ERROR_CODE.CLIENT_SERVICE_NOT_REGISTERED, e)
     }
 
     console.log(`服务 ${servicePath} 未连接，正在自动连接...`)

@@ -3,26 +3,25 @@ import {
   exampleProto,
   GrpcConnectURI,
   GrpcExampleServerManager,
+  GrpcExampleServiceMethod,
   ProtoLoader,
+  sendGrpcRequest,
 } from '@142vip/grpc'
-import { afterAll, describe, expect, it } from '@jest/globals'
+import { afterAll, beforeAll, describe, expect, it } from '@jest/globals'
 
 /**
  * 测试grpcServer服务器
  */
 describe('grpcServer服务器', () => {
-  const grpcServer = new GrpcExampleServerManager().getGrpcServer()
+  const exampleManager = new GrpcExampleServerManager()
+  const grpcServer = exampleManager.getGrpcServer()
 
+  beforeAll(async () => {
+    await exampleManager.listen(GrpcConnectURI.PORT_50001)
+  })
   // 强制清理端口
   afterAll(() => {
     grpcServer.forceShutdown()
-  })
-
-  it('监听端口', async () => {
-    // 监听
-    const port = await grpcServer.listen(GrpcConnectURI.PORT_50001)
-    expect(port).toBeDefined()
-    expect(port).toBe(50001)
   })
 
   it('连接地址', () => {
@@ -48,5 +47,27 @@ describe('grpcServer服务器', () => {
     const options = protoLoader.getLoaderOptions()
     expect(options).toBeDefined()
     expect(options).toEqual(DEFAULT_LOADER_OPTIONS)
+  })
+
+  it('验证客户端调用', async () => {
+    await grpcServer.listen(GrpcConnectURI.PORT_50003)
+    const exampleServiceClient = exampleManager.getServiceClient(GrpcConnectURI.PORT_50001)
+    const requestData = { serviceName: 'test grpc' }
+
+    const res1 = await sendGrpcRequest(exampleServiceClient, GrpcExampleServiceMethod.ClientToServer, requestData)
+    expect(res1).toBeDefined()
+    expect(res1).toHaveProperty('data')
+
+    const res2 = await sendGrpcRequest(exampleServiceClient, GrpcExampleServiceMethod.ClientStreamToServer, requestData)
+    expect(res2).toBeDefined()
+    expect(res2).toHaveProperty('data')
+
+    const res3 = await sendGrpcRequest(exampleServiceClient, GrpcExampleServiceMethod.ClientToServerStream, requestData)
+    expect(res3).toBeDefined()
+    expect(res3).toHaveProperty('data')
+
+    const res4 = await sendGrpcRequest(exampleServiceClient, GrpcExampleServiceMethod.ClientStreamToServerStream, requestData)
+    expect(res4).toBeDefined()
+    expect(res4).toHaveProperty('data')
   })
 })
