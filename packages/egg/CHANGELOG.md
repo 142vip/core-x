@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.6 (2025-10-16)
+
+### ✨ Features
+
+- 基于`app.type`区分`app`和`agent`加载模式 &nbsp;-&nbsp; by **142vip.cn** in https://github.com/142vip/core-x/issues/685 [<samp>(f3f8d)</samp>](https://github.com/142vip/core-x/commit/f3f8d55)
+- 重写`pluginManager`管理器核心逻辑，约束插件使用 &nbsp;-&nbsp; by **142vip.cn** in https://github.com/142vip/core-x/issues/688 [<samp>(06f81)</samp>](https://github.com/142vip/core-x/commit/06f81b8)
+
+**Release New Version v0.0.1-alpha.6 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/egg)**
+
 ## v0.0.1-alpha.5 (2025-09-27)
 
 ### ✨ Features
