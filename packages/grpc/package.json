@@ -1,6 +1,6 @@
 {
   "name": "@142vip/grpc",
-  "version": "0.0.1-alpha.3",
+  "version": "0.0.1-alpha.4",
   "private": false,
   "description": "Grpc工具包，支持proto文件加载、解析，Grpc客户端、服务端数据连接交互，支持健康检查",
   "author": "mmdapl <mmdapl@163.com>",

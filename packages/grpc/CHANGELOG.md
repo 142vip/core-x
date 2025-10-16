@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.4 (2025-10-16)
+
+### ✨ Features
+
+- 优化`handler`处理核心逻辑 &nbsp;-&nbsp; by **142vip.cn** in https://github.com/142vip/core-x/issues/681 [<samp>(49f10)</samp>](https://github.com/142vip/core-x/commit/49f1001)
+- 新增`exampleManager`管理器，优化单元测试逻辑 &nbsp;-&nbsp; by **142vip.cn** in https://github.com/142vip/core-x/issues/689 [<samp>(c9c89)</samp>](https://github.com/142vip/core-x/commit/c9c89c6)
+- 增加`grpc-exception`异常类，优化`grpc`相关示例代码 &nbsp;-&nbsp; by **142vip.cn** in https://github.com/142vip/core-x/issues/692 [<samp>(9afe3)</samp>](https://github.com/142vip/core-x/commit/9afe3d0)
+- `ProtoLoader`重命名为`GrpcProtoLoader`，优化代码 &nbsp;-&nbsp; by **142vip.cn** in https://github.com/142vip/core-x/issues/695 [<samp>(acb17)</samp>](https://github.com/142vip/core-x/commit/acb174c)
+
+**Release New Version v0.0.1-alpha.4 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/grpc)**
+
 ## v0.0.1-alpha.3 (2025-09-27)
 
 ### 🐛 Bug Fixes
