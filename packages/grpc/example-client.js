@@ -1,32 +1,21 @@
-const { GrpcConnectURI, GrpcClient, exampleProto, ProtoLoader, exampleProtoServicePath } = require('@142vip/grpc')
+const { GrpcExampleServerManager } = require('@142vip/egg-grpc-server/example/example-grpc')
+const { GrpcConnectURI, sendGrpcRequest } = require('@142vip/grpc')
 
 /**
  * grpc 客户端示例
  */
-function exampleClientMain() {
-  const exampleProtoLoader = new ProtoLoader(exampleProto)
+async function exampleClientMain() {
+  const exampleServiceClient = new GrpcExampleServerManager().getServiceClient(GrpcConnectURI.PORT_50001)
 
-  const grpcClient = new GrpcClient(GrpcConnectURI.PORT_50001, exampleProtoLoader)
-
-  // 指定servicePath加载
-  const serviceClientConstructor = exampleProtoLoader.getClientServiceConstructor(exampleProtoServicePath)
-  grpcClient.registerService(exampleProtoServicePath, serviceClientConstructor)
-
-  const exampleClient = grpcClient.getService(exampleProtoServicePath)
-
-  console.log(333, exampleClient.clientStreamToServer)
-
-  exampleClient.clientToServer({ name: '123' }, (error, response) => {
-    if (error) {
-      console.error('Error calling clientToServer:', error)
-      throw error
-    }
-    else {
-      console.log('Response received:', response)
-    }
-  })
-
-  console.log(grpcClient.getConnectUri(), grpcClient.getServiceSize())
+  const requestData = { serviceName: '12334' }
+  const aa = await sendGrpcRequest(exampleServiceClient, 'ClientToServer', requestData)
+  console.log('aa', aa, JSON.stringify(aa))
+  const bb = await sendGrpcRequest(exampleServiceClient, 'clientToServerStream', requestData)
+  console.log('bb', bb, JSON.stringify(bb))
+  const cc = await sendGrpcRequest(exampleServiceClient, 'clientStreamToServer', requestData)
+  console.log('cc', cc, JSON.stringify(cc))
+  const dd = await sendGrpcRequest(exampleServiceClient, 'clientStreamToServerStream', requestData)
+  console.log('dd', dd, JSON.stringify(dd))
 }
 
-exampleClientMain()
+void exampleClientMain()

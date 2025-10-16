@@ -4,7 +4,6 @@ import "main.proto";
 package vip.grpc.example.v1;
 
 /*  ------------------------ RPC 功能方法定义 ---------------------------- */
-
 service Example {
   /**
    * 服务端流式调用
@@ -24,7 +23,6 @@ service Example {
    */
   rpc ClientStreamToServerStream (stream ExampleRequestDataType) returns (stream ExampleResponseDataType) {}
 }
-
 /*  ------------------------ RPC 功能方法定义 ---------------------------- */
 
 
@@ -33,15 +31,15 @@ service Example {
 
 // 请求 - 数据格式
 message ExampleRequestDataType {
-  string name = 1;
+  string serviceName = 1;
 }
 
+message Data {
+  string message = 1;
+  string methodName = 2;
+}
 // 响应 - 数据格式
 message ExampleResponseDataType {
-  message Data {
-    string message = 1;
-    string methodName = 2;
-  }
   optional ErrorTrace error=1;
   optional Data data=2;
 }

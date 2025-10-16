@@ -5,8 +5,11 @@ import "google/protobuf/any.proto";
 package vip.grpc.main;
 
 message ErrorTrace {
+  // 追踪ID
   string traceId=1;
-  optional string message = 2;
+  // 错误码
+  int32 code=2;
+  optional string message = 3;
 }
 
 message GrpcResponse {
@@ -16,7 +19,6 @@ message GrpcResponse {
 }
 
 message GrpcHealthResponse {
-  string traceId=1;
-  optional ErrorTrace error=2;
-  map<string,google.protobuf.Any> data=3;
+  optional ErrorTrace error=1;
+  map<string, google.protobuf.Any> data=2;
 }

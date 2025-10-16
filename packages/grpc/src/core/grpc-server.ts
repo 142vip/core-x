@@ -1,5 +1,5 @@
-import type { GrpcConnectInfo, UntypedMethodImplementation } from '@142vip/grpc'
 import type { sendUnaryData, ServiceDefinition, UntypedServiceImplementation } from '@grpc/grpc-js'
+import type { GrpcConnectInfo, UntypedMethodImplementation } from '../enum/grpc.interface'
 import type {
   GrpcHealthCheckOrWatchRequest,
   GrpcHealthCheckOrWatchResponse,
@@ -8,20 +8,15 @@ import type {
   GrpcHealthStatusWatcher,
 } from '../enum/health.interface'
 import type { ServerUnaryCall, ServerWritableStream } from '../enum/server-type.interface'
-import {
-  grpcSimpleHandler,
-  grpcStreamHandler,
-  ProtoLoader,
-  ServiceMethodType,
-} from '@142vip/grpc'
+import { grpcSimpleHandler, grpcStreamHandler, ProtoLoader, ServiceMethodType } from '@142vip/grpc'
 import { Server, ServerCredentials } from '@grpc/grpc-js'
 import {
   GRPC_SERVER_METHOD_NAME,
-  GrpcHealthErrorCode,
   GrpcHealthStatus,
 } from '../enum/health.interface'
-import { generateTraceId, getMethodType } from '../utils/grpc.util'
+import { getMethodType } from '../utils/grpc.util'
 import { healthProto, healthProtoServicePath } from '../utils/proto.util'
+import { GRPC_ERROR_CODE, grpcErrorHandler, GrpcException } from './grpc-exception'
 
 /**
  * Grpc 服务端
@@ -52,7 +47,7 @@ export class GrpcServer {
   public async listen(connectUri: string): Promise<number> {
     // 挂载健康检查
     this.addHealthCheck()
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve, reject): void => {
       this.server.bindAsync(connectUri, ServerCredentials.createInsecure(), (error, port) => {
         if (error != null) {
           return reject(error)
@@ -124,53 +119,59 @@ export class GrpcServer {
       /**
        * 检查某个方法
        */
-      check: (call: ServerUnaryCall<GrpcHealthCheckOrWatchRequest, GrpcHealthCheckOrWatchResponse>, callback: sendUnaryData<GrpcHealthCheckOrWatchResponse>) => {
-        const { serviceName, traceId = generateTraceId() } = call.request
-        if (serviceName == null) {
-          callback(null, { error: { traceId, message: '参数错误' } })
-        }
-        const status = this.healthStatusMap.get(serviceName)
-        if (status) {
+      check: (
+        call: ServerUnaryCall<GrpcHealthCheckOrWatchRequest, GrpcHealthCheckOrWatchResponse>,
+        callback: sendUnaryData<GrpcHealthCheckOrWatchResponse>,
+      ): void => {
+        const requestData = call.request
+
+        try {
+          if (requestData.serviceName == null) {
+            throw new GrpcException(GRPC_ERROR_CODE.INVALID_ARGUMENT)
+          }
+          const status = this.healthStatusMap.get(requestData.serviceName) ?? GrpcHealthStatus.UNKNOWN
+
           callback(null, { data: status })
         }
-        else {
-          callback(null, {
-            error: {
-              traceId,
-              code: GrpcHealthErrorCode.GRPC_STATUS_NOT_FOUND,
-              message: `Health status unknown for serviceName: ${serviceName}`,
-            },
-          })
+        catch (error) {
+          callback(null, { error: grpcErrorHandler<GrpcHealthCheckOrWatchRequest>(error, requestData) })
         }
       },
       /**
        * 健康检查 监听服务状态变化，支持流式
        */
-      watch: (call: ServerWritableStream<GrpcHealthCheckOrWatchRequest, GrpcHealthCheckOrWatchResponse>) => {
-        const { serviceName, traceId = generateTraceId() } = call.request
-        if (serviceName == null) {
-          return call.write({ error: { traceId, message: '参数错误' } })
-        }
-        const statusWatcher = (status: GrpcHealthStatus) => {
-          call.write({ data: status })
-        }
-        this.addWatcher(serviceName, statusWatcher)
-        call.on('cancelled', () => {
-          this.removeWatcher(serviceName, statusWatcher)
-        })
-        const currentStatus = this.healthStatusMap.get(serviceName)
-        if (currentStatus) {
+      watch: (
+        call: ServerWritableStream<GrpcHealthCheckOrWatchRequest, GrpcHealthCheckOrWatchResponse>,
+      ): void => {
+        const requestData = call.request
+
+        try {
+          if (requestData.serviceName == null) {
+            throw new GrpcException(GRPC_ERROR_CODE.INVALID_ARGUMENT)
+          }
+          const statusWatcher = (status: GrpcHealthStatus) => {
+            call.write({ data: status })
+          }
+          this.addWatcher(requestData.serviceName, statusWatcher)
+          call.on('cancelled', () => {
+            this.removeWatcher(requestData.serviceName, statusWatcher)
+          })
+          const currentStatus = this.healthStatusMap.get(requestData.serviceName) ?? GrpcHealthStatus.UNKNOWN
+
           call.write({ data: currentStatus })
         }
-        else {
-          call.write({ data: GrpcHealthStatus.UNKNOWN })
+        catch (error) {
+          call.write({ error: grpcErrorHandler<GrpcHealthCheckOrWatchRequest>(error, requestData) })
         }
       },
       /**
        * 健康检查 列出所有支持的方法
        */
-      list: (call: ServerUnaryCall<GrpcHealthListRequest, GrpcHealthListResponse>, callback: sendUnaryData<GrpcHealthListResponse>) => {
-        const { traceId = generateTraceId() } = call.request
+      list: (
+        call: ServerUnaryCall<GrpcHealthListRequest, GrpcHealthListResponse>,
+        callback: sendUnaryData<GrpcHealthListResponse>,
+      ): void => {
+        const requestData = call.request
         try {
           const healthMap = new Map<string, GrpcHealthStatus>()
           for (const [serviceName, status] of this.healthStatusMap.entries()) {
@@ -179,7 +180,7 @@ export class GrpcServer {
           callback(null, { data: Object.fromEntries(healthMap) })
         }
         catch (error) {
-          callback(null, { error: { traceId, message: (error as any).message } })
+          callback(null, { error: grpcErrorHandler<GrpcHealthListRequest>(error, requestData) })
         }
       },
     }

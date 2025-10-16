@@ -1,19 +1,16 @@
 syntax = "proto3";
 import "main.proto";
 
-
 package vip.grpc.health.v1;
 
 message HealthCheckOrWatchRequest {
   string serviceName = 1;
 }
 
-
 message HealthCheckOrWatchResponse {
   optional ErrorTrace error=1;
   optional string data=2;
 }
-
 
 message HealthListRequest {}
 
@@ -21,7 +18,6 @@ message HealthListResponse{
   optional ErrorTrace error=1;
   map<string,string> data=2;
 }
-
 
 service Health {
   rpc Check(HealthCheckOrWatchRequest) returns (HealthCheckOrWatchResponse);
