@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.42 (2025-10-16)
+
+### ✨ Features
+
+- 移除`detect-indent`和`detect-newline`依赖 &nbsp;-&nbsp; by **142vip.cn** in https://github.com/142vip/core-x/issues/679 [<samp>(748f4)</samp>](https://github.com/142vip/core-x/commit/748f442)
+
+**Release New Version v0.0.1-alpha.42 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/utils)**
+
 ## v0.0.1-alpha.41 (2025-09-23)
 
 ### ✨ Features
