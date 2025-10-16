@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.5 (2025-10-16)
+
+### ✨ Features
+
+- 优化插件加载逻辑，避免多实例重复加载 &nbsp;-&nbsp; by **142vip.cn** in https://github.com/142vip/core-x/issues/684 [<samp>(e5738)</samp>](https://github.com/142vip/core-x/commit/e573883)
+
+### 🐛 Bug Fixes
+
+- 修复`rpc`服务端方法绑定异常 &nbsp;-&nbsp; by **142vip.cn** in https://github.com/142vip/core-x/issues/690 [<samp>(2ffe4)</samp>](https://github.com/142vip/core-x/commit/2ffe4b2)
+
+**Release New Version v0.0.1-alpha.5 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/egg-grpc-server)**
+
 ## v0.0.1-alpha.4 (2025-09-28)
 
 ### ✨ Features
