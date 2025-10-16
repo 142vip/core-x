@@ -1,6 +1,6 @@
 const { join } = require('node:path')
 const { VipEggPluginLogger, PluginLoader } = require('@142vip/egg')
-const { GrpcServer, ProtoLoader } = require('@142vip/grpc')
+const { GrpcServer, GrpcProtoLoader } = require('@142vip/grpc')
 const { vipLodash } = require('@142vip/utils')
 
 const GRPC_SERVICE_PATH = 'app/grpc'
@@ -64,7 +64,7 @@ function createEggGrpcServerInstance(pluginConfig, app) {
   }
 
   try {
-    const protoLoader = new ProtoLoader(protoPaths, loaderOptions)
+    const grpcProtoLoader = new GrpcProtoLoader(protoPaths, loaderOptions)
 
     // 匿名 ctx对象
     const ctx = app.createAnonymousContext()
@@ -76,7 +76,7 @@ function createEggGrpcServerInstance(pluginConfig, app) {
       throw new Error('grpc service not found')
 
     // 获取详情
-    for (const { ServiceClientConstructor, serviceName } of protoLoader.getGrpcServiceDetail()) {
+    for (const { ServiceClientConstructor, serviceName } of grpcProtoLoader.getGrpcServiceDetail()) {
       const serviceMethodHandler = grpcServiceMap[serviceName]
       if (serviceMethodHandler == null) {
         pluginLogger.error(`GrpcServer create failed , the service ${serviceName} not found`)

@@ -5,10 +5,10 @@ import {
   exampleProtoPackageName,
   exampleProtoServicePath,
   GrpcExampleServiceMethod,
+  GrpcProtoLoader,
   healthProto,
   healthProtoPackageName,
   healthProtoServicePath,
-  ProtoLoader,
   protos,
   testProto,
   testProtoPackageName,
@@ -72,9 +72,9 @@ function expectStreamServiceDef(streamServiceDef: ServiceDefinition, serviceMeth
  * 测试proto-loader加载测试
  */
 describe('proto-loader加载测试', () => {
-  const protoLoader = new ProtoLoader(protos)
+  const grpcProtoLoader = new GrpcProtoLoader(protos)
   it('测试解析，解析多个proto文件', () => {
-    const packageNames = protoLoader.getPackageNames()
+    const packageNames = grpcProtoLoader.getPackageNames()
 
     expect(packageNames).toBeDefined()
     expect(packageNames).toHaveLength(3)
@@ -82,7 +82,7 @@ describe('proto-loader加载测试', () => {
     expect(packageNames).toContain(testProtoPackageName)
     expect(packageNames).toContain(exampleProtoPackageName)
 
-    const servicePaths = protoLoader.getServicePaths()
+    const servicePaths = grpcProtoLoader.getServicePaths()
     expect(servicePaths).toBeDefined()
     expect(servicePaths).toHaveLength(4)
     expect(servicePaths).toContain(healthProtoServicePath)
@@ -99,7 +99,7 @@ describe('proto-loader加载测试', () => {
   })
 
   it('测试解析 test.proto', () => {
-    const testProtoLoader = new ProtoLoader(testProto)
+    const testProtoLoader = new GrpcProtoLoader(testProto)
     const defaultLoaderOptions = testProtoLoader.getLoaderOptions()
     expect(defaultLoaderOptions).toEqual(DEFAULT_LOADER_OPTIONS)
     // 包名唯一
@@ -127,7 +127,7 @@ describe('proto-loader加载测试', () => {
   })
 
   it('测试解析 health.proto', () => {
-    const healthProtoLoader = new ProtoLoader(healthProto)
+    const healthProtoLoader = new GrpcProtoLoader(healthProto)
 
     const packageNames = healthProtoLoader.getPackageNames()
     expect(packageNames).toHaveLength(1)
@@ -160,7 +160,7 @@ describe('proto-loader加载测试', () => {
   })
 
   it('测试解析 example.proto', () => {
-    const exampleProtoLoader = new ProtoLoader(exampleProto)
+    const exampleProtoLoader = new GrpcProtoLoader(exampleProto)
 
     const packageNames = exampleProtoLoader.getPackageNames()
     expect(packageNames).toHaveLength(1)

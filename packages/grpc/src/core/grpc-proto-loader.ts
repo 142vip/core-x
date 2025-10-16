@@ -19,7 +19,7 @@ export const DEFAULT_LOADER_OPTIONS: VipProtoLoaderOptions = {
 /**
  * proto文件加载器
  */
-export class ProtoLoader {
+export class GrpcProtoLoader {
   private readonly protoPaths: string | string[]
   private readonly loaderOptions: VipProtoLoaderOptions
 

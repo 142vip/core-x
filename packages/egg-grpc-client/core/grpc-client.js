@@ -1,5 +1,5 @@
 const { VipEggPluginLogger } = require('@142vip/egg')
-const { GrpcClient, ProtoLoader } = require('@142vip/grpc')
+const { GrpcClient, GrpcProtoLoader } = require('@142vip/grpc')
 
 /**
  * 创建egg grpc连接实例
@@ -12,12 +12,12 @@ function createEggGrpcClientInstance(pluginConfig, app) {
   const { connectUri, protoPaths, loaderOptions } = pluginConfig
 
   const grpcClient = new GrpcClient(connectUri)
-  const protoLoader = new ProtoLoader(protoPaths, loaderOptions)
-  const servicePaths = protoLoader.getServicePaths()
+  const grpcProtoLoader = new GrpcProtoLoader(protoPaths, loaderOptions)
+  const servicePaths = grpcProtoLoader.getServicePaths()
 
   // 加载proto
   for (const servicePath of servicePaths) {
-    const serviceClientConstructor = protoLoader.getClientServiceConstructor(servicePath)
+    const serviceClientConstructor = grpcProtoLoader.getClientServiceConstructor(servicePath)
     grpcClient.registerService(servicePath, serviceClientConstructor)
   }
 
@@ -29,7 +29,6 @@ function createEggGrpcClientInstance(pluginConfig, app) {
   pluginLogger.log('plugin init')
 
   // TODO 考虑将grpcClient实例挂载ctx上
-
   return grpcClient
 }
 

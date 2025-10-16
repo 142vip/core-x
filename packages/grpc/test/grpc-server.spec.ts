@@ -4,7 +4,7 @@ import {
   GrpcConnectURI,
   GrpcExampleServerManager,
   GrpcExampleServiceMethod,
-  ProtoLoader,
+  GrpcProtoLoader,
   sendGrpcRequest,
 } from '@142vip/grpc'
 import { afterAll, beforeAll, describe, expect, it } from '@jest/globals'
@@ -43,8 +43,8 @@ describe('grpcServer服务器', () => {
   })
 
   it('默认配置', () => {
-    const protoLoader = new ProtoLoader(exampleProto)
-    const options = protoLoader.getLoaderOptions()
+    const grpcProtoLoader = new GrpcProtoLoader(exampleProto)
+    const options = grpcProtoLoader.getLoaderOptions()
     expect(options).toBeDefined()
     expect(options).toEqual(DEFAULT_LOADER_OPTIONS)
   })
