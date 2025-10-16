@@ -1,7 +1,7 @@
 import type { ServiceClientConstructor } from '@grpc/grpc-js'
-import type protoLoader from '@grpc/proto-loader'
+import type grpcProtoLoader from '@grpc/proto-loader'
 
-export interface VipProtoLoaderOptions extends protoLoader.Options {
+export interface VipProtoLoaderOptions extends grpcProtoLoader.Options {
 }
 
 /**

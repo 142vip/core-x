@@ -1,13 +1,13 @@
-import { exampleProto, exampleProtoServicePath, GrpcClient, GrpcConnectURI, ProtoLoader } from '@142vip/grpc'
+import { exampleProto, exampleProtoServicePath, GrpcClient, GrpcConnectURI, GrpcProtoLoader } from '@142vip/grpc'
 import { describe, expect, it } from '@jest/globals'
 
 /**
  * 测试grpcClient客户端
  */
 describe('grpcClient客户端', () => {
-  const protoLoader = new ProtoLoader([exampleProto])
+  const grpcProtoLoader = new GrpcProtoLoader([exampleProto])
 
-  const servicePaths = protoLoader.getServicePaths()
+  const servicePaths = grpcProtoLoader.getServicePaths()
   const grpcClient = new GrpcClient(GrpcConnectURI.PORT_50001)
 
   it('检查客户端', () => {
@@ -22,7 +22,7 @@ describe('grpcClient客户端', () => {
 
   it('注册服务', () => {
     for (const servicePath of servicePaths) {
-      const serviceConstructor = protoLoader.getClientServiceConstructor(servicePath)
+      const serviceConstructor = grpcProtoLoader.getClientServiceConstructor(servicePath)
       grpcClient.registerService(servicePath, serviceConstructor)
     }
   })

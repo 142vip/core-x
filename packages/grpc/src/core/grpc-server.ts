@@ -8,7 +8,7 @@ import type {
   GrpcHealthStatusWatcher,
 } from '../enum/health.interface'
 import type { ServerUnaryCall, ServerWritableStream } from '../enum/server-type.interface'
-import { grpcSimpleHandler, grpcStreamHandler, ProtoLoader, ServiceMethodType } from '@142vip/grpc'
+import { GrpcProtoLoader, grpcSimpleHandler, grpcStreamHandler, ServiceMethodType } from '@142vip/grpc'
 import { Server, ServerCredentials } from '@grpc/grpc-js'
 import {
   GRPC_SERVER_METHOD_NAME,
@@ -194,7 +194,7 @@ export class GrpcServer {
     if (this.isCheckHealth) {
       return
     }
-    const healthProtoLoader = new ProtoLoader(healthProto)
+    const healthProtoLoader = new GrpcProtoLoader(healthProto)
     // 添加健康检查
     const healthServiceDef = healthProtoLoader.getServerServiceDefinition(healthProtoServicePath)
 

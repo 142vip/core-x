@@ -2,8 +2,8 @@ import type { ServiceClient } from '@grpc/grpc-js/build/src/make-client'
 
 import type { GrpcConnectURI, UntypedMethodImplementation } from './enum/grpc.interface'
 import { GrpcClient } from './core/grpc-client'
+import { GrpcProtoLoader } from './core/grpc-proto-loader'
 import { GrpcServer } from './core/grpc-server'
-import { ProtoLoader } from './core/proto-loader'
 import {
   clientStreamToServer,
   clientStreamToServerStream,
@@ -17,7 +17,7 @@ import { exampleProto, exampleProtoServicePath } from './utils/proto.util'
  */
 export class GrpcExampleServerManager {
   private readonly grpcServer: GrpcServer
-  private readonly exampleProtoLoader = new ProtoLoader(exampleProto)
+  private readonly exampleProtoLoader = new GrpcProtoLoader(exampleProto)
 
   constructor() {
     this.grpcServer = new GrpcServer()
