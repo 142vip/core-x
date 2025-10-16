@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.6 (2025-10-16)
+
+### ✨ Features
+
+- 跑通客户端调用逻辑，补充单元测试 &nbsp;-&nbsp; by **142vip.cn** in https://github.com/142vip/core-x/issues/680 [<samp>(04e88)</samp>](https://github.com/142vip/core-x/commit/04e88c2)
+- 补充单元测试用例，优化插件加载模式，避免端口冲突 &nbsp;-&nbsp; by **142vip.cn** in https://github.com/142vip/core-x/issues/691 [<samp>(447f5)</samp>](https://github.com/142vip/core-x/commit/447f55e)
+- 基于`sendGrpcRequest`工具函数，简化客户端单元测试逻辑 &nbsp;-&nbsp; by **142vip.cn** in https://github.com/142vip/core-x/issues/694 [<samp>(cd887)</samp>](https://github.com/142vip/core-x/commit/cd8870c)
+
+**Release New Version v0.0.1-alpha.6 [👉 View New Package On NPM](https://www.npmjs.com/package/egg-demo)**
+
 ## v0.0.1-alpha.5 (2025-09-28)
 
 ### ✨ Features
