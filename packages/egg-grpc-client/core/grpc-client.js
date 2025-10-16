@@ -14,6 +14,7 @@ function createEggGrpcClientInstance(pluginConfig, app) {
   const grpcClient = new GrpcClient(connectUri)
   const protoLoader = new ProtoLoader(protoPaths, loaderOptions)
   const servicePaths = protoLoader.getServicePaths()
+
   // 加载proto
   for (const servicePath of servicePaths) {
     const serviceClientConstructor = protoLoader.getClientServiceConstructor(servicePath)
@@ -29,7 +30,6 @@ function createEggGrpcClientInstance(pluginConfig, app) {
 
   // TODO 考虑将grpcClient实例挂载ctx上
 
-  // grpc客户端实例
   return grpcClient
 }
 
