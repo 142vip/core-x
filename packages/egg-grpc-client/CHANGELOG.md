@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.4 (2025-10-16)
+
+### 📖 Documentation
+
+- 补充使用说明文档，增加调用示例 &nbsp;-&nbsp; by **142vip.cn** in https://github.com/142vip/core-x/issues/693 [<samp>(6dff2)</samp>](https://github.com/142vip/core-x/commit/6dff276)
+
+**Release New Version v0.0.1-alpha.4 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/egg-grpc-client)**
+
 ## v0.0.1-alpha.3 (2025-09-25)
 
 ### ✨ Features

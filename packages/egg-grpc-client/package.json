@@ -1,6 +1,6 @@
 {
   "name": "@142vip/egg-grpc-client",
-  "version": "0.0.1-alpha.3",
+  "version": "0.0.1-alpha.4",
   "private": false,
   "description": "Egg.js框架下使用grpc的插件，简化grpc客户端配置",
   "author": "mmdapl <mmdapl@163.com>",
