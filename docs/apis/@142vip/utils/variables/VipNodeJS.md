@@ -1,0 +1,467 @@
+[API 参考](../../../index.md) / [@142vip/utils](../index.md) / VipNodeJS
+
+# Variable: VipNodeJS
+
+> `const` **VipNodeJS**: `object`
+
+Defined in: [packages/utils/src/core/nodejs.ts:284](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/core/nodejs.ts#L284)
+
+## Type Declaration
+
+### existErrorProcess()
+
+> **existErrorProcess**: () => `void`
+
+异常退出进程，错误码为1
+
+#### Returns
+
+`void`
+
+### existPath()
+
+> **existPath**: (`path`) => `boolean`
+
+路径是否存在
+
+#### Parameters
+
+##### path
+
+`PathLike`
+
+#### Returns
+
+`boolean`
+
+### existSuccessProcess()
+
+> **existSuccessProcess**: () => `void`
+
+正常退出进程，退出码为0，异常无法捕获
+
+#### Returns
+
+`void`
+
+### exitProcess()
+
+> **exitProcess**: (`exitCode?`) => `void`
+
+进程退出
+
+#### Parameters
+
+##### exitCode?
+
+`number`
+
+#### Returns
+
+`void`
+
+### getCPUArch()
+
+> **getCPUArch**: () => `Architecture`
+
+CPU 架构
+
+#### Returns
+
+`Architecture`
+
+### getEnv()
+
+> **getEnv**: () => `ProcessEnv`
+
+获取环境变量
+
+#### Returns
+
+`ProcessEnv`
+
+### getProcess()
+
+> **getProcess**: () => `Process`
+
+#### Returns
+
+`Process`
+
+### getProcessArgv()
+
+> **getProcessArgv**: () => `string`[]
+
+进程参数
+
+#### Returns
+
+`string`[]
+
+### getProcessArgvByIndex()
+
+> **getProcessArgvByIndex**: (`index`) => `null` \| `string`
+
+根据索引获取进程参数
+node process-args.js one two=three four
+Would generate the output:
+0: /usr/local/bin/node
+1: /Users/xxx/work/node/process-args.js
+2: one
+3: two=three
+4: fou
+
+#### Parameters
+
+##### index
+
+`number`
+
+#### Returns
+
+`null` \| `string`
+
+### getProcessCwd()
+
+> **getProcessCwd**: () => `string`
+
+进程工作目录
+
+#### Returns
+
+`string`
+
+### getProcessEnv()
+
+> **getProcessEnv**: (`key`) => `undefined` \| `string`
+
+进程环境变量
+
+#### Parameters
+
+##### key
+
+`string`
+
+#### Returns
+
+`undefined` \| `string`
+
+### getProcessFirstArgv()
+
+> **getProcessFirstArgv**: () => `string`
+
+进程第一个参数
+
+#### Returns
+
+`string`
+
+### getProcessPlatform()
+
+> **getProcessPlatform**: () => `Platform`
+
+进程平台
+
+#### Returns
+
+`Platform`
+
+### getProcessStdin()
+
+> **getProcessStdin**: () => `ReadStream`
+
+#### Returns
+
+`ReadStream`
+
+### getProcessStdout()
+
+> **getProcessStdout**: () => `WriteStream`
+
+#### Returns
+
+`WriteStream`
+
+### getProcessVersions()
+
+> **getProcessVersions**: () => `ProcessVersions`
+
+进程版本信息
+
+#### Returns
+
+`ProcessVersions`
+
+### isBuffer()
+
+> **isBuffer**: (`data`) => `boolean`
+
+判断是否为Buffer类型
+
+#### Parameters
+
+##### data
+
+`object`
+
+输入数据
+
+#### Returns
+
+`boolean`
+
+boolean
+
+### isDirectory()
+
+> **isDirectory**: (`path`) => `boolean`
+
+是否为目录
+
+#### Parameters
+
+##### path
+
+`PathLike`
+
+#### Returns
+
+`boolean`
+
+### isExistDir()
+
+> **isExistDir**: (`name`, `cwd?`) => `boolean`
+
+目录是否存在
+
+#### Parameters
+
+##### name
+
+`string`
+
+##### cwd?
+
+`string`
+
+#### Returns
+
+`boolean`
+
+### isExistFile()
+
+> **isExistFile**: (`name`, `cwd?`) => `boolean`
+
+是否存在文件
+
+#### Parameters
+
+##### name
+
+`string`
+
+##### cwd?
+
+`string`
+
+#### Returns
+
+`boolean`
+
+### mkdirSync()
+
+> **mkdirSync**: (`path`) => `void`
+
+创建目录
+
+#### Parameters
+
+##### path
+
+`PathLike`
+
+目录路径
+
+#### Returns
+
+`void`
+
+### pathDirname()
+
+> **pathDirname**: (`dirPath`) => `string`
+
+#### Parameters
+
+##### dirPath
+
+`string`
+
+#### Returns
+
+`string`
+
+### pathExtname()
+
+> **pathExtname**: (`path`) => `string`
+
+路径扩展名
+
+#### Parameters
+
+##### path
+
+`string`
+
+#### Returns
+
+`string`
+
+### pathJoin()
+
+> **pathJoin**: (...`paths`) => `string`
+
+路径拼接
+- path.join()
+
+#### Parameters
+
+##### paths
+
+...`string`[]
+
+#### Returns
+
+`string`
+
+### pathResolve()
+
+> **pathResolve**: (...`pathSegments`) => `string`
+
+#### Parameters
+
+##### pathSegments
+
+...`string`[]
+
+#### Returns
+
+`string`
+
+### pick()
+
+> **pick**: \<`T`, `K`\>(`obj`, `keys`) => `Pick`\<`T`, `K`\>
+
+#### Type Parameters
+
+##### T
+
+`T`
+
+##### K
+
+`K` *extends* `string` \| `number` \| `symbol`
+
+#### Parameters
+
+##### obj
+
+`T`
+
+##### keys
+
+`K`[]
+
+#### Returns
+
+`Pick`\<`T`, `K`\>
+
+### printStandardNodeDevEnv()
+
+> **printStandardNodeDevEnv**: () => `Promise`\<`void`\>
+
+打印标准的Node开发环境信息
+
+#### Returns
+
+`Promise`\<`void`\>
+
+### readdirSync()
+
+> **readdirSync**: (`path`, `options?`) => `string`[]
+
+读取目录
+
+#### Parameters
+
+##### path
+
+`PathLike`
+
+##### options?
+
+`null` | `BufferEncoding` | \{ `encoding`: BufferEncoding \| null; `recursive?`: `boolean`; `withFileTypes?`: `false`; \}
+
+#### Returns
+
+`string`[]
+
+### readFileToStrByUTF8()
+
+> **readFileToStrByUTF8**: (`filePath`) => `string`
+
+读文件
+
+#### Parameters
+
+##### filePath
+
+`PathLike`
+
+#### Returns
+
+`string`
+
+### setProcessEnv()
+
+> **setProcessEnv**: (`key`, `value`) => `void`
+
+设置当前京城环境变量
+
+#### Parameters
+
+##### key
+
+`string`
+
+键
+
+##### value
+
+`string`
+
+值
+
+#### Returns
+
+`void`
+
+### writeFileByUTF8()
+
+> **writeFileByUTF8**: (`filePath`, `data`) => `void`
+
+写文件
+
+#### Parameters
+
+##### filePath
+
+`PathLike`
+
+##### data
+
+`string` | `ArrayBufferView`\<`ArrayBufferLike`\>
+
+#### Returns
+
+`void`

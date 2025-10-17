@@ -1,0 +1,23 @@
+[API 参考](../../../index.md) / [@142vip/axios](../index.md) / InterceptorType
+
+# Enumeration: InterceptorType
+
+Defined in: [packages/axios/src/core/interceptors.ts:7](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/axios/src/core/interceptors.ts#L7)
+
+拦截器类型
+
+## Enumeration Members
+
+### REQUEST
+
+> **REQUEST**: `"request"`
+
+Defined in: [packages/axios/src/core/interceptors.ts:8](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/axios/src/core/interceptors.ts#L8)
+
+***
+
+### RESPONSE
+
+> **RESPONSE**: `"response"`
+
+Defined in: [packages/axios/src/core/interceptors.ts:9](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/axios/src/core/interceptors.ts#L9)

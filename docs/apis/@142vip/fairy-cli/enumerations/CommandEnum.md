@@ -1,0 +1,95 @@
+[API 参考](../../../index.md) / [@142vip/fairy-cli](../index.md) / CommandEnum
+
+# Enumeration: CommandEnum
+
+Defined in: [fairy-cli/src/enums/command.enum.ts:6](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/fairy-cli/src/enums/command.enum.ts#L6)
+
+fairy-cli 命令枚举
+
+## Enumeration Members
+
+### CHANGELOG
+
+> **CHANGELOG**: `"changelog"`
+
+Defined in: [fairy-cli/src/enums/command.enum.ts:9](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/fairy-cli/src/enums/command.enum.ts#L9)
+
+***
+
+### CLEAN
+
+> **CLEAN**: `"clean"`
+
+Defined in: [fairy-cli/src/enums/command.enum.ts:11](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/fairy-cli/src/enums/command.enum.ts#L11)
+
+***
+
+### COMMIT
+
+> **COMMIT**: `"commit"`
+
+Defined in: [fairy-cli/src/enums/command.enum.ts:17](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/fairy-cli/src/enums/command.enum.ts#L17)
+
+***
+
+### COPYRIGHT
+
+> **COPYRIGHT**: `"copyright"`
+
+Defined in: [fairy-cli/src/enums/command.enum.ts:16](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/fairy-cli/src/enums/command.enum.ts#L16)
+
+***
+
+### DEPLOY
+
+> **DEPLOY**: `"deploy"`
+
+Defined in: [fairy-cli/src/enums/command.enum.ts:13](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/fairy-cli/src/enums/command.enum.ts#L13)
+
+***
+
+### INSTALL
+
+> **INSTALL**: `"install"`
+
+Defined in: [fairy-cli/src/enums/command.enum.ts:14](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/fairy-cli/src/enums/command.enum.ts#L14)
+
+***
+
+### LINT
+
+> **LINT**: `"lint"`
+
+Defined in: [fairy-cli/src/enums/command.enum.ts:12](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/fairy-cli/src/enums/command.enum.ts#L12)
+
+***
+
+### LOGIN
+
+> **LOGIN**: `"login"`
+
+Defined in: [fairy-cli/src/enums/command.enum.ts:7](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/fairy-cli/src/enums/command.enum.ts#L7)
+
+***
+
+### PUBLISH
+
+> **PUBLISH**: `"publish"`
+
+Defined in: [fairy-cli/src/enums/command.enum.ts:10](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/fairy-cli/src/enums/command.enum.ts#L10)
+
+***
+
+### RELEASE
+
+> **RELEASE**: `"release"`
+
+Defined in: [fairy-cli/src/enums/command.enum.ts:8](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/fairy-cli/src/enums/command.enum.ts#L8)
+
+***
+
+### SYNC
+
+> **SYNC**: `"sync"`
+
+Defined in: [fairy-cli/src/enums/command.enum.ts:15](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/fairy-cli/src/enums/command.enum.ts#L15)

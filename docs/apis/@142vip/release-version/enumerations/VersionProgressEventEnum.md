@@ -1,0 +1,39 @@
+[API 参考](../../../index.md) / [@142vip/release-version](../index.md) / VersionProgressEventEnum
+
+# Enumeration: VersionProgressEventEnum
+
+Defined in: [enums/version-process-event.enum.ts:4](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/release-version/src/enums/version-process-event.enum.ts#L4)
+
+指示 `versionBump()` 函数进度的进度事件
+
+## Enumeration Members
+
+### GitCommit
+
+> **GitCommit**: `"git commit"`
+
+Defined in: [enums/version-process-event.enum.ts:5](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/release-version/src/enums/version-process-event.enum.ts#L5)
+
+***
+
+### GitPush
+
+> **GitPush**: `"git push"`
+
+Defined in: [enums/version-process-event.enum.ts:7](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/release-version/src/enums/version-process-event.enum.ts#L7)
+
+***
+
+### GitTag
+
+> **GitTag**: `"git tag"`
+
+Defined in: [enums/version-process-event.enum.ts:6](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/release-version/src/enums/version-process-event.enum.ts#L6)
+
+***
+
+### NpmScript
+
+> **NpmScript**: `"npm script"`
+
+Defined in: [enums/version-process-event.enum.ts:8](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/release-version/src/enums/version-process-event.enum.ts#L8)

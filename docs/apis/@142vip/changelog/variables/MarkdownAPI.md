@@ -1,0 +1,117 @@
+[API 参考](../../../index.md) / [@142vip/changelog](../index.md) / MarkdownAPI
+
+# Variable: MarkdownAPI
+
+> `const` **MarkdownAPI**: `object`
+
+Defined in: [changelog/src/core/markdown.api.ts:191](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/changelog/src/core/markdown.api.ts#L191)
+
+## Type Declaration
+
+### formatSection()
+
+> **formatSection**: (`commits`, `options`) => `string`[]
+
+格式化Section
+
+#### Parameters
+
+##### commits
+
+[`Commit`](../interfaces/Commit.md)[]
+
+##### options
+
+###### baseUrl
+
+`string`
+
+###### capitalize
+
+`boolean`
+
+###### emoji
+
+`boolean`
+
+###### group?
+
+`boolean` \| `"multiple"`
+
+###### repo
+
+`string`
+
+###### scopeMap
+
+`Record`\<`string`, `string`\>
+
+###### scopeName?
+
+`string`
+
+###### sectionName
+
+`string`
+
+#### Returns
+
+`string`[]
+
+### getGithubVersionDescription()
+
+> **getGithubVersionDescription**: (`__namedParameters`) => `string`
+
+#### Parameters
+
+##### \_\_namedParameters
+
+###### baseUrl
+
+`string`
+
+###### fromVersion
+
+`string`
+
+###### repo
+
+`string`
+
+###### toVersion
+
+`string`
+
+#### Returns
+
+`string`
+
+### getNoSignificantChanges()
+
+> **getNoSignificantChanges**: () => `string`
+
+无内容更新
+
+#### Returns
+
+`string`
+
+### getNPMVersionDescription()
+
+> **getNPMVersionDescription**: (`pkgName`, `pkgVersion`) => `string`
+
+获取npm版本描述
+
+#### Parameters
+
+##### pkgName
+
+`string`
+
+##### pkgVersion
+
+`string`
+
+#### Returns
+
+`string`

@@ -1,0 +1,29 @@
+[API 参考](../../../index.md) / [@142vip/changelog](../index.md) / GitCommitMessageType
+
+# Enumeration: GitCommitMessageType
+
+Defined in: [changelog/src/enums/git-commit.interface.ts:13](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/changelog/src/enums/git-commit.interface.ts#L13)
+
+## Enumeration Members
+
+### HASH
+
+> **HASH**: `"hash"`
+
+Defined in: [changelog/src/enums/git-commit.interface.ts:16](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/changelog/src/enums/git-commit.interface.ts#L16)
+
+***
+
+### ISSUE
+
+> **ISSUE**: `"issue"`
+
+Defined in: [changelog/src/enums/git-commit.interface.ts:15](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/changelog/src/enums/git-commit.interface.ts#L15)
+
+***
+
+### PULL\_REQUEST
+
+> **PULL\_REQUEST**: `"pull-request"`
+
+Defined in: [changelog/src/enums/git-commit.interface.ts:14](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/changelog/src/enums/git-commit.interface.ts#L14)

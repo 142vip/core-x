@@ -1,0 +1,23 @@
+[API 参考](../../../index.md) / [@142vip/grpc](../index.md) / ExampleResponseDataType
+
+# Interface: ExampleResponseDataType
+
+Defined in: [example.ts:11](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/example.ts#L11)
+
+响应 数据格式 简单演示
+
+## Properties
+
+### message
+
+> **message**: `string`
+
+Defined in: [example.ts:13](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/example.ts#L13)
+
+***
+
+### methodName
+
+> **methodName**: `string`
+
+Defined in: [example.ts:12](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/example.ts#L12)

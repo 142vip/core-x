@@ -1,0 +1,39 @@
+[API 参考](../../../index.md) / [@142vip/grpc](../index.md) / ServiceMethodType
+
+# Enumeration: ServiceMethodType
+
+Defined in: [enum/grpc.interface.ts:31](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/enum/grpc.interface.ts#L31)
+
+Grpc 服务端方法类型
+
+## Enumeration Members
+
+### BidiStream
+
+> **BidiStream**: `"bidiStream"`
+
+Defined in: [enum/grpc.interface.ts:36](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/enum/grpc.interface.ts#L36)
+
+***
+
+### ClientStream
+
+> **ClientStream**: `"clientStream"`
+
+Defined in: [enum/grpc.interface.ts:34](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/enum/grpc.interface.ts#L34)
+
+***
+
+### ServerStream
+
+> **ServerStream**: `"serverStream"`
+
+Defined in: [enum/grpc.interface.ts:35](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/enum/grpc.interface.ts#L35)
+
+***
+
+### Unary
+
+> **Unary**: `"unary"`
+
+Defined in: [enum/grpc.interface.ts:33](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/enum/grpc.interface.ts#L33)

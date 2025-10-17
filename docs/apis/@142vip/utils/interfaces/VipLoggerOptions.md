@@ -1,0 +1,31 @@
+[API 参考](../../../index.md) / [@142vip/utils](../index.md) / VipLoggerOptions
+
+# Interface: VipLoggerOptions
+
+Defined in: [packages/utils/src/core/logger.ts:11](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/core/logger.ts#L11)
+
+日志对象构造参数
+
+## Properties
+
+### errorColor?
+
+> `optional` **errorColor**: `string`
+
+Defined in: [packages/utils/src/core/logger.ts:14](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/core/logger.ts#L14)
+
+***
+
+### infoColor?
+
+> `optional` **infoColor**: `string`
+
+Defined in: [packages/utils/src/core/logger.ts:12](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/core/logger.ts#L12)
+
+***
+
+### logColor?
+
+> `optional` **logColor**: `string`
+
+Defined in: [packages/utils/src/core/logger.ts:13](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/core/logger.ts#L13)

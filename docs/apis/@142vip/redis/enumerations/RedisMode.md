@@ -1,0 +1,31 @@
+[API 参考](../../../index.md) / [@142vip/redis](../index.md) / RedisMode
+
+# Enumeration: RedisMode
+
+Defined in: [io-redis.ts:10](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/redis/src/io-redis.ts#L10)
+
+io-redis支持的连接模式
+
+## Enumeration Members
+
+### CLUSTER
+
+> **CLUSTER**: `"cluster"`
+
+Defined in: [io-redis.ts:12](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/redis/src/io-redis.ts#L12)
+
+***
+
+### SENTINEL
+
+> **SENTINEL**: `"sentinel"`
+
+Defined in: [io-redis.ts:13](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/redis/src/io-redis.ts#L13)
+
+***
+
+### STANDARD
+
+> **STANDARD**: `"standard"`
+
+Defined in: [io-redis.ts:11](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/redis/src/io-redis.ts#L11)

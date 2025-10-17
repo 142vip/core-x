@@ -1,0 +1,20 @@
+[API 参考](../../../index.md) / [@142vip/eslint-config](../index.md) / defineVipEslintConfig
+
+# Function: defineVipEslintConfig()
+
+> **defineVipEslintConfig**(`options`): `any`
+
+Defined in: [eslint.config.ts:38](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/eslint-config/src/eslint.config.ts#L38)
+
+定义Eslint配置
+参考：https://github.com/antfu/eslint-config
+
+## Parameters
+
+### options
+
+`EslintConfigOptions` = `{}`
+
+## Returns
+
+`any`

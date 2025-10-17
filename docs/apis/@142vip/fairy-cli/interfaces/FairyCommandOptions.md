@@ -1,0 +1,53 @@
+[API 参考](../../../index.md) / [@142vip/fairy-cli](../index.md) / FairyCommandOptions
+
+# Interface: FairyCommandOptions
+
+Defined in: [fairy-cli/src/enums/command.interface.ts:6](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/fairy-cli/src/enums/command.interface.ts#L6)
+
+fairy-cli 命令选项
+
+## Extends
+
+- `Omit`\<[`VipCommanderOptions`](../../utils/interfaces/VipCommanderOptions.md), `"help"`\>
+
+## Properties
+
+### dryRun?
+
+> `optional` **dryRun**: `boolean`
+
+Defined in: [utils/src/pkgs/commander.ts:14](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/pkgs/commander.ts#L14)
+
+试运行
+
+#### Inherited from
+
+`Omit.dryRun`
+
+***
+
+### trace?
+
+> `optional` **trace**: `boolean`
+
+Defined in: [utils/src/pkgs/commander.ts:24](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/pkgs/commander.ts#L24)
+
+是否开启日志追踪模式，打印重要执行日志
+
+#### Inherited from
+
+`Omit.trace`
+
+***
+
+### vip?
+
+> `optional` **vip**: `boolean`
+
+Defined in: [utils/src/pkgs/commander.ts:19](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/pkgs/commander.ts#L19)
+
+142vip 组织专用功能，用户标记是否用于142vip组织的项目
+
+#### Inherited from
+
+`Omit.vip`

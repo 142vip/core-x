@@ -1,0 +1,31 @@
+[API 参考](../../../index.md) / [@142vip/grpc](../index.md) / GrpcConnectURI
+
+# Enumeration: GrpcConnectURI
+
+Defined in: [enum/grpc.interface.ts:22](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/enum/grpc.interface.ts#L22)
+
+Grpc 连接地址
+
+## Enumeration Members
+
+### PORT\_50001
+
+> **PORT\_50001**: `"127.0.0.1:50001"`
+
+Defined in: [enum/grpc.interface.ts:23](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/enum/grpc.interface.ts#L23)
+
+***
+
+### PORT\_50002
+
+> **PORT\_50002**: `"127.0.0.1:50002"`
+
+Defined in: [enum/grpc.interface.ts:24](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/enum/grpc.interface.ts#L24)
+
+***
+
+### PORT\_50003
+
+> **PORT\_50003**: `"127.0.0.1:50003"`
+
+Defined in: [enum/grpc.interface.ts:25](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/enum/grpc.interface.ts#L25)

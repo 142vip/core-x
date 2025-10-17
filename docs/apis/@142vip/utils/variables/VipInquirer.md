@@ -1,0 +1,268 @@
+[API 参考](../../../index.md) / [@142vip/utils](../index.md) / VipInquirer
+
+# Variable: VipInquirer
+
+> `const` **VipInquirer**: `object`
+
+Defined in: [packages/utils/src/pkgs/inquirer.ts:179](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/pkgs/inquirer.ts#L179)
+
+终端交互
+
+## Type Declaration
+
+### handleSimpleSearchSource()
+
+> **handleSimpleSearchSource**: (`sources`) => `SimpleSearchSource`\<`string`\>
+
+搜索源简单处理
+
+#### Parameters
+
+##### sources
+
+`string`[]
+
+#### Returns
+
+`SimpleSearchSource`\<`string`\>
+
+### promptCheckBox()
+
+> **promptCheckBox**: \<`T`\>(`message`, `choices`, `options?`) => `Promise`\<`T`[]\>
+
+终端交互选择，多选
+- https://github.com/SBoudrias/Inquirer.js/tree/main/packages/checkbox
+
+#### Type Parameters
+
+##### T
+
+`T` *extends* `string`
+
+#### Parameters
+
+##### message
+
+`string`
+
+##### choices
+
+`string`[] | `VipInquirerChoiceList`\<`T`\>
+
+##### options?
+
+`VipInquirerOptions`
+
+#### Returns
+
+`Promise`\<`T`[]\>
+
+### promptConfirm()
+
+> **promptConfirm**: (`message`, `defaultValue?`) => `Promise`\<`boolean`\>
+
+终端交互确认，确认框，可配置默认值
+
+#### Parameters
+
+##### message
+
+`string`
+
+##### defaultValue?
+
+`boolean`
+
+#### Returns
+
+`Promise`\<`boolean`\>
+
+### promptConfirmWithSuccessExit()
+
+> **promptConfirmWithSuccessExit**: (`message`, `__namedParameters`) => `Promise`\<`void`\>
+
+终端交互确认，支持安全退出、自定义信息
+
+#### Parameters
+
+##### message
+
+`string`
+
+##### \_\_namedParameters
+
+###### defaultValue?
+
+`boolean`
+
+###### exitMsg?
+
+`string`
+
+#### Returns
+
+`Promise`\<`void`\>
+
+### promptInput()
+
+> **promptInput**: (`message`, `defaultValue?`) => `Promise`\<`string`\>
+
+终端交互输入，输入框，可选
+- https://github.com/SBoudrias/Inquirer.js/tree/main/packages/input
+
+#### Parameters
+
+##### message
+
+`string`
+
+##### defaultValue?
+
+`string`
+
+#### Returns
+
+`Promise`\<`string`\>
+
+### promptInputRequired()
+
+> **promptInputRequired**: (`message`) => `Promise`\<`string`\>
+
+终端交互输入，输入框，必填
+- https://github.com/SBoudrias/Inquirer.js/tree/main/packages/input
+
+#### Parameters
+
+##### message
+
+`string`
+
+#### Returns
+
+`Promise`\<`string`\>
+
+### promptList()
+
+> **promptList**: \<`T`\>(`message`, `choices`) => `Promise`\<`T`\>
+
+终端交互选择，单选
+
+#### Type Parameters
+
+##### T
+
+`T` *extends* `string`
+
+#### Parameters
+
+##### message
+
+`string`
+
+##### choices
+
+`VipInquirerChoiceList`\<`T`\>
+
+#### Returns
+
+`Promise`\<`T`\>
+
+### promptNumber()
+
+> **promptNumber**: (`message`, `defaultValue?`) => `Promise`\<`undefined` \| `number`\>
+
+输入框，只输入数字
+- https://github.com/SBoudrias/Inquirer.js/tree/main/packages/number
+
+#### Parameters
+
+##### message
+
+`string`
+
+##### defaultValue?
+
+`number`
+
+#### Returns
+
+`Promise`\<`undefined` \| `number`\>
+
+### promptPassword()
+
+> **promptPassword**: (`message`) => `Promise`\<`string`\>
+
+输入框，隐藏输入
+- https://github.com/SBoudrias/Inquirer.js/tree/main/packages/password
+
+#### Parameters
+
+##### message
+
+`string`
+
+#### Returns
+
+`Promise`\<`string`\>
+
+### promptSearch()
+
+> **promptSearch**: \<`T`\>(`message`, `source`, `pageSize?`) => `Promise`\<`T`\>
+
+搜索框
+- https://github.com/SBoudrias/Inquirer.js/tree/main/packages/search
+
+#### Type Parameters
+
+##### T
+
+`T` *extends* `string`
+
+#### Parameters
+
+##### message
+
+`string`
+
+##### source
+
+`SearchSource`\<`T`\>
+
+##### pageSize?
+
+`number`
+
+#### Returns
+
+`Promise`\<`T`\>
+
+### promptSelect()
+
+> **promptSelect**: \<`T`\>(`message`, `choices`, `options?`) => `Promise`\<`T`\>
+
+选择框，必选选择框
+- https://github.com/SBoudrias/Inquirer.js/tree/main/packages/select
+
+#### Type Parameters
+
+##### T
+
+`T` *extends* `string`
+
+#### Parameters
+
+##### message
+
+`string`
+
+##### choices
+
+`string`[] | `VipInquirerChoiceList`\<`T`\>
+
+##### options?
+
+`VipInquirerOptions`
+
+#### Returns
+
+`Promise`\<`T`\>

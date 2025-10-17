@@ -1,0 +1,103 @@
+[API 参考](../../../index.md) / [@142vip/utils](../index.md) / ProcessExitCodeEnum
+
+# Enumeration: ProcessExitCodeEnum
+
+Defined in: [packages/utils/src/enums/exit-code.enum.ts:5](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/enums/exit-code.enum.ts#L5)
+
+CLI exit codes.
+
+## See
+
+https://nodejs.org/api/process.html#process_exit_codes
+
+## Enumeration Members
+
+### ConfigError
+
+> **ConfigError**: `7`
+
+Defined in: [packages/utils/src/enums/exit-code.enum.ts:19](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/enums/exit-code.enum.ts#L19)
+
+***
+
+### DependencyError
+
+> **DependencyError**: `8`
+
+Defined in: [packages/utils/src/enums/exit-code.enum.ts:20](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/enums/exit-code.enum.ts#L20)
+
+***
+
+### FatalError
+
+> **FatalError**: `1`
+
+Defined in: [packages/utils/src/enums/exit-code.enum.ts:13](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/enums/exit-code.enum.ts#L13)
+
+程序异常退出
+
+***
+
+### InternalError
+
+> **InternalError**: `4`
+
+Defined in: [packages/utils/src/enums/exit-code.enum.ts:16](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/enums/exit-code.enum.ts#L16)
+
+***
+
+### InvalidArgument
+
+> **InvalidArgument**: `9`
+
+Defined in: [packages/utils/src/enums/exit-code.enum.ts:21](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/enums/exit-code.enum.ts#L21)
+
+***
+
+### IOError
+
+> **IOError**: `5`
+
+Defined in: [packages/utils/src/enums/exit-code.enum.ts:17](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/enums/exit-code.enum.ts#L17)
+
+***
+
+### ParseError
+
+> **ParseError**: `3`
+
+Defined in: [packages/utils/src/enums/exit-code.enum.ts:15](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/enums/exit-code.enum.ts#L15)
+
+***
+
+### PermissionError
+
+> **PermissionError**: `6`
+
+Defined in: [packages/utils/src/enums/exit-code.enum.ts:18](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/enums/exit-code.enum.ts#L18)
+
+***
+
+### SUCCESS
+
+> **SUCCESS**: `0`
+
+Defined in: [packages/utils/src/enums/exit-code.enum.ts:9](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/enums/exit-code.enum.ts#L9)
+
+正常退出
+
+***
+
+### TimeoutError
+
+> **TimeoutError**: `10`
+
+Defined in: [packages/utils/src/enums/exit-code.enum.ts:22](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/enums/exit-code.enum.ts#L22)
+
+***
+
+### UsageError
+
+> **UsageError**: `2`
+
+Defined in: [packages/utils/src/enums/exit-code.enum.ts:14](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/enums/exit-code.enum.ts#L14)

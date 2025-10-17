@@ -1,0 +1,303 @@
+[API 参考](../../../index.md) / [@142vip/utils](../index.md) / VipGit
+
+# Variable: VipGit
+
+> `const` **VipGit**: `object`
+
+Defined in: [packages/utils/src/core/git.ts:252](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/core/git.ts#L252)
+
+Git业务相关
+
+## Type Declaration
+
+### convertEmoji()
+
+> **convertEmoji**: (`content`, `withSpace?`) => `string`
+
+git emoji表情转换
+参考：https://www.npmjs.com/package/convert-gitmoji
+
+#### Parameters
+
+##### content
+
+`string`
+
+##### withSpace?
+
+`boolean` | `"leading"` | `"trailing"` | `"both"`
+
+#### Returns
+
+`string`
+
+### execCommit()
+
+> **execCommit**: (`args`) => `void`
+
+提交操作
+
+#### Parameters
+
+##### args
+
+`string`[]
+
+#### Returns
+
+`void`
+
+### execPush()
+
+> **execPush**: (`args`) => `void`
+
+推送操作
+- 推送分支
+- 推送tag标签  --tags
+
+#### Parameters
+
+##### args
+
+`string`[]
+
+#### Returns
+
+`void`
+
+### execTag()
+
+> **execTag**: (`args`) => `void`
+
+标签操作
+
+#### Parameters
+
+##### args
+
+`string`[]
+
+#### Returns
+
+`void`
+
+### getCommitFirstLineMsg()
+
+> **getCommitFirstLineMsg**: () => `string`
+
+获取commit信息中的第一行内容
+- 去除空行
+- 去除换行符
+
+#### Returns
+
+`string`
+
+### getCommitLogs()
+
+> **getCommitLogs**: (`latestTag`, `branch?`) => `string`[]
+
+获取某个分支上的commit日志
+
+#### Parameters
+
+##### latestTag
+
+`string`
+
+##### branch?
+
+`string`
+
+#### Returns
+
+`string`[]
+
+### getCommitTrimMsg()
+
+> **getCommitTrimMsg**: () => `string`
+
+获取commit信息
+- 去除空行
+
+#### Returns
+
+`string`
+
+### getCurrentBranch()
+
+> **getCurrentBranch**: () => `string`
+
+获取当前分支
+
+#### Returns
+
+`string`
+
+### getGitHubRepo()
+
+> **getGitHubRepo**: (`baseUrl`) => `string`
+
+获取github仓库
+
+#### Parameters
+
+##### baseUrl
+
+`string`
+
+#### Returns
+
+`string`
+
+### getLastMatchingTag()
+
+> **getLastMatchingTag**: (`inputTag`) => `undefined` \| `string`
+
+获取最近一次tag标签
+
+#### Parameters
+
+##### inputTag
+
+`string`
+
+#### Returns
+
+`undefined` \| `string`
+
+### getRecentCommit()
+
+> **getRecentCommit**: () => [`GitInfo`](../interfaces/GitInfo.md)
+
+获取最近一次Git提交信息【包含merge信息】
+- 短哈希值
+- 提交信息
+
+#### Returns
+
+[`GitInfo`](../interfaces/GitInfo.md)
+
+### getRecentCommitHash()
+
+> **getRecentCommitHash**: () => `string`
+
+获取最近一次提交的完整哈希值
+
+#### Returns
+
+`string`
+
+### getRecentCommitsByScope()
+
+> **getRecentCommitsByScope**: (`gitScope`) => `string`[]
+
+获取分支最近的一次GitTag标记到Head标记之间的git commit信息
+
+#### Parameters
+
+##### gitScope
+
+`string`
+
+#### Returns
+
+`string`[]
+
+### getRecentCommitShortHash()
+
+> **getRecentCommitShortHash**: () => `string`
+
+获取最近一次提交的短哈希值
+
+#### Returns
+
+`string`
+
+### getRemoteNames()
+
+> **getRemoteNames**: () => `string`[]
+
+列出所有的remote信息
+
+#### Returns
+
+`string`[]
+
+### getTagInHead()
+
+> **getTagInHead**: () => `null` \| `string`
+
+获取指向当前提交（HEAD）的所有标签
+
+#### Returns
+
+`null` \| `string`
+
+### getTags()
+
+> **getTags**: () => `string`[]
+
+获取所有tag标签
+
+#### Returns
+
+`string`[]
+
+### isPrerelease()
+
+> **isPrerelease**: (`version`) => `boolean`
+
+是否预发布
+
+#### Parameters
+
+##### version
+
+`string`
+
+#### Returns
+
+`boolean`
+
+### isRepoShallow()
+
+> **isRepoShallow**: () => `boolean`
+
+判断仓库是否克隆太浅
+
+#### Returns
+
+`boolean`
+
+### parseCommitMsg()
+
+> **parseCommitMsg**: (`message`) => `null` \| [`GitCommit`](../interfaces/GitCommit.md)
+
+解析Git提交信息
+
+#### Parameters
+
+##### message
+
+`string`
+
+#### Returns
+
+`null` \| [`GitCommit`](../interfaces/GitCommit.md)
+
+### validateBranch()
+
+> **validateBranch**: (`allowBranch?`) => `void`
+
+检测当前分支，是否允许操作的分支，默认：main|next|master
+
+#### Parameters
+
+##### allowBranch?
+
+`string` | `string`[]
+
+#### Returns
+
+`void`

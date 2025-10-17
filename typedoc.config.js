@@ -1,6 +1,8 @@
-import { defineVipTypedocConfig } from '@142vip/vitepress'
-
-export default defineVipTypedocConfig({
+/**
+ * 默认配置
+ * - 插件参考：https://typedoc-plugin-markdown.org/plugins
+ */
+export const defaultTypedocConfig = {
   entryPointStrategy: 'packages',
   entryPoints: [
     'packages/axios',
@@ -22,17 +24,5 @@ export default defineVipTypedocConfig({
     'packages/utils',
   ],
   name: 'API 参考',
-  out: 'docs/apis',
-  plugin: [
-    'typedoc-plugin-markdown',
-    // 'typedoc-vitepress-theme',
-    'typedoc-github-wiki-theme',
-  ],
-  // sidebar: {
-  //   autoConfiguration: true,
-  //   format: 'vitepress',
-  //   pretty: false,
-  //   collapsed: true,
-  // },
-  // logLevel: 'Verbose',
-})
+  logLevel: 'Verbose',
+}

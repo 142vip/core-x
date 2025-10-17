@@ -1,0 +1,223 @@
+[API 参考](../../../index.md) / [@142vip/changelog](../index.md) / GithubAPI
+
+# Variable: GithubAPI
+
+> `const` **GithubAPI**: `object`
+
+Defined in: [changelog/src/core/github.api.ts:219](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/changelog/src/core/github.api.ts#L219)
+
+## Type Declaration
+
+### createGithubRelease()
+
+> **createGithubRelease**: (`options`) => `Promise`\<`void`\>
+
+发送github发布
+- https://docs.github.com/en/rest/releases/releases?apiVersion=2022-11-28
+
+#### Parameters
+
+##### options
+
+###### baseUrlApi
+
+`string`
+
+###### content
+
+`string`
+
+###### draft?
+
+`boolean`
+
+###### name
+
+`string`
+
+###### prerelease?
+
+`boolean`
+
+###### repo
+
+`string`
+
+###### tag
+
+`string`
+
+###### token
+
+`string`
+
+#### Returns
+
+`Promise`\<`void`\>
+
+### generateReleaseUrl()
+
+> **generateReleaseUrl**: (`markdown`, `config`) => `string`
+
+生成手动release发布的地址链接
+
+#### Parameters
+
+##### markdown
+
+`string`
+
+##### config
+
+###### baseUrl
+
+`string`
+
+###### name
+
+`string`
+
+###### prerelease
+
+`boolean`
+
+###### repo
+
+`string`
+
+###### to
+
+`string`
+
+#### Returns
+
+`string`
+
+### getAuthorInfo()
+
+> **getAuthorInfo**: (`options`, `info`) => `Promise`\<[`GitAuthorInfo`](../interfaces/GitAuthorInfo.md)\>
+
+#### Parameters
+
+##### options
+
+###### baseUrlApi
+
+`string`
+
+###### repo
+
+`string`
+
+###### token
+
+`string`
+
+##### info
+
+[`GitAuthorInfo`](../interfaces/GitAuthorInfo.md)
+
+#### Returns
+
+`Promise`\<[`GitAuthorInfo`](../interfaces/GitAuthorInfo.md)\>
+
+### getHeaders()
+
+> **getHeaders**: (`token`) => `object`
+
+#### Parameters
+
+##### token
+
+`string`
+
+#### Returns
+
+`object`
+
+##### accept
+
+> **accept**: `string` = `'application/vnd.github.v3+json'`
+
+##### authorization
+
+> **authorization**: `string`
+
+### isExistTag()
+
+> **isExistTag**: (`tag`, `options`) => `Promise`\<`boolean`\>
+
+判断是否有tag
+
+#### Parameters
+
+##### tag
+
+`string`
+
+##### options
+
+###### baseUrlApi
+
+`string`
+
+###### repo
+
+`string`
+
+###### token
+
+`string`
+
+#### Returns
+
+`Promise`\<`boolean`\>
+
+### printReleaseUrl()
+
+> **printReleaseUrl**: (`webUrl`, `success`) => `void`
+
+打印手动发布地址
+- 默认成功输出
+
+#### Parameters
+
+##### webUrl
+
+`string`
+
+##### success
+
+`boolean` = `true`
+
+#### Returns
+
+`void`
+
+### resolveAuthors()
+
+> **resolveAuthors**: (`commits`, `options`) => `Promise`\<[`GitAuthorInfo`](../interfaces/GitAuthorInfo.md)[]\>
+
+#### Parameters
+
+##### commits
+
+[`Commit`](../interfaces/Commit.md)[]
+
+##### options
+
+###### baseUrlApi
+
+`string`
+
+###### repo
+
+`string`
+
+###### token?
+
+`string`
+
+#### Returns
+
+`Promise`\<[`GitAuthorInfo`](../interfaces/GitAuthorInfo.md)[]\>

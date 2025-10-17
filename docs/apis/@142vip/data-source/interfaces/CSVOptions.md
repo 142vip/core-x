@@ -1,0 +1,21 @@
+[API 参考](../../../index.md) / [@142vip/data-source](../index.md) / CSVOptions
+
+# Interface: CSVOptions
+
+Defined in: [packages/data-source/src/core/vip-csv.ts:8](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/core/vip-csv.ts#L8)
+
+## Properties
+
+### encode
+
+> **encode**: `string`
+
+Defined in: [packages/data-source/src/core/vip-csv.ts:11](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/core/vip-csv.ts#L11)
+
+***
+
+### file
+
+> **file**: `Buffer`
+
+Defined in: [packages/data-source/src/core/vip-csv.ts:10](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/core/vip-csv.ts#L10)

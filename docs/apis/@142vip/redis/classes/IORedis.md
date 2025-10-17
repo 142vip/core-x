@@ -1,0 +1,59 @@
+[API 参考](../../../index.md) / [@142vip/redis](../index.md) / IORedis
+
+# Class: IORedis
+
+Defined in: [io-redis.ts:16](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/redis/src/io-redis.ts#L16)
+
+## Constructors
+
+### Constructor
+
+> **new IORedis**(): `IORedis`
+
+#### Returns
+
+`IORedis`
+
+## Methods
+
+### createClient()
+
+> **createClient**(`config`): `Redis`
+
+Defined in: [io-redis.ts:20](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/redis/src/io-redis.ts#L20)
+
+简单&哨兵模式
+
+#### Parameters
+
+##### config
+
+`RedisOptions`
+
+#### Returns
+
+`Redis`
+
+***
+
+### createCluster()
+
+> **createCluster**(`nodes`, `options?`): `Cluster`
+
+Defined in: [io-redis.ts:27](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/redis/src/io-redis.ts#L27)
+
+集群模式
+
+#### Parameters
+
+##### nodes
+
+`ClusterNode`[]
+
+##### options?
+
+`ClusterOptions`
+
+#### Returns
+
+`Cluster`

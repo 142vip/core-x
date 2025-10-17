@@ -1,0 +1,660 @@
+[API 参考](../../../index.md) / [@142vip/axios](../index.md) / VipAxiosInstance
+
+# Interface: VipAxiosInstance()
+
+Defined in: [packages/axios/src/core/axios.factory.ts:11](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/axios/src/core/axios.factory.ts#L11)
+
+VipAxios实例类型
+- 继承自AxiosInstance，添加了自定义方法
+- 提供了清除拦截器的方法
+- 提供了获取默认配置的方法
+
+## Extends
+
+- `AxiosInstance`
+
+## Call Signature
+
+> **VipAxiosInstance**\<`T`, `R`, `D`\>(`config`): `Promise`\<`R`\>
+
+Defined in: [packages/axios/src/core/axios.factory.ts:11](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/axios/src/core/axios.factory.ts#L11)
+
+VipAxios实例类型
+- 继承自AxiosInstance，添加了自定义方法
+- 提供了清除拦截器的方法
+- 提供了获取默认配置的方法
+
+### Type Parameters
+
+#### T
+
+`T` = `any`
+
+#### R
+
+`R` = `AxiosResponse`\<`T`, `any`\>
+
+#### D
+
+`D` = `any`
+
+### Parameters
+
+#### config
+
+`AxiosRequestConfig`\<`D`\>
+
+### Returns
+
+`Promise`\<`R`\>
+
+## Call Signature
+
+> **VipAxiosInstance**\<`T`, `R`, `D`\>(`url`, `config?`): `Promise`\<`R`\>
+
+Defined in: [packages/axios/src/core/axios.factory.ts:11](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/axios/src/core/axios.factory.ts#L11)
+
+VipAxios实例类型
+- 继承自AxiosInstance，添加了自定义方法
+- 提供了清除拦截器的方法
+- 提供了获取默认配置的方法
+
+### Type Parameters
+
+#### T
+
+`T` = `any`
+
+#### R
+
+`R` = `AxiosResponse`\<`T`, `any`\>
+
+#### D
+
+`D` = `any`
+
+### Parameters
+
+#### url
+
+`string`
+
+#### config?
+
+`AxiosRequestConfig`\<`D`\>
+
+### Returns
+
+`Promise`\<`R`\>
+
+## Properties
+
+### clearInterceptor()
+
+> **clearInterceptor**: (`type`) => `void`
+
+Defined in: [packages/axios/src/core/axios.factory.ts:12](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/axios/src/core/axios.factory.ts#L12)
+
+#### Parameters
+
+##### type
+
+[`InterceptorType`](../enumerations/InterceptorType.md)
+
+#### Returns
+
+`void`
+
+***
+
+### defaults
+
+> **defaults**: `Omit`\<`AxiosDefaults`\<`any`\>, `"headers"`\> & `object`
+
+Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:518
+
+#### Type Declaration
+
+##### headers
+
+> **headers**: `HeadersDefaults` & `object`
+
+#### Inherited from
+
+`AxiosInstance.defaults`
+
+***
+
+### getConfig()
+
+> **getConfig**: () => `undefined` \| `CreateAxiosDefaults`\<`any`\>
+
+Defined in: [packages/axios/src/core/axios.factory.ts:13](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/axios/src/core/axios.factory.ts#L13)
+
+#### Returns
+
+`undefined` \| `CreateAxiosDefaults`\<`any`\>
+
+***
+
+### interceptors
+
+> **interceptors**: `object`
+
+Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:495
+
+#### request
+
+> **request**: `AxiosInterceptorManager`\<`InternalAxiosRequestConfig`\<`any`\>\>
+
+#### response
+
+> **response**: `AxiosInterceptorManager`\<`AxiosResponse`\<`any`, `any`\>\>
+
+#### Inherited from
+
+`AxiosInstance.interceptors`
+
+## Methods
+
+### create()
+
+> **create**(`config?`): `AxiosInstance`
+
+Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:517
+
+#### Parameters
+
+##### config?
+
+`CreateAxiosDefaults`\<`any`\>
+
+#### Returns
+
+`AxiosInstance`
+
+#### Inherited from
+
+`AxiosInstance.create`
+
+***
+
+### delete()
+
+> **delete**\<`T`, `R`, `D`\>(`url`, `config?`): `Promise`\<`R`\>
+
+Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:502
+
+#### Type Parameters
+
+##### T
+
+`T` = `any`
+
+##### R
+
+`R` = `AxiosResponse`\<`T`, `any`\>
+
+##### D
+
+`D` = `any`
+
+#### Parameters
+
+##### url
+
+`string`
+
+##### config?
+
+`AxiosRequestConfig`\<`D`\>
+
+#### Returns
+
+`Promise`\<`R`\>
+
+#### Inherited from
+
+`AxiosInstance.delete`
+
+***
+
+### get()
+
+> **get**\<`T`, `R`, `D`\>(`url`, `config?`): `Promise`\<`R`\>
+
+Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:501
+
+#### Type Parameters
+
+##### T
+
+`T` = `any`
+
+##### R
+
+`R` = `AxiosResponse`\<`T`, `any`\>
+
+##### D
+
+`D` = `any`
+
+#### Parameters
+
+##### url
+
+`string`
+
+##### config?
+
+`AxiosRequestConfig`\<`D`\>
+
+#### Returns
+
+`Promise`\<`R`\>
+
+#### Inherited from
+
+`AxiosInstance.get`
+
+***
+
+### getUri()
+
+> **getUri**(`config?`): `string`
+
+Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:499
+
+#### Parameters
+
+##### config?
+
+`AxiosRequestConfig`\<`any`\>
+
+#### Returns
+
+`string`
+
+#### Inherited from
+
+`AxiosInstance.getUri`
+
+***
+
+### head()
+
+> **head**\<`T`, `R`, `D`\>(`url`, `config?`): `Promise`\<`R`\>
+
+Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:503
+
+#### Type Parameters
+
+##### T
+
+`T` = `any`
+
+##### R
+
+`R` = `AxiosResponse`\<`T`, `any`\>
+
+##### D
+
+`D` = `any`
+
+#### Parameters
+
+##### url
+
+`string`
+
+##### config?
+
+`AxiosRequestConfig`\<`D`\>
+
+#### Returns
+
+`Promise`\<`R`\>
+
+#### Inherited from
+
+`AxiosInstance.head`
+
+***
+
+### options()
+
+> **options**\<`T`, `R`, `D`\>(`url`, `config?`): `Promise`\<`R`\>
+
+Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:504
+
+#### Type Parameters
+
+##### T
+
+`T` = `any`
+
+##### R
+
+`R` = `AxiosResponse`\<`T`, `any`\>
+
+##### D
+
+`D` = `any`
+
+#### Parameters
+
+##### url
+
+`string`
+
+##### config?
+
+`AxiosRequestConfig`\<`D`\>
+
+#### Returns
+
+`Promise`\<`R`\>
+
+#### Inherited from
+
+`AxiosInstance.options`
+
+***
+
+### patch()
+
+> **patch**\<`T`, `R`, `D`\>(`url`, `data?`, `config?`): `Promise`\<`R`\>
+
+Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:507
+
+#### Type Parameters
+
+##### T
+
+`T` = `any`
+
+##### R
+
+`R` = `AxiosResponse`\<`T`, `any`\>
+
+##### D
+
+`D` = `any`
+
+#### Parameters
+
+##### url
+
+`string`
+
+##### data?
+
+`D`
+
+##### config?
+
+`AxiosRequestConfig`\<`D`\>
+
+#### Returns
+
+`Promise`\<`R`\>
+
+#### Inherited from
+
+`AxiosInstance.patch`
+
+***
+
+### patchForm()
+
+> **patchForm**\<`T`, `R`, `D`\>(`url`, `data?`, `config?`): `Promise`\<`R`\>
+
+Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:510
+
+#### Type Parameters
+
+##### T
+
+`T` = `any`
+
+##### R
+
+`R` = `AxiosResponse`\<`T`, `any`\>
+
+##### D
+
+`D` = `any`
+
+#### Parameters
+
+##### url
+
+`string`
+
+##### data?
+
+`D`
+
+##### config?
+
+`AxiosRequestConfig`\<`D`\>
+
+#### Returns
+
+`Promise`\<`R`\>
+
+#### Inherited from
+
+`AxiosInstance.patchForm`
+
+***
+
+### post()
+
+> **post**\<`T`, `R`, `D`\>(`url`, `data?`, `config?`): `Promise`\<`R`\>
+
+Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:505
+
+#### Type Parameters
+
+##### T
+
+`T` = `any`
+
+##### R
+
+`R` = `AxiosResponse`\<`T`, `any`\>
+
+##### D
+
+`D` = `any`
+
+#### Parameters
+
+##### url
+
+`string`
+
+##### data?
+
+`D`
+
+##### config?
+
+`AxiosRequestConfig`\<`D`\>
+
+#### Returns
+
+`Promise`\<`R`\>
+
+#### Inherited from
+
+`AxiosInstance.post`
+
+***
+
+### postForm()
+
+> **postForm**\<`T`, `R`, `D`\>(`url`, `data?`, `config?`): `Promise`\<`R`\>
+
+Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:508
+
+#### Type Parameters
+
+##### T
+
+`T` = `any`
+
+##### R
+
+`R` = `AxiosResponse`\<`T`, `any`\>
+
+##### D
+
+`D` = `any`
+
+#### Parameters
+
+##### url
+
+`string`
+
+##### data?
+
+`D`
+
+##### config?
+
+`AxiosRequestConfig`\<`D`\>
+
+#### Returns
+
+`Promise`\<`R`\>
+
+#### Inherited from
+
+`AxiosInstance.postForm`
+
+***
+
+### put()
+
+> **put**\<`T`, `R`, `D`\>(`url`, `data?`, `config?`): `Promise`\<`R`\>
+
+Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:506
+
+#### Type Parameters
+
+##### T
+
+`T` = `any`
+
+##### R
+
+`R` = `AxiosResponse`\<`T`, `any`\>
+
+##### D
+
+`D` = `any`
+
+#### Parameters
+
+##### url
+
+`string`
+
+##### data?
+
+`D`
+
+##### config?
+
+`AxiosRequestConfig`\<`D`\>
+
+#### Returns
+
+`Promise`\<`R`\>
+
+#### Inherited from
+
+`AxiosInstance.put`
+
+***
+
+### putForm()
+
+> **putForm**\<`T`, `R`, `D`\>(`url`, `data?`, `config?`): `Promise`\<`R`\>
+
+Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:509
+
+#### Type Parameters
+
+##### T
+
+`T` = `any`
+
+##### R
+
+`R` = `AxiosResponse`\<`T`, `any`\>
+
+##### D
+
+`D` = `any`
+
+#### Parameters
+
+##### url
+
+`string`
+
+##### data?
+
+`D`
+
+##### config?
+
+`AxiosRequestConfig`\<`D`\>
+
+#### Returns
+
+`Promise`\<`R`\>
+
+#### Inherited from
+
+`AxiosInstance.putForm`
+
+***
+
+### request()
+
+> **request**\<`T`, `R`, `D`\>(`config`): `Promise`\<`R`\>
+
+Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:500
+
+#### Type Parameters
+
+##### T
+
+`T` = `any`
+
+##### R
+
+`R` = `AxiosResponse`\<`T`, `any`\>
+
+##### D
+
+`D` = `any`
+
+#### Parameters
+
+##### config
+
+`AxiosRequestConfig`\<`D`\>
+
+#### Returns
+
+`Promise`\<`R`\>
+
+#### Inherited from
+
+`AxiosInstance.request`

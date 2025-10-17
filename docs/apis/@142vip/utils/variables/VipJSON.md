@@ -1,0 +1,120 @@
+[API 参考](../../../index.md) / [@142vip/utils](../index.md) / VipJSON
+
+# Variable: VipJSON
+
+> `const` **VipJSON**: `object`
+
+Defined in: [packages/utils/src/pkgs/json.ts:68](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/pkgs/json.ts#L68)
+
+处理JSON
+
+## Type Declaration
+
+### clone()
+
+> **clone**: \<`T`\>(`json`) => `T`
+
+json克隆复制
+参考：https://www.npmjs.com/package/klona
+
+#### Type Parameters
+
+##### T
+
+`T`
+
+#### Parameters
+
+##### json
+
+`T`
+
+#### Returns
+
+`T`
+
+### parse()
+
+> **parse**: \<`T`\>(`originData`, `defaultData`) => `T`
+
+解析JSON串
+
+#### Type Parameters
+
+##### T
+
+`T`
+
+#### Parameters
+
+##### originData
+
+`undefined` | `null` | `string`
+
+##### defaultData
+
+`Partial`\<`T`\>
+
+#### Returns
+
+`T`
+
+### readFile()
+
+> **readFile**: (`name`, `cwd`) => `JSONFile`
+
+Reads a JSON file and returns the parsed data.
+
+#### Parameters
+
+##### name
+
+`string`
+
+##### cwd
+
+`string`
+
+#### Returns
+
+`JSONFile`
+
+### stringify()
+
+> **stringify**: (`value`, `replacer?`, `space?`) => `string`
+
+JSON序列化
+
+#### Parameters
+
+##### value
+
+`any`
+
+##### replacer?
+
+(`this`, `key`, `value`) => `any`
+
+##### space?
+
+`string` | `number`
+
+#### Returns
+
+`string`
+
+### writeFile()
+
+> **writeFile**: (`file`) => `void`
+
+Writes the given data to the specified JSON file.
+
+#### Parameters
+
+##### file
+
+`JSONFile`
+
+#### Returns
+
+`void`
