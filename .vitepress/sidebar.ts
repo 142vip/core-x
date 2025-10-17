@@ -109,12 +109,12 @@ async function getAppsPkgJSON(pkgDirName: string): Promise<VipPackageJSON> {
  */
 export async function getCoreProjectData(): Promise<VipProject[]> {
   const coreProjects: VipProject[] = []
-  for (const { items, text } of sidebarConfig) {
+  for (const { items = [], text = '' } of sidebarConfig) {
     // 过滤掉apps下的模块
     if (text?.includes(ProjectId.DEMO)) {
       continue
     }
-    for (const { text: pkgName } of items) {
+    for (const { text: pkgName = '' } of items) {
       const pkgDirName = pkgName.split('@142vip/')[1]
       const basePkg = await getBasePkgJSON(`${pkgDirName}`)
       coreProjects.push({
@@ -156,7 +156,7 @@ export async function getExampleDemoTableData(): Promise<VipProject[]> {
  */
 export function getChangelogsSidebar(): SidebarConfig {
   const changelogsSidebar: SidebarConfig = []
-  for (const { items } of sidebarConfig) {
+  for (const { items = [] } of sidebarConfig) {
     for (const { text: pkgName } of items) {
       // 兼容apps目录
       const pkgDirName = pkgName?.includes('@142vip') ? pkgName.split('@142vip/')[1] : pkgName
@@ -172,15 +172,15 @@ export function getChangelogsSidebar(): SidebarConfig {
 /**
  * 获取xxx-demo 相关左侧导航配置
  */
-export function getDemoSideBarConfig() {
+export function getDemoSideBarConfig(): SidebarConfig {
   const sidebars = getChangelogsSidebar()
-  return sidebars.filter(item => item.text.includes('-demo'))
+  return sidebars.filter(({ text = '' }) => text.includes('-demo'))
 }
 
 /**
  *获取@142vip/xx 相关开源模块左侧导航配置
  */
-export function getOpenSourcePkgSideBarConfig() {
+export function getOpenSourcePkgSideBarConfig(): SidebarConfig {
   const sidebars = getChangelogsSidebar()
-  return sidebars.filter(item => !item.text.includes('-demo'))
+  return sidebars.filter(({ text = '' }) => !text.includes('-demo'))
 }

@@ -170,9 +170,9 @@ jobs:
           pnpm build:docs-proxy
 
       # 编译，typedoc生成api文档
-      - name: Build with Typedoc API
-        run: |
-          pnpm typedoc:api
+      #      - name: Build with Typedoc API
+      #        run: |
+      #          pnpm typedoc:api
 
       # 上传dist文件
       - name: Upload artifact

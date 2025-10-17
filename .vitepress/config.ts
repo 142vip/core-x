@@ -1,5 +1,5 @@
 import { OPEN_SOURCE_ADDRESS } from '@142vip/open-source'
-import { vipDocSite, VipNodeJS, VipPackageJSON } from '@142vip/utils'
+import { vipDocSite, VipJSON, VipNodeJS, VipPackageJSON } from '@142vip/utils'
 import {
   defineVipNavbarConfig,
   defineVipVitepressConfig,
@@ -7,8 +7,15 @@ import {
   getVipThemeConfig,
   zhSearch,
 } from '@142vip/vitepress'
-import typedocSidebar from '../docs/apis/typedoc-sidebar.json'
-import { getDemoSideBarConfig, getOpenSourcePkgSideBarConfig, sidebarConfig } from './sidebar'
+
+import {
+  getDemoSideBarConfig,
+  getOpenSourcePkgSideBarConfig,
+  sidebarConfig,
+} from './sidebar'
+
+// typedoc的侧边栏
+const { data: typedocSidebar } = VipJSON.readFile('typedoc-sidebar.json', VipNodeJS.pathJoin(__dirname, '../docs/apis/'))
 
 // package.json 读取
 const pkg = VipPackageJSON.getPackageJSON<{ description: string }>()
@@ -33,7 +40,7 @@ const navbarConfig = defineVipNavbarConfig([
     link: '/docs/apis/',
   },
   {
-    text: '🏴 󠁬󠁯󠁧󠁿更新记录',
+    text: '🏴 󠁬󠁯󠁧󠁿迭代',
     link: '/changelogs/core-x/changelog.md',
   },
   {
@@ -55,10 +62,7 @@ const navbarConfig = defineVipNavbarConfig([
   },
 ])
 
-/**
- * 所有配置
- */
-export default defineVipVitepressConfig({
+const vitepressConfig: any = defineVipVitepressConfig({
   base: siteBase,
   lang: 'zh-CN',
   title: '@142vip工程化',
@@ -91,7 +95,6 @@ export default defineVipVitepressConfig({
       leftDelimiter: '%{',
       rightDelimiter: '}%',
     },
-
   },
   // 配置主题
   themeConfig: getVipThemeConfig({
@@ -102,24 +105,24 @@ export default defineVipVitepressConfig({
       '/': sidebarConfig,
       '/docs/apis/': {
         text: 'API',
-        items: typedocSidebar,
+        items: [
+          {
+            text: '备用站点',
+            items: [
+              { text: 'API - wiki', link: 'https://github.com/142vip/core-x/wiki' },
+              // 标记为外部链接
+              { text: 'API - typedoc', link: '/apis/', target: '_self' },
+            ],
+          },
+          { text: 'API - 文档', items: typedocSidebar },
+        ],
       },
       '/changelogs/': {
         base: '',
         items: [
-          {
-            text: '@142vip/core-x',
-            link: '/changelogs/core-x/changelog.html',
-          },
-          {
-            text: '✔️ 最佳实践',
-            items: getDemoSideBarConfig(),
-          },
-          {
-            text: '🧰 开源模块',
-            items: getOpenSourcePkgSideBarConfig(),
-          },
-
+          { text: '@142vip/core-x', link: '/changelogs/core-x/changelog.html' },
+          { text: '✔️ 最佳实践', items: getDemoSideBarConfig() },
+          { text: '🧰 开源模块', items: getOpenSourcePkgSideBarConfig() },
         ],
       },
     },
@@ -189,3 +192,8 @@ export default defineVipVitepressConfig({
     ],
   },
 })
+
+/**
+ * 所有配置
+ */
+export default vitepressConfig
