@@ -12,6 +12,7 @@ on:
   push:
     branches:
       - next
+      - feat/test-ci
   workflow_dispatch:
 
 # 设置 GITHUB_TOKEN 的权限，以允许部署到 GitHub Pages
@@ -178,3 +179,23 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  # 部署Wiki
+  deploy-wiki:
+    name: 部署到Github Wiki
+    runs-on: ubuntu-latest
+    # 主库next且执行release更新时执行
+    if: github.repository == '142vip/core-x' && startsWith(github.event.head_commit.message, 'chore(release):')
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Deploy Docs To Wiki
+        uses: SwiftDocOrg/github-wiki-publish-action@v1
+        with:
+          path: docs/apis
+        env:
+          GH_PERSONAL_ACCESS_TOKEN: ${{secrets.TOKEN}}
