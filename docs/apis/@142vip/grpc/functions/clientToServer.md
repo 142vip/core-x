@@ -1,19 +1,19 @@
 [API 参考](../../../index.md) / [@142vip/grpc](../index.md) / clientToServer
 
-# Function: clientToServer()
+# 函数: clientToServer()
 
 > **clientToServer**(`requestData`): `Promise`\<[`ExampleResponseDataType`](../interfaces/ExampleResponseDataType.md)\>
 
-Defined in: [example.ts:79](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/example.ts#L79)
+定义于: [example.ts:79](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/example.ts#L79)
 
 普通一元调用
 
-## Parameters
+## 参数
 
 ### requestData
 
 [`ExampleRequestDataType`](../interfaces/ExampleRequestDataType.md)
 
-## Returns
+## 返回
 
 `Promise`\<[`ExampleResponseDataType`](../interfaces/ExampleResponseDataType.md)\>

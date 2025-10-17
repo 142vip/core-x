@@ -1,18 +1,18 @@
 [API 参考](../../../index.md) / [@142vip/utils](../index.md) / VipYaml
 
-# Variable: VipYaml
+# 变量: VipYaml
 
 > `const` **VipYaml**: `object`
 
-Defined in: [packages/utils/src/pkgs/yaml.ts:3](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/pkgs/yaml.ts#L3)
+定义于: [packages/utils/src/pkgs/yaml.ts:3](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/pkgs/yaml.ts#L3)
 
-## Type Declaration
+## 类型声明
 
 ### load()
 
 > **load**: (`str`, `opts?`) => `unknown`
 
-#### Parameters
+#### 参数
 
 ##### str
 
@@ -22,7 +22,7 @@ Defined in: [packages/utils/src/pkgs/yaml.ts:3](https://github.com/142vip/core-x
 
 `LoadOptions`
 
-#### Returns
+#### 返回
 
 `unknown`
 
@@ -30,11 +30,11 @@ Defined in: [packages/utils/src/pkgs/yaml.ts:3](https://github.com/142vip/core-x
 
 > **loadAll**: \{(`str`, `iterator?`, `opts?`): `unknown`[]; (`str`, `iterator`, `opts?`): `void`; \}
 
-#### Call Signature
+#### 调用签名
 
 > (`str`, `iterator?`, `opts?`): `unknown`[]
 
-##### Parameters
+##### 参数
 
 ###### str
 
@@ -48,15 +48,15 @@ Defined in: [packages/utils/src/pkgs/yaml.ts:3](https://github.com/142vip/core-x
 
 `LoadOptions`
 
-##### Returns
+##### 返回
 
 `unknown`[]
 
-#### Call Signature
+#### 调用签名
 
 > (`str`, `iterator`, `opts?`): `void`
 
-##### Parameters
+##### 参数
 
 ###### str
 
@@ -70,6 +70,6 @@ Defined in: [packages/utils/src/pkgs/yaml.ts:3](https://github.com/142vip/core-x
 
 `LoadOptions`
 
-##### Returns
+##### 返回
 
 `void`

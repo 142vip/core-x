@@ -1,14 +1,14 @@
 [API 参考](../../../index.md) / [@142vip/grpc](../index.md) / getMethodType
 
-# Function: getMethodType()
+# 函数: getMethodType()
 
 > **getMethodType**(`methodName`, `serviceDef`): [`ServiceMethodType`](../enumerations/ServiceMethodType.md)
 
-Defined in: [utils/grpc.util.ts:41](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/utils/grpc.util.ts#L41)
+定义于: [utils/grpc.util.ts:39](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/utils/grpc.util.ts#L39)
 
 获取GRPC方法类型
 
-## Parameters
+## 参数
 
 ### methodName
 
@@ -18,6 +18,6 @@ Defined in: [utils/grpc.util.ts:41](https://github.com/142vip/core-x/blob/15d5bc
 
 `ServiceDefinition`
 
-## Returns
+## 返回
 
 [`ServiceMethodType`](../enumerations/ServiceMethodType.md)

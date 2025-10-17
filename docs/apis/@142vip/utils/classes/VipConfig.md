@@ -1,40 +1,40 @@
 [API 参考](../../../index.md) / [@142vip/utils](../index.md) / VipConfig
 
-# Class: VipConfig
+# 类: VipConfig
 
-Defined in: [packages/utils/src/pkgs/config.ts:8](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/pkgs/config.ts#L8)
+定义于: [packages/utils/src/pkgs/config.ts:8](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/pkgs/config.ts#L8)
 
 配置加载
 
-## Constructors
+## 构造函数
 
-### Constructor
+### 构造函数
 
 > **new VipConfig**(): `VipConfig`
 
-#### Returns
+#### 返回
 
 `VipConfig`
 
-## Methods
+## 方法
 
 ### loadCliConfig()
 
 > **loadCliConfig**\<`T`\>(`configName`, `defaultValue`, `cosmiconfigOptions?`): `T`
 
-Defined in: [packages/utils/src/pkgs/config.ts:14](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/pkgs/config.ts#L14)
+定义于: [packages/utils/src/pkgs/config.ts:14](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/pkgs/config.ts#L14)
 
 加载配置
 - 本地配置，形如：xxx.config.ts
 - 包配置，package.json中的xxx字段
 
-#### Type Parameters
+#### 类型参数
 
 ##### T
 
 `T`
 
-#### Parameters
+#### 参数
 
 ##### configName
 
@@ -48,7 +48,7 @@ Defined in: [packages/utils/src/pkgs/config.ts:14](https://github.com/142vip/cor
 
 `Partial`\<`OptionsSync`\>
 
-#### Returns
+#### 返回
 
 `T`
 
@@ -58,17 +58,17 @@ Defined in: [packages/utils/src/pkgs/config.ts:14](https://github.com/142vip/cor
 
 > **loadConfig**\<`T`\>(`configName`, `cosmiconfigOptions?`): `undefined` \| `T`
 
-Defined in: [packages/utils/src/pkgs/config.ts:27](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/pkgs/config.ts#L27)
+定义于: [packages/utils/src/pkgs/config.ts:27](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/pkgs/config.ts#L27)
 
 加载cli配置
 
-#### Type Parameters
+#### 类型参数
 
 ##### T
 
 `T`
 
-#### Parameters
+#### 参数
 
 ##### configName
 
@@ -78,7 +78,7 @@ Defined in: [packages/utils/src/pkgs/config.ts:27](https://github.com/142vip/cor
 
 `Partial`\<`OptionsSync`\>
 
-#### Returns
+#### 返回
 
 `undefined` \| `T`
 
@@ -88,17 +88,17 @@ Defined in: [packages/utils/src/pkgs/config.ts:27](https://github.com/142vip/cor
 
 > **mergeCommanderConfig**\<`T`\>(`cliConfig`, `commanderConfig`): `T`
 
-Defined in: [packages/utils/src/pkgs/config.ts:43](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/pkgs/config.ts#L43)
+定义于: [packages/utils/src/pkgs/config.ts:43](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/pkgs/config.ts#L43)
 
 合并配置
 
-#### Type Parameters
+#### 类型参数
 
 ##### T
 
 `T`
 
-#### Parameters
+#### 参数
 
 ##### cliConfig
 
@@ -112,6 +112,6 @@ cli自定义配置
 
 用户在cli终端输入的配置
 
-#### Returns
+#### 返回
 
 `T`

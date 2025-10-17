@@ -1,18 +1,18 @@
 [API 参考](../../../index.md) / [@142vip/fairy-cli](../index.md) / CommandEnum
 
-# Enumeration: CommandEnum
+# 枚举: CommandEnum
 
-Defined in: [fairy-cli/src/enums/command.enum.ts:6](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/fairy-cli/src/enums/command.enum.ts#L6)
+定义于: [fairy-cli/src/enums/command.enum.ts:6](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/fairy-cli/src/enums/command.enum.ts#L6)
 
 fairy-cli 命令枚举
 
-## Enumeration Members
+## 枚举成员
 
 ### CHANGELOG
 
 > **CHANGELOG**: `"changelog"`
 
-Defined in: [fairy-cli/src/enums/command.enum.ts:9](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/fairy-cli/src/enums/command.enum.ts#L9)
+定义于: [fairy-cli/src/enums/command.enum.ts:9](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/fairy-cli/src/enums/command.enum.ts#L9)
 
 ***
 
@@ -20,7 +20,7 @@ Defined in: [fairy-cli/src/enums/command.enum.ts:9](https://github.com/142vip/co
 
 > **CLEAN**: `"clean"`
 
-Defined in: [fairy-cli/src/enums/command.enum.ts:11](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/fairy-cli/src/enums/command.enum.ts#L11)
+定义于: [fairy-cli/src/enums/command.enum.ts:11](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/fairy-cli/src/enums/command.enum.ts#L11)
 
 ***
 
@@ -28,7 +28,7 @@ Defined in: [fairy-cli/src/enums/command.enum.ts:11](https://github.com/142vip/c
 
 > **COMMIT**: `"commit"`
 
-Defined in: [fairy-cli/src/enums/command.enum.ts:17](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/fairy-cli/src/enums/command.enum.ts#L17)
+定义于: [fairy-cli/src/enums/command.enum.ts:18](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/fairy-cli/src/enums/command.enum.ts#L18)
 
 ***
 
@@ -36,7 +36,7 @@ Defined in: [fairy-cli/src/enums/command.enum.ts:17](https://github.com/142vip/c
 
 > **COPYRIGHT**: `"copyright"`
 
-Defined in: [fairy-cli/src/enums/command.enum.ts:16](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/fairy-cli/src/enums/command.enum.ts#L16)
+定义于: [fairy-cli/src/enums/command.enum.ts:17](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/fairy-cli/src/enums/command.enum.ts#L17)
 
 ***
 
@@ -44,7 +44,7 @@ Defined in: [fairy-cli/src/enums/command.enum.ts:16](https://github.com/142vip/c
 
 > **DEPLOY**: `"deploy"`
 
-Defined in: [fairy-cli/src/enums/command.enum.ts:13](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/fairy-cli/src/enums/command.enum.ts#L13)
+定义于: [fairy-cli/src/enums/command.enum.ts:13](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/fairy-cli/src/enums/command.enum.ts#L13)
 
 ***
 
@@ -52,7 +52,7 @@ Defined in: [fairy-cli/src/enums/command.enum.ts:13](https://github.com/142vip/c
 
 > **INSTALL**: `"install"`
 
-Defined in: [fairy-cli/src/enums/command.enum.ts:14](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/fairy-cli/src/enums/command.enum.ts#L14)
+定义于: [fairy-cli/src/enums/command.enum.ts:15](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/fairy-cli/src/enums/command.enum.ts#L15)
 
 ***
 
@@ -60,7 +60,7 @@ Defined in: [fairy-cli/src/enums/command.enum.ts:14](https://github.com/142vip/c
 
 > **LINT**: `"lint"`
 
-Defined in: [fairy-cli/src/enums/command.enum.ts:12](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/fairy-cli/src/enums/command.enum.ts#L12)
+定义于: [fairy-cli/src/enums/command.enum.ts:12](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/fairy-cli/src/enums/command.enum.ts#L12)
 
 ***
 
@@ -68,7 +68,7 @@ Defined in: [fairy-cli/src/enums/command.enum.ts:12](https://github.com/142vip/c
 
 > **LOGIN**: `"login"`
 
-Defined in: [fairy-cli/src/enums/command.enum.ts:7](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/fairy-cli/src/enums/command.enum.ts#L7)
+定义于: [fairy-cli/src/enums/command.enum.ts:7](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/fairy-cli/src/enums/command.enum.ts#L7)
 
 ***
 
@@ -76,7 +76,7 @@ Defined in: [fairy-cli/src/enums/command.enum.ts:7](https://github.com/142vip/co
 
 > **PUBLISH**: `"publish"`
 
-Defined in: [fairy-cli/src/enums/command.enum.ts:10](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/fairy-cli/src/enums/command.enum.ts#L10)
+定义于: [fairy-cli/src/enums/command.enum.ts:10](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/fairy-cli/src/enums/command.enum.ts#L10)
 
 ***
 
@@ -84,7 +84,7 @@ Defined in: [fairy-cli/src/enums/command.enum.ts:10](https://github.com/142vip/c
 
 > **RELEASE**: `"release"`
 
-Defined in: [fairy-cli/src/enums/command.enum.ts:8](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/fairy-cli/src/enums/command.enum.ts#L8)
+定义于: [fairy-cli/src/enums/command.enum.ts:8](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/fairy-cli/src/enums/command.enum.ts#L8)
 
 ***
 
@@ -92,4 +92,12 @@ Defined in: [fairy-cli/src/enums/command.enum.ts:8](https://github.com/142vip/co
 
 > **SYNC**: `"sync"`
 
-Defined in: [fairy-cli/src/enums/command.enum.ts:15](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/fairy-cli/src/enums/command.enum.ts#L15)
+定义于: [fairy-cli/src/enums/command.enum.ts:16](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/fairy-cli/src/enums/command.enum.ts#L16)
+
+***
+
+### TURBO
+
+> **TURBO**: `"turbo"`
+
+定义于: [fairy-cli/src/enums/command.enum.ts:14](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/fairy-cli/src/enums/command.enum.ts#L14)

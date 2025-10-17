@@ -1,45 +1,45 @@
 [API 参考](../../../index.md) / [@142vip/data-source](../index.md) / VipIbmDB
 
-# Class: VipIbmDB
+# 类: VipIbmDB
 
-Defined in: [packages/data-source/src/core/sql/vip-ibm-db.ts:15](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/core/sql/vip-ibm-db.ts#L15)
+定义于: [packages/data-source/src/core/sql/vip-ibm-db.ts:15](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/core/sql/vip-ibm-db.ts#L15)
 
 DB2 数据源
 
-## Implements
+## 实现
 
 - `DataSourceConnector`\<[`IbmDBOptions`](../interfaces/IbmDBOptions.md)\>
 
-## Constructors
+## 构造函数
 
-### Constructor
+### 构造函数
 
 > **new VipIbmDB**(): `VipIbmDB`
 
-#### Returns
+#### 返回
 
 `VipIbmDB`
 
-## Methods
+## 方法
 
 ### getConnectionData()
 
 > **getConnectionData**(`options`): `Promise`\<[`DataSourceParseResponse`](../interfaces/DataSourceParseResponse.md)\<`unknown`\>\>
 
-Defined in: [packages/data-source/src/core/sql/vip-ibm-db.ts:19](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/core/sql/vip-ibm-db.ts#L19)
+定义于: [packages/data-source/src/core/sql/vip-ibm-db.ts:19](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/core/sql/vip-ibm-db.ts#L19)
 
 获取连接数据
 
-#### Parameters
+#### 参数
 
 ##### options
 
 [`IbmDBOptions`](../interfaces/IbmDBOptions.md)
 
-#### Returns
+#### 返回
 
 `Promise`\<[`DataSourceParseResponse`](../interfaces/DataSourceParseResponse.md)\<`unknown`\>\>
 
-#### Implementation of
+#### 实现了
 
 `DataSourceConnector.getConnectionData`

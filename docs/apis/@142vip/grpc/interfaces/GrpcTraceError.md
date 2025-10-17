@@ -1,18 +1,18 @@
 [API 参考](../../../index.md) / [@142vip/grpc](../index.md) / GrpcTraceError
 
-# Interface: GrpcTraceError
+# 接口: GrpcTraceError
 
-Defined in: [enum/grpc.interface.ts:54](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/enum/grpc.interface.ts#L54)
+定义于: [enum/grpc.interface.ts:53](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/enum/grpc.interface.ts#L53)
 
 Grpc服务调用，错误信息
 
-## Properties
+## 属性
 
-### code
+### code?
 
-> **code**: `number`
+> `optional` **code**: `number`
 
-Defined in: [enum/grpc.interface.ts:55](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/enum/grpc.interface.ts#L55)
+定义于: [enum/grpc.interface.ts:55](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/enum/grpc.interface.ts#L55)
 
 ***
 
@@ -20,7 +20,7 @@ Defined in: [enum/grpc.interface.ts:55](https://github.com/142vip/core-x/blob/15
 
 > **message**: `string`
 
-Defined in: [enum/grpc.interface.ts:56](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/enum/grpc.interface.ts#L56)
+定义于: [enum/grpc.interface.ts:56](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/enum/grpc.interface.ts#L56)
 
 ***
 
@@ -28,4 +28,4 @@ Defined in: [enum/grpc.interface.ts:56](https://github.com/142vip/core-x/blob/15
 
 > **traceId**: `string`
 
-Defined in: [enum/grpc.interface.ts:57](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/enum/grpc.interface.ts#L57)
+定义于: [enum/grpc.interface.ts:54](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/enum/grpc.interface.ts#L54)

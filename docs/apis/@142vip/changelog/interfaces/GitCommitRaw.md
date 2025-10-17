@@ -1,20 +1,20 @@
 [API 参考](../../../index.md) / [@142vip/changelog](../index.md) / GitCommitRaw
 
-# Interface: GitCommitRaw
+# 接口: GitCommitRaw
 
-Defined in: [changelog/src/enums/git-commit.interface.ts:6](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/changelog/src/enums/git-commit.interface.ts#L6)
+定义于: [changelog/src/enums/git-commit.interface.ts:6](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/git-commit.interface.ts#L6)
 
-## Extended by
+## theme_extended_by
 
 - [`GitCommitRecord`](GitCommitRecord.md)
 
-## Properties
+## 属性
 
 ### author
 
 > **author**: [`GitCommitAuthor`](GitCommitAuthor.md)
 
-Defined in: [changelog/src/enums/git-commit.interface.ts:10](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/changelog/src/enums/git-commit.interface.ts#L10)
+定义于: [changelog/src/enums/git-commit.interface.ts:10](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/git-commit.interface.ts#L10)
 
 ***
 
@@ -22,7 +22,7 @@ Defined in: [changelog/src/enums/git-commit.interface.ts:10](https://github.com/
 
 > **body**: `string`
 
-Defined in: [changelog/src/enums/git-commit.interface.ts:8](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/changelog/src/enums/git-commit.interface.ts#L8)
+定义于: [changelog/src/enums/git-commit.interface.ts:8](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/git-commit.interface.ts#L8)
 
 ***
 
@@ -30,7 +30,7 @@ Defined in: [changelog/src/enums/git-commit.interface.ts:8](https://github.com/1
 
 > **message**: `string`
 
-Defined in: [changelog/src/enums/git-commit.interface.ts:7](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/changelog/src/enums/git-commit.interface.ts#L7)
+定义于: [changelog/src/enums/git-commit.interface.ts:7](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/git-commit.interface.ts#L7)
 
 ***
 
@@ -38,4 +38,4 @@ Defined in: [changelog/src/enums/git-commit.interface.ts:7](https://github.com/1
 
 > **shortHash**: `string`
 
-Defined in: [changelog/src/enums/git-commit.interface.ts:9](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/changelog/src/enums/git-commit.interface.ts#L9)
+定义于: [changelog/src/enums/git-commit.interface.ts:9](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/git-commit.interface.ts#L9)

@@ -1,27 +1,27 @@
 [API 参考](../../../index.md) / [@142vip/release-version](../index.md) / VersionBumpProgress
 
-# Interface: VersionBumpProgress
+# 接口: VersionBumpProgress
 
-Defined in: [enums/version-bump.interface.ts:121](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/release-version/src/enums/version-bump.interface.ts#L121)
+定义于: [enums/version-bump.interface.ts:121](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/release-version/src/enums/version-bump.interface.ts#L121)
 
 Information about the progress of the `versionBump()` function.
 
-## Extends
+## theme_extends
 
 - [`VersionBumpResults`](VersionBumpResults.md)
 
-## Properties
+## 属性
 
 ### commit
 
 > **commit**: `string` \| `false`
 
-Defined in: [enums/version-bump.interface.ts:109](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/release-version/src/enums/version-bump.interface.ts#L109)
+定义于: [enums/version-bump.interface.ts:109](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/release-version/src/enums/version-bump.interface.ts#L109)
 
 用于 git 提交的提交消息，如果未创建 git 提交，则为“false”。
 - 注意：这永远不会是空字符串。 它将始终至少包含新版本号。
 
-#### Inherited from
+#### 继承自
 
 [`VersionBumpResults`](VersionBumpResults.md).[`commit`](VersionBumpResults.md#commit)
 
@@ -31,11 +31,11 @@ Defined in: [enums/version-bump.interface.ts:109](https://github.com/142vip/core
 
 > **currentVersion**: `string`
 
-Defined in: [enums/version-bump.interface.ts:98](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/release-version/src/enums/version-bump.interface.ts#L98)
+定义于: [enums/version-bump.interface.ts:98](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/release-version/src/enums/version-bump.interface.ts#L98)
 
 package.json文件中对应的上一个版本号
 
-#### Inherited from
+#### 继承自
 
 [`VersionBumpResults`](VersionBumpResults.md).[`currentVersion`](VersionBumpResults.md#currentversion)
 
@@ -45,7 +45,7 @@ package.json文件中对应的上一个版本号
 
 > **event**: [`VersionProgressEventEnum`](../enumerations/VersionProgressEventEnum.md)
 
-Defined in: [enums/version-bump.interface.ts:122](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/release-version/src/enums/version-bump.interface.ts#L122)
+定义于: [enums/version-bump.interface.ts:122](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/release-version/src/enums/version-bump.interface.ts#L122)
 
 ***
 
@@ -53,11 +53,11 @@ Defined in: [enums/version-bump.interface.ts:122](https://github.com/142vip/core
 
 > **newVersion**: `string`
 
-Defined in: [enums/version-bump.interface.ts:103](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/release-version/src/enums/version-bump.interface.ts#L103)
+定义于: [enums/version-bump.interface.ts:103](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/release-version/src/enums/version-bump.interface.ts#L103)
 
 发布的新的版本号
 
-#### Inherited from
+#### 继承自
 
 [`VersionBumpResults`](VersionBumpResults.md).[`newVersion`](VersionBumpResults.md#newversion)
 
@@ -67,11 +67,11 @@ Defined in: [enums/version-bump.interface.ts:103](https://github.com/142vip/core
 
 > `optional` **release**: [`VipReleaseType`](../../utils/type-aliases/VipReleaseType.md)
 
-Defined in: [enums/version-bump.interface.ts:93](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/release-version/src/enums/version-bump.interface.ts#L93)
+定义于: [enums/version-bump.interface.ts:93](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/release-version/src/enums/version-bump.interface.ts#L93)
 
 T使用的发布类型，如果使用了自定义版本号，则为 'undefined' .
 
-#### Inherited from
+#### 继承自
 
 [`VersionBumpResults`](VersionBumpResults.md).[`release`](VersionBumpResults.md#release)
 
@@ -81,7 +81,7 @@ T使用的发布类型，如果使用了自定义版本号，则为 'undefined' 
 
 > `optional` **script**: [`VersionHooksEnum`](../enumerations/VersionHooksEnum.md)
 
-Defined in: [enums/version-bump.interface.ts:123](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/release-version/src/enums/version-bump.interface.ts#L123)
+定义于: [enums/version-bump.interface.ts:123](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/release-version/src/enums/version-bump.interface.ts#L123)
 
 ***
 
@@ -89,11 +89,11 @@ Defined in: [enums/version-bump.interface.ts:123](https://github.com/142vip/core
 
 > **tag**: `string` \| `false`
 
-Defined in: [enums/version-bump.interface.ts:115](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/release-version/src/enums/version-bump.interface.ts#L115)
+定义于: [enums/version-bump.interface.ts:115](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/release-version/src/enums/version-bump.interface.ts#L115)
 
 用于 git 标签的标签名称，如果未创建 git 标签，则为 'false'。
 - 注意：这永远不会是空字符串。 它将始终至少包含新版本号。
 
-#### Inherited from
+#### 继承自
 
 [`VersionBumpResults`](VersionBumpResults.md).[`tag`](VersionBumpResults.md#tag)

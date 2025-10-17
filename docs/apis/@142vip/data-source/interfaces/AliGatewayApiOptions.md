@@ -1,22 +1,22 @@
 [API 参考](../../../index.md) / [@142vip/data-source](../index.md) / AliGatewayApiOptions
 
-# Interface: AliGatewayApiOptions
+# 接口: AliGatewayApiOptions
 
-Defined in: [packages/data-source/src/core/apis/vip-ali-gateway-api.ts:13](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/core/apis/vip-ali-gateway-api.ts#L13)
+定义于: [packages/data-source/src/core/apis/vip-ali-gateway-api.ts:13](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/core/apis/vip-ali-gateway-api.ts#L13)
 
-## Extends
+## theme_extends
 
 - `AliGatewayAPIAuth`
 
-## Properties
+## 属性
 
 ### appKey
 
 > **appKey**: `string`
 
-Defined in: [packages/data-source/src/core/apis/vip-ali-gateway-api.ts:9](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/core/apis/vip-ali-gateway-api.ts#L9)
+定义于: [packages/data-source/src/core/apis/vip-ali-gateway-api.ts:9](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/core/apis/vip-ali-gateway-api.ts#L9)
 
-#### Inherited from
+#### 继承自
 
 `AliGatewayAPIAuth.appKey`
 
@@ -26,9 +26,9 @@ Defined in: [packages/data-source/src/core/apis/vip-ali-gateway-api.ts:9](https:
 
 > **appSecret**: `string`
 
-Defined in: [packages/data-source/src/core/apis/vip-ali-gateway-api.ts:10](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/core/apis/vip-ali-gateway-api.ts#L10)
+定义于: [packages/data-source/src/core/apis/vip-ali-gateway-api.ts:10](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/core/apis/vip-ali-gateway-api.ts#L10)
 
-#### Inherited from
+#### 继承自
 
 `AliGatewayAPIAuth.appSecret`
 
@@ -38,7 +38,7 @@ Defined in: [packages/data-source/src/core/apis/vip-ali-gateway-api.ts:10](https
 
 > `optional` **bodyParams**: `Record`\<`string`, `unknown`\>
 
-Defined in: [packages/data-source/src/core/apis/vip-ali-gateway-api.ts:17](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/core/apis/vip-ali-gateway-api.ts#L17)
+定义于: [packages/data-source/src/core/apis/vip-ali-gateway-api.ts:17](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/core/apis/vip-ali-gateway-api.ts#L17)
 
 ***
 
@@ -46,7 +46,7 @@ Defined in: [packages/data-source/src/core/apis/vip-ali-gateway-api.ts:17](https
 
 > `optional` **headerParams**: `Record`\<`string`, `unknown`\>
 
-Defined in: [packages/data-source/src/core/apis/vip-ali-gateway-api.ts:18](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/core/apis/vip-ali-gateway-api.ts#L18)
+定义于: [packages/data-source/src/core/apis/vip-ali-gateway-api.ts:18](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/core/apis/vip-ali-gateway-api.ts#L18)
 
 ***
 
@@ -54,7 +54,7 @@ Defined in: [packages/data-source/src/core/apis/vip-ali-gateway-api.ts:18](https
 
 > **method**: `"post"` \| `"get"` \| `"put"` \| `"delete"`
 
-Defined in: [packages/data-source/src/core/apis/vip-ali-gateway-api.ts:15](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/core/apis/vip-ali-gateway-api.ts#L15)
+定义于: [packages/data-source/src/core/apis/vip-ali-gateway-api.ts:15](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/core/apis/vip-ali-gateway-api.ts#L15)
 
 ***
 
@@ -62,4 +62,4 @@ Defined in: [packages/data-source/src/core/apis/vip-ali-gateway-api.ts:15](https
 
 > **url**: `string`
 
-Defined in: [packages/data-source/src/core/apis/vip-ali-gateway-api.ts:16](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/core/apis/vip-ali-gateway-api.ts#L16)
+定义于: [packages/data-source/src/core/apis/vip-ali-gateway-api.ts:16](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/core/apis/vip-ali-gateway-api.ts#L16)

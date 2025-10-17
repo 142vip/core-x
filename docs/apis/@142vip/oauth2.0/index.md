@@ -2,6 +2,6 @@
 
 # @142vip/oauth2.0
 
-## Classes
+## 类
 
 - [StandardOauthV2](classes/StandardOauthV2.md)

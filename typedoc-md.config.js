@@ -14,5 +14,4 @@ export default defineVipTypedocConfig({
     pretty: false,
     collapsed: true,
   },
-  logLevel: 'Verbose',
 })

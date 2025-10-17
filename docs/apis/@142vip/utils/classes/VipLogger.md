@@ -1,40 +1,40 @@
 [API 参考](../../../index.md) / [@142vip/utils](../index.md) / VipLogger
 
-# Class: VipLogger
+# 类: VipLogger
 
-Defined in: [packages/utils/src/core/logger.ts:22](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/core/logger.ts#L22)
+定义于: [packages/utils/src/core/logger.ts:22](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/core/logger.ts#L22)
 
 日志输出
 - 用于终端
 - 用于基本日志定位
 
-## Constructors
+## 构造函数
 
-### Constructor
+### 构造函数
 
 > **new VipLogger**(`_opts?`): `VipLogger`
 
-Defined in: [packages/utils/src/core/logger.ts:24](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/core/logger.ts#L24)
+定义于: [packages/utils/src/core/logger.ts:24](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/core/logger.ts#L24)
 
-#### Parameters
+#### 参数
 
 ##### \_opts?
 
 [`VipLoggerOptions`](../interfaces/VipLoggerOptions.md)
 
-#### Returns
+#### 返回
 
 `VipLogger`
 
-## Methods
+## 方法
 
 ### error()
 
 > **error**(`msg`, `opts?`): `void`
 
-Defined in: [packages/utils/src/core/logger.ts:38](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/core/logger.ts#L38)
+定义于: [packages/utils/src/core/logger.ts:38](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/core/logger.ts#L38)
 
-#### Parameters
+#### 参数
 
 ##### msg
 
@@ -44,7 +44,7 @@ Defined in: [packages/utils/src/core/logger.ts:38](https://github.com/142vip/cor
 
 [`LoggerOptions`](../interfaces/LoggerOptions.md)
 
-#### Returns
+#### 返回
 
 `void`
 
@@ -54,9 +54,9 @@ Defined in: [packages/utils/src/core/logger.ts:38](https://github.com/142vip/cor
 
 > **log**(`msg`, `opts?`): `void`
 
-Defined in: [packages/utils/src/core/logger.ts:33](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/core/logger.ts#L33)
+定义于: [packages/utils/src/core/logger.ts:33](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/core/logger.ts#L33)
 
-#### Parameters
+#### 参数
 
 ##### msg
 
@@ -66,7 +66,7 @@ Defined in: [packages/utils/src/core/logger.ts:33](https://github.com/142vip/cor
 
 [`LoggerOptions`](../interfaces/LoggerOptions.md)
 
-#### Returns
+#### 返回
 
 `void`
 
@@ -76,17 +76,17 @@ Defined in: [packages/utils/src/core/logger.ts:33](https://github.com/142vip/cor
 
 > **logByBlank**(`message`): `void`
 
-Defined in: [packages/utils/src/core/logger.ts:53](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/core/logger.ts#L53)
+定义于: [packages/utils/src/core/logger.ts:53](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/core/logger.ts#L53)
 
 上下空行输出
 
-#### Parameters
+#### 参数
 
 ##### message
 
 `string`
 
-#### Returns
+#### 返回
 
 `void`
 
@@ -96,11 +96,11 @@ Defined in: [packages/utils/src/core/logger.ts:53](https://github.com/142vip/cor
 
 > **println**(): `void`
 
-Defined in: [packages/utils/src/core/logger.ts:46](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/core/logger.ts#L46)
+定义于: [packages/utils/src/core/logger.ts:46](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/core/logger.ts#L46)
 
 打印空行
 
-#### Returns
+#### 返回
 
 `void`
 
@@ -110,14 +110,14 @@ Defined in: [packages/utils/src/core/logger.ts:46](https://github.com/142vip/cor
 
 > `static` **getInstance**(`opts?`): `VipLogger`
 
-Defined in: [packages/utils/src/core/logger.ts:26](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/core/logger.ts#L26)
+定义于: [packages/utils/src/core/logger.ts:26](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/core/logger.ts#L26)
 
-#### Parameters
+#### 参数
 
 ##### opts?
 
 [`VipLoggerOptions`](../interfaces/VipLoggerOptions.md)
 
-#### Returns
+#### 返回
 
 `VipLogger`

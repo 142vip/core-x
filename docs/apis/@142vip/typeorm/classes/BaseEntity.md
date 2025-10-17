@@ -1,32 +1,32 @@
 [API 参考](../../../index.md) / [@142vip/typeorm](../index.md) / BaseEntity
 
-# Class: BaseEntity
+# 类: BaseEntity
 
-Defined in: [base.entity.ts:6](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/typeorm/src/base.entity.ts#L6)
+定义于: [base.entity.ts:6](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/typeorm/src/base.entity.ts#L6)
 
 基础实体
 
-## Extended by
+## theme_extended_by
 
 - [`BaseEntityWithDeleted`](BaseEntityWithDeleted.md)
 
-## Constructors
+## 构造函数
 
-### Constructor
+### 构造函数
 
 > **new BaseEntity**(): `BaseEntity`
 
-#### Returns
+#### 返回
 
 `BaseEntity`
 
-## Properties
+## 属性
 
 ### createTime
 
 > **createTime**: `Date`
 
-Defined in: [base.entity.ts:18](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/typeorm/src/base.entity.ts#L18)
+定义于: [base.entity.ts:18](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/typeorm/src/base.entity.ts#L18)
 
 ***
 
@@ -34,7 +34,7 @@ Defined in: [base.entity.ts:18](https://github.com/142vip/core-x/blob/15d5bc9ef4
 
 > **id**: `number`
 
-Defined in: [base.entity.ts:13](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/typeorm/src/base.entity.ts#L13)
+定义于: [base.entity.ts:13](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/typeorm/src/base.entity.ts#L13)
 
 自增主键
 
@@ -44,6 +44,6 @@ Defined in: [base.entity.ts:13](https://github.com/142vip/core-x/blob/15d5bc9ef4
 
 > **updateTime**: `Date`
 
-Defined in: [base.entity.ts:26](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/typeorm/src/base.entity.ts#L26)
+定义于: [base.entity.ts:26](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/typeorm/src/base.entity.ts#L26)
 
 更新时间

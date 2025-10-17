@@ -1,25 +1,25 @@
 [API 参考](../../../index.md) / [@142vip/axios](../index.md) / responseInterceptor
 
-# Function: responseInterceptor()
+# 函数: responseInterceptor()
 
 > **responseInterceptor**\<`T`\>(`response`): `T`
 
-Defined in: [packages/axios/src/core/interceptors.ts:22](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/axios/src/core/interceptors.ts#L22)
+定义于: [packages/axios/src/core/interceptors.ts:22](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/core/interceptors.ts#L22)
 
 响应拦截器
 
-## Type Parameters
+## 类型参数
 
 ### T
 
 `T`
 
-## Parameters
+## 参数
 
 ### response
 
 `AxiosResponse`
 
-## Returns
+## 返回
 
 `T`

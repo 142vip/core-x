@@ -1,16 +1,16 @@
 [API 参考](../../../index.md) / [@142vip/utils](../index.md) / VipConsoleLogLevel
 
-# Enumeration: VipConsoleLogLevel
+# 枚举: VipConsoleLogLevel
 
-Defined in: [packages/utils/src/pkgs/console.ts:3](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/pkgs/console.ts#L3)
+定义于: [packages/utils/src/pkgs/console.ts:3](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/pkgs/console.ts#L3)
 
-## Enumeration Members
+## 枚举成员
 
 ### ERROR
 
 > **ERROR**: `"ERROR"`
 
-Defined in: [packages/utils/src/pkgs/console.ts:4](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/pkgs/console.ts#L4)
+定义于: [packages/utils/src/pkgs/console.ts:4](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/pkgs/console.ts#L4)
 
 ***
 
@@ -18,7 +18,7 @@ Defined in: [packages/utils/src/pkgs/console.ts:4](https://github.com/142vip/cor
 
 > **INFO**: `"INFO"`
 
-Defined in: [packages/utils/src/pkgs/console.ts:6](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/pkgs/console.ts#L6)
+定义于: [packages/utils/src/pkgs/console.ts:6](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/pkgs/console.ts#L6)
 
 ***
 
@@ -26,4 +26,4 @@ Defined in: [packages/utils/src/pkgs/console.ts:6](https://github.com/142vip/cor
 
 > **SUCCESS**: `"SUCCESS"`
 
-Defined in: [packages/utils/src/pkgs/console.ts:5](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/pkgs/console.ts#L5)
+定义于: [packages/utils/src/pkgs/console.ts:5](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/pkgs/console.ts#L5)

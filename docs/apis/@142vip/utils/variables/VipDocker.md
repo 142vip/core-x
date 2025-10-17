@@ -1,14 +1,14 @@
 [API 参考](../../../index.md) / [@142vip/utils](../index.md) / VipDocker
 
-# Variable: VipDocker
+# 变量: VipDocker
 
 > `const` **VipDocker**: `object`
 
-Defined in: [packages/utils/src/core/docker.ts:402](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/core/docker.ts#L402)
+定义于: [packages/utils/src/core/docker.ts:402](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/core/docker.ts#L402)
 
 docker工具
 
-## Type Declaration
+## 类型声明
 
 ### buildImage()
 
@@ -18,13 +18,13 @@ docker工具
 - 根据tag标记，推送到远程仓库
 - 推送完成后，删除本地镜像
 
-#### Parameters
+#### 参数
 
 ##### args
 
 `BuildImageDockerOptions`
 
-#### Returns
+#### 返回
 
 `Promise`\<`void`\>
 
@@ -34,13 +34,13 @@ docker工具
 
 创建容器
 
-#### Parameters
+#### 参数
 
 ##### args
 
 `CreateContainerOptions`
 
-#### Returns
+#### 返回
 
 `Promise`\<`void`\>
 
@@ -50,13 +50,13 @@ docker工具
 
 创建网络
 
-#### Parameters
+#### 参数
 
 ##### options
 
 `CreateNetworkOptions`
 
-#### Returns
+#### 返回
 
 `Promise`\<`boolean`\>
 
@@ -66,13 +66,13 @@ docker工具
 
 删除容器
 
-#### Parameters
+#### 参数
 
 ##### containerName
 
 `string`
 
-#### Returns
+#### 返回
 
 `Promise`\<`boolean`\>
 
@@ -82,13 +82,13 @@ docker工具
 
 强制删除容器，同时删除镜像
 
-#### Parameters
+#### 参数
 
 ##### containerName
 
 `string`
 
-#### Returns
+#### 返回
 
 `Promise`\<`boolean`\>
 
@@ -98,13 +98,13 @@ docker工具
 
 删除Docker镜像
 
-#### Parameters
+#### 参数
 
 ##### imageName
 
 `string`
 
-#### Returns
+#### 返回
 
 `Promise`\<[`CommandResponse`](../interfaces/CommandResponse.md)\>
 
@@ -114,7 +114,7 @@ docker工具
 
 删除虚悬镜像
 
-#### Returns
+#### 返回
 
 `Promise`\<[`CommandResponse`](../interfaces/CommandResponse.md)\>
 
@@ -124,13 +124,13 @@ docker工具
 
 基于容器名获取镜像地址
 
-#### Parameters
+#### 参数
 
 ##### containerName
 
 `string`
 
-#### Returns
+#### 返回
 
 `Promise`\<`null` \| `string`\>
 
@@ -140,13 +140,13 @@ docker工具
 
 判断容器是否存在
 
-#### Parameters
+#### 参数
 
 ##### containerName
 
 `string`
 
-#### Returns
+#### 返回
 
 `Promise`\<`boolean`\>
 
@@ -156,13 +156,13 @@ docker工具
 
 是否安装docker
 
-#### Parameters
+#### 参数
 
 ##### args?
 
 `DockerOptions`
 
-#### Returns
+#### 返回
 
 `Promise`\<`boolean`\>
 
@@ -172,13 +172,13 @@ docker工具
 
 是否安装docker-compose
 
-#### Parameters
+#### 参数
 
 ##### args?
 
 `DockerOptions`
 
-#### Returns
+#### 返回
 
 `Promise`\<`boolean`\>
 
@@ -188,13 +188,13 @@ docker工具
 
 判断是否存在镜像
 
-#### Parameters
+#### 参数
 
 ##### imageName
 
 `string`
 
-#### Returns
+#### 返回
 
 `Promise`\<`boolean`\>
 
@@ -204,13 +204,13 @@ docker工具
 
 判断网络是否存在
 
-#### Parameters
+#### 参数
 
 ##### networkName
 
 `string`
 
-#### Returns
+#### 返回
 
 `Promise`\<`boolean`\>
 
@@ -220,7 +220,7 @@ docker工具
 
 查询所有容器
 
-#### Returns
+#### 返回
 
 `Promise`\<`void`\>
 
@@ -230,7 +230,7 @@ docker工具
 
 列出所有正在运行的容器名称
 
-#### Returns
+#### 返回
 
 `Promise`\<`string`[]\>
 
@@ -240,7 +240,7 @@ docker工具
 
 列出所有容器名称、状态
 
-#### Returns
+#### 返回
 
 `Promise`\<`object`[]\>
 
@@ -250,7 +250,7 @@ docker工具
 
 列举出所有的网络名称
 
-#### Returns
+#### 返回
 
 `Promise`\<`string`[]\>
 
@@ -260,7 +260,7 @@ docker工具
 
 列出所有未运行的容器名称
 
-#### Returns
+#### 返回
 
 `Promise`\<`string`[]\>
 
@@ -270,7 +270,7 @@ docker工具
 
 列出虚线镜像
 
-#### Returns
+#### 返回
 
 `Promise`\<`void`\>
 
@@ -280,7 +280,7 @@ docker工具
 
 查看正在运行的容器
 
-#### Returns
+#### 返回
 
 `Promise`\<`void`\>
 
@@ -290,7 +290,7 @@ docker工具
 
 列出所有正在运行的容器名称
 
-#### Returns
+#### 返回
 
 `Promise`\<`string`[]\>
 
@@ -298,13 +298,13 @@ docker工具
 
 > **pullImage**: (`imageAddress`) => `Promise`\<`void`\>
 
-#### Parameters
+#### 参数
 
 ##### imageAddress
 
 `string`
 
-#### Returns
+#### 返回
 
 `Promise`\<`void`\>
 
@@ -314,13 +314,13 @@ docker工具
 
 推送Docker镜像到指定仓库
 
-#### Parameters
+#### 参数
 
 ##### imageName
 
 `string`
 
-#### Returns
+#### 返回
 
 `Promise`\<`void`\>
 
@@ -330,13 +330,13 @@ docker工具
 
 docker命令的通用执行器
 
-#### Parameters
+#### 参数
 
 ##### command
 
 `string`
 
-#### Returns
+#### 返回
 
 `Promise`\<`void`\>
 
@@ -346,12 +346,12 @@ docker命令的通用执行器
 
 用户登录
 
-#### Parameters
+#### 参数
 
 ##### args
 
 `UserLoginDockerOptions`
 
-#### Returns
+#### 返回
 
 `Promise`\<`void`\>

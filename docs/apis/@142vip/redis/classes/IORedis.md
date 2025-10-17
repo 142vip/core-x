@@ -1,36 +1,36 @@
 [API 参考](../../../index.md) / [@142vip/redis](../index.md) / IORedis
 
-# Class: IORedis
+# 类: IORedis
 
-Defined in: [io-redis.ts:16](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/redis/src/io-redis.ts#L16)
+定义于: [io-redis.ts:16](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/redis/src/io-redis.ts#L16)
 
-## Constructors
+## 构造函数
 
-### Constructor
+### 构造函数
 
 > **new IORedis**(): `IORedis`
 
-#### Returns
+#### 返回
 
 `IORedis`
 
-## Methods
+## 方法
 
 ### createClient()
 
 > **createClient**(`config`): `Redis`
 
-Defined in: [io-redis.ts:20](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/redis/src/io-redis.ts#L20)
+定义于: [io-redis.ts:20](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/redis/src/io-redis.ts#L20)
 
 简单&哨兵模式
 
-#### Parameters
+#### 参数
 
 ##### config
 
 `RedisOptions`
 
-#### Returns
+#### 返回
 
 `Redis`
 
@@ -40,11 +40,11 @@ Defined in: [io-redis.ts:20](https://github.com/142vip/core-x/blob/15d5bc9ef4bec
 
 > **createCluster**(`nodes`, `options?`): `Cluster`
 
-Defined in: [io-redis.ts:27](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/redis/src/io-redis.ts#L27)
+定义于: [io-redis.ts:27](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/redis/src/io-redis.ts#L27)
 
 集群模式
 
-#### Parameters
+#### 参数
 
 ##### nodes
 
@@ -54,6 +54,6 @@ Defined in: [io-redis.ts:27](https://github.com/142vip/core-x/blob/15d5bc9ef4bec
 
 `ClusterOptions`
 
-#### Returns
+#### 返回
 
 `Cluster`

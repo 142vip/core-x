@@ -1,28 +1,28 @@
 [API 参考](../../../index.md) / [@142vip/nest-typeorm](../index.md) / TypeormModule
 
-# Class: TypeormModule
+# 类: TypeormModule
 
-Defined in: [typeorm.module.ts:21](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/nest-typeorm/src/core/typeorm.module.ts#L21)
+定义于: [typeorm.module.ts:21](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/nest-typeorm/src/core/typeorm.module.ts#L21)
 
-## Constructors
+## 构造函数
 
-### Constructor
+### 构造函数
 
 > **new TypeormModule**(): `TypeormModule`
 
-#### Returns
+#### 返回
 
 `TypeormModule`
 
-## Methods
+## 方法
 
 ### forFeature()
 
 > `static` **forFeature**(`entitiesOrRepositories`, `token?`): `DynamicModule`
 
-Defined in: [typeorm.module.ts:22](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/nest-typeorm/src/core/typeorm.module.ts#L22)
+定义于: [typeorm.module.ts:22](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/nest-typeorm/src/core/typeorm.module.ts#L22)
 
-#### Parameters
+#### 参数
 
 ##### entitiesOrRepositories
 
@@ -32,7 +32,7 @@ Defined in: [typeorm.module.ts:22](https://github.com/142vip/core-x/blob/15d5bc9
 
 `string`
 
-#### Returns
+#### 返回
 
 `DynamicModule`
 
@@ -42,15 +42,15 @@ Defined in: [typeorm.module.ts:22](https://github.com/142vip/core-x/blob/15d5bc9
 
 > `static` **forRoot**(`options`): `DynamicModule`
 
-Defined in: [typeorm.module.ts:56](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/nest-typeorm/src/core/typeorm.module.ts#L56)
+定义于: [typeorm.module.ts:56](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/nest-typeorm/src/core/typeorm.module.ts#L56)
 
-#### Parameters
+#### 参数
 
 ##### options
 
 `TypeOrmModuleOptions`
 
-#### Returns
+#### 返回
 
 `DynamicModule`
 
@@ -60,14 +60,14 @@ Defined in: [typeorm.module.ts:56](https://github.com/142vip/core-x/blob/15d5bc9
 
 > `static` **forRootAsync**(`options`): `DynamicModule`
 
-Defined in: [typeorm.module.ts:66](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/nest-typeorm/src/core/typeorm.module.ts#L66)
+定义于: [typeorm.module.ts:66](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/nest-typeorm/src/core/typeorm.module.ts#L66)
 
-#### Parameters
+#### 参数
 
 ##### options
 
 `TypeOrmModuleAsyncOptions`
 
-#### Returns
+#### 返回
 
 `DynamicModule`

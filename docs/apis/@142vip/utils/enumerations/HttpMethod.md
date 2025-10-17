@@ -1,19 +1,19 @@
 [API 参考](../../../index.md) / [@142vip/utils](../index.md) / HttpMethod
 
-# Enumeration: HttpMethod
+# 枚举: HttpMethod
 
-Defined in: [packages/utils/src/enums/http.enum.ts:59](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/enums/http.enum.ts#L59)
+定义于: [packages/utils/src/enums/http.enum.ts:59](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/enums/http.enum.ts#L59)
 
 路由类型枚举
 - 请求方法
 
-## Enumeration Members
+## 枚举成员
 
 ### ALL
 
 > **ALL**: `"ALL"`
 
-Defined in: [packages/utils/src/enums/http.enum.ts:67](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/enums/http.enum.ts#L67)
+定义于: [packages/utils/src/enums/http.enum.ts:67](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/enums/http.enum.ts#L67)
 
 ***
 
@@ -21,7 +21,7 @@ Defined in: [packages/utils/src/enums/http.enum.ts:67](https://github.com/142vip
 
 > **DELETE**: `"DELETE"`
 
-Defined in: [packages/utils/src/enums/http.enum.ts:63](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/enums/http.enum.ts#L63)
+定义于: [packages/utils/src/enums/http.enum.ts:63](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/enums/http.enum.ts#L63)
 
 ***
 
@@ -29,7 +29,7 @@ Defined in: [packages/utils/src/enums/http.enum.ts:63](https://github.com/142vip
 
 > **GET**: `"GET"`
 
-Defined in: [packages/utils/src/enums/http.enum.ts:60](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/enums/http.enum.ts#L60)
+定义于: [packages/utils/src/enums/http.enum.ts:60](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/enums/http.enum.ts#L60)
 
 ***
 
@@ -37,7 +37,7 @@ Defined in: [packages/utils/src/enums/http.enum.ts:60](https://github.com/142vip
 
 > **HEAD**: `"HEAD"`
 
-Defined in: [packages/utils/src/enums/http.enum.ts:66](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/enums/http.enum.ts#L66)
+定义于: [packages/utils/src/enums/http.enum.ts:66](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/enums/http.enum.ts#L66)
 
 ***
 
@@ -45,7 +45,7 @@ Defined in: [packages/utils/src/enums/http.enum.ts:66](https://github.com/142vip
 
 > **OPTIONS**: `"OPTIONS"`
 
-Defined in: [packages/utils/src/enums/http.enum.ts:65](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/enums/http.enum.ts#L65)
+定义于: [packages/utils/src/enums/http.enum.ts:65](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/enums/http.enum.ts#L65)
 
 ***
 
@@ -53,7 +53,7 @@ Defined in: [packages/utils/src/enums/http.enum.ts:65](https://github.com/142vip
 
 > **PATCH**: `"PATCH"`
 
-Defined in: [packages/utils/src/enums/http.enum.ts:64](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/enums/http.enum.ts#L64)
+定义于: [packages/utils/src/enums/http.enum.ts:64](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/enums/http.enum.ts#L64)
 
 ***
 
@@ -61,7 +61,7 @@ Defined in: [packages/utils/src/enums/http.enum.ts:64](https://github.com/142vip
 
 > **POST**: `"POST"`
 
-Defined in: [packages/utils/src/enums/http.enum.ts:61](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/enums/http.enum.ts#L61)
+定义于: [packages/utils/src/enums/http.enum.ts:61](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/enums/http.enum.ts#L61)
 
 ***
 
@@ -69,4 +69,4 @@ Defined in: [packages/utils/src/enums/http.enum.ts:61](https://github.com/142vip
 
 > **PUT**: `"PUT"`
 
-Defined in: [packages/utils/src/enums/http.enum.ts:62](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/enums/http.enum.ts#L62)
+定义于: [packages/utils/src/enums/http.enum.ts:62](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/enums/http.enum.ts#L62)

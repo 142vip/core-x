@@ -1,22 +1,22 @@
 [API 参考](../../../index.md) / [@142vip/data-source](../index.md) / DataSourceManager
 
-# Interface: DataSourceManager
+# 接口: DataSourceManager
 
-Defined in: [packages/data-source/src/data-source.manager.ts:5](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/data-source.manager.ts#L5)
+定义于: [packages/data-source/src/data-source.manager.ts:5](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/data-source.manager.ts#L5)
 
 数据源管理器
 
-## Properties
+## 属性
 
 ### getDataBaseNames()
 
 > **getDataBaseNames**: () => `Promise`\<[`DataSourceParseResponse`](DataSourceParseResponse.md)\<`string`[]\>\>
 
-Defined in: [packages/data-source/src/data-source.manager.ts:17](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/data-source.manager.ts#L17)
+定义于: [packages/data-source/src/data-source.manager.ts:17](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/data-source.manager.ts#L17)
 
 获取表名列表
 
-#### Returns
+#### 返回
 
 `Promise`\<[`DataSourceParseResponse`](DataSourceParseResponse.md)\<`string`[]\>\>
 
@@ -26,11 +26,11 @@ Defined in: [packages/data-source/src/data-source.manager.ts:17](https://github.
 
 > **getTableColumns**: (`tableName`, `schema?`) => `Promise`\<[`DataSourceParseResponse`](DataSourceParseResponse.md)\<[`DataSourceColumn`](DataSourceColumn.md)[]\>\>
 
-Defined in: [packages/data-source/src/data-source.manager.ts:25](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/data-source.manager.ts#L25)
+定义于: [packages/data-source/src/data-source.manager.ts:25](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/data-source.manager.ts#L25)
 
 获取表字段列表
 
-#### Parameters
+#### 参数
 
 ##### tableName
 
@@ -40,7 +40,7 @@ Defined in: [packages/data-source/src/data-source.manager.ts:25](https://github.
 
 `string`
 
-#### Returns
+#### 返回
 
 `Promise`\<[`DataSourceParseResponse`](DataSourceParseResponse.md)\<[`DataSourceColumn`](DataSourceColumn.md)[]\>\>
 
@@ -50,11 +50,11 @@ Defined in: [packages/data-source/src/data-source.manager.ts:25](https://github.
 
 > **getTableNames**: () => `Promise`\<[`DataSourceParseResponse`](DataSourceParseResponse.md)\<[`DataSourceTable`](DataSourceTable.md)[]\>\>
 
-Defined in: [packages/data-source/src/data-source.manager.ts:21](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/data-source.manager.ts#L21)
+定义于: [packages/data-source/src/data-source.manager.ts:21](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/data-source.manager.ts#L21)
 
 获取表名列表
 
-#### Returns
+#### 返回
 
 `Promise`\<[`DataSourceParseResponse`](DataSourceParseResponse.md)\<[`DataSourceTable`](DataSourceTable.md)[]\>\>
 
@@ -64,11 +64,11 @@ Defined in: [packages/data-source/src/data-source.manager.ts:21](https://github.
 
 > **parseData**: () => `Promise`\<[`DataSourceParseResponse`](DataSourceParseResponse.md)\<`unknown`\>\>
 
-Defined in: [packages/data-source/src/data-source.manager.ts:9](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/data-source.manager.ts#L9)
+定义于: [packages/data-source/src/data-source.manager.ts:9](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/data-source.manager.ts#L9)
 
 解析数据
 
-#### Returns
+#### 返回
 
 `Promise`\<[`DataSourceParseResponse`](DataSourceParseResponse.md)\<`unknown`\>\>
 
@@ -78,10 +78,10 @@ Defined in: [packages/data-source/src/data-source.manager.ts:9](https://github.c
 
 > **testConnect**: () => `Promise`\<[`DataSourceParseResponse`](DataSourceParseResponse.md)\<`unknown`\>\>
 
-Defined in: [packages/data-source/src/data-source.manager.ts:13](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/data-source.manager.ts#L13)
+定义于: [packages/data-source/src/data-source.manager.ts:13](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/data-source.manager.ts#L13)
 
 测试连接
 
-#### Returns
+#### 返回
 
 `Promise`\<[`DataSourceParseResponse`](DataSourceParseResponse.md)\<`unknown`\>\>

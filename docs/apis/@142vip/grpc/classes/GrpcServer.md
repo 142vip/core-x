@@ -1,34 +1,34 @@
 [API 参考](../../../index.md) / [@142vip/grpc](../index.md) / GrpcServer
 
-# Class: GrpcServer
+# 类: GrpcServer
 
-Defined in: [core/grpc-server.ts:24](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/core/grpc-server.ts#L24)
+定义于: [core/grpc-server.ts:29](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/core/grpc-server.ts#L29)
 
 Grpc 服务端
 
-## Constructors
+## 构造函数
 
-### Constructor
+### 构造函数
 
 > **new GrpcServer**(): `GrpcServer`
 
-Defined in: [core/grpc-server.ts:39](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/core/grpc-server.ts#L39)
+定义于: [core/grpc-server.ts:44](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/core/grpc-server.ts#L44)
 
-#### Returns
+#### 返回
 
 `GrpcServer`
 
-## Methods
+## 方法
 
 ### forceShutdown()
 
 > **forceShutdown**(): `void`
 
-Defined in: [core/grpc-server.ts:103](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/core/grpc-server.ts#L103)
+定义于: [core/grpc-server.ts:108](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/core/grpc-server.ts#L108)
 
 强制关闭连接
 
-#### Returns
+#### 返回
 
 `void`
 
@@ -38,9 +38,9 @@ Defined in: [core/grpc-server.ts:103](https://github.com/142vip/core-x/blob/15d5
 
 > **getConnectInfo**(): [`GrpcConnectInfo`](../interfaces/GrpcConnectInfo.md)[]
 
-Defined in: [core/grpc-server.ts:96](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/core/grpc-server.ts#L96)
+定义于: [core/grpc-server.ts:101](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/core/grpc-server.ts#L101)
 
-#### Returns
+#### 返回
 
 [`GrpcConnectInfo`](../interfaces/GrpcConnectInfo.md)[]
 
@@ -50,11 +50,11 @@ Defined in: [core/grpc-server.ts:96](https://github.com/142vip/core-x/blob/15d5b
 
 > **getConnectUris**(): `string`[]
 
-Defined in: [core/grpc-server.ts:92](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/core/grpc-server.ts#L92)
+定义于: [core/grpc-server.ts:97](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/core/grpc-server.ts#L97)
 
 获取连接地址
 
-#### Returns
+#### 返回
 
 `string`[]
 
@@ -64,17 +64,17 @@ Defined in: [core/grpc-server.ts:92](https://github.com/142vip/core-x/blob/15d5b
 
 > **listen**(`connectUri`): `Promise`\<`number`\>
 
-Defined in: [core/grpc-server.ts:47](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/core/grpc-server.ts#L47)
+定义于: [core/grpc-server.ts:52](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/core/grpc-server.ts#L52)
 
 监听端口，即启动
 
-#### Parameters
+#### 参数
 
 ##### connectUri
 
 `string`
 
-#### Returns
+#### 返回
 
 `Promise`\<`number`\>
 
@@ -84,11 +84,11 @@ Defined in: [core/grpc-server.ts:47](https://github.com/142vip/core-x/blob/15d5b
 
 > **registerService**(`serviceDef`, `methodHandlers`): `void`
 
-Defined in: [core/grpc-server.ts:83](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/core/grpc-server.ts#L83)
+定义于: [core/grpc-server.ts:88](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/core/grpc-server.ts#L88)
 
 添加服务
 
-#### Parameters
+#### 参数
 
 ##### serviceDef
 
@@ -98,7 +98,7 @@ Defined in: [core/grpc-server.ts:83](https://github.com/142vip/core-x/blob/15d5b
 
 [`UntypedMethodImplementation`](../interfaces/UntypedMethodImplementation.md)
 
-#### Returns
+#### 返回
 
 `void`
 
@@ -108,11 +108,11 @@ Defined in: [core/grpc-server.ts:83](https://github.com/142vip/core-x/blob/15d5b
 
 > **setHealthStatus**(`methodName`, `status`): `void`
 
-Defined in: [core/grpc-server.ts:70](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/core/grpc-server.ts#L70)
+定义于: [core/grpc-server.ts:75](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/core/grpc-server.ts#L75)
 
 设置某个方法的健康状况
 
-#### Parameters
+#### 参数
 
 ##### methodName
 
@@ -122,6 +122,6 @@ Defined in: [core/grpc-server.ts:70](https://github.com/142vip/core-x/blob/15d5b
 
 `GrpcHealthStatus`
 
-#### Returns
+#### 返回
 
 `void`

@@ -1,18 +1,18 @@
 [API 参考](../../../index.md) / [@142vip/data-source](../index.md) / ApiQueryConfig
 
-# Interface: ApiQueryConfig
+# 接口: ApiQueryConfig
 
-Defined in: [packages/data-source/src/data-source.interface.ts:46](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/data-source.interface.ts#L46)
+定义于: [packages/data-source/src/data-source.interface.ts:46](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/data-source.interface.ts#L46)
 
 API Query 配置
 
-## Properties
+## 属性
 
 ### body
 
 > **body**: `string`
 
-Defined in: [packages/data-source/src/data-source.interface.ts:49](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/data-source.interface.ts#L49)
+定义于: [packages/data-source/src/data-source.interface.ts:49](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/data-source.interface.ts#L49)
 
 ***
 
@@ -20,7 +20,7 @@ Defined in: [packages/data-source/src/data-source.interface.ts:49](https://githu
 
 > **headers**: `string`
 
-Defined in: [packages/data-source/src/data-source.interface.ts:50](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/data-source.interface.ts#L50)
+定义于: [packages/data-source/src/data-source.interface.ts:50](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/data-source.interface.ts#L50)
 
 ***
 
@@ -28,7 +28,7 @@ Defined in: [packages/data-source/src/data-source.interface.ts:50](https://githu
 
 > **params**: `string`
 
-Defined in: [packages/data-source/src/data-source.interface.ts:48](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/data-source.interface.ts#L48)
+定义于: [packages/data-source/src/data-source.interface.ts:48](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/data-source.interface.ts#L48)
 
 ***
 
@@ -36,4 +36,4 @@ Defined in: [packages/data-source/src/data-source.interface.ts:48](https://githu
 
 > **path**: `string`
 
-Defined in: [packages/data-source/src/data-source.interface.ts:47](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/data-source.interface.ts#L47)
+定义于: [packages/data-source/src/data-source.interface.ts:47](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/data-source.interface.ts#L47)

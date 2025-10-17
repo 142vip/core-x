@@ -1,14 +1,14 @@
 [API 参考](../../../index.md) / [@142vip/utils](../index.md) / VipPackageJSON
 
-# Variable: VipPackageJSON
+# 变量: VipPackageJSON
 
 > `const` **VipPackageJSON**: `object`
 
-Defined in: [packages/utils/src/core/package-json.ts:214](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/core/package-json.ts#L214)
+定义于: [packages/utils/src/core/package-json.ts:214](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/core/package-json.ts#L214)
 
 package.json处理
 
-## Type Declaration
+## 类型声明
 
 ### getCurrentVersion()
 
@@ -16,13 +16,13 @@ package.json处理
 
 读取package.json文件，获取version字段
 
-#### Parameters
+#### 参数
 
 ##### cwd?
 
 `string`
 
-#### Returns
+#### 返回
 
 `null` \| `string`
 
@@ -32,19 +32,19 @@ package.json处理
 
 获取package.json信息
 
-#### Type Parameters
+#### 类型参数
 
 ##### T
 
 `T`
 
-#### Parameters
+#### 参数
 
 ##### cwd?
 
 `string`
 
-#### Returns
+#### 返回
 
 `T` & [`PackageJSONMainFest`](../interfaces/PackageJSONMainFest.md)
 
@@ -54,13 +54,13 @@ package.json处理
 
 获取package.json的路径
 
-#### Parameters
+#### 参数
 
 ##### cwd?
 
 `string`
 
-#### Returns
+#### 返回
 
 `string`
 
@@ -68,13 +68,13 @@ package.json处理
 
 > **getPkgGreenLabel**: (`pkgName`) => `string`
 
-#### Parameters
+#### 参数
 
 ##### pkgName
 
 `string`
 
-#### Returns
+#### 返回
 
 `string`
 
@@ -82,13 +82,13 @@ package.json处理
 
 > **getPkgRedLabel**: (`pkgName`) => `string`
 
-#### Parameters
+#### 参数
 
 ##### pkgName
 
 `string`
 
-#### Returns
+#### 返回
 
 `string`
 
@@ -98,7 +98,7 @@ package.json处理
 
 基于当前版本，生成新的version
 
-#### Parameters
+#### 参数
 
 ##### currentVersion
 
@@ -108,7 +108,7 @@ package.json处理
 
 `ReleaseType`
 
-#### Returns
+#### 返回
 
 `null` \| `string`
 
@@ -120,7 +120,7 @@ package.json处理
 - 优先从package.json中获取version
 - version对应的tag不存在时，再从git记录中获取最新tag
 
-#### Returns
+#### 返回
 
 `null` \| `string`
 
@@ -130,7 +130,7 @@ package.json处理
 
 判断package.json文件中是否存在指定的脚本
 
-#### Parameters
+#### 参数
 
 ##### packageJSON
 
@@ -140,7 +140,7 @@ package.json处理
 
 `string`
 
-#### Returns
+#### 返回
 
 `boolean`
 
@@ -150,13 +150,13 @@ package.json处理
 
 判断package.json是否存在，存在则返回绝对路径
 
-#### Parameters
+#### 参数
 
 ##### cwd?
 
 `string`
 
-#### Returns
+#### 返回
 
 `boolean`
 
@@ -166,13 +166,13 @@ package.json处理
 
 判断package-lock.json是否存在
 
-#### Parameters
+#### 参数
 
 ##### cwd?
 
 `string`
 
-#### Returns
+#### 返回
 
 `boolean`
 
@@ -182,13 +182,13 @@ package.json处理
 
 判断是否存在pnpm-lock.yaml文件
 
-#### Parameters
+#### 参数
 
 ##### cwd?
 
 `string`
 
-#### Returns
+#### 返回
 
 `boolean`
 
@@ -199,13 +199,13 @@ package.json处理
 判断是否为package.json读取的JSON对象
 - name|version | description  必须存在一个
 
-#### Parameters
+#### 参数
 
 ##### packageJSON
 
 [`PackageJSONMainFest`](../interfaces/PackageJSONMainFest.md)
 
-#### Returns
+#### 返回
 
 `boolean`
 
@@ -215,7 +215,7 @@ package.json处理
 
 提供选择框，支持用户自动选择version
 
-#### Parameters
+#### 参数
 
 ##### currentVersion
 
@@ -225,7 +225,7 @@ package.json处理
 
 `string`
 
-#### Returns
+#### 返回
 
 `Promise`\<`string`\>
 
@@ -237,7 +237,7 @@ package.json处理
 - add      增加key、value
 - replace  替换某个key的值
 
-#### Parameters
+#### 参数
 
 ##### json
 
@@ -247,7 +247,7 @@ package.json处理
 
 `string`
 
-#### Returns
+#### 返回
 
 `void`
 
@@ -257,7 +257,7 @@ package.json处理
 
 执行脚本
 
-#### Parameters
+#### 参数
 
 ##### scriptName
 
@@ -267,7 +267,7 @@ package.json处理
 
 `string`
 
-#### Returns
+#### 返回
 
 `Promise`\<`void`\>
 
@@ -277,7 +277,7 @@ package.json处理
 
 更新package.json中的version字段
 
-#### Parameters
+#### 参数
 
 ##### newVersion
 
@@ -287,6 +287,6 @@ package.json处理
 
 `string`
 
-#### Returns
+#### 返回
 
 `void`

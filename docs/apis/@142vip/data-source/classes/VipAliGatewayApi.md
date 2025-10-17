@@ -1,46 +1,46 @@
 [API 参考](../../../index.md) / [@142vip/data-source](../index.md) / VipAliGatewayApi
 
-# Class: VipAliGatewayApi
+# 类: VipAliGatewayApi
 
-Defined in: [packages/data-source/src/core/apis/vip-ali-gateway-api.ts:25](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/core/apis/vip-ali-gateway-api.ts#L25)
+定义于: [packages/data-source/src/core/apis/vip-ali-gateway-api.ts:25](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/core/apis/vip-ali-gateway-api.ts#L25)
 
 阿里云网关API
 参考：https://www.npmjs.com/package/aliyun-api-gateway
 
-## Implements
+## 实现
 
 - `DataSourceConnector`\<[`AliGatewayApiOptions`](../interfaces/AliGatewayApiOptions.md)\>
 
-## Constructors
+## 构造函数
 
-### Constructor
+### 构造函数
 
 > **new VipAliGatewayApi**(): `VipAliGatewayApi`
 
-#### Returns
+#### 返回
 
 `VipAliGatewayApi`
 
-## Methods
+## 方法
 
 ### getConnectionData()
 
 > **getConnectionData**(`params`): `Promise`\<[`DataSourceParseResponse`](../interfaces/DataSourceParseResponse.md)\<`unknown`\>\>
 
-Defined in: [packages/data-source/src/core/apis/vip-ali-gateway-api.ts:29](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/core/apis/vip-ali-gateway-api.ts#L29)
+定义于: [packages/data-source/src/core/apis/vip-ali-gateway-api.ts:29](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/core/apis/vip-ali-gateway-api.ts#L29)
 
 获取连接数据
 
-#### Parameters
+#### 参数
 
 ##### params
 
 [`AliGatewayApiOptions`](../interfaces/AliGatewayApiOptions.md)
 
-#### Returns
+#### 返回
 
 `Promise`\<[`DataSourceParseResponse`](../interfaces/DataSourceParseResponse.md)\<`unknown`\>\>
 
-#### Implementation of
+#### 实现了
 
 `DataSourceConnector.getConnectionData`

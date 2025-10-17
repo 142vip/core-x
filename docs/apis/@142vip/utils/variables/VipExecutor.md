@@ -1,14 +1,14 @@
 [API 参考](../../../index.md) / [@142vip/utils](../index.md) / VipExecutor
 
-# Variable: VipExecutor
+# 变量: VipExecutor
 
 > `const` **VipExecutor**: `object`
 
-Defined in: [packages/utils/src/core/exec.ts:221](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/core/exec.ts#L221)
+定义于: [packages/utils/src/core/exec.ts:221](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/core/exec.ts#L221)
 
 执行器
 
-## Type Declaration
+## 类型声明
 
 ### commandStandardExecutor()
 
@@ -18,13 +18,13 @@ Defined in: [packages/utils/src/core/exec.ts:221](https://github.com/142vip/core
 - 支持打印结果
 - 异步
 
-#### Parameters
+#### 参数
 
 ##### cmd
 
 [`Command`](../type-aliases/Command.md)
 
-#### Returns
+#### 返回
 
 `Promise`\<[`StandardExecutorResponse`](../interfaces/StandardExecutorResponse.md)\>
 
@@ -34,7 +34,7 @@ Defined in: [packages/utils/src/core/exec.ts:221](https://github.com/142vip/core
 
 异步执行命令，并返回结果
 
-#### Parameters
+#### 参数
 
 ##### cmd
 
@@ -44,7 +44,7 @@ Defined in: [packages/utils/src/core/exec.ts:221](https://github.com/142vip/core
 
 `Omit`\<`SpawnOptionsWithoutStdio`, `"stdio"` \| `"cwd"`\>
 
-#### Returns
+#### 返回
 
 `Promise`\<[`CommandResponse`](../interfaces/CommandResponse.md)\>
 
@@ -52,7 +52,7 @@ Defined in: [packages/utils/src/core/exec.ts:221](https://github.com/142vip/core
 
 > **execCommandSync**: (`cmd`, `cwd?`) => `string`
 
-#### Parameters
+#### 参数
 
 ##### cmd
 
@@ -62,7 +62,7 @@ Defined in: [packages/utils/src/core/exec.ts:221](https://github.com/142vip/core
 
 `string`
 
-#### Returns
+#### 返回
 
 `string`
 
@@ -72,13 +72,13 @@ Defined in: [packages/utils/src/core/exec.ts:221](https://github.com/142vip/core
 
 脚本执行器，执行shell命令
 
-#### Parameters
+#### 参数
 
 ##### commands
 
 `string` | [`ShellCommand`](../interfaces/ShellCommand.md) | [`ShellCommand`](../interfaces/ShellCommand.md)[]
 
-#### Returns
+#### 返回
 
 `Promise`\<`void`\>
 
@@ -88,12 +88,12 @@ Defined in: [packages/utils/src/core/exec.ts:221](https://github.com/142vip/core
 
 获取命令执行的trim操作后的结果
 
-#### Parameters
+#### 参数
 
 ##### command
 
 `string`
 
-#### Returns
+#### 返回
 
 `Promise`\<`null` \| `string`\>

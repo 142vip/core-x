@@ -1,7 +1,7 @@
 [API 参考](../../../index.md) / [@142vip/grpc](../index.md) / healthProtoPackageName
 
-# Variable: healthProtoPackageName
+# 变量: healthProtoPackageName
 
 > `const` **healthProtoPackageName**: `string`
 
-Defined in: [utils/proto.util.ts:11](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/utils/proto.util.ts#L11)
+定义于: [utils/proto.util.ts:11](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/utils/proto.util.ts#L11)

@@ -2,11 +2,11 @@
 
 # @142vip/nest-typeorm
 
-## Classes
+## 类
 
 - [BaseDBService](classes/BaseDBService.md)
 - [TypeormModule](classes/TypeormModule.md)
 
-## Functions
+## 函数
 
 - [CustomRepository](functions/CustomRepository.md)

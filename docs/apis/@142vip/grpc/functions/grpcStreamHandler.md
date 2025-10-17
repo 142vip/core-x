@@ -1,14 +1,14 @@
 [API 参考](../../../index.md) / [@142vip/grpc](../index.md) / grpcStreamHandler
 
-# Function: grpcStreamHandler()
+# 函数: grpcStreamHandler()
 
 > **grpcStreamHandler**(`methodType`, `methodFunc`): \<`RequestType`, `ResponseType`\>(`call`, `callback`) => `void` \| \<`RequestType`, `ResponseType`\>(`call`) => `Promise`\<`void`\> \| \<`RequestType`, `ResponseType`\>(`call`) => `void`
 
-Defined in: [core/grpc.handler.ts:45](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/core/grpc.handler.ts#L45)
+定义于: [core/grpc.handler.ts:44](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/core/grpc.handler.ts#L44)
 
 处理GRPC流式调用，返回流对象
 
-## Parameters
+## 参数
 
 ### methodType
 
@@ -18,23 +18,23 @@ Defined in: [core/grpc.handler.ts:45](https://github.com/142vip/core-x/blob/15d5
 
 [`ServiceMethodFuncImpl`](../type-aliases/ServiceMethodFuncImpl.md)
 
-## Returns
+## 返回
 
 \<`RequestType`, `ResponseType`\>(`call`, `callback`) => `void`
 
 客户端流
 
-## Type Parameters
+## 类型参数
 
 ### RequestType
 
-`RequestType` *extends* [`GrpcRequest`](../interfaces/GrpcRequest.md)
+`RequestType`
 
 ### ResponseType
 
 `ResponseType`
 
-## Parameters
+## 参数
 
 ### call
 
@@ -44,7 +44,7 @@ Defined in: [core/grpc.handler.ts:45](https://github.com/142vip/core-x/blob/15d5
 
 `sendUnaryData`\<[`GrpcResponse`](../interfaces/GrpcResponse.md)\<`ResponseType`\>\>
 
-## Returns
+## 返回
 
 `void`
 
@@ -52,23 +52,23 @@ Defined in: [core/grpc.handler.ts:45](https://github.com/142vip/core-x/blob/15d5
 
 服务端流
 
-## Type Parameters
+## 类型参数
 
 ### RequestType
 
-`RequestType` *extends* [`GrpcRequest`](../interfaces/GrpcRequest.md)
+`RequestType`
 
 ### ResponseType
 
 `ResponseType`
 
-## Parameters
+## 参数
 
 ### call
 
 `ServerWritableStream`\<`RequestType`, [`GrpcResponse`](../interfaces/GrpcResponse.md)\<`ResponseType`\>\>
 
-## Returns
+## 返回
 
 `Promise`\<`void`\>
 
@@ -76,22 +76,22 @@ Defined in: [core/grpc.handler.ts:45](https://github.com/142vip/core-x/blob/15d5
 
 客户端、服务端，流式
 
-## Type Parameters
+## 类型参数
 
 ### RequestType
 
-`RequestType` *extends* [`GrpcRequest`](../interfaces/GrpcRequest.md)
+`RequestType`
 
 ### ResponseType
 
 `ResponseType`
 
-## Parameters
+## 参数
 
 ### call
 
 `ServerDuplexStream`\<`RequestType`, [`GrpcResponse`](../interfaces/GrpcResponse.md)\<`ResponseType`\>\>
 
-## Returns
+## 返回
 
 `void`

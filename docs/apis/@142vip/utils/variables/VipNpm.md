@@ -1,12 +1,12 @@
 [API 参考](../../../index.md) / [@142vip/utils](../index.md) / VipNpm
 
-# Variable: VipNpm
+# 变量: VipNpm
 
 > `const` **VipNpm**: `object`
 
-Defined in: [packages/utils/src/core/npm.ts:162](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/core/npm.ts#L162)
+定义于: [packages/utils/src/core/npm.ts:162](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/core/npm.ts#L162)
 
-## Type Declaration
+## 类型声明
 
 ### formatVersionStr()
 
@@ -16,7 +16,7 @@ Defined in: [packages/utils/src/core/npm.ts:162](https://github.com/142vip/core-
 - 如果模板包含任何“%s”占位符，则它们将替换为版本号;
 - 否则，版本号将追加到字符串
 
-#### Parameters
+#### 参数
 
 ##### template
 
@@ -26,7 +26,7 @@ Defined in: [packages/utils/src/core/npm.ts:162](https://github.com/142vip/core-
 
 `string`
 
-#### Returns
+#### 返回
 
 `string`
 
@@ -36,7 +36,7 @@ Defined in: [packages/utils/src/core/npm.ts:162](https://github.com/142vip/core-
 
 获取node版本
 
-#### Returns
+#### 返回
 
 `Promise`\<`null` \| `string`\>
 
@@ -46,7 +46,7 @@ Defined in: [packages/utils/src/core/npm.ts:162](https://github.com/142vip/core-
 
 获取npm版本
 
-#### Returns
+#### 返回
 
 `Promise`\<`null` \| `string`\>
 
@@ -59,13 +59,13 @@ Defined in: [packages/utils/src/core/npm.ts:162](https://github.com/142vip/core-
 - pnpm 命令： https://pnpm.io/cli/list
 - filter参数： https://pnpm.io/filtering
 
-#### Parameters
+#### 参数
 
 ##### pnpmLsCommand
 
 `string`
 
-#### Returns
+#### 返回
 
 [`PackageJSONWithPath`](../interfaces/PackageJSONWithPath.md)[]
 
@@ -73,7 +73,7 @@ Defined in: [packages/utils/src/core/npm.ts:162](https://github.com/142vip/core-
 
 > **getPnpmVersion**: () => `Promise`\<`null` \| `string`\>
 
-#### Returns
+#### 返回
 
 `Promise`\<`null` \| `string`\>
 
@@ -83,7 +83,7 @@ Defined in: [packages/utils/src/core/npm.ts:162](https://github.com/142vip/core-
 
 获取TurboPack匹配到的所有apps
 
-#### Returns
+#### 返回
 
 `Promise`\<`string`[]\>
 
@@ -91,7 +91,7 @@ Defined in: [packages/utils/src/core/npm.ts:162](https://github.com/142vip/core-
 
 > **getTurboPackVersion**: () => `Promise`\<`null` \| `string`\>
 
-#### Returns
+#### 返回
 
 `Promise`\<`null` \| `string`\>
 
@@ -101,7 +101,7 @@ Defined in: [packages/utils/src/core/npm.ts:162](https://github.com/142vip/core-
 
 基于npm安装依赖
 
-#### Parameters
+#### 参数
 
 ##### args
 
@@ -117,7 +117,7 @@ Defined in: [packages/utils/src/core/npm.ts:162](https://github.com/142vip/core-
 
 `string`
 
-#### Returns
+#### 返回
 
 `Promise`\<`void`\>
 
@@ -127,7 +127,7 @@ Defined in: [packages/utils/src/core/npm.ts:162](https://github.com/142vip/core-
 
 基于pnpm安装依赖
 
-#### Parameters
+#### 参数
 
 ##### args
 
@@ -143,7 +143,7 @@ Defined in: [packages/utils/src/core/npm.ts:162](https://github.com/142vip/core-
 
 `string`
 
-#### Returns
+#### 返回
 
 `Promise`\<`void`\>
 
@@ -151,7 +151,7 @@ Defined in: [packages/utils/src/core/npm.ts:162](https://github.com/142vip/core-
 
 > **isExistNodeJs**: () => `Promise`\<`boolean`\>
 
-#### Returns
+#### 返回
 
 `Promise`\<`boolean`\>
 
@@ -159,7 +159,7 @@ Defined in: [packages/utils/src/core/npm.ts:162](https://github.com/142vip/core-
 
 > **isExistNpm**: () => `Promise`\<`boolean`\>
 
-#### Returns
+#### 返回
 
 `Promise`\<`boolean`\>
 
@@ -167,7 +167,7 @@ Defined in: [packages/utils/src/core/npm.ts:162](https://github.com/142vip/core-
 
 > **isExistPnpm**: () => `Promise`\<`boolean`\>
 
-#### Returns
+#### 返回
 
 `Promise`\<`boolean`\>
 
@@ -175,7 +175,7 @@ Defined in: [packages/utils/src/core/npm.ts:162](https://github.com/142vip/core-
 
 > **isExistTurboPack**: () => `Promise`\<`boolean`\>
 
-#### Returns
+#### 返回
 
 `Promise`\<`boolean`\>
 
@@ -183,7 +183,7 @@ Defined in: [packages/utils/src/core/npm.ts:162](https://github.com/142vip/core-
 
 > **userLogin**: (`args`) => `Promise`\<`void`\>
 
-#### Parameters
+#### 参数
 
 ##### args
 
@@ -191,6 +191,6 @@ Defined in: [packages/utils/src/core/npm.ts:162](https://github.com/142vip/core-
 
 `string`
 
-#### Returns
+#### 返回
 
 `Promise`\<`void`\>

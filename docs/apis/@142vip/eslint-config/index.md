@@ -2,11 +2,11 @@
 
 # @142vip/eslint-config
 
-## Variables
+## 变量
 
 - [baseEslintRules](variables/baseEslintRules.md)
 - [defaultEslintConfig](variables/defaultEslintConfig.md)
 
-## Functions
+## 函数
 
 - [defineVipEslintConfig](functions/defineVipEslintConfig.md)

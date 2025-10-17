@@ -1,18 +1,18 @@
 [API 参考](../../../index.md) / [@142vip/open-source](../index.md) / OPEN\_SOURCE\_ADDRESS
 
-# Enumeration: OPEN\_SOURCE\_ADDRESS
+# 枚举: OPEN\_SOURCE\_ADDRESS
 
-Defined in: [constants.ts:6](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/open-source/src/constants.ts#L6)
+定义于: [constants.ts:6](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/open-source/src/constants.ts#L6)
 
 开源相关的地址
 
-## Enumeration Members
+## 枚举成员
 
 ### AUTHOR\_EMAIL
 
 > **AUTHOR\_EMAIL**: `"fairy_vip@2925.com"`
 
-Defined in: [constants.ts:9](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/open-source/src/constants.ts#L9)
+定义于: [constants.ts:9](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/open-source/src/constants.ts#L9)
 
 ***
 
@@ -20,7 +20,7 @@ Defined in: [constants.ts:9](https://github.com/142vip/core-x/blob/15d5bc9ef4bec
 
 > **AUTHOR\_NAME**: `"微信公众号：储凡"`
 
-Defined in: [constants.ts:8](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/open-source/src/constants.ts#L8)
+定义于: [constants.ts:8](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/open-source/src/constants.ts#L8)
 
 ***
 
@@ -28,7 +28,7 @@ Defined in: [constants.ts:8](https://github.com/142vip/core-x/blob/15d5bc9ef4bec
 
 > **BAIDU\_STATISTICS\_NAME**: `"百度统计"`
 
-Defined in: [constants.ts:65](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/open-source/src/constants.ts#L65)
+定义于: [constants.ts:65](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/open-source/src/constants.ts#L65)
 
 ***
 
@@ -36,7 +36,7 @@ Defined in: [constants.ts:65](https://github.com/142vip/core-x/blob/15d5bc9ef4be
 
 > **BAIDU\_STATISTICS\_URL**: `"https://tongji.baidu.com/web/welcome/login"`
 
-Defined in: [constants.ts:64](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/open-source/src/constants.ts#L64)
+定义于: [constants.ts:64](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/open-source/src/constants.ts#L64)
 
 ***
 
@@ -44,7 +44,7 @@ Defined in: [constants.ts:64](https://github.com/142vip/core-x/blob/15d5bc9ef4be
 
 > **BEI\_AN\_NAME**: `"鄂ICP备17025193号-1"`
 
-Defined in: [constants.ts:67](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/open-source/src/constants.ts#L67)
+定义于: [constants.ts:67](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/open-source/src/constants.ts#L67)
 
 ***
 
@@ -52,7 +52,7 @@ Defined in: [constants.ts:67](https://github.com/142vip/core-x/blob/15d5bc9ef4be
 
 > **BEI\_AN\_URL**: `"https://beian.miit.gov.cn/#/Integrated/index"`
 
-Defined in: [constants.ts:68](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/open-source/src/constants.ts#L68)
+定义于: [constants.ts:68](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/open-source/src/constants.ts#L68)
 
 ***
 
@@ -60,7 +60,7 @@ Defined in: [constants.ts:68](https://github.com/142vip/core-x/blob/15d5bc9ef4be
 
 > **DOCKER\_ALIYUNCS\_VIP**: `"registry.cn-hangzhou.aliyuncs.com/142vip"`
 
-Defined in: [constants.ts:26](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/open-source/src/constants.ts#L26)
+定义于: [constants.ts:26](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/open-source/src/constants.ts#L26)
 
 142vip 仓库地址
 - 格式：`${VipDockerAddress}/项目代号:${pkg.name}-${pkg.version}`
@@ -72,7 +72,7 @@ Defined in: [constants.ts:26](https://github.com/142vip/core-x/blob/15d5bc9ef4be
 
 > **DOCKER\_NETWORK\_GATEWAY**: `"172.30.0.1"`
 
-Defined in: [constants.ts:32](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/open-source/src/constants.ts#L32)
+定义于: [constants.ts:32](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/open-source/src/constants.ts#L32)
 
 ***
 
@@ -80,7 +80,7 @@ Defined in: [constants.ts:32](https://github.com/142vip/core-x/blob/15d5bc9ef4be
 
 > **DOCKER\_NETWORK\_NAME**: `"service_env_net"`
 
-Defined in: [constants.ts:28](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/open-source/src/constants.ts#L28)
+定义于: [constants.ts:28](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/open-source/src/constants.ts#L28)
 
 ***
 
@@ -88,7 +88,7 @@ Defined in: [constants.ts:28](https://github.com/142vip/core-x/blob/15d5bc9ef4be
 
 > **DOCKER\_NETWORK\_SUBNET**: `"172.30.0.0/24"`
 
-Defined in: [constants.ts:30](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/open-source/src/constants.ts#L30)
+定义于: [constants.ts:30](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/open-source/src/constants.ts#L30)
 
 ***
 
@@ -96,7 +96,7 @@ Defined in: [constants.ts:30](https://github.com/142vip/core-x/blob/15d5bc9ef4be
 
 > **GITEE\_REPO\_408**: `"https://gitee.com/chufan443/408CSFamily"`
 
-Defined in: [constants.ts:17](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/open-source/src/constants.ts#L17)
+定义于: [constants.ts:17](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/open-source/src/constants.ts#L17)
 
 ***
 
@@ -104,7 +104,7 @@ Defined in: [constants.ts:17](https://github.com/142vip/core-x/blob/15d5bc9ef4be
 
 > **GITEE\_REPO\_CORE\_X**: `"https://gitee.com/chufan443/core-x"`
 
-Defined in: [constants.ts:19](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/open-source/src/constants.ts#L19)
+定义于: [constants.ts:19](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/open-source/src/constants.ts#L19)
 
 ***
 
@@ -112,7 +112,7 @@ Defined in: [constants.ts:19](https://github.com/142vip/core-x/blob/15d5bc9ef4be
 
 > **GITEE\_REPO\_JSC**: `"https://gitee.com/chufan443/JavaScriptCollection"`
 
-Defined in: [constants.ts:18](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/open-source/src/constants.ts#L18)
+定义于: [constants.ts:18](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/open-source/src/constants.ts#L18)
 
 ***
 
@@ -120,7 +120,7 @@ Defined in: [constants.ts:18](https://github.com/142vip/core-x/blob/15d5bc9ef4be
 
 > **GITHUB\_ORGANIZATION\_NAME**: `"142vip"`
 
-Defined in: [constants.ts:35](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/open-source/src/constants.ts#L35)
+定义于: [constants.ts:35](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/open-source/src/constants.ts#L35)
 
 ***
 
@@ -128,7 +128,7 @@ Defined in: [constants.ts:35](https://github.com/142vip/core-x/blob/15d5bc9ef4be
 
 > **GITHUB\_REPO\_408**: `"https://github.com/142vip/408CSFamily"`
 
-Defined in: [constants.ts:12](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/open-source/src/constants.ts#L12)
+定义于: [constants.ts:12](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/open-source/src/constants.ts#L12)
 
 ***
 
@@ -136,7 +136,7 @@ Defined in: [constants.ts:12](https://github.com/142vip/core-x/blob/15d5bc9ef4be
 
 > **GITHUB\_REPO\_CORE\_X**: `"https://github.com/142vip/core-x"`
 
-Defined in: [constants.ts:14](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/open-source/src/constants.ts#L14)
+定义于: [constants.ts:14](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/open-source/src/constants.ts#L14)
 
 ***
 
@@ -144,7 +144,7 @@ Defined in: [constants.ts:14](https://github.com/142vip/core-x/blob/15d5bc9ef4be
 
 > **GITHUB\_REPO\_JSC**: `"https://github.com/142vip/JavaScriptCollection"`
 
-Defined in: [constants.ts:13](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/open-source/src/constants.ts#L13)
+定义于: [constants.ts:13](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/open-source/src/constants.ts#L13)
 
 ***
 
@@ -152,7 +152,7 @@ Defined in: [constants.ts:13](https://github.com/142vip/core-x/blob/15d5bc9ef4be
 
 > **GITHUB\_REPO\_OAUTH**: `"https://github.com/142vip/142vip-oauth"`
 
-Defined in: [constants.ts:15](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/open-source/src/constants.ts#L15)
+定义于: [constants.ts:15](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/open-source/src/constants.ts#L15)
 
 ***
 
@@ -160,7 +160,7 @@ Defined in: [constants.ts:15](https://github.com/142vip/core-x/blob/15d5bc9ef4be
 
 > **HOME\_PAGE\_BILIBILI**: `"https://space.bilibili.com/350937042"`
 
-Defined in: [constants.ts:49](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/open-source/src/constants.ts#L49)
+定义于: [constants.ts:49](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/open-source/src/constants.ts#L49)
 
 ***
 
@@ -168,7 +168,7 @@ Defined in: [constants.ts:49](https://github.com/142vip/core-x/blob/15d5bc9ef4be
 
 > **HOME\_PAGE\_CSDN**: `"https://blog.csdn.net/Mmdapl"`
 
-Defined in: [constants.ts:50](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/open-source/src/constants.ts#L50)
+定义于: [constants.ts:50](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/open-source/src/constants.ts#L50)
 
 ***
 
@@ -176,7 +176,7 @@ Defined in: [constants.ts:50](https://github.com/142vip/core-x/blob/15d5bc9ef4be
 
 > **HOME\_PAGE\_DOMAIN\_408**: `"https://408.142vip.cn"`
 
-Defined in: [constants.ts:55](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/open-source/src/constants.ts#L55)
+定义于: [constants.ts:55](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/open-source/src/constants.ts#L55)
 
 ***
 
@@ -184,7 +184,7 @@ Defined in: [constants.ts:55](https://github.com/142vip/core-x/blob/15d5bc9ef4be
 
 > **HOME\_PAGE\_DOMAIN\_VIP**: `"https://142vip.cn"`
 
-Defined in: [constants.ts:54](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/open-source/src/constants.ts#L54)
+定义于: [constants.ts:54](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/open-source/src/constants.ts#L54)
 
 ***
 
@@ -192,7 +192,7 @@ Defined in: [constants.ts:54](https://github.com/142vip/core-x/blob/15d5bc9ef4be
 
 > **HOME\_PAGE\_GITEE\_MMDAPL**: `"https://gitee.com/mmdapl"`
 
-Defined in: [constants.ts:43](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/open-source/src/constants.ts#L43)
+定义于: [constants.ts:43](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/open-source/src/constants.ts#L43)
 
 ***
 
@@ -200,7 +200,7 @@ Defined in: [constants.ts:43](https://github.com/142vip/core-x/blob/15d5bc9ef4be
 
 > **HOME\_PAGE\_GITEE\_VIP**: `"https://gitee.com/chufan443"`
 
-Defined in: [constants.ts:44](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/open-source/src/constants.ts#L44)
+定义于: [constants.ts:44](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/open-source/src/constants.ts#L44)
 
 ***
 
@@ -208,7 +208,7 @@ Defined in: [constants.ts:44](https://github.com/142vip/core-x/blob/15d5bc9ef4be
 
 > **HOME\_PAGE\_GITHUB\_CHU\_FAN**: `"https://github.com/chufan443"`
 
-Defined in: [constants.ts:40](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/open-source/src/constants.ts#L40)
+定义于: [constants.ts:40](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/open-source/src/constants.ts#L40)
 
 ***
 
@@ -216,7 +216,7 @@ Defined in: [constants.ts:40](https://github.com/142vip/core-x/blob/15d5bc9ef4be
 
 > **HOME\_PAGE\_GITHUB\_LIR0015**: `"https://github.com/lir0015"`
 
-Defined in: [constants.ts:41](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/open-source/src/constants.ts#L41)
+定义于: [constants.ts:41](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/open-source/src/constants.ts#L41)
 
 ***
 
@@ -224,7 +224,7 @@ Defined in: [constants.ts:41](https://github.com/142vip/core-x/blob/15d5bc9ef4be
 
 > **HOME\_PAGE\_GITHUB\_MMDAPL**: `"https://github.com/mmdapl"`
 
-Defined in: [constants.ts:39](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/open-source/src/constants.ts#L39)
+定义于: [constants.ts:39](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/open-source/src/constants.ts#L39)
 
 ***
 
@@ -232,7 +232,7 @@ Defined in: [constants.ts:39](https://github.com/142vip/core-x/blob/15d5bc9ef4be
 
 > **HOME\_PAGE\_GITHUB\_VIP**: `"https://github.com/142vip"`
 
-Defined in: [constants.ts:38](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/open-source/src/constants.ts#L38)
+定义于: [constants.ts:38](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/open-source/src/constants.ts#L38)
 
 ***
 
@@ -240,7 +240,7 @@ Defined in: [constants.ts:38](https://github.com/142vip/core-x/blob/15d5bc9ef4be
 
 > **HOME\_PAGE\_JUE\_JIN**: `"https://juejin.im/user/448256476724807"`
 
-Defined in: [constants.ts:51](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/open-source/src/constants.ts#L51)
+定义于: [constants.ts:51](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/open-source/src/constants.ts#L51)
 
 ***
 
@@ -248,7 +248,7 @@ Defined in: [constants.ts:51](https://github.com/142vip/core-x/blob/15d5bc9ef4be
 
 > **HOME\_PAGE\_NPM\_MMDAPL**: `"https://www.npmjs.com/~mmdapl"`
 
-Defined in: [constants.ts:46](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/open-source/src/constants.ts#L46)
+定义于: [constants.ts:46](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/open-source/src/constants.ts#L46)
 
 ***
 
@@ -256,7 +256,7 @@ Defined in: [constants.ts:46](https://github.com/142vip/core-x/blob/15d5bc9ef4be
 
 > **LICENCE\_CORE\_X**: `"https://github.com/142vip/core-x/blob/main/LICENSE"`
 
-Defined in: [constants.ts:60](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/open-source/src/constants.ts#L60)
+定义于: [constants.ts:60](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/open-source/src/constants.ts#L60)
 
 ***
 
@@ -264,7 +264,7 @@ Defined in: [constants.ts:60](https://github.com/142vip/core-x/blob/15d5bc9ef4be
 
 > **LICENCE\_GITHUB**: `"https://github.com/142vip/LICENSE"`
 
-Defined in: [constants.ts:59](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/open-source/src/constants.ts#L59)
+定义于: [constants.ts:59](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/open-source/src/constants.ts#L59)
 
 ***
 
@@ -272,7 +272,7 @@ Defined in: [constants.ts:59](https://github.com/142vip/core-x/blob/15d5bc9ef4be
 
 > **LICENCE\_OAUTH**: `"https://github.com/142vip/142vip-oauth/blob/main/LICENSE"`
 
-Defined in: [constants.ts:61](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/open-source/src/constants.ts#L61)
+定义于: [constants.ts:61](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/open-source/src/constants.ts#L61)
 
 ***
 
@@ -280,7 +280,7 @@ Defined in: [constants.ts:61](https://github.com/142vip/core-x/blob/15d5bc9ef4be
 
 > **SITE\_DEPLOY\_408CS\_FAMILY\_GITHUB**: `"https://142vip.github.io/408CSFamily"`
 
-Defined in: [constants.ts:79](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/open-source/src/constants.ts#L79)
+定义于: [constants.ts:79](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/open-source/src/constants.ts#L79)
 
 ***
 
@@ -288,7 +288,7 @@ Defined in: [constants.ts:79](https://github.com/142vip/core-x/blob/15d5bc9ef4be
 
 > **SITE\_DEPLOY\_408CS\_FAMILY\_NETLIFY**: `"https://408-family.vercel.app"`
 
-Defined in: [constants.ts:81](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/open-source/src/constants.ts#L81)
+定义于: [constants.ts:81](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/open-source/src/constants.ts#L81)
 
 ***
 
@@ -296,7 +296,7 @@ Defined in: [constants.ts:81](https://github.com/142vip/core-x/blob/15d5bc9ef4be
 
 > **SITE\_DEPLOY\_408CS\_FAMILY\_VERCEL**: `"https://408-family.netlify.app"`
 
-Defined in: [constants.ts:80](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/open-source/src/constants.ts#L80)
+定义于: [constants.ts:80](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/open-source/src/constants.ts#L80)
 
 ***
 
@@ -304,7 +304,7 @@ Defined in: [constants.ts:80](https://github.com/142vip/core-x/blob/15d5bc9ef4be
 
 > **SITE\_DEPLOY\_CORE\_X\_GITHUB**: `"https://142vip.github.io/core-x"`
 
-Defined in: [constants.ts:71](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/open-source/src/constants.ts#L71)
+定义于: [constants.ts:71](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/open-source/src/constants.ts#L71)
 
 ***
 
@@ -312,7 +312,7 @@ Defined in: [constants.ts:71](https://github.com/142vip/core-x/blob/15d5bc9ef4be
 
 > **SITE\_DEPLOY\_CORE\_X\_NETLIFY**: `"https://pkg-x.netlify.app"`
 
-Defined in: [constants.ts:73](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/open-source/src/constants.ts#L73)
+定义于: [constants.ts:73](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/open-source/src/constants.ts#L73)
 
 ***
 
@@ -320,7 +320,7 @@ Defined in: [constants.ts:73](https://github.com/142vip/core-x/blob/15d5bc9ef4be
 
 > **SITE\_DEPLOY\_CORE\_X\_VERCEL**: `"https://pkg-x.vercel.app"`
 
-Defined in: [constants.ts:72](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/open-source/src/constants.ts#L72)
+定义于: [constants.ts:72](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/open-source/src/constants.ts#L72)
 
 ***
 
@@ -328,7 +328,7 @@ Defined in: [constants.ts:72](https://github.com/142vip/core-x/blob/15d5bc9ef4be
 
 > **SITE\_DEPLOY\_JavaScriptCollection\_GITHUB**: `"https://142vip.github.io/JavaScriptCollection"`
 
-Defined in: [constants.ts:75](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/open-source/src/constants.ts#L75)
+定义于: [constants.ts:75](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/open-source/src/constants.ts#L75)
 
 ***
 
@@ -336,7 +336,7 @@ Defined in: [constants.ts:75](https://github.com/142vip/core-x/blob/15d5bc9ef4be
 
 > **SITE\_DEPLOY\_JavaScriptCollection\_NETLIFY**: `"https://js-collection.vercel.app"`
 
-Defined in: [constants.ts:77](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/open-source/src/constants.ts#L77)
+定义于: [constants.ts:77](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/open-source/src/constants.ts#L77)
 
 ***
 
@@ -344,4 +344,4 @@ Defined in: [constants.ts:77](https://github.com/142vip/core-x/blob/15d5bc9ef4be
 
 > **SITE\_DEPLOY\_JavaScriptCollection\_VERCEL**: `"https://js-collection.netlify.app"`
 
-Defined in: [constants.ts:76](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/open-source/src/constants.ts#L76)
+定义于: [constants.ts:76](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/open-source/src/constants.ts#L76)

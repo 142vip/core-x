@@ -2,6 +2,6 @@
 
 # @142vip/nest
 
-## Variables
+## 变量
 
 - [test](variables/test.md)

@@ -2,10 +2,10 @@
 
 # @142vip/open-source
 
-## Enumerations
+## 枚举
 
 - [OPEN\_SOURCE\_ADDRESS](enumerations/OPEN_SOURCE_ADDRESS.md)
 
-## Variables
+## 变量
 
 - [OPEN\_SOURCE\_AUTHOR](variables/OPEN_SOURCE_AUTHOR.md)

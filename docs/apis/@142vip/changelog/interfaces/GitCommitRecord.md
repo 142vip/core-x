@@ -1,26 +1,26 @@
 [API 参考](../../../index.md) / [@142vip/changelog](../index.md) / GitCommitRecord
 
-# Interface: GitCommitRecord
+# 接口: GitCommitRecord
 
-Defined in: [changelog/src/enums/git-commit.interface.ts:24](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/changelog/src/enums/git-commit.interface.ts#L24)
+定义于: [changelog/src/enums/git-commit.interface.ts:24](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/git-commit.interface.ts#L24)
 
-## Extends
+## theme_extends
 
 - [`GitCommitRaw`](GitCommitRaw.md)
 
-## Extended by
+## theme_extended_by
 
 - [`Commit`](Commit.md)
 
-## Properties
+## 属性
 
 ### author
 
 > **author**: [`GitCommitAuthor`](GitCommitAuthor.md)
 
-Defined in: [changelog/src/enums/git-commit.interface.ts:10](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/changelog/src/enums/git-commit.interface.ts#L10)
+定义于: [changelog/src/enums/git-commit.interface.ts:10](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/git-commit.interface.ts#L10)
 
-#### Inherited from
+#### 继承自
 
 [`GitCommitRaw`](GitCommitRaw.md).[`author`](GitCommitRaw.md#author)
 
@@ -30,7 +30,7 @@ Defined in: [changelog/src/enums/git-commit.interface.ts:10](https://github.com/
 
 > **authors**: [`GitCommitAuthor`](GitCommitAuthor.md)[]
 
-Defined in: [changelog/src/enums/git-commit.interface.ts:29](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/changelog/src/enums/git-commit.interface.ts#L29)
+定义于: [changelog/src/enums/git-commit.interface.ts:29](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/git-commit.interface.ts#L29)
 
 ***
 
@@ -38,9 +38,9 @@ Defined in: [changelog/src/enums/git-commit.interface.ts:29](https://github.com/
 
 > **body**: `string`
 
-Defined in: [changelog/src/enums/git-commit.interface.ts:8](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/changelog/src/enums/git-commit.interface.ts#L8)
+定义于: [changelog/src/enums/git-commit.interface.ts:8](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/git-commit.interface.ts#L8)
 
-#### Inherited from
+#### 继承自
 
 [`GitCommitRaw`](GitCommitRaw.md).[`body`](GitCommitRaw.md#body)
 
@@ -50,7 +50,7 @@ Defined in: [changelog/src/enums/git-commit.interface.ts:8](https://github.com/1
 
 > **description**: `string`
 
-Defined in: [changelog/src/enums/git-commit.interface.ts:25](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/changelog/src/enums/git-commit.interface.ts#L25)
+定义于: [changelog/src/enums/git-commit.interface.ts:25](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/git-commit.interface.ts#L25)
 
 ***
 
@@ -58,7 +58,7 @@ Defined in: [changelog/src/enums/git-commit.interface.ts:25](https://github.com/
 
 > **isBreaking**: `boolean`
 
-Defined in: [changelog/src/enums/git-commit.interface.ts:30](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/changelog/src/enums/git-commit.interface.ts#L30)
+定义于: [changelog/src/enums/git-commit.interface.ts:30](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/git-commit.interface.ts#L30)
 
 ***
 
@@ -66,9 +66,9 @@ Defined in: [changelog/src/enums/git-commit.interface.ts:30](https://github.com/
 
 > **message**: `string`
 
-Defined in: [changelog/src/enums/git-commit.interface.ts:7](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/changelog/src/enums/git-commit.interface.ts#L7)
+定义于: [changelog/src/enums/git-commit.interface.ts:7](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/git-commit.interface.ts#L7)
 
-#### Inherited from
+#### 继承自
 
 [`GitCommitRaw`](GitCommitRaw.md).[`message`](GitCommitRaw.md#message)
 
@@ -78,7 +78,7 @@ Defined in: [changelog/src/enums/git-commit.interface.ts:7](https://github.com/1
 
 > **references**: [`GitCommitReference`](GitCommitReference.md)[]
 
-Defined in: [changelog/src/enums/git-commit.interface.ts:28](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/changelog/src/enums/git-commit.interface.ts#L28)
+定义于: [changelog/src/enums/git-commit.interface.ts:28](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/git-commit.interface.ts#L28)
 
 ***
 
@@ -86,7 +86,7 @@ Defined in: [changelog/src/enums/git-commit.interface.ts:28](https://github.com/
 
 > **scope**: `string`
 
-Defined in: [changelog/src/enums/git-commit.interface.ts:27](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/changelog/src/enums/git-commit.interface.ts#L27)
+定义于: [changelog/src/enums/git-commit.interface.ts:27](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/git-commit.interface.ts#L27)
 
 ***
 
@@ -94,9 +94,9 @@ Defined in: [changelog/src/enums/git-commit.interface.ts:27](https://github.com/
 
 > **shortHash**: `string`
 
-Defined in: [changelog/src/enums/git-commit.interface.ts:9](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/changelog/src/enums/git-commit.interface.ts#L9)
+定义于: [changelog/src/enums/git-commit.interface.ts:9](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/git-commit.interface.ts#L9)
 
-#### Inherited from
+#### 继承自
 
 [`GitCommitRaw`](GitCommitRaw.md).[`shortHash`](GitCommitRaw.md#shorthash)
 
@@ -106,4 +106,4 @@ Defined in: [changelog/src/enums/git-commit.interface.ts:9](https://github.com/1
 
 > **type**: `string`
 
-Defined in: [changelog/src/enums/git-commit.interface.ts:26](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/changelog/src/enums/git-commit.interface.ts#L26)
+定义于: [changelog/src/enums/git-commit.interface.ts:26](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/git-commit.interface.ts#L26)

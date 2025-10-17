@@ -1,18 +1,18 @@
 [API 参考](../../../index.md) / [@142vip/grpc](../index.md) / ServiceMethodType
 
-# Enumeration: ServiceMethodType
+# 枚举: ServiceMethodType
 
-Defined in: [enum/grpc.interface.ts:31](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/enum/grpc.interface.ts#L31)
+定义于: [enum/grpc.interface.ts:30](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/enum/grpc.interface.ts#L30)
 
 Grpc 服务端方法类型
 
-## Enumeration Members
+## 枚举成员
 
 ### BidiStream
 
 > **BidiStream**: `"bidiStream"`
 
-Defined in: [enum/grpc.interface.ts:36](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/enum/grpc.interface.ts#L36)
+定义于: [enum/grpc.interface.ts:35](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/enum/grpc.interface.ts#L35)
 
 ***
 
@@ -20,7 +20,7 @@ Defined in: [enum/grpc.interface.ts:36](https://github.com/142vip/core-x/blob/15
 
 > **ClientStream**: `"clientStream"`
 
-Defined in: [enum/grpc.interface.ts:34](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/enum/grpc.interface.ts#L34)
+定义于: [enum/grpc.interface.ts:33](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/enum/grpc.interface.ts#L33)
 
 ***
 
@@ -28,7 +28,7 @@ Defined in: [enum/grpc.interface.ts:34](https://github.com/142vip/core-x/blob/15
 
 > **ServerStream**: `"serverStream"`
 
-Defined in: [enum/grpc.interface.ts:35](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/enum/grpc.interface.ts#L35)
+定义于: [enum/grpc.interface.ts:34](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/enum/grpc.interface.ts#L34)
 
 ***
 
@@ -36,4 +36,4 @@ Defined in: [enum/grpc.interface.ts:35](https://github.com/142vip/core-x/blob/15
 
 > **Unary**: `"unary"`
 
-Defined in: [enum/grpc.interface.ts:33](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/enum/grpc.interface.ts#L33)
+定义于: [enum/grpc.interface.ts:32](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/enum/grpc.interface.ts#L32)

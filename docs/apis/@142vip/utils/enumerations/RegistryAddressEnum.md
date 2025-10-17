@@ -1,16 +1,16 @@
 [API 参考](../../../index.md) / [@142vip/utils](../index.md) / RegistryAddressEnum
 
-# Enumeration: RegistryAddressEnum
+# 枚举: RegistryAddressEnum
 
-Defined in: [packages/utils/src/enums/registry-address.enum.ts:1](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/enums/registry-address.enum.ts#L1)
+定义于: [packages/utils/src/enums/registry-address.enum.ts:1](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/enums/registry-address.enum.ts#L1)
 
-## Enumeration Members
+## 枚举成员
 
 ### DOCKER
 
 > **DOCKER**: `"https://registry.cn-hangzhou.aliyuncs.com"`
 
-Defined in: [packages/utils/src/enums/registry-address.enum.ts:2](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/enums/registry-address.enum.ts#L2)
+定义于: [packages/utils/src/enums/registry-address.enum.ts:2](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/enums/registry-address.enum.ts#L2)
 
 ***
 
@@ -18,7 +18,7 @@ Defined in: [packages/utils/src/enums/registry-address.enum.ts:2](https://github
 
 > **NPM**: `"https://registry.npmjs.org"`
 
-Defined in: [packages/utils/src/enums/registry-address.enum.ts:3](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/enums/registry-address.enum.ts#L3)
+定义于: [packages/utils/src/enums/registry-address.enum.ts:3](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/enums/registry-address.enum.ts#L3)
 
 ***
 
@@ -26,7 +26,7 @@ Defined in: [packages/utils/src/enums/registry-address.enum.ts:3](https://github
 
 > **VIP\_DOCKER**: `"registry.cn-hangzhou.aliyuncs.com"`
 
-Defined in: [packages/utils/src/enums/registry-address.enum.ts:4](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/enums/registry-address.enum.ts#L4)
+定义于: [packages/utils/src/enums/registry-address.enum.ts:4](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/enums/registry-address.enum.ts#L4)
 
 ***
 
@@ -34,7 +34,7 @@ Defined in: [packages/utils/src/enums/registry-address.enum.ts:4](https://github
 
 > **VIP\_NPM**: `"https://registry.142vip.com"`
 
-Defined in: [packages/utils/src/enums/registry-address.enum.ts:5](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/enums/registry-address.enum.ts#L5)
+定义于: [packages/utils/src/enums/registry-address.enum.ts:5](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/enums/registry-address.enum.ts#L5)
 
 ***
 
@@ -42,7 +42,7 @@ Defined in: [packages/utils/src/enums/registry-address.enum.ts:5](https://github
 
 > **VIP\_NPM\_ALIBABA**: `"https://registry.npmmirror.com"`
 
-Defined in: [packages/utils/src/enums/registry-address.enum.ts:6](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/enums/registry-address.enum.ts#L6)
+定义于: [packages/utils/src/enums/registry-address.enum.ts:6](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/enums/registry-address.enum.ts#L6)
 
 ***
 
@@ -50,4 +50,4 @@ Defined in: [packages/utils/src/enums/registry-address.enum.ts:6](https://github
 
 > **VIP\_NPM\_TENCENT**: `"https://mirrors.tencent.com/npm/"`
 
-Defined in: [packages/utils/src/enums/registry-address.enum.ts:7](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/enums/registry-address.enum.ts#L7)
+定义于: [packages/utils/src/enums/registry-address.enum.ts:7](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/enums/registry-address.enum.ts#L7)

@@ -1,38 +1,38 @@
 [API 参考](../../../index.md) / [@142vip/typeorm](../index.md) / BaseEntityWithDeleted
 
-# Class: BaseEntityWithDeleted
+# 类: BaseEntityWithDeleted
 
-Defined in: [base.entity.ts:32](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/typeorm/src/base.entity.ts#L32)
+定义于: [base.entity.ts:32](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/typeorm/src/base.entity.ts#L32)
 
 带删除状态的实体
 
-## Extends
+## theme_extends
 
 - [`BaseEntity`](BaseEntity.md)
 
-## Constructors
+## 构造函数
 
-### Constructor
+### 构造函数
 
 > **new BaseEntityWithDeleted**(): `BaseEntityWithDeleted`
 
-#### Returns
+#### 返回
 
 `BaseEntityWithDeleted`
 
-#### Inherited from
+#### 继承自
 
 [`BaseEntity`](BaseEntity.md).[`constructor`](BaseEntity.md#constructor)
 
-## Properties
+## 属性
 
 ### createTime
 
 > **createTime**: `Date`
 
-Defined in: [base.entity.ts:18](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/typeorm/src/base.entity.ts#L18)
+定义于: [base.entity.ts:18](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/typeorm/src/base.entity.ts#L18)
 
-#### Inherited from
+#### 继承自
 
 [`BaseEntity`](BaseEntity.md).[`createTime`](BaseEntity.md#createtime)
 
@@ -42,7 +42,7 @@ Defined in: [base.entity.ts:18](https://github.com/142vip/core-x/blob/15d5bc9ef4
 
 > **deleted**: `boolean`
 
-Defined in: [base.entity.ts:37](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/typeorm/src/base.entity.ts#L37)
+定义于: [base.entity.ts:37](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/typeorm/src/base.entity.ts#L37)
 
 ***
 
@@ -50,11 +50,11 @@ Defined in: [base.entity.ts:37](https://github.com/142vip/core-x/blob/15d5bc9ef4
 
 > **id**: `number`
 
-Defined in: [base.entity.ts:13](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/typeorm/src/base.entity.ts#L13)
+定义于: [base.entity.ts:13](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/typeorm/src/base.entity.ts#L13)
 
 自增主键
 
-#### Inherited from
+#### 继承自
 
 [`BaseEntity`](BaseEntity.md).[`id`](BaseEntity.md#id)
 
@@ -64,10 +64,10 @@ Defined in: [base.entity.ts:13](https://github.com/142vip/core-x/blob/15d5bc9ef4
 
 > **updateTime**: `Date`
 
-Defined in: [base.entity.ts:26](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/typeorm/src/base.entity.ts#L26)
+定义于: [base.entity.ts:26](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/typeorm/src/base.entity.ts#L26)
 
 更新时间
 
-#### Inherited from
+#### 继承自
 
 [`BaseEntity`](BaseEntity.md).[`updateTime`](BaseEntity.md#updatetime)

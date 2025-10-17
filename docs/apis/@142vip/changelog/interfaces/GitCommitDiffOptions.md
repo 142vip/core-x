@@ -1,16 +1,16 @@
 [API 参考](../../../index.md) / [@142vip/changelog](../index.md) / GitCommitDiffOptions
 
-# Interface: GitCommitDiffOptions
+# 接口: GitCommitDiffOptions
 
-Defined in: [changelog/src/enums/git-commit.interface.ts:33](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/changelog/src/enums/git-commit.interface.ts#L33)
+定义于: [changelog/src/enums/git-commit.interface.ts:33](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/git-commit.interface.ts#L33)
 
-## Properties
+## 属性
 
 ### from?
 
 > `optional` **from**: `string`
 
-Defined in: [changelog/src/enums/git-commit.interface.ts:34](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/changelog/src/enums/git-commit.interface.ts#L34)
+定义于: [changelog/src/enums/git-commit.interface.ts:34](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/git-commit.interface.ts#L34)
 
 ***
 
@@ -18,4 +18,4 @@ Defined in: [changelog/src/enums/git-commit.interface.ts:34](https://github.com/
 
 > `optional` **to**: `string`
 
-Defined in: [changelog/src/enums/git-commit.interface.ts:35](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/changelog/src/enums/git-commit.interface.ts#L35)
+定义于: [changelog/src/enums/git-commit.interface.ts:35](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/git-commit.interface.ts#L35)

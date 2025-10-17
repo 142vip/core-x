@@ -1,12 +1,12 @@
 [API 参考](../../../index.md) / [@142vip/utils](../index.md) / VipNodeJS
 
-# Variable: VipNodeJS
+# 变量: VipNodeJS
 
 > `const` **VipNodeJS**: `object`
 
-Defined in: [packages/utils/src/core/nodejs.ts:284](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/core/nodejs.ts#L284)
+定义于: [packages/utils/src/core/nodejs.ts:284](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/core/nodejs.ts#L284)
 
-## Type Declaration
+## 类型声明
 
 ### existErrorProcess()
 
@@ -14,7 +14,7 @@ Defined in: [packages/utils/src/core/nodejs.ts:284](https://github.com/142vip/co
 
 异常退出进程，错误码为1
 
-#### Returns
+#### 返回
 
 `void`
 
@@ -24,13 +24,13 @@ Defined in: [packages/utils/src/core/nodejs.ts:284](https://github.com/142vip/co
 
 路径是否存在
 
-#### Parameters
+#### 参数
 
 ##### path
 
 `PathLike`
 
-#### Returns
+#### 返回
 
 `boolean`
 
@@ -40,7 +40,7 @@ Defined in: [packages/utils/src/core/nodejs.ts:284](https://github.com/142vip/co
 
 正常退出进程，退出码为0，异常无法捕获
 
-#### Returns
+#### 返回
 
 `void`
 
@@ -50,13 +50,13 @@ Defined in: [packages/utils/src/core/nodejs.ts:284](https://github.com/142vip/co
 
 进程退出
 
-#### Parameters
+#### 参数
 
 ##### exitCode?
 
 `number`
 
-#### Returns
+#### 返回
 
 `void`
 
@@ -66,7 +66,7 @@ Defined in: [packages/utils/src/core/nodejs.ts:284](https://github.com/142vip/co
 
 CPU 架构
 
-#### Returns
+#### 返回
 
 `Architecture`
 
@@ -76,7 +76,7 @@ CPU 架构
 
 获取环境变量
 
-#### Returns
+#### 返回
 
 `ProcessEnv`
 
@@ -84,7 +84,7 @@ CPU 架构
 
 > **getProcess**: () => `Process`
 
-#### Returns
+#### 返回
 
 `Process`
 
@@ -94,7 +94,7 @@ CPU 架构
 
 进程参数
 
-#### Returns
+#### 返回
 
 `string`[]
 
@@ -111,13 +111,13 @@ Would generate the output:
 3: two=three
 4: fou
 
-#### Parameters
+#### 参数
 
 ##### index
 
 `number`
 
-#### Returns
+#### 返回
 
 `null` \| `string`
 
@@ -127,7 +127,7 @@ Would generate the output:
 
 进程工作目录
 
-#### Returns
+#### 返回
 
 `string`
 
@@ -137,13 +137,13 @@ Would generate the output:
 
 进程环境变量
 
-#### Parameters
+#### 参数
 
 ##### key
 
 `string`
 
-#### Returns
+#### 返回
 
 `undefined` \| `string`
 
@@ -153,7 +153,7 @@ Would generate the output:
 
 进程第一个参数
 
-#### Returns
+#### 返回
 
 `string`
 
@@ -163,7 +163,7 @@ Would generate the output:
 
 进程平台
 
-#### Returns
+#### 返回
 
 `Platform`
 
@@ -171,7 +171,7 @@ Would generate the output:
 
 > **getProcessStdin**: () => `ReadStream`
 
-#### Returns
+#### 返回
 
 `ReadStream`
 
@@ -179,7 +179,7 @@ Would generate the output:
 
 > **getProcessStdout**: () => `WriteStream`
 
-#### Returns
+#### 返回
 
 `WriteStream`
 
@@ -189,7 +189,7 @@ Would generate the output:
 
 进程版本信息
 
-#### Returns
+#### 返回
 
 `ProcessVersions`
 
@@ -199,7 +199,7 @@ Would generate the output:
 
 判断是否为Buffer类型
 
-#### Parameters
+#### 参数
 
 ##### data
 
@@ -207,7 +207,7 @@ Would generate the output:
 
 输入数据
 
-#### Returns
+#### 返回
 
 `boolean`
 
@@ -219,13 +219,13 @@ boolean
 
 是否为目录
 
-#### Parameters
+#### 参数
 
 ##### path
 
 `PathLike`
 
-#### Returns
+#### 返回
 
 `boolean`
 
@@ -235,7 +235,7 @@ boolean
 
 目录是否存在
 
-#### Parameters
+#### 参数
 
 ##### name
 
@@ -245,7 +245,7 @@ boolean
 
 `string`
 
-#### Returns
+#### 返回
 
 `boolean`
 
@@ -255,7 +255,7 @@ boolean
 
 是否存在文件
 
-#### Parameters
+#### 参数
 
 ##### name
 
@@ -265,7 +265,7 @@ boolean
 
 `string`
 
-#### Returns
+#### 返回
 
 `boolean`
 
@@ -275,7 +275,7 @@ boolean
 
 创建目录
 
-#### Parameters
+#### 参数
 
 ##### path
 
@@ -283,7 +283,7 @@ boolean
 
 目录路径
 
-#### Returns
+#### 返回
 
 `void`
 
@@ -291,13 +291,13 @@ boolean
 
 > **pathDirname**: (`dirPath`) => `string`
 
-#### Parameters
+#### 参数
 
 ##### dirPath
 
 `string`
 
-#### Returns
+#### 返回
 
 `string`
 
@@ -307,13 +307,13 @@ boolean
 
 路径扩展名
 
-#### Parameters
+#### 参数
 
 ##### path
 
 `string`
 
-#### Returns
+#### 返回
 
 `string`
 
@@ -324,13 +324,13 @@ boolean
 路径拼接
 - path.join()
 
-#### Parameters
+#### 参数
 
 ##### paths
 
 ...`string`[]
 
-#### Returns
+#### 返回
 
 `string`
 
@@ -338,13 +338,13 @@ boolean
 
 > **pathResolve**: (...`pathSegments`) => `string`
 
-#### Parameters
+#### 参数
 
 ##### pathSegments
 
 ...`string`[]
 
-#### Returns
+#### 返回
 
 `string`
 
@@ -352,7 +352,7 @@ boolean
 
 > **pick**: \<`T`, `K`\>(`obj`, `keys`) => `Pick`\<`T`, `K`\>
 
-#### Type Parameters
+#### 类型参数
 
 ##### T
 
@@ -362,7 +362,7 @@ boolean
 
 `K` *extends* `string` \| `number` \| `symbol`
 
-#### Parameters
+#### 参数
 
 ##### obj
 
@@ -372,7 +372,7 @@ boolean
 
 `K`[]
 
-#### Returns
+#### 返回
 
 `Pick`\<`T`, `K`\>
 
@@ -382,7 +382,7 @@ boolean
 
 打印标准的Node开发环境信息
 
-#### Returns
+#### 返回
 
 `Promise`\<`void`\>
 
@@ -392,7 +392,7 @@ boolean
 
 读取目录
 
-#### Parameters
+#### 参数
 
 ##### path
 
@@ -402,7 +402,7 @@ boolean
 
 `null` | `BufferEncoding` | \{ `encoding`: BufferEncoding \| null; `recursive?`: `boolean`; `withFileTypes?`: `false`; \}
 
-#### Returns
+#### 返回
 
 `string`[]
 
@@ -412,13 +412,13 @@ boolean
 
 读文件
 
-#### Parameters
+#### 参数
 
 ##### filePath
 
 `PathLike`
 
-#### Returns
+#### 返回
 
 `string`
 
@@ -428,7 +428,7 @@ boolean
 
 设置当前京城环境变量
 
-#### Parameters
+#### 参数
 
 ##### key
 
@@ -442,7 +442,7 @@ boolean
 
 值
 
-#### Returns
+#### 返回
 
 `void`
 
@@ -452,7 +452,7 @@ boolean
 
 写文件
 
-#### Parameters
+#### 参数
 
 ##### filePath
 
@@ -462,6 +462,6 @@ boolean
 
 `string` | `ArrayBufferView`\<`ArrayBufferLike`\>
 
-#### Returns
+#### 返回
 
 `void`

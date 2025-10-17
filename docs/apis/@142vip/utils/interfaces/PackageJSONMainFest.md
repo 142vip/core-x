@@ -1,26 +1,26 @@
 [API 参考](../../../index.md) / [@142vip/utils](../index.md) / PackageJSONMainFest
 
-# Interface: PackageJSONMainFest
+# 接口: PackageJSONMainFest
 
-Defined in: [packages/utils/src/core/package-json.ts:207](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/core/package-json.ts#L207)
+定义于: [packages/utils/src/core/package-json.ts:207](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/core/package-json.ts#L207)
 
-## Extends
+## theme_extends
 
 - [`PackageJSON`](PackageJSON.md)
 
-## Indexable
+## 可索引
 
 \[`key`: `string`\]: `unknown`
 
-## Properties
+## 属性
 
 ### name
 
 > **name**: `string`
 
-Defined in: [packages/utils/src/core/package-json.ts:198](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/core/package-json.ts#L198)
+定义于: [packages/utils/src/core/package-json.ts:198](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/core/package-json.ts#L198)
 
-#### Inherited from
+#### 继承自
 
 [`PackageJSON`](PackageJSON.md).[`name`](PackageJSON.md#name)
 
@@ -30,9 +30,9 @@ Defined in: [packages/utils/src/core/package-json.ts:198](https://github.com/142
 
 > **private**: `boolean`
 
-Defined in: [packages/utils/src/core/package-json.ts:200](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/core/package-json.ts#L200)
+定义于: [packages/utils/src/core/package-json.ts:200](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/core/package-json.ts#L200)
 
-#### Inherited from
+#### 继承自
 
 [`PackageJSON`](PackageJSON.md).[`private`](PackageJSON.md#private)
 
@@ -42,8 +42,8 @@ Defined in: [packages/utils/src/core/package-json.ts:200](https://github.com/142
 
 > **version**: `string`
 
-Defined in: [packages/utils/src/core/package-json.ts:199](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/core/package-json.ts#L199)
+定义于: [packages/utils/src/core/package-json.ts:199](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/core/package-json.ts#L199)
 
-#### Inherited from
+#### 继承自
 
 [`PackageJSON`](PackageJSON.md).[`version`](PackageJSON.md#version)

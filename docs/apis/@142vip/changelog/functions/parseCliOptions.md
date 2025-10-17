@@ -1,20 +1,20 @@
 [API 参考](../../../index.md) / [@142vip/changelog](../index.md) / parseCliOptions
 
-# Function: parseCliOptions()
+# 函数: parseCliOptions()
 
 > **parseCliOptions**(`cliOptions`): [`ChangelogGenerateOptions`](../interfaces/ChangelogGenerateOptions.md)
 
-Defined in: [changelog/src/shared/config.ts:65](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/changelog/src/shared/config.ts#L65)
+定义于: [changelog/src/shared/config.ts:65](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/shared/config.ts#L65)
 
 加载配置
 将用户自定义配置和默认配置合并
 
-## Parameters
+## 参数
 
 ### cliOptions
 
 [`ChangelogCliOptions`](../interfaces/ChangelogCliOptions.md)
 
-## Returns
+## 返回
 
 [`ChangelogGenerateOptions`](../interfaces/ChangelogGenerateOptions.md)

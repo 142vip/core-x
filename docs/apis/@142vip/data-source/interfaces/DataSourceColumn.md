@@ -1,18 +1,18 @@
 [API 参考](../../../index.md) / [@142vip/data-source](../index.md) / DataSourceColumn
 
-# Interface: DataSourceColumn
+# 接口: DataSourceColumn
 
-Defined in: [packages/data-source/src/data-source.interface.ts:27](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/data-source.interface.ts#L27)
+定义于: [packages/data-source/src/data-source.interface.ts:27](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/data-source.interface.ts#L27)
 
 表的列信息
 
-## Properties
+## 属性
 
 ### comment?
 
 > `optional` **comment**: `string`
 
-Defined in: [packages/data-source/src/data-source.interface.ts:32](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/data-source.interface.ts#L32)
+定义于: [packages/data-source/src/data-source.interface.ts:32](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/data-source.interface.ts#L32)
 
 ***
 
@@ -20,7 +20,7 @@ Defined in: [packages/data-source/src/data-source.interface.ts:32](https://githu
 
 > **name**: `string`
 
-Defined in: [packages/data-source/src/data-source.interface.ts:29](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/data-source.interface.ts#L29)
+定义于: [packages/data-source/src/data-source.interface.ts:29](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/data-source.interface.ts#L29)
 
 ***
 
@@ -28,7 +28,7 @@ Defined in: [packages/data-source/src/data-source.interface.ts:29](https://githu
 
 > **schema**: `string`
 
-Defined in: [packages/data-source/src/data-source.interface.ts:30](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/data-source.interface.ts#L30)
+定义于: [packages/data-source/src/data-source.interface.ts:30](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/data-source.interface.ts#L30)
 
 ***
 
@@ -36,7 +36,7 @@ Defined in: [packages/data-source/src/data-source.interface.ts:30](https://githu
 
 > **table**: `string`
 
-Defined in: [packages/data-source/src/data-source.interface.ts:28](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/data-source.interface.ts#L28)
+定义于: [packages/data-source/src/data-source.interface.ts:28](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/data-source.interface.ts#L28)
 
 ***
 
@@ -44,4 +44,4 @@ Defined in: [packages/data-source/src/data-source.interface.ts:28](https://githu
 
 > **type**: `string`
 
-Defined in: [packages/data-source/src/data-source.interface.ts:31](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/data-source.interface.ts#L31)
+定义于: [packages/data-source/src/data-source.interface.ts:31](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/data-source.interface.ts#L31)

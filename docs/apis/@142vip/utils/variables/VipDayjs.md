@@ -1,12 +1,12 @@
 [API 参考](../../../index.md) / [@142vip/utils](../index.md) / VipDayjs
 
-# Variable: VipDayjs
+# 变量: VipDayjs
 
 > `const` **VipDayjs**: `object`
 
-Defined in: [packages/utils/src/pkgs/dayjs.ts:29](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/pkgs/dayjs.ts#L29)
+定义于: [packages/utils/src/pkgs/dayjs.ts:29](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/pkgs/dayjs.ts#L29)
 
-## Type Declaration
+## 类型声明
 
 ### formatDateToStr()
 
@@ -14,7 +14,7 @@ Defined in: [packages/utils/src/pkgs/dayjs.ts:29](https://github.com/142vip/core
 
 时间格式化，默认： 年-月-日 时:分:秒
 
-#### Parameters
+#### 参数
 
 ##### date
 
@@ -24,7 +24,7 @@ Defined in: [packages/utils/src/pkgs/dayjs.ts:29](https://github.com/142vip/core
 
 `string`
 
-#### Returns
+#### 返回
 
 `string`
 
@@ -35,7 +35,7 @@ Defined in: [packages/utils/src/pkgs/dayjs.ts:29](https://github.com/142vip/core
 年月日格式化当前时间
 - 格式： 2024-08-09
 
-#### Returns
+#### 返回
 
 `string`
 
@@ -51,6 +51,6 @@ Defined in: [packages/utils/src/pkgs/dayjs.ts:29](https://github.com/142vip/core
 
 获取当前时间戳
 
-#### Returns
+#### 返回
 
 `number`

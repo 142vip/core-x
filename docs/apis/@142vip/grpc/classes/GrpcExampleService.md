@@ -1,44 +1,44 @@
 [API 参考](../../../index.md) / [@142vip/grpc](../index.md) / GrpcExampleService
 
-# Class: GrpcExampleService
+# 类: GrpcExampleService
 
-Defined in: [example.ts:23](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/example.ts#L23)
+定义于: [example.ts:23](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/example.ts#L23)
 
-## Implements
+## 实现
 
 - [`GrpcExampleServiceImpl`](../interfaces/GrpcExampleServiceImpl.md)
 
-## Constructors
+## 构造函数
 
-### Constructor
+### 构造函数
 
 > **new GrpcExampleService**(): `GrpcExampleService`
 
-#### Returns
+#### 返回
 
 `GrpcExampleService`
 
-## Methods
+## 方法
 
 ### clientStreamToServer()
 
 > **clientStreamToServer**(`requestData`): `Promise`\<[`ExampleResponseDataType`](../interfaces/ExampleResponseDataType.md)\>
 
-Defined in: [example.ts:40](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/example.ts#L40)
+定义于: [example.ts:40](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/example.ts#L40)
 
 客户端流式
 
-#### Parameters
+#### 参数
 
 ##### requestData
 
 [`ExampleRequestDataType`](../interfaces/ExampleRequestDataType.md)
 
-#### Returns
+#### 返回
 
 `Promise`\<[`ExampleResponseDataType`](../interfaces/ExampleResponseDataType.md)\>
 
-#### Implementation of
+#### 实现了
 
 [`GrpcExampleServiceImpl`](../interfaces/GrpcExampleServiceImpl.md).[`clientStreamToServer`](../interfaces/GrpcExampleServiceImpl.md#clientstreamtoserver)
 
@@ -48,21 +48,21 @@ Defined in: [example.ts:40](https://github.com/142vip/core-x/blob/15d5bc9ef4bece
 
 > **clientStreamToServerStream**(`requestData`): `Promise`\<[`ExampleResponseDataType`](../interfaces/ExampleResponseDataType.md)\>
 
-Defined in: [example.ts:64](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/example.ts#L64)
+定义于: [example.ts:64](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/example.ts#L64)
 
 客户端、服务端，流式
 
-#### Parameters
+#### 参数
 
 ##### requestData
 
 [`ExampleRequestDataType`](../interfaces/ExampleRequestDataType.md)
 
-#### Returns
+#### 返回
 
 `Promise`\<[`ExampleResponseDataType`](../interfaces/ExampleResponseDataType.md)\>
 
-#### Implementation of
+#### 实现了
 
 [`GrpcExampleServiceImpl`](../interfaces/GrpcExampleServiceImpl.md).[`clientStreamToServerStream`](../interfaces/GrpcExampleServiceImpl.md#clientstreamtoserverstream)
 
@@ -72,21 +72,21 @@ Defined in: [example.ts:64](https://github.com/142vip/core-x/blob/15d5bc9ef4bece
 
 > **clientToServer**(`requestData`): `Promise`\<[`ExampleResponseDataType`](../interfaces/ExampleResponseDataType.md)\>
 
-Defined in: [example.ts:28](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/example.ts#L28)
+定义于: [example.ts:28](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/example.ts#L28)
 
 普通一元调用
 
-#### Parameters
+#### 参数
 
 ##### requestData
 
 [`ExampleRequestDataType`](../interfaces/ExampleRequestDataType.md)
 
-#### Returns
+#### 返回
 
 `Promise`\<[`ExampleResponseDataType`](../interfaces/ExampleResponseDataType.md)\>
 
-#### Implementation of
+#### 实现了
 
 [`GrpcExampleServiceImpl`](../interfaces/GrpcExampleServiceImpl.md).[`clientToServer`](../interfaces/GrpcExampleServiceImpl.md#clienttoserver)
 
@@ -96,20 +96,20 @@ Defined in: [example.ts:28](https://github.com/142vip/core-x/blob/15d5bc9ef4bece
 
 > **clientToServerStream**(`requestData`): `Promise`\<[`ExampleResponseDataType`](../interfaces/ExampleResponseDataType.md)\>
 
-Defined in: [example.ts:52](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/example.ts#L52)
+定义于: [example.ts:52](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/example.ts#L52)
 
 服务端流式
 
-#### Parameters
+#### 参数
 
 ##### requestData
 
 [`ExampleRequestDataType`](../interfaces/ExampleRequestDataType.md)
 
-#### Returns
+#### 返回
 
 `Promise`\<[`ExampleResponseDataType`](../interfaces/ExampleResponseDataType.md)\>
 
-#### Implementation of
+#### 实现了
 
 [`GrpcExampleServiceImpl`](../interfaces/GrpcExampleServiceImpl.md).[`clientToServerStream`](../interfaces/GrpcExampleServiceImpl.md#clienttoserverstream)

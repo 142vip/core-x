@@ -1,24 +1,24 @@
 [API 参考](../../../index.md) / [@142vip/grpc](../index.md) / GrpcExampleServiceImpl
 
-# Interface: GrpcExampleServiceImpl
+# 接口: GrpcExampleServiceImpl
 
-Defined in: [example.ts:16](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/example.ts#L16)
+定义于: [example.ts:16](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/example.ts#L16)
 
-## Properties
+## 属性
 
 ### clientStreamToServer()
 
 > **clientStreamToServer**: (`requestData`) => `Promise`\<[`ExampleResponseDataType`](ExampleResponseDataType.md)\>
 
-Defined in: [example.ts:18](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/example.ts#L18)
+定义于: [example.ts:18](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/example.ts#L18)
 
-#### Parameters
+#### 参数
 
 ##### requestData
 
 [`ExampleRequestDataType`](ExampleRequestDataType.md)
 
-#### Returns
+#### 返回
 
 `Promise`\<[`ExampleResponseDataType`](ExampleResponseDataType.md)\>
 
@@ -28,15 +28,15 @@ Defined in: [example.ts:18](https://github.com/142vip/core-x/blob/15d5bc9ef4bece
 
 > **clientStreamToServerStream**: (`requestData`) => `Promise`\<[`ExampleResponseDataType`](ExampleResponseDataType.md)\>
 
-Defined in: [example.ts:20](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/example.ts#L20)
+定义于: [example.ts:20](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/example.ts#L20)
 
-#### Parameters
+#### 参数
 
 ##### requestData
 
 [`ExampleRequestDataType`](ExampleRequestDataType.md)
 
-#### Returns
+#### 返回
 
 `Promise`\<[`ExampleResponseDataType`](ExampleResponseDataType.md)\>
 
@@ -46,15 +46,15 @@ Defined in: [example.ts:20](https://github.com/142vip/core-x/blob/15d5bc9ef4bece
 
 > **clientToServer**: (`requestData`) => `Promise`\<[`ExampleResponseDataType`](ExampleResponseDataType.md)\>
 
-Defined in: [example.ts:17](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/example.ts#L17)
+定义于: [example.ts:17](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/example.ts#L17)
 
-#### Parameters
+#### 参数
 
 ##### requestData
 
 [`ExampleRequestDataType`](ExampleRequestDataType.md)
 
-#### Returns
+#### 返回
 
 `Promise`\<[`ExampleResponseDataType`](ExampleResponseDataType.md)\>
 
@@ -64,14 +64,14 @@ Defined in: [example.ts:17](https://github.com/142vip/core-x/blob/15d5bc9ef4bece
 
 > **clientToServerStream**: (`requestData`) => `Promise`\<[`ExampleResponseDataType`](ExampleResponseDataType.md)\>
 
-Defined in: [example.ts:19](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/example.ts#L19)
+定义于: [example.ts:19](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/example.ts#L19)
 
-#### Parameters
+#### 参数
 
 ##### requestData
 
 [`ExampleRequestDataType`](ExampleRequestDataType.md)
 
-#### Returns
+#### 返回
 
 `Promise`\<[`ExampleResponseDataType`](ExampleResponseDataType.md)\>

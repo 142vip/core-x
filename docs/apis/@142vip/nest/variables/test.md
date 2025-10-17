@@ -1,7 +1,7 @@
 [API 参考](../../../index.md) / [@142vip/nest](../index.md) / test
 
-# Variable: test
+# 变量: test
 
 > `const` **test**: `1` = `1`
 
-Defined in: [index.ts:1](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/nest/src/index.ts#L1)
+定义于: [index.ts:1](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/nest/src/index.ts#L1)

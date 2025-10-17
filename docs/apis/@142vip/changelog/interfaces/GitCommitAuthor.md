@@ -1,20 +1,20 @@
 [API 参考](../../../index.md) / [@142vip/changelog](../index.md) / GitCommitAuthor
 
-# Interface: GitCommitAuthor
+# 接口: GitCommitAuthor
 
-Defined in: [changelog/src/enums/git-commit.interface.ts:1](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/changelog/src/enums/git-commit.interface.ts#L1)
+定义于: [changelog/src/enums/git-commit.interface.ts:1](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/git-commit.interface.ts#L1)
 
-## Extended by
+## theme_extended_by
 
 - [`GitAuthorInfo`](GitAuthorInfo.md)
 
-## Properties
+## 属性
 
 ### email
 
 > **email**: `string`
 
-Defined in: [changelog/src/enums/git-commit.interface.ts:3](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/changelog/src/enums/git-commit.interface.ts#L3)
+定义于: [changelog/src/enums/git-commit.interface.ts:3](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/git-commit.interface.ts#L3)
 
 ***
 
@@ -22,4 +22,4 @@ Defined in: [changelog/src/enums/git-commit.interface.ts:3](https://github.com/1
 
 > **name**: `string`
 
-Defined in: [changelog/src/enums/git-commit.interface.ts:2](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/changelog/src/enums/git-commit.interface.ts#L2)
+定义于: [changelog/src/enums/git-commit.interface.ts:2](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/git-commit.interface.ts#L2)

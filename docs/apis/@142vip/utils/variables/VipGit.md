@@ -1,14 +1,14 @@
 [API 参考](../../../index.md) / [@142vip/utils](../index.md) / VipGit
 
-# Variable: VipGit
+# 变量: VipGit
 
 > `const` **VipGit**: `object`
 
-Defined in: [packages/utils/src/core/git.ts:252](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/core/git.ts#L252)
+定义于: [packages/utils/src/core/git.ts:252](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/core/git.ts#L252)
 
 Git业务相关
 
-## Type Declaration
+## 类型声明
 
 ### convertEmoji()
 
@@ -17,7 +17,7 @@ Git业务相关
 git emoji表情转换
 参考：https://www.npmjs.com/package/convert-gitmoji
 
-#### Parameters
+#### 参数
 
 ##### content
 
@@ -27,7 +27,7 @@ git emoji表情转换
 
 `boolean` | `"leading"` | `"trailing"` | `"both"`
 
-#### Returns
+#### 返回
 
 `string`
 
@@ -37,13 +37,13 @@ git emoji表情转换
 
 提交操作
 
-#### Parameters
+#### 参数
 
 ##### args
 
 `string`[]
 
-#### Returns
+#### 返回
 
 `void`
 
@@ -55,13 +55,13 @@ git emoji表情转换
 - 推送分支
 - 推送tag标签  --tags
 
-#### Parameters
+#### 参数
 
 ##### args
 
 `string`[]
 
-#### Returns
+#### 返回
 
 `void`
 
@@ -71,13 +71,13 @@ git emoji表情转换
 
 标签操作
 
-#### Parameters
+#### 参数
 
 ##### args
 
 `string`[]
 
-#### Returns
+#### 返回
 
 `void`
 
@@ -89,7 +89,7 @@ git emoji表情转换
 - 去除空行
 - 去除换行符
 
-#### Returns
+#### 返回
 
 `string`
 
@@ -99,7 +99,7 @@ git emoji表情转换
 
 获取某个分支上的commit日志
 
-#### Parameters
+#### 参数
 
 ##### latestTag
 
@@ -109,7 +109,7 @@ git emoji表情转换
 
 `string`
 
-#### Returns
+#### 返回
 
 `string`[]
 
@@ -120,7 +120,7 @@ git emoji表情转换
 获取commit信息
 - 去除空行
 
-#### Returns
+#### 返回
 
 `string`
 
@@ -130,7 +130,7 @@ git emoji表情转换
 
 获取当前分支
 
-#### Returns
+#### 返回
 
 `string`
 
@@ -140,13 +140,13 @@ git emoji表情转换
 
 获取github仓库
 
-#### Parameters
+#### 参数
 
 ##### baseUrl
 
 `string`
 
-#### Returns
+#### 返回
 
 `string`
 
@@ -156,13 +156,13 @@ git emoji表情转换
 
 获取最近一次tag标签
 
-#### Parameters
+#### 参数
 
 ##### inputTag
 
 `string`
 
-#### Returns
+#### 返回
 
 `undefined` \| `string`
 
@@ -174,7 +174,7 @@ git emoji表情转换
 - 短哈希值
 - 提交信息
 
-#### Returns
+#### 返回
 
 [`GitInfo`](../interfaces/GitInfo.md)
 
@@ -184,7 +184,7 @@ git emoji表情转换
 
 获取最近一次提交的完整哈希值
 
-#### Returns
+#### 返回
 
 `string`
 
@@ -194,13 +194,13 @@ git emoji表情转换
 
 获取分支最近的一次GitTag标记到Head标记之间的git commit信息
 
-#### Parameters
+#### 参数
 
 ##### gitScope
 
 `string`
 
-#### Returns
+#### 返回
 
 `string`[]
 
@@ -210,7 +210,7 @@ git emoji表情转换
 
 获取最近一次提交的短哈希值
 
-#### Returns
+#### 返回
 
 `string`
 
@@ -220,7 +220,7 @@ git emoji表情转换
 
 列出所有的remote信息
 
-#### Returns
+#### 返回
 
 `string`[]
 
@@ -230,7 +230,7 @@ git emoji表情转换
 
 获取指向当前提交（HEAD）的所有标签
 
-#### Returns
+#### 返回
 
 `null` \| `string`
 
@@ -240,7 +240,7 @@ git emoji表情转换
 
 获取所有tag标签
 
-#### Returns
+#### 返回
 
 `string`[]
 
@@ -250,13 +250,13 @@ git emoji表情转换
 
 是否预发布
 
-#### Parameters
+#### 参数
 
 ##### version
 
 `string`
 
-#### Returns
+#### 返回
 
 `boolean`
 
@@ -266,7 +266,7 @@ git emoji表情转换
 
 判断仓库是否克隆太浅
 
-#### Returns
+#### 返回
 
 `boolean`
 
@@ -276,13 +276,13 @@ git emoji表情转换
 
 解析Git提交信息
 
-#### Parameters
+#### 参数
 
 ##### message
 
 `string`
 
-#### Returns
+#### 返回
 
 `null` \| [`GitCommit`](../interfaces/GitCommit.md)
 
@@ -292,12 +292,12 @@ git emoji表情转换
 
 检测当前分支，是否允许操作的分支，默认：main|next|master
 
-#### Parameters
+#### 参数
 
 ##### allowBranch?
 
 `string` | `string`[]
 
-#### Returns
+#### 返回
 
 `void`

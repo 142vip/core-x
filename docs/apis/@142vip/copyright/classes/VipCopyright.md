@@ -1,23 +1,23 @@
 [API 参考](../../../index.md) / [@142vip/copyright](../index.md) / VipCopyright
 
-# Class: VipCopyright
+# 类: VipCopyright
 
-Defined in: [copyright.ts:30](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/copyright/src/copyright.ts#L30)
+定义于: [copyright.ts:30](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/copyright/src/copyright.ts#L30)
 
 软著源代码生成器
 - 支持Java、JavaScript、TypeScript、Python、C、C++、Go、Swift、PHP、Rust、Shell、SQL、YAML、XML、HTML、Text等语言
 - 支持生成源代码文档
 - 支持生成源代码文档的前30页、后30页、前后30页
 
-## Constructors
+## 构造函数
 
-### Constructor
+### 构造函数
 
 > **new VipCopyright**(`copyrightTitle`, `copyrightVersion`, `options?`): `VipCopyright`
 
-Defined in: [copyright.ts:56](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/copyright/src/copyright.ts#L56)
+定义于: [copyright.ts:56](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/copyright/src/copyright.ts#L56)
 
-#### Parameters
+#### 参数
 
 ##### copyrightTitle
 
@@ -31,21 +31,21 @@ Defined in: [copyright.ts:56](https://github.com/142vip/core-x/blob/15d5bc9ef4be
 
 [`CopyrightOptions`](../interfaces/CopyrightOptions.md)
 
-#### Returns
+#### 返回
 
 `VipCopyright`
 
-## Methods
+## 方法
 
 ### generateDocx()
 
 > **generateDocx**(`sourceCodeDir`, `fileType`): `Promise`\<`void`\>
 
-Defined in: [copyright.ts:94](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/copyright/src/copyright.ts#L94)
+定义于: [copyright.ts:94](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/copyright/src/copyright.ts#L94)
 
 生成源代码文档
 
-#### Parameters
+#### 参数
 
 ##### sourceCodeDir
 
@@ -55,7 +55,7 @@ Defined in: [copyright.ts:94](https://github.com/142vip/core-x/blob/15d5bc9ef4be
 
 [`CopyrightFileType`](../enumerations/CopyrightFileType.md)
 
-#### Returns
+#### 返回
 
 `Promise`\<`void`\>
 
@@ -65,11 +65,11 @@ Defined in: [copyright.ts:94](https://github.com/142vip/core-x/blob/15d5bc9ef4be
 
 > **saveCodeToDocx**(`fileName`, `sourceLines`, `pageCount`): `Promise`\<`void`\>
 
-Defined in: [copyright.ts:130](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/copyright/src/copyright.ts#L130)
+定义于: [copyright.ts:130](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/copyright/src/copyright.ts#L130)
 
 存储代码到文档中
 
-#### Parameters
+#### 参数
 
 ##### fileName
 
@@ -83,7 +83,7 @@ Defined in: [copyright.ts:130](https://github.com/142vip/core-x/blob/15d5bc9ef4b
 
 `number`
 
-#### Returns
+#### 返回
 
 `Promise`\<`void`\>
 
@@ -93,11 +93,11 @@ Defined in: [copyright.ts:130](https://github.com/142vip/core-x/blob/15d5bc9ef4b
 
 > **scanSourceCode**(`sourceCodeDir`, `fileType`): `object`
 
-Defined in: [copyright.ts:157](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/copyright/src/copyright.ts#L157)
+定义于: [copyright.ts:157](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/copyright/src/copyright.ts#L157)
 
 根据文件路径，扫描源码
 
-#### Parameters
+#### 参数
 
 ##### sourceCodeDir
 
@@ -107,7 +107,7 @@ Defined in: [copyright.ts:157](https://github.com/142vip/core-x/blob/15d5bc9ef4b
 
 [`CopyrightFileType`](../enumerations/CopyrightFileType.md)
 
-#### Returns
+#### 返回
 
 `object`
 
@@ -129,11 +129,11 @@ Defined in: [copyright.ts:157](https://github.com/142vip/core-x/blob/15d5bc9ef4b
 
 > `static` **quickGenerateDocx**(`options`): `Promise`\<`void`\>
 
-Defined in: [copyright.ts:81](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/copyright/src/copyright.ts#L81)
+定义于: [copyright.ts:81](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/copyright/src/copyright.ts#L81)
 
 快速生成文档
 
-#### Parameters
+#### 参数
 
 ##### options
 
@@ -153,6 +153,6 @@ Defined in: [copyright.ts:81](https://github.com/142vip/core-x/blob/15d5bc9ef4be
 
 `string`
 
-#### Returns
+#### 返回
 
 `Promise`\<`void`\>

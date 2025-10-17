@@ -1,6 +1,6 @@
 # API 参考
 
-## Packages
+## 模块包
 
 - [@142vip/axios - v0.0.1-alpha.7](@142vip/axios/index.md)
 - [@142vip/changelog - v0.0.1-alpha.22](@142vip/changelog/index.md)
@@ -8,8 +8,8 @@
 - [@142vip/copyright - v0.0.1-alpha.2](@142vip/copyright/index.md)
 - [@142vip/data-source - v0.0.1-alpha.4](@142vip/data-source/index.md)
 - [@142vip/eslint-config - v0.0.1-alpha.5](@142vip/eslint-config/index.md)
-- [@142vip/fairy-cli - v0.0.3-alpha.29](@142vip/fairy-cli/index.md)
-- [@142vip/grpc - v0.0.1-alpha.4](@142vip/grpc/index.md)
+- [@142vip/fairy-cli - v0.0.3-alpha.28](@142vip/fairy-cli/index.md)
+- [@142vip/grpc - v0.0.1-alpha.3](@142vip/grpc/index.md)
 - [@142vip/nest - v0.0.1-alpha.1](@142vip/nest/index.md)
 - [@142vip/nest-redis - v0.0.1-alpha.1](@142vip/nest-redis/index.md)
 - [@142vip/nest-typeorm - v0.0.1-alpha.0](@142vip/nest-typeorm/index.md)
@@ -18,4 +18,4 @@
 - [@142vip/redis - v0.0.1-alpha.3](@142vip/redis/index.md)
 - [@142vip/release-version - v0.0.1-alpha.15](@142vip/release-version/index.md)
 - [@142vip/typeorm - v0.0.1-alpha.0](@142vip/typeorm/index.md)
-- [@142vip/utils - v0.0.1-alpha.42](@142vip/utils/index.md)
+- [@142vip/utils - v0.0.1-alpha.41](@142vip/utils/index.md)

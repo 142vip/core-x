@@ -1,20 +1,20 @@
 [API 参考](../../../index.md) / [@142vip/commit-linter](../index.md) / printStandardCommitMessage
 
-# Function: printStandardCommitMessage()
+# 函数: printStandardCommitMessage()
 
 > **printStandardCommitMessage**(`message?`): `void`
 
-Defined in: [commit-linter/src/core/commit-template.ts:9](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/commit-linter/src/core/commit-template.ts#L9)
+定义于: [commit-linter/src/core/commit-template.ts:9](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/commit-linter/src/core/commit-template.ts#L9)
 
 打印错误信息
 打印标准的Git Commit信息模板
 
-## Parameters
+## 参数
 
 ### message?
 
 `string`
 
-## Returns
+## 返回
 
 `void`

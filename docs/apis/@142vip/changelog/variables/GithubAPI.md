@@ -1,12 +1,12 @@
 [API 参考](../../../index.md) / [@142vip/changelog](../index.md) / GithubAPI
 
-# Variable: GithubAPI
+# 变量: GithubAPI
 
 > `const` **GithubAPI**: `object`
 
-Defined in: [changelog/src/core/github.api.ts:219](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/changelog/src/core/github.api.ts#L219)
+定义于: [changelog/src/core/github.api.ts:219](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/core/github.api.ts#L219)
 
-## Type Declaration
+## 类型声明
 
 ### createGithubRelease()
 
@@ -15,7 +15,7 @@ Defined in: [changelog/src/core/github.api.ts:219](https://github.com/142vip/cor
 发送github发布
 - https://docs.github.com/en/rest/releases/releases?apiVersion=2022-11-28
 
-#### Parameters
+#### 参数
 
 ##### options
 
@@ -51,7 +51,7 @@ Defined in: [changelog/src/core/github.api.ts:219](https://github.com/142vip/cor
 
 `string`
 
-#### Returns
+#### 返回
 
 `Promise`\<`void`\>
 
@@ -61,7 +61,7 @@ Defined in: [changelog/src/core/github.api.ts:219](https://github.com/142vip/cor
 
 生成手动release发布的地址链接
 
-#### Parameters
+#### 参数
 
 ##### markdown
 
@@ -89,7 +89,7 @@ Defined in: [changelog/src/core/github.api.ts:219](https://github.com/142vip/cor
 
 `string`
 
-#### Returns
+#### 返回
 
 `string`
 
@@ -97,7 +97,7 @@ Defined in: [changelog/src/core/github.api.ts:219](https://github.com/142vip/cor
 
 > **getAuthorInfo**: (`options`, `info`) => `Promise`\<[`GitAuthorInfo`](../interfaces/GitAuthorInfo.md)\>
 
-#### Parameters
+#### 参数
 
 ##### options
 
@@ -117,7 +117,7 @@ Defined in: [changelog/src/core/github.api.ts:219](https://github.com/142vip/cor
 
 [`GitAuthorInfo`](../interfaces/GitAuthorInfo.md)
 
-#### Returns
+#### 返回
 
 `Promise`\<[`GitAuthorInfo`](../interfaces/GitAuthorInfo.md)\>
 
@@ -125,13 +125,13 @@ Defined in: [changelog/src/core/github.api.ts:219](https://github.com/142vip/cor
 
 > **getHeaders**: (`token`) => `object`
 
-#### Parameters
+#### 参数
 
 ##### token
 
 `string`
 
-#### Returns
+#### 返回
 
 `object`
 
@@ -149,7 +149,7 @@ Defined in: [changelog/src/core/github.api.ts:219](https://github.com/142vip/cor
 
 判断是否有tag
 
-#### Parameters
+#### 参数
 
 ##### tag
 
@@ -169,7 +169,7 @@ Defined in: [changelog/src/core/github.api.ts:219](https://github.com/142vip/cor
 
 `string`
 
-#### Returns
+#### 返回
 
 `Promise`\<`boolean`\>
 
@@ -180,7 +180,7 @@ Defined in: [changelog/src/core/github.api.ts:219](https://github.com/142vip/cor
 打印手动发布地址
 - 默认成功输出
 
-#### Parameters
+#### 参数
 
 ##### webUrl
 
@@ -190,7 +190,7 @@ Defined in: [changelog/src/core/github.api.ts:219](https://github.com/142vip/cor
 
 `boolean` = `true`
 
-#### Returns
+#### 返回
 
 `void`
 
@@ -198,7 +198,7 @@ Defined in: [changelog/src/core/github.api.ts:219](https://github.com/142vip/cor
 
 > **resolveAuthors**: (`commits`, `options`) => `Promise`\<[`GitAuthorInfo`](../interfaces/GitAuthorInfo.md)[]\>
 
-#### Parameters
+#### 参数
 
 ##### commits
 
@@ -218,6 +218,6 @@ Defined in: [changelog/src/core/github.api.ts:219](https://github.com/142vip/cor
 
 `string`
 
-#### Returns
+#### 返回
 
 `Promise`\<[`GitAuthorInfo`](../interfaces/GitAuthorInfo.md)[]\>

@@ -1,44 +1,44 @@
 [API 参考](../../../index.md) / [@142vip/utils](../index.md) / VipDocSite
 
-# Class: VipDocSite
+# 类: VipDocSite
 
-Defined in: [packages/utils/src/core/doc-site.ts:6](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/core/doc-site.ts#L6)
+定义于: [packages/utils/src/core/doc-site.ts:6](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/core/doc-site.ts#L6)
 
 博客站点的工具方法
 
-## Constructors
+## 构造函数
 
-### Constructor
+### 构造函数
 
 > **new VipDocSite**(): `VipDocSite`
 
-#### Returns
+#### 返回
 
 `VipDocSite`
 
-## Properties
+## 属性
 
 ### defaultEnvKey
 
 > `readonly` **defaultEnvKey**: `string` = `'NEED_PROXY'`
 
-Defined in: [packages/utils/src/core/doc-site.ts:10](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/core/doc-site.ts#L10)
+定义于: [packages/utils/src/core/doc-site.ts:10](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/core/doc-site.ts#L10)
 
 默认的环境变量的键
 
-## Methods
+## 方法
 
 ### getBase()
 
 > **getBase**(`baseName`, `envKey?`): `` `/${string}/` `` \| `"/"`
 
-Defined in: [packages/utils/src/core/doc-site.ts:19](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/core/doc-site.ts#L19)
+定义于: [packages/utils/src/core/doc-site.ts:19](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/core/doc-site.ts#L19)
 
 用于区分base路径，是否nginx代理
 - 路径名称
 - 默认环境变量 NEED_PROXY
 
-#### Parameters
+#### 参数
 
 ##### baseName
 
@@ -52,6 +52,6 @@ Defined in: [packages/utils/src/core/doc-site.ts:19](https://github.com/142vip/c
 
 环境变量的键
 
-#### Returns
+#### 返回
 
 `` `/${string}/` `` \| `"/"`

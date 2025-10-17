@@ -2,11 +2,11 @@
 
 # @142vip/redis
 
-## Enumerations
+## 枚举
 
 - [RedisMode](enumerations/RedisMode.md)
 
-## Classes
+## 类
 
 - [IORedis](classes/IORedis.md)
 - [Redis](classes/Redis.md)

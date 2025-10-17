@@ -1,16 +1,16 @@
 [API 参考](../../../index.md) / [@142vip/release-version](../index.md) / VersionBumpOptions
 
-# Interface: VersionBumpOptions
+# 接口: VersionBumpOptions
 
-Defined in: [enums/version-bump.interface.ts:5](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/release-version/src/enums/version-bump.interface.ts#L5)
+定义于: [enums/version-bump.interface.ts:5](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/release-version/src/enums/version-bump.interface.ts#L5)
 
-## Properties
+## 属性
 
 ### all?
 
 > `optional` **all**: `boolean`
 
-Defined in: [enums/version-bump.interface.ts:47](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/release-version/src/enums/version-bump.interface.ts#L47)
+定义于: [enums/version-bump.interface.ts:47](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/release-version/src/enums/version-bump.interface.ts#L47)
 
 Indicates whether the git commit should include ALL files (`git commit --all`)
 rather than just the files that were modified by `versionBump()`.
@@ -23,7 +23,7 @@ Defaults to `false`.
 
 > `optional` **changelog**: `boolean`
 
-Defined in: [enums/version-bump.interface.ts:14](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/release-version/src/enums/version-bump.interface.ts#L14)
+定义于: [enums/version-bump.interface.ts:14](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/release-version/src/enums/version-bump.interface.ts#L14)
 
 是否生成CHANGELOG.md文档
 
@@ -33,7 +33,7 @@ Defined in: [enums/version-bump.interface.ts:14](https://github.com/142vip/core-
 
 > `optional` **commit**: `string` \| `boolean`
 
-Defined in: [enums/version-bump.interface.ts:26](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/release-version/src/enums/version-bump.interface.ts#L26)
+定义于: [enums/version-bump.interface.ts:26](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/release-version/src/enums/version-bump.interface.ts#L26)
 
 指示是否创建 git 提交。可以设置为自定义提交消息字符串，默认是“true”
 - 消息字符串中的任何 '%s' 占位符都将被替换为新版本号。
@@ -45,7 +45,7 @@ Defined in: [enums/version-bump.interface.ts:26](https://github.com/142vip/core-
 
 > `optional` **confirm**: `boolean`
 
-Defined in: [enums/version-bump.interface.ts:52](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/release-version/src/enums/version-bump.interface.ts#L52)
+定义于: [enums/version-bump.interface.ts:52](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/release-version/src/enums/version-bump.interface.ts#L52)
 
 支持用户确认提示，默认：true
 
@@ -55,7 +55,7 @@ Defined in: [enums/version-bump.interface.ts:52](https://github.com/142vip/core-
 
 > `optional` **currentVersion**: `string`
 
-Defined in: [enums/version-bump.interface.ts:19](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/release-version/src/enums/version-bump.interface.ts#L19)
+定义于: [enums/version-bump.interface.ts:19](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/release-version/src/enums/version-bump.interface.ts#L19)
 
 当前版本号
 
@@ -65,7 +65,7 @@ Defined in: [enums/version-bump.interface.ts:19](https://github.com/142vip/core-
 
 > `optional` **cwd**: `string`
 
-Defined in: [enums/version-bump.interface.ts:62](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/release-version/src/enums/version-bump.interface.ts#L62)
+定义于: [enums/version-bump.interface.ts:62](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/release-version/src/enums/version-bump.interface.ts#L62)
 
 工作目录，用作查找所有文件的基础。默认：process.cwd()
 
@@ -75,7 +75,7 @@ Defined in: [enums/version-bump.interface.ts:62](https://github.com/142vip/core-
 
 > `optional` **execute**: `string`
 
-Defined in: [enums/version-bump.interface.ts:73](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/release-version/src/enums/version-bump.interface.ts#L73)
+定义于: [enums/version-bump.interface.ts:73](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/release-version/src/enums/version-bump.interface.ts#L73)
 
 在 bumping 之后和 commit 之前执行其他命令
 
@@ -85,7 +85,7 @@ Defined in: [enums/version-bump.interface.ts:73](https://github.com/142vip/core-
 
 > `optional` **ignoreScripts**: `boolean`
 
-Defined in: [enums/version-bump.interface.ts:68](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/release-version/src/enums/version-bump.interface.ts#L68)
+定义于: [enums/version-bump.interface.ts:68](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/release-version/src/enums/version-bump.interface.ts#L68)
 
 指示是否忽略version版本脚本。默认：false
 
@@ -95,7 +95,7 @@ Defined in: [enums/version-bump.interface.ts:68](https://github.com/142vip/core-
 
 > `optional` **preid**: `string`
 
-Defined in: [enums/version-bump.interface.ts:9](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/release-version/src/enums/version-bump.interface.ts#L9)
+定义于: [enums/version-bump.interface.ts:9](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/release-version/src/enums/version-bump.interface.ts#L9)
 
 预发行类型（例如 “alpha”、“beta”、“next”），默认：“alpha”
 
@@ -105,7 +105,7 @@ Defined in: [enums/version-bump.interface.ts:9](https://github.com/142vip/core-x
 
 > `optional` **push**: `boolean`
 
-Defined in: [enums/version-bump.interface.ts:39](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/release-version/src/enums/version-bump.interface.ts#L39)
+定义于: [enums/version-bump.interface.ts:39](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/release-version/src/enums/version-bump.interface.ts#L39)
 
 是否推送 git commit 和 tag。默认：true
 
@@ -115,7 +115,7 @@ Defined in: [enums/version-bump.interface.ts:39](https://github.com/142vip/core-
 
 > `optional` **recursive**: `boolean`
 
-Defined in: [enums/version-bump.interface.ts:83](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/release-version/src/enums/version-bump.interface.ts#L83)
+定义于: [enums/version-bump.interface.ts:83](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/release-version/src/enums/version-bump.interface.ts#L83)
 
 递归地为 monorepo 加载文件。仅在发布monorepo主模块时有效，默认false
 
@@ -125,7 +125,7 @@ Defined in: [enums/version-bump.interface.ts:83](https://github.com/142vip/core-
 
 > `optional` **scopeName**: `string`
 
-Defined in: [enums/version-bump.interface.ts:78](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/release-version/src/enums/version-bump.interface.ts#L78)
+定义于: [enums/version-bump.interface.ts:78](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/release-version/src/enums/version-bump.interface.ts#L78)
 
 monorepo模式下，指定模块名包名
 
@@ -135,7 +135,7 @@ monorepo模式下，指定模块名包名
 
 > `optional` **skipGitVerify**: `boolean`
 
-Defined in: [enums/version-bump.interface.ts:57](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/release-version/src/enums/version-bump.interface.ts#L57)
+定义于: [enums/version-bump.interface.ts:57](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/release-version/src/enums/version-bump.interface.ts#L57)
 
 指示是否绕过 git 提交钩子 （'git commit --no-verify'）。默认：false
 
@@ -145,7 +145,7 @@ Defined in: [enums/version-bump.interface.ts:57](https://github.com/142vip/core-
 
 > `optional` **tag**: `string` \| `boolean`
 
-Defined in: [enums/version-bump.interface.ts:34](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/release-version/src/enums/version-bump.interface.ts#L34)
+定义于: [enums/version-bump.interface.ts:34](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/release-version/src/enums/version-bump.interface.ts#L34)
 
 指示是否标记 git 提交。可以设置为自定义标签字符串，默认是“true”
 - 标签字符串可以是自定义字符串，例如 'v%s'

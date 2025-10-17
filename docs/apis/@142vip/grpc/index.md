@@ -2,21 +2,20 @@
 
 # @142vip/grpc
 
-## Enumerations
+## 枚举
 
 - [GrpcConnectURI](enumerations/GrpcConnectURI.md)
 - [GrpcExampleServiceMethod](enumerations/GrpcExampleServiceMethod.md)
 - [ServiceMethodType](enumerations/ServiceMethodType.md)
 
-## Classes
+## 类
 
 - [GrpcClient](classes/GrpcClient.md)
-- [GrpcExampleServerManager](classes/GrpcExampleServerManager.md)
 - [GrpcExampleService](classes/GrpcExampleService.md)
-- [GrpcProtoLoader](classes/GrpcProtoLoader.md)
 - [GrpcServer](classes/GrpcServer.md)
+- [ProtoLoader](classes/ProtoLoader.md)
 
-## Interfaces
+## 接口
 
 - [ExampleRequestDataType](interfaces/ExampleRequestDataType.md)
 - [ExampleResponseDataType](interfaces/ExampleResponseDataType.md)
@@ -27,12 +26,12 @@
 - [GrpcTraceError](interfaces/GrpcTraceError.md)
 - [UntypedMethodImplementation](interfaces/UntypedMethodImplementation.md)
 
-## Type Aliases
+## 类型别名
 
 - [ServiceClientDefinitionMap](type-aliases/ServiceClientDefinitionMap.md)
 - [ServiceMethodFuncImpl](type-aliases/ServiceMethodFuncImpl.md)
 
-## Variables
+## 变量
 
 - [DEFAULT\_LOADER\_OPTIONS](variables/DEFAULT_LOADER_OPTIONS.md)
 - [exampleProto](variables/exampleProto.md)
@@ -52,7 +51,7 @@
 - [testProtoStreamServiceName](variables/testProtoStreamServiceName.md)
 - [testProtoStreamServicePath](variables/testProtoStreamServicePath.md)
 
-## Functions
+## 函数
 
 - [clientStreamToServer](functions/clientStreamToServer.md)
 - [clientStreamToServerStream](functions/clientStreamToServerStream.md)
@@ -65,4 +64,3 @@
 - [grpcSimpleHandler](functions/grpcSimpleHandler.md)
 - [grpcStreamHandler](functions/grpcStreamHandler.md)
 - [methodNameToUpperFirst](functions/methodNameToUpperFirst.md)
-- [sendGrpcRequest](functions/sendGrpcRequest.md)

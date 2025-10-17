@@ -1,18 +1,18 @@
 [API 参考](../../../index.md) / [@142vip/grpc](../index.md) / ExampleResponseDataType
 
-# Interface: ExampleResponseDataType
+# 接口: ExampleResponseDataType
 
-Defined in: [example.ts:11](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/example.ts#L11)
+定义于: [example.ts:11](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/example.ts#L11)
 
 响应 数据格式 简单演示
 
-## Properties
+## 属性
 
 ### message
 
 > **message**: `string`
 
-Defined in: [example.ts:13](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/example.ts#L13)
+定义于: [example.ts:13](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/example.ts#L13)
 
 ***
 
@@ -20,4 +20,4 @@ Defined in: [example.ts:13](https://github.com/142vip/core-x/blob/15d5bc9ef4bece
 
 > **methodName**: `string`
 
-Defined in: [example.ts:12](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/example.ts#L12)
+定义于: [example.ts:12](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/example.ts#L12)

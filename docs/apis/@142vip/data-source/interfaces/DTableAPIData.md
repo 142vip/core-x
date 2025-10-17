@@ -1,18 +1,18 @@
 [API 参考](../../../index.md) / [@142vip/data-source](../index.md) / DTableAPIData
 
-# Interface: DTableAPIData
+# 接口: DTableAPIData
 
-Defined in: [packages/data-source/src/core/apis/vip-dtable-api.ts:22](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/core/apis/vip-dtable-api.ts#L22)
+定义于: [packages/data-source/src/core/apis/vip-dtable-api.ts:22](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/core/apis/vip-dtable-api.ts#L22)
 
 表记录，分页后的格式
 
-## Properties
+## 属性
 
 ### page?
 
 > `optional` **page**: `number`
 
-Defined in: [packages/data-source/src/core/apis/vip-dtable-api.ts:23](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/core/apis/vip-dtable-api.ts#L23)
+定义于: [packages/data-source/src/core/apis/vip-dtable-api.ts:23](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/core/apis/vip-dtable-api.ts#L23)
 
 ***
 
@@ -20,7 +20,7 @@ Defined in: [packages/data-source/src/core/apis/vip-dtable-api.ts:23](https://gi
 
 > `optional` **records**: `any`
 
-Defined in: [packages/data-source/src/core/apis/vip-dtable-api.ts:26](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/core/apis/vip-dtable-api.ts#L26)
+定义于: [packages/data-source/src/core/apis/vip-dtable-api.ts:26](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/core/apis/vip-dtable-api.ts#L26)
 
 ***
 
@@ -28,7 +28,7 @@ Defined in: [packages/data-source/src/core/apis/vip-dtable-api.ts:26](https://gi
 
 > `optional` **size**: `number`
 
-Defined in: [packages/data-source/src/core/apis/vip-dtable-api.ts:24](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/core/apis/vip-dtable-api.ts#L24)
+定义于: [packages/data-source/src/core/apis/vip-dtable-api.ts:24](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/core/apis/vip-dtable-api.ts#L24)
 
 ***
 
@@ -36,4 +36,4 @@ Defined in: [packages/data-source/src/core/apis/vip-dtable-api.ts:24](https://gi
 
 > `optional` **total**: `number`
 
-Defined in: [packages/data-source/src/core/apis/vip-dtable-api.ts:25](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/core/apis/vip-dtable-api.ts#L25)
+定义于: [packages/data-source/src/core/apis/vip-dtable-api.ts:25](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/core/apis/vip-dtable-api.ts#L25)

@@ -1,14 +1,14 @@
 [API 参考](../../../index.md) / [@142vip/commit-linter](../index.md) / gitCommitTypes
 
-# Variable: gitCommitTypes
+# 变量: gitCommitTypes
 
 > `const` **gitCommitTypes**: `object`
 
-Defined in: [commit-linter/src/core/git-commit-type.ts:4](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/commit-linter/src/core/git-commit-type.ts#L4)
+定义于: [commit-linter/src/core/git-commit-type.ts:4](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/commit-linter/src/core/git-commit-type.ts#L4)
 
 git commit type
 
-## Type Declaration
+## 类型声明
 
 ### build
 

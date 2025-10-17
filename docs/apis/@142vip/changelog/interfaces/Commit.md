@@ -1,22 +1,22 @@
 [API 参考](../../../index.md) / [@142vip/changelog](../index.md) / Commit
 
-# Interface: Commit
+# 接口: Commit
 
-Defined in: [changelog/src/enums/changelog.interface.ts:4](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/changelog/src/enums/changelog.interface.ts#L4)
+定义于: [changelog/src/enums/changelog.interface.ts:4](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/changelog.interface.ts#L4)
 
-## Extends
+## theme_extends
 
 - [`GitCommitRecord`](GitCommitRecord.md)
 
-## Properties
+## 属性
 
 ### author
 
 > **author**: [`GitCommitAuthor`](GitCommitAuthor.md)
 
-Defined in: [changelog/src/enums/git-commit.interface.ts:10](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/changelog/src/enums/git-commit.interface.ts#L10)
+定义于: [changelog/src/enums/git-commit.interface.ts:10](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/git-commit.interface.ts#L10)
 
-#### Inherited from
+#### 继承自
 
 [`GitCommitRecord`](GitCommitRecord.md).[`author`](GitCommitRecord.md#author)
 
@@ -26,9 +26,9 @@ Defined in: [changelog/src/enums/git-commit.interface.ts:10](https://github.com/
 
 > **authors**: [`GitCommitAuthor`](GitCommitAuthor.md)[]
 
-Defined in: [changelog/src/enums/git-commit.interface.ts:29](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/changelog/src/enums/git-commit.interface.ts#L29)
+定义于: [changelog/src/enums/git-commit.interface.ts:29](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/git-commit.interface.ts#L29)
 
-#### Inherited from
+#### 继承自
 
 [`GitCommitRecord`](GitCommitRecord.md).[`authors`](GitCommitRecord.md#authors)
 
@@ -38,9 +38,9 @@ Defined in: [changelog/src/enums/git-commit.interface.ts:29](https://github.com/
 
 > **body**: `string`
 
-Defined in: [changelog/src/enums/git-commit.interface.ts:8](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/changelog/src/enums/git-commit.interface.ts#L8)
+定义于: [changelog/src/enums/git-commit.interface.ts:8](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/git-commit.interface.ts#L8)
 
-#### Inherited from
+#### 继承自
 
 [`GitCommitRecord`](GitCommitRecord.md).[`body`](GitCommitRecord.md#body)
 
@@ -50,9 +50,9 @@ Defined in: [changelog/src/enums/git-commit.interface.ts:8](https://github.com/1
 
 > **description**: `string`
 
-Defined in: [changelog/src/enums/git-commit.interface.ts:25](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/changelog/src/enums/git-commit.interface.ts#L25)
+定义于: [changelog/src/enums/git-commit.interface.ts:25](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/git-commit.interface.ts#L25)
 
-#### Inherited from
+#### 继承自
 
 [`GitCommitRecord`](GitCommitRecord.md).[`description`](GitCommitRecord.md#description)
 
@@ -62,9 +62,9 @@ Defined in: [changelog/src/enums/git-commit.interface.ts:25](https://github.com/
 
 > **isBreaking**: `boolean`
 
-Defined in: [changelog/src/enums/git-commit.interface.ts:30](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/changelog/src/enums/git-commit.interface.ts#L30)
+定义于: [changelog/src/enums/git-commit.interface.ts:30](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/git-commit.interface.ts#L30)
 
-#### Inherited from
+#### 继承自
 
 [`GitCommitRecord`](GitCommitRecord.md).[`isBreaking`](GitCommitRecord.md#isbreaking)
 
@@ -74,9 +74,9 @@ Defined in: [changelog/src/enums/git-commit.interface.ts:30](https://github.com/
 
 > **message**: `string`
 
-Defined in: [changelog/src/enums/git-commit.interface.ts:7](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/changelog/src/enums/git-commit.interface.ts#L7)
+定义于: [changelog/src/enums/git-commit.interface.ts:7](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/git-commit.interface.ts#L7)
 
-#### Inherited from
+#### 继承自
 
 [`GitCommitRecord`](GitCommitRecord.md).[`message`](GitCommitRecord.md#message)
 
@@ -86,9 +86,9 @@ Defined in: [changelog/src/enums/git-commit.interface.ts:7](https://github.com/1
 
 > **references**: [`GitCommitReference`](GitCommitReference.md)[]
 
-Defined in: [changelog/src/enums/git-commit.interface.ts:28](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/changelog/src/enums/git-commit.interface.ts#L28)
+定义于: [changelog/src/enums/git-commit.interface.ts:28](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/git-commit.interface.ts#L28)
 
-#### Inherited from
+#### 继承自
 
 [`GitCommitRecord`](GitCommitRecord.md).[`references`](GitCommitRecord.md#references)
 
@@ -98,7 +98,7 @@ Defined in: [changelog/src/enums/git-commit.interface.ts:28](https://github.com/
 
 > `optional` **resolvedAuthors**: [`GitAuthorInfo`](GitAuthorInfo.md)[]
 
-Defined in: [changelog/src/enums/changelog.interface.ts:5](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/changelog/src/enums/changelog.interface.ts#L5)
+定义于: [changelog/src/enums/changelog.interface.ts:5](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/changelog.interface.ts#L5)
 
 ***
 
@@ -106,9 +106,9 @@ Defined in: [changelog/src/enums/changelog.interface.ts:5](https://github.com/14
 
 > **scope**: `string`
 
-Defined in: [changelog/src/enums/git-commit.interface.ts:27](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/changelog/src/enums/git-commit.interface.ts#L27)
+定义于: [changelog/src/enums/git-commit.interface.ts:27](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/git-commit.interface.ts#L27)
 
-#### Inherited from
+#### 继承自
 
 [`GitCommitRecord`](GitCommitRecord.md).[`scope`](GitCommitRecord.md#scope)
 
@@ -118,9 +118,9 @@ Defined in: [changelog/src/enums/git-commit.interface.ts:27](https://github.com/
 
 > **shortHash**: `string`
 
-Defined in: [changelog/src/enums/git-commit.interface.ts:9](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/changelog/src/enums/git-commit.interface.ts#L9)
+定义于: [changelog/src/enums/git-commit.interface.ts:9](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/git-commit.interface.ts#L9)
 
-#### Inherited from
+#### 继承自
 
 [`GitCommitRecord`](GitCommitRecord.md).[`shortHash`](GitCommitRecord.md#shorthash)
 
@@ -130,8 +130,8 @@ Defined in: [changelog/src/enums/git-commit.interface.ts:9](https://github.com/1
 
 > **type**: `string`
 
-Defined in: [changelog/src/enums/git-commit.interface.ts:26](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/changelog/src/enums/git-commit.interface.ts#L26)
+定义于: [changelog/src/enums/git-commit.interface.ts:26](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/git-commit.interface.ts#L26)
 
-#### Inherited from
+#### 继承自
 
 [`GitCommitRecord`](GitCommitRecord.md).[`type`](GitCommitRecord.md#type)

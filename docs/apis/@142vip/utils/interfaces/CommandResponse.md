@@ -1,24 +1,24 @@
 [API 参考](../../../index.md) / [@142vip/utils](../index.md) / CommandResponse
 
-# Interface: CommandResponse
+# 接口: CommandResponse
 
-Defined in: [packages/utils/src/core/exec.ts:21](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/core/exec.ts#L21)
+定义于: [packages/utils/src/core/exec.ts:21](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/core/exec.ts#L21)
 
 标准执行器响应结果
 
-## Extends
+## theme_extends
 
 - [`StandardExecutorResponse`](StandardExecutorResponse.md)
 
-## Properties
+## 属性
 
 ### code
 
 > **code**: `null` \| `number`
 
-Defined in: [packages/utils/src/core/exec.ts:16](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/core/exec.ts#L16)
+定义于: [packages/utils/src/core/exec.ts:16](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/core/exec.ts#L16)
 
-#### Inherited from
+#### 继承自
 
 [`StandardExecutorResponse`](StandardExecutorResponse.md).[`code`](StandardExecutorResponse.md#code)
 
@@ -28,7 +28,7 @@ Defined in: [packages/utils/src/core/exec.ts:16](https://github.com/142vip/core-
 
 > **command**: `string`
 
-Defined in: [packages/utils/src/core/exec.ts:23](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/core/exec.ts#L23)
+定义于: [packages/utils/src/core/exec.ts:23](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/core/exec.ts#L23)
 
 ***
 
@@ -36,7 +36,7 @@ Defined in: [packages/utils/src/core/exec.ts:23](https://github.com/142vip/core-
 
 > `optional` **error**: `Error`
 
-Defined in: [packages/utils/src/core/exec.ts:22](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/core/exec.ts#L22)
+定义于: [packages/utils/src/core/exec.ts:22](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/core/exec.ts#L22)
 
 ***
 
@@ -44,9 +44,9 @@ Defined in: [packages/utils/src/core/exec.ts:22](https://github.com/142vip/core-
 
 > **stderr**: `string`
 
-Defined in: [packages/utils/src/core/exec.ts:18](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/core/exec.ts#L18)
+定义于: [packages/utils/src/core/exec.ts:18](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/core/exec.ts#L18)
 
-#### Inherited from
+#### 继承自
 
 [`StandardExecutorResponse`](StandardExecutorResponse.md).[`stderr`](StandardExecutorResponse.md#stderr)
 
@@ -56,8 +56,8 @@ Defined in: [packages/utils/src/core/exec.ts:18](https://github.com/142vip/core-
 
 > **stdout**: `string`
 
-Defined in: [packages/utils/src/core/exec.ts:17](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/core/exec.ts#L17)
+定义于: [packages/utils/src/core/exec.ts:17](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/core/exec.ts#L17)
 
-#### Inherited from
+#### 继承自
 
 [`StandardExecutorResponse`](StandardExecutorResponse.md).[`stdout`](StandardExecutorResponse.md#stdout)

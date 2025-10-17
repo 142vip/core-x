@@ -1,10 +1,10 @@
 [API 参考](../../../index.md) / [@142vip/fairy-cli](../index.md) / releasePackage
 
-# Function: releasePackage()
+# 函数: releasePackage()
 
 > **releasePackage**(`pkg?`): `Promise`\<`void`\>
 
-Defined in: [fairy-cli/src/utils/release-package.ts:63](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/fairy-cli/src/utils/release-package.ts#L63)
+定义于: [fairy-cli/src/utils/release-package.ts:63](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/fairy-cli/src/utils/release-package.ts#L63)
 
 更新公共包、发布项目
 生成changelog文档，更新version 【支持monorepo】
@@ -12,12 +12,12 @@ Defined in: [fairy-cli/src/utils/release-package.ts:63](https://github.com/142vi
  - 提交commit信息
  - 标记tag信息
 
-## Parameters
+## 参数
 
 ### pkg?
 
 [`PackageJSONWithPath`](../../utils/interfaces/PackageJSONWithPath.md)
 
-## Returns
+## 返回
 
 `Promise`\<`void`\>

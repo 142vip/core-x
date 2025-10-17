@@ -1,14 +1,14 @@
 [API 参考](../../../index.md) / [@142vip/utils](../index.md) / VipInquirer
 
-# Variable: VipInquirer
+# 变量: VipInquirer
 
 > `const` **VipInquirer**: `object`
 
-Defined in: [packages/utils/src/pkgs/inquirer.ts:179](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/pkgs/inquirer.ts#L179)
+定义于: [packages/utils/src/pkgs/inquirer.ts:179](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/pkgs/inquirer.ts#L179)
 
 终端交互
 
-## Type Declaration
+## 类型声明
 
 ### handleSimpleSearchSource()
 
@@ -16,13 +16,13 @@ Defined in: [packages/utils/src/pkgs/inquirer.ts:179](https://github.com/142vip/
 
 搜索源简单处理
 
-#### Parameters
+#### 参数
 
 ##### sources
 
 `string`[]
 
-#### Returns
+#### 返回
 
 `SimpleSearchSource`\<`string`\>
 
@@ -33,13 +33,13 @@ Defined in: [packages/utils/src/pkgs/inquirer.ts:179](https://github.com/142vip/
 终端交互选择，多选
 - https://github.com/SBoudrias/Inquirer.js/tree/main/packages/checkbox
 
-#### Type Parameters
+#### 类型参数
 
 ##### T
 
 `T` *extends* `string`
 
-#### Parameters
+#### 参数
 
 ##### message
 
@@ -53,7 +53,7 @@ Defined in: [packages/utils/src/pkgs/inquirer.ts:179](https://github.com/142vip/
 
 `VipInquirerOptions`
 
-#### Returns
+#### 返回
 
 `Promise`\<`T`[]\>
 
@@ -63,7 +63,7 @@ Defined in: [packages/utils/src/pkgs/inquirer.ts:179](https://github.com/142vip/
 
 终端交互确认，确认框，可配置默认值
 
-#### Parameters
+#### 参数
 
 ##### message
 
@@ -73,7 +73,7 @@ Defined in: [packages/utils/src/pkgs/inquirer.ts:179](https://github.com/142vip/
 
 `boolean`
 
-#### Returns
+#### 返回
 
 `Promise`\<`boolean`\>
 
@@ -83,7 +83,7 @@ Defined in: [packages/utils/src/pkgs/inquirer.ts:179](https://github.com/142vip/
 
 终端交互确认，支持安全退出、自定义信息
 
-#### Parameters
+#### 参数
 
 ##### message
 
@@ -99,7 +99,7 @@ Defined in: [packages/utils/src/pkgs/inquirer.ts:179](https://github.com/142vip/
 
 `string`
 
-#### Returns
+#### 返回
 
 `Promise`\<`void`\>
 
@@ -110,7 +110,7 @@ Defined in: [packages/utils/src/pkgs/inquirer.ts:179](https://github.com/142vip/
 终端交互输入，输入框，可选
 - https://github.com/SBoudrias/Inquirer.js/tree/main/packages/input
 
-#### Parameters
+#### 参数
 
 ##### message
 
@@ -120,7 +120,7 @@ Defined in: [packages/utils/src/pkgs/inquirer.ts:179](https://github.com/142vip/
 
 `string`
 
-#### Returns
+#### 返回
 
 `Promise`\<`string`\>
 
@@ -131,13 +131,13 @@ Defined in: [packages/utils/src/pkgs/inquirer.ts:179](https://github.com/142vip/
 终端交互输入，输入框，必填
 - https://github.com/SBoudrias/Inquirer.js/tree/main/packages/input
 
-#### Parameters
+#### 参数
 
 ##### message
 
 `string`
 
-#### Returns
+#### 返回
 
 `Promise`\<`string`\>
 
@@ -147,13 +147,13 @@ Defined in: [packages/utils/src/pkgs/inquirer.ts:179](https://github.com/142vip/
 
 终端交互选择，单选
 
-#### Type Parameters
+#### 类型参数
 
 ##### T
 
 `T` *extends* `string`
 
-#### Parameters
+#### 参数
 
 ##### message
 
@@ -163,7 +163,7 @@ Defined in: [packages/utils/src/pkgs/inquirer.ts:179](https://github.com/142vip/
 
 `VipInquirerChoiceList`\<`T`\>
 
-#### Returns
+#### 返回
 
 `Promise`\<`T`\>
 
@@ -174,7 +174,7 @@ Defined in: [packages/utils/src/pkgs/inquirer.ts:179](https://github.com/142vip/
 输入框，只输入数字
 - https://github.com/SBoudrias/Inquirer.js/tree/main/packages/number
 
-#### Parameters
+#### 参数
 
 ##### message
 
@@ -184,7 +184,7 @@ Defined in: [packages/utils/src/pkgs/inquirer.ts:179](https://github.com/142vip/
 
 `number`
 
-#### Returns
+#### 返回
 
 `Promise`\<`undefined` \| `number`\>
 
@@ -195,13 +195,13 @@ Defined in: [packages/utils/src/pkgs/inquirer.ts:179](https://github.com/142vip/
 输入框，隐藏输入
 - https://github.com/SBoudrias/Inquirer.js/tree/main/packages/password
 
-#### Parameters
+#### 参数
 
 ##### message
 
 `string`
 
-#### Returns
+#### 返回
 
 `Promise`\<`string`\>
 
@@ -212,13 +212,13 @@ Defined in: [packages/utils/src/pkgs/inquirer.ts:179](https://github.com/142vip/
 搜索框
 - https://github.com/SBoudrias/Inquirer.js/tree/main/packages/search
 
-#### Type Parameters
+#### 类型参数
 
 ##### T
 
 `T` *extends* `string`
 
-#### Parameters
+#### 参数
 
 ##### message
 
@@ -232,7 +232,7 @@ Defined in: [packages/utils/src/pkgs/inquirer.ts:179](https://github.com/142vip/
 
 `number`
 
-#### Returns
+#### 返回
 
 `Promise`\<`T`\>
 
@@ -243,13 +243,13 @@ Defined in: [packages/utils/src/pkgs/inquirer.ts:179](https://github.com/142vip/
 选择框，必选选择框
 - https://github.com/SBoudrias/Inquirer.js/tree/main/packages/select
 
-#### Type Parameters
+#### 类型参数
 
 ##### T
 
 `T` *extends* `string`
 
-#### Parameters
+#### 参数
 
 ##### message
 
@@ -263,6 +263,6 @@ Defined in: [packages/utils/src/pkgs/inquirer.ts:179](https://github.com/142vip/
 
 `VipInquirerOptions`
 
-#### Returns
+#### 返回
 
 `Promise`\<`T`\>

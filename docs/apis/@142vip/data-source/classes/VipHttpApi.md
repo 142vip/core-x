@@ -1,52 +1,52 @@
 [API 参考](../../../index.md) / [@142vip/data-source](../index.md) / VipHttpApi
 
-# Class: VipHttpApi
+# 类: VipHttpApi
 
-Defined in: [packages/data-source/src/core/apis/vip-http-api.ts:12](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/core/apis/vip-http-api.ts#L12)
+定义于: [packages/data-source/src/core/apis/vip-http-api.ts:12](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/core/apis/vip-http-api.ts#L12)
 
 发送Http，请求API
 - 标准的axios请求
 
-## Implements
+## 实现
 
 - `DataSourceConnector`\<[`HttpApiOptions`](../interfaces/HttpApiOptions.md)\>
 
-## Constructors
+## 构造函数
 
-### Constructor
+### 构造函数
 
 > **new VipHttpApi**(): `VipHttpApi`
 
-#### Returns
+#### 返回
 
 `VipHttpApi`
 
-## Methods
+## 方法
 
 ### getConnectionData()
 
 > **getConnectionData**\<`T`\>(`options`): `Promise`\<[`DataSourceParseResponse`](../interfaces/DataSourceParseResponse.md)\<`T`\>\>
 
-Defined in: [packages/data-source/src/core/apis/vip-http-api.ts:16](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/core/apis/vip-http-api.ts#L16)
+定义于: [packages/data-source/src/core/apis/vip-http-api.ts:16](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/core/apis/vip-http-api.ts#L16)
 
 获取连接数据
 
-#### Type Parameters
+#### 类型参数
 
 ##### T
 
 `T`
 
-#### Parameters
+#### 参数
 
 ##### options
 
 [`HttpApiOptions`](../interfaces/HttpApiOptions.md)
 
-#### Returns
+#### 返回
 
 `Promise`\<[`DataSourceParseResponse`](../interfaces/DataSourceParseResponse.md)\<`T`\>\>
 
-#### Implementation of
+#### 实现了
 
 `DataSourceConnector.getConnectionData`

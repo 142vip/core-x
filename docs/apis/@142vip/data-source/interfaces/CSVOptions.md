@@ -1,16 +1,16 @@
 [API 参考](../../../index.md) / [@142vip/data-source](../index.md) / CSVOptions
 
-# Interface: CSVOptions
+# 接口: CSVOptions
 
-Defined in: [packages/data-source/src/core/vip-csv.ts:8](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/core/vip-csv.ts#L8)
+定义于: [packages/data-source/src/core/vip-csv.ts:8](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/core/vip-csv.ts#L8)
 
-## Properties
+## 属性
 
 ### encode
 
 > **encode**: `string`
 
-Defined in: [packages/data-source/src/core/vip-csv.ts:11](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/core/vip-csv.ts#L11)
+定义于: [packages/data-source/src/core/vip-csv.ts:11](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/core/vip-csv.ts#L11)
 
 ***
 
@@ -18,4 +18,4 @@ Defined in: [packages/data-source/src/core/vip-csv.ts:11](https://github.com/142
 
 > **file**: `Buffer`
 
-Defined in: [packages/data-source/src/core/vip-csv.ts:10](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/core/vip-csv.ts#L10)
+定义于: [packages/data-source/src/core/vip-csv.ts:10](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/core/vip-csv.ts#L10)

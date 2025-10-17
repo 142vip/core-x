@@ -1,22 +1,22 @@
 [API 参考](../../../index.md) / [@142vip/changelog](../index.md) / GitAuthorInfo
 
-# Interface: GitAuthorInfo
+# 接口: GitAuthorInfo
 
-Defined in: [changelog/src/enums/changelog.interface.ts:11](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/changelog/src/enums/changelog.interface.ts#L11)
+定义于: [changelog/src/enums/changelog.interface.ts:11](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/changelog.interface.ts#L11)
 
 作者信息
 
-## Extends
+## theme_extends
 
 - [`GitCommitAuthor`](GitCommitAuthor.md)
 
-## Properties
+## 属性
 
 ### commits
 
 > **commits**: `string`[]
 
-Defined in: [changelog/src/enums/changelog.interface.ts:12](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/changelog/src/enums/changelog.interface.ts#L12)
+定义于: [changelog/src/enums/changelog.interface.ts:12](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/changelog.interface.ts#L12)
 
 ***
 
@@ -24,9 +24,9 @@ Defined in: [changelog/src/enums/changelog.interface.ts:12](https://github.com/1
 
 > **email**: `string`
 
-Defined in: [changelog/src/enums/git-commit.interface.ts:3](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/changelog/src/enums/git-commit.interface.ts#L3)
+定义于: [changelog/src/enums/git-commit.interface.ts:3](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/git-commit.interface.ts#L3)
 
-#### Inherited from
+#### 继承自
 
 [`GitCommitAuthor`](GitCommitAuthor.md).[`email`](GitCommitAuthor.md#email)
 
@@ -36,7 +36,7 @@ Defined in: [changelog/src/enums/git-commit.interface.ts:3](https://github.com/1
 
 > `optional` **login**: `string`
 
-Defined in: [changelog/src/enums/changelog.interface.ts:13](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/changelog/src/enums/changelog.interface.ts#L13)
+定义于: [changelog/src/enums/changelog.interface.ts:13](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/changelog.interface.ts#L13)
 
 ***
 
@@ -44,8 +44,8 @@ Defined in: [changelog/src/enums/changelog.interface.ts:13](https://github.com/1
 
 > **name**: `string`
 
-Defined in: [changelog/src/enums/git-commit.interface.ts:2](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/changelog/src/enums/git-commit.interface.ts#L2)
+定义于: [changelog/src/enums/git-commit.interface.ts:2](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/enums/git-commit.interface.ts#L2)
 
-#### Inherited from
+#### 继承自
 
 [`GitCommitAuthor`](GitCommitAuthor.md).[`name`](GitCommitAuthor.md#name)

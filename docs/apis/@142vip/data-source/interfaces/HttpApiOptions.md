@@ -1,22 +1,22 @@
 [API 参考](../../../index.md) / [@142vip/data-source](../index.md) / HttpApiOptions
 
-# Interface: HttpApiOptions
+# 接口: HttpApiOptions
 
-Defined in: [packages/data-source/src/core/apis/vip-http-api.ts:6](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/core/apis/vip-http-api.ts#L6)
+定义于: [packages/data-source/src/core/apis/vip-http-api.ts:6](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/core/apis/vip-http-api.ts#L6)
 
-## Extends
+## theme_extends
 
 - `AxiosRequestConfig`
 
-## Properties
+## 属性
 
 ### adapter?
 
 > `optional` **adapter**: `AxiosAdapterConfig` \| `AxiosAdapterConfig`[]
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:332
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:332
 
-#### Inherited from
+#### 继承自
 
 `AxiosRequestConfig.adapter`
 
@@ -26,9 +26,9 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:332
 
 > `optional` **allowAbsoluteUrls**: `boolean`
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:322
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:322
 
-#### Inherited from
+#### 继承自
 
 `AxiosRequestConfig.allowAbsoluteUrls`
 
@@ -38,9 +38,9 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:322
 
 > `optional` **auth**: `AxiosBasicCredentials`
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:333
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:333
 
-#### Inherited from
+#### 继承自
 
 `AxiosRequestConfig.auth`
 
@@ -50,9 +50,9 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:333
 
 > `optional` **baseURL**: `string`
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:321
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:321
 
-#### Inherited from
+#### 继承自
 
 `AxiosRequestConfig.baseURL`
 
@@ -62,9 +62,9 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:321
 
 > `optional` **beforeRedirect**: (`options`, `responseDetails`) => `void`
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:345
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:345
 
-#### Parameters
+#### 参数
 
 ##### options
 
@@ -80,11 +80,11 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:345
 
 `HttpStatusCode`
 
-#### Returns
+#### 返回
 
 `void`
 
-#### Inherited from
+#### 继承自
 
 `AxiosRequestConfig.beforeRedirect`
 
@@ -94,9 +94,9 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:345
 
 > `optional` **cancelToken**: `CancelToken`
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:351
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:351
 
-#### Inherited from
+#### 继承自
 
 `AxiosRequestConfig.cancelToken`
 
@@ -106,9 +106,9 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:351
 
 > `optional` **data**: `any`
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:328
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:328
 
-#### Inherited from
+#### 继承自
 
 `AxiosRequestConfig.data`
 
@@ -118,9 +118,9 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:328
 
 > `optional` **decompress**: `boolean`
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:352
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:352
 
-#### Inherited from
+#### 继承自
 
 `AxiosRequestConfig.decompress`
 
@@ -130,23 +130,23 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:352
 
 > `optional` **env**: `object`
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:356
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:356
 
 #### FormData()?
 
 > `optional` **FormData**: (...`args`) => `object`
 
-##### Parameters
+##### 参数
 
 ###### args
 
 ...`any`[]
 
-##### Returns
+##### 返回
 
 `object`
 
-#### Inherited from
+#### 继承自
 
 `AxiosRequestConfig.env`
 
@@ -156,9 +156,9 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:356
 
 > `optional` **family**: `AddressFamily`
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:360
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:360
 
-#### Inherited from
+#### 继承自
 
 `AxiosRequestConfig.family`
 
@@ -168,9 +168,9 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:360
 
 > `optional` **fetchOptions**: `Record`\<`string`, `any`\> \| `Omit`\<`RequestInit`, `"body"` \| `"headers"` \| `"method"` \| `"signal"`\>
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:364
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:364
 
-#### Inherited from
+#### 继承自
 
 `AxiosRequestConfig.fetchOptions`
 
@@ -180,9 +180,9 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:364
 
 > `optional` **formSerializer**: `FormSerializerOptions`
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:359
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:359
 
-#### Inherited from
+#### 继承自
 
 `AxiosRequestConfig.formSerializer`
 
@@ -192,9 +192,9 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:359
 
 > `optional` **headers**: `AxiosHeaders` \| `Partial`\<`RawAxiosHeaders` & `object` & `object`\> & `Partial`\<`object` & `object`\>
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:325
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:325
 
-#### Inherited from
+#### 继承自
 
 `AxiosRequestConfig.headers`
 
@@ -204,9 +204,9 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:325
 
 > `optional` **httpAgent**: `any`
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:348
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:348
 
-#### Inherited from
+#### 继承自
 
 `AxiosRequestConfig.httpAgent`
 
@@ -216,9 +216,9 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:348
 
 > `optional` **httpsAgent**: `any`
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:349
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:349
 
-#### Inherited from
+#### 继承自
 
 `AxiosRequestConfig.httpsAgent`
 
@@ -228,9 +228,9 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:349
 
 > `optional` **insecureHTTPParser**: `boolean`
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:355
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:355
 
-#### Inherited from
+#### 继承自
 
 `AxiosRequestConfig.insecureHTTPParser`
 
@@ -240,9 +240,9 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:355
 
 > `optional` **lookup**: (`hostname`, `options`, `cb`) => `void` \| (`hostname`, `options`) => `Promise`\<`LookupAddress` \| \[`LookupAddressEntry` \| `LookupAddressEntry`[], `AddressFamily`\]\>
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:361
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:361
 
-#### Inherited from
+#### 继承自
 
 `AxiosRequestConfig.lookup`
 
@@ -252,9 +252,9 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:361
 
 > `optional` **maxBodyLength**: `number`
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:342
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:342
 
-#### Inherited from
+#### 继承自
 
 `AxiosRequestConfig.maxBodyLength`
 
@@ -264,9 +264,9 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:342
 
 > `optional` **maxContentLength**: `number`
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:340
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:340
 
-#### Inherited from
+#### 继承自
 
 `AxiosRequestConfig.maxContentLength`
 
@@ -276,9 +276,9 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:340
 
 > `optional` **maxRate**: `number` \| \[`number`, `number`\]
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:344
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:344
 
-#### Inherited from
+#### 继承自
 
 `AxiosRequestConfig.maxRate`
 
@@ -288,9 +288,9 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:344
 
 > `optional` **maxRedirects**: `number`
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:343
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:343
 
-#### Inherited from
+#### 继承自
 
 `AxiosRequestConfig.maxRedirects`
 
@@ -300,9 +300,9 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:343
 
 > `optional` **method**: `string`
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:320
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:320
 
-#### Inherited from
+#### 继承自
 
 `AxiosRequestConfig.method`
 
@@ -312,19 +312,19 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:320
 
 > `optional` **onDownloadProgress**: (`progressEvent`) => `void`
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:339
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:339
 
-#### Parameters
+#### 参数
 
 ##### progressEvent
 
 `AxiosProgressEvent`
 
-#### Returns
+#### 返回
 
 `void`
 
-#### Inherited from
+#### 继承自
 
 `AxiosRequestConfig.onDownloadProgress`
 
@@ -334,19 +334,19 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:339
 
 > `optional` **onUploadProgress**: (`progressEvent`) => `void`
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:338
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:338
 
-#### Parameters
+#### 参数
 
 ##### progressEvent
 
 `AxiosProgressEvent`
 
-#### Returns
+#### 返回
 
 `void`
 
-#### Inherited from
+#### 继承自
 
 `AxiosRequestConfig.onUploadProgress`
 
@@ -356,9 +356,9 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:338
 
 > `optional` **params**: `any`
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:326
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:326
 
-#### Inherited from
+#### 继承自
 
 `AxiosRequestConfig.params`
 
@@ -368,9 +368,9 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:326
 
 > `optional` **paramsSerializer**: `ParamsSerializerOptions` \| `CustomParamsSerializer`
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:327
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:327
 
-#### Inherited from
+#### 继承自
 
 `AxiosRequestConfig.paramsSerializer`
 
@@ -380,9 +380,9 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:327
 
 > `optional` **proxy**: `false` \| `AxiosProxyConfig`
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:350
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:350
 
-#### Inherited from
+#### 继承自
 
 `AxiosRequestConfig.proxy`
 
@@ -392,9 +392,9 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:350
 
 > `optional` **responseEncoding**: `string`
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:335
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:335
 
-#### Inherited from
+#### 继承自
 
 `AxiosRequestConfig.responseEncoding`
 
@@ -404,9 +404,9 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:335
 
 > `optional` **responseType**: `ResponseType`
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:334
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:334
 
-#### Inherited from
+#### 继承自
 
 `AxiosRequestConfig.responseType`
 
@@ -416,9 +416,9 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:334
 
 > `optional` **signal**: `GenericAbortSignal`
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:354
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:354
 
-#### Inherited from
+#### 继承自
 
 `AxiosRequestConfig.signal`
 
@@ -428,9 +428,9 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:354
 
 > `optional` **socketPath**: `null` \| `string`
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:346
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:346
 
-#### Inherited from
+#### 继承自
 
 `AxiosRequestConfig.socketPath`
 
@@ -440,9 +440,9 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:346
 
 > `optional` **timeout**: `number`
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:329
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:329
 
-#### Inherited from
+#### 继承自
 
 `AxiosRequestConfig.timeout`
 
@@ -452,9 +452,9 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:329
 
 > `optional` **timeoutErrorMessage**: `string`
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:330
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:330
 
-#### Inherited from
+#### 继承自
 
 `AxiosRequestConfig.timeoutErrorMessage`
 
@@ -464,9 +464,9 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:330
 
 > `optional` **transformRequest**: `AxiosRequestTransformer` \| `AxiosRequestTransformer`[]
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:323
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:323
 
-#### Inherited from
+#### 继承自
 
 `AxiosRequestConfig.transformRequest`
 
@@ -476,9 +476,9 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:323
 
 > `optional` **transformResponse**: `AxiosResponseTransformer` \| `AxiosResponseTransformer`[]
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:324
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:324
 
-#### Inherited from
+#### 继承自
 
 `AxiosRequestConfig.transformResponse`
 
@@ -488,9 +488,9 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:324
 
 > `optional` **transitional**: `TransitionalOptions`
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:353
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:353
 
-#### Inherited from
+#### 继承自
 
 `AxiosRequestConfig.transitional`
 
@@ -500,9 +500,9 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:353
 
 > `optional` **transport**: `any`
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:347
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:347
 
-#### Inherited from
+#### 继承自
 
 `AxiosRequestConfig.transport`
 
@@ -512,9 +512,9 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:347
 
 > `optional` **url**: `string`
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:319
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:319
 
-#### Inherited from
+#### 继承自
 
 `AxiosRequestConfig.url`
 
@@ -524,9 +524,9 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:319
 
 > `optional` **validateStatus**: `null` \| (`status`) => `boolean`
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:341
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:341
 
-#### Inherited from
+#### 继承自
 
 `AxiosRequestConfig.validateStatus`
 
@@ -536,9 +536,9 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:341
 
 > `optional` **withCredentials**: `boolean`
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:331
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:331
 
-#### Inherited from
+#### 继承自
 
 `AxiosRequestConfig.withCredentials`
 
@@ -548,9 +548,9 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:331
 
 > `optional` **withXSRFToken**: `boolean` \| (`config`) => `undefined` \| `boolean`
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:363
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:363
 
-#### Inherited from
+#### 继承自
 
 `AxiosRequestConfig.withXSRFToken`
 
@@ -560,9 +560,9 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:363
 
 > `optional` **xsrfCookieName**: `string`
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:336
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:336
 
-#### Inherited from
+#### 继承自
 
 `AxiosRequestConfig.xsrfCookieName`
 
@@ -572,8 +572,8 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:336
 
 > `optional` **xsrfHeaderName**: `string`
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:337
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:337
 
-#### Inherited from
+#### 继承自
 
 `AxiosRequestConfig.xsrfHeaderName`

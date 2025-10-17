@@ -1,43 +1,43 @@
 [API 参考](../../../index.md) / [@142vip/data-source](../index.md) / VipCsv
 
-# Class: VipCsv
+# 类: VipCsv
 
-Defined in: [packages/data-source/src/core/vip-csv.ts:14](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/core/vip-csv.ts#L14)
+定义于: [packages/data-source/src/core/vip-csv.ts:14](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/core/vip-csv.ts#L14)
 
-## Implements
+## 实现
 
 - `DataSourceConnector`\<[`CSVOptions`](../interfaces/CSVOptions.md)\>
 
-## Constructors
+## 构造函数
 
-### Constructor
+### 构造函数
 
 > **new VipCsv**(): `VipCsv`
 
-#### Returns
+#### 返回
 
 `VipCsv`
 
-## Methods
+## 方法
 
 ### getConnectionData()
 
 > **getConnectionData**(`options`): `Promise`\<[`DataSourceParseResponse`](../interfaces/DataSourceParseResponse.md)\<`unknown`\>\>
 
-Defined in: [packages/data-source/src/core/vip-csv.ts:18](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/core/vip-csv.ts#L18)
+定义于: [packages/data-source/src/core/vip-csv.ts:18](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/core/vip-csv.ts#L18)
 
 获取连接数据
 
-#### Parameters
+#### 参数
 
 ##### options
 
 [`CSVOptions`](../interfaces/CSVOptions.md)
 
-#### Returns
+#### 返回
 
 `Promise`\<[`DataSourceParseResponse`](../interfaces/DataSourceParseResponse.md)\<`unknown`\>\>
 
-#### Implementation of
+#### 实现了
 
 `DataSourceConnector.getConnectionData`

@@ -1,12 +1,12 @@
 [API 参考](../../../index.md) / [@142vip/changelog](../index.md) / MarkdownAPI
 
-# Variable: MarkdownAPI
+# 变量: MarkdownAPI
 
 > `const` **MarkdownAPI**: `object`
 
-Defined in: [changelog/src/core/markdown.api.ts:191](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/changelog/src/core/markdown.api.ts#L191)
+定义于: [changelog/src/core/markdown.api.ts:191](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/core/markdown.api.ts#L191)
 
-## Type Declaration
+## 类型声明
 
 ### formatSection()
 
@@ -14,7 +14,7 @@ Defined in: [changelog/src/core/markdown.api.ts:191](https://github.com/142vip/c
 
 格式化Section
 
-#### Parameters
+#### 参数
 
 ##### commits
 
@@ -54,7 +54,7 @@ Defined in: [changelog/src/core/markdown.api.ts:191](https://github.com/142vip/c
 
 `string`
 
-#### Returns
+#### 返回
 
 `string`[]
 
@@ -62,7 +62,7 @@ Defined in: [changelog/src/core/markdown.api.ts:191](https://github.com/142vip/c
 
 > **getGithubVersionDescription**: (`__namedParameters`) => `string`
 
-#### Parameters
+#### 参数
 
 ##### \_\_namedParameters
 
@@ -82,7 +82,7 @@ Defined in: [changelog/src/core/markdown.api.ts:191](https://github.com/142vip/c
 
 `string`
 
-#### Returns
+#### 返回
 
 `string`
 
@@ -92,7 +92,7 @@ Defined in: [changelog/src/core/markdown.api.ts:191](https://github.com/142vip/c
 
 无内容更新
 
-#### Returns
+#### 返回
 
 `string`
 
@@ -102,7 +102,7 @@ Defined in: [changelog/src/core/markdown.api.ts:191](https://github.com/142vip/c
 
 获取npm版本描述
 
-#### Parameters
+#### 参数
 
 ##### pkgName
 
@@ -112,6 +112,6 @@ Defined in: [changelog/src/core/markdown.api.ts:191](https://github.com/142vip/c
 
 `string`
 
-#### Returns
+#### 返回
 
 `string`

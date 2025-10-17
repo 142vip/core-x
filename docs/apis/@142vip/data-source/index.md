@@ -2,7 +2,7 @@
 
 # @142vip/data-source
 
-## Classes
+## 类
 
 - [VipAliGatewayApi](classes/VipAliGatewayApi.md)
 - [VipClickhouse](classes/VipClickhouse.md)
@@ -19,7 +19,7 @@
 - [VipPostgreSql](classes/VipPostgreSql.md)
 - [VipSqlServer](classes/VipSqlServer.md)
 
-## Interfaces
+## 接口
 
 - [AliGatewayApiOptions](interfaces/AliGatewayApiOptions.md)
 - [ApiQueryConfig](interfaces/ApiQueryConfig.md)
@@ -45,7 +45,7 @@
 - [PostgreSqlOptions](interfaces/PostgreSqlOptions.md)
 - [SqlServerOptions](interfaces/SqlServerOptions.md)
 
-## Functions
+## 函数
 
 - [checkPasswordIsNil](functions/checkPasswordIsNil.md)
 - [handlerDataSourceConnectError](functions/handlerDataSourceConnectError.md)

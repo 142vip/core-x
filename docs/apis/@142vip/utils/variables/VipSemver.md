@@ -1,14 +1,14 @@
 [API 参考](../../../index.md) / [@142vip/utils](../index.md) / VipSemver
 
-# Variable: VipSemver
+# 变量: VipSemver
 
 > `const` **VipSemver**: `object`
 
-Defined in: [packages/utils/src/pkgs/semver.ts:101](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/pkgs/semver.ts#L101)
+定义于: [packages/utils/src/pkgs/semver.ts:101](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/pkgs/semver.ts#L101)
 
 参考：https://www.npmjs.com/package/semver
 
-## Type Declaration
+## 类型声明
 
 ### clean()
 
@@ -16,7 +16,7 @@ Defined in: [packages/utils/src/pkgs/semver.ts:101](https://github.com/142vip/co
 
 Returns cleaned (removed leading/trailing whitespace, remove '=v' prefix) and parsed version, or null if version is invalid.
 
-#### Parameters
+#### 参数
 
 ##### version
 
@@ -26,7 +26,7 @@ Returns cleaned (removed leading/trailing whitespace, remove '=v' prefix) and pa
 
 `boolean` | `Options`
 
-#### Returns
+#### 返回
 
 `null` \| `string`
 
@@ -38,7 +38,7 @@ Compares two versions excluding build identifiers (the bit after `+` in the sema
 
 Sorts in ascending order when passed to `Array.sort()`.
 
-#### Parameters
+#### 参数
 
 ##### v1
 
@@ -52,7 +52,7 @@ Sorts in ascending order when passed to `Array.sort()`.
 
 `boolean` | `Options`
 
-#### Returns
+#### 返回
 
 `-1` \| `0` \| `1`
 
@@ -66,7 +66,7 @@ Sorts in ascending order when passed to `Array.sort()`.
 
 支持原生创建Semver实例
 
-#### Parameters
+#### 参数
 
 ##### version
 
@@ -76,7 +76,7 @@ Sorts in ascending order when passed to `Array.sort()`.
 
 `boolean` | `RangeOptions`
 
-#### Returns
+#### 返回
 
 `SemVer`
 
@@ -86,7 +86,7 @@ Sorts in ascending order when passed to `Array.sort()`.
 
 v1 == v2 This is true if they're logically equivalent, even if they're not the exact same string. You already know how to compare strings.
 
-#### Parameters
+#### 参数
 
 ##### v1
 
@@ -100,7 +100,7 @@ v1 == v2 This is true if they're logically equivalent, even if they're not the e
 
 `boolean` | `Options`
 
-#### Returns
+#### 返回
 
 `boolean`
 
@@ -110,7 +110,7 @@ v1 == v2 This is true if they're logically equivalent, even if they're not the e
 
 获取下一个版本
 
-#### Parameters
+#### 参数
 
 ##### currentVersion
 
@@ -120,7 +120,7 @@ v1 == v2 This is true if they're logically equivalent, even if they're not the e
 
 `string`
 
-#### Returns
+#### 返回
 
 `null` \| [`NextVersion`](../interfaces/NextVersion.md)
 
@@ -130,7 +130,7 @@ v1 == v2 This is true if they're logically equivalent, even if they're not the e
 
 v1 > v2
 
-#### Parameters
+#### 参数
 
 ##### v1
 
@@ -144,7 +144,7 @@ v1 > v2
 
 `boolean` | `Options`
 
-#### Returns
+#### 返回
 
 `boolean`
 
@@ -152,13 +152,13 @@ v1 > v2
 
 > **inc**: \{(`version`, `release`, `optionsOrLoose?`, `identifier?`): `null` \| `string`; (`version`, `release`, `identifier?`, `identifierBase?`): `null` \| `string`; \}
 
-#### Call Signature
+#### 调用签名
 
 > (`version`, `release`, `optionsOrLoose?`, `identifier?`): `null` \| `string`
 
 Return the version incremented by the release type (major, premajor, minor, preminor, patch, prepatch, or prerelease), or null if it's not valid.
 
-##### Parameters
+##### 参数
 
 ###### version
 
@@ -176,17 +176,17 @@ Return the version incremented by the release type (major, premajor, minor, prem
 
 `string`
 
-##### Returns
+##### 返回
 
 `null` \| `string`
 
-#### Call Signature
+#### 调用签名
 
 > (`version`, `release`, `identifier?`, `identifierBase?`): `null` \| `string`
 
 Return the version incremented by the release type (major, premajor, minor, preminor, patch, prepatch, or prerelease), or null if it's not valid.
 
-##### Parameters
+##### 参数
 
 ###### version
 
@@ -204,7 +204,7 @@ Return the version incremented by the release type (major, premajor, minor, prem
 
 `false` | `IdentifierBase`
 
-##### Returns
+##### 返回
 
 `null` \| `string`
 
@@ -214,13 +214,13 @@ Return the version incremented by the release type (major, premajor, minor, prem
 
 Determines whether the specified value is a pre-release.
 
-#### Parameters
+#### 参数
 
 ##### value
 
 `ReleaseType`
 
-#### Returns
+#### 返回
 
 `boolean`
 
@@ -230,13 +230,13 @@ Determines whether the specified value is a pre-release.
 
 Determines whether the specified value is a valid ReleaseType string.
 
-#### Parameters
+#### 参数
 
 ##### value
 
 `ReleaseType`
 
-#### Returns
+#### 返回
 
 `boolean`
 
@@ -246,7 +246,7 @@ Determines whether the specified value is a valid ReleaseType string.
 
 v1 < v2
 
-#### Parameters
+#### 参数
 
 ##### v1
 
@@ -260,7 +260,7 @@ v1 < v2
 
 `boolean` | `Options`
 
-#### Returns
+#### 返回
 
 `boolean`
 
@@ -274,7 +274,7 @@ v1 < v2
 
 Return the parsed version as a SemVer object, or null if it's not valid.
 
-#### Parameters
+#### 参数
 
 ##### version
 
@@ -284,7 +284,7 @@ Return the parsed version as a SemVer object, or null if it's not valid.
 
 `boolean` | `Options`
 
-#### Returns
+#### 返回
 
 `null` \| `SemVer`
 
@@ -294,7 +294,7 @@ Return the parsed version as a SemVer object, or null if it's not valid.
 
 Returns an array of prerelease components, or null if none exist.
 
-#### Parameters
+#### 参数
 
 ##### version
 
@@ -304,7 +304,7 @@ Returns an array of prerelease components, or null if none exist.
 
 `boolean` | `Options`
 
-#### Returns
+#### 返回
 
 `null` \| readonly (`string` \| `number`)[]
 
@@ -314,7 +314,7 @@ Returns an array of prerelease components, or null if none exist.
 
 Return true if the version satisfies the range.
 
-#### Parameters
+#### 参数
 
 ##### version
 
@@ -328,7 +328,7 @@ Return true if the version satisfies the range.
 
 `boolean` | `RangeOptions`
 
-#### Returns
+#### 返回
 
 `boolean`
 
@@ -338,7 +338,7 @@ Return true if the version satisfies the range.
 
 Return the parsed version as a string, or null if it's not valid.
 
-#### Parameters
+#### 参数
 
 ##### version
 
@@ -348,6 +348,6 @@ Return the parsed version as a string, or null if it's not valid.
 
 `boolean` | `Options`
 
-#### Returns
+#### 返回
 
 `null` \| `string`

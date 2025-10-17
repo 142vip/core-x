@@ -1,12 +1,12 @@
 [API 参考](../../../index.md) / [@142vip/changelog](../index.md) / GitCommitAPI
 
-# Variable: GitCommitAPI
+# 变量: GitCommitAPI
 
 > `const` **GitCommitAPI**: `object`
 
-Defined in: [changelog/src/core/git-commit.api.ts:225](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/changelog/src/core/git-commit.api.ts#L225)
+定义于: [changelog/src/core/git-commit.api.ts:225](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/core/git-commit.api.ts#L225)
 
-## Type Declaration
+## 类型声明
 
 ### getGitCommitDiff()
 
@@ -14,13 +14,13 @@ Defined in: [changelog/src/core/git-commit.api.ts:225](https://github.com/142vip
 
 获取不同tag之间的commit记录
 
-#### Parameters
+#### 参数
 
 ##### options
 
 [`GitCommitDiffOptions`](../interfaces/GitCommitDiffOptions.md)
 
-#### Returns
+#### 返回
 
 `Promise`\<[`GitCommitRaw`](../interfaces/GitCommitRaw.md)[]\>
 
@@ -30,7 +30,7 @@ Defined in: [changelog/src/core/git-commit.api.ts:225](https://github.com/142vip
 
 生成Markdown文档记录的每行记录
 
-#### Parameters
+#### 参数
 
 ##### commits
 
@@ -90,7 +90,7 @@ Defined in: [changelog/src/core/git-commit.api.ts:225](https://github.com/142vip
 
 `Record`\<`string`, \{ `title`: `string`; \}\>
 
-#### Returns
+#### 返回
 
 `Promise`\<`string`\>
 
@@ -100,7 +100,7 @@ Defined in: [changelog/src/core/git-commit.api.ts:225](https://github.com/142vip
 
 解析所有Commit信息
 
-#### Parameters
+#### 参数
 
 ##### commits
 
@@ -110,6 +110,6 @@ Defined in: [changelog/src/core/git-commit.api.ts:225](https://github.com/142vip
 
 `Record`\<`string`, `string`\>
 
-#### Returns
+#### 返回
 
 [`GitCommitRecord`](../interfaces/GitCommitRecord.md)[]

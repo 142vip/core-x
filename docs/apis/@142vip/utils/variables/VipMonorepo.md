@@ -1,12 +1,12 @@
 [API 参考](../../../index.md) / [@142vip/utils](../index.md) / VipMonorepo
 
-# Variable: VipMonorepo
+# 变量: VipMonorepo
 
 > `const` **VipMonorepo**: `object`
 
-Defined in: [packages/utils/src/core/monorepo.ts:79](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/core/monorepo.ts#L79)
+定义于: [packages/utils/src/core/monorepo.ts:79](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/core/monorepo.ts#L79)
 
-## Type Declaration
+## 类型声明
 
 ### getPackageJSONPathList()
 
@@ -14,7 +14,7 @@ Defined in: [packages/utils/src/core/monorepo.ts:79](https://github.com/142vip/c
 
 获取monorepo下所有包的package.json，返回所有包的路径列表
 
-#### Returns
+#### 返回
 
 `string`[]
 
@@ -24,7 +24,7 @@ Defined in: [packages/utils/src/core/monorepo.ts:79](https://github.com/142vip/c
 
 获取某个包的PkgJSON信息
 
-#### Parameters
+#### 参数
 
 ##### pkgName
 
@@ -34,7 +34,7 @@ Defined in: [packages/utils/src/core/monorepo.ts:79](https://github.com/142vip/c
 
 `string` | `string`[]
 
-#### Returns
+#### 返回
 
 `undefined` \| [`PackageJSONWithPath`](../interfaces/PackageJSONWithPath.md)
 
@@ -46,13 +46,13 @@ Defined in: [packages/utils/src/core/monorepo.ts:79](https://github.com/142vip/c
 - 仅仅支持pnpm
 参考命令：`pnpm ls --json --only-projects ${filter} --depth -1`
 
-#### Parameters
+#### 参数
 
 ##### filter?
 
 `string` | `string`[]
 
-#### Returns
+#### 返回
 
 `string`[]
 
@@ -65,12 +65,12 @@ Defined in: [packages/utils/src/core/monorepo.ts:79](https://github.com/142vip/c
 - pnpm 命令： https://pnpm.io/cli/list
 - filter参数： https://pnpm.io/filtering
 
-#### Parameters
+#### 参数
 
 ##### filter?
 
 `string` | `string`[]
 
-#### Returns
+#### 返回
 
 [`PackageJSONWithPath`](../interfaces/PackageJSONWithPath.md)[]

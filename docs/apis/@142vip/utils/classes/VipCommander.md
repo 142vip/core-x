@@ -1,25 +1,25 @@
 [API 参考](../../../index.md) / [@142vip/utils](../index.md) / VipCommander
 
-# Class: VipCommander
+# 类: VipCommander
 
-Defined in: [packages/utils/src/pkgs/commander.ts:38](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/pkgs/commander.ts#L38)
+定义于: [packages/utils/src/pkgs/commander.ts:38](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/pkgs/commander.ts#L38)
 
 终端交互
 参考：https://www.npmjs.com/package/commander
 
-## Extends
+## theme_extends
 
 - `Command`
 
-## Constructors
+## 构造函数
 
-### Constructor
+### 构造函数
 
 > **new VipCommander**(`name`, `version`, `description?`): `VipCommander`
 
-Defined in: [packages/utils/src/pkgs/commander.ts:39](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/pkgs/commander.ts#L39)
+定义于: [packages/utils/src/pkgs/commander.ts:39](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/pkgs/commander.ts#L39)
 
-#### Parameters
+#### 参数
 
 ##### name
 
@@ -33,23 +33,23 @@ Defined in: [packages/utils/src/pkgs/commander.ts:39](https://github.com/142vip/
 
 `string`
 
-#### Returns
+#### 返回
 
 `VipCommander`
 
-#### Overrides
+#### 重写了
 
 `Command.constructor`
 
-## Properties
+## 属性
 
 ### args
 
 > **args**: `string`[]
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:298
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:298
 
-#### Inherited from
+#### 继承自
 
 `Command.args`
 
@@ -59,9 +59,9 @@ Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings
 
 > `readonly` **commands**: readonly `Command`[]
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:300
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:300
 
-#### Inherited from
+#### 继承自
 
 `Command.commands`
 
@@ -71,9 +71,9 @@ Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings
 
 > `readonly` **options**: readonly `Option`[]
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:301
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:301
 
-#### Inherited from
+#### 继承自
 
 `Command.options`
 
@@ -83,9 +83,9 @@ Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings
 
 > **parent**: `null` \| `Command`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:303
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:303
 
-#### Inherited from
+#### 继承自
 
 `Command.parent`
 
@@ -95,9 +95,9 @@ Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings
 
 > **processedArgs**: `any`[]
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:299
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:299
 
-#### Inherited from
+#### 继承自
 
 `Command.processedArgs`
 
@@ -107,35 +107,35 @@ Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings
 
 > `readonly` **registeredArguments**: readonly `Argument`[]
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:302
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:302
 
-#### Inherited from
+#### 继承自
 
 `Command.registeredArguments`
 
-## Methods
+## 方法
 
 ### action()
 
 > **action**(`fn`): `this`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:547
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:547
 
 Register callback `fn` for the command.
 
-#### Parameters
+#### 参数
 
 ##### fn
 
 (...`args`) => `void` \| `Promise`\<`void`\>
 
-#### Returns
+#### 返回
 
 `this`
 
 `this` command for chaining
 
-#### Example
+#### 示例
 
 ```
 program
@@ -146,7 +146,7 @@ program
   });
 ```
 
-#### Inherited from
+#### 继承自
 
 `Command.action`
 
@@ -156,23 +156,23 @@ program
 
 > **addArgument**(`arg`): `this`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:421
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:421
 
 Define argument syntax for command, adding a prepared argument.
 
-#### Parameters
+#### 参数
 
 ##### arg
 
 `Argument`
 
-#### Returns
+#### 返回
 
 `this`
 
 `this` command for chaining
 
-#### Inherited from
+#### 继承自
 
 `Command.addArgument`
 
@@ -182,13 +182,13 @@ Define argument syntax for command, adding a prepared argument.
 
 > **addCommand**(`cmd`, `opts?`): `this`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:384
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:384
 
 Add a prepared subcommand.
 
 See .command() for creating an attached subcommand which inherits settings from its parent.
 
-#### Parameters
+#### 参数
 
 ##### cmd
 
@@ -198,13 +198,13 @@ See .command() for creating an attached subcommand which inherits settings from 
 
 `CommandOptions`
 
-#### Returns
+#### 返回
 
 `this`
 
 `this` command for chaining
 
-#### Inherited from
+#### 继承自
 
 `Command.addCommand`
 
@@ -212,35 +212,35 @@ See .command() for creating an attached subcommand which inherits settings from 
 
 ### addHelpCommand()
 
-#### Call Signature
+#### 调用签名
 
 > **addHelpCommand**(`cmd`): `this`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:454
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:454
 
 Add prepared custom help command.
 
-##### Parameters
+##### 参数
 
 ###### cmd
 
 `Command`
 
-##### Returns
+##### 返回
 
 `this`
 
-##### Inherited from
+##### 继承自
 
 `Command.addHelpCommand`
 
-#### Call Signature
+#### 调用签名
 
 > **addHelpCommand**(`nameAndArgs`, `description?`): `this`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:456
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:456
 
-##### Parameters
+##### 参数
 
 ###### nameAndArgs
 
@@ -250,39 +250,39 @@ Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings
 
 `string`
 
-##### Returns
+##### 返回
 
 `this`
 
-##### Deprecated
+##### 已被弃用
 
 since v12, instead use helpCommand
 
-##### Inherited from
+##### 继承自
 
 `Command.addHelpCommand`
 
-#### Call Signature
+#### 调用签名
 
 > **addHelpCommand**(`enable?`): `this`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:458
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:458
 
-##### Parameters
+##### 参数
 
 ###### enable?
 
 `boolean`
 
-##### Returns
+##### 返回
 
 `this`
 
-##### Deprecated
+##### 已被弃用
 
 since v12, instead use helpCommand
 
-##### Inherited from
+##### 继承自
 
 `Command.addHelpCommand`
 
@@ -292,22 +292,22 @@ since v12, instead use helpCommand
 
 > **addHelpOption**(`option`): `this`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:921
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:921
 
 Supply your own option to use for the built-in help option.
 This is an alternative to using helpOption() to customise the flags and description etc.
 
-#### Parameters
+#### 参数
 
 ##### option
 
 `Option`
 
-#### Returns
+#### 返回
 
 `this`
 
-#### Inherited from
+#### 继承自
 
 `Command.addHelpOption`
 
@@ -315,18 +315,18 @@ This is an alternative to using helpOption() to customise the flags and descript
 
 ### addHelpText()
 
-#### Call Signature
+#### 调用签名
 
 > **addHelpText**(`position`, `text`): `this`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:938
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:938
 
 Add additional text to be displayed with the built-in help.
 
 Position is 'before' or 'after' to affect just this command,
 and 'beforeAll' or 'afterAll' to affect this command and all its subcommands.
 
-##### Parameters
+##### 参数
 
 ###### position
 
@@ -336,26 +336,26 @@ and 'beforeAll' or 'afterAll' to affect this command and all its subcommands.
 
 `string`
 
-##### Returns
+##### 返回
 
 `this`
 
-##### Inherited from
+##### 继承自
 
 `Command.addHelpText`
 
-#### Call Signature
+#### 调用签名
 
 > **addHelpText**(`position`, `text`): `this`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:939
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:939
 
 Add additional text to be displayed with the built-in help.
 
 Position is 'before' or 'after' to affect just this command,
 and 'beforeAll' or 'afterAll' to affect this command and all its subcommands.
 
-##### Parameters
+##### 参数
 
 ###### position
 
@@ -365,11 +365,11 @@ and 'beforeAll' or 'afterAll' to affect this command and all its subcommands.
 
 (`context`) => `string`
 
-##### Returns
+##### 返回
 
 `this`
 
-##### Inherited from
+##### 继承自
 
 `Command.addHelpText`
 
@@ -379,23 +379,23 @@ and 'beforeAll' or 'afterAll' to affect this command and all its subcommands.
 
 > **addOption**(`option`): `this`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:627
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:627
 
 Add a prepared Option.
 
 See .option() and .requiredOption() for creating and attaching an option in a single call.
 
-#### Parameters
+#### 参数
 
 ##### option
 
 `Option`
 
-#### Returns
+#### 返回
 
 `this`
 
-#### Inherited from
+#### 继承自
 
 `Command.addOption`
 
@@ -403,45 +403,45 @@ See .option() and .requiredOption() for creating and attaching an option in a si
 
 ### alias()
 
-#### Call Signature
+#### 调用签名
 
 > **alias**(`alias`): `this`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:821
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:821
 
 Set an alias for the command.
 
 You may call more than once to add multiple aliases. Only the first alias is shown in the auto-generated help.
 
-##### Parameters
+##### 参数
 
 ###### alias
 
 `string`
 
-##### Returns
+##### 返回
 
 `this`
 
 `this` command for chaining
 
-##### Inherited from
+##### 继承自
 
 `Command.alias`
 
-#### Call Signature
+#### 调用签名
 
 > **alias**(): `string`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:825
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:825
 
 Get alias for the command.
 
-##### Returns
+##### 返回
 
 `string`
 
-##### Inherited from
+##### 继承自
 
 `Command.alias`
 
@@ -449,45 +449,45 @@ Get alias for the command.
 
 ### aliases()
 
-#### Call Signature
+#### 调用签名
 
 > **aliases**(`aliases`): `this`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:834
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:834
 
 Set aliases for the command.
 
 Only the first alias is shown in the auto-generated help.
 
-##### Parameters
+##### 参数
 
 ###### aliases
 
 readonly `string`[]
 
-##### Returns
+##### 返回
 
 `this`
 
 `this` command for chaining
 
-##### Inherited from
+##### 继承自
 
 `Command.aliases`
 
-#### Call Signature
+#### 调用签名
 
 > **aliases**(): `string`[]
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:838
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:838
 
 Get aliases for the command.
 
-##### Returns
+##### 返回
 
 `string`[]
 
-##### Inherited from
+##### 继承自
 
 `Command.aliases`
 
@@ -497,23 +497,23 @@ Get aliases for the command.
 
 > **allowExcessArguments**(`allowExcess?`): `this`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:696
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:696
 
 Allow excess command-arguments on the command line. Pass false to make excess arguments an error.
 
-#### Parameters
+#### 参数
 
 ##### allowExcess?
 
 `boolean`
 
-#### Returns
+#### 返回
 
 `this`
 
 `this` command for chaining
 
-#### Inherited from
+#### 继承自
 
 `Command.allowExcessArguments`
 
@@ -523,23 +523,23 @@ Allow excess command-arguments on the command line. Pass false to make excess ar
 
 > **allowUnknownOption**(`allowUnknown?`): `this`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:689
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:689
 
 Allow unknown options on the command line.
 
-#### Parameters
+#### 参数
 
 ##### allowUnknown?
 
 `boolean`
 
-#### Returns
+#### 返回
 
 `this`
 
 `this` command for chaining
 
-#### Inherited from
+#### 继承自
 
 `Command.allowUnknownOption`
 
@@ -547,24 +547,24 @@ Allow unknown options on the command line.
 
 ### argument()
 
-#### Call Signature
+#### 调用签名
 
 > **argument**\<`T`\>(`flags`, `description`, `fn`, `defaultValue?`): `this`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:408
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:408
 
 Define argument syntax for command.
 
 The default is that the argument is required, and you can explicitly
 indicate this with <> around the name. Put [] around the name for an optional argument.
 
-##### Type Parameters
+##### 类型参数
 
 ###### T
 
 `T`
 
-##### Parameters
+##### 参数
 
 ###### flags
 
@@ -582,35 +582,35 @@ indicate this with <> around the name. Put [] around the name for an optional ar
 
 `T`
 
-##### Returns
+##### 返回
 
 `this`
 
 `this` command for chaining
 
-##### Example
+##### 示例
 
 ```
 program.argument('<input-file>');
 program.argument('[output-file]');
 ```
 
-##### Inherited from
+##### 继承自
 
 `Command.argument`
 
-#### Call Signature
+#### 调用签名
 
 > **argument**(`name`, `description?`, `defaultValue?`): `this`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:414
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:414
 
 Define argument syntax for command.
 
 The default is that the argument is required, and you can explicitly
 indicate this with <> around the name. Put [] around the name for an optional argument.
 
-##### Parameters
+##### 参数
 
 ###### name
 
@@ -624,20 +624,20 @@ indicate this with <> around the name. Put [] around the name for an optional ar
 
 `unknown`
 
-##### Returns
+##### 返回
 
 `this`
 
 `this` command for chaining
 
-##### Example
+##### 示例
 
 ```
 program.argument('<input-file>');
 program.argument('[output-file]');
 ```
 
-##### Inherited from
+##### 继承自
 
 `Command.argument`
 
@@ -647,31 +647,31 @@ program.argument('[output-file]');
 
 > **arguments**(`names`): `this`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:435
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:435
 
 Define argument syntax for command, adding multiple at once (without descriptions).
 
 See also .argument().
 
-#### Parameters
+#### 参数
 
 ##### names
 
 `string`
 
-#### Returns
+#### 返回
 
 `this`
 
 `this` command for chaining
 
-#### Example
+#### 示例
 
 ```
 program.arguments('<cmd> [env]');
 ```
 
-#### Inherited from
+#### 继承自
 
 `Command.arguments`
 
@@ -681,23 +681,23 @@ program.arguments('<cmd> [env]');
 
 > **combineFlagAndOptionalValue**(`combine?`): `this`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:682
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:682
 
 Alter parsing of short flags with optional values.
 
-#### Parameters
+#### 参数
 
 ##### combine?
 
 `boolean`
 
-#### Returns
+#### 返回
 
 `this`
 
 `this` command for chaining
 
-#### Example
+#### 示例
 
 ```
 // for `.option('-f,--flag [value]'):
@@ -705,7 +705,7 @@ Alter parsing of short flags with optional values.
 .combineFlagAndOptionalValue(false) // `-fb` is treated like `-f -b`
 ```
 
-#### Inherited from
+#### 继承自
 
 `Command.combineFlagAndOptionalValue`
 
@@ -713,15 +713,15 @@ Alter parsing of short flags with optional values.
 
 ### command()
 
-#### Call Signature
+#### 调用签名
 
 > **command**(`nameAndArgs`, `opts?`): `Command`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:341
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:341
 
 Define a command, implemented using an action handler.
 
-##### Parameters
+##### 参数
 
 ###### nameAndArgs
 
@@ -735,17 +735,17 @@ command name and arguments, args are  `<required>` or `[optional]` and last may 
 
 configuration options
 
-##### Returns
+##### 返回
 
 `Command`
 
 new command
 
-##### Remarks
+##### 备注
 
 The command description is supplied using `.description`, not as a parameter to `.command`.
 
-##### Example
+##### 示例
 
 ```ts
 program
@@ -756,19 +756,19 @@ program
   })
 ```
 
-##### Inherited from
+##### 继承自
 
 `Command.command`
 
-#### Call Signature
+#### 调用签名
 
 > **command**(`nameAndArgs`, `description`, `opts?`): `this`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:363
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:363
 
 Define a command, implemented in a separate executable file.
 
-##### Parameters
+##### 参数
 
 ###### nameAndArgs
 
@@ -788,17 +788,17 @@ description of executable command
 
 configuration options
 
-##### Returns
+##### 返回
 
 `this`
 
 `this` command for chaining
 
-##### Remarks
+##### 备注
 
 The command description is supplied as the second parameter to `.command`.
 
-##### Example
+##### 示例
 
 ```ts
 program
@@ -806,7 +806,7 @@ program
   .command('stop [service]', 'stop named service, or all if no name supplied')
 ```
 
-##### Inherited from
+##### 继承自
 
 `Command.command`
 
@@ -814,42 +814,42 @@ program
 
 ### configureHelp()
 
-#### Call Signature
+#### 调用签名
 
 > **configureHelp**(`configuration`): `this`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:491
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:491
 
 You can customise the help by overriding Help properties using configureHelp(),
 or with a subclass of Help by overriding createHelp().
 
-##### Parameters
+##### 参数
 
 ###### configuration
 
 `HelpConfiguration`
 
-##### Returns
+##### 返回
 
 `this`
 
-##### Inherited from
+##### 继承自
 
 `Command.configureHelp`
 
-#### Call Signature
+#### 调用签名
 
 > **configureHelp**(): `HelpConfiguration`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:493
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:493
 
 Get configuration
 
-##### Returns
+##### 返回
 
 `HelpConfiguration`
 
-##### Inherited from
+##### 继承自
 
 `Command.configureHelp`
 
@@ -857,11 +857,11 @@ Get configuration
 
 ### configureOutput()
 
-#### Call Signature
+#### 调用签名
 
 > **configureOutput**(`configuration`): `this`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:511
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:511
 
 The default output goes to stdout and stderr. You can customise this for special
 applications. You can also customise the display of errors by overriding outputError.
@@ -878,33 +878,33 @@ getErrHelpWidth()
 outputError(str, write) // used for displaying errors, and not used for displaying help
 ```
 
-##### Parameters
+##### 参数
 
 ###### configuration
 
 `OutputConfiguration`
 
-##### Returns
+##### 返回
 
 `this`
 
-##### Inherited from
+##### 继承自
 
 `Command.configureOutput`
 
-#### Call Signature
+#### 调用签名
 
 > **configureOutput**(): `OutputConfiguration`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:513
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:513
 
 Get configuration
 
-##### Returns
+##### 返回
 
 `OutputConfiguration`
 
-##### Inherited from
+##### 继承自
 
 `Command.configureOutput`
 
@@ -914,23 +914,23 @@ Get configuration
 
 > **copyInheritedSettings**(`sourceCommand`): `this`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:520
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:520
 
 Copy settings that are useful to have in common across root command and subcommands.
 
 (Used internally when adding a command using `.command()` so subcommands inherit parent settings.)
 
-#### Parameters
+#### 参数
 
 ##### sourceCommand
 
 `Command`
 
-#### Returns
+#### 返回
 
 `this`
 
-#### Inherited from
+#### 继承自
 
 `Command.copyInheritedSettings`
 
@@ -940,14 +940,14 @@ Copy settings that are useful to have in common across root command and subcomma
 
 > **createArgument**(`name`, `description?`): `Argument`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:392
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:392
 
 Factory routine to create a new unattached argument.
 
 See .argument() for creating an attached argument, which uses this routine to
 create the argument. You can override createArgument to return a custom argument.
 
-#### Parameters
+#### 参数
 
 ##### name
 
@@ -957,11 +957,11 @@ create the argument. You can override createArgument to return a custom argument
 
 `string`
 
-#### Returns
+#### 返回
 
 `Argument`
 
-#### Inherited from
+#### 继承自
 
 `Command.createArgument`
 
@@ -971,24 +971,24 @@ create the argument. You can override createArgument to return a custom argument
 
 > **createCommand**(`name?`): `Command`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:375
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:375
 
 Factory routine to create a new unattached command.
 
 See .command() for creating an attached subcommand, which uses this routine to
 create the command. You can override createCommand to customise subcommands.
 
-#### Parameters
+#### 参数
 
 ##### name?
 
 `string`
 
-#### Returns
+#### 返回
 
 `Command`
 
-#### Inherited from
+#### 继承自
 
 `Command.createCommand`
 
@@ -998,16 +998,16 @@ create the command. You can override createCommand to customise subcommands.
 
 > **createHelp**(): `Help`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:485
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:485
 
 You can customise the help with a subclass of Help by overriding createHelp,
 or by overriding Help properties using configureHelp().
 
-#### Returns
+#### 返回
 
 `Help`
 
-#### Inherited from
+#### 继承自
 
 `Command.createHelp`
 
@@ -1017,14 +1017,14 @@ or by overriding Help properties using configureHelp().
 
 > **createOption**(`flags`, `description?`): `Option`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:620
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:620
 
 Factory routine to create a new unattached option.
 
 See .option() for creating an attached option, which uses this routine to
 create the option. You can override createOption to return a custom option.
 
-#### Parameters
+#### 参数
 
 ##### flags
 
@@ -1034,11 +1034,11 @@ create the option. You can override createOption to return a custom option.
 
 `string`
 
-#### Returns
+#### 返回
 
 `Option`
 
-#### Inherited from
+#### 继承自
 
 `Command.createOption`
 
@@ -1046,37 +1046,37 @@ create the option. You can override createOption to return a custom option.
 
 ### description()
 
-#### Call Signature
+#### 调用签名
 
 > **description**(`str`): `this`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:794
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:794
 
 Set the description.
 
-##### Parameters
+##### 参数
 
 ###### str
 
 `string`
 
-##### Returns
+##### 返回
 
 `this`
 
 `this` command for chaining
 
-##### Inherited from
+##### 继承自
 
 `Command.description`
 
-#### Call Signature
+#### 调用签名
 
 > **description**(`str`, `argsDescription`): `this`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:796
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:796
 
-##### Parameters
+##### 参数
 
 ###### str
 
@@ -1086,31 +1086,31 @@ Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings
 
 `Record`\<`string`, `string`\>
 
-##### Returns
+##### 返回
 
 `this`
 
-##### Deprecated
+##### 已被弃用
 
 since v8, instead use .argument to add command argument with description
 
-##### Inherited from
+##### 继承自
 
 `Command.description`
 
-#### Call Signature
+#### 调用签名
 
 > **description**(): `string`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:800
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:800
 
 Get the description.
 
-##### Returns
+##### 返回
 
 `string`
 
-##### Inherited from
+##### 继承自
 
 `Command.description`
 
@@ -1120,26 +1120,26 @@ Get the description.
 
 > **enablePositionalOptions**(`positional?`): `this`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:706
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:706
 
 Enable positional options. Positional means global options are specified before subcommands which lets
 subcommands reuse the same option names, and also enables subcommands to turn on passThroughOptions.
 
 The default behaviour is non-positional and global options may appear anywhere on the command line.
 
-#### Parameters
+#### 参数
 
 ##### positional?
 
 `boolean`
 
-#### Returns
+#### 返回
 
 `this`
 
 `this` command for chaining
 
-#### Inherited from
+#### 继承自
 
 `Command.enablePositionalOptions`
 
@@ -1149,11 +1149,11 @@ The default behaviour is non-positional and global options may appear anywhere o
 
 > **error**(`message`, `errorOptions?`): `never`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:479
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:479
 
 Display error message and exit (or call exitOverride).
 
-#### Parameters
+#### 参数
 
 ##### message
 
@@ -1163,11 +1163,11 @@ Display error message and exit (or call exitOverride).
 
 `ErrorOptions`
 
-#### Returns
+#### 返回
 
 `never`
 
-#### Inherited from
+#### 继承自
 
 `Command.error`
 
@@ -1175,27 +1175,27 @@ Display error message and exit (or call exitOverride).
 
 ### executableDir()
 
-#### Call Signature
+#### 调用签名
 
 > **executableDir**(`path`): `this`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:889
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:889
 
 Set the directory for searching for executable subcommands of this command.
 
-##### Parameters
+##### 参数
 
 ###### path
 
 `string`
 
-##### Returns
+##### 返回
 
 `this`
 
 `this` command for chaining
 
-##### Example
+##### 示例
 
 ```ts
 program.executableDir(__dirname)
@@ -1203,23 +1203,23 @@ program.executableDir(__dirname)
 program.executableDir('subcommands')
 ```
 
-##### Inherited from
+##### 继承自
 
 `Command.executableDir`
 
-#### Call Signature
+#### 调用签名
 
 > **executableDir**(): `null` \| `string`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:893
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:893
 
 Get the executable search directory.
 
-##### Returns
+##### 返回
 
 `null` \| `string`
 
-##### Inherited from
+##### 继承自
 
 `Command.executableDir`
 
@@ -1229,21 +1229,21 @@ Get the executable search directory.
 
 > **exitOverride**(`callback?`): `this`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:474
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:474
 
 Register callback to use as replacement for calling process.exit.
 
-#### Parameters
+#### 参数
 
 ##### callback?
 
 (`err`) => `void`
 
-#### Returns
+#### 返回
 
 `this`
 
-#### Inherited from
+#### 继承自
 
 `Command.exitOverride`
 
@@ -1253,21 +1253,21 @@ Register callback to use as replacement for calling process.exit.
 
 > **getOptionValue**(`key`): `any`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:644
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:644
 
 Retrieve option value.
 
-#### Parameters
+#### 参数
 
 ##### key
 
 `string`
 
-#### Returns
+#### 返回
 
 `any`
 
-#### Inherited from
+#### 继承自
 
 `Command.getOptionValue`
 
@@ -1277,21 +1277,21 @@ Retrieve option value.
 
 > **getOptionValueSource**(`key`): `OptionValueSource`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:663
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:663
 
 Get source of option value.
 
-#### Parameters
+#### 参数
 
 ##### key
 
 `string`
 
-#### Returns
+#### 返回
 
 `OptionValueSource`
 
-#### Inherited from
+#### 继承自
 
 `Command.getOptionValueSource`
 
@@ -1301,21 +1301,21 @@ Get source of option value.
 
 > **getOptionValueSourceWithGlobals**(`key`): `OptionValueSource`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:668
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:668
 
 Get source of option value. See also .optsWithGlobals().
 
-#### Parameters
+#### 参数
 
 ##### key
 
 `string`
 
-#### Returns
+#### 返回
 
 `OptionValueSource`
 
-#### Inherited from
+#### 继承自
 
 `Command.getOptionValueSourceWithGlobals`
 
@@ -1323,51 +1323,51 @@ Get source of option value. See also .optsWithGlobals().
 
 ### help()
 
-#### Call Signature
+#### 调用签名
 
 > **help**(`context?`): `never`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:928
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:928
 
 Output help information and exit.
 
 Outputs built-in help, and custom text added using `.addHelpText()`.
 
-##### Parameters
+##### 参数
 
 ###### context?
 
 `HelpContext`
 
-##### Returns
+##### 返回
 
 `never`
 
-##### Inherited from
+##### 继承自
 
 `Command.help`
 
-#### Call Signature
+#### 调用签名
 
 > **help**(`cb?`): `never`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:930
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:930
 
-##### Parameters
+##### 参数
 
 ###### cb?
 
 (`str`) => `string`
 
-##### Returns
+##### 返回
 
 `never`
 
-##### Deprecated
+##### 已被弃用
 
 since v7
 
-##### Inherited from
+##### 继承自
 
 `Command.help`
 
@@ -1375,15 +1375,15 @@ since v7
 
 ### helpCommand()
 
-#### Call Signature
+#### 调用签名
 
 > **helpCommand**(`nameAndArgs`, `description?`): `this`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:448
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:448
 
 Customise or override default help command. By default a help command is automatically added if your command has subcommands.
 
-##### Parameters
+##### 参数
 
 ###### nameAndArgs
 
@@ -1393,11 +1393,11 @@ Customise or override default help command. By default a help command is automat
 
 `string`
 
-##### Returns
+##### 返回
 
 `this`
 
-##### Example
+##### 示例
 
 ```ts
 program.helpCommand('help [cmd]')
@@ -1406,29 +1406,29 @@ program.helpCommand(false) // suppress default help command
 program.helpCommand(true) // add help command even if no subcommands
 ```
 
-##### Inherited from
+##### 继承自
 
 `Command.helpCommand`
 
-#### Call Signature
+#### 调用签名
 
 > **helpCommand**(`enable`): `this`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:449
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:449
 
 Customise or override default help command. By default a help command is automatically added if your command has subcommands.
 
-##### Parameters
+##### 参数
 
 ###### enable
 
 `boolean`
 
-##### Returns
+##### 返回
 
 `this`
 
-##### Example
+##### 示例
 
 ```ts
 program.helpCommand('help [cmd]')
@@ -1437,7 +1437,7 @@ program.helpCommand(false) // suppress default help command
 program.helpCommand(true) // add help command even if no subcommands
 ```
 
-##### Inherited from
+##### 继承自
 
 `Command.helpCommand`
 
@@ -1447,21 +1447,21 @@ program.helpCommand(true) // add help command even if no subcommands
 
 > **helpInformation**(`context?`): `string`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:908
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:908
 
 Return command help documentation.
 
-#### Parameters
+#### 参数
 
 ##### context?
 
 `HelpContext`
 
-#### Returns
+#### 返回
 
 `string`
 
-#### Inherited from
+#### 继承自
 
 `Command.helpInformation`
 
@@ -1471,13 +1471,13 @@ Return command help documentation.
 
 > **helpOption**(`flags?`, `description?`): `this`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:915
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:915
 
 You can pass in flags and a description to override the help
 flags and help description for your command. Pass in false
 to disable the built-in help option.
 
-#### Parameters
+#### 参数
 
 ##### flags?
 
@@ -1487,11 +1487,11 @@ to disable the built-in help option.
 
 `string`
 
-#### Returns
+#### 返回
 
 `this`
 
-#### Inherited from
+#### 继承自
 
 `Command.helpOption`
 
@@ -1501,11 +1501,11 @@ to disable the built-in help option.
 
 > **hook**(`event`, `listener`): `this`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:463
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:463
 
 Add hook for life cycle event.
 
-#### Parameters
+#### 参数
 
 ##### event
 
@@ -1515,11 +1515,11 @@ Add hook for life cycle event.
 
 (`thisCommand`, `actionCommand`) => `void` \| `Promise`\<`void`\>
 
-#### Returns
+#### 返回
 
 `this`
 
-#### Inherited from
+#### 继承自
 
 `Command.hook`
 
@@ -1529,11 +1529,11 @@ Add hook for life cycle event.
 
 > **init**(`options`, `args`): `Command`
 
-Defined in: [packages/utils/src/pkgs/commander.ts:53](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/pkgs/commander.ts#L53)
+定义于: [packages/utils/src/pkgs/commander.ts:53](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/pkgs/commander.ts#L53)
 
 初始化，不包括命令
 
-#### Parameters
+#### 参数
 
 ##### options
 
@@ -1543,7 +1543,7 @@ Defined in: [packages/utils/src/pkgs/commander.ts:53](https://github.com/142vip/
 
 [`VipCommanderOptions`](../interfaces/VipCommanderOptions.md) = `{}`
 
-#### Returns
+#### 返回
 
 `Command`
 
@@ -1553,12 +1553,12 @@ Defined in: [packages/utils/src/pkgs/commander.ts:53](https://github.com/142vip/
 
 > **initCommand**(`options`, `args`): `Command`
 
-Defined in: [packages/utils/src/pkgs/commander.ts:63](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/pkgs/commander.ts#L63)
+定义于: [packages/utils/src/pkgs/commander.ts:63](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/pkgs/commander.ts#L63)
 
 对命令初始化，增加aliases，summary，description等信息
 - 增加默认的一些参数
 
-#### Parameters
+#### 参数
 
 ##### options
 
@@ -1568,7 +1568,7 @@ Defined in: [packages/utils/src/pkgs/commander.ts:63](https://github.com/142vip/
 
 [`VipCommanderOptions`](../interfaces/VipCommanderOptions.md) = `{}`
 
-#### Returns
+#### 返回
 
 `Command`
 
@@ -1576,43 +1576,43 @@ Defined in: [packages/utils/src/pkgs/commander.ts:63](https://github.com/142vip/
 
 ### name()
 
-#### Call Signature
+#### 调用签名
 
 > **name**(`str`): `this`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:856
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:856
 
 Set the name of the command.
 
-##### Parameters
+##### 参数
 
 ###### str
 
 `string`
 
-##### Returns
+##### 返回
 
 `this`
 
 `this` command for chaining
 
-##### Inherited from
+##### 继承自
 
 `Command.name`
 
-#### Call Signature
+#### 调用签名
 
 > **name**(): `string`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:860
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:860
 
 Get the name of the command.
 
-##### Returns
+##### 返回
 
 `string`
 
-##### Inherited from
+##### 继承自
 
 `Command.name`
 
@@ -1622,32 +1622,32 @@ Get the name of the command.
 
 > **nameFromFilename**(`filename`): `this`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:875
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:875
 
 Set the name of the command from script filename, such as process.argv[1],
 or require.main.filename, or __filename.
 
 (Used internally and public although not documented in README.)
 
-#### Parameters
+#### 参数
 
 ##### filename
 
 `string`
 
-#### Returns
+#### 返回
 
 `this`
 
 `this` command for chaining
 
-#### Example
+#### 示例
 
 ```ts
 program.nameFromFilename(require.main.filename)
 ```
 
-#### Inherited from
+#### 继承自
 
 `Command.nameFromFilename`
 
@@ -1657,11 +1657,11 @@ program.nameFromFilename(require.main.filename)
 
 > **on**(`event`, `listener`): `this`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:947
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:947
 
 Add a listener (callback) for when events occur. (Implemented using EventEmitter.)
 
-#### Parameters
+#### 参数
 
 ##### event
 
@@ -1671,11 +1671,11 @@ Add a listener (callback) for when events occur. (Implemented using EventEmitter
 
 (...`args`) => `void`
 
-#### Returns
+#### 返回
 
 `this`
 
-#### Inherited from
+#### 继承自
 
 `Command.on`
 
@@ -1683,11 +1683,11 @@ Add a listener (callback) for when events occur. (Implemented using EventEmitter
 
 ### option()
 
-#### Call Signature
+#### 调用签名
 
 > **option**(`flags`, `description?`, `defaultValue?`): `this`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:569
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:569
 
 Define option with `flags`, `description`, and optional argument parsing function or `defaultValue` or both.
 
@@ -1696,7 +1696,7 @@ option-argument is indicated by `<>` and an optional option-argument by `[]`.
 
 See the README for more details, and see also addOption() and requiredOption().
 
-##### Parameters
+##### 参数
 
 ###### flags
 
@@ -1710,13 +1710,13 @@ See the README for more details, and see also addOption() and requiredOption().
 
 `string` | `boolean` | `string`[]
 
-##### Returns
+##### 返回
 
 `this`
 
 `this` command for chaining
 
-##### Example
+##### 示例
 
 ```js
 program
@@ -1726,15 +1726,15 @@ program
   .option('-t, --tip <VALUE>', 'add tip to purchase cost', Number.parseFloat) // custom parse function
 ```
 
-##### Inherited from
+##### 继承自
 
 `Command.option`
 
-#### Call Signature
+#### 调用签名
 
 > **option**\<`T`\>(`flags`, `description`, `parseArg`, `defaultValue?`): `this`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:574
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:574
 
 Define option with `flags`, `description`, and optional argument parsing function or `defaultValue` or both.
 
@@ -1743,13 +1743,13 @@ option-argument is indicated by `<>` and an optional option-argument by `[]`.
 
 See the README for more details, and see also addOption() and requiredOption().
 
-##### Type Parameters
+##### 类型参数
 
 ###### T
 
 `T`
 
-##### Parameters
+##### 参数
 
 ###### flags
 
@@ -1767,13 +1767,13 @@ See the README for more details, and see also addOption() and requiredOption().
 
 `T`
 
-##### Returns
+##### 返回
 
 `this`
 
 `this` command for chaining
 
-##### Example
+##### 示例
 
 ```js
 program
@@ -1783,17 +1783,17 @@ program
   .option('-t, --tip <VALUE>', 'add tip to purchase cost', Number.parseFloat) // custom parse function
 ```
 
-##### Inherited from
+##### 继承自
 
 `Command.option`
 
-#### Call Signature
+#### 调用签名
 
 > **option**(`flags`, `description`, `regexp`, `defaultValue?`): `this`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:581
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:581
 
-##### Parameters
+##### 参数
 
 ###### flags
 
@@ -1811,15 +1811,15 @@ Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings
 
 `string` | `boolean` | `string`[]
 
-##### Returns
+##### 返回
 
 `this`
 
-##### Deprecated
+##### 已被弃用
 
 since v7, instead use choices or a custom function
 
-##### Inherited from
+##### 继承自
 
 `Command.option`
 
@@ -1829,21 +1829,21 @@ since v7, instead use choices or a custom function
 
 > **opts**\<`T`\>(): `T`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:781
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:781
 
 Return an object containing local option values as key-value pairs
 
-#### Type Parameters
+#### 类型参数
 
 ##### T
 
 `T` *extends* `OptionValues`
 
-#### Returns
+#### 返回
 
 `T`
 
-#### Inherited from
+#### 继承自
 
 `Command.opts`
 
@@ -1853,21 +1853,21 @@ Return an object containing local option values as key-value pairs
 
 > **optsWithGlobals**\<`T`\>(): `T`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:786
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:786
 
 Return an object containing merged local and global option values as key-value pairs.
 
-#### Type Parameters
+#### 类型参数
 
 ##### T
 
 `T` *extends* `OptionValues`
 
-#### Returns
+#### 返回
 
 `T`
 
-#### Inherited from
+#### 继承自
 
 `Command.optsWithGlobals`
 
@@ -1875,51 +1875,51 @@ Return an object containing merged local and global option values as key-value p
 
 ### outputHelp()
 
-#### Call Signature
+#### 调用签名
 
 > **outputHelp**(`context?`): `void`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:901
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:901
 
 Output help information for this command.
 
 Outputs built-in help, and custom text added using `.addHelpText()`.
 
-##### Parameters
+##### 参数
 
 ###### context?
 
 `HelpContext`
 
-##### Returns
+##### 返回
 
 `void`
 
-##### Inherited from
+##### 继承自
 
 `Command.outputHelp`
 
-#### Call Signature
+#### 调用签名
 
 > **outputHelp**(`cb?`): `void`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:903
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:903
 
-##### Parameters
+##### 参数
 
 ###### cb?
 
 (`str`) => `string`
 
-##### Returns
+##### 返回
 
 `void`
 
-##### Deprecated
+##### 已被弃用
 
 since v7
 
-##### Inherited from
+##### 继承自
 
 `Command.outputHelp`
 
@@ -1929,7 +1929,7 @@ since v7
 
 > **parse**(`argv?`, `parseOptions?`): `this`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:740
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:740
 
 Parse `argv`, setting options and invoking commands when defined.
 
@@ -1942,7 +1942,7 @@ Or call with an array of strings to parse, and optionally where the user argumen
 - `'electron'`: `argv[0]` is the application and `argv[1]` varies depending on whether the electron application is packaged
 - `'user'`: just user arguments
 
-#### Parameters
+#### 参数
 
 ##### argv?
 
@@ -1952,13 +1952,13 @@ readonly `string`[]
 
 `ParseOptions`
 
-#### Returns
+#### 返回
 
 `this`
 
 `this` command for chaining
 
-#### Example
+#### 示例
 
 ```
 program.parse(); // parse process.argv and auto-detect electron and special node flags
@@ -1966,7 +1966,7 @@ program.parse(process.argv); // assume argv[0] is app and argv[1] is script
 program.parse(my-args, { from: 'user' }); // just user supplied arguments, nothing special about argv[0]
 ```
 
-#### Inherited from
+#### 继承自
 
 `Command.parse`
 
@@ -1976,7 +1976,7 @@ program.parse(my-args, { from: 'user' }); // just user supplied arguments, nothi
 
 > **parseAsync**(`argv?`, `parseOptions?`): `Promise`\<`VipCommander`\>
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:761
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:761
 
 Parse `argv`, setting options and invoking commands when defined.
 
@@ -1987,7 +1987,7 @@ Or call with an array of strings to parse, and optionally where the user argumen
 - `'electron'`: `argv[0]` is the application and `argv[1]` varies depending on whether the electron application is packaged
 - `'user'`: just user arguments
 
-#### Parameters
+#### 参数
 
 ##### argv?
 
@@ -1997,13 +1997,13 @@ readonly `string`[]
 
 `ParseOptions`
 
-#### Returns
+#### 返回
 
 `Promise`\<`VipCommander`\>
 
 Promise
 
-#### Example
+#### 示例
 
 ```
 await program.parseAsync(); // parse process.argv and auto-detect electron and special node flags
@@ -2011,7 +2011,7 @@ await program.parseAsync(process.argv); // assume argv[0] is app and argv[1] is 
 await program.parseAsync(my-args, { from: 'user' }); // just user supplied arguments, nothing special about argv[0]
 ```
 
-#### Inherited from
+#### 继承自
 
 `Command.parseAsync`
 
@@ -2021,7 +2021,7 @@ await program.parseAsync(my-args, { from: 'user' }); // just user supplied argum
 
 > **parseOptions**(`argv`): `ParseOptionsResult`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:776
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:776
 
 Parse options from `argv` removing known options,
 and return argv split into operands and unknown arguments.
@@ -2032,17 +2032,17 @@ and return argv split into operands and unknown arguments.
     sub --unknown uuu op => [sub], [--unknown uuu op]
     sub -- --unknown uuu op => [sub --unknown uuu op], []
 
-#### Parameters
+#### 参数
 
 ##### argv
 
 `string`[]
 
-#### Returns
+#### 返回
 
 `ParseOptionsResult`
 
-#### Inherited from
+#### 继承自
 
 `Command.parseOptions`
 
@@ -2052,7 +2052,7 @@ and return argv split into operands and unknown arguments.
 
 > **passThroughOptions**(`passThrough?`): `this`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:717
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:717
 
 Pass through options that come after command-arguments rather than treat them as command-options,
 so actual command-options come before command-arguments. Turning this on for a subcommand requires
@@ -2060,19 +2060,19 @@ positional options to have been enabled on the program (parent commands).
 
 The default behaviour is non-positional and options may appear before or after command-arguments.
 
-#### Parameters
+#### 参数
 
 ##### passThrough?
 
 `boolean`
 
-#### Returns
+#### 返回
 
 `this`
 
 `this` command for chaining
 
-#### Inherited from
+#### 继承自
 
 `Command.passThroughOptions`
 
@@ -2080,18 +2080,18 @@ The default behaviour is non-positional and options may appear before or after c
 
 ### requiredOption()
 
-#### Call Signature
+#### 调用签名
 
 > **requiredOption**(`flags`, `description?`, `defaultValue?`): `this`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:594
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:594
 
 Define a required option, which must have a value after parsing. This usually means
 the option must be specified on the command line. (Otherwise the same as .option().)
 
 The `flags` string contains the short and/or long flags, separated by comma, a pipe or space.
 
-##### Parameters
+##### 参数
 
 ###### flags
 
@@ -2105,32 +2105,32 @@ The `flags` string contains the short and/or long flags, separated by comma, a p
 
 `string` | `boolean` | `string`[]
 
-##### Returns
+##### 返回
 
 `this`
 
-##### Inherited from
+##### 继承自
 
 `Command.requiredOption`
 
-#### Call Signature
+#### 调用签名
 
 > **requiredOption**\<`T`\>(`flags`, `description`, `parseArg`, `defaultValue?`): `this`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:599
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:599
 
 Define a required option, which must have a value after parsing. This usually means
 the option must be specified on the command line. (Otherwise the same as .option().)
 
 The `flags` string contains the short and/or long flags, separated by comma, a pipe or space.
 
-##### Type Parameters
+##### 类型参数
 
 ###### T
 
 `T`
 
-##### Parameters
+##### 参数
 
 ###### flags
 
@@ -2148,21 +2148,21 @@ The `flags` string contains the short and/or long flags, separated by comma, a p
 
 `T`
 
-##### Returns
+##### 返回
 
 `this`
 
-##### Inherited from
+##### 继承自
 
 `Command.requiredOption`
 
-#### Call Signature
+#### 调用签名
 
 > **requiredOption**(`flags`, `description`, `regexp`, `defaultValue?`): `this`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:606
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:606
 
-##### Parameters
+##### 参数
 
 ###### flags
 
@@ -2180,15 +2180,15 @@ Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings
 
 `string` | `boolean` | `string`[]
 
-##### Returns
+##### 返回
 
 `this`
 
-##### Deprecated
+##### 已被弃用
 
 since v7, instead use choices or a custom function
 
-##### Inherited from
+##### 继承自
 
 `Command.requiredOption`
 
@@ -2198,11 +2198,11 @@ since v7, instead use choices or a custom function
 
 > **setOptionValue**(`key`, `value`): `this`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:649
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:649
 
 Store option value.
 
-#### Parameters
+#### 参数
 
 ##### key
 
@@ -2212,11 +2212,11 @@ Store option value.
 
 `unknown`
 
-#### Returns
+#### 返回
 
 `this`
 
-#### Inherited from
+#### 继承自
 
 `Command.setOptionValue`
 
@@ -2226,11 +2226,11 @@ Store option value.
 
 > **setOptionValueWithSource**(`key`, `value`, `source`): `this`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:654
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:654
 
 Store option value and where the value came from.
 
-#### Parameters
+#### 参数
 
 ##### key
 
@@ -2244,11 +2244,11 @@ Store option value and where the value came from.
 
 `OptionValueSource`
 
-#### Returns
+#### 返回
 
 `this`
 
-#### Inherited from
+#### 继承自
 
 `Command.setOptionValueWithSource`
 
@@ -2258,21 +2258,21 @@ Store option value and where the value came from.
 
 > **showHelpAfterError**(`displayHelp?`): `this`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:525
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:525
 
 Display the help or a custom message after an error occurs.
 
-#### Parameters
+#### 参数
 
 ##### displayHelp?
 
 `string` | `boolean`
 
-#### Returns
+#### 返回
 
 `this`
 
-#### Inherited from
+#### 继承自
 
 `Command.showHelpAfterError`
 
@@ -2282,21 +2282,21 @@ Display the help or a custom message after an error occurs.
 
 > **showSuggestionAfterError**(`displaySuggestion?`): `this`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:530
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:530
 
 Display suggestion of similar commands for unknown commands, or options for unknown options.
 
-#### Parameters
+#### 参数
 
 ##### displaySuggestion?
 
 `boolean`
 
-#### Returns
+#### 返回
 
 `this`
 
-#### Inherited from
+#### 继承自
 
 `Command.showSuggestionAfterError`
 
@@ -2304,84 +2304,84 @@ Display suggestion of similar commands for unknown commands, or options for unkn
 
 ### storeOptionsAsProperties()
 
-#### Call Signature
+#### 调用签名
 
 > **storeOptionsAsProperties**\<`T`\>(): `VipCommander` & `T`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:635
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:635
 
 Whether to store option values as properties on command object,
 or store separately (specify false). In both cases the option values can be accessed using .opts().
 
-##### Type Parameters
+##### 类型参数
 
 ###### T
 
 `T` *extends* `OptionValues`
 
-##### Returns
+##### 返回
 
 `VipCommander` & `T`
 
 `this` command for chaining
 
-##### Inherited from
+##### 继承自
 
 `Command.storeOptionsAsProperties`
 
-#### Call Signature
+#### 调用签名
 
 > **storeOptionsAsProperties**\<`T`\>(`storeAsProperties`): `VipCommander` & `T`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:636
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:636
 
 Whether to store option values as properties on command object,
 or store separately (specify false). In both cases the option values can be accessed using .opts().
 
-##### Type Parameters
+##### 类型参数
 
 ###### T
 
 `T` *extends* `OptionValues`
 
-##### Parameters
+##### 参数
 
 ###### storeAsProperties
 
 `true`
 
-##### Returns
+##### 返回
 
 `VipCommander` & `T`
 
 `this` command for chaining
 
-##### Inherited from
+##### 继承自
 
 `Command.storeOptionsAsProperties`
 
-#### Call Signature
+#### 调用签名
 
 > **storeOptionsAsProperties**(`storeAsProperties?`): `this`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:639
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:639
 
 Whether to store option values as properties on command object,
 or store separately (specify false). In both cases the option values can be accessed using .opts().
 
-##### Parameters
+##### 参数
 
 ###### storeAsProperties?
 
 `boolean`
 
-##### Returns
+##### 返回
 
 `this`
 
 `this` command for chaining
 
-##### Inherited from
+##### 继承自
 
 `Command.storeOptionsAsProperties`
 
@@ -2389,43 +2389,43 @@ or store separately (specify false). In both cases the option values can be acce
 
 ### summary()
 
-#### Call Signature
+#### 调用签名
 
 > **summary**(`str`): `this`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:808
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:808
 
 Set the summary. Used when listed as subcommand of parent.
 
-##### Parameters
+##### 参数
 
 ###### str
 
 `string`
 
-##### Returns
+##### 返回
 
 `this`
 
 `this` command for chaining
 
-##### Inherited from
+##### 继承自
 
 `Command.summary`
 
-#### Call Signature
+#### 调用签名
 
 > **summary**(): `string`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:812
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:812
 
 Get the summary.
 
-##### Returns
+##### 返回
 
 `string`
 
-##### Inherited from
+##### 继承自
 
 `Command.summary`
 
@@ -2433,43 +2433,43 @@ Get the summary.
 
 ### usage()
 
-#### Call Signature
+#### 调用签名
 
 > **usage**(`str`): `this`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:845
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:845
 
 Set the command usage.
 
-##### Parameters
+##### 参数
 
 ###### str
 
 `string`
 
-##### Returns
+##### 返回
 
 `this`
 
 `this` command for chaining
 
-##### Inherited from
+##### 继承自
 
 `Command.usage`
 
-#### Call Signature
+#### 调用签名
 
 > **usage**(): `string`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:849
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:849
 
 Get the command usage.
 
-##### Returns
+##### 返回
 
 `string`
 
-##### Inherited from
+##### 继承自
 
 `Command.usage`
 
@@ -2477,11 +2477,11 @@ Get the command usage.
 
 ### version()
 
-#### Call Signature
+#### 调用签名
 
 > **version**(`str`, `flags?`, `description?`): `this`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:315
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:315
 
 Set the program version to `str`.
 
@@ -2490,7 +2490,7 @@ which will print the version number when passed.
 
 You can optionally supply the  flags and description to override the defaults.
 
-##### Parameters
+##### 参数
 
 ###### str
 
@@ -2504,26 +2504,26 @@ You can optionally supply the  flags and description to override the defaults.
 
 `string`
 
-##### Returns
+##### 返回
 
 `this`
 
-##### Inherited from
+##### 继承自
 
 `Command.version`
 
-#### Call Signature
+#### 调用签名
 
 > **version**(): `undefined` \| `string`
 
-Defined in: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:319
+定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:319
 
 Get the program version.
 
-##### Returns
+##### 返回
 
 `undefined` \| `string`
 
-##### Inherited from
+##### 继承自
 
 `Command.version`

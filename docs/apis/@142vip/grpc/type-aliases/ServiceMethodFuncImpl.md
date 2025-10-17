@@ -1,14 +1,14 @@
 [API 参考](../../../index.md) / [@142vip/grpc](../index.md) / ServiceMethodFuncImpl
 
-# Type Alias: ServiceMethodFuncImpl()
+# 类型别名: ServiceMethodFuncImpl()
 
 > **ServiceMethodFuncImpl** = \<`RequestType`, `ResponseType`\>(`requestData`) => `Promise`\<`ResponseType`\>
 
-Defined in: [enum/grpc.interface.ts:42](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/enum/grpc.interface.ts#L42)
+定义于: [enum/grpc.interface.ts:41](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/enum/grpc.interface.ts#L41)
 
 GRPC方法实现
 
-## Type Parameters
+## 类型参数
 
 ### RequestType
 
@@ -18,12 +18,12 @@ GRPC方法实现
 
 `ResponseType` = `any`
 
-## Parameters
+## 参数
 
 ### requestData
 
 `RequestType`
 
-## Returns
+## 返回
 
 `Promise`\<`ResponseType`\>

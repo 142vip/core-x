@@ -2,26 +2,26 @@
 
 # @142vip/axios
 
-## Enumerations
+## 枚举
 
 - [HttpMethod](enumerations/HttpMethod.md)
 - [HttpMethodLower](enumerations/HttpMethodLower.md)
 - [HttpStatus](enumerations/HttpStatus.md)
 - [InterceptorType](enumerations/InterceptorType.md)
 
-## Classes
+## 类
 
 - [AxiosFactory](classes/AxiosFactory.md)
 
-## Interfaces
+## 接口
 
 - [VipAxiosInstance](interfaces/VipAxiosInstance.md)
 
-## Variables
+## 变量
 
 - [vipAxios](variables/vipAxios.md)
 
-## Functions
+## 函数
 
 - [createVipAxios](functions/createVipAxios.md)
 - [defaultRequestInterceptor](functions/defaultRequestInterceptor.md)

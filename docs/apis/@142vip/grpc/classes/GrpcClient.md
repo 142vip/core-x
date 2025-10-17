@@ -1,40 +1,40 @@
 [API 参考](../../../index.md) / [@142vip/grpc](../index.md) / GrpcClient
 
-# Class: GrpcClient
+# 类: GrpcClient
 
-Defined in: [core/grpc-client.ts:12](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/core/grpc-client.ts#L12)
+定义于: [core/grpc-client.ts:11](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/core/grpc-client.ts#L11)
 
 Grpc 客户端
 
-## Constructors
+## 构造函数
 
-### Constructor
+### 构造函数
 
 > **new GrpcClient**(`connectUri`): `GrpcClient`
 
-Defined in: [core/grpc-client.ts:16](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/core/grpc-client.ts#L16)
+定义于: [core/grpc-client.ts:15](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/core/grpc-client.ts#L15)
 
-#### Parameters
+#### 参数
 
 ##### connectUri
 
 `string`
 
-#### Returns
+#### 返回
 
 `GrpcClient`
 
-## Methods
+## 方法
 
 ### getConnectUri()
 
 > **getConnectUri**(): `string`
 
-Defined in: [core/grpc-client.ts:60](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/core/grpc-client.ts#L60)
+定义于: [core/grpc-client.ts:58](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/core/grpc-client.ts#L58)
 
 获取连接地址
 
-#### Returns
+#### 返回
 
 `string`
 
@@ -44,23 +44,23 @@ Defined in: [core/grpc-client.ts:60](https://github.com/142vip/core-x/blob/15d5b
 
 > **getService**\<`T`\>(`servicePath`): `T`
 
-Defined in: [core/grpc-client.ts:37](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/core/grpc-client.ts#L37)
+定义于: [core/grpc-client.ts:36](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/core/grpc-client.ts#L36)
 
 获取连接Service
 
-#### Type Parameters
+#### 类型参数
 
 ##### T
 
 `T`
 
-#### Parameters
+#### 参数
 
 ##### servicePath
 
 `string`
 
-#### Returns
+#### 返回
 
 `T`
 
@@ -70,11 +70,11 @@ Defined in: [core/grpc-client.ts:37](https://github.com/142vip/core-x/blob/15d5b
 
 > **getServicePaths**(): `string`[]
 
-Defined in: [core/grpc-client.ts:67](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/core/grpc-client.ts#L67)
+定义于: [core/grpc-client.ts:65](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/core/grpc-client.ts#L65)
 
 获取所有的服务路径
 
-#### Returns
+#### 返回
 
 `string`[]
 
@@ -84,11 +84,11 @@ Defined in: [core/grpc-client.ts:67](https://github.com/142vip/core-x/blob/15d5b
 
 > **getServiceSize**(): `number`
 
-Defined in: [core/grpc-client.ts:74](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/core/grpc-client.ts#L74)
+定义于: [core/grpc-client.ts:72](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/core/grpc-client.ts#L72)
 
 获取连接数
 
-#### Returns
+#### 返回
 
 `number`
 
@@ -98,11 +98,11 @@ Defined in: [core/grpc-client.ts:74](https://github.com/142vip/core-x/blob/15d5b
 
 > **registerService**(`servicePath`, `IServiceClientConstructor`): `void`
 
-Defined in: [core/grpc-client.ts:25](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/core/grpc-client.ts#L25)
+定义于: [core/grpc-client.ts:24](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/core/grpc-client.ts#L24)
 
 建立连接
 
-#### Parameters
+#### 参数
 
 ##### servicePath
 
@@ -112,7 +112,7 @@ Defined in: [core/grpc-client.ts:25](https://github.com/142vip/core-x/blob/15d5b
 
 `ServiceClientConstructor`
 
-#### Returns
+#### 返回
 
 `void`
 
@@ -122,17 +122,17 @@ Defined in: [core/grpc-client.ts:25](https://github.com/142vip/core-x/blob/15d5b
 
 > **removeService**(`servicePath?`): `void`
 
-Defined in: [core/grpc-client.ts:82](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/core/grpc-client.ts#L82)
+定义于: [core/grpc-client.ts:80](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/core/grpc-client.ts#L80)
 
 关闭gRPC连接
 - 异步关闭
 
-#### Parameters
+#### 参数
 
 ##### servicePath?
 
 `string`
 
-#### Returns
+#### 返回
 
 `void`

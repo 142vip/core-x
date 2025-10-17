@@ -1,23 +1,23 @@
 [API 参考](../../../index.md) / [@142vip/grpc](../index.md) / ExampleRequestDataType
 
-# Interface: ExampleRequestDataType
+# 接口: ExampleRequestDataType
 
-Defined in: [example.ts:6](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/example.ts#L6)
+定义于: [example.ts:6](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/example.ts#L6)
 
 这里的traceId，可以选择不继承，根据实际业务需要决定
 
-## Extends
+## theme_extends
 
 - [`GrpcRequest`](GrpcRequest.md)
 
-## Properties
+## 属性
 
 ### traceId?
 
 > `optional` **traceId**: `string`
 
-Defined in: [enum/grpc.interface.ts:72](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/grpc/src/enum/grpc.interface.ts#L72)
+定义于: [enum/grpc.interface.ts:71](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/grpc/src/enum/grpc.interface.ts#L71)
 
-#### Inherited from
+#### 继承自
 
 [`GrpcRequest`](GrpcRequest.md).[`traceId`](GrpcRequest.md#traceid)

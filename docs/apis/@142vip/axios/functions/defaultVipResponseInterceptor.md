@@ -1,17 +1,17 @@
 [API 参考](../../../index.md) / [@142vip/axios](../index.md) / defaultVipResponseInterceptor
 
-# Function: defaultVipResponseInterceptor()
+# 函数: defaultVipResponseInterceptor()
 
 > **defaultVipResponseInterceptor**(`response`): `AxiosResponse`
 
-Defined in: [packages/axios/src/core/interceptors.ts:46](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/axios/src/core/interceptors.ts#L46)
+定义于: [packages/axios/src/core/interceptors.ts:46](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/core/interceptors.ts#L46)
 
-## Parameters
+## 参数
 
 ### response
 
 `AxiosResponse`
 
-## Returns
+## 返回
 
 `AxiosResponse`

@@ -1,22 +1,22 @@
 [API 参考](../../../index.md) / [@142vip/data-source](../index.md) / DTStackAPIOptions
 
-# Interface: DTStackAPIOptions
+# 接口: DTStackAPIOptions
 
-Defined in: [packages/data-source/src/core/apis/vip-dtstack-api.ts:18](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/core/apis/vip-dtstack-api.ts#L18)
+定义于: [packages/data-source/src/core/apis/vip-dtstack-api.ts:18](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/core/apis/vip-dtstack-api.ts#L18)
 
-## Extends
+## theme_extends
 
 - `DTStackAPIAuth`
 
-## Properties
+## 属性
 
 ### apiId
 
 > **apiId**: `number`
 
-Defined in: [packages/data-source/src/core/apis/vip-dtstack-api.ts:13](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/core/apis/vip-dtstack-api.ts#L13)
+定义于: [packages/data-source/src/core/apis/vip-dtstack-api.ts:13](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/core/apis/vip-dtstack-api.ts#L13)
 
-#### Inherited from
+#### 继承自
 
 `DTStackAPIAuth.apiId`
 
@@ -26,9 +26,9 @@ Defined in: [packages/data-source/src/core/apis/vip-dtstack-api.ts:13](https://g
 
 > **appKey**: `number`
 
-Defined in: [packages/data-source/src/core/apis/vip-dtstack-api.ts:14](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/core/apis/vip-dtstack-api.ts#L14)
+定义于: [packages/data-source/src/core/apis/vip-dtstack-api.ts:14](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/core/apis/vip-dtstack-api.ts#L14)
 
-#### Inherited from
+#### 继承自
 
 `DTStackAPIAuth.appKey`
 
@@ -38,9 +38,9 @@ Defined in: [packages/data-source/src/core/apis/vip-dtstack-api.ts:14](https://g
 
 > **appSecret**: `string`
 
-Defined in: [packages/data-source/src/core/apis/vip-dtstack-api.ts:15](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/core/apis/vip-dtstack-api.ts#L15)
+定义于: [packages/data-source/src/core/apis/vip-dtstack-api.ts:15](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/core/apis/vip-dtstack-api.ts#L15)
 
-#### Inherited from
+#### 继承自
 
 `DTStackAPIAuth.appSecret`
 
@@ -50,7 +50,7 @@ Defined in: [packages/data-source/src/core/apis/vip-dtstack-api.ts:15](https://g
 
 > **bodyParams**: `Record`\<`string`, `unknown`\>
 
-Defined in: [packages/data-source/src/core/apis/vip-dtstack-api.ts:23](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/core/apis/vip-dtstack-api.ts#L23)
+定义于: [packages/data-source/src/core/apis/vip-dtstack-api.ts:23](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/core/apis/vip-dtstack-api.ts#L23)
 
 ***
 
@@ -58,7 +58,7 @@ Defined in: [packages/data-source/src/core/apis/vip-dtstack-api.ts:23](https://g
 
 > **headerParams**: `Record`\<`string`, `unknown`\>
 
-Defined in: [packages/data-source/src/core/apis/vip-dtstack-api.ts:22](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/core/apis/vip-dtstack-api.ts#L22)
+定义于: [packages/data-source/src/core/apis/vip-dtstack-api.ts:22](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/core/apis/vip-dtstack-api.ts#L22)
 
 ***
 
@@ -66,7 +66,7 @@ Defined in: [packages/data-source/src/core/apis/vip-dtstack-api.ts:22](https://g
 
 > **method**: `"GET"` \| `"POST"`
 
-Defined in: [packages/data-source/src/core/apis/vip-dtstack-api.ts:20](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/core/apis/vip-dtstack-api.ts#L20)
+定义于: [packages/data-source/src/core/apis/vip-dtstack-api.ts:20](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/core/apis/vip-dtstack-api.ts#L20)
 
 ***
 
@@ -74,7 +74,7 @@ Defined in: [packages/data-source/src/core/apis/vip-dtstack-api.ts:20](https://g
 
 > **pathParams**: `string`
 
-Defined in: [packages/data-source/src/core/apis/vip-dtstack-api.ts:21](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/core/apis/vip-dtstack-api.ts#L21)
+定义于: [packages/data-source/src/core/apis/vip-dtstack-api.ts:21](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/core/apis/vip-dtstack-api.ts#L21)
 
 ***
 
@@ -82,7 +82,7 @@ Defined in: [packages/data-source/src/core/apis/vip-dtstack-api.ts:21](https://g
 
 > **queryParams**: `Record`\<`string`, `unknown`\>
 
-Defined in: [packages/data-source/src/core/apis/vip-dtstack-api.ts:24](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/core/apis/vip-dtstack-api.ts#L24)
+定义于: [packages/data-source/src/core/apis/vip-dtstack-api.ts:24](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/core/apis/vip-dtstack-api.ts#L24)
 
 ***
 
@@ -90,4 +90,4 @@ Defined in: [packages/data-source/src/core/apis/vip-dtstack-api.ts:24](https://g
 
 > **url**: `string`
 
-Defined in: [packages/data-source/src/core/apis/vip-dtstack-api.ts:19](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/data-source/src/core/apis/vip-dtstack-api.ts#L19)
+定义于: [packages/data-source/src/core/apis/vip-dtstack-api.ts:19](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/data-source/src/core/apis/vip-dtstack-api.ts#L19)

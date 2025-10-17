@@ -2,25 +2,25 @@
 
 # @142vip/release-version
 
-## Enumerations
+## 枚举
 
 - [VersionHooksEnum](enumerations/VersionHooksEnum.md)
 - [VersionProgressEventEnum](enumerations/VersionProgressEventEnum.md)
 
-## Interfaces
+## 接口
 
 - [ReleaseOperationOptions](interfaces/ReleaseOperationOptions.md)
 - [VersionBumpOptions](interfaces/VersionBumpOptions.md)
 - [VersionBumpProgress](interfaces/VersionBumpProgress.md)
 - [VersionBumpResults](interfaces/VersionBumpResults.md)
 
-## Variables
+## 变量
 
 - [bumpConfigDefaults](variables/bumpConfigDefaults.md)
 - [bumpDefaultConfig](variables/bumpDefaultConfig.md)
 - [CONFIG\_DEFAULT\_NAME](variables/CONFIG_DEFAULT_NAME.md)
 
-## Functions
+## 函数
 
 - [defineBumpXConfig](functions/defineBumpXConfig.md)
 - [getBumpDefaultConfig](functions/getBumpDefaultConfig.md)

@@ -1,14 +1,14 @@
 [API 参考](../../../index.md) / [@142vip/changelog](../index.md) / ChangelogAPI
 
-# Variable: ChangelogAPI
+# 变量: ChangelogAPI
 
 > `const` **ChangelogAPI**: `object`
 
-Defined in: [changelog/src/core/changelog.api.ts:163](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/changelog/src/core/changelog.api.ts#L163)
+定义于: [changelog/src/core/changelog.api.ts:163](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/changelog/src/core/changelog.api.ts#L163)
 
 changelog相关API
 
-## Type Declaration
+## 类型声明
 
 ### changelogCoreHandler()
 
@@ -16,13 +16,13 @@ changelog相关API
 
 处理changelog业务
 
-#### Parameters
+#### 参数
 
 ##### cliOptions
 
 [`ChangelogCliOptions`](../interfaces/ChangelogCliOptions.md)
 
-#### Returns
+#### 返回
 
 `Promise`\<`void`\>
 
@@ -32,13 +32,13 @@ changelog相关API
 
 处理git changelog记录生成
 
-#### Parameters
+#### 参数
 
 ##### config
 
 [`ChangelogGenerateOptions`](../interfaces/ChangelogGenerateOptions.md)
 
-#### Returns
+#### 返回
 
 `Promise`\<[`GenerateChangelogResult`](../interfaces/GenerateChangelogResult.md)\>
 
@@ -48,7 +48,7 @@ changelog相关API
 
 创建或更新changelog文档
 
-#### Parameters
+#### 参数
 
 ##### outputPath
 
@@ -66,6 +66,6 @@ changelog相关API
 
 `string`
 
-#### Returns
+#### 返回
 
 `Promise`\<`void`\>

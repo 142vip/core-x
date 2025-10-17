@@ -2,7 +2,7 @@
 
 # @142vip/utils
 
-## Enumerations
+## 枚举
 
 - [Alphabet](enumerations/Alphabet.md)
 - [CpuArchitectureEnum](enumerations/CpuArchitectureEnum.md)
@@ -14,7 +14,7 @@
 - [ReleaseVersionTypeEnum](enumerations/ReleaseVersionTypeEnum.md)
 - [VipConsoleLogLevel](enumerations/VipConsoleLogLevel.md)
 
-## Classes
+## 类
 
 - [VipCommander](classes/VipCommander.md)
 - [VipConfig](classes/VipConfig.md)
@@ -23,7 +23,7 @@
 - [VipInquirerSeparator](classes/VipInquirerSeparator.md)
 - [VipLogger](classes/VipLogger.md)
 
-## Interfaces
+## 接口
 
 - [CliCommandBaseOptions](interfaces/CliCommandBaseOptions.md)
 - [CommandResponse](interfaces/CommandResponse.md)
@@ -41,14 +41,14 @@
 - [VipCommanderOptions](interfaces/VipCommanderOptions.md)
 - [VipLoggerOptions](interfaces/VipLoggerOptions.md)
 
-## Type Aliases
+## 类型别名
 
 - [Command](type-aliases/Command.md)
 - [VipCommanderDetailRecord](type-aliases/VipCommanderDetailRecord.md)
 - [VipReleaseType](type-aliases/VipReleaseType.md)
 - [VipSemverReleaseType](type-aliases/VipSemverReleaseType.md)
 
-## Variables
+## 变量
 
 - [prereleaseTypes](variables/prereleaseTypes.md)
 - [releaseTypes](variables/releaseTypes.md)
@@ -75,7 +75,7 @@
 - [VipSymbols](variables/VipSymbols.md)
 - [VipYaml](variables/VipYaml.md)
 
-## Functions
+## 函数
 
 - [getLastMatchingTag](functions/getLastMatchingTag.md)
 - [VipInquirerDefaultArrayParser](functions/VipInquirerDefaultArrayParser.md)

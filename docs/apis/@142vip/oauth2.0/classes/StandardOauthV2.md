@@ -1,32 +1,32 @@
 [API 参考](../../../index.md) / [@142vip/oauth2.0](../index.md) / StandardOauthV2
 
-# Class: StandardOauthV2
+# 类: StandardOauthV2
 
-Defined in: [oauth2.0.ts:4](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/oauth/src/oauth2.0.ts#L4)
+定义于: [oauth2.0.ts:4](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/oauth/src/oauth2.0.ts#L4)
 
 标准 Oauth2.0
 
-## Constructors
+## 构造函数
 
-### Constructor
+### 构造函数
 
 > **new StandardOauthV2**(): `StandardOauthV2`
 
-#### Returns
+#### 返回
 
 `StandardOauthV2`
 
-## Methods
+## 方法
 
 ### authenticate()
 
 > **authenticate**(): `Promise`\<`void`\>
 
-Defined in: [oauth2.0.ts:22](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/oauth/src/oauth2.0.ts#L22)
+定义于: [oauth2.0.ts:22](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/oauth/src/oauth2.0.ts#L22)
 
 认证
 
-#### Returns
+#### 返回
 
 `Promise`\<`void`\>
 
@@ -36,11 +36,11 @@ Defined in: [oauth2.0.ts:22](https://github.com/142vip/core-x/blob/15d5bc9ef4bec
 
 > **authorize**(): `Promise`\<`void`\>
 
-Defined in: [oauth2.0.ts:8](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/oauth/src/oauth2.0.ts#L8)
+定义于: [oauth2.0.ts:8](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/oauth/src/oauth2.0.ts#L8)
 
 登录授权
 
-#### Returns
+#### 返回
 
 `Promise`\<`void`\>
 
@@ -50,11 +50,11 @@ Defined in: [oauth2.0.ts:8](https://github.com/142vip/core-x/blob/15d5bc9ef4bece
 
 > **getToken**(): `Promise`\<`void`\>
 
-Defined in: [oauth2.0.ts:15](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/oauth/src/oauth2.0.ts#L15)
+定义于: [oauth2.0.ts:15](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/oauth/src/oauth2.0.ts#L15)
 
 获取令牌
 
-#### Returns
+#### 返回
 
 `Promise`\<`void`\>
 
@@ -64,10 +64,10 @@ Defined in: [oauth2.0.ts:15](https://github.com/142vip/core-x/blob/15d5bc9ef4bec
 
 > **refreshToken**(): `Promise`\<`void`\>
 
-Defined in: [oauth2.0.ts:29](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/oauth/src/oauth2.0.ts#L29)
+定义于: [oauth2.0.ts:29](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/oauth/src/oauth2.0.ts#L29)
 
 刷新令牌
 
-#### Returns
+#### 返回
 
 `Promise`\<`void`\>

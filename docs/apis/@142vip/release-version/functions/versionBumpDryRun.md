@@ -1,19 +1,19 @@
 [API 参考](../../../index.md) / [@142vip/release-version](../index.md) / versionBumpDryRun
 
-# Function: versionBumpDryRun()
+# 函数: versionBumpDryRun()
 
 > **versionBumpDryRun**(`options`): `Promise`\<`ReleaseOperation`\>
 
-Defined in: [core/version-bump.ts:53](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/release-version/src/core/version-bump.ts#L53)
+定义于: [core/version-bump.ts:53](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/release-version/src/core/version-bump.ts#L53)
 
 试运行
 
-## Parameters
+## 参数
 
 ### options
 
 [`VersionBumpOptions`](../interfaces/VersionBumpOptions.md)
 
-## Returns
+## 返回
 
 `Promise`\<`ReleaseOperation`\>

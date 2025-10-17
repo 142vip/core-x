@@ -2,11 +2,11 @@
 
 # @142vip/changelog
 
-## Enumerations
+## 枚举
 
 - [GitCommitMessageType](enumerations/GitCommitMessageType.md)
 
-## Interfaces
+## 接口
 
 - [ChangelogCliOptions](interfaces/ChangelogCliOptions.md)
 - [ChangelogGenerateOptions](interfaces/ChangelogGenerateOptions.md)
@@ -19,7 +19,7 @@
 - [GitCommitRecord](interfaces/GitCommitRecord.md)
 - [GitCommitReference](interfaces/GitCommitReference.md)
 
-## Variables
+## 变量
 
 - [ChangelogAPI](variables/ChangelogAPI.md)
 - [ChangelogDefaultConfig](variables/ChangelogDefaultConfig.md)
@@ -29,7 +29,7 @@
 - [GithubAPI](variables/GithubAPI.md)
 - [MarkdownAPI](variables/MarkdownAPI.md)
 
-## Functions
+## 函数
 
 - [defineChangelogConfig](functions/defineChangelogConfig.md)
 - [loadChangelogConfig](functions/loadChangelogConfig.md)

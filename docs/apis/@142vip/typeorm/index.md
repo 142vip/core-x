@@ -2,7 +2,7 @@
 
 # @142vip/typeorm
 
-## Classes
+## 类
 
 - [BaseEntity](classes/BaseEntity.md)
 - [BaseEntityWithDeleted](classes/BaseEntityWithDeleted.md)

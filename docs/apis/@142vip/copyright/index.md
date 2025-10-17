@@ -2,15 +2,15 @@
 
 # @142vip/copyright
 
-## Enumerations
+## 枚举
 
 - [CopyrightFileType](enumerations/CopyrightFileType.md)
 
-## Classes
+## 类
 
 - [VipCopyright](classes/VipCopyright.md)
 
-## Interfaces
+## 接口
 
 - [CopyrightOptions](interfaces/CopyrightOptions.md)
 - [DocumentSection](interfaces/DocumentSection.md)

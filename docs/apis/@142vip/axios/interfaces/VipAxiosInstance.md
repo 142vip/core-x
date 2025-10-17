@@ -1,30 +1,30 @@
 [API 参考](../../../index.md) / [@142vip/axios](../index.md) / VipAxiosInstance
 
-# Interface: VipAxiosInstance()
+# 接口: VipAxiosInstance()
 
-Defined in: [packages/axios/src/core/axios.factory.ts:11](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/axios/src/core/axios.factory.ts#L11)
+定义于: [packages/axios/src/core/axios.factory.ts:11](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/core/axios.factory.ts#L11)
 
 VipAxios实例类型
 - 继承自AxiosInstance，添加了自定义方法
 - 提供了清除拦截器的方法
 - 提供了获取默认配置的方法
 
-## Extends
+## theme_extends
 
 - `AxiosInstance`
 
-## Call Signature
+## 调用签名
 
 > **VipAxiosInstance**\<`T`, `R`, `D`\>(`config`): `Promise`\<`R`\>
 
-Defined in: [packages/axios/src/core/axios.factory.ts:11](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/axios/src/core/axios.factory.ts#L11)
+定义于: [packages/axios/src/core/axios.factory.ts:11](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/core/axios.factory.ts#L11)
 
 VipAxios实例类型
 - 继承自AxiosInstance，添加了自定义方法
 - 提供了清除拦截器的方法
 - 提供了获取默认配置的方法
 
-### Type Parameters
+### 类型参数
 
 #### T
 
@@ -38,28 +38,28 @@ VipAxios实例类型
 
 `D` = `any`
 
-### Parameters
+### 参数
 
 #### config
 
 `AxiosRequestConfig`\<`D`\>
 
-### Returns
+### 返回
 
 `Promise`\<`R`\>
 
-## Call Signature
+## 调用签名
 
 > **VipAxiosInstance**\<`T`, `R`, `D`\>(`url`, `config?`): `Promise`\<`R`\>
 
-Defined in: [packages/axios/src/core/axios.factory.ts:11](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/axios/src/core/axios.factory.ts#L11)
+定义于: [packages/axios/src/core/axios.factory.ts:11](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/core/axios.factory.ts#L11)
 
 VipAxios实例类型
 - 继承自AxiosInstance，添加了自定义方法
 - 提供了清除拦截器的方法
 - 提供了获取默认配置的方法
 
-### Type Parameters
+### 类型参数
 
 #### T
 
@@ -73,7 +73,7 @@ VipAxios实例类型
 
 `D` = `any`
 
-### Parameters
+### 参数
 
 #### url
 
@@ -83,25 +83,25 @@ VipAxios实例类型
 
 `AxiosRequestConfig`\<`D`\>
 
-### Returns
+### 返回
 
 `Promise`\<`R`\>
 
-## Properties
+## 属性
 
 ### clearInterceptor()
 
 > **clearInterceptor**: (`type`) => `void`
 
-Defined in: [packages/axios/src/core/axios.factory.ts:12](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/axios/src/core/axios.factory.ts#L12)
+定义于: [packages/axios/src/core/axios.factory.ts:12](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/core/axios.factory.ts#L12)
 
-#### Parameters
+#### 参数
 
 ##### type
 
 [`InterceptorType`](../enumerations/InterceptorType.md)
 
-#### Returns
+#### 返回
 
 `void`
 
@@ -111,15 +111,15 @@ Defined in: [packages/axios/src/core/axios.factory.ts:12](https://github.com/142
 
 > **defaults**: `Omit`\<`AxiosDefaults`\<`any`\>, `"headers"`\> & `object`
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:518
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:518
 
-#### Type Declaration
+#### 类型声明
 
 ##### headers
 
 > **headers**: `HeadersDefaults` & `object`
 
-#### Inherited from
+#### 继承自
 
 `AxiosInstance.defaults`
 
@@ -129,9 +129,9 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:518
 
 > **getConfig**: () => `undefined` \| `CreateAxiosDefaults`\<`any`\>
 
-Defined in: [packages/axios/src/core/axios.factory.ts:13](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/axios/src/core/axios.factory.ts#L13)
+定义于: [packages/axios/src/core/axios.factory.ts:13](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/axios/src/core/axios.factory.ts#L13)
 
-#### Returns
+#### 返回
 
 `undefined` \| `CreateAxiosDefaults`\<`any`\>
 
@@ -141,7 +141,7 @@ Defined in: [packages/axios/src/core/axios.factory.ts:13](https://github.com/142
 
 > **interceptors**: `object`
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:495
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:495
 
 #### request
 
@@ -151,29 +151,29 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:495
 
 > **response**: `AxiosInterceptorManager`\<`AxiosResponse`\<`any`, `any`\>\>
 
-#### Inherited from
+#### 继承自
 
 `AxiosInstance.interceptors`
 
-## Methods
+## 方法
 
 ### create()
 
 > **create**(`config?`): `AxiosInstance`
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:517
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:517
 
-#### Parameters
+#### 参数
 
 ##### config?
 
 `CreateAxiosDefaults`\<`any`\>
 
-#### Returns
+#### 返回
 
 `AxiosInstance`
 
-#### Inherited from
+#### 继承自
 
 `AxiosInstance.create`
 
@@ -183,9 +183,9 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:517
 
 > **delete**\<`T`, `R`, `D`\>(`url`, `config?`): `Promise`\<`R`\>
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:502
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:502
 
-#### Type Parameters
+#### 类型参数
 
 ##### T
 
@@ -199,7 +199,7 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:502
 
 `D` = `any`
 
-#### Parameters
+#### 参数
 
 ##### url
 
@@ -209,11 +209,11 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:502
 
 `AxiosRequestConfig`\<`D`\>
 
-#### Returns
+#### 返回
 
 `Promise`\<`R`\>
 
-#### Inherited from
+#### 继承自
 
 `AxiosInstance.delete`
 
@@ -223,9 +223,9 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:502
 
 > **get**\<`T`, `R`, `D`\>(`url`, `config?`): `Promise`\<`R`\>
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:501
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:501
 
-#### Type Parameters
+#### 类型参数
 
 ##### T
 
@@ -239,7 +239,7 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:501
 
 `D` = `any`
 
-#### Parameters
+#### 参数
 
 ##### url
 
@@ -249,11 +249,11 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:501
 
 `AxiosRequestConfig`\<`D`\>
 
-#### Returns
+#### 返回
 
 `Promise`\<`R`\>
 
-#### Inherited from
+#### 继承自
 
 `AxiosInstance.get`
 
@@ -263,19 +263,19 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:501
 
 > **getUri**(`config?`): `string`
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:499
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:499
 
-#### Parameters
+#### 参数
 
 ##### config?
 
 `AxiosRequestConfig`\<`any`\>
 
-#### Returns
+#### 返回
 
 `string`
 
-#### Inherited from
+#### 继承自
 
 `AxiosInstance.getUri`
 
@@ -285,9 +285,9 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:499
 
 > **head**\<`T`, `R`, `D`\>(`url`, `config?`): `Promise`\<`R`\>
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:503
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:503
 
-#### Type Parameters
+#### 类型参数
 
 ##### T
 
@@ -301,7 +301,7 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:503
 
 `D` = `any`
 
-#### Parameters
+#### 参数
 
 ##### url
 
@@ -311,11 +311,11 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:503
 
 `AxiosRequestConfig`\<`D`\>
 
-#### Returns
+#### 返回
 
 `Promise`\<`R`\>
 
-#### Inherited from
+#### 继承自
 
 `AxiosInstance.head`
 
@@ -325,9 +325,9 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:503
 
 > **options**\<`T`, `R`, `D`\>(`url`, `config?`): `Promise`\<`R`\>
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:504
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:504
 
-#### Type Parameters
+#### 类型参数
 
 ##### T
 
@@ -341,7 +341,7 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:504
 
 `D` = `any`
 
-#### Parameters
+#### 参数
 
 ##### url
 
@@ -351,11 +351,11 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:504
 
 `AxiosRequestConfig`\<`D`\>
 
-#### Returns
+#### 返回
 
 `Promise`\<`R`\>
 
-#### Inherited from
+#### 继承自
 
 `AxiosInstance.options`
 
@@ -365,9 +365,9 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:504
 
 > **patch**\<`T`, `R`, `D`\>(`url`, `data?`, `config?`): `Promise`\<`R`\>
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:507
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:507
 
-#### Type Parameters
+#### 类型参数
 
 ##### T
 
@@ -381,7 +381,7 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:507
 
 `D` = `any`
 
-#### Parameters
+#### 参数
 
 ##### url
 
@@ -395,11 +395,11 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:507
 
 `AxiosRequestConfig`\<`D`\>
 
-#### Returns
+#### 返回
 
 `Promise`\<`R`\>
 
-#### Inherited from
+#### 继承自
 
 `AxiosInstance.patch`
 
@@ -409,9 +409,9 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:507
 
 > **patchForm**\<`T`, `R`, `D`\>(`url`, `data?`, `config?`): `Promise`\<`R`\>
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:510
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:510
 
-#### Type Parameters
+#### 类型参数
 
 ##### T
 
@@ -425,7 +425,7 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:510
 
 `D` = `any`
 
-#### Parameters
+#### 参数
 
 ##### url
 
@@ -439,11 +439,11 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:510
 
 `AxiosRequestConfig`\<`D`\>
 
-#### Returns
+#### 返回
 
 `Promise`\<`R`\>
 
-#### Inherited from
+#### 继承自
 
 `AxiosInstance.patchForm`
 
@@ -453,9 +453,9 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:510
 
 > **post**\<`T`, `R`, `D`\>(`url`, `data?`, `config?`): `Promise`\<`R`\>
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:505
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:505
 
-#### Type Parameters
+#### 类型参数
 
 ##### T
 
@@ -469,7 +469,7 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:505
 
 `D` = `any`
 
-#### Parameters
+#### 参数
 
 ##### url
 
@@ -483,11 +483,11 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:505
 
 `AxiosRequestConfig`\<`D`\>
 
-#### Returns
+#### 返回
 
 `Promise`\<`R`\>
 
-#### Inherited from
+#### 继承自
 
 `AxiosInstance.post`
 
@@ -497,9 +497,9 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:505
 
 > **postForm**\<`T`, `R`, `D`\>(`url`, `data?`, `config?`): `Promise`\<`R`\>
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:508
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:508
 
-#### Type Parameters
+#### 类型参数
 
 ##### T
 
@@ -513,7 +513,7 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:508
 
 `D` = `any`
 
-#### Parameters
+#### 参数
 
 ##### url
 
@@ -527,11 +527,11 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:508
 
 `AxiosRequestConfig`\<`D`\>
 
-#### Returns
+#### 返回
 
 `Promise`\<`R`\>
 
-#### Inherited from
+#### 继承自
 
 `AxiosInstance.postForm`
 
@@ -541,9 +541,9 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:508
 
 > **put**\<`T`, `R`, `D`\>(`url`, `data?`, `config?`): `Promise`\<`R`\>
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:506
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:506
 
-#### Type Parameters
+#### 类型参数
 
 ##### T
 
@@ -557,7 +557,7 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:506
 
 `D` = `any`
 
-#### Parameters
+#### 参数
 
 ##### url
 
@@ -571,11 +571,11 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:506
 
 `AxiosRequestConfig`\<`D`\>
 
-#### Returns
+#### 返回
 
 `Promise`\<`R`\>
 
-#### Inherited from
+#### 继承自
 
 `AxiosInstance.put`
 
@@ -585,9 +585,9 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:506
 
 > **putForm**\<`T`, `R`, `D`\>(`url`, `data?`, `config?`): `Promise`\<`R`\>
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:509
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:509
 
-#### Type Parameters
+#### 类型参数
 
 ##### T
 
@@ -601,7 +601,7 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:509
 
 `D` = `any`
 
-#### Parameters
+#### 参数
 
 ##### url
 
@@ -615,11 +615,11 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:509
 
 `AxiosRequestConfig`\<`D`\>
 
-#### Returns
+#### 返回
 
 `Promise`\<`R`\>
 
-#### Inherited from
+#### 继承自
 
 `AxiosInstance.putForm`
 
@@ -629,9 +629,9 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:509
 
 > **request**\<`T`, `R`, `D`\>(`config`): `Promise`\<`R`\>
 
-Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:500
+定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:500
 
-#### Type Parameters
+#### 类型参数
 
 ##### T
 
@@ -645,16 +645,16 @@ Defined in: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:500
 
 `D` = `any`
 
-#### Parameters
+#### 参数
 
 ##### config
 
 `AxiosRequestConfig`\<`D`\>
 
-#### Returns
+#### 返回
 
 `Promise`\<`R`\>
 
-#### Inherited from
+#### 继承自
 
 `AxiosInstance.request`

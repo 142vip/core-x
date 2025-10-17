@@ -1,18 +1,18 @@
 [API 参考](../../../index.md) / [@142vip/utils](../index.md) / ReleaseVersionTypeEnum
 
-# Enumeration: ReleaseVersionTypeEnum
+# 枚举: ReleaseVersionTypeEnum
 
-Defined in: [packages/utils/src/enums/release-version.enum.ts:4](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/enums/release-version.enum.ts#L4)
+定义于: [packages/utils/src/enums/release-version.enum.ts:4](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/enums/release-version.enum.ts#L4)
 
 发布的版本类型
 
-## Enumeration Members
+## 枚举成员
 
 ### MAJOR
 
 > **MAJOR**: `"major"`
 
-Defined in: [packages/utils/src/enums/release-version.enum.ts:5](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/enums/release-version.enum.ts#L5)
+定义于: [packages/utils/src/enums/release-version.enum.ts:5](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/enums/release-version.enum.ts#L5)
 
 ***
 
@@ -20,7 +20,7 @@ Defined in: [packages/utils/src/enums/release-version.enum.ts:5](https://github.
 
 > **MINOR**: `"minor"`
 
-Defined in: [packages/utils/src/enums/release-version.enum.ts:7](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/enums/release-version.enum.ts#L7)
+定义于: [packages/utils/src/enums/release-version.enum.ts:7](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/enums/release-version.enum.ts#L7)
 
 ***
 
@@ -28,7 +28,7 @@ Defined in: [packages/utils/src/enums/release-version.enum.ts:7](https://github.
 
 > **NEXT**: `"next"`
 
-Defined in: [packages/utils/src/enums/release-version.enum.ts:12](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/enums/release-version.enum.ts#L12)
+定义于: [packages/utils/src/enums/release-version.enum.ts:12](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/enums/release-version.enum.ts#L12)
 
 ***
 
@@ -36,7 +36,7 @@ Defined in: [packages/utils/src/enums/release-version.enum.ts:12](https://github
 
 > **PATCH**: `"patch"`
 
-Defined in: [packages/utils/src/enums/release-version.enum.ts:9](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/enums/release-version.enum.ts#L9)
+定义于: [packages/utils/src/enums/release-version.enum.ts:9](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/enums/release-version.enum.ts#L9)
 
 ***
 
@@ -44,7 +44,7 @@ Defined in: [packages/utils/src/enums/release-version.enum.ts:9](https://github.
 
 > **PRE\_MAJOR**: `"premajor"`
 
-Defined in: [packages/utils/src/enums/release-version.enum.ts:6](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/enums/release-version.enum.ts#L6)
+定义于: [packages/utils/src/enums/release-version.enum.ts:6](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/enums/release-version.enum.ts#L6)
 
 ***
 
@@ -52,7 +52,7 @@ Defined in: [packages/utils/src/enums/release-version.enum.ts:6](https://github.
 
 > **PRE\_MINOR**: `"preminor"`
 
-Defined in: [packages/utils/src/enums/release-version.enum.ts:8](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/enums/release-version.enum.ts#L8)
+定义于: [packages/utils/src/enums/release-version.enum.ts:8](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/enums/release-version.enum.ts#L8)
 
 ***
 
@@ -60,7 +60,7 @@ Defined in: [packages/utils/src/enums/release-version.enum.ts:8](https://github.
 
 > **PRE\_PATCH**: `"prepatch"`
 
-Defined in: [packages/utils/src/enums/release-version.enum.ts:10](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/enums/release-version.enum.ts#L10)
+定义于: [packages/utils/src/enums/release-version.enum.ts:10](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/enums/release-version.enum.ts#L10)
 
 ***
 
@@ -68,4 +68,4 @@ Defined in: [packages/utils/src/enums/release-version.enum.ts:10](https://github
 
 > **PRE\_RELEASE**: `"prerelease"`
 
-Defined in: [packages/utils/src/enums/release-version.enum.ts:11](https://github.com/142vip/core-x/blob/15d5bc9ef4bece78c0e60bdf074a2d245f625100/packages/utils/src/enums/release-version.enum.ts#L11)
+定义于: [packages/utils/src/enums/release-version.enum.ts:11](https://github.com/142vip/core-x/blob/b6807ccf6c96718daee70c368eee9968a0b34d48/packages/utils/src/enums/release-version.enum.ts#L11)
