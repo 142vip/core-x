@@ -12,6 +12,6 @@ export default defineVipTypedocConfig({
   ],
   sidebar: {
     autoConfiguration: true,
-    heading: 'API',
+    heading: '模块包',
   },
 })
