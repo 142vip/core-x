@@ -169,6 +169,11 @@ jobs:
         run: |
           pnpm build:docs-proxy
 
+      # 编译，typedoc生成api文档
+      - name: Build with Typedoc API
+        run: |
+          pnpm typedoc:api
+
       # 上传dist文件
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
