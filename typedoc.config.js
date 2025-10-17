@@ -22,16 +22,17 @@ export default defineVipTypedocConfig({
     'packages/utils',
   ],
   name: 'API 参考',
-  out: 'docs/apis',
+  // out: 'docs/apis',
   plugin: [
     'typedoc-plugin-markdown',
-    'typedoc-vitepress-theme',
+    // 'typedoc-vitepress-theme',
+    'typedoc-github-wiki-theme',
   ],
-  sidebar: {
-    autoConfiguration: true,
-    format: 'vitepress',
-    pretty: false,
-    collapsed: true,
-  },
+  // sidebar: {
+  //   autoConfiguration: true,
+  //   format: 'vitepress',
+  //   pretty: false,
+  //   collapsed: true,
+  // },
   // logLevel: 'Verbose',
 })

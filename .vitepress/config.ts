@@ -7,7 +7,7 @@ import {
   getVipThemeConfig,
   zhSearch,
 } from '@142vip/vitepress'
-import typedocSidebar from '../docs/apis/typedoc-sidebar.json'
+// import typedocSidebar from '../docs/apis/typedoc-sidebar.json'
 import { getDemoSideBarConfig, getOpenSourcePkgSideBarConfig, sidebarConfig } from './sidebar'
 
 // package.json 读取
@@ -30,7 +30,7 @@ const navbarConfig = defineVipNavbarConfig([
   },
   {
     text: '✨ API',
-    link: '/docs/apis/',
+    link: '/docs/apis/index.html',
   },
   {
     text: '🏴 󠁬󠁯󠁧󠁿更新记录',
@@ -100,10 +100,10 @@ export default defineVipVitepressConfig({
     logo: '/logo.png',
     sidebar: {
       '/': sidebarConfig,
-      '/docs/apis/': {
-        text: 'API',
-        items: typedocSidebar,
-      },
+      // '/docs/apis/': {
+      //   text: 'API',
+      //   // items: typedocSidebar,
+      // },
       '/changelogs/': {
         base: '',
         items: [

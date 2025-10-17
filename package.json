@@ -69,6 +69,7 @@
     "only-allow": "1.2.1",
     "simple-git-hooks": "2.13.1",
     "ts-jest": "29.4.4",
+    "typedoc-github-wiki-theme": "^2.1.0",
     "typescript": "5.9.2",
     "unbuild": "3.5.0"
   },
