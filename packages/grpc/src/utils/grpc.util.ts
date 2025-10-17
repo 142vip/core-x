@@ -1,7 +1,5 @@
-import type { ServiceDefinition } from '@grpc/grpc-js'
+import type { MethodDefinition, ServerReadableStream, ServiceDefinition } from '@grpc/grpc-js'
 import type { ServiceClient } from '@grpc/grpc-js/build/src/make-client'
-import type { MethodDefinition } from '@grpc/grpc-js/src/make-client'
-import type { ServerReadableStream } from '@grpc/grpc-js/src/server-call'
 import { ServiceMethodType } from '@142vip/grpc'
 import { GRPC_ERROR_CODE, GrpcException } from '../core/grpc-exception'
 
