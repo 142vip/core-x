@@ -2,7 +2,7 @@ name: Deploy Github Wiki
 on:
   push:
     paths:
-      - "fix/test"
+      - fix/test
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -11,6 +11,6 @@ jobs:
       - name: Upload example to Wiki
         uses: SwiftDocOrg/github-wiki-publish-action@v1
         with:
-          path: "docs"
+          path: docs
         env:
           GH_PERSONAL_ACCESS_TOKEN: ${{secrets.TOKEN}}
