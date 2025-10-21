@@ -1,4 +1,4 @@
-import type { PluginsOptions, ThemeOptions } from 'vuepress-theme-hope'
+import type { ThemeOptions, ThemePluginsOptions } from 'vuepress-theme-hope'
 import path from 'node:path'
 import process from 'node:process'
 import { hopeTheme } from 'vuepress-theme-hope'
@@ -7,7 +7,7 @@ import { slimSearchCNLocals } from './plugins/plugin-slim-search'
 /**
  * 主题中插件的一些配置
  */
-export const baseThemePluginOptions: PluginsOptions = {
+export const baseThemePluginOptions: ThemePluginsOptions = {
 
   // comment:{
   //   provider: "Artalk",
