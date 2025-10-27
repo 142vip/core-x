@@ -23,8 +23,8 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
     }
   },
   "authorInfo": {
@@ -33,21 +33,29 @@
     "url": "https://github.com/142vip",
     "homePage": "https://142vip.cn"
   },
-  "main": "./dist/index.mjs",
-  "module": "./dist/index.mjs",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "unbuild",
-    "typecheck": "tsc --noEmit"
+    "build": "npx nest build",
+    "typecheck": "tsc --noEmit",
+    "test": "npx jest",
+    "test:coverage": "npx jest --coverage"
   },
   "dependencies": {
-    "@142vip/utils": "workspace:*"
+    "@142vip/redis": "workspace:*",
+    "@nestjs/common": "11.1.7",
+    "@nestjs/core": "11.1.7"
   },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "11.0.10",
+    "@nestjs/testing": "11.1.7"
   }
 }
