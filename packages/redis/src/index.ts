@@ -1,2 +1,2 @@
-export * from './io-redis'
-export * from './redis'
+export * from './core/redis.factory'
+export * from './core/redis.interface'
