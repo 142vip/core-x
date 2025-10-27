@@ -1,9 +1,14 @@
+import { RedisModule } from '@142vip/nest-redis'
 import { Module } from '@nestjs/common'
-import { AppController } from './app.controller'
-import { AppService } from './app.service'
+import { RedisExampleModule } from './redis-example/redis-example.module'
 
 @Module({
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    // 全局模块
+    RedisModule.register({ url: 'redis://localhost:6379' }),
+
+    // 最佳实践
+    RedisExampleModule,
+  ],
 })
 export class AppModule {}

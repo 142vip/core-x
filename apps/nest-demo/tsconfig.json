@@ -1,31 +1,12 @@
 {
+  "extends": "../../tsconfig.nest-pkg.json",
   "compilerOptions": {
-    "incremental": true,
-    "target": "ES2023",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "baseUrl": "./",
-    "module": "nodenext",
-    "moduleResolution": "nodenext",
-    "resolvePackageJsonExports": true,
-    "strictBindCallApply": false,
-    "strictNullChecks": true,
-    "noFallthroughCasesInSwitch": false,
-    "noImplicitAny": false,
-    "declaration": true,
-    "outDir": "./dist",
-    "removeComments": true,
-    "sourceMap": true,
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
-    "skipLibCheck": true
+    "declaration": false,
+    "outDir": "dist"
   },
   "exclude": [
     "node_modules",
-    "../src/test",
-    "dist",
-    "**/*spec.ts"
-  ]
+    "dist"
+  ],
+  "compileOnSave": true
 }
