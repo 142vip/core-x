@@ -62,7 +62,9 @@ export const sidebarConfig = defineVipSidebarConfig([
     text: `🦅 ${ProjectId.NEST}`,
     items: [
       { text: '@142vip/nest', link: '/packages/nest/index.md' },
+      { text: '@142vip/nest-logger', link: '/packages/nest-logger/index.md' },
       { text: '@142vip/nest-redis', link: '/packages/nest-redis/index.md' },
+      { text: '@142vip/nest-starter', link: '/packages/nest-starter/index.md' },
       { text: '@142vip/nest-typeorm', link: '/packages/nest-typeorm/index.md' },
     ],
   },
