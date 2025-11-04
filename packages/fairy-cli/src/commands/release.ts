@@ -167,6 +167,9 @@ async function printPkgCommitLogs(pnpmFilter?: string | string[]): Promise<void>
       `请选择需要查看的模块：`,
       VipInquirer.handleSimpleSearchSource(VipMonorepo.getPkgNames(pnpmFilter)),
     )
+    if (pkgName == null) {
+      return
+    }
     const commits = VipGit.getRecentCommitsByScope(pkgName)
 
     if (commits.length === 0) {
