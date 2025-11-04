@@ -57,6 +57,6 @@
   },
   "devDependencies": {
     "@nestjs/cli": "11.0.10",
-    "@nestjs/testing": "11.1.7"
+    "@nestjs/testing": "11.1.8"
   }
 }
