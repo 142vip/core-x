@@ -1,13 +1,13 @@
-import { IORedisClient } from '@142vip/redis'
+import { RedisClient } from '@142vip/redis'
 import { beforeAll, describe, expect, it } from '@jest/globals'
 import { Test } from '@nestjs/testing'
-import { RedisModule, RedisService } from '../src'
+import { NestRedisModule, RedisService } from '../src'
 
 describe('RedisService', () => {
-  let redisClient: IORedisClient
+  let redisClient: RedisClient
   beforeAll(async () => {
     const module = await Test.createTestingModule({
-      imports: [RedisModule.register({
+      imports: [NestRedisModule.register({
         url: 'redis://127.0.0.1:6379',
       })],
     }).compile()

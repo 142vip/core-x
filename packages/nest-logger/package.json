@@ -1,6 +1,6 @@
 {
   "name": "@142vip/nest-logger",
-  "version": "0.0.1-alpha.1",
+  "version": "0.0.1-alpha.0",
   "private": false,
   "description": "Nest.js框架日志模块，集成终端、文件等形式日志",
   "author": "mmdapl <mmdapl@163.com>",

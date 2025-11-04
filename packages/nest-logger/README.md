@@ -97,7 +97,7 @@ export class MyService {
 
 ## 参考
 
-- [nestjs-pino](npmjs.com/package/nestjs-pino)
+- [nestjs-pino](https://www.npmjs.com/package/nestjs-pino)
 - [pino](https://github.com/pinojs/pino)
 - [pino-pretty](https://github.com/pinojs/pino-pretty)
 - [pino-http](https://github.com/pinojs/pino-http)
