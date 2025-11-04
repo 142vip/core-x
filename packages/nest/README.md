@@ -2,7 +2,7 @@
 
 [![NPM version](https://img.shields.io/npm/v/@142vip/nest?labelColor=0b3d52&color=1da469&label=version)](https://www.npmjs.com/package/@142vip/nest)
 
-全面拥抱 [NEST.JS V11.1.7](https://docs.nestjs.com/)框架
+全面拥抱 [NEST.JS V11.1.8](https://docs.nestjs.com/)框架
 
 ## 安装
 
@@ -18,9 +18,9 @@ pnpm i @142vip/nest
 ```json5
 {
   "dependencies": {
-    "@nestjs/common": "11.1.7",
-    "@nestjs/core": "11.1.7",
-    "@nestjs/platform-express": "11.1.7",
+    "@nestjs/common": "11.1.8",
+    "@nestjs/core": "11.1.8",
+    "@nestjs/platform-express": "11.1.8",
     "class-transformer": "0.5.1",
     "class-validator": "0.14.2",
     "fancy-log": "2.0.0",
@@ -31,7 +31,7 @@ pnpm i @142vip/nest
   "devDependencies": {
     "@nestjs/cli": "11.0.10",
     "@nestjs/schematics": "11.0.9",
-    "@nestjs/testing": "11.1.7",
+    "@nestjs/testing": "11.1.8",
     "@types/express": "5.0.0",
     "@types/fancy-log": "2.0.2",
     "@types/jest": "30.0.0",
