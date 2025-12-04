@@ -1,7 +1,8 @@
-import { IsOptional, IsString } from 'class-validator'
+import { IsNotEmpty, IsOptional, IsString } from 'class-validator'
 
 export class TypeOrmConfig {
   @IsString()
+  @IsNotEmpty()
   url!: string
 
   @IsOptional()

@@ -1,21 +1,27 @@
-import * as path from 'node:path'
+import type { ClassConstructor } from 'class-transformer'
 import { VipNodeJS } from '@142vip/utils'
-import { ClassConstructor } from 'class-transformer'
+import { DynamicModule } from '@nestjs/common'
 import { fileLoader, selectConfig, TypedConfigModule } from 'nest-typed-config'
 import { NestAppConfig } from './app.config'
 import { StarterConfig } from './config'
+
+export class NestConfigModule {
+  public static register<T extends ClassConstructor<NestAppConfig>>(ConfigConSchema: T): DynamicModule {
+    return TypedConfigModule.forRoot({
+      schema: ConfigConSchema,
+      load: fileLoader({
+        // TODO 指定配置文件
+        absolutePath: VipNodeJS.pathResolve(VipNodeJS.getProcessCwd(), 'config/test.config.js'),
+      }),
+    })
+  }
+}
 
 /**
  * Nest应用模块
  * - 默认全局模块
  */
-export const NestConfigModule = TypedConfigModule.forRoot({
-  schema: NestAppConfig,
-  load: fileLoader({
-    // TODO 指定配置文件
-    absolutePath: path.resolve(VipNodeJS.getProcessCwd(), 'config/test.config.js'),
-  }),
-})
+export const NestAppConfigModule = NestConfigModule.register(NestAppConfig)
 
 /**
  * 基于Schema获取配置
@@ -35,7 +41,7 @@ export function getConfig<T>(configSchema: ClassConstructor<T>): T {
  * @param configSchema
  */
 export function getOptionalConfig<T>(configSchema: ClassConstructor<T>): T | undefined {
-  return selectConfig(NestConfigModule, configSchema, { allowOptional: true }) as T | undefined
+  return selectConfig(NestAppConfigModule, configSchema, { allowOptional: true }) as T | undefined
 }
 
 /**

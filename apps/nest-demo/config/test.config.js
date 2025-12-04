@@ -6,5 +6,5 @@ module.exports = {
     // logger: {},
     enableLogger: true,
   },
-  // test: 1,
+  test: 1,
 }

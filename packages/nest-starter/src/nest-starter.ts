@@ -1,3 +1,4 @@
+import type { ClassConstructor } from 'class-transformer'
 import { NestModule } from '@142vip/nest'
 import { LoggerLevelEnum, NestLoggerModule } from '@142vip/nest-logger'
 import { NestRedisModule } from '@142vip/nest-redis'
@@ -6,12 +7,12 @@ import { vipLogger } from '@142vip/utils'
 import {
   ClassSerializerInterceptor,
   HttpStatus,
-  INestApplication,
   NestApplicationOptions,
   VersioningType,
 } from '@nestjs/common'
 import { APP_INTERCEPTOR, NestFactory } from '@nestjs/core'
-import { StarterConfig } from './config'
+import { selectConfig } from 'nest-typed-config'
+import { NestAppConfig } from './app.config'
 import { NestConfigModule, nestStaterConfig } from './config.module'
 import { NestRootModule } from './nest-root.module'
 import { NestUtil } from './nest-util'
@@ -21,14 +22,11 @@ import { SwaggerManager } from './swagger/swagger.manager'
  * Nest框架启动器
  */
 export class NestStarter {
-  private static instance: NestStarter | null
+  private static instance: NestStarter
   /**
-   * 启动配置
-   * @private
-   */
-  private readonly starterConfig: StarterConfig = nestStaterConfig
-  /**
+   *
    * @param nestApplicationOptions
+   * @protected
    */
   protected constructor(
     protected readonly nestApplicationOptions?: NestApplicationOptions,
@@ -41,10 +39,6 @@ export class NestStarter {
   public static getInstance(
     nestApplicationOptions?: NestApplicationOptions,
   ): NestStarter {
-    // 开启日志
-    if (nestStaterConfig?.enableLogger)
-      vipLogger.logByBlank(JSON.stringify(nestStaterConfig, null, 2))
-
     if (this.instance == null)
       this.instance = new this(nestApplicationOptions)
 
@@ -54,44 +48,50 @@ export class NestStarter {
   /**
    * 入口
    */
-  public async start(appRootModule: NestModule): Promise<void> {
-    const nestRootModule = NestRootModule.register({
-      imports: this.registerGlobalModules().concat(appRootModule),
+  public async start(appModule: NestModule, rootConfigSchema: ClassConstructor<NestAppConfig>): Promise<void> {
+    const ConfigModule = NestConfigModule.register(rootConfigSchema)
+
+    // 整个项目配置
+    const rootConfig = selectConfig(ConfigModule, rootConfigSchema)
+
+    // 开启日志
+    if (nestStaterConfig.enableLogger)
+      vipLogger.logByBlank(JSON.stringify(rootConfig, null, 2))
+
+    const rootModule = NestRootModule.register({
+      imports: [
+        // 配置模块
+        ConfigModule,
+
+        // 全局模块
+        ...this.registerGlobalModules(),
+
+        // 业务模块
+        appModule,
+      ],
       providers: this.getProviders(),
     })
 
     /**
      * 创建应用
      */
-    const app = await NestFactory.create(nestRootModule, {
+    const app = await NestFactory.create(rootModule, {
       bufferLogs: true,
       ...this.nestApplicationOptions,
     })
 
-    this.setGlobalConfig(app)
-
-    // 应用启动
-    await app.listen(this.starterConfig.port!)
-
-    // 优化日志
-    void new NestUtil(app, this.starterConfig).printAppModuleStarterLogger()
-  }
-
-  /**
-   * 设置全局配置
-   * @private
-   */
-  private setGlobalConfig(app: INestApplication): INestApplication {
-    // 应用日志
-    if (this.starterConfig.enableLogger)
+    /**
+     * 应用日志
+     */
+    if (nestStaterConfig.enableLogger)
       NestLoggerModule.useLogger(app)
 
     // 路由版本功能
     // apiVersioning必须在swagger之前加载
     app.enableVersioning({ type: VersioningType.URI })
 
-    if (this.starterConfig.enableSwagger && this.starterConfig.swagger != null) {
-      new SwaggerManager(this.starterConfig.swagger).register(app)
+    if (nestStaterConfig.enableSwagger && nestStaterConfig.swagger != null) {
+      new SwaggerManager(nestStaterConfig.swagger).register(app)
 
       // TODO 打印swagger相关信息
     }
@@ -103,7 +103,11 @@ export class NestStarter {
     app.getHttpAdapter()
       .get('/health', (_req, res) => res.status(HttpStatus.OK).send('SERVER OK'))
 
-    return app
+    // 应用启动
+    await app.listen(nestStaterConfig.port!)
+
+    // 优化日志
+    void new NestUtil(app, nestStaterConfig).printAppModuleStarterLogger()
   }
 
   /**
@@ -113,21 +117,18 @@ export class NestStarter {
   private registerGlobalModules(): NestModule[] {
     const imports: NestModule[] = []
 
-    // 默认为用户注册配置
-    imports.push(NestConfigModule)
-
-    if (this.starterConfig.enableLogger) {
+    if (nestStaterConfig.enableLogger) {
       imports.push(NestLoggerModule.register({ consoleLogger: { level: LoggerLevelEnum.trace } }))
     }
 
     // 注册Redis模块
-    if (this.starterConfig.redis != null) {
-      imports.push(NestRedisModule.register(this.starterConfig.redis))
+    if (nestStaterConfig.redis != null) {
+      imports.push(NestRedisModule.register(nestStaterConfig.redis))
     }
 
     // 注册TypeOrm模块
-    if (this.starterConfig.typeorm != null) {
-      imports.push(NestTypeOrmModule.register(this.starterConfig.typeorm))
+    if (nestStaterConfig.typeorm != null) {
+      imports.push(NestTypeOrmModule.register(nestStaterConfig.typeorm))
     }
 
     return imports
@@ -166,11 +167,11 @@ export class NestStarter {
       //     transform: true,
       //     transformOptions: { enableImplicitConversion: true }, // TODO to delete it
       //     // 是否禁用DTO参数校验错误详情
-      //     disableErrorMessages: this.starterConfig.disableErrorMessages,
+      //     disableErrorMessages: nestStaterConfig.disableErrorMessages,
       //     // 下面两个class-validator参数用于禁止未知的参数
       //     // whitelist: true,
       //     // forbidNonWhitelisted: true,
-      //     ...(this.starterConfig.disableErrorMessages
+      //     ...(nestStaterConfig.disableErrorMessages
       //       ? {
       //           exceptionFactory: (_errors): PlatformException => {
       //             return new PlatformException(ErrorCodes.BAD_REQUEST, HttpStatus.BAD_REQUEST)
@@ -189,7 +190,7 @@ export class NestStarter {
       // /**
       //  * 限制请求来源页
       //  */
-      // ...(this.starterConfig.allowedReferers != null
+      // ...(nestStaterConfig.allowedReferers != null
       //   ? [{
       //       provide: APP_GUARD,
       //       useClass: RefererGuard,
