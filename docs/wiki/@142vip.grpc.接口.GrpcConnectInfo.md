@@ -2,7 +2,7 @@
 
 # 接口: GrpcConnectInfo
 
-定义于: [enum/grpc.interface.ts:8](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/grpc/src/enum/grpc.interface.ts#L8)
+定义于: [enum/grpc.interface.ts:8](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/grpc/src/enum/grpc.interface.ts#L8)
 
 Grpc 连接信息
 
@@ -12,7 +12,7 @@ Grpc 连接信息
 
 > **connectUri**: `string`
 
-定义于: [enum/grpc.interface.ts:12](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/grpc/src/enum/grpc.interface.ts#L12)
+定义于: [enum/grpc.interface.ts:12](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/grpc/src/enum/grpc.interface.ts#L12)
 
 连接地址
 
@@ -22,6 +22,6 @@ Grpc 连接信息
 
 > **port**: `number`
 
-定义于: [enum/grpc.interface.ts:16](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/grpc/src/enum/grpc.interface.ts#L16)
+定义于: [enum/grpc.interface.ts:16](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/grpc/src/enum/grpc.interface.ts#L16)
 
 连接端口

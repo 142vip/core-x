@@ -2,7 +2,7 @@
 
 # 类: VipHttpApi
 
-定义于: [packages/data-source/src/core/apis/vip-http-api.ts:12](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/data-source/src/core/apis/vip-http-api.ts#L12)
+定义于: [packages/data-source/src/core/apis/vip-http-api.ts:12](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/data-source/src/core/apis/vip-http-api.ts#L12)
 
 发送Http，请求API
 - 标准的axios请求
@@ -27,7 +27,7 @@
 
 > **getConnectionData**\<`T`\>(`options`): `Promise`\<[`DataSourceParseResponse`](../interfaces/DataSourceParseResponse.md)\<`T`\>\>
 
-定义于: [packages/data-source/src/core/apis/vip-http-api.ts:16](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/data-source/src/core/apis/vip-http-api.ts#L16)
+定义于: [packages/data-source/src/core/apis/vip-http-api.ts:16](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/data-source/src/core/apis/vip-http-api.ts#L16)
 
 获取连接数据
 

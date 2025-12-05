@@ -2,7 +2,7 @@
 
 # 类: VipIbmDB
 
-定义于: [packages/data-source/src/core/sql/vip-ibm-db.ts:15](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/data-source/src/core/sql/vip-ibm-db.ts#L15)
+定义于: [packages/data-source/src/core/sql/vip-ibm-db.ts:15](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/data-source/src/core/sql/vip-ibm-db.ts#L15)
 
 DB2 数据源
 
@@ -26,7 +26,7 @@ DB2 数据源
 
 > **getConnectionData**(`options`): `Promise`\<[`DataSourceParseResponse`](../interfaces/DataSourceParseResponse.md)\<`unknown`\>\>
 
-定义于: [packages/data-source/src/core/sql/vip-ibm-db.ts:19](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/data-source/src/core/sql/vip-ibm-db.ts#L19)
+定义于: [packages/data-source/src/core/sql/vip-ibm-db.ts:19](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/data-source/src/core/sql/vip-ibm-db.ts#L19)
 
 获取连接数据
 

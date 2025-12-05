@@ -2,7 +2,7 @@
 
 # 类: VipAliGatewayApi
 
-定义于: [packages/data-source/src/core/apis/vip-ali-gateway-api.ts:25](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/data-source/src/core/apis/vip-ali-gateway-api.ts#L25)
+定义于: [packages/data-source/src/core/apis/vip-ali-gateway-api.ts:25](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/data-source/src/core/apis/vip-ali-gateway-api.ts#L25)
 
 阿里云网关API
 参考：https://www.npmjs.com/package/aliyun-api-gateway
@@ -27,7 +27,7 @@
 
 > **getConnectionData**(`params`): `Promise`\<[`DataSourceParseResponse`](../interfaces/DataSourceParseResponse.md)\<`unknown`\>\>
 
-定义于: [packages/data-source/src/core/apis/vip-ali-gateway-api.ts:29](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/data-source/src/core/apis/vip-ali-gateway-api.ts#L29)
+定义于: [packages/data-source/src/core/apis/vip-ali-gateway-api.ts:29](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/data-source/src/core/apis/vip-ali-gateway-api.ts#L29)
 
 获取连接数据
 

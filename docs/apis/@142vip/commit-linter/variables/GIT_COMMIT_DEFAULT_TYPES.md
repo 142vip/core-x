@@ -4,6 +4,6 @@
 
 > `const` **GIT\_COMMIT\_DEFAULT\_TYPES**: `string`[]
 
-定义于: [commit-linter/src/core/git-commit-type.ts:76](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/commit-linter/src/core/git-commit-type.ts#L76)
+定义于: [commit-linter/src/core/git-commit-type.ts:76](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/commit-linter/src/core/git-commit-type.ts#L76)
 
 默认支持的git commit type

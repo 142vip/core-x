@@ -5,6 +5,7 @@
 ## 类
 
 - [NestRedisModule](classes/NestRedisModule.md)
+- [RedisKeyManager](classes/RedisKeyManager.md)
 - [RedisService](classes/RedisService.md)
 
 ## 变量

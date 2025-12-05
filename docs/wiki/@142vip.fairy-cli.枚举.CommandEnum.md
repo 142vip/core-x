@@ -2,7 +2,7 @@
 
 # 枚举: CommandEnum
 
-定义于: [fairy-cli/src/enums/command.enum.ts:6](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/fairy-cli/src/enums/command.enum.ts#L6)
+定义于: [fairy-cli/src/enums/command.enum.ts:6](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/fairy-cli/src/enums/command.enum.ts#L6)
 
 fairy-cli 命令枚举
 
@@ -12,7 +12,7 @@ fairy-cli 命令枚举
 
 > **CHANGELOG**: `"changelog"`
 
-定义于: [fairy-cli/src/enums/command.enum.ts:9](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/fairy-cli/src/enums/command.enum.ts#L9)
+定义于: [fairy-cli/src/enums/command.enum.ts:9](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/fairy-cli/src/enums/command.enum.ts#L9)
 
 ***
 
@@ -20,7 +20,7 @@ fairy-cli 命令枚举
 
 > **CLEAN**: `"clean"`
 
-定义于: [fairy-cli/src/enums/command.enum.ts:11](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/fairy-cli/src/enums/command.enum.ts#L11)
+定义于: [fairy-cli/src/enums/command.enum.ts:11](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/fairy-cli/src/enums/command.enum.ts#L11)
 
 ***
 
@@ -28,7 +28,7 @@ fairy-cli 命令枚举
 
 > **COMMIT**: `"commit"`
 
-定义于: [fairy-cli/src/enums/command.enum.ts:17](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/fairy-cli/src/enums/command.enum.ts#L17)
+定义于: [fairy-cli/src/enums/command.enum.ts:17](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/fairy-cli/src/enums/command.enum.ts#L17)
 
 ***
 
@@ -36,7 +36,7 @@ fairy-cli 命令枚举
 
 > **COPYRIGHT**: `"copyright"`
 
-定义于: [fairy-cli/src/enums/command.enum.ts:16](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/fairy-cli/src/enums/command.enum.ts#L16)
+定义于: [fairy-cli/src/enums/command.enum.ts:16](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/fairy-cli/src/enums/command.enum.ts#L16)
 
 ***
 
@@ -44,7 +44,7 @@ fairy-cli 命令枚举
 
 > **DEPLOY**: `"deploy"`
 
-定义于: [fairy-cli/src/enums/command.enum.ts:13](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/fairy-cli/src/enums/command.enum.ts#L13)
+定义于: [fairy-cli/src/enums/command.enum.ts:13](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/fairy-cli/src/enums/command.enum.ts#L13)
 
 ***
 
@@ -52,7 +52,7 @@ fairy-cli 命令枚举
 
 > **INSTALL**: `"install"`
 
-定义于: [fairy-cli/src/enums/command.enum.ts:14](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/fairy-cli/src/enums/command.enum.ts#L14)
+定义于: [fairy-cli/src/enums/command.enum.ts:14](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/fairy-cli/src/enums/command.enum.ts#L14)
 
 ***
 
@@ -60,7 +60,7 @@ fairy-cli 命令枚举
 
 > **LINT**: `"lint"`
 
-定义于: [fairy-cli/src/enums/command.enum.ts:12](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/fairy-cli/src/enums/command.enum.ts#L12)
+定义于: [fairy-cli/src/enums/command.enum.ts:12](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/fairy-cli/src/enums/command.enum.ts#L12)
 
 ***
 
@@ -68,7 +68,7 @@ fairy-cli 命令枚举
 
 > **LOGIN**: `"login"`
 
-定义于: [fairy-cli/src/enums/command.enum.ts:7](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/fairy-cli/src/enums/command.enum.ts#L7)
+定义于: [fairy-cli/src/enums/command.enum.ts:7](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/fairy-cli/src/enums/command.enum.ts#L7)
 
 ***
 
@@ -76,7 +76,7 @@ fairy-cli 命令枚举
 
 > **PUBLISH**: `"publish"`
 
-定义于: [fairy-cli/src/enums/command.enum.ts:10](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/fairy-cli/src/enums/command.enum.ts#L10)
+定义于: [fairy-cli/src/enums/command.enum.ts:10](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/fairy-cli/src/enums/command.enum.ts#L10)
 
 ***
 
@@ -84,7 +84,7 @@ fairy-cli 命令枚举
 
 > **RELEASE**: `"release"`
 
-定义于: [fairy-cli/src/enums/command.enum.ts:8](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/fairy-cli/src/enums/command.enum.ts#L8)
+定义于: [fairy-cli/src/enums/command.enum.ts:8](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/fairy-cli/src/enums/command.enum.ts#L8)
 
 ***
 
@@ -92,4 +92,4 @@ fairy-cli 命令枚举
 
 > **SYNC**: `"sync"`
 
-定义于: [fairy-cli/src/enums/command.enum.ts:15](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/fairy-cli/src/enums/command.enum.ts#L15)
+定义于: [fairy-cli/src/enums/command.enum.ts:15](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/fairy-cli/src/enums/command.enum.ts#L15)

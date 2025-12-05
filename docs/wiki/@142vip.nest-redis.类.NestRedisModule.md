@@ -2,7 +2,7 @@
 
 # 类: NestRedisModule
 
-定义于: [redis.module.ts:6](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/nest-redis/src/core/redis.module.ts#L6)
+定义于: [core/redis.module.ts:7](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/nest-redis/src/core/redis.module.ts#L7)
 
 ## 构造函数
 
@@ -20,7 +20,7 @@
 
 > `static` **register**(`config`): `DynamicModule`
 
-定义于: [redis.module.ts:7](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/nest-redis/src/core/redis.module.ts#L7)
+定义于: [core/redis.module.ts:8](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/nest-redis/src/core/redis.module.ts#L8)
 
 #### 参数
 

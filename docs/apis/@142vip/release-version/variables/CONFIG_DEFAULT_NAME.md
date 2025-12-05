@@ -4,6 +4,6 @@
 
 > `const` **CONFIG\_DEFAULT\_NAME**: `"bumpx"` = `'bumpx'`
 
-定义于: [utils/config.ts:19](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/release-version/src/utils/config.ts#L19)
+定义于: [utils/config.ts:19](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/release-version/src/utils/config.ts#L19)
 
 配置文件，默认文件名

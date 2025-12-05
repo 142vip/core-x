@@ -2,7 +2,7 @@
 
 # 接口: VipCommanderDetailOptions
 
-定义于: [packages/utils/src/pkgs/commander.ts:3](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/utils/src/pkgs/commander.ts#L3)
+定义于: [packages/utils/src/pkgs/commander.ts:3](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/utils/src/pkgs/commander.ts#L3)
 
 ## 属性
 
@@ -10,7 +10,7 @@
 
 > **aliases**: `string`[]
 
-定义于: [packages/utils/src/pkgs/commander.ts:5](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/utils/src/pkgs/commander.ts#L5)
+定义于: [packages/utils/src/pkgs/commander.ts:5](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/utils/src/pkgs/commander.ts#L5)
 
 ***
 
@@ -18,7 +18,7 @@
 
 > **command**: `string`
 
-定义于: [packages/utils/src/pkgs/commander.ts:4](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/utils/src/pkgs/commander.ts#L4)
+定义于: [packages/utils/src/pkgs/commander.ts:4](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/utils/src/pkgs/commander.ts#L4)
 
 ***
 
@@ -26,7 +26,7 @@
 
 > **description**: `string`
 
-定义于: [packages/utils/src/pkgs/commander.ts:7](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/utils/src/pkgs/commander.ts#L7)
+定义于: [packages/utils/src/pkgs/commander.ts:7](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/utils/src/pkgs/commander.ts#L7)
 
 ***
 
@@ -34,4 +34,4 @@
 
 > **summary**: `string`
 
-定义于: [packages/utils/src/pkgs/commander.ts:6](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/utils/src/pkgs/commander.ts#L6)
+定义于: [packages/utils/src/pkgs/commander.ts:6](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/utils/src/pkgs/commander.ts#L6)

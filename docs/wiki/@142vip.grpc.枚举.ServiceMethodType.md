@@ -2,7 +2,7 @@
 
 # 枚举: ServiceMethodType
 
-定义于: [enum/grpc.interface.ts:31](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/grpc/src/enum/grpc.interface.ts#L31)
+定义于: [enum/grpc.interface.ts:31](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/grpc/src/enum/grpc.interface.ts#L31)
 
 Grpc 服务端方法类型
 
@@ -12,7 +12,7 @@ Grpc 服务端方法类型
 
 > **BidiStream**: `"bidiStream"`
 
-定义于: [enum/grpc.interface.ts:36](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/grpc/src/enum/grpc.interface.ts#L36)
+定义于: [enum/grpc.interface.ts:36](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/grpc/src/enum/grpc.interface.ts#L36)
 
 ***
 
@@ -20,7 +20,7 @@ Grpc 服务端方法类型
 
 > **ClientStream**: `"clientStream"`
 
-定义于: [enum/grpc.interface.ts:34](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/grpc/src/enum/grpc.interface.ts#L34)
+定义于: [enum/grpc.interface.ts:34](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/grpc/src/enum/grpc.interface.ts#L34)
 
 ***
 
@@ -28,7 +28,7 @@ Grpc 服务端方法类型
 
 > **ServerStream**: `"serverStream"`
 
-定义于: [enum/grpc.interface.ts:35](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/grpc/src/enum/grpc.interface.ts#L35)
+定义于: [enum/grpc.interface.ts:35](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/grpc/src/enum/grpc.interface.ts#L35)
 
 ***
 
@@ -36,4 +36,4 @@ Grpc 服务端方法类型
 
 > **Unary**: `"unary"`
 
-定义于: [enum/grpc.interface.ts:33](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/grpc/src/enum/grpc.interface.ts#L33)
+定义于: [enum/grpc.interface.ts:33](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/grpc/src/enum/grpc.interface.ts#L33)

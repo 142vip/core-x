@@ -2,7 +2,7 @@
 
 # 接口: PackageJSONMainFest
 
-定义于: [packages/utils/src/core/package-json.ts:207](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/utils/src/core/package-json.ts#L207)
+定义于: [packages/utils/src/core/package-json.ts:207](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/utils/src/core/package-json.ts#L207)
 
 ## theme_extends
 
@@ -18,7 +18,7 @@
 
 > **name**: `string`
 
-定义于: [packages/utils/src/core/package-json.ts:198](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/utils/src/core/package-json.ts#L198)
+定义于: [packages/utils/src/core/package-json.ts:198](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/utils/src/core/package-json.ts#L198)
 
 #### 继承自
 
@@ -30,7 +30,7 @@
 
 > **private**: `boolean`
 
-定义于: [packages/utils/src/core/package-json.ts:200](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/utils/src/core/package-json.ts#L200)
+定义于: [packages/utils/src/core/package-json.ts:200](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/utils/src/core/package-json.ts#L200)
 
 #### 继承自
 
@@ -42,7 +42,7 @@
 
 > **version**: `string`
 
-定义于: [packages/utils/src/core/package-json.ts:199](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/utils/src/core/package-json.ts#L199)
+定义于: [packages/utils/src/core/package-json.ts:199](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/utils/src/core/package-json.ts#L199)
 
 #### 继承自
 

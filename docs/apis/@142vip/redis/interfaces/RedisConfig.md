@@ -2,7 +2,7 @@
 
 # 接口: RedisConfig
 
-定义于: [packages/redis/src/core/redis.interface.ts:33](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/redis/src/core/redis.interface.ts#L33)
+定义于: [packages/redis/src/core/redis.interface.ts:33](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/redis/src/core/redis.interface.ts#L33)
 
 Redis 建立连接配置
 
@@ -76,7 +76,7 @@ true
 
 > `optional` **clusterNodes**: `ClusterNode`[]
 
-定义于: [packages/redis/src/core/redis.interface.ts:26](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/redis/src/core/redis.interface.ts#L26)
+定义于: [packages/redis/src/core/redis.interface.ts:26](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/redis/src/core/redis.interface.ts#L26)
 
 #### 继承自
 
@@ -88,7 +88,7 @@ true
 
 > `optional` **clusterOptions**: `ClusterOptions`
 
-定义于: [packages/redis/src/core/redis.interface.ts:27](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/redis/src/core/redis.interface.ts#L27)
+定义于: [packages/redis/src/core/redis.interface.ts:27](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/redis/src/core/redis.interface.ts#L27)
 
 #### 继承自
 
@@ -867,7 +867,7 @@ false
 
 > `optional` **url**: `string`
 
-定义于: [packages/redis/src/core/redis.interface.ts:19](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/redis/src/core/redis.interface.ts#L19)
+定义于: [packages/redis/src/core/redis.interface.ts:19](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/redis/src/core/redis.interface.ts#L19)
 
 #### 继承自
 

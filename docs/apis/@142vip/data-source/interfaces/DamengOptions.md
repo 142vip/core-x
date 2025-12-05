@@ -2,7 +2,7 @@
 
 # 接口: DamengOptions
 
-定义于: [packages/data-source/src/core/sql/vip-dameng.ts:6](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/data-source/src/core/sql/vip-dameng.ts#L6)
+定义于: [packages/data-source/src/core/sql/vip-dameng.ts:6](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/data-source/src/core/sql/vip-dameng.ts#L6)
 
 SQL连接基础配置
 
@@ -16,7 +16,7 @@ SQL连接基础配置
 
 > **host**: `string`
 
-定义于: [packages/data-source/src/data-source.interface.ts:57](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/data-source/src/data-source.interface.ts#L57)
+定义于: [packages/data-source/src/data-source.interface.ts:57](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/data-source/src/data-source.interface.ts#L57)
 
 #### 继承自
 
@@ -28,7 +28,7 @@ SQL连接基础配置
 
 > **password**: `string`
 
-定义于: [packages/data-source/src/data-source.interface.ts:60](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/data-source/src/data-source.interface.ts#L60)
+定义于: [packages/data-source/src/data-source.interface.ts:60](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/data-source/src/data-source.interface.ts#L60)
 
 #### 继承自
 
@@ -40,7 +40,7 @@ SQL连接基础配置
 
 > **port**: `number`
 
-定义于: [packages/data-source/src/data-source.interface.ts:58](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/data-source/src/data-source.interface.ts#L58)
+定义于: [packages/data-source/src/data-source.interface.ts:58](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/data-source/src/data-source.interface.ts#L58)
 
 #### 继承自
 
@@ -52,7 +52,7 @@ SQL连接基础配置
 
 > **querySql**: `string`
 
-定义于: [packages/data-source/src/data-source.interface.ts:61](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/data-source/src/data-source.interface.ts#L61)
+定义于: [packages/data-source/src/data-source.interface.ts:61](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/data-source/src/data-source.interface.ts#L61)
 
 #### 继承自
 
@@ -64,7 +64,7 @@ SQL连接基础配置
 
 > **username**: `string`
 
-定义于: [packages/data-source/src/data-source.interface.ts:59](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/data-source/src/data-source.interface.ts#L59)
+定义于: [packages/data-source/src/data-source.interface.ts:59](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/data-source/src/data-source.interface.ts#L59)
 
 #### 继承自
 

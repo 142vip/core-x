@@ -4,7 +4,7 @@
 
 > `const` **ChangelogAPI**: `object`
 
-定义于: [changelog/src/core/changelog.api.ts:163](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/changelog/src/core/changelog.api.ts#L163)
+定义于: [changelog/src/core/changelog.api.ts:163](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/changelog/src/core/changelog.api.ts#L163)
 
 changelog相关API
 

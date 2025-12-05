@@ -2,7 +2,7 @@
 
 # 类: GrpcExampleServerManager
 
-定义于: [example.manager.ts:18](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/grpc/src/example.manager.ts#L18)
+定义于: [example.manager.ts:18](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/grpc/src/example.manager.ts#L18)
 
 基于exampleProto的GRPC服务管理器
 
@@ -12,7 +12,7 @@
 
 > **new GrpcExampleServerManager**(): `GrpcExampleServerManager`
 
-定义于: [example.manager.ts:22](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/grpc/src/example.manager.ts#L22)
+定义于: [example.manager.ts:22](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/grpc/src/example.manager.ts#L22)
 
 #### 返回
 
@@ -24,7 +24,7 @@
 
 > **getGrpcServer**(): [`GrpcServer`](GrpcServer.md)
 
-定义于: [example.manager.ts:48](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/grpc/src/example.manager.ts#L48)
+定义于: [example.manager.ts:48](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/grpc/src/example.manager.ts#L48)
 
 获取原生的grpcServer服务
 
@@ -38,7 +38,7 @@
 
 > **getServiceClient**(`connectUri`): `ServiceClient`
 
-定义于: [example.manager.ts:56](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/grpc/src/example.manager.ts#L56)
+定义于: [example.manager.ts:56](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/grpc/src/example.manager.ts#L56)
 
 获取客户端
 
@@ -58,7 +58,7 @@
 
 > **listen**(`connectUri`): `Promise`\<`void`\>
 
-定义于: [example.manager.ts:40](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/grpc/src/example.manager.ts#L40)
+定义于: [example.manager.ts:40](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/grpc/src/example.manager.ts#L40)
 
 启动GRPC服务，监听端口
 
@@ -78,7 +78,7 @@
 
 > **registerService**(): `void`
 
-定义于: [example.manager.ts:26](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/grpc/src/example.manager.ts#L26)
+定义于: [example.manager.ts:26](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/grpc/src/example.manager.ts#L26)
 
 #### 返回
 
@@ -90,7 +90,7 @@
 
 > **shutdown**(): `void`
 
-定义于: [example.manager.ts:70](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/grpc/src/example.manager.ts#L70)
+定义于: [example.manager.ts:70](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/grpc/src/example.manager.ts#L70)
 
 关闭GRPC服务
 - 服务端

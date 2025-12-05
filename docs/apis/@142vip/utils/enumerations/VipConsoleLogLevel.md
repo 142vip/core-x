@@ -2,7 +2,7 @@
 
 # 枚举: VipConsoleLogLevel
 
-定义于: [packages/utils/src/pkgs/console.ts:3](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/utils/src/pkgs/console.ts#L3)
+定义于: [packages/utils/src/pkgs/console.ts:3](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/utils/src/pkgs/console.ts#L3)
 
 ## 枚举成员
 
@@ -10,7 +10,7 @@
 
 > **ERROR**: `"ERROR"`
 
-定义于: [packages/utils/src/pkgs/console.ts:4](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/utils/src/pkgs/console.ts#L4)
+定义于: [packages/utils/src/pkgs/console.ts:4](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/utils/src/pkgs/console.ts#L4)
 
 ***
 
@@ -18,7 +18,7 @@
 
 > **INFO**: `"INFO"`
 
-定义于: [packages/utils/src/pkgs/console.ts:6](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/utils/src/pkgs/console.ts#L6)
+定义于: [packages/utils/src/pkgs/console.ts:6](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/utils/src/pkgs/console.ts#L6)
 
 ***
 
@@ -26,4 +26,4 @@
 
 > **SUCCESS**: `"SUCCESS"`
 
-定义于: [packages/utils/src/pkgs/console.ts:5](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/utils/src/pkgs/console.ts#L5)
+定义于: [packages/utils/src/pkgs/console.ts:5](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/utils/src/pkgs/console.ts#L5)

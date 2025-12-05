@@ -2,7 +2,7 @@
 
 # 类: RedisFactory
 
-定义于: [packages/redis/src/core/redis.factory.ts:8](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/redis/src/core/redis.factory.ts#L8)
+定义于: [packages/redis/src/core/redis.factory.ts:8](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/redis/src/core/redis.factory.ts#L8)
 
 Redis工厂类
 
@@ -22,7 +22,7 @@ Redis工厂类
 
 > **createClient**(`config`): `Redis`
 
-定义于: [packages/redis/src/core/redis.factory.ts:12](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/redis/src/core/redis.factory.ts#L12)
+定义于: [packages/redis/src/core/redis.factory.ts:12](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/redis/src/core/redis.factory.ts#L12)
 
 简单&哨兵模式
 
@@ -42,7 +42,7 @@ Redis工厂类
 
 > **createCluster**(`config`): `Cluster`
 
-定义于: [packages/redis/src/core/redis.factory.ts:19](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/redis/src/core/redis.factory.ts#L19)
+定义于: [packages/redis/src/core/redis.factory.ts:19](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/redis/src/core/redis.factory.ts#L19)
 
 集群模式
 
@@ -62,7 +62,7 @@ Redis工厂类
 
 > **getClient**(`config`): [`RedisClient`](../type-aliases/RedisClient.md)
 
-定义于: [packages/redis/src/core/redis.factory.ts:26](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/redis/src/core/redis.factory.ts#L26)
+定义于: [packages/redis/src/core/redis.factory.ts:26](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/redis/src/core/redis.factory.ts#L26)
 
 获取Redis客户端
 

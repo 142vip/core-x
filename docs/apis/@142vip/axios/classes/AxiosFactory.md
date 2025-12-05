@@ -2,7 +2,7 @@
 
 # 类: AxiosFactory
 
-定义于: [packages/axios/src/core/axios.factory.ts:20](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/axios/src/core/axios.factory.ts#L20)
+定义于: [packages/axios/src/core/axios.factory.ts:20](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/axios/src/core/axios.factory.ts#L20)
 
 axios
 - 参考：https://www.npmjs.com/package/axios#features
@@ -13,7 +13,7 @@ axios
 
 > **new AxiosFactory**(`config?`): `AxiosFactory`
 
-定义于: [packages/axios/src/core/axios.factory.ts:23](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/axios/src/core/axios.factory.ts#L23)
+定义于: [packages/axios/src/core/axios.factory.ts:23](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/axios/src/core/axios.factory.ts#L23)
 
 #### 参数
 
@@ -31,7 +31,7 @@ axios
 
 > **clearInterceptor**(`type?`): `void`
 
-定义于: [packages/axios/src/core/axios.factory.ts:48](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/axios/src/core/axios.factory.ts#L48)
+定义于: [packages/axios/src/core/axios.factory.ts:48](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/axios/src/core/axios.factory.ts#L48)
 
 清除拦截器，支持同时清理请求拦截器和响应拦截器
 
@@ -51,7 +51,7 @@ axios
 
 > **createAxiosInstance**(): [`VipAxiosInstance`](../interfaces/VipAxiosInstance.md)
 
-定义于: [packages/axios/src/core/axios.factory.ts:31](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/axios/src/core/axios.factory.ts#L31)
+定义于: [packages/axios/src/core/axios.factory.ts:31](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/axios/src/core/axios.factory.ts#L31)
 
 创建vipAxios实例
 
@@ -65,7 +65,7 @@ axios
 
 > **getConfig**(): `undefined` \| `CreateAxiosDefaults`\<`any`\>
 
-定义于: [packages/axios/src/core/axios.factory.ts:41](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/axios/src/core/axios.factory.ts#L41)
+定义于: [packages/axios/src/core/axios.factory.ts:41](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/axios/src/core/axios.factory.ts#L41)
 
 获取用户初始化的axios实例的默认配置
 

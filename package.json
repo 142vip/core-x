@@ -50,7 +50,7 @@
     "release": "npx fa release --vip -F './apps/*' -F './packages/*' --check-branch next --check-branch main ",
     "test": "npx turbo run test --color --only",
     "test:coverage": "npx jest --coverage",
-    "typedoc": "pnpm typedoc:md && pnpm typedoc:wiki && pnpm lint:fix",
+    "typedoc": "pnpm typedoc:md && pnpm typedoc:wiki && pnpm lint:fix && pnpm build",
     "typedoc:api": "npx typedoc --options typedoc-api.config.js",
     "typedoc:md": "npx typedoc --options typedoc-md.config.js",
     "typedoc:wiki": "npx typedoc --options typedoc-wiki.config.js",

@@ -2,7 +2,7 @@
 
 # 接口: NextVersion
 
-定义于: [packages/utils/src/pkgs/semver.ts:56](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/utils/src/pkgs/semver.ts#L56)
+定义于: [packages/utils/src/pkgs/semver.ts:56](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/utils/src/pkgs/semver.ts#L56)
 
 ## 属性
 
@@ -10,7 +10,7 @@
 
 > **major**: `string`
 
-定义于: [packages/utils/src/pkgs/semver.ts:57](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/utils/src/pkgs/semver.ts#L57)
+定义于: [packages/utils/src/pkgs/semver.ts:57](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/utils/src/pkgs/semver.ts#L57)
 
 ***
 
@@ -18,7 +18,7 @@
 
 > **minor**: `string`
 
-定义于: [packages/utils/src/pkgs/semver.ts:58](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/utils/src/pkgs/semver.ts#L58)
+定义于: [packages/utils/src/pkgs/semver.ts:58](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/utils/src/pkgs/semver.ts#L58)
 
 ***
 
@@ -26,7 +26,7 @@
 
 > **next**: `string`
 
-定义于: [packages/utils/src/pkgs/semver.ts:63](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/utils/src/pkgs/semver.ts#L63)
+定义于: [packages/utils/src/pkgs/semver.ts:63](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/utils/src/pkgs/semver.ts#L63)
 
 ***
 
@@ -34,7 +34,7 @@
 
 > **patch**: `string`
 
-定义于: [packages/utils/src/pkgs/semver.ts:59](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/utils/src/pkgs/semver.ts#L59)
+定义于: [packages/utils/src/pkgs/semver.ts:59](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/utils/src/pkgs/semver.ts#L59)
 
 ***
 
@@ -42,7 +42,7 @@
 
 > **preMajor**: `string`
 
-定义于: [packages/utils/src/pkgs/semver.ts:60](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/utils/src/pkgs/semver.ts#L60)
+定义于: [packages/utils/src/pkgs/semver.ts:60](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/utils/src/pkgs/semver.ts#L60)
 
 ***
 
@@ -50,7 +50,7 @@
 
 > **preMinor**: `string`
 
-定义于: [packages/utils/src/pkgs/semver.ts:61](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/utils/src/pkgs/semver.ts#L61)
+定义于: [packages/utils/src/pkgs/semver.ts:61](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/utils/src/pkgs/semver.ts#L61)
 
 ***
 
@@ -58,4 +58,4 @@
 
 > **prePatch**: `string`
 
-定义于: [packages/utils/src/pkgs/semver.ts:62](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/utils/src/pkgs/semver.ts#L62)
+定义于: [packages/utils/src/pkgs/semver.ts:62](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/utils/src/pkgs/semver.ts#L62)

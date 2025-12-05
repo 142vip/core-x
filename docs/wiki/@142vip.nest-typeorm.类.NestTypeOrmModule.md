@@ -2,7 +2,7 @@
 
 # 类: NestTypeOrmModule
 
-定义于: [typeorm.module.ts:8](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/nest-typeorm/src/core/typeorm.module.ts#L8)
+定义于: [typeorm.module.ts:8](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/nest-typeorm/src/core/typeorm.module.ts#L8)
 
 参考：https://docs.nestjs.cn/techniques/sql
 
@@ -22,7 +22,7 @@
 
 > `static` **forFeature**(`entities?`, `dataSourceName?`): `DynamicModule`
 
-定义于: [typeorm.module.ts:41](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/nest-typeorm/src/core/typeorm.module.ts#L41)
+定义于: [typeorm.module.ts:41](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/nest-typeorm/src/core/typeorm.module.ts#L41)
 
 注册实体
 
@@ -46,7 +46,7 @@
 
 > `static` **forRoot**(`options`, `dataSourceName?`): `DynamicModule`
 
-定义于: [typeorm.module.ts:19](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/nest-typeorm/src/core/typeorm.module.ts#L19)
+定义于: [typeorm.module.ts:19](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/nest-typeorm/src/core/typeorm.module.ts#L19)
 
 同步注册数据库连接
 
@@ -70,7 +70,7 @@
 
 > `static` **forRootAsync**(`options`, `dataSourceName?`): `DynamicModule`
 
-定义于: [typeorm.module.ts:30](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/nest-typeorm/src/core/typeorm.module.ts#L30)
+定义于: [typeorm.module.ts:30](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/nest-typeorm/src/core/typeorm.module.ts#L30)
 
 异步注册数据库连接
 
@@ -94,7 +94,7 @@
 
 > `static` **register**(`config`): `DynamicModule`
 
-定义于: [typeorm.module.ts:12](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/nest-typeorm/src/core/typeorm.module.ts#L12)
+定义于: [typeorm.module.ts:12](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/nest-typeorm/src/core/typeorm.module.ts#L12)
 
 同步注册数据库连接，全局模块
 

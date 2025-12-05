@@ -4,7 +4,7 @@
 
 > **getLastMatchingTag**(`inputTag`): `undefined` \| `string`
 
-定义于: [packages/utils/src/core/git.ts:116](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/utils/src/core/git.ts#L116)
+定义于: [packages/utils/src/core/git.ts:116](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/utils/src/core/git.ts#L116)
 
 获取最近一次tag标签
 

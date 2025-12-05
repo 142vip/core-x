@@ -2,7 +2,7 @@
 
 # 类: VipConfig
 
-定义于: [packages/utils/src/pkgs/config.ts:8](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/utils/src/pkgs/config.ts#L8)
+定义于: [packages/utils/src/pkgs/config.ts:8](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/utils/src/pkgs/config.ts#L8)
 
 配置加载
 
@@ -22,7 +22,7 @@
 
 > **loadCliConfig**\<`T`\>(`configName`, `defaultValue`, `cosmiconfigOptions?`): `T`
 
-定义于: [packages/utils/src/pkgs/config.ts:14](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/utils/src/pkgs/config.ts#L14)
+定义于: [packages/utils/src/pkgs/config.ts:14](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/utils/src/pkgs/config.ts#L14)
 
 加载配置
 - 本地配置，形如：xxx.config.ts
@@ -58,7 +58,7 @@
 
 > **loadConfig**\<`T`\>(`configName`, `cosmiconfigOptions?`): `undefined` \| `T`
 
-定义于: [packages/utils/src/pkgs/config.ts:27](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/utils/src/pkgs/config.ts#L27)
+定义于: [packages/utils/src/pkgs/config.ts:27](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/utils/src/pkgs/config.ts#L27)
 
 加载cli配置
 
@@ -88,7 +88,7 @@
 
 > **mergeCommanderConfig**\<`T`\>(`cliConfig`, `commanderConfig`): `T`
 
-定义于: [packages/utils/src/pkgs/config.ts:43](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/utils/src/pkgs/config.ts#L43)
+定义于: [packages/utils/src/pkgs/config.ts:43](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/utils/src/pkgs/config.ts#L43)
 
 合并配置
 

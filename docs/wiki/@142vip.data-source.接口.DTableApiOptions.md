@@ -2,7 +2,7 @@
 
 # 接口: DTableApiOptions
 
-定义于: [packages/data-source/src/core/apis/vip-dtable-api.ts:29](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/data-source/src/core/apis/vip-dtable-api.ts#L29)
+定义于: [packages/data-source/src/core/apis/vip-dtable-api.ts:29](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/data-source/src/core/apis/vip-dtable-api.ts#L29)
 
 ## 属性
 
@@ -10,7 +10,7 @@
 
 > **apiKey**: `string`
 
-定义于: [packages/data-source/src/core/apis/vip-dtable-api.ts:30](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/data-source/src/core/apis/vip-dtable-api.ts#L30)
+定义于: [packages/data-source/src/core/apis/vip-dtable-api.ts:30](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/data-source/src/core/apis/vip-dtable-api.ts#L30)
 
 ***
 
@@ -18,7 +18,7 @@
 
 > `optional` **maxRecords**: `number`
 
-定义于: [packages/data-source/src/core/apis/vip-dtable-api.ts:42](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/data-source/src/core/apis/vip-dtable-api.ts#L42)
+定义于: [packages/data-source/src/core/apis/vip-dtable-api.ts:42](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/data-source/src/core/apis/vip-dtable-api.ts#L42)
 
 单次请求最大数量，最大1000，因为接口分页1000
 
@@ -28,7 +28,7 @@
 
 > **tableId**: `string`
 
-定义于: [packages/data-source/src/core/apis/vip-dtable-api.ts:34](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/data-source/src/core/apis/vip-dtable-api.ts#L34)
+定义于: [packages/data-source/src/core/apis/vip-dtable-api.ts:34](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/data-source/src/core/apis/vip-dtable-api.ts#L34)
 
 表ID
 
@@ -38,6 +38,6 @@
 
 > **viewId**: `string`
 
-定义于: [packages/data-source/src/core/apis/vip-dtable-api.ts:38](https://github.com/142vip/core-x/blob/b519a08d775a32700dcbfb276480e991263ed9a6/packages/data-source/src/core/apis/vip-dtable-api.ts#L38)
+定义于: [packages/data-source/src/core/apis/vip-dtable-api.ts:38](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/data-source/src/core/apis/vip-dtable-api.ts#L38)
 
 视图ID
