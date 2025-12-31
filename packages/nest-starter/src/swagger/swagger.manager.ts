@@ -1,3 +1,4 @@
+import { VipColor } from '@142vip/utils'
 import { INestApplication } from '@nestjs/common'
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
 import { OpenAPIObject, SwaggerCustomOptions } from '@nestjs/swagger/dist/interfaces'
@@ -60,6 +61,9 @@ export class SwaggerDocumentBuilder {
   }
 }
 
+/**
+ * 管理器
+ */
 export class SwaggerManager {
   private swaggerOptions: SwaggerOptions
   constructor(swaggerOptions: SwaggerOptions) {
@@ -76,4 +80,15 @@ export class SwaggerManager {
 
     return app
   }
+}
+
+/**
+ * Swagger终端日志模板
+ */
+export function getTemplate(envName: string, uiPath: string, apiUrl: string): string {
+  return `📚 Swagger API：${VipColor.greenBright(envName)} 环境。
+  
+    ➜  Doc:      ${uiPath}
+    ➜  JSON:     ${apiUrl}
+  `
 }
