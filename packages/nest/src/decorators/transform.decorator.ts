@@ -35,6 +35,14 @@ export function TransformToNumberArray(): PropertyDecorator {
   })
 }
 
+/**
+ * 标准化路径，移除前导斜杠
+ * 将 /xxx 转换为 xxx，保持 xxx 不变
+ */
+export function TransformUriPath(): PropertyDecorator {
+  return Transform(({ value }) => value.startsWith('/') ? value.slice(1) : value)
+}
+
 export function TransformToStringArray(): PropertyDecorator {
   return Transform(({ value }) => {
     switch (typeof value) {
