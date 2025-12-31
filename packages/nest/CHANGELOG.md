@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.4 (2025-12-31)
+
+### ✨ Features
+
+- 增加`TransformUriPath`转换器 &nbsp;-&nbsp; by **chufan** [<samp>(b7f40)</samp>](https://github.com/142vip/core-x/commit/b7f40868)
+
+**Release New Version v0.0.1-alpha.4 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/nest)**
+
 ## v0.0.1-alpha.3 (2025-11-05)
 
 ### ✨ Features
