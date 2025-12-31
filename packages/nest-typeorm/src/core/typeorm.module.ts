@@ -19,7 +19,13 @@ export class NestTypeOrmModule {
   public static forRoot(options: TypeOrmModuleOptions, dataSourceName?: string): DynamicModule {
     return {
       module: NestTypeOrmModule,
-      imports: [TypeOrmModule.forRoot({ ...options, name: dataSourceName })],
+      imports: [
+        TypeOrmModule.forRoot({
+          ...options,
+          // 连接名
+          ...dataSourceName !== null ? { name: dataSourceName } : {},
+        }),
+      ],
       global: true,
     }
   }
@@ -30,7 +36,11 @@ export class NestTypeOrmModule {
   public static forRootAsync(options: TypeOrmModuleAsyncOptions, dataSourceName?: string): DynamicModule {
     return {
       module: NestTypeOrmModule,
-      imports: [TypeOrmModule.forRootAsync({ ...options, name: dataSourceName })],
+      imports: [TypeOrmModule.forRootAsync({
+        ...options,
+        // 连接名
+        ...dataSourceName !== null ? { name: dataSourceName } : {},
+      })],
       global: true,
     }
   }
