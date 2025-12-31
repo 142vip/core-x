@@ -126,6 +126,7 @@ export class NestStarter {
       imports.push(NestRedisModule.register(nestStaterConfig.redis))
     }
 
+    console.log(111, nestStaterConfig.typeorm)
     // 注册TypeOrm模块
     if (nestStaterConfig.typeorm != null) {
       imports.push(NestTypeOrmModule.register(nestStaterConfig.typeorm))

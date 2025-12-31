@@ -1,3 +1,4 @@
+import { VipColor, vipDetect, vipLodash } from '@142vip/utils'
 import { INestApplication, Logger } from '@nestjs/common'
 import { StarterConfig } from './config'
 import { nestProcess } from './nest-process'
@@ -5,6 +6,7 @@ import { nestProcess } from './nest-process'
 export class NestUtil {
   public readonly app: INestApplication
   public readonly starterConfig: StarterConfig
+  private logger = new Logger()
 
   constructor(app: INestApplication, starterConfig: StarterConfig) {
     this.app = app
@@ -26,33 +28,95 @@ export class NestUtil {
     if (!this.starterConfig.enableLogger)
       return
 
-    const logger = new Logger(NestUtil.name)
+    // 应用日志
+    this.printAppLogger()
 
-    const apiUrl = await this.app.getUrl()
-    logger.log(`🚀 应用启动成功`)
+    // http 日志
+    await this.printHttpLogger()
 
-    logger.log(`⚒️ 启动环境：${nestProcess.getNodeEnv()}，运行配置：${nestProcess.getRunEnv()}.config.js`)
+    // grpc 日志
+    this.privateGrpcLogger()
 
-    // 应用名存在，则打印
-    const appName = nestProcess.getAppEnv()
-    if (appName != null) {
-      logger.log(`╰┈┈┈┈┈┈┈┈┈┈┈➤ ${appName} 🔥🔥🔥`)
-    }
+    // swagger日志
+    this.printSwaggerLogger()
+  }
 
-    logger.log(`🌐 HTTP服务: ${apiUrl}`)
-    // 如果有全局前缀
-    if (this.starterConfig.globalPrefix)
-      logger.log(`🔗 全局路由前缀: ${this.starterConfig.globalPrefix}`)
-
-    // 如果有GRPC服务
+  /**
+   * GRPC 日志
+   * @private
+   */
+  private privateGrpcLogger() {
     // if (this.starterConfig.grpcServer?.url)
     //   logger.log(`🔌 GRPC服务: ${this.starterConfig.grpcServer.url}`)
 
-    // 给swagger配置环境
-    if (this.starterConfig.enableSwagger && this.starterConfig.swagger?.envs != null) {
-      for (const [envName, apiUrl] of Object.entries(this.starterConfig.swagger.envs)) {
-        logger.log(`📚 API Swagger文档，${envName}：${apiUrl}:${this.starterConfig.port}/${this.starterConfig.swagger?.docPath}`)
-      }
+  }
+
+  private printAppLogger() {
+    const appName = nestProcess.getAppEnv()
+    const template = this.getLoggerTemplate('🚀 应用启动成功', {
+      nodeEnv: nestProcess.getNodeEnv()!,
+      config: `${nestProcess.getRunEnv()}.config.js`,
+      ...(appName == null ? {} : { appName }),
+      ...(this.starterConfig.globalPrefix == null ? {} : { globalPrefix: this.starterConfig.globalPrefix }),
+    })
+    this.logger.log(template)
+  }
+
+  /**
+   * 获取日志模板
+   * @private
+   */
+  private printSwaggerLogger(): void {
+    if (!this.starterConfig.enableSwagger || this.starterConfig.swagger?.envs == null) {
+      return
     }
+
+    // swagger envs 配置 遍历
+    for (const [envName, serverUrl] of Object.entries(this.starterConfig.swagger?.envs)) {
+      const docPath = this.starterConfig.swagger?.docPath
+      const uiUrl = `${serverUrl}:${this.starterConfig.port}/${docPath}`
+      const apiUrl = `${serverUrl}:${this.starterConfig.port}/${docPath}-json`
+
+      const template = this.getLoggerTemplate(`📚 Swagger API，${VipColor.greenBright(envName)} ${VipColor.greenBright('环境')}`, {
+        doc: uiUrl,
+        JSON: apiUrl,
+      })
+      this.logger.log(template)
+    }
+  }
+
+  /**
+   * http服务日志
+   * @private
+   */
+  private async printHttpLogger(): Promise<void> {
+    const apiUrl = await this.app.getUrl()
+    const { local, ip } = await vipDetect.getAddress()
+
+    const [localOrigin, ipOrigin] = [local, ip].map((address) => {
+      const api = new URL(apiUrl)
+      // 替换hostname为地址
+      api.hostname = address!
+
+      return api.origin
+    })
+
+    const template = this.getLoggerTemplate(`🌐 HTTP服务`, { local: localOrigin, network: ipOrigin })
+    this.logger.log(template)
+  }
+
+  /**
+   * 终端日志模板
+   * @param title
+   * @param info
+   */
+  private getLoggerTemplate(title: string, info: Record<string, string>): string {
+    let content = ''
+    const maxKeyLength = Math.max(...Object.keys(info).map(key => key.length))
+    Object.entries(info).forEach(([key, value]) => {
+      content += `    ➜    ${vipLodash.upperFirst(key)}:${' '.repeat(maxKeyLength - key.length + 8)}${VipColor.greenBright(value)}\n`
+    })
+    content = `\n${content}`
+    return `${title}：${content}`
   }
 }
