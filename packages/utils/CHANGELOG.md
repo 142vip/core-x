@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.46 (2025-12-31)
+
+### ✨ Features
+
+- 引入`address`依赖，增加`getAddress`方法，支持IP地址获取 &nbsp;-&nbsp; by **chufan** [<samp>(f927a)</samp>](https://github.com/142vip/core-x/commit/f927a76a)
+
+**Release New Version v0.0.1-alpha.46 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/utils)**
+
 ## v0.0.1-alpha.45 (2025-12-05)
 
 ### 🐛 Bug Fixes
