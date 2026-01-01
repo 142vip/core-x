@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.3 (2026-01-01)
+
+### 🐛 Bug Fixes
+
+- 修复`dataSourceName`参数异常,增加`@Module`装饰器 &nbsp;-&nbsp; by **chufan** [<samp>(c6da9)</samp>](https://github.com/142vip/core-x/commit/c6da91eb)
+
+**Release New Version v0.0.1-alpha.3 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/nest-typeorm)**
+
 ## v0.0.1-alpha.2 (2025-12-31)
 
 ### ✨ Features
