@@ -1,10 +1,13 @@
-import { DynamicModule } from '@nestjs/common'
+import { DynamicModule, Module } from '@nestjs/common'
 import { TypeOrmModule, TypeOrmModuleAsyncOptions, TypeOrmModuleOptions } from '@nestjs/typeorm'
 import { EntityClassOrSchema } from '@nestjs/typeorm/dist/interfaces/entity-class-or-schema.type'
 
 /**
- * 参考：https://docs.nestjs.cn/techniques/sql
+ * 参考：
+ * - https://docs.nestjs.cn/techniques/sql
+ * - https://github.com/nestjs/typeorm/blob/master/lib/typeorm.module.ts
  */
+@Module({})
 export class NestTypeOrmModule {
   /**
    * 同步注册数据库连接，全局模块
@@ -23,7 +26,7 @@ export class NestTypeOrmModule {
         TypeOrmModule.forRoot({
           ...options,
           // 连接名
-          ...dataSourceName !== null ? { name: dataSourceName } : {},
+          ...dataSourceName != null ? { name: dataSourceName } : {},
         }),
       ],
       global: true,
@@ -39,7 +42,7 @@ export class NestTypeOrmModule {
       imports: [TypeOrmModule.forRootAsync({
         ...options,
         // 连接名
-        ...dataSourceName !== null ? { name: dataSourceName } : {},
+        ...dataSourceName != null ? { name: dataSourceName } : {},
       })],
       global: true,
     }
