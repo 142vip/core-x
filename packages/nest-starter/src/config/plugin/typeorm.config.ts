@@ -5,6 +5,9 @@ import { TransformToBoolean, TransformToNumber } from '@142vip/nest'
 import { DataType } from '@142vip/nest-typeorm'
 import { IsBoolean, IsInt, IsNumber, IsOptional, IsString, Max } from 'class-validator'
 
+/**
+ * Typeorm基础配置
+ */
 export class TypeormConfig implements BaseDataSourceOptions {
   @IsString()
   @IsOptional()
@@ -32,7 +35,7 @@ export class TypeormConfig implements BaseDataSourceOptions {
   database?: string
 
   @IsString()
-  type!: 'mysql' | 'postgres'
+  type!: DataType.MYSQL | DataType.POSTGRES
 
   @TransformToBoolean()
   @IsBoolean()
@@ -41,10 +44,6 @@ export class TypeormConfig implements BaseDataSourceOptions {
   @TransformToBoolean()
   @IsBoolean()
   synchronize = false
-
-  @TransformToBoolean()
-  @IsBoolean()
-  debug = false
 
   @TransformToBoolean()
   @IsBoolean()
