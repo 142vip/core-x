@@ -1,6 +1,9 @@
 import { DynamicModule, Module } from '@nestjs/common'
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm'
 
+export * from '@nestjs/typeorm'
+export * from 'typeorm'
+
 /**
  * 参考：
  * - https://docs.nestjs.cn/techniques/sql
