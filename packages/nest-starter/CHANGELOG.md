@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.8 (2026-01-04)
+
+### ✨ Features
+
+- 修改编译配置，支持`NodeNext`编译 &nbsp;-&nbsp; by **chufan** [<samp>(16300)</samp>](https://github.com/142vip/core-x/commit/163002e1)
+
+**Release New Version v0.0.1-alpha.8 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/nest-starter)**
+
 ## v0.0.1-alpha.7 (2026-01-04)
 
 ### ✨ Features
