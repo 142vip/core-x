@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.4 (2026-01-04)
+
+### 🐛 Bug Fixes
+
+- 修复`NestTypeOrmModule`类继承机制，优化导出逻辑 &nbsp;-&nbsp; by **chufan** [<samp>(01407)</samp>](https://github.com/142vip/core-x/commit/01407a6b)
+
+**Release New Version v0.0.1-alpha.4 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/nest-typeorm)**
+
 ## v0.0.1-alpha.3 (2026-01-01)
 
 ### 🐛 Bug Fixes
