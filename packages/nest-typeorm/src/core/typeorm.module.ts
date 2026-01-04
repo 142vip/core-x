@@ -1,6 +1,5 @@
 import { DynamicModule, Module } from '@nestjs/common'
-import { TypeOrmModule, TypeOrmModuleAsyncOptions, TypeOrmModuleOptions } from '@nestjs/typeorm'
-import { EntityClassOrSchema } from '@nestjs/typeorm/dist/interfaces/entity-class-or-schema.type'
+import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm'
 
 /**
  * 参考：
@@ -8,50 +7,11 @@ import { EntityClassOrSchema } from '@nestjs/typeorm/dist/interfaces/entity-clas
  * - https://github.com/nestjs/typeorm/blob/master/lib/typeorm.module.ts
  */
 @Module({})
-export class NestTypeOrmModule {
+export class NestTypeOrmModule extends TypeOrmModule {
   /**
    * 同步注册数据库连接，全局模块
    */
   public static register(config: TypeOrmModuleOptions): DynamicModule {
     return this.forRoot(config)
-  }
-
-  /**
-   * 同步注册数据库连接
-   */
-  public static forRoot(options: TypeOrmModuleOptions, dataSourceName?: string): DynamicModule {
-    return {
-      module: NestTypeOrmModule,
-      imports: [
-        TypeOrmModule.forRoot({
-          ...options,
-          // 连接名
-          ...dataSourceName != null ? { name: dataSourceName } : {},
-        }),
-      ],
-      global: true,
-    }
-  }
-
-  /**
-   * 异步注册数据库连接
-   */
-  public static forRootAsync(options: TypeOrmModuleAsyncOptions, dataSourceName?: string): DynamicModule {
-    return {
-      module: NestTypeOrmModule,
-      imports: [TypeOrmModule.forRootAsync({
-        ...options,
-        // 连接名
-        ...dataSourceName != null ? { name: dataSourceName } : {},
-      })],
-      global: true,
-    }
-  }
-
-  /**
-   * 注册实体
-   */
-  public static forFeature(entities?: EntityClassOrSchema[], dataSourceName?: string): DynamicModule {
-    return TypeOrmModule.forFeature(entities, dataSourceName)
   }
 }
