@@ -1,6 +1,9 @@
 {
   "extends": "../../tsconfig.nest-pkg.json",
   "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "declarationMap": true,
     "outDir": "dist"
   },
   "include": [
