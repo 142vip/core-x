@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.5 (2026-01-04)
+
+### ✨ Features
+
+- 补充模块导出 &nbsp;-&nbsp; by **chufan** [<samp>(5ef1c)</samp>](https://github.com/142vip/core-x/commit/5ef1cf0b)
+
+**Release New Version v0.0.1-alpha.5 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/nest-typeorm)**
+
 ## v0.0.1-alpha.4 (2026-01-04)
 
 ### 🐛 Bug Fixes
