@@ -16,11 +16,7 @@
     "build": "nest build",
     "start": "nest start"
   },
-  "peerDependencies": {
-    "@142vip/nest": "workspace:*"
-  },
   "dependencies": {
-    "@142vip/nest-redis": "workspace:*",
     "@142vip/nest-starter": "workspace:*"
   }
 }

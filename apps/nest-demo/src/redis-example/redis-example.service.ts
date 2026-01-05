@@ -1,4 +1,4 @@
-import { RedisService } from '@142vip/nest-redis'
+import { RedisService } from '@142vip/nest-starter'
 import { Injectable } from '@nestjs/common'
 
 const storeExample = { key: 'test', value: 'redis-example' }
@@ -7,7 +7,7 @@ const storeExample = { key: 'test', value: 'redis-example' }
 export class RedisExampleService {
   constructor(
     private readonly redisService: RedisService,
-  ) { }
+  ) {}
 
   async setKey(): Promise<void> {
     await this.redisService.setEx(storeExample.key, storeExample.value, 5)
