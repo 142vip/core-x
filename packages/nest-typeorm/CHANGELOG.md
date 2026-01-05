@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.7 (2026-01-05)
+
+### ✨ Features
+
+- 优化ts类型和打包配置 &nbsp;-&nbsp; by **chufan** [<samp>(63af5)</samp>](https://github.com/142vip/core-x/commit/63af5708)
+- 补充`typeorm`工具类 &nbsp;-&nbsp; by **chufan** [<samp>(bd099)</samp>](https://github.com/142vip/core-x/commit/bd099e57)
+
+**Release New Version v0.0.1-alpha.7 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/nest-typeorm)**
+
 ## v0.0.1-alpha.6 (2026-01-04)
 
 ### ✨ Features
