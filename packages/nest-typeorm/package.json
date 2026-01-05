@@ -24,7 +24,7 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
-      "require": "./dist/index.js"
+      "require": "./index.js"
     }
   },
   "authorInfo": {
@@ -40,7 +40,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "npx nest build",
+    "build": "rm -rf dist && tsc -p tsconfig.json",
     "typecheck": "tsc --noEmit",
     "test": "npx jest",
     "test:coverage": "npx jest --coverage"
