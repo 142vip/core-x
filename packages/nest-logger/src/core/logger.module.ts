@@ -1,7 +1,7 @@
 import { DynamicModule, INestApplication } from '@nestjs/common'
 import { Logger, LoggerModule } from 'nestjs-pino'
 import pino from 'pino'
-import { ConsoleLogger } from '../adapter/console.logger'
+import { ConsoleLogger } from '../adapter'
 import { NestLoggerConfig } from './logger.config'
 import StreamEntry = pino.StreamEntry
 

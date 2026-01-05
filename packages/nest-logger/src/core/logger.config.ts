@@ -1,4 +1,4 @@
-import { NestConsoleLoggerConfig } from '../adapter/console.logger'
+import { NestConsoleLoggerConfig } from '../adapter'
 
 export class NestLoggerConfig {
   fileLogger?: any
