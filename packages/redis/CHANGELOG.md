@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.5 (2026-01-05)
+
+### 🐛 Bug Fixes
+
+- 修复.d.ts类型文件识别异常 &nbsp;-&nbsp; by **chufan** [<samp>(9a832)</samp>](https://github.com/142vip/core-x/commit/9a832215)
+
+**Release New Version v0.0.1-alpha.5 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/redis)**
+
 ## v0.0.1-alpha.4 (2025-11-04)
 
 ### ✨ Features
