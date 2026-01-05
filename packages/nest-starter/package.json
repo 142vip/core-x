@@ -24,7 +24,7 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
-      "require": "./dist/index.js"
+      "require": "./index.js"
     }
   },
   "authorInfo": {
@@ -40,21 +40,25 @@
     "dist"
   ],
   "scripts": {
-    "build": "npx nest build",
+    "build": "rm -rf dist && tsc -p tsconfig.json",
     "typecheck": "tsc --noEmit",
     "test": "npx jest",
     "test:coverage": "npx jest --coverage"
   },
   "peerDependencies": {
-    "@142vip/nest": "workspace:*"
+    "@142vip/nest": "workspace:*",
+    "@142vip/nest-logger": "workspace:*",
+    "@142vip/nest-redis": "workspace:*",
+    "@142vip/nest-typeorm": "workspace:*",
+    "@142vip/utils": "workspace:*"
   },
   "dependencies": {
+    "@142vip/nest": "workspace:*",
     "@142vip/nest-logger": "workspace:*",
     "@142vip/nest-redis": "workspace:*",
     "@142vip/nest-typeorm": "workspace:*",
     "@142vip/utils": "workspace:*",
-    "@nestjs/swagger": "11.2.1",
-    "nestjs-pino": "4.4.1"
+    "@nestjs/swagger": "11.2.1"
   },
   "publishConfig": {
     "access": "public",

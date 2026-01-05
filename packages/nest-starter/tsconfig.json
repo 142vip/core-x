@@ -1,27 +1,13 @@
 {
   "extends": "../../tsconfig.nest-pkg.json",
   "compilerOptions": {
-    "target": "ES2018", // 降级到ES2018，避免ESNext优化
-    "noLib": false,
-    "useDefineForClassFields": false,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
-    "declaration": true,
     "declarationMap": true,
-    "downlevelIteration": true, // 降级迭代器
-    "importHelpers": false, // 不导入辅助函数
-    "noEmitHelpers": false, // 生成辅助函数
-    "outDir": "dist",
-    "removeComments": true,
-    "sourceMap": false,
-    "esModuleInterop": true,
-    "skipLibCheck": true
+    "outDir": "dist"
   },
   "include": [
-    "src/**/*",
-    "**/test/**/*.ts"
+    "src/**/*"
   ],
   "exclude": [
     "node_modules",
