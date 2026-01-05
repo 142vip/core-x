@@ -1,6 +1,6 @@
 {
   "name": "@142vip/nest",
-  "version": "0.0.1-alpha.4",
+  "version": "0.0.1-alpha.5",
   "private": false,
   "description": "Nest.js框架基础模块，管理生产、开发依赖",
   "author": "mmdapl <mmdapl@163.com>",

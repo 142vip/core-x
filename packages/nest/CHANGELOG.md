@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.5 (2026-01-05)
+
+### ✨ Features
+
+- 优化ts类型和打包配置 &nbsp;-&nbsp; by **chufan** [<samp>(eb18b)</samp>](https://github.com/142vip/core-x/commit/eb18b14c)
+
+**Release New Version v0.0.1-alpha.5 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/nest)**
+
 ## v0.0.1-alpha.4 (2025-12-31)
 
 ### ✨ Features
