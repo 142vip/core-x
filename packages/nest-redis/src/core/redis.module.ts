@@ -9,12 +9,12 @@ export class NestRedisModule {
     const redisService = new RedisService(config)
     const providers = [
       {
-        provide: RedisService,
-        useValue: redisService,
-      },
-      {
         provide: REDIS_CLIENT_TOKEN,
         useValue: redisService.getClient(),
+      },
+      {
+        provide: RedisService,
+        useValue: redisService,
       },
     ]
     return {
