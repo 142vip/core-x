@@ -23,8 +23,14 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
-      "require": "./dist/index.js"
+      "require": "./index.js"
     }
+  },
+  "authorInfo": {
+    "name": "微信公众号：储凡",
+    "email": "fairy_vip@2925.com",
+    "url": "https://github.com/142vip",
+    "homePage": "https://142vip.cn"
   },
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -32,14 +38,8 @@
   "files": [
     "dist"
   ],
-  "authorInfo": {
-    "name": "微信公众号：储凡",
-    "email": "fairy_vip@2925.com",
-    "url": "https://github.com/142vip",
-    "homePage": "https://142vip.cn"
-  },
   "scripts": {
-    "build": "npx nest build",
+    "build": "rm -rf dist && tsc -p tsconfig.json",
     "typecheck": "tsc --noEmit",
     "test": "npx jest",
     "test:coverage": "npx jest --coverage"
