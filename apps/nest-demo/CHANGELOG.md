@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.2 (2026-01-05)
+
+### ✨ Features
+
+- 补充typeorm实战实践，简化通用配置和依赖 &nbsp;-&nbsp; by **chufan** [<samp>(bdd7e)</samp>](https://github.com/142vip/core-x/commit/bdd7e7f4)
+
+**Release New Version v0.0.1-alpha.2 [👉 View New Package On NPM](https://www.npmjs.com/package/nest-demo)**
+
 ## v0.0.1-alpha.1 (2025-11-04)
 
 ### ✨ Features
