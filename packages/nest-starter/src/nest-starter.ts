@@ -2,7 +2,7 @@ import type { ClassConstructor } from 'class-transformer'
 import { NestModule } from '@142vip/nest'
 import { LoggerLevelEnum, NestLoggerModule } from '@142vip/nest-logger'
 import { NestRedisModule } from '@142vip/nest-redis'
-import { NestTypeOrmModule } from '@142vip/nest-typeorm'
+import { TypeOrmModule } from '@142vip/nest-typeorm'
 import { vipLogger } from '@142vip/utils'
 import {
   ClassSerializerInterceptor,
@@ -126,10 +126,9 @@ export class NestStarter {
       imports.push(NestRedisModule.register(nestStaterConfig.redis))
     }
 
-    console.log(111, nestStaterConfig.typeorm)
     // 注册TypeOrm模块
     if (nestStaterConfig.typeorm != null) {
-      imports.push(NestTypeOrmModule.register(nestStaterConfig.typeorm))
+      imports.push(TypeOrmModule.forRoot(nestStaterConfig.typeorm))
     }
 
     return imports
