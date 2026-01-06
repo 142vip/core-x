@@ -1,5 +1,5 @@
 import { PaginationVo } from '@142vip/nest'
-import { Body, Controller, Delete, Get, Patch, Post } from '@nestjs/common'
+import { Body, Controller, Delete, Get, Patch, Post, Query } from '@nestjs/common'
 import { CreateRestExampleDTO, GetRestExampleDTO, GetRestExampleListDTO } from './rest-example.dto'
 import { GetRestExampleListVo, GetRestExampleVo } from './rest-example.vo'
 
@@ -23,14 +23,14 @@ export class RestExampleController {
    */
   @Get('/')
   public 'Get /'(
-    @Body() params: GetRestExampleDTO,
+    @Query() params: GetRestExampleDTO,
   ): GetRestExampleVo {
     return new GetRestExampleVo(params)
   }
 
   @Get('/list')
   public 'Get /list'(
-    @Body() params: GetRestExampleListDTO,
+    @Query() params: GetRestExampleListDTO,
   ): PaginationVo<GetRestExampleListVo> {
     return new PaginationVo<GetRestExampleListVo>({
       total: 1,
