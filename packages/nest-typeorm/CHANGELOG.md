@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.8 (2026-01-06)
+
+### ✨ Features
+
+- 修复模块导出逻辑，支持全局模块 &nbsp;-&nbsp; by **chufan** [<samp>(cf56d)</samp>](https://github.com/142vip/core-x/commit/cf56d99c)
+
+### 🐛 Bug Fixes
+
+- 修复`npm`包缺失`index`入口文件 &nbsp;-&nbsp; by **chufan** [<samp>(21449)</samp>](https://github.com/142vip/core-x/commit/21449c3c)
+
+**Release New Version v0.0.1-alpha.8 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/nest-typeorm)**
+
 ## v0.0.1-alpha.7 (2026-01-05)
 
 ### ✨ Features
