@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.10 (2026-01-06)
+
+### ✨ Features
+
+- 基于`@nestjs/typeorm`模块集成数据库 &nbsp;-&nbsp; by **chufan** [<samp>(cbd93)</samp>](https://github.com/142vip/core-x/commit/cbd93341)
+
+### 🐛 Bug Fixes
+
+- 修复`npm`包缺失`index`入口文件 &nbsp;-&nbsp; by **chufan** [<samp>(99a2b)</samp>](https://github.com/142vip/core-x/commit/99a2b073)
+
+**Release New Version v0.0.1-alpha.10 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/nest-starter)**
+
 ## v0.0.1-alpha.9 (2026-01-05)
 
 ### ✨ Features
