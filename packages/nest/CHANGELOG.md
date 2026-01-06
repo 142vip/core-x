@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.6 (2026-01-06)
+
+### 🐛 Bug Fixes
+
+- 修复`npm`包缺失`index`入口文件 &nbsp;-&nbsp; by **chufan** [<samp>(0ca78)</samp>](https://github.com/142vip/core-x/commit/0ca78863)
+
+**Release New Version v0.0.1-alpha.6 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/nest)**
+
 ## v0.0.1-alpha.5 (2026-01-05)
 
 ### ✨ Features
