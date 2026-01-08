@@ -50,7 +50,7 @@
     "@vuepress/bundler-vite": "2.0.0-rc.26",
     "@vuepress/plugin-markdown-image": "2.0.0-rc.115",
     "@vuepress/plugin-markdown-tab": "2.0.0-rc.115",
-    "@vuepress/plugin-redirect": "2.0.0-rc.115",
+    "@vuepress/plugin-redirect": "2.0.0-rc.121",
     "@vuepress/plugin-slimsearch": "2.0.0-rc.115",
     "@vuepress/plugin-watermark": "2.0.0-rc.115",
     "@vueuse/shared": "13.9.0",
