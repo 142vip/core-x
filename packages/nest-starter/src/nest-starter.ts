@@ -5,12 +5,11 @@ import { NestRedisModule } from '@142vip/nest-redis'
 import { TypeOrmModule } from '@142vip/nest-typeorm'
 import { vipLogger } from '@142vip/utils'
 import {
-  ClassSerializerInterceptor,
   HttpStatus,
   NestApplicationOptions,
   VersioningType,
 } from '@nestjs/common'
-import { APP_INTERCEPTOR, NestFactory } from '@nestjs/core'
+import { NestFactory } from '@nestjs/core'
 import { selectConfig } from 'nest-typed-config'
 import { NestAppConfig } from './app.config'
 import { NestConfigModule, nestStaterConfig } from './config.module'
@@ -114,7 +113,7 @@ export class NestStarter {
    * 注册全局模块
    * @private
    */
-  private registerGlobalModules(): NestModule[] {
+  protected registerGlobalModules(): NestModule[] {
     const imports: NestModule[] = []
 
     if (nestStaterConfig.enableLogger) {
@@ -134,7 +133,7 @@ export class NestStarter {
     return imports
   }
 
-  private getProviders() {
+  protected getProviders() {
     return [
       /**
        * 传播上下文
@@ -153,10 +152,10 @@ export class NestStarter {
       /**
        * 序列化类(过滤不正常字段)
        */
-      {
-        provide: APP_INTERCEPTOR,
-        useClass: ClassSerializerInterceptor,
-      },
+      // {
+      //   provide: APP_INTERCEPTOR,
+      //   useClass: ClassSerializerInterceptor,
+      // },
       /**
        * 校验入参
        */
