@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.11 (2026-01-11)
+
+### ✨ Features
+
+- 支持Starter启动器类继承后，函数重写 &nbsp;-&nbsp; by **chufan** [<samp>(4eba2)</samp>](https://github.com/142vip/core-x/commit/4eba2052)
+
+**Release New Version v0.0.1-alpha.11 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/nest-starter)**
+
 ## v0.0.1-alpha.10 (2026-01-06)
 
 ### ✨ Features
