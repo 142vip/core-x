@@ -11,4 +11,10 @@ export class SwaggerConfig {
    */
   @IsObject()
   envs: Record<string, string> = { local: 'http://127.0.0.1' }
+
+  /**
+   * 构建选项
+   */
+  @IsObject()
+  builderOptions: Record<string, any> = {}
 }
