@@ -20,6 +20,7 @@ export class PropagationInterceptor implements NestInterceptor {
     const request = context.switchToHttp().getRequest()
     const response = context.switchToHttp().getResponse()
 
+    // TODO 增加swagger支持x-request-id
     if (!Reflect.getMetadata(SSE_METADATA, context.getHandler()))
       response.header('x-request-id', request.headers['x-request-id'])
 
