@@ -1,15 +1,22 @@
-import type { ClassConstructor } from 'class-transformer'
-import { NestModule } from '@142vip/nest'
+import {
+  GlobalFilter,
+  NestModule,
+  PropagationInterceptor,
+  ResponseInterceptor,
+} from '@142vip/nest'
 import { LoggerLevelEnum, NestLoggerModule } from '@142vip/nest-logger'
 import { NestRedisModule } from '@142vip/nest-redis'
-import { TypeOrmModule } from '@142vip/nest-typeorm'
 import { vipLogger } from '@142vip/utils'
 import {
+  ClassSerializerInterceptor,
   HttpStatus,
   NestApplicationOptions,
+  Provider,
   VersioningType,
 } from '@nestjs/common'
-import { NestFactory } from '@nestjs/core'
+import { APP_FILTER, APP_INTERCEPTOR, NestFactory } from '@nestjs/core'
+import { TypeOrmModule } from '@nestjs/typeorm'
+import { ClassConstructor } from 'class-transformer'
 import { selectConfig } from 'nest-typed-config'
 import { NestAppConfig } from './app.config'
 import { NestConfigModule, nestStaterConfig } from './config.module'
@@ -111,7 +118,7 @@ export class NestStarter {
 
   /**
    * 注册全局模块
-   * @private
+   * @protected
    */
   protected registerGlobalModules(): NestModule[] {
     const imports: NestModule[] = []
@@ -133,29 +140,33 @@ export class NestStarter {
     return imports
   }
 
-  protected getProviders() {
+  /**
+   * 提供者
+   * @protected
+   */
+  protected getProviders(): Provider[] {
     return [
       /**
        * 传播上下文
        */
-      // {
-      //   provide: APP_INTERCEPTOR,
-      //   useClass: PropagationInterceptor,
-      // },
+      {
+        provide: APP_INTERCEPTOR,
+        useClass: PropagationInterceptor,
+      },
       /**
        * 统一响应体
        */
-      // {
-      //   provide: APP_INTERCEPTOR,
-      //   useClass: ResponseInterceptor,
-      // },
+      {
+        provide: APP_INTERCEPTOR,
+        useClass: ResponseInterceptor,
+      },
       /**
        * 序列化类(过滤不正常字段)
        */
-      // {
-      //   provide: APP_INTERCEPTOR,
-      //   useClass: ClassSerializerInterceptor,
-      // },
+      {
+        provide: APP_INTERCEPTOR,
+        useClass: ClassSerializerInterceptor,
+      },
       /**
        * 校验入参
        */
@@ -182,10 +193,10 @@ export class NestStarter {
       /**
        * 拦截框架内部异常
        */
-      // {
-      //   provide: APP_FILTER,
-      //   useClass: GlobalFilter,
-      // },
+      {
+        provide: APP_FILTER,
+        useClass: GlobalFilter,
+      },
       // /**
       //  * 限制请求来源页
       //  */
