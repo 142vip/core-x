@@ -5,7 +5,11 @@ import {
   getSchemaPath,
 } from '@nestjs/swagger'
 import { ClassConstructor } from 'class-transformer'
-import { METADATA_KEY_PAGINATION_VO_CLASS, METADATA_KEY_RESPONSE_VO_CLASS_KEY } from '../constants'
+import {
+  METADATA_KEY_PAGINATION_VO_CLASS,
+  METADATA_KEY_RESPONSE_SKIP_KEY,
+  METADATA_KEY_RESPONSE_VO_CLASS_KEY,
+} from '../constants'
 import { PaginationVo, ResponseNullVo, ResponseSuccessVo } from '../dtos'
 
 /**
@@ -124,4 +128,13 @@ export function ApiResponsePagination<T>(voClass: ClassConstructor<T>) {
  */
 export function ApiResponseNull() {
   return Response(ResponseDataType.NULL_DATA)
+}
+
+/**
+ * 响应装饰器 - 跳过拦截器
+ */
+export function ApiResponseSkip() {
+  return applyDecorators(
+    SetMetadata(METADATA_KEY_RESPONSE_SKIP_KEY, true),
+  )
 }

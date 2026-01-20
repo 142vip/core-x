@@ -9,7 +9,11 @@ import {
 import { SSE_METADATA } from '@nestjs/common/constants'
 import { plainToInstance } from 'class-transformer'
 import { map } from 'rxjs/operators'
-import { METADATA_KEY_PAGINATION_VO_CLASS, METADATA_KEY_RESPONSE_VO_CLASS_KEY } from '../constants'
+import {
+  METADATA_KEY_PAGINATION_VO_CLASS,
+  METADATA_KEY_RESPONSE_SKIP_KEY,
+  METADATA_KEY_RESPONSE_VO_CLASS_KEY,
+} from '../constants'
 import { PaginationVo } from '../dtos'
 
 @Injectable()
@@ -18,7 +22,13 @@ export class ResponseInterceptor implements NestInterceptor {
     // 获取当前处理的方法
     const ctxHandler = context.getHandler()
 
-    if (context.getType() !== 'http' || Reflect.getMetadata(SSE_METADATA, ctxHandler))
+    /**
+     * 跳过拦截器
+     * - 非Http请求
+     * - SSE请求
+     * - 用户显式跳过
+     */
+    if (context.getType() !== 'http' || Reflect.getMetadata(SSE_METADATA, ctxHandler) || Reflect.getMetadata(METADATA_KEY_RESPONSE_SKIP_KEY, ctxHandler))
       return next.handle()
 
     const response = context.switchToHttp().getResponse()
