@@ -51,9 +51,7 @@
     "@142vip/nest-logger": "workspace:*",
     "@142vip/nest-redis": "workspace:*",
     "@142vip/nest-typeorm": "workspace:*",
-    "@142vip/utils": "workspace:*",
-    "@nestjs/typeorm": "11.0.0",
-    "typeorm": "0.3.21"
+    "@142vip/utils": "workspace:*"
   },
   "dependencies": {
     "@142vip/nest": "workspace:*",

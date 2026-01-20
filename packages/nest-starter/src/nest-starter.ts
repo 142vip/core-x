@@ -6,6 +6,7 @@ import {
 } from '@142vip/nest'
 import { LoggerLevelEnum, NestLoggerModule } from '@142vip/nest-logger'
 import { NestRedisModule } from '@142vip/nest-redis'
+import { NestTypeOrmModule } from '@142vip/nest-typeorm'
 import { vipLogger } from '@142vip/utils'
 import {
   ClassSerializerInterceptor,
@@ -15,7 +16,6 @@ import {
   VersioningType,
 } from '@nestjs/common'
 import { APP_FILTER, APP_INTERCEPTOR, NestFactory } from '@nestjs/core'
-import { TypeOrmModule } from '@nestjs/typeorm'
 import { ClassConstructor } from 'class-transformer'
 import { selectConfig } from 'nest-typed-config'
 import { NestAppConfig } from './app.config'
@@ -36,7 +36,7 @@ export class NestStarter {
    */
   protected constructor(
     protected readonly nestApplicationOptions?: NestApplicationOptions,
-  ) { }
+  ) {}
 
   /**
    * 单例
@@ -134,7 +134,7 @@ export class NestStarter {
 
     // 注册TypeOrm模块
     if (nestStaterConfig.typeorm != null) {
-      imports.push(TypeOrmModule.forRoot(nestStaterConfig.typeorm))
+      imports.push(NestTypeOrmModule.forRoot(nestStaterConfig.typeorm))
     }
 
     return imports
