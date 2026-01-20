@@ -1,6 +1,15 @@
+import {
+  PaginationDto,
+  PaginationVo,
+  ResponseErrorVo,
+  ResponseNullVo,
+  ResponseSuccessVo,
+  ResponseVo,
+} from '@142vip/nest'
 import { VipColor } from '@142vip/utils'
 import { INestApplication } from '@nestjs/common'
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
+import { ApiResponseOptions } from '@nestjs/swagger/dist/decorators/api-response.decorator'
 import { OpenAPIObject, SwaggerCustomOptions } from '@nestjs/swagger/dist/interfaces'
 
 export interface DocumentBuilderOptions {
@@ -17,6 +26,7 @@ export interface DocumentBuilderOptions {
     name: string
     url: string
   }
+  globalResponses?: ApiResponseOptions[]
 }
 
 export interface SwaggerOptions {
@@ -57,6 +67,11 @@ export class SwaggerDocumentBuilder {
       document.setLicense(options.license.name, options.license.url)
     }
 
+    // 全局状态码
+    if (options.globalResponses != null) {
+      document.addGlobalResponse(...options.globalResponses)
+    }
+
     return document.build()
   }
 }
@@ -75,7 +90,10 @@ export class SwaggerManager {
    */
   public register(app: INestApplication): INestApplication {
     const documentConfig = new SwaggerDocumentBuilder().getConfig(this.swaggerOptions?.builderOptions)
-    const document = SwaggerModule.createDocument(app, documentConfig)
+    const document = SwaggerModule.createDocument(app, documentConfig, {
+      // 通用Vo模型
+      extraModels: [ResponseVo, ResponseSuccessVo, ResponseErrorVo, PaginationVo, ResponseNullVo, PaginationDto],
+    })
     SwaggerModule.setup(this.swaggerOptions.docPath, app, document, this.swaggerOptions.customOptions)
 
     return app
