@@ -51,15 +51,16 @@
     "@142vip/nest-logger": "workspace:*",
     "@142vip/nest-redis": "workspace:*",
     "@142vip/nest-typeorm": "workspace:*",
-    "@142vip/utils": "workspace:*"
+    "@142vip/utils": "workspace:*",
+    "@nestjs/typeorm": "11.0.0",
+    "typeorm": "0.3.21"
   },
   "dependencies": {
     "@142vip/nest": "workspace:*",
     "@142vip/nest-logger": "workspace:*",
     "@142vip/nest-redis": "workspace:*",
     "@142vip/nest-typeorm": "workspace:*",
-    "@142vip/utils": "workspace:*",
-    "@nestjs/swagger": "11.2.1"
+    "@142vip/utils": "workspace:*"
   },
   "publishConfig": {
     "access": "public",
