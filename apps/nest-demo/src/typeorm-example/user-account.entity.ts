@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn } from '@142vip/nest-typeorm'
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
 /**
  * 用户账号
  */

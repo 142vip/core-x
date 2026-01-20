@@ -1,4 +1,4 @@
-import { RedisService } from '@142vip/nest-starter'
+import { RedisService } from '@142vip/nest-redis'
 import { Injectable } from '@nestjs/common'
 
 const storeExample = { key: 'test', value: 'redis-example' }

@@ -1,9 +1,5 @@
 import { PaginationDto } from '@142vip/nest'
-import {
-  SwaggerIntersectionType,
-  SwaggerPartialType,
-  SwaggerPickType,
-} from '@142vip/nest-starter'
+
 import { Exclude, Expose } from 'class-transformer'
 import { IsNumber, IsString } from 'class-validator'
 
@@ -16,16 +12,21 @@ export class RestExampleDto {
   @IsNumber()
   id!: number
 
+  /**
+   * 姓名
+   * @example 张三
+   */
   @Expose()
   @IsString()
   name!: string
 }
 
+@Exclude()
 export class CreateRestExampleDTO extends RestExampleDto {
 }
 
 @Exclude()
-export class UpdateRestExampleDTO extends SwaggerPartialType(SwaggerPickType(RestExampleDto, ['name'])) {
+export class UpdateRestExampleDTO {
 
 }
 
@@ -35,10 +36,15 @@ export class DeleteRestExampleDTO {
 }
 
 @Exclude()
-export class GetRestExampleDTO extends SwaggerPartialType(RestExampleDto) {
+export class GetRestExampleDTO extends RestExampleDto {
 
 }
 
-export class GetRestExampleListDTO extends SwaggerIntersectionType(PaginationDto, SwaggerPartialType(RestExampleDto)) {
-
+@Exclude()
+export class GetRestExampleListDTO extends PaginationDto {
+  /**
+   * 测试
+   */
+  @Expose()
+  name!: number
 }
