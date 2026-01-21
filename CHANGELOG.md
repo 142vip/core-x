@@ -2,6 +2,121 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.38 (2026-01-21)
+
+### ✨ Features
+
+- 基于`@nestjs`生态，优化`nest`包`ts`配置 &nbsp;-&nbsp; by **chufan** [<samp>(5afa9)</samp>](https://github.com/142vip/core-x/commit/5afa90af)
+- 依赖优化，减少冗余依赖定义 &nbsp;-&nbsp; by **chufan** [<samp>(bf229)</samp>](https://github.com/142vip/core-x/commit/bf2290ff)
+- 调整侧边栏导航设置 &nbsp;-&nbsp; by **chufan** [<samp>(30d0d)</samp>](https://github.com/142vip/core-x/commit/30d0d2c8)
+- **@142vip/nest**:
+  - 增加`TransformUriPath`转换器 &nbsp;-&nbsp; by **chufan** [<samp>(b7f40)</samp>](https://github.com/142vip/core-x/commit/b7f40868)
+  - 优化ts类型和打包配置 &nbsp;-&nbsp; by **chufan** [<samp>(eb18b)</samp>](https://github.com/142vip/core-x/commit/eb18b14c)
+  - 增加`swagger`装饰器，用于接口`Response`声明 &nbsp;-&nbsp; by **chufan** [<samp>(cd85b)</samp>](https://github.com/142vip/core-x/commit/cd85bee3)
+  - 丰富`DTO`层校验，补充入参、出参定义模型 &nbsp;-&nbsp; by **chufan** [<samp>(79d74)</samp>](https://github.com/142vip/core-x/commit/79d749cd)
+  - 增加全局过滤器，通用型异常捕获 &nbsp;-&nbsp; by **chufan** [<samp>(6c891)</samp>](https://github.com/142vip/core-x/commit/6c891d0c)
+  - 增加上下文、响应拦截器，统一接口返回 &nbsp;-&nbsp; by **chufan** [<samp>(c0bfc)</samp>](https://github.com/142vip/core-x/commit/c0bfcf5d)
+  - 规范常量声明，支持元数据`Key`导出 &nbsp;-&nbsp; by **chufan** [<samp>(41685)</samp>](https://github.com/142vip/core-x/commit/41685702)
+  - 引入`rxjs`模块，支持全局过滤器 &nbsp;-&nbsp; by **chufan** [<samp>(4e0d2)</samp>](https://github.com/142vip/core-x/commit/4e0d2b2a)
+  - 增加`ApiResponseSkip`装饰器，跳过`Swagger`和拦截器处理 &nbsp;-&nbsp; by **chufan** [<samp>(7bfb2)</samp>](https://github.com/142vip/core-x/commit/7bfb2c51)
+  - 增加模块使用文档，补充实践示例 &nbsp;-&nbsp; by **chufan** [<samp>(5f2cf)</samp>](https://github.com/142vip/core-x/commit/5f2cf9a5)
+- **@142vip/nest-logger**:
+  - 优化ts类型和打包配置 &nbsp;-&nbsp; by **chufan** [<samp>(c3b28)</samp>](https://github.com/142vip/core-x/commit/c3b28e90)
+- **@142vip/nest-redis**:
+  - 优化ts类型和打包配置 &nbsp;-&nbsp; by **chufan** [<samp>(5ecaf)</samp>](https://github.com/142vip/core-x/commit/5ecafb7d)
+- **@142vip/nest-starter**:
+  - 优化`Swagger`管理器，支持多配置 &nbsp;-&nbsp; by **chufan** [<samp>(a27e9)</samp>](https://github.com/142vip/core-x/commit/a27e9f86)
+  - 拓展启动器通用配置，`typeorm`配置支持`MySQL`、`PG`数据库 &nbsp;-&nbsp; by **chufan** [<samp>(10589)</samp>](https://github.com/142vip/core-x/commit/10589629)
+  - 优化通用模块导出 &nbsp;-&nbsp; by **chufan** [<samp>(e0903)</samp>](https://github.com/142vip/core-x/commit/e0903a9c)
+  - 修改编译配置，支持`NodeNext`编译 &nbsp;-&nbsp; by **chufan** [<samp>(16300)</samp>](https://github.com/142vip/core-x/commit/163002e1)
+  - 优化ts类型和打包配置 &nbsp;-&nbsp; by **chufan** [<samp>(cf4ef)</samp>](https://github.com/142vip/core-x/commit/cf4ef9b8)
+  - 基于`@nestjs/typeorm`模块集成数据库 &nbsp;-&nbsp; by **chufan** [<samp>(cbd93)</samp>](https://github.com/142vip/core-x/commit/cbd93341)
+  - 支持Starter启动器类继承后，函数重写 &nbsp;-&nbsp; by **chufan** [<samp>(4eba2)</samp>](https://github.com/142vip/core-x/commit/4eba2052)
+  - 启动配置支持`swagger.builderOptions`选项 &nbsp;-&nbsp; by **chufan** [<samp>(303bb)</samp>](https://github.com/142vip/core-x/commit/303bb7da)
+  - 初始`swagger`时，基于`extraModels`增加`Vo`模型 &nbsp;-&nbsp; by **chufan** [<samp>(9d5ea)</samp>](https://github.com/142vip/core-x/commit/9d5ea28a)
+  - 优化启动逻辑，增加通用拦截器、过滤器设置 &nbsp;-&nbsp; by **chufan** [<samp>(34845)</samp>](https://github.com/142vip/core-x/commit/3484574c)
+  - 修改`NestTypeOrmModule`引入方式 &nbsp;-&nbsp; by **chufan** [<samp>(a0df3)</samp>](https://github.com/142vip/core-x/commit/a0df396d)
+- **@142vip/nest-typeorm**:
+  - 增加`DataType`枚举，修复`dataSourceName`参数异常 &nbsp;-&nbsp; by **chufan** [<samp>(90195)</samp>](https://github.com/142vip/core-x/commit/90195ae9)
+  - 补充模块导出 &nbsp;-&nbsp; by **chufan** [<samp>(5ef1c)</samp>](https://github.com/142vip/core-x/commit/5ef1cf0b)
+  - 修改编译配置，支持`NodeNext`编译 &nbsp;-&nbsp; by **chufan** [<samp>(97907)</samp>](https://github.com/142vip/core-x/commit/97907d50)
+  - 优化ts类型和打包配置 &nbsp;-&nbsp; by **chufan** [<samp>(63af5)</samp>](https://github.com/142vip/core-x/commit/63af5708)
+  - 补充`typeorm`工具类 &nbsp;-&nbsp; by **chufan** [<samp>(bd099)</samp>](https://github.com/142vip/core-x/commit/bd099e57)
+  - 修复模块导出逻辑，支持全局模块 &nbsp;-&nbsp; by **chufan** [<samp>(cf56d)</samp>](https://github.com/142vip/core-x/commit/cf56d99c)
+- **@142vip/utils**:
+  - 引入`address`依赖，增加`getAddress`方法，支持IP地址获取 &nbsp;-&nbsp; by **chufan** [<samp>(f927a)</samp>](https://github.com/142vip/core-x/commit/f927a76a)
+- **nest-demo**:
+  - 补充typeorm实战实践，简化通用配置和依赖 &nbsp;-&nbsp; by **chufan** [<samp>(bdd7e)</samp>](https://github.com/142vip/core-x/commit/bdd7e7f4)
+  - 简化示例代码，降低基础模块学习成本 &nbsp;-&nbsp; by **chufan** [<samp>(7779b)</samp>](https://github.com/142vip/core-x/commit/7779b50c)
+
+### 🐛 Bug Fixes
+
+- 修复装饰器不生效问题，`nest`包编译配置增加`useDefineForClassFields`选项 &nbsp;-&nbsp; by **chufan** [<samp>(c802e)</samp>](https://github.com/142vip/core-x/commit/c802e58e)
+- **@142vip/nest**:
+  - 修复`npm`包缺失`index`入口文件 &nbsp;-&nbsp; by **chufan** [<samp>(0ca78)</samp>](https://github.com/142vip/core-x/commit/0ca78863)
+- **@142vip/nest-logger**:
+  - 修复`npm`包缺失`index`入口文件 &nbsp;-&nbsp; by **chufan** [<samp>(f3ec5)</samp>](https://github.com/142vip/core-x/commit/f3ec5309)
+- **@142vip/nest-redis**:
+  - 修复`npm`包缺失`index`入口文件 &nbsp;-&nbsp; by **chufan** [<samp>(f8bd8)</samp>](https://github.com/142vip/core-x/commit/f8bd8e64)
+- **@142vip/nest-starter**:
+  - 修改`typeorm`配置，移除`debug`参数 &nbsp;-&nbsp; by **chufan** [<samp>(aa4cd)</samp>](https://github.com/142vip/core-x/commit/aa4cd10d)
+  - 修复`npm`包缺失`index`入口文件 &nbsp;-&nbsp; by **chufan** [<samp>(99a2b)</samp>](https://github.com/142vip/core-x/commit/99a2b073)
+- **@142vip/nest-typeorm**:
+  - 修复`dataSourceName`参数异常,增加`@Module`装饰器 &nbsp;-&nbsp; by **chufan** [<samp>(c6da9)</samp>](https://github.com/142vip/core-x/commit/c6da91eb)
+  - 修复`NestTypeOrmModule`类继承机制，优化导出逻辑 &nbsp;-&nbsp; by **chufan** [<samp>(01407)</samp>](https://github.com/142vip/core-x/commit/01407a6b)
+  - 修复`npm`包缺失`index`入口文件 &nbsp;-&nbsp; by **chufan** [<samp>(21449)</samp>](https://github.com/142vip/core-x/commit/21449c3c)
+- **@142vip/redis**:
+  - 修复.d.ts类型文件识别异常 &nbsp;-&nbsp; by **chufan** [<samp>(9a832)</samp>](https://github.com/142vip/core-x/commit/9a832215)
+- **nest-demo**:
+  - 修复`GET`接口参数异常 &nbsp;-&nbsp; by **chufan** [<samp>(bf521)</samp>](https://github.com/142vip/core-x/commit/bf5217f1)
+
+### 💅 Refactors
+
+- **@142vip/nest-starter**:
+  - 重写启动器逻辑，优化终端日志打印 &nbsp;-&nbsp; by **chufan** [<samp>(38771)</samp>](https://github.com/142vip/core-x/commit/387710d4)
+
+### 😏 Release Packages
+
+- **@142vip/nest**:
+  - Publish `v0.0.1-alpha.4` &nbsp;-&nbsp; by **chufan** [<samp>(76efe)</samp>](https://github.com/142vip/core-x/commit/76efe4d1)
+  - Publish `v0.0.1-alpha.5` &nbsp;-&nbsp; by **chufan** [<samp>(f959a)</samp>](https://github.com/142vip/core-x/commit/f959aed2)
+  - Publish `v0.0.1-alpha.6` &nbsp;-&nbsp; by **chufan** [<samp>(c3880)</samp>](https://github.com/142vip/core-x/commit/c388040c)
+  - Publish `v0.0.1-alpha.7` &nbsp;-&nbsp; by **chufan** [<samp>(5254b)</samp>](https://github.com/142vip/core-x/commit/5254be62)
+- **@142vip/nest-logger**:
+  - Publish `v0.0.1-alpha.2` &nbsp;-&nbsp; by **chufan** [<samp>(7152f)</samp>](https://github.com/142vip/core-x/commit/7152f86a)
+  - Publish `v0.0.1-alpha.3` &nbsp;-&nbsp; by **chufan** [<samp>(6503d)</samp>](https://github.com/142vip/core-x/commit/6503d727)
+- **@142vip/nest-redis**:
+  - Publish `v0.0.1-alpha.4` &nbsp;-&nbsp; by **chufan** [<samp>(83494)</samp>](https://github.com/142vip/core-x/commit/8349446d)
+  - Publish `v0.0.1-alpha.5` &nbsp;-&nbsp; by **chufan** [<samp>(203e5)</samp>](https://github.com/142vip/core-x/commit/203e56ad)
+- **@142vip/nest-starter**:
+  - Publish `v0.0.1-alpha.4` &nbsp;-&nbsp; by **chufan** [<samp>(89082)</samp>](https://github.com/142vip/core-x/commit/8908206b)
+  - Publish `v0.0.1-alpha.5` &nbsp;-&nbsp; by **chufan** [<samp>(11628)</samp>](https://github.com/142vip/core-x/commit/11628378)
+  - Publish `v0.0.1-alpha.6` &nbsp;-&nbsp; by **chufan** [<samp>(5c2bc)</samp>](https://github.com/142vip/core-x/commit/5c2bc617)
+  - Publish `v0.0.1-alpha.7` &nbsp;-&nbsp; by **chufan** [<samp>(412c4)</samp>](https://github.com/142vip/core-x/commit/412c4832)
+  - Publish `v0.0.1-alpha.8` &nbsp;-&nbsp; by **chufan** [<samp>(42e5b)</samp>](https://github.com/142vip/core-x/commit/42e5ba4f)
+  - Publish `v0.0.1-alpha.9` &nbsp;-&nbsp; by **chufan** [<samp>(27990)</samp>](https://github.com/142vip/core-x/commit/279909a2)
+  - Publish `v0.0.1-alpha.10` &nbsp;-&nbsp; by **chufan** [<samp>(42b82)</samp>](https://github.com/142vip/core-x/commit/42b821b1)
+  - Publish `v0.0.1-alpha.11` &nbsp;-&nbsp; by **chufan** [<samp>(816b2)</samp>](https://github.com/142vip/core-x/commit/816b2933)
+  - Publish `v0.0.1-alpha.12` &nbsp;-&nbsp; by **chufan** [<samp>(c13b1)</samp>](https://github.com/142vip/core-x/commit/c13b17de)
+- **@142vip/nest-typeorm**:
+  - Publish `v0.0.1-alpha.2` &nbsp;-&nbsp; by **chufan** [<samp>(cd5f8)</samp>](https://github.com/142vip/core-x/commit/cd5f8f56)
+  - Publish `v0.0.1-alpha.3` &nbsp;-&nbsp; by **chufan** [<samp>(e6dce)</samp>](https://github.com/142vip/core-x/commit/e6dcecba)
+  - Publish `v0.0.1-alpha.4` &nbsp;-&nbsp; by **chufan** [<samp>(53e9b)</samp>](https://github.com/142vip/core-x/commit/53e9ba28)
+  - Publish `v0.0.1-alpha.5` &nbsp;-&nbsp; by **chufan** [<samp>(e54d7)</samp>](https://github.com/142vip/core-x/commit/e54d75d4)
+  - Publish `v0.0.1-alpha.6` &nbsp;-&nbsp; by **chufan** [<samp>(53c5c)</samp>](https://github.com/142vip/core-x/commit/53c5cdf5)
+  - Publish `v0.0.1-alpha.7` &nbsp;-&nbsp; by **chufan** [<samp>(7c80e)</samp>](https://github.com/142vip/core-x/commit/7c80e7d4)
+  - Publish `v0.0.1-alpha.8` &nbsp;-&nbsp; by **chufan** [<samp>(ac5cc)</samp>](https://github.com/142vip/core-x/commit/ac5cc6c3)
+- **@142vip/redis**:
+  - Publish `v0.0.1-alpha.5` &nbsp;-&nbsp; by **chufan** [<samp>(ca7c9)</samp>](https://github.com/142vip/core-x/commit/ca7c97af)
+- **@142vip/utils**:
+  - Publish `v0.0.1-alpha.46` &nbsp;-&nbsp; by **chufan** [<samp>(6849c)</samp>](https://github.com/142vip/core-x/commit/6849cc12)
+- **nest-demo**:
+  - Publish `v0.0.1-alpha.2` &nbsp;-&nbsp; by **chufan** [<samp>(d9515)</samp>](https://github.com/142vip/core-x/commit/d9515673)
+  - Publish `v0.0.1-alpha.3` &nbsp;-&nbsp; by **chufan** [<samp>(4b428)</samp>](https://github.com/142vip/core-x/commit/4b428701)
+  - Publish `v0.0.1-alpha.4` &nbsp;-&nbsp; by **chufan** [<samp>(1fc37)</samp>](https://github.com/142vip/core-x/commit/1fc37497)
+
+**Release New Version v0.0.1-alpha.38 [👉 View Changes On GitHub](https://github.com/142vip/core-x/compare/v0.0.1-alpha.37...v0.0.1-alpha.38)**
+
 ## v0.0.1-alpha.37 (2025-12-06)
 
 ### ✨ Features
