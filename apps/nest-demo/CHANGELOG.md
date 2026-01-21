@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.4 (2026-01-21)
+
+### ✨ Features
+
+- 简化示例代码，降低基础模块学习成本 &nbsp;-&nbsp; by **chufan** [<samp>(7779b)</samp>](https://github.com/142vip/core-x/commit/7779b50c)
+
+**Release New Version v0.0.1-alpha.4 [👉 View New Package On NPM](https://www.npmjs.com/package/nest-demo)**
+
 ## v0.0.1-alpha.3 (2026-01-06)
 
 ### 🐛 Bug Fixes
