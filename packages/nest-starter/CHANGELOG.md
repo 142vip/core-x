@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.12 (2026-01-21)
+
+### ✨ Features
+
+- 启动配置支持`swagger.builderOptions`选项 &nbsp;-&nbsp; by **chufan** [<samp>(303bb)</samp>](https://github.com/142vip/core-x/commit/303bb7da)
+- 初始`swagger`时，基于`extraModels`增加`Vo`模型 &nbsp;-&nbsp; by **chufan** [<samp>(9d5ea)</samp>](https://github.com/142vip/core-x/commit/9d5ea28a)
+- 优化启动逻辑，增加通用拦截器、过滤器设置 &nbsp;-&nbsp; by **chufan** [<samp>(34845)</samp>](https://github.com/142vip/core-x/commit/3484574c)
+- 修改`NestTypeOrmModule`引入方式 &nbsp;-&nbsp; by **chufan** [<samp>(a0df3)</samp>](https://github.com/142vip/core-x/commit/a0df396d)
+
+**Release New Version v0.0.1-alpha.12 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/nest-starter)**
+
 ## v0.0.1-alpha.11 (2026-01-11)
 
 ### ✨ Features
