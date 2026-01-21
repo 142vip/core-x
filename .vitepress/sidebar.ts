@@ -2,13 +2,13 @@ import type { SidebarConfig, VipPackageJSON, VipProject } from '@142vip/vitepres
 import { defineVipSidebarConfig } from '@142vip/vitepress'
 
 enum ProjectId {
-  BUSINESS = '商业代码',
+  BUSINESS = '商业模块',
   TOOLS = '通用工具',
   EGG = 'Egg.js框架',
   NEST = 'Nest.js框架',
   BLOG = '博客工具',
   INFRA = '工程化',
-  DEMO = '演示Demo',
+  DEMO = '最佳实践',
 }
 
 /**
@@ -19,6 +19,15 @@ export const sidebarConfig = defineVipSidebarConfig([
     text: `💵 ${ProjectId.BUSINESS}`,
     items: [
       { text: '@142vip/data-source', link: '/packages/data-source/index.md' },
+    ],
+  },
+  {
+    text: `🎮 ${ProjectId.DEMO}`,
+    items: [
+      { text: 'egg-demo', link: '/apps/egg-demo/index.md' },
+      { text: 'nest-demo', link: '/apps/nest-demo/index.md' },
+      { text: 'vitepress-demo', link: '/apps/vitepress-demo/index.md' },
+      { text: 'vuepress-demo', link: '/apps/vuepress-demo/index.md' },
     ],
   },
   {
@@ -73,15 +82,6 @@ export const sidebarConfig = defineVipSidebarConfig([
     items: [
       { text: '@142vip/vitepress', link: '/packages/vitepress/index.md' },
       { text: '@142vip/vuepress', link: '/packages/vuepress/index.md' },
-    ],
-  },
-  {
-    text: `🎮 ${ProjectId.DEMO}`,
-    items: [
-      { text: 'egg-demo', link: '/apps/egg-demo/index.md' },
-      { text: 'nest-demo', link: '/apps/nest-demo/index.md' },
-      { text: 'vitepress-demo', link: '/apps/vitepress-demo/index.md' },
-      { text: 'vuepress-demo', link: '/apps/vuepress-demo/index.md' },
     ],
   },
 ])
