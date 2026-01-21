@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.7 (2026-01-21)
+
+### ✨ Features
+
+- 增加`swagger`装饰器，用于接口`Response`声明 &nbsp;-&nbsp; by **chufan** [<samp>(cd85b)</samp>](https://github.com/142vip/core-x/commit/cd85bee3)
+- 丰富`DTO`层校验，补充入参、出参定义模型 &nbsp;-&nbsp; by **chufan** [<samp>(79d74)</samp>](https://github.com/142vip/core-x/commit/79d749cd)
+- 增加全局过滤器，通用型异常捕获 &nbsp;-&nbsp; by **chufan** [<samp>(6c891)</samp>](https://github.com/142vip/core-x/commit/6c891d0c)
+- 增加上下文、响应拦截器，统一接口返回 &nbsp;-&nbsp; by **chufan** [<samp>(c0bfc)</samp>](https://github.com/142vip/core-x/commit/c0bfcf5d)
+- 规范常量声明，支持元数据`Key`导出 &nbsp;-&nbsp; by **chufan** [<samp>(41685)</samp>](https://github.com/142vip/core-x/commit/41685702)
+- 引入`rxjs`模块，支持全局过滤器 &nbsp;-&nbsp; by **chufan** [<samp>(4e0d2)</samp>](https://github.com/142vip/core-x/commit/4e0d2b2a)
+- 增加`ApiResponseSkip`装饰器，跳过`Swagger`和拦截器处理 &nbsp;-&nbsp; by **chufan** [<samp>(7bfb2)</samp>](https://github.com/142vip/core-x/commit/7bfb2c51)
+- 增加模块使用文档，补充实践示例 &nbsp;-&nbsp; by **chufan** [<samp>(5f2cf)</samp>](https://github.com/142vip/core-x/commit/5f2cf9a5)
+
+**Release New Version v0.0.1-alpha.7 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/nest)**
+
 ## v0.0.1-alpha.6 (2026-01-06)
 
 ### 🐛 Bug Fixes
