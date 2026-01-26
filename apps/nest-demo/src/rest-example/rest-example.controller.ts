@@ -28,7 +28,7 @@ export class RestExampleController {
   }
 
   /**
-   * 获取单页
+   * 获取 - 单页
    */
   @Get('/')
   @ApiResponseObject(GetRestExampleVo)
@@ -40,7 +40,7 @@ export class RestExampleController {
   }
 
   /**
-   * 获取列表
+   * 获取 - 列表
    */
   @Get('/list')
   @ApiResponsePagination(GetRestExampleListVo)

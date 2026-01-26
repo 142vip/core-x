@@ -1,17 +1,9 @@
-import { PaginationDto } from '@142vip/nest'
-
+import { BaseEntityDto, PaginationDto } from '@142vip/nest'
 import { Exclude, Expose } from 'class-transformer'
-import { IsNumber, IsString } from 'class-validator'
+import { IsString } from 'class-validator'
 
 @Exclude()
-export class RestExampleDto {
-  /**
-   * @example 1
-   */
-  @Expose()
-  @IsNumber()
-  id!: number
-
+export class RestExampleDto extends BaseEntityDto {
   /**
    * 姓名
    * @example 张三
