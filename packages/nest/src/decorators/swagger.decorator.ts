@@ -1,4 +1,9 @@
-import { applyDecorators, SetMetadata } from '@nestjs/common'
+import {
+  applyDecorators,
+  HttpCode,
+  HttpStatus,
+  SetMetadata,
+} from '@nestjs/common'
 import {
   ApiExtraModels,
   ApiOkResponse,
@@ -29,8 +34,13 @@ enum ResponseDataType {
  * @param voClass 响应VO类
  */
 function Response<T>(dataType: ResponseDataType, voClass?: ClassConstructor<T>) {
+  const baseDecorators = [
+    // 接口状态码统一设置成200
+    HttpCode(HttpStatus.OK),
+  ]
   if (dataType === ResponseDataType.NULL_DATA || voClass == null) {
     return applyDecorators(
+      ...baseDecorators,
       ApiOkResponse({
         description: '请求成功',
         type: ResponseNullVo,
@@ -81,6 +91,8 @@ function Response<T>(dataType: ResponseDataType, voClass?: ClassConstructor<T>) 
     : METADATA_KEY_RESPONSE_VO_CLASS_KEY
 
   return applyDecorators(
+    ...baseDecorators,
+
     // 设置元数据， 分页、对象
     SetMetadata(metadataKey, voClass),
 
