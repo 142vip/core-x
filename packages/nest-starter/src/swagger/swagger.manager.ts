@@ -1,4 +1,6 @@
 import {
+  BaseEntityDto,
+  BaseEntityVo,
   PaginationDto,
   PaginationVo,
   ResponseErrorVo,
@@ -92,7 +94,7 @@ export class SwaggerManager {
     const documentConfig = new SwaggerDocumentBuilder().getConfig(this.swaggerOptions?.builderOptions)
     const document = SwaggerModule.createDocument(app, documentConfig, {
       // 通用Vo模型
-      extraModels: [ResponseVo, ResponseSuccessVo, ResponseErrorVo, PaginationVo, ResponseNullVo, PaginationDto],
+      extraModels: [ResponseVo, ResponseSuccessVo, ResponseErrorVo, PaginationVo, ResponseNullVo, PaginationDto, BaseEntityDto, BaseEntityVo],
     })
     SwaggerModule.setup(this.swaggerOptions.docPath, app, document, this.swaggerOptions.customOptions)
 
