@@ -1,3 +1,5 @@
+export * from './base-entity.dto'
+export * from './base-entity.vo'
 export * from './base.vo'
 export * from './pagination.dto'
 export * from './pagination.vo'
