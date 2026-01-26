@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.8 (2026-01-26)
+
+### ✨ Features
+
+- `Response`函数增加`HttpCode`装饰器逻辑 &nbsp;-&nbsp; by **chufan** [<samp>(b149b)</samp>](https://github.com/142vip/core-x/commit/b149bae0)
+
+**Release New Version v0.0.1-alpha.8 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/nest)**
+
 ## v0.0.1-alpha.7 (2026-01-21)
 
 ### ✨ Features
