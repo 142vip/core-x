@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger'
 import { Exclude, Expose, Transform } from 'class-transformer'
-import { IsOptional, IsPositive } from 'class-validator'
+import { IsOptional, isPositive, IsPositive } from 'class-validator'
 
 /**
  * 默认页号
@@ -26,10 +26,8 @@ export class PaginationDto {
     example: 1,
   })
   @IsOptional()
+  @Transform(({ value }) => isPositive(value) ? value : DEFAULT_PAGE_NUM)
   @IsPositive()
-  @Transform(({ value }) => {
-    return value ?? DEFAULT_PAGE_NUM
-  })
   pageNum!: number
 
   /**
@@ -42,9 +40,7 @@ export class PaginationDto {
     example: 10,
   })
   @IsOptional()
+  @Transform(({ value }) => isPositive(value) ? value : DEFAULT_PAGE_SIZE)
   @IsPositive()
-  @Transform(({ value }) => {
-    return value ?? DEFAULT_PAGE_SIZE
-  })
   pageSize!: number
 }
