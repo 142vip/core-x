@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.9 (2026-01-28)
+
+### 🐛 Bug Fixes
+
+- 修复分页`PaginationDto`校验逻辑异常 &nbsp;-&nbsp; by **chufan** [<samp>(4a77d)</samp>](https://github.com/142vip/core-x/commit/4a77d7d5)
+
+**Release New Version v0.0.1-alpha.9 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/nest)**
+
 ## v0.0.1-alpha.8 (2026-01-26)
 
 ### ✨ Features
