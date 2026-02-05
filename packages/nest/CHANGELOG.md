@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.10 (2026-02-06)
+
+### 🐛 Bug Fixes
+
+- 分页功能返回结构修改，主体数据用records字段 &nbsp;-&nbsp; by **chufan** [<samp>(c3858)</samp>](https://github.com/142vip/core-x/commit/c38582a5)
+
+**Release New Version v0.0.1-alpha.10 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/nest)**
+
 ## v0.0.1-alpha.9 (2026-01-28)
 
 ### 🐛 Bug Fixes
