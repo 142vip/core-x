@@ -57,7 +57,7 @@ function Response<T>(dataType: ResponseDataType, voClass?: ClassConstructor<T>) 
         { $ref: getSchemaPath(PaginationVo) },
         {
           properties: {
-            list: {
+            records: {
               type: 'array',
               items: { $ref: getSchemaPath(voClass) },
             },

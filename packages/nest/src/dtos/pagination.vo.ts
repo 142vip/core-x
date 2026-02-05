@@ -16,7 +16,7 @@ export class PaginationVo<T> extends BaseVo<PaginationVo<T>> {
     description: '分页数据',
     example: [],
   })
-  list!: T[]
+  records!: T[]
 
   /**
    * 当前页码
@@ -70,14 +70,14 @@ export class PaginationVo<T> extends BaseVo<PaginationVo<T>> {
    * 格式化分页数据
    */
   static format<T>(ItemVoCla: ClassConstructor<T>, params: PaginationVo<T>): PaginationVo<T> {
-    const list = params.list.map(item => plainToInstance(ItemVoCla, item))
+    const records = params.records.map(item => plainToInstance(ItemVoCla, item))
 
     return plainToInstance(PaginationVo<T>, {
       pageNum: params.pageNum,
       pageSize: params.pageSize,
       pageCount: Math.ceil(params.total / params.pageSize),
       total: params.total,
-      list,
+      records,
     })
   }
 }
