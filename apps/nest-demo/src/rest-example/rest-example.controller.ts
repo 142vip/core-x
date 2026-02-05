@@ -1,4 +1,4 @@
-import { ApiResponseNull, ApiResponseObject, ApiResponsePagination } from '@142vip/nest'
+import { ApiResponseNull, ApiResponseObject, ApiResponsePagination, PaginationResponse } from '@142vip/nest'
 import { Body, Controller, Delete, Get, Patch, Post, Query } from '@nestjs/common'
 import { ApiTags } from '@nestjs/swagger'
 import {
@@ -46,11 +46,11 @@ export class RestExampleController {
   @ApiResponsePagination(GetRestExampleListVo)
   public async 'Get /list'(
     @Query() params: GetRestExampleListDTO,
-  ) {
+  ): Promise<PaginationResponse<GetRestExampleListVo>> {
     const examples = this.restExampleService.getExampleList()
     return {
       total: 1,
-      list: examples,
+      records: examples,
       pageNum: params.pageNum,
       pageSize: params.pageSize,
     }

@@ -1,4 +1,5 @@
 import { BaseEntityDto, PaginationDto } from '@142vip/nest'
+import { ApiPropertyOptional } from '@nestjs/swagger'
 import { Exclude, Expose } from 'class-transformer'
 import { IsString } from 'class-validator'
 
@@ -11,6 +12,18 @@ export class RestExampleDto extends BaseEntityDto {
   @Expose()
   @IsString()
   name!: string
+
+  /**
+   * 自定义信息
+   */
+  @Expose()
+  @ApiPropertyOptional({
+    example: {
+      age: 18,
+      sex: '男',
+    },
+  })
+  info?: Record<string, any>
 }
 
 @Exclude()
@@ -18,7 +31,7 @@ export class CreateRestExampleDTO extends RestExampleDto {
 }
 
 @Exclude()
-export class UpdateRestExampleDTO {
+export class UpdateRestExampleDTO extends RestExampleDto {
 
 }
 

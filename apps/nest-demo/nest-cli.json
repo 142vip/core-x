@@ -9,6 +9,7 @@
         "options": {
           "classValidatorShim": true,
           "introspectComments": true,
+          "skipAutoHttpCode": false,
           "dtoFileNameSuffix": [
             ".dto.ts",
             ".vo.ts",
