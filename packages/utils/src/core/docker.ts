@@ -22,6 +22,7 @@ interface BuildImageDockerOptions extends DockerOptions {
   // build命令时，GC限制内存大小
   memory?: number
   platform?: string
+  progress?: 'plain' | 'auto' | boolean
 }
 
 interface UserLoginDockerOptions extends DockerOptions {
@@ -235,8 +236,11 @@ async function buildImage(args: BuildImageDockerOptions): Promise<void> {
   const targetParams = args.target != null ? `--target ${args.target}` : ''
   const memoryParams = args.memory != null ? `--memory=${args.memory}mb` : ''
   const platformParams = args.platform != null ? `--platform=${args.platform}` : ''
+  const pushParams = args.push ? '--push' : ''
+  const progressParmas = args.progress ? `--progress=${args.progress}` : ''
 
-  const command = `docker build ${buildArg} ${targetParams} ${memoryParams} ${platformParams} -t '${args.imageName}' .`
+  // 支持buildx
+  const command = `docker buildx build ${buildArg} ${pushParams} ${progressParmas} ${targetParams} ${memoryParams} ${platformParams} -t '${args.imageName}' .`
 
   if (args.logger) {
     vipLogger.log(`执行的命令：\n`, { startLabel: VipSymbols.success })
@@ -245,15 +249,6 @@ async function buildImage(args: BuildImageDockerOptions): Promise<void> {
   vipLogger.log(args.imageName, { startLabel: '构建镜像' })
 
   await scriptExecutor(command)
-
-  if (args.push) {
-    const exist = await isExistImage(args.imageName)
-
-    if (exist) {
-      vipLogger.log(args.imageName, { startLabel: '推送镜像' })
-      await pushImage(args.imageName)
-    }
-  }
 
   // 推送完删除
   if (args.push && args.delete) {
