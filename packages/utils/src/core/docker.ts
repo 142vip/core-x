@@ -240,7 +240,7 @@ async function buildImage(args: BuildImageDockerOptions): Promise<void> {
   const progressParmas = args.progress ? `--progress=${args.progress}` : ''
 
   // 支持buildx
-  const command = `docker buildx build ${buildArg} ${pushParams} ${progressParmas} ${targetParams} ${memoryParams} ${platformParams} -t '${args.imageName}' .`
+  const command = `DOCKER_BUILDKIT=1 docker buildx build ${buildArg} ${pushParams} ${progressParmas} ${targetParams} ${memoryParams} ${platformParams} -t '${args.imageName}' .`
 
   if (args.logger) {
     vipLogger.log(`执行的命令：\n`, { startLabel: VipSymbols.success })
