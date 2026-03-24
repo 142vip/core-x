@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.47 (2026-03-24)
+
+### ✨ Features
+
+- 增加`buildImage`参数，支持日志打印、镜像推送 &nbsp;-&nbsp; by **142vip.cn** in https://github.com/142vip/core-x/issues/773 [<samp>(3ce47)</samp>](https://github.com/142vip/core-x/commit/3ce47fa0)
+
+**Release New Version v0.0.1-alpha.47 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/utils)**
+
 ## v0.0.1-alpha.46 (2025-12-31)
 
 ### ✨ Features
