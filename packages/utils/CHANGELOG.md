@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.48 (2026-03-25)
+
+### 🐛 Bug Fixes
+
+- 修复`getBase`逻辑异常 &nbsp;-&nbsp; by **chufan** [<samp>(67baf)</samp>](https://github.com/142vip/core-x/commit/67baf402)
+
+**Release New Version v0.0.1-alpha.48 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/utils)**
+
 ## v0.0.1-alpha.47 (2026-03-24)
 
 ### ✨ Features
