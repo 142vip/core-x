@@ -31,7 +31,7 @@ pnpm i @142vip/utils
 适合浏览器、SSR 前端、同构代码中直接使用的能力，优先从根入口导入即可：
 
 ```ts
-import { VipSemver, vipDocSite, vipQs, vipDayjs } from '@142vip/utils'
+import { vipDayjs, vipDocSite, vipQs, VipSemver } from '@142vip/utils'
 
 const version = VipSemver.valid('1.2.3')
 const query = vipQs.stringify({ page: 1, size: 10 })
@@ -60,7 +60,7 @@ console.log(version, query, date, base)
 Node 服务端可以继续直接使用根入口，保留现有完整能力：
 
 ```ts
-import { VipExecutor, VipPackageJSON, VipInquirer } from '@142vip/utils'
+import { VipExecutor, VipInquirer, VipPackageJSON } from '@142vip/utils'
 
 async function bootstrap() {
   const packageJSON = VipPackageJSON.getPackageJSON()
@@ -95,7 +95,7 @@ void bootstrap()
 如果项目本身是复杂 monorepo、SSR 或自定义构建链路，建议按运行时显式导入：
 
 ```ts
-import { VipSemver, vipDocSite } from '@142vip/utils/browser'
+import { vipDocSite, VipSemver } from '@142vip/utils/browser'
 import { VipExecutor, VipPackageJSON } from '@142vip/utils/node'
 ```
 
