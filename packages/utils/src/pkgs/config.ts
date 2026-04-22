@@ -1,4 +1,4 @@
-import type { OptionsSync } from 'cosmiconfig/dist/types'
+import type { OptionsSync } from 'cosmiconfig'
 import { cosmiconfigSync } from 'cosmiconfig'
 import { vipLodash } from './lodash'
 

@@ -1,8 +1,8 @@
-export * from './doc-site'
 export * from './docker'
 export * from './exec'
 export * from './git'
-export * from './logger'
+// 包含浏览器
+export * from './index-browser'
 export * from './monorepo'
 export * from './nodejs'
 export * from './npm'

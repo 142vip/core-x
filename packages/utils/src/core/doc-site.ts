@@ -1,4 +1,10 @@
-import { VipNodeJS } from './nodejs'
+function getProcessEnv(key: string): string | undefined {
+  if (typeof process === 'undefined' || process.env == null) {
+    return undefined
+  }
+
+  return process.env[key]
+}
 
 /**
  * 博客站点的工具方法
@@ -17,7 +23,7 @@ export class VipDocSite {
    * @param envKey 环境变量的键
    */
   public getBase(baseName: string, envKey?: string): '/' | `/${string}/` {
-    const needProxy = !!VipNodeJS.getProcessEnv(envKey ?? this.defaultEnvKey)
+    const needProxy = !!getProcessEnv(envKey ?? this.defaultEnvKey)
 
     return needProxy ? `/${baseName}/` : '/'
   }
