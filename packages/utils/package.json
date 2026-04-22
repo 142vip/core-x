@@ -22,9 +22,20 @@
   "sideEffects": false,
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
+      "browser": {
+        "import": "./dist/browser.mjs",
+        "require": "./dist/browser.cjs"
+      },
       "import": "./dist/index.mjs",
       "require": "./dist/index.cjs"
+    },
+    "./browser": {
+      "import": "./dist/browser.mjs",
+      "require": "./dist/browser.cjs"
+    },
+    "./node": {
+      "import": "./dist/node.mjs",
+      "require": "./dist/node.cjs"
     }
   },
   "main": "./dist/index.mjs",
