@@ -23,6 +23,13 @@ export class VipDayjs {
   }
 
   /**
+   * 获取时间戳。单位：毫秒
+   */
+  public getTimestamp(date: ConfigType): number {
+    return dayjs(date).valueOf()
+  }
+
+  /**
    * 获取过期时间戳。单位：毫秒
    * @param duration 过期时间，默认：1小时
    */
