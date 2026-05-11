@@ -2,10 +2,20 @@
 import { ElBacktop } from 'element-plus'
 import 'element-plus/theme-chalk/base.css'
 import 'element-plus/theme-chalk/el-backtop.css'
+
+withDefaults(
+  defineProps<{
+    /** 距视口底部（px）→ ElBacktop `bottom` */
+    bottom?: number
+    /** 距视口右侧（px）→ ElBacktop `right` */
+    right?: number
+  }>(),
+  { bottom: 80, right: 30 },
+)
 </script>
 
 <template>
-  <ElBacktop :bottom="180" :right="30">
+  <ElBacktop :bottom="bottom" :right="right">
     <span class="vip-back-top__trigger">↑</span>
   </ElBacktop>
 </template>
