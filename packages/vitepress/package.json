@@ -36,6 +36,11 @@
       "types": "./dist/theme/index.d.ts",
       "import": "./dist/theme/index.mjs",
       "require": "./dist/theme/index.js"
+    },
+    "./workspace": {
+      "types": "./dist/workspace/index.d.ts",
+      "import": "./dist/workspace/index.mjs",
+      "require": "./dist/workspace/index.js"
     }
   },
   "main": "./dist/index.mjs",
@@ -50,7 +55,8 @@
   "files": [
     "components.d.ts",
     "dist",
-    "theme.d.ts"
+    "theme.d.ts",
+    "workspace.d.ts"
   ],
   "scripts": {
     "build": "unbuild",
