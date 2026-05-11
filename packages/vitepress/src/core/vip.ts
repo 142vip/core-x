@@ -1,5 +1,3 @@
-import type { PackageJSON } from '@142vip/utils'
-
 /**
  * 页脚参数
  */
@@ -82,7 +80,9 @@ export const vipTeamMembers = [
 /**
  * 基本包结构
  */
-export interface VipPackageJSON extends Pick<PackageJSON, 'name' | 'version'> {
+export interface VipPackageJSON {
+  name: string
+  version: string
   description: string
   private?: boolean
 }
