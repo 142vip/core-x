@@ -6,19 +6,10 @@ import {
   VipProjectTable,
   VipTeam,
 } from '@142vip/vitepress/components'
-import { onMounted, ref } from 'vue'
-import { getCoreProjectData, getExampleDemoTableData } from '../../sidebar'
+import { getCoreProjectData, getExampleDemoTableData } from './project-data'
 
-const coreProjectTableData = ref<any[]>([])
-const exampleDemoTableData = ref()
-
-/**
- * 异步加载表格数据
- */
-onMounted(async () => {
-  coreProjectTableData.value = await getCoreProjectData()
-  exampleDemoTableData.value = await getExampleDemoTableData()
-})
+const exampleDemoTableData = getExampleDemoTableData()
+const coreProjectTableData = getCoreProjectData()
 </script>
 
 <!-- 首页 -->

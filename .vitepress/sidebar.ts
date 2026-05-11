@@ -1,7 +1,6 @@
-import type { SidebarConfig, VipPackageJSON, VipProject } from '@142vip/vitepress'
-import { defineVipSidebarConfig } from '@142vip/vitepress'
+import { defineVipSidebarConfig, SidebarConfig } from '@142vip/vitepress'
 
-enum ProjectId {
+export enum ProjectId {
   BUSINESS = '商业模块',
   TOOLS = '通用工具',
   EGG = 'Egg.js框架',
@@ -85,73 +84,6 @@ export const sidebarConfig = defineVipSidebarConfig([
     ],
   },
 ])
-
-/**
- * 获取基本包信息
- * - 注意目录格式，例如：@packages/utils
- * @vite-ignore
- */
-async function getBasePkgJSON(pkgDirName: string): Promise<VipPackageJSON> {
-  // 参考格式：@packages/xxx @apps/xxx
-  return await import(`@packages/${pkgDirName}/package.json`)
-}
-
-/**
- * 获取apps目录下的模块
- * - @apps/vitepress-demo
- */
-async function getAppsPkgJSON(pkgDirName: string): Promise<VipPackageJSON> {
-  // 参考格式：@packages/xxx @apps/xxx
-  return await import(`@apps/${pkgDirName}/package.json`)
-}
-
-/**
- * 动态获取模块信息
- * - 注意：遍历侧边栏
- */
-export async function getCoreProjectData(): Promise<VipProject[]> {
-  const coreProjects: VipProject[] = []
-  for (const { items = [], text = '' } of sidebarConfig) {
-    // 过滤掉apps下的模块
-    if (text?.includes(ProjectId.DEMO)) {
-      continue
-    }
-    for (const { text: pkgName = '' } of items) {
-      const pkgDirName = pkgName.split('@142vip/')[1]
-      const basePkg = await getBasePkgJSON(`${pkgDirName}`)
-      coreProjects.push({
-        ...basePkg,
-        // 约定：图标+文字
-        id: text.split(' ')[0],
-        changelog: `../changelogs/${pkgDirName}/changelog.html`,
-        readme: `../packages/${pkgDirName}/index.html`,
-        sourceCode: `https://github.com/142vip/core-x/tree/main/packages/${pkgDirName}/`,
-      })
-    }
-  }
-  return coreProjects
-}
-
-/**
- * demo项目，用于项目展示
- */
-export async function getExampleDemoTableData(): Promise<VipProject[]> {
-  const pkgNames = ['egg-demo', 'nest-demo', 'vuepress-demo', 'vitepress-demo']
-
-  const exampleDemos: VipProject[] = []
-  for (const pkgDirName of pkgNames) {
-    const pkg = await getAppsPkgJSON(`${pkgDirName}`)
-    exampleDemos.push({
-      ...pkg,
-      private: true,
-      id: '🤡',
-      changelog: `../changelogs/${pkgDirName}/changelog.html`,
-      readme: `../apps/${pkgDirName}/index.html`,
-      sourceCode: `https://github.com/142vip/core-x/tree/main/apps/${pkgDirName}/`,
-    })
-  }
-  return exampleDemos
-}
 
 /**
  * 根据侧边栏获取变更日志侧边栏
