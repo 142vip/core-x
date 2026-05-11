@@ -5,6 +5,8 @@ import { ElBacktop, ElImage, ElTable, ElTableColumn, ElTag } from 'element-plus'
 import DefaultTheme from 'vitepress/theme'
 import { h } from 'vue'
 import { VipBackTop } from '../components'
+// VitePress 在 html 上切换 .dark；需一并加载 EP 暗黑变量，表格/链接等才会跟随主题
+import 'element-plus/theme-chalk/dark/css-vars.css'
 
 /**
  * vitepress默认主题
