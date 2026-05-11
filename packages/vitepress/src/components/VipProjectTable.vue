@@ -1,96 +1,114 @@
 <script lang="ts" setup>
 import type { VipProject } from '@142vip/vitepress'
-import {
-  ElImage,
-  ElTable,
-  ElTableColumn,
-} from 'element-plus'
-import { defineComponent } from 'vue'
-// import 'element-plus/dist/index.css'
-// 注意：这里手动导入样式
+import { ElImage, ElLink, ElTable, ElTableColumn } from 'element-plus'
 import 'element-plus/theme-chalk/base.css'
-import 'element-plus/theme-chalk/el-empty.css'
-import 'element-plus/theme-chalk/el-table-column.css'
-import 'element-plus/theme-chalk/el-checkbox.css'
+import 'element-plus/theme-chalk/el-image.css'
 import 'element-plus/theme-chalk/el-link.css'
+import 'element-plus/theme-chalk/el-table-column.css'
+import 'element-plus/theme-chalk/el-table.css'
+import 'element-plus/theme-chalk/el-checkbox.css'
+import 'element-plus/theme-chalk/el-empty.css'
 
-// 组件属性
 defineProps<{
   data: VipProject[]
   title?: string
 }>()
 
-defineComponent({
-  components: {
-    ElTable,
-    ElTableColumn,
-    ElImage,
-  },
-})
+function npmPackageUrl(name: string) {
+  return `https://www.npmjs.com/package/${name}`
+}
+
+function privateBadgeUrl(version: string) {
+  return `https://img.shields.io/badge/私有-${version.replace('-', '--')}-blue?labelColor=0b3d52&color=1da469`
+}
+
+function npmVersionBadgeUrl(name: string) {
+  return `https://img.shields.io/npm/v/${name}?labelColor=0b3d52&color=1da469`
+}
 </script>
 
 <template>
-  <h2>{{ title ?? '核心业务' }}</h2>
+  <h2 class="vip-project-table__title">
+    {{ title ?? '核心业务' }}
+  </h2>
   <ElTable
     :data="data"
     border
-    class="core-table"
+    class="vip-project-table"
     fit
     flexible
     stripe
     :show-header="false"
   >
-    <!-- @142vip/core-x 表格 -->
     <ElTableColumn header-align="center" label="项目名称" min-width="180" prop="name" />
     <ElTableColumn align="center" header-align="center" label="项目代号" min-width="50" prop="id" />
     <ElTableColumn header-align="center" label="功能描述" min-width="300" prop="description" width="auto" />
     <ElTableColumn align="center" header-align="center" label="当前版本" min-width="120">
       <template #default="{ row }">
-        <a
+        <ElLink
           v-if="!row.private"
-          :href="`https://www.npmjs.com/package/${row.name}`"
+          :href="npmPackageUrl(row.name)"
+          :underline="false"
+          class="vip-project-table__badge-link"
           :title="row.name"
+          rel="noopener noreferrer"
           target="_blank"
         >
           <ElImage
-            :src="`https://img.shields.io/npm/v/${row.name}?labelColor=0b3d52&color=1da469`"
+            :src="npmVersionBadgeUrl(row.name)"
             :title="`${row.name} ${row.version}`"
           />
-        </a>
-
+        </ElLink>
         <ElImage
           v-else
-          :src="`https://img.shields.io/badge/私有-${(row.version.replace('-', '--'))}-blue?labelColor=0b3d52&color=1da469`"
+          :src="privateBadgeUrl(row.version)"
           :title="`${row.name} ${row.version}`"
         />
       </template>
     </ElTableColumn>
     <ElTableColumn align="center" header-align="center" label="文档" width="150">
       <template #default="{ row }">
-        <a :href="row.sourceCode" target="_blank" title="源码">
+        <ElLink :href="row.sourceCode" :underline="false" rel="noopener noreferrer" target="_blank" title="源码">
           源码
-        </a> &nbsp;
-        <a :href="row.changelog" target="_blank" title="日志">
+        </ElLink>&nbsp;
+        <ElLink :href="row.changelog" :underline="false" rel="noopener noreferrer" target="_blank" title="日志">
           日志
-        </a> &nbsp;
-        <a :href="row.readme" target="_blank" title="文档">
+        </ElLink>&nbsp;
+        <ElLink :href="row.readme" :underline="false" rel="noopener noreferrer" target="_blank" title="文档">
           文档
-        </a>
+        </ElLink>
       </template>
     </ElTableColumn>
   </ElTable>
 </template>
 
-<style scoped>
-.core-table {
+<style lang="scss" scoped>
+.vip-project-table__title {
+  margin-top: 0;
+}
+
+.vip-project-table {
   width: 100%;
   border-radius: 10px !important;
 }
-/*避免重写table样式*/
-.vp-doc table {
+
+.vip-project-table__badge-link {
+  display: inline-flex;
+  vertical-align: middle;
+  line-height: 0;
+}
+</style>
+
+<style lang="scss">
+/* 避免 VitePress 文档全局 table 样式挤压本表格 */
+.vp-doc .vip-project-table {
   display: block;
-  border-collapse: collapse;
   margin: 0 !important;
   overflow-x: auto;
+}
+
+.vp-doc .vip-project-table :deep(table) {
+  border-collapse: collapse;
+  margin: 0 !important;
 }
 </style>

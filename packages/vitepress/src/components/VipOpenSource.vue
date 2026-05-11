@@ -1,48 +1,44 @@
 <script lang="ts" setup>
+import { ElImage, ElLink } from 'element-plus'
 import { useData } from 'vitepress'
+import { VIP_OPEN_SOURCE_SPONSORS } from './constants/openSource'
+import { getStarHistorySvgUrl } from './utils/starHistory'
+import 'element-plus/theme-chalk/base.css'
+import 'element-plus/theme-chalk/el-image.css'
+import 'element-plus/theme-chalk/el-link.css'
 
-// 组件属性
 defineProps<{
   repoNames?: string[]
 }>()
 
 const { isDark } = useData()
-
-const repoDefaultNames = ['142vip/core-x', '142vip/408CSFamily', '142vip/JavaScriptCollection']
-
-/**
- * 获取指定仓库的star-history信息
- * @param repoNames
- */
-function getStarHistoryUrl(repoNames?: string[], dark: boolean) {
-  return `https://api.star-history.com/svg?repos=${(repoNames ?? repoDefaultNames).join(',')}&type=Date${dark ? '&theme=dark' : ''}`
-}
 </script>
 
-<!-- 首页 -->
 <template>
   <section id="sponsors">
     <h2>赞赏列表</h2>
     <blockquote>
       排名不分先后， <strong>赞赏过的一定要微信跟我说呀！！！！！！</strong>
     </blockquote>
-    <div>
-      <a href="https://github.com/ChiefPing" target="_blank">
-        <img
-          alt="ChiefPing"
-          class="image-border"
-          src="https://avatars2.githubusercontent.com/u/34122068?s=460&v=4"
-          title="ChiefPing"
-        >
-      </a>
-      <a href="https://github.com/xiaoliuxin" target="_blank">
-        <img
-          alt="xiaoliuxin"
-          class="image-border"
-          src="https://avatars2.githubusercontent.com/u/60652527?s=460&v=4"
-          title="xiaoliuxin"
-        >
-      </a>
+    <div class="vip-open-source__row">
+      <ElLink
+        v-for="item in VIP_OPEN_SOURCE_SPONSORS"
+        :key="item.href"
+        :href="item.href"
+        :underline="false"
+        class="vip-open-source__sponsor-link"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <ElImage
+          :alt="item.alt"
+          :src="item.src"
+          :title="item.title"
+          class="vip-open-source__avatar"
+          fit="cover"
+          lazy
+        />
+      </ElLink>
     </div>
     <h2>赞助商</h2>
     <blockquote>
@@ -52,58 +48,81 @@ function getStarHistoryUrl(repoNames?: string[], dark: boolean) {
 
   <section id="contributions">
     <h2>贡献</h2>
-
     <blockquote>
       感谢所有参与仓库建设的开发者
     </blockquote>
-
-    <a href="https://github.com/142vip/core-x/graphs/contributors">
-      <img
-        alt="感谢向仓库提交PR的所有开发者"
+    <ElLink
+      :underline="false"
+      class="vip-open-source__contrib-link"
+      href="https://github.com/142vip/core-x/graphs/contributors"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      <ElImage
         src="https://contrib.rocks/image?repo=142vip/core-x"
+        alt="感谢向仓库提交 PR 的所有开发者"
         title="@142vip/core-x"
-      >
-    </a>
+        class="vip-open-source__contrib-img"
+        fit="contain"
+        lazy
+      />
+    </ElLink>
   </section>
 
   <section id="trending">
     <h2>趋势</h2>
-    <!-- 支持黑色主题 -->
-    <div class="star-history">
-      <img
-        :src="getStarHistoryUrl(repoNames, isDark)"
+    <div class="vip-open-source__star-history">
+      <ElImage
+        :src="getStarHistorySvgUrl(repoNames, isDark)"
         alt="Github Star History"
-        class="img-border"
         title="Github Star History"
-      >
+        class="vip-open-source__star-img"
+        fit="contain"
+        lazy
+      />
     </div>
   </section>
 </template>
 
-<style scoped>
-#trending {
-  .img-border {
-    border-radius: 5px;
-  }
+<style lang="scss" scoped>
+.vip-open-source__row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
 }
 
-#sponsors {
-  div {
-    display: flex;
-    justify-content: left;
-  }
-  .image-border {
-    border-radius: 5px;
-    width: 50px;
-  }
-  a {
-    margin: 5px;
-  }
+.vip-open-source__sponsor-link {
+  margin: 5px;
+  border-radius: 5px;
+  overflow: hidden;
+  line-height: 0;
 }
 
-.star-history {
+.vip-open-source__avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+}
+
+.vip-open-source__contrib-link {
+  display: inline-block;
+  max-width: 100%;
+  line-height: 0;
+}
+
+.vip-open-source__contrib-img {
+  max-width: 100%;
+}
+
+.vip-open-source__star-history {
   display: flex;
   justify-content: center;
   align-content: center;
+}
+
+.vip-open-source__star-img {
+  border-radius: 5px;
+  max-width: 100%;
 }
 </style>
