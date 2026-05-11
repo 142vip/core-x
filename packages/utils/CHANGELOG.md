@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.50 (2026-05-11)
+
+### ✨ Features
+
+- 增加`getTimestamp`方法，获取指定日期的时间戳 &nbsp;-&nbsp; by **chufan** [<samp>(48e08)</samp>](https://github.com/142vip/core-x/commit/48e08f1e)
+
+**Release New Version v0.0.1-alpha.50 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/utils)**
+
 ## v0.0.1-alpha.49 (2026-04-23)
 
 ### ✨ Features
