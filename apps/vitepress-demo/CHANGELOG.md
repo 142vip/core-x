@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file. See [Conven
 
 <!-- #region recent-alpha -->
 
+## v0.0.1-alpha.6 (2026-05-11)
+
+### ✨ Features
+
+- 优化组件使用，更新最佳实践案例 &nbsp;-&nbsp; by **chufan** [<samp>(b94a3)</samp>](https://github.com/142vip/core-x/commit/b94a3a0e)
+
+**Release New Version v0.0.1-alpha.6 [👉 View New Package On NPM](https://www.npmjs.com/package/vitepress-demo)**
+
 ## v0.0.1-alpha.5 (2025-05-19)
 
 ### ✨ Features
