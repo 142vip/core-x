@@ -1,8 +1,17 @@
 {
   "extends": "../../tsconfig.package.json",
-  "exclude": [
-    "dist",
-    "node_modules",
-    "test"
-  ]
+  "compilerOptions": {
+    "baseUrl": ".",
+    "moduleResolution": "bundler",
+    "paths": {},
+    "types": ["node", "vite/client"],
+    "noEmit": true
+  },
+  "include": [
+    "env.d.ts",
+    ".vitepress/**/*.ts",
+    ".vitepress/**/*.vue",
+    "docs/**/*.md"
+  ],
+  "exclude": ["dist", "node_modules", "test"]
 }

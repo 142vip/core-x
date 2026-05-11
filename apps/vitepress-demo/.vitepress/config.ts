@@ -1,5 +1,5 @@
 import { OPEN_SOURCE_ADDRESS } from '@142vip/open-source'
-import { vipDocSite, VipNodeJS, VipPackageJSON } from '@142vip/utils'
+import { vipDocSite, VipPackageJSON } from '@142vip/utils'
 import {
   defineVipNavbarConfig,
   defineVipSidebarConfig,
@@ -10,6 +10,9 @@ import {
 } from '@142vip/vitepress'
 
 const pkg = VipPackageJSON.getPackageJSON<{ description: string }>()
+
+// 站点的base路径
+const siteBase = vipDocSite.getBase('core-x')
 
 /**
  * 导航栏
@@ -59,15 +62,14 @@ const sidebarConfig = defineVipSidebarConfig([
  * 所有配置
  */
 export default defineVipVitepressConfig({
-  base: vipDocSite.getBase('core-x'),
+  base: siteBase,
   lang: 'zh-CN',
   title: '@142vip/vitepress-demo',
   titleTemplate: ':title - 等等我呀，还在努力',
   description: '@142vip/vitepress模块包的使用Demo演示',
   srcDir: './',
   // 排除部分
-  srcExclude: [
-  ],
+  srcExclude: [],
   // 编译输出目录
   outDir: './dist',
   // dev 模式下的缓存目录，默认cache
@@ -137,14 +139,5 @@ export default defineVipVitepressConfig({
   rewrites: {
     'CHANGELOG.md': 'changelog.md',
     'README.md': 'index.md',
-  },
-  // 编译时路径别名
-  vite: {
-    resolve: {
-      alias: {
-        '@packages': VipNodeJS.pathResolve(__dirname, '../packages'),
-      },
-    },
-    plugins: [],
   },
 })

@@ -8,7 +8,7 @@ hero:
   actions:
     - theme: brand
       text: 快速开始 🚀
-      link: /packages/fairy-cli/index.html
+      link: /docs/example/test-1.md
     - theme: alt
       text: 🤡 408CSFamily
       link: https://github.com/142vip/408CSFamily

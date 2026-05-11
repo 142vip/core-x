@@ -13,8 +13,8 @@
 # 在项目根目录下载依赖
 pnpm i
 
-# 切换到vuepress-demo根目录
-cd apps/viteperss-demo
+# 切换到 vitepress-demo 目录
+cd apps/vitepress-demo
 
 # 本地启动
 pnpm dev

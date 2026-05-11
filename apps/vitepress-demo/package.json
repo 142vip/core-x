@@ -8,7 +8,8 @@
   "scripts": {
     "dev": "npx vitepress dev --port 3080 --host --force --strictPort --open",
     "build": "npx vitepress build --minify",
-    "build:proxy": "NEED_PROXY=true vitepress build --minify"
+    "build:proxy": "NEED_PROXY=true vitepress build --minify",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
   },
   "authorInfo": {
     "name": "微信公众号：储凡",
