@@ -2,6 +2,70 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.39 (2026-05-11)
+
+### ✨ Features
+
+- 优化`HomePage`首页组件，支持同步加载表格数据 &nbsp;-&nbsp; by **chufan** [<samp>(17cfe)</samp>](https://github.com/142vip/core-x/commit/17cfe84f)
+- **@142vip/nest**:
+  - `Response`函数增加`HttpCode`装饰器逻辑 &nbsp;-&nbsp; by **chufan** [<samp>(b149b)</samp>](https://github.com/142vip/core-x/commit/b149bae0)
+- **@142vip/nest-starter**:
+  - 引入`BaseEntityVo`等数据模型 &nbsp;-&nbsp; by **chufan** [<samp>(b0639)</samp>](https://github.com/142vip/core-x/commit/b06394bc)
+- **@142vip/utils**:
+  - 增加`buildImage`参数，支持日志打印、镜像推送 &nbsp;-&nbsp; by **142vip.cn** in https://github.com/142vip/core-x/issues/773 [<samp>(3ce47)</samp>](https://github.com/142vip/core-x/commit/3ce47fa0)
+  - 支持浏览器和服务端使用，功能隔离 &nbsp;-&nbsp; by **142vip.cn** in https://github.com/142vip/core-x/issues/781 [<samp>(2cd91)</samp>](https://github.com/142vip/core-x/commit/2cd91ad8)
+  - 增加`getTimestamp`方法，获取指定日期的时间戳 &nbsp;-&nbsp; by **chufan** [<samp>(48e08)</samp>](https://github.com/142vip/core-x/commit/48e08f1e)
+- **@142vip/vitepress**:
+  - 基于`element-plus`框架的组件，对`vip`相关组件代码进行改造，支持`scss`样式 &nbsp;-&nbsp; by **chufan** [<samp>(3ddf9)</samp>](https://github.com/142vip/core-x/commit/3ddf9ab5)
+  - 新增`workspace`业务封装，支持`json`文件浏览器解析 &nbsp;-&nbsp; by **chufan** [<samp>(67cca)</samp>](https://github.com/142vip/core-x/commit/67cca5e0)
+  - `VipBackTop`组件支持参数控制底部、右侧距离 &nbsp;-&nbsp; by **chufan** [<samp>(beb03)</samp>](https://github.com/142vip/core-x/commit/beb03179)
+  - 优化`VipProjectTable`组件UI布局，支持同步加载数据，兼容移动端左右滚动表格 &nbsp;-&nbsp; by **chufan** [<samp>(fbd25)</samp>](https://github.com/142vip/core-x/commit/fbd253e7)
+- **nest-demo**:
+  - 优化接口在`Swagger`上的显示 &nbsp;-&nbsp; by **chufan** [<samp>(e0c5e)</samp>](https://github.com/142vip/core-x/commit/e0c5e6cb)
+  - 优化rest接口，支持最新分页格式 &nbsp;-&nbsp; by **chufan** [<samp>(44692)</samp>](https://github.com/142vip/core-x/commit/44692f69)
+- **vitepress-demo**:
+  - 优化组件使用，更新最佳实践案例 &nbsp;-&nbsp; by **chufan** [<samp>(b94a3)</samp>](https://github.com/142vip/core-x/commit/b94a3a0e)
+
+### 🐛 Bug Fixes
+
+- **@142vip/nest**:
+  - 修复分页`PaginationDto`校验逻辑异常 &nbsp;-&nbsp; by **chufan** [<samp>(4a77d)</samp>](https://github.com/142vip/core-x/commit/4a77d7d5)
+  - 分页功能返回结构修改，主体数据用records字段 &nbsp;-&nbsp; by **chufan** [<samp>(c3858)</samp>](https://github.com/142vip/core-x/commit/c38582a5)
+- **@142vip/utils**:
+  - 修复`getBase`逻辑异常 &nbsp;-&nbsp; by **chufan** [<samp>(67baf)</samp>](https://github.com/142vip/core-x/commit/67baf402)
+- **@142vip/vitepress**:
+  - 修复暗黑模式下，组件样式不动态变化的问题 &nbsp;-&nbsp; by **chufan** [<samp>(12555)</samp>](https://github.com/142vip/core-x/commit/12555b13)
+  - 修复类型错误引用 &nbsp;-&nbsp; by **chufan** [<samp>(a596c)</samp>](https://github.com/142vip/core-x/commit/a596c2a3)
+
+### 💅 Refactors
+
+- **@142vip/utils**:
+  - 重构`VipPackageJSON`工具类 &nbsp;-&nbsp; by **142vip.cn** in https://github.com/142vip/core-x/issues/774 [<samp>(1583e)</samp>](https://github.com/142vip/core-x/commit/1583e347)
+
+### 😏 Release Packages
+
+- **@142vip/axios**:
+  - Publish `v0.0.1-alpha.8` &nbsp;-&nbsp; by **chufan** [<samp>(819e1)</samp>](https://github.com/142vip/core-x/commit/819e1cd8)
+- **@142vip/nest**:
+  - Publish `v0.0.1-alpha.8` &nbsp;-&nbsp; by **chufan** [<samp>(4b899)</samp>](https://github.com/142vip/core-x/commit/4b899482)
+  - Publish `v0.0.1-alpha.9` &nbsp;-&nbsp; by **chufan** [<samp>(fdac7)</samp>](https://github.com/142vip/core-x/commit/fdac7c59)
+  - Publish `v0.0.1-alpha.10` &nbsp;-&nbsp; by **chufan** [<samp>(a4912)</samp>](https://github.com/142vip/core-x/commit/a4912340)
+- **@142vip/nest-starter**:
+  - Publish `v0.0.1-alpha.13` &nbsp;-&nbsp; by **chufan** [<samp>(662f4)</samp>](https://github.com/142vip/core-x/commit/662f44e9)
+- **@142vip/utils**:
+  - Publish `v0.0.1-alpha.47` &nbsp;-&nbsp; by **chufan** [<samp>(d3835)</samp>](https://github.com/142vip/core-x/commit/d3835b7e)
+  - Publish `v0.0.1-alpha.48` &nbsp;-&nbsp; by **chufan** [<samp>(4bbb6)</samp>](https://github.com/142vip/core-x/commit/4bbb6117)
+  - Publish `v0.0.1-alpha.49` &nbsp;-&nbsp; by **chufan** [<samp>(52fcc)</samp>](https://github.com/142vip/core-x/commit/52fcc29e)
+  - Publish `v0.0.1-alpha.50` &nbsp;-&nbsp; by **chufan** [<samp>(679d5)</samp>](https://github.com/142vip/core-x/commit/679d5fe3)
+- **@142vip/vitepress**:
+  - Publish `v0.0.1-alpha.20` &nbsp;-&nbsp; by **chufan** [<samp>(fa204)</samp>](https://github.com/142vip/core-x/commit/fa204713)
+- **nest-demo**:
+  - Publish `v0.0.1-alpha.5` &nbsp;-&nbsp; by **chufan** [<samp>(d750b)</samp>](https://github.com/142vip/core-x/commit/d750b73b)
+- **vitepress-demo**:
+  - Publish `v0.0.1-alpha.6` &nbsp;-&nbsp; by **chufan** [<samp>(86411)</samp>](https://github.com/142vip/core-x/commit/86411808)
+
+**Release New Version v0.0.1-alpha.39 [👉 View Changes On GitHub](https://github.com/142vip/core-x/compare/v0.0.1-alpha.38...v0.0.1-alpha.39)**
+
 ## v0.0.1-alpha.38 (2026-01-21)
 
 ### ✨ Features
