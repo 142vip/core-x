@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.5 (2026-05-11)
+
+### ✨ Features
+
+- 优化接口在`Swagger`上的显示 &nbsp;-&nbsp; by **chufan** [<samp>(e0c5e)</samp>](https://github.com/142vip/core-x/commit/e0c5e6cb)
+- 优化rest接口，支持最新分页格式 &nbsp;-&nbsp; by **chufan** [<samp>(44692)</samp>](https://github.com/142vip/core-x/commit/44692f69)
+
+**Release New Version v0.0.1-alpha.5 [👉 View New Package On NPM](https://www.npmjs.com/package/nest-demo)**
+
 ## v0.0.1-alpha.4 (2026-01-21)
 
 ### ✨ Features
