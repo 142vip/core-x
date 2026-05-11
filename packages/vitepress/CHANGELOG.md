@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.20 (2026-05-11)
+
+### ✨ Features
+
+- 基于`element-plus`框架的组件，对`vip`相关组件代码进行改造，支持`scss`样式 &nbsp;-&nbsp; by **chufan** [<samp>(3ddf9)</samp>](https://github.com/142vip/core-x/commit/3ddf9ab5)
+- 新增`workspace`业务封装，支持`json`文件浏览器解析 &nbsp;-&nbsp; by **chufan** [<samp>(67cca)</samp>](https://github.com/142vip/core-x/commit/67cca5e0)
+- `VipBackTop`组件支持参数控制底部、右侧距离 &nbsp;-&nbsp; by **chufan** [<samp>(beb03)</samp>](https://github.com/142vip/core-x/commit/beb03179)
+- 优化`VipProjectTable`组件UI布局，支持同步加载数据，兼容移动端左右滚动表格 &nbsp;-&nbsp; by **chufan** [<samp>(fbd25)</samp>](https://github.com/142vip/core-x/commit/fbd253e7)
+
+### 🐛 Bug Fixes
+
+- 修复暗黑模式下，组件样式不动态变化的问题 &nbsp;-&nbsp; by **chufan** [<samp>(12555)</samp>](https://github.com/142vip/core-x/commit/12555b13)
+- 修复类型错误引用 &nbsp;-&nbsp; by **chufan** [<samp>(a596c)</samp>](https://github.com/142vip/core-x/commit/a596c2a3)
+
+**Release New Version v0.0.1-alpha.20 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/vitepress)**
+
 ## v0.0.1-alpha.19 (2025-10-21)
 
 ### ✨ Features
