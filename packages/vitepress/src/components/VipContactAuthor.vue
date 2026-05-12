@@ -45,7 +45,7 @@ import 'element-plus/theme-chalk/el-link.css'
     </div>
 
     <p>
-      交流/加群/互看朋友圈、<strong>聊天/提问/建议/提需求</strong> 可以在公众号直接<strong>私信</strong>，有时间即会回复，偶尔的延迟和疏漏还请小伙伴们谅解，蟹蟹。
+      交流/加群/互看朋友圈、<strong>聊天/提问/建议/提需求</strong> 可以在公众号直接<strong>私信</strong>，有时间即会回复，偶尔的延迟和疏漏还请小伙伴们谅解，<strong>蟹蟹~</strong>。
     </p>
   </div>
 </template>
