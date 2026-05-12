@@ -14,7 +14,7 @@ const coreProjectTableData = getCoreProjectData()
 
 <!-- 首页 -->
 <template>
-  <section id="version-table">
+  <section id="project-table">
     <VipProjectTable :data="exampleDemoTableData" title="最佳实践" />
     <VipProjectTable :data="coreProjectTableData" title="开源模块" />
   </section>
@@ -29,3 +29,9 @@ const coreProjectTableData = getCoreProjectData()
   </section>
   <VipBackTop />
 </template>
+
+<style lang="scss" scoped>
+#project-table {
+  margin: 30px auto;
+}
+</style>
