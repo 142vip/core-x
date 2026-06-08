@@ -1,8 +1,10 @@
 function getProcessEnv(key: string): string | undefined {
+  // eslint-disable-next-line node/prefer-global/process
   if (typeof process === 'undefined' || process.env == null) {
     return undefined
   }
 
+  // eslint-disable-next-line node/prefer-global/process
   return process.env[key]
 }
 
