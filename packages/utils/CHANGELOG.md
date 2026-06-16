@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.51 (2026-06-16)
+
+### 🐛 Bug Fixes
+
+- 忽略process的校验规则 &nbsp;-&nbsp; by **chufan** [<samp>(a5670)</samp>](https://github.com/142vip/core-x/commit/a56704df)
+
+**Release New Version v0.0.1-alpha.51 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/utils)**
+
 ## v0.0.1-alpha.50 (2026-05-11)
 
 ### ✨ Features
