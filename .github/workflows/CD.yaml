@@ -116,12 +116,12 @@ jobs:
         run: |
           echo "The pkgName is: ${{ steps.getPkgName.outputs.name }}"
 
-      # Npm 版本发布 注意：只发布packages中的模块
+      - name: Upgrade npm for OIDC trusted publishing
+        run: npm i -g npm@^11.10
+
+      # OIDC 发布：须在 npm 各包上配置 Trusted Publisher（见 scripts/npm-trust）
       - name: Publish New Npm Version
-        run: |
-          pnpm publish --filter "${{ steps.getPkgName.outputs.name }}"
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+        run: pnpm publish --filter "${{ steps.getPkgName.outputs.name }}"
 
   # 构建并部署Dist
   deploy-dist:
