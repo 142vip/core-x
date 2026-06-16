@@ -12,8 +12,44 @@ on:
   push:
     branches:
       - next
-      - ci-test
+      - fix/cd
   workflow_dispatch:
+    inputs:
+      package:
+        description: 要发布的 npm 包（手动触发时必选）
+        required: true
+        type: choice
+        options:
+          - '@142vip/axios'
+          - '@142vip/changelog'
+          - '@142vip/commit-linter'
+          - '@142vip/copyright'
+          - '@142vip/data-source'
+          - '@142vip/egg'
+          - '@142vip/egg-axios'
+          - '@142vip/egg-grpc-client'
+          - '@142vip/egg-grpc-server'
+          - '@142vip/egg-mysql'
+          - '@142vip/egg-redis'
+          - '@142vip/egg-sequelize'
+          - '@142vip/egg-swagger'
+          - '@142vip/egg-validate'
+          - '@142vip/eslint-config'
+          - '@142vip/fairy-cli'
+          - '@142vip/grpc'
+          - '@142vip/nest'
+          - '@142vip/nest-logger'
+          - '@142vip/nest-redis'
+          - '@142vip/nest-starter'
+          - '@142vip/nest-typeorm'
+          - '@142vip/oauth2.0'
+          - '@142vip/open-source'
+          - '@142vip/redis'
+          - '@142vip/release-version'
+          - '@142vip/typeorm'
+          - '@142vip/utils'
+          - '@142vip/vitepress'
+          - '@142vip/vuepress'
 
 # 设置 GITHUB_TOKEN 的权限，以允许部署到 GitHub Pages
 permissions:
@@ -27,7 +63,7 @@ jobs:
     name: 创建Github发布
     runs-on: ubuntu-latest
     # 主库next且执行release更新时执行
-    if: github.repository == '142vip/core-x' && startsWith(github.event.head_commit.message, 'chore(release):')
+    if: github.event_name == 'push' && github.repository == '142vip/core-x' && startsWith(github.event.head_commit.message, 'chore(release):')
 
     steps:
       - name: Checkout Code
@@ -69,8 +105,10 @@ jobs:
   npm-release:
     name: 创建npm发布
     runs-on: ubuntu-latest
-    # 主库next且执行release更新时执行
-    if: github.repository == '142vip/core-x' && startsWith(github.event.head_commit.message, 'release(@142vip/')
+    # push: release(@scope/pkg) 提交；workflow_dispatch: 手动选择包发版
+    if: |
+      (github.event_name == 'workflow_dispatch' && github.event.inputs.package != '') ||
+      (github.event_name == 'push' && startsWith(github.event.head_commit.message, 'release(@'))
 
     steps:
       - name: Checkout Code
@@ -105,12 +143,15 @@ jobs:
       #        run: |
       #          pnpm build:packages
 
-      - name: Get Package Name By Commit Scope
+      - name: Resolve Package Name
         id: getPkgName
-        # 这里使用正则截取scope，获取包名
         run: |
-          SCOPE=$(echo "${{ github.event.head_commit.message }}" | grep -o '@[^):]*')
-          echo "name=$SCOPE" >> $GITHUB_OUTPUT
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "name=${{ github.event.inputs.package }}" >> "$GITHUB_OUTPUT"
+          else
+            SCOPE=$(echo "${{ github.event.head_commit.message }}" | grep -o '@[^):]*' | head -1)
+            echo "name=${SCOPE}" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Use Package Name
         run: |
@@ -130,8 +171,8 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    # todo 确定这里的触发条件
-    if: github.repository == '142vip/core-x'
+    # 仅 push 到 next/fix/cd 时部署文档，手动发版 npm 不触发
+    if: github.event_name == 'push' && github.repository == '142vip/core-x'
     steps:
       # 拉取代码
       - name: Checkout
@@ -190,7 +231,7 @@ jobs:
     name: 部署到Github Wiki
     runs-on: ubuntu-latest
     # 主库next且执行release更新时执行
-    if: github.repository == '142vip/core-x' && startsWith(github.event.head_commit.message, 'chore(release):')
+    if: github.event_name == 'push' && github.repository == '142vip/core-x' && startsWith(github.event.head_commit.message, 'chore(release):')
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
