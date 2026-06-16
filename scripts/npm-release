@@ -1,0 +1,181 @@
+#!/usr/bin/env bash
+#
+# =============================================================================
+# npm-release — 编译并发布 packages/ 下指定 npm 包
+# =============================================================================
+#
+# 用法:
+#   ./scripts/npm-release <包名>              按 package.json 当前 version 发版
+#   ./scripts/npm-release <包名> --version 1.2.3
+#   ./scripts/npm-release <包名> --dry-run      编译 + 模拟发布（不写版本、不上传）
+#   ./scripts/npm-release --list              列出可发布包
+#
+# 包名支持:
+#   @142vip/fairy-cli  或  fairy-cli
+#
+# 流程:
+#   1. 解析包（packages/*/package.json，跳过 private）
+#   2. 可选写入 version 到 package.json
+#   3. pnpm build:packages                    编译所有 @142vip/* 包
+#   4. pnpm publish --filter "<pkg>"         发布到 registry
+#
+# 发布前请: npm login --auth-type=web
+#
+# =============================================================================
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+PACKAGES_DIR="${PACKAGES_DIR:-$ROOT/packages}"
+
+DRY_RUN=0
+VERSION=""
+PKG_ARG=""
+
+usage() { sed -n '3,24p' "$0" | sed 's/^# \{0,1\}//'; }
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --dry-run) DRY_RUN=1 ;;
+    --version) VERSION="${2:?缺少 --version 参数}"; shift ;;
+    --list) PKG_ARG="__list__" ;;
+    -h|--help) usage; exit 0 ;;
+    -*) echo "未知参数: $1" >&2; usage; exit 1 ;;
+    *)
+      if [[ -n "$PKG_ARG" && "$PKG_ARG" != "__list__" ]]; then
+        echo "仅支持发布一个包: $PKG_ARG / $1" >&2; exit 1
+      fi
+      PKG_ARG="$1"
+      ;;
+  esac
+  shift
+done
+
+list_packages() {
+  local dir pkg private
+  for dir in "$PACKAGES_DIR"/*/; do
+    [[ -f "${dir}package.json" ]] || continue
+    pkg="$(node -p "require('${dir}package.json').name")"
+    private="$(node -p "require('${dir}package.json').private ?? false")"
+    [[ "$private" == "true" ]] && continue
+    printf '%s\n' "$pkg"
+  done | sort -u
+}
+
+resolve_package() {
+  local input="$1"
+  local pkg dir name
+
+  if [[ "$input" == @*/* ]]; then
+    for dir in "$PACKAGES_DIR"/*/; do
+      [[ -f "${dir}package.json" ]] || continue
+      name="$(node -p "require('${dir}package.json').name")"
+      [[ "$name" == "$input" ]] || continue
+      private="$(node -p "require('${dir}package.json').private ?? false")"
+      [[ "$private" == "true" ]] && { echo "ERROR: ${input} 为 private 包" >&2; return 1; }
+      printf '%s' "$name"
+      return 0
+    done
+    echo "ERROR: 未找到包 ${input}" >&2
+    return 1
+  fi
+
+  local matches=()
+  for dir in "$PACKAGES_DIR"/*/; do
+    [[ -f "${dir}package.json" ]] || continue
+    name="$(node -p "require('${dir}package.json').name")"
+    private="$(node -p "require('${dir}package.json').private ?? false")"
+    [[ "$private" == "true" ]] && continue
+    pkg="${name#@*/}"
+    [[ "$pkg" == "$input" || "$name" == "$input" ]] && matches+=("$name")
+  done
+
+  if [[ "${#matches[@]}" -eq 0 ]]; then
+    echo "ERROR: 未找到包 ${input}，可用 ./scripts/npm-release --list" >&2
+    return 1
+  fi
+  if [[ "${#matches[@]}" -gt 1 ]]; then
+    echo "ERROR: ${input} 匹配多个包: ${matches[*]}" >&2
+    return 1
+  fi
+  printf '%s' "${matches[0]}"
+}
+
+pkg_dir() {
+  local want="$1" name
+  for dir in "$PACKAGES_DIR"/*/; do
+    [[ -f "${dir}package.json" ]] || continue
+    name="$(node -p "require('${dir}package.json').name")"
+    [[ "$name" == "$want" ]] && { printf '%s' "${dir%/}"; return 0; }
+  done
+  return 1
+}
+
+set_package_version() {
+  local dir="$1" ver="$2"
+  node -e "
+    const fs = require('fs');
+    const p = process.argv[1];
+    const v = process.argv[2];
+    const j = JSON.parse(fs.readFileSync(p, 'utf8'));
+    j.version = v;
+    fs.writeFileSync(p, JSON.stringify(j, null, 2) + '\n');
+  " "${dir}/package.json" "$ver"
+}
+
+release_one() {
+  local pkg="$1"
+  local dir ver current target
+  dir="$(pkg_dir "$pkg")"
+  current="$(node -p "require('${dir}/package.json').version")"
+  target="${VERSION:-$current}"
+
+  echo "包: ${pkg}"
+  echo "目录: ${dir}"
+  if [[ -n "$VERSION" ]]; then
+    echo "版本: ${target}（--version 指定，当前 package.json: ${current}）"
+    if [[ "$DRY_RUN" -eq 1 && "$VERSION" != "$current" ]]; then
+      echo "dry-run: 不写入 package.json，发布模拟仍基于当前 version ${current}"
+    fi
+  else
+    echo "版本: ${target}"
+  fi
+  echo ""
+
+  if [[ -n "$VERSION" && "$VERSION" != "$current" ]]; then
+    if [[ "$DRY_RUN" -eq 1 ]]; then
+      echo "[dry-run] 将写入 version: ${VERSION}"
+    else
+      set_package_version "$dir" "$VERSION"
+      echo "已更新 version: ${current} → ${VERSION}"
+    fi
+  fi
+
+  echo ">>> 编译所有 packages"
+  echo "pnpm build:packages"
+  if [[ "$DRY_RUN" -eq 1 ]]; then
+    echo "[dry-run] 执行编译..."
+  fi
+  (cd "$ROOT" && pnpm build:packages)
+
+  echo ""
+  echo ">>> 发布"
+  local pub_args=(publish --filter "$pkg" --no-git-checks)
+  [[ "$DRY_RUN" -eq 1 ]] && pub_args+=(--dry-run)
+  echo "pnpm ${pub_args[*]}"
+  (cd "$ROOT" && pnpm "${pub_args[@]}")
+}
+
+[[ -d "$PACKAGES_DIR" ]] || { echo "未找到 ${PACKAGES_DIR}" >&2; exit 1; }
+
+if [[ "$PKG_ARG" == "__list__" ]]; then
+  list_packages
+  exit 0
+fi
+
+[[ -n "$PKG_ARG" ]] || { echo "请指定包名，见 --help" >&2; usage; exit 1; }
+
+PKG="$(resolve_package "$PKG_ARG")"
+release_one "$PKG"
+
+echo ""
+[[ "$DRY_RUN" -eq 1 ]] && echo "dry-run 完成（未实际上传）" || echo "发布完成: ${PKG}@$(node -p "require('$(pkg_dir "$PKG")/package.json').version")"
