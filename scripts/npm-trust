@@ -1,0 +1,275 @@
+#!/usr/bin/env bash
+#
+# =============================================================================
+# npm-trust — 批量管理 npm OIDC Trusted Publishing（GitHub Actions）
+# =============================================================================
+#
+# 用法:
+#   ./scripts/npm-trust                      输出 packages/ 下可复制粘贴的 trust 命令
+#   ./scripts/npm-trust --check              检查当前账户下哪些包未配置 trust publish
+#   ./scripts/npm-trust --check --scope @142vip
+#   ./scripts/npm-trust --run                批量执行 npm trust github（失败不中断）
+#   ./scripts/npm-trust --run --only-new     仅处理尚未配置的包
+#   ./scripts/npm-trust --names              列出 packages/ 下可发布包名
+#   ./scripts/npm-trust --print --only-new   仅打印未配置包的命令
+#
+# 执行前（本机终端）:
+#   npm login --auth-type=web
+#
+# 单包等价命令:
+#   npm trust github @142vip/fairy-cli \
+#     --repo 142vip/core-x \
+#     --file CD.yaml \
+#     --allow-publish \
+#     --yes
+#
+# 环境变量:
+#   NPM_TRUST_REPO=142vip/core-x       GitHub 仓库 owner/repo
+#   NPM_TRUST_WORKFLOW=CD.yaml         workflow 文件名
+#   NPM_TRUST_SCOPE=@142vip            --check 时限定 scope（可选）
+#   PACKAGES_DIR=<path>                默认 <repo>/packages
+#   NPM_TRUST_SLEEP_SEC=2              --run 每包间隔秒数
+#
+# =============================================================================
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+PACKAGES_DIR="${PACKAGES_DIR:-$ROOT/packages}"
+REPO="${NPM_TRUST_REPO:-142vip/core-x}"
+WORKFLOW="${NPM_TRUST_WORKFLOW:-CD.yaml}"
+SCOPE="${NPM_TRUST_SCOPE:-}"
+SLEEP="${NPM_TRUST_SLEEP_SEC:-2}"
+
+MODE=print
+ONLY_NEW=0
+
+usage() { sed -n '3,33p' "$0" | sed 's/^# \{0,1\}//'; }
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --print) MODE=print ;;
+    --run) MODE=run ;;
+    --check) MODE=check ;;
+    --names|--list) MODE=names ;;
+    --only-new) ONLY_NEW=1 ;;
+    --repo) REPO="$2"; shift ;;
+    --workflow) WORKFLOW="$2"; shift ;;
+    --scope) SCOPE="$2"; shift ;;
+    -h|--help) usage; exit 0 ;;
+    *) echo "未知参数: $1" >&2; usage; exit 1 ;;
+  esac
+  shift
+done
+
+node_trust() {
+  NPM_TRUST_REPO="$REPO" NPM_TRUST_WORKFLOW="$WORKFLOW" \
+  NPM_TRUST_ACTION="$1" NPM_TRUST_SCOPE="$SCOPE" \
+  node --input-type=module - "${@:2}" <<'NODE'
+import { execSync } from 'node:child_process';
+
+const action = process.env.NPM_TRUST_ACTION;
+const repo = process.env.NPM_TRUST_REPO;
+const workflow = process.env.NPM_TRUST_WORKFLOW;
+const scope = process.env.NPM_TRUST_SCOPE;
+
+function matchesTrust(t) {
+  if (!t || t.type !== 'github') return false;
+  const r = t.repository ?? t.claims?.repository;
+  const wf = t.claims?.workflow_ref;
+  const f = t.file ?? (typeof wf === 'string' ? wf : wf?.file);
+  if (r !== repo || f !== workflow) return false;
+  const perms = t.permissions ?? [];
+  return perms.includes('createPackage') || perms.includes('publish');
+}
+
+function parseTrustStdout(raw) {
+  if (!raw) return 'not_configured';
+  try {
+    const data = JSON.parse(raw);
+    if (data?.error?.code === 'EOTP') return 'auth_required';
+    const items = Array.isArray(data) ? data : [data];
+    return items.some(matchesTrust) ? 'configured' : 'not_configured';
+  } catch {
+    return 'unknown';
+  }
+}
+
+function npmTrustList(pkg) {
+  try {
+    return execSync('npm trust list ' + JSON.stringify(pkg) + ' --json', {
+      encoding: 'utf8', stdio: ['pipe', 'pipe', 'pipe'],
+    }).trim();
+  } catch (e) {
+    return (e.stdout?.toString() ?? '').trim();
+  }
+}
+
+if (action === 'discover') {
+  const user = process.argv[2];
+  const raw = execSync('npm access list packages ' + user + ' --json', {
+    encoding: 'utf8', stdio: ['pipe', 'pipe', 'pipe'],
+  });
+  let names = Object.keys(JSON.parse(raw)).sort();
+  if (scope) {
+    const prefix = scope.startsWith('@') ? scope + '/' : '@' + scope + '/';
+    names = names.filter(n => n.startsWith(prefix));
+  }
+  if (!names.length) process.exit(1);
+  console.log(names.join('\n'));
+}
+
+if (action === 'check') {
+  const packages = (process.env.NPM_TRUST_PKG_LIST || '')
+    .split('\n')
+    .map(l => l.trim())
+    .filter(Boolean);
+
+  const configured = [], missing = [];
+  let authRequired = false;
+  for (const pkg of packages) {
+    const s = parseTrustStdout(npmTrustList(pkg));
+    if (s === 'configured') configured.push(pkg);
+    else {
+      missing.push(pkg);
+      if (s === 'auth_required') authRequired = true;
+    }
+  }
+  console.log(JSON.stringify({ configured, missing, authRequired }));
+}
+
+if (action === 'configured') {
+  const pkg = process.argv[2];
+  const s = parseTrustStdout(npmTrustList(pkg));
+  if (s === 'auth_required') process.exit(2);
+  process.exit(s === 'configured' ? 0 : 1);
+}
+NODE
+}
+
+workspace_packages() {
+  local dir pkg private
+  for dir in "$PACKAGES_DIR"/*/; do
+    [[ -f "${dir}package.json" ]] || continue
+    pkg="$(node -p "require('${dir}package.json').name")"
+    private="$(node -p "require('${dir}package.json').private ?? false")"
+    [[ "$private" == "true" ]] && continue
+    printf '%s\n' "$pkg"
+  done | sort -u
+}
+
+account_packages() {
+  local user
+  user="$(npm whoami --registry https://registry.npmjs.org 2>/dev/null)" || {
+    echo "ERROR: 未登录 npm，请: npm login --auth-type=web" >&2; exit 1
+  }
+  node_trust discover "$user"
+}
+
+is_configured() { node_trust configured "$1" 2>/dev/null; }
+
+print_cmd() {
+  printf 'npm trust github %s \\\n  --repo %s \\\n  --file %s \\\n  --allow-publish \\\n  --yes\n' \
+    "$1" "$REPO" "$WORKFLOW"
+}
+
+load_workspace() {
+  packages=()
+  while IFS= read -r line; do [[ -n "$line" ]] && packages+=("$line"); done < <(workspace_packages)
+}
+
+run_check() {
+  local user result configured missing authRequired
+  packages=()
+  user="$(npm whoami --registry https://registry.npmjs.org)"
+  echo "npm 用户: $user"
+  [[ -n "$SCOPE" ]] && echo "范围: ${SCOPE}" || echo "范围: 账户全部包"
+  echo "trust: ${REPO} | ${WORKFLOW} | publish"
+  echo ""
+
+  while IFS= read -r line; do [[ -n "$line" ]] && packages+=("$line"); done < <(account_packages)
+  echo "共 ${#packages[@]} 个包，检查中..."
+  echo ""
+
+  result="$(NPM_TRUST_PKG_LIST="$(printf '%s\n' "${packages[@]}")" node_trust check)"
+  configured="$(node -p "JSON.parse(process.argv[1]).configured.length" "$result")"
+  missing="$(node -p "JSON.parse(process.argv[1]).missing.length" "$result")"
+  authRequired="$(node -p "JSON.parse(process.argv[1]).authRequired" "$result")"
+
+  if [[ "$authRequired" == true && "$configured" -eq 0 ]]; then
+    echo "ERROR: 需要浏览器 2FA，请先 npm login --auth-type=web 后重试" >&2
+    exit 2
+  fi
+  [[ "$authRequired" == true ]] && echo "WARN: 部分结果因 2FA 不完整" >&2
+
+  if [[ "$missing" -gt 0 ]]; then
+    echo "未配置 trust publish:"
+    while IFS= read -r pkg; do echo "  ✗ $pkg"; done < <(
+      node -p "JSON.parse(process.argv[1]).missing.join('\n')" "$result"
+    )
+    echo ""; echo "等价命令:"; echo ""
+    while IFS= read -r pkg; do print_cmd "$pkg"; echo ""; done < <(
+      node -p "JSON.parse(process.argv[1]).missing.join('\n')" "$result"
+    )
+  else
+    echo "全部 ${configured} 个包均已配置 trust publish"
+  fi
+  echo ""
+  echo "已配置: ${configured} | 未配置: ${missing} | 合计: ${#packages[@]}"
+  [[ "$missing" -gt 0 ]] && exit 1
+}
+
+run_print() {
+  echo "# ${#packages[@]} 个包 | ${REPO} | ${WORKFLOW}"
+  echo "# npm login --auth-type=web"; echo ""
+  for pkg in "${packages[@]}"; do
+    if [[ "$ONLY_NEW" -eq 1 ]] && is_configured "$pkg"; then
+      echo "# skip: $pkg"; continue
+    fi
+    print_cmd "$pkg"; echo ""
+  done
+}
+
+run_execute() {
+  [[ -f "$ROOT/.github/workflows/$WORKFLOW" ]] || {
+    echo "ERROR: 缺少 .github/workflows/${WORKFLOW}" >&2; exit 1
+  }
+  local i=0 ok=0 skip=0 fail=0 total="${#packages[@]}"
+  failed_pkgs=()
+  echo "npm trust github × ${total} | ${REPO} | ${WORKFLOW}"
+  for pkg in "${packages[@]}"; do
+    i=$((i + 1))
+    if [[ "$ONLY_NEW" -eq 1 ]] && is_configured "$pkg"; then
+      echo "[${i}/${total}] skip $pkg"; skip=$((skip + 1)); continue
+    fi
+    echo "[${i}/${total}] $pkg"
+    if npm trust github "$pkg" --repo "$REPO" --file "$WORKFLOW" --allow-publish --yes; then
+      echo "  ✓ ok"; ok=$((ok + 1))
+    else
+      echo "  ✗ 失败，继续..." >&2; failed_pkgs+=("$pkg"); fail=$((fail + 1))
+    fi
+    [[ "$i" -lt "$total" ]] && sleep "$SLEEP"
+  done
+  echo ""; echo "完成: ok=${ok}, skip=${skip}, failed=${fail}, total=${total}"
+  if [[ "$fail" -gt 0 ]]; then
+    echo ""; echo "失败包:"
+    printf '  - %s\n' "${failed_pkgs[@]}"
+    exit 1
+  fi
+}
+
+[[ -d "$PACKAGES_DIR" || "$MODE" == check ]] || { echo "未找到 ${PACKAGES_DIR}" >&2; exit 1; }
+packages=()
+
+case "$MODE" in
+  check) run_check ;;
+  names)
+    load_workspace
+    [[ "${#packages[@]}" -gt 0 ]] || { echo "无包" >&2; exit 1; }
+    printf '%s\n' "${packages[@]}"
+    ;;
+  print|run)
+    load_workspace
+    [[ "${#packages[@]}" -gt 0 ]] || { echo "无包" >&2; exit 1; }
+    [[ "$MODE" == print ]] && run_print || run_execute
+    ;;
+esac
