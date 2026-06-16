@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 
+## v0.0.1-alpha.9 (2026-06-16)
+
+### ✨ Features
+
+- 新增默认配置、配置创建函数，升级依赖 &nbsp;-&nbsp; by **142vip.cn** in https://github.com/142vip/core-x/issues/799 [<samp>(4b4d3)</samp>](https://github.com/142vip/core-x/commit/4b4d3dfe)
+
+**Release New Version v0.0.1-alpha.9 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/axios)**
+
 ## v0.0.1-alpha.8 (2026-05-11)
 
 **No Significant Changes**
