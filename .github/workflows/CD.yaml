@@ -82,7 +82,7 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20.12.2
+          node-version: 22.10.0
           # 缓存
           cache: pnpm
 
@@ -128,7 +128,7 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20.12.2
+          node-version: 22.10.0
           # npm包上传地址，用于注册，参考：https://github.com/actions/setup-node
           registry-url: 'https://registry.npmjs.org'
           # 缓存
@@ -190,7 +190,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20.12.2
+          node-version: 22.10.0
           cache: pnpm
 
       - name: Setup Pages
