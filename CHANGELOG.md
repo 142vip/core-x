@@ -2,6 +2,37 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.40 (2026-06-17)
+
+### ✨ Features
+
+- 增加`npm-trust`脚本，支持批量管理NPM包 &nbsp;-&nbsp; by **chufan** [<samp>(46005)</samp>](https://github.com/142vip/core-x/commit/46005af8)
+- 增加`npm-release`脚本，支持本地进行`npm`包发布 &nbsp;-&nbsp; by **chufan** [<samp>(c7f48)</samp>](https://github.com/142vip/core-x/commit/c7f48f0a)
+- **@142vip/axios**:
+  - 新增默认配置、配置创建函数，升级依赖 &nbsp;-&nbsp; by **142vip.cn** in https://github.com/142vip/core-x/issues/799 [<samp>(4b4d3)</samp>](https://github.com/142vip/core-x/commit/4b4d3dfe)
+
+### 🐛 Bug Fixes
+
+- 修复首页表格布局异常，增加顶部间距 &nbsp;-&nbsp; by **chufan** [<samp>(64012)</samp>](https://github.com/142vip/core-x/commit/64012a44)
+- 修复流水线异常，升级流水线Node版本到22.10.0 &nbsp;-&nbsp; by **chufan** [<samp>(85e9f)</samp>](https://github.com/142vip/core-x/commit/85e9f71b)
+- **@142vip/utils**:
+  - 忽略process的校验规则 &nbsp;-&nbsp; by **chufan** [<samp>(a5670)</samp>](https://github.com/142vip/core-x/commit/a56704df)
+
+### 📦 Build
+
+- 升级ci脚本，支持corepack自动安装 &nbsp;-&nbsp; by **chufan** [<samp>(8fe15)</samp>](https://github.com/142vip/core-x/commit/8fe15df8)
+
+### 😏 Release Packages
+
+- **@142vip/axios**:
+  - Publish `v0.0.1-alpha.9` &nbsp;-&nbsp; by **chufan** [<samp>(5e386)</samp>](https://github.com/142vip/core-x/commit/5e386b25)
+- **@142vip/utils**:
+  - Publish `v0.0.1-alpha.51` &nbsp;-&nbsp; by **chufan** [<samp>(756ae)</samp>](https://github.com/142vip/core-x/commit/756ae9df)
+- **@142vip/vitepress**:
+  - Publish `v0.0.1-alpha.21` &nbsp;-&nbsp; by **chufan** [<samp>(b8d73)</samp>](https://github.com/142vip/core-x/commit/b8d73fad)
+
+**Release New Version v0.0.1-alpha.40 [👉 View Changes On GitHub](https://github.com/142vip/core-x/compare/v0.0.1-alpha.39...v0.0.1-alpha.40)**
+
 ## v0.0.1-alpha.39 (2026-05-11)
 
 ### ✨ Features
