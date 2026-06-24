@@ -67,6 +67,8 @@
     "registry": "https://registry.npmjs.org"
   },
   "dependencies": {
+    "@142vip/cdn": "0.0.1-alpha.0",
+    "@142vip/open-source": "workspace:*",
     "element-plus": "2.9.7",
     "vitepress": "1.6.4",
     "vue": "3.5.22"

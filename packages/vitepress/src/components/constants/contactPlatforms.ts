@@ -1,36 +1,47 @@
-/** 联系作者 — 平台外链（图标 CDN 与原始组件一致） */
+import bilibiliIcon from '@142vip/cdn/media/svg/bilibili.svg'
+import csdnIcon from '@142vip/cdn/media/svg/csdn.svg'
+import giteeIcon from '@142vip/cdn/media/svg/gitee.svg'
+import githubIcon from '@142vip/cdn/media/svg/github.svg'
+import juejinIcon from '@142vip/cdn/media/svg/juejin.svg'
+import { OPEN_SOURCE_ADDRESS } from '@142vip/open-source'
+
+/**
+ * 联系作者 — 平台外链
+ */
 export const VIP_CONTACT_PLATFORM_LINKS = [
   {
-    href: 'https://github.com/mmdapl',
+    href: OPEN_SOURCE_ADDRESS.HOME_PAGE_GITHUB_MMDAPL,
     title: '点击跳转 Github 主页',
     alt: 'GitHub',
-    icon: 'https://cdn.statically.io/gh/142vip/cdn_service@main/main-vip/svg/github.svg',
+    icon: githubIcon,
   },
   {
-    href: 'https://gitee.com/Mmdapl',
+    href: OPEN_SOURCE_ADDRESS.HOME_PAGE_GITEE_MMDAPL,
     title: '点击跳转码云主页',
     alt: 'Gitee',
-    icon: 'https://cdn.statically.io/gh/142vip/cdn_service@main/main-vip/svg/gitee.svg',
+    icon: giteeIcon,
   },
   {
-    href: 'https://juejin.im/user/448256476724807',
+    href: OPEN_SOURCE_ADDRESS.HOME_PAGE_JUE_JIN,
     title: '点击跳转掘金主页',
     alt: '掘金',
-    icon: 'https://cdn.statically.io/gh/142vip/cdn_service@main/main-vip/svg/juejin.svg',
+    icon: juejinIcon,
   },
   {
-    href: 'https://space.bilibili.com/350937042',
+    href: OPEN_SOURCE_ADDRESS.HOME_PAGE_BILIBILI,
     title: '点击跳转 B 站主页',
     alt: 'Bilibili',
-    icon: 'https://cdn.statically.io/gh/142vip/cdn_service@main/main-vip/svg/bilibili.svg',
+    icon: bilibiliIcon,
   },
   {
-    href: 'https://blog.csdn.net/Mmdapl',
+    href: OPEN_SOURCE_ADDRESS.HOME_PAGE_CSDN,
     title: '点击跳转 CSDN 博客主页',
     alt: 'CSDN',
-    icon: 'https://cdn.statically.io/gh/142vip/cdn_service@main/main-vip/svg/csdn.svg',
+    icon: csdnIcon,
   },
-] as const
+]
 
-export const VIP_CONTACT_WECHAT_QR
-  = 'https://cdn.statically.io/gh/142vip/cdn_service@main/media/main-code.png'
+/**
+ * 联系作者 — 微信二维码
+ */
+export const VIP_CONTACT_WECHAT_QR = 'https://cdn.statically.io/gh/142vip/cdn_service@main/apps/media/wechat/main-code.png'
