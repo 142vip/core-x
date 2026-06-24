@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.22 (2026-06-24)
+
+### ✨ Features
+
+- 增加`@142vip/cdn`依赖，解决外链、图标显示异常 &nbsp;-&nbsp; by **chufan** [<samp>(751ea)</samp>](https://github.com/142vip/core-x/commit/751ea1d3)
+
+**Release New Version v0.0.1-alpha.22 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/vitepress)**
+
 ## v0.0.1-alpha.21 (2026-06-17)
 
 **No Significant Changes**
