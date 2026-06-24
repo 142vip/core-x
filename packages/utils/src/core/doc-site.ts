@@ -25,7 +25,7 @@ export class VipDocSite {
    * @param envKey 环境变量的键
    */
   public getBase(baseName: string, envKey?: string): '/' | `/${string}/` {
-    const needProxy = !!getProcessEnv(envKey ?? this.defaultEnvKey)
+    const needProxy = getProcessEnv(envKey ?? this.defaultEnvKey) === 'true'
 
     return needProxy ? `/${baseName}/` : '/'
   }
