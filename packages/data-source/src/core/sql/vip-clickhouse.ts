@@ -1,7 +1,6 @@
 import type { DataSourceConnector } from '../../data-source.connector'
-
 import type { DataSourceConnectionOptions, DataSourceParseResponse } from '../../data-source.interface'
-import { ClickHouse } from 'clickhouse'
+import { ClickHouseClient, createClient } from '@clickhouse/client'
 import { handlerDataSourceConnectError } from '../../data-source.utils'
 
 export interface ClickHouseOptions extends DataSourceConnectionOptions {
@@ -16,27 +15,39 @@ export class VipClickhouse implements DataSourceConnector<ClickHouseOptions> {
    * 获取连接数据
    */
   public async getConnectionData(options: ClickHouseOptions): Promise<DataSourceParseResponse> {
+    let client: ClickHouseClient | undefined
     try {
-      const ch = new ClickHouse({
-        url: options.host,
-        port: options.port,
-        basicAuth: {
-          username: options.username,
-          password: options.password,
+      client = createClient({
+        url: this.buildClickHouseUrl(options.host, options.port),
+        username: options.username,
+        password: options.password,
+        ...(options.database ? { database: options.database } : {}),
+        request_timeout: 60_000,
+        compression: {
+          response: false,
         },
-        config: {
-          session_timeout: 60,
-          enable_http_compression: 0,
-          database: options.database,
-        },
+        // clickhouse_settings: {
+        //   session_timeout: 60,
+        // },
       })
-
-      const data = await ch.query(options.querySql).toPromise()
-
+      const resultSet = await client.query({
+        query: options.querySql,
+        format: 'JSONEachRow',
+      })
+      const data = await resultSet.json()
       return { success: true, data }
     }
     catch (error) {
       return handlerDataSourceConnectError(VipClickhouse.name, error)
     }
+    finally {
+      await client?.close()
+    }
+  }
+
+  private buildClickHouseUrl(host: string, port: number): string {
+    if (host.startsWith('http://') || host.startsWith('https://'))
+      return /:\d+$/.test(host) ? host : `${host}:${port}`
+    return `http://${host}:${port}`
   }
 }
