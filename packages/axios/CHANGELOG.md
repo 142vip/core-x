@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 
+## v0.0.1-alpha.10 (2026-06-29)
+
+### ✨ Features
+
+- 增加随机`use-agent`等值，提供获取函数 &nbsp;-&nbsp; by **chufan** [<samp>(45af9)</samp>](https://github.com/142vip/core-x/commit/45af9b5f)
+
+**Release New Version v0.0.1-alpha.10 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/axios)**
+
 ## v0.0.1-alpha.9 (2026-06-16)
 
 ### ✨ Features
