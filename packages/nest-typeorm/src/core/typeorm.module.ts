@@ -1,9 +1,7 @@
 import { DynamicModule, Global, Module } from '@nestjs/common'
 import { TypeOrmModule, TypeOrmModuleAsyncOptions, TypeOrmModuleOptions } from '@nestjs/typeorm'
-import { EntitiesMetadataStorage } from '@nestjs/typeorm/dist/entities-metadata.storage'
 import { EntityClassOrSchema } from '@nestjs/typeorm/dist/interfaces/entity-class-or-schema.type'
 import { DEFAULT_DATA_SOURCE_NAME } from '@nestjs/typeorm/dist/typeorm.constants'
-import { createTypeOrmProviders } from '@nestjs/typeorm/dist/typeorm.providers'
 import { DataSource, DataSourceOptions } from 'typeorm'
 
 /**
@@ -15,30 +13,18 @@ import { DataSource, DataSourceOptions } from 'typeorm'
 @Module({})
 export class NestTypeOrmModule {
   /**
-   * 同步注册数据库连接
+   * 同步注册数据库连接。
+   * 直接委托 TypeOrmModule.forRoot，避免额外包装导致 TypeOrmCoreModule 的 DataSource 无法全局注入。
    */
-  public static forRoot(options?: TypeOrmModuleOptions): DynamicModule {
-    // 关键修复：避免重复实例化，确保同一个模块实例
-    const typeOrmModule = TypeOrmModule.forRoot(options)
-    return {
-      module: NestTypeOrmModule,
-      imports: [{ ...typeOrmModule, global: true }],
-      exports: [typeOrmModule],
-    }
+  public static forRoot(options: TypeOrmModuleOptions = {}): DynamicModule {
+    return TypeOrmModule.forRoot(options)
   }
 
   /**
-   * 异步注册数据库连接
-   * 完全兼容 TypeOrmModule.forRootAsync()
+   * 异步注册数据库连接，行为与 TypeOrmModule.forRootAsync 一致。
    */
   public static forRootAsync(options: TypeOrmModuleAsyncOptions): DynamicModule {
-    // 关键修复：避免重复实例化，确保同一个模块实例
-    const typeOrmModule = TypeOrmModule.forRootAsync(options)
-    return {
-      module: NestTypeOrmModule,
-      imports: [{ ...typeOrmModule, global: true }],
-      exports: [typeOrmModule],
-    }
+    return TypeOrmModule.forRootAsync(options)
   }
 
   /**
@@ -52,14 +38,7 @@ export class NestTypeOrmModule {
       | DataSourceOptions
       | string = DEFAULT_DATA_SOURCE_NAME,
   ): DynamicModule {
-    const providers = createTypeOrmProviders(entities, dataSource)
-    EntitiesMetadataStorage.addEntitiesByDataSource(dataSource, [...entities])
-    return {
-      module: NestTypeOrmModule,
-      imports: [TypeOrmModule.forFeature(entities, dataSource)],
-      providers,
-      exports: providers,
-    }
+    return TypeOrmModule.forFeature(entities, dataSource)
   }
 
   /**
