@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.10 (2026-06-30)
+
+### 🐛 Bug Fixes
+
+- 修复typeorm连接实例异常，固定包版本 &nbsp;-&nbsp; by **chufan** [<samp>(e9ccf)</samp>](https://github.com/142vip/core-x/commit/e9ccf795)
+
+**Release New Version v0.0.1-alpha.10 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/nest-typeorm)**
+
 ## v0.0.1-alpha.8 (2026-01-06)
 
 ### ✨ Features
