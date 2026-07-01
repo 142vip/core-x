@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.11 (2026-07-01)
+
+### ✨ Features
+
+- 升级nest框架版本，固定最新版 &nbsp;-&nbsp; by **chufan** [<samp>(9c5a0)</samp>](https://github.com/142vip/core-x/commit/9c5a0961)
+
+**Release New Version v0.0.1-alpha.11 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/nest)**
+
 ## v0.0.1-alpha.10 (2026-02-06)
 
 ### 🐛 Bug Fixes
