@@ -45,24 +45,24 @@
     "test": "npx jest",
     "test:coverage": "npx jest --coverage"
   },
-  "dependencies": {
-    "@nestjs/common": "11.1.8",
-    "@nestjs/core": "11.1.8",
-    "@nestjs/platform-express": "11.1.8",
-    "@nestjs/swagger": "11.2.1",
+  "peerDependencies": {
+    "@nestjs/common": "11.1.27",
+    "@nestjs/core": "11.1.27",
+    "@nestjs/platform-express": "11.1.27",
+    "@nestjs/swagger": "11.4.5",
     "class-transformer": "0.5.1",
-    "class-validator": "0.14.2",
+    "class-validator": "0.15.1",
     "fancy-log": "2.0.0",
     "nest-typed-config": "2.10.1",
-    "nestjs-pino": "4.4.1",
+    "nestjs-pino": "4.6.1",
     "reflect-metadata": "0.2.2",
     "rxjs": "7.8.2"
   },
   "devDependencies": {
-    "@nestjs/cli": "11.0.10",
-    "@nestjs/schematics": "11.0.9",
-    "@nestjs/testing": "11.1.8",
-    "@types/express": "5.0.0",
+    "@nestjs/cli": "11.0.23",
+    "@nestjs/schematics": "11.1.0",
+    "@nestjs/testing": "11.1.27",
+    "@types/express": "5.0.6",
     "@types/fancy-log": "2.0.2"
   },
   "publishConfig": {
