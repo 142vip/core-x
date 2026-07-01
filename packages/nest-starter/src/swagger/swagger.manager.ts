@@ -10,9 +10,13 @@ import {
 } from '@142vip/nest'
 import { VipColor } from '@142vip/utils'
 import { INestApplication } from '@nestjs/common'
-import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
-import { ApiResponseOptions } from '@nestjs/swagger/dist/decorators/api-response.decorator'
-import { OpenAPIObject, SwaggerCustomOptions } from '@nestjs/swagger/dist/interfaces'
+import {
+  ApiResponseOptions,
+  DocumentBuilder,
+  OpenAPIObject,
+  SwaggerCustomOptions,
+  SwaggerModule,
+} from '@nestjs/swagger'
 
 export interface DocumentBuilderOptions {
   title?: string
