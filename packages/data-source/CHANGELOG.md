@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.5 (2026-07-13)
+
+### ✨ Features
+
+- 移除`clickhouse`模块，替换为`@clickhouse/client`模块，增加客户端连接释放 &nbsp;-&nbsp; by **chufan** [<samp>(3b3a8)</samp>](https://github.com/142vip/core-x/commit/3b3a88ed)
+
+**Release New Version v0.0.1-alpha.5 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/data-source)**
+
 ## v0.0.1-alpha.4 (2025-09-25)
 
 ### ✨ Features
