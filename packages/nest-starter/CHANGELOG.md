@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.16 (2026-07-20)
+
+### ✨ Features
+
+- 约定config配置文件，支持多环境配置文件自动选择加载 &nbsp;-&nbsp; by **chufan** [<samp>(ba5d6)</samp>](https://github.com/142vip/core-x/commit/ba5d618d)
+
+**Release New Version v0.0.1-alpha.16 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/nest-starter)**
+
 ## v0.0.1-alpha.15 (2026-07-06)
 
 ### 🐛 Bug Fixes
