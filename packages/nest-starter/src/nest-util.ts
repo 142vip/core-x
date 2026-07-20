@@ -6,11 +6,13 @@ import { nestProcess } from './nest-process'
 export class NestUtil {
   public readonly app: INestApplication
   public readonly starterConfig: StarterConfig
+  public readonly configFileName?: string
   private logger = new Logger()
 
-  constructor(app: INestApplication, starterConfig: StarterConfig) {
+  constructor(app: INestApplication, starterConfig: StarterConfig, configFileName?: string) {
     this.app = app
     this.starterConfig = starterConfig
+    this.configFileName = configFileName
   }
 
   /**
@@ -55,7 +57,7 @@ export class NestUtil {
     const appName = nestProcess.getAppEnv()
     const template = this.getLoggerTemplate('🚀 应用启动成功', {
       nodeEnv: nestProcess.getNodeEnv()!,
-      config: `${nestProcess.getRunEnv()}.config.js`,
+      ...(this.configFileName == null ? {} : { config: this.configFileName }),
       ...(appName == null ? {} : { appName }),
       ...(this.starterConfig.globalPrefix == null ? {} : { globalPrefix: this.starterConfig.globalPrefix }),
     })

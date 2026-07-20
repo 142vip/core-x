@@ -1,7 +1,7 @@
+export * from './config.util'
 export * from './plugin/logger.config'
 export * from './plugin/redis.config'
 export * from './plugin/sequelize.config'
 export * from './plugin/swagger.config'
 export * from './plugin/typeorm.config'
-
 export * from './starter.config'

@@ -1,17 +1,31 @@
 import type { ClassConstructor } from 'class-transformer'
-import { VipNodeJS } from '@142vip/utils'
 import { DynamicModule } from '@nestjs/common'
 import { fileLoader, selectConfig, TypedConfigModule } from 'nest-typed-config'
 import { NestAppConfig } from './app.config'
-import { StarterConfig } from './config'
+import { NestConfigPathOptions, nestConfigUtil, StarterConfig } from './config'
+
+type NestConfigRegisterOptions = NestConfigPathOptions
 
 export class NestConfigModule {
-  public static register<T extends ClassConstructor<NestAppConfig>>(ConfigConSchema: T): DynamicModule {
+  /**
+   * 注册配置模块
+   * - 默认按 config 目录约定解析配置文件
+   * - 通过 NestStarter.start() 启动时传入 configPath，仅此时输出配置加载日志
+   */
+  public static register<T extends ClassConstructor<NestAppConfig>>(
+    ConfigConSchema: T,
+    options?: NestConfigRegisterOptions,
+  ): DynamicModule {
+    const configPath = options?.configPath ?? nestConfigUtil.resolveSync(options ?? {})
+
+    if (options?.configPath != null) {
+      nestConfigUtil.log(configPath)
+    }
+
     return TypedConfigModule.forRoot({
       schema: ConfigConSchema,
       load: fileLoader({
-        // TODO 指定配置文件
-        absolutePath: VipNodeJS.pathResolve(VipNodeJS.getProcessCwd(), 'config/test.config.js'),
+        absolutePath: configPath.configFilePath,
       }),
     })
   }

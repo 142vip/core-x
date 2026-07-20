@@ -1,3 +1,4 @@
+import type { NestConfigPath } from './config/config.util'
 import {
   GlobalFilter,
   NestModule,
@@ -7,7 +8,7 @@ import {
 import { LoggerLevelEnum, NestLoggerModule } from '@142vip/nest-logger'
 import { NestRedisModule } from '@142vip/nest-redis'
 import { NestTypeOrmModule } from '@142vip/nest-typeorm'
-import { vipLogger } from '@142vip/utils'
+import { vipLogger, VipNodeJS } from '@142vip/utils'
 import {
   ClassSerializerInterceptor,
   HttpStatus,
@@ -20,6 +21,7 @@ import { ClassConstructor } from 'class-transformer'
 import { selectConfig } from 'nest-typed-config'
 import { NestAppConfig } from './app.config'
 import { NestConfigModule, nestStaterConfig } from './config.module'
+import { NestConfigResolveError, nestConfigUtil } from './config/config.util'
 import { NestRootModule } from './nest-root.module'
 import { NestUtil } from './nest-util'
 import { SwaggerManager } from './swagger/swagger.manager'
@@ -55,7 +57,8 @@ export class NestStarter {
    * 入口
    */
   public async start(appModule: NestModule, rootConfigSchema: ClassConstructor<NestAppConfig>): Promise<void> {
-    const ConfigModule = NestConfigModule.register(rootConfigSchema)
+    const configPath = await this.resolveStartupConfig()
+    const ConfigModule = NestConfigModule.register(rootConfigSchema, { configPath })
 
     // 整个项目配置
     const rootConfig = selectConfig(ConfigModule, rootConfigSchema)
@@ -113,7 +116,22 @@ export class NestStarter {
     await app.listen(nestStaterConfig.port!)
 
     // 优化日志
-    void new NestUtil(app, nestStaterConfig).printAppModuleStarterLogger()
+    void new NestUtil(app, nestStaterConfig, configPath.configFileName).printAppModuleStarterLogger()
+  }
+
+  /**
+   * 解析启动配置，配置异常已在终端友好输出，此处仅安全退出
+   */
+  private async resolveStartupConfig(): Promise<NestConfigPath> {
+    try {
+      return await nestConfigUtil.resolveAsync()
+    }
+    catch (error) {
+      if (error instanceof NestConfigResolveError) {
+        VipNodeJS.exitProcess(1)
+      }
+      throw error
+    }
   }
 
   /**
