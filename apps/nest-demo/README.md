@@ -8,25 +8,28 @@
 # 安装依赖（在 monorepo 根目录）
 pnpm install
 
-# 本地开发：按配置规则交互选择或确认
+# 本地开发：交互选择 config/*.config.js
 pnpm --filter nest-demo dev
 
-# 生产路径启动：直接加载 config/config.js
+# 生产路径启动：加载 prod.config.js
 pnpm --filter nest-demo start
 ```
 
 ## 配置说明
 
+`config/` 目录仅允许 `xxx.config.js`：
+
 ```
 config/
-├── config.js        # 生产配置（pnpm start 使用）
-└── test.config.js   # 开发/测试配置（pnpm dev 可选）
+├── local.config.js  # 本地开发
+├── test.config.js   # 测试
+└── prod.config.js   # 生产（pnpm start）
 ```
 
 | 命令 | `NODE_ENV` | 加载配置 |
 |------|------------|---------|
-| `pnpm dev` | `local` | 多文件时交互选择；仅一个文件时确认启动并提示多环境配置 |
-| `pnpm start` | 未设置 | 直接加载 `config.js` |
+| `pnpm dev` | `local` | 多文件时交互选择；仅一个文件时直接使用 |
+| `pnpm start` | 未设置 | 加载 `prod.config.js` |
 
 配置加载失败时，终端会输出 `[@142vip/nest-starter] [异常]` 日志并直接退出，不会打印 Error 堆栈。
 

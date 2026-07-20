@@ -17,32 +17,34 @@ pnpm i @142vip/nest-starter
 
 ### 目录约定
 
-在项目根目录创建 `config/` 目录，仅允许以下两类文件：
+在项目根目录创建 `config/` 目录，**仅允许** `xxx.config.js` 文件，用于多环境区分：
 
 | 文件 | 说明 |
 |------|------|
-| `config.js` | 生产环境配置 |
-| `xxx.config.js` | 开发环境配置（如 `local.config.js`、`test.config.js`） |
+| `local.config.js` | 本地开发 |
+| `test.config.js` | 测试 |
+| `dev.config.js` | 开发 |
+| `prod.config.js` | 生产 |
 
 示例：
 
 ```
 config/
-├── config.js          # 生产
-├── local.config.js    # 本地开发
-└── test.config.js     # 测试
+├── local.config.js
+├── test.config.js
+└── prod.config.js
 ```
 
 ### 加载规则
 
 | 启动方式 | `NODE_ENV` | 行为 |
 |---------|------------|------|
-| `nest start` / 生产部署 | 非 `local` | 直接加载 `config.js`，不弹交互 |
-| 本地开发 + 多个配置文件 | `local` | 终端交互选择 |
-| 本地开发 + 仅一个配置文件 | `local` | 确认是否启动，并提示多环境配置建议 |
-| 本地开发 + 非交互终端 | `local` | 优先 `config.js`，否则自动选择唯一开发配置 |
+| 本地开发 | `local` | 多个文件时终端交互选择；仅一个文件时直接使用 |
+| 生产 / 其他 | 非 `local` | 加载 `{NODE_ENV}.config.js`；未设置或 `production` 时默认 `prod.config.js` |
 
-`resolveSync`（模块导入阶段）不支持交互：存在 `config.js` 时优先使用；仅一个开发配置时可自动选中。
+`resolveSync`（模块导入阶段）不支持交互：优先 `prod.config.js`，否则使用唯一配置文件。
+
+支持的环境值（`NestDevEnv`）：`local`、`test`、`dev`、`prod`。`NODE_ENV=production` 会映射为 `prod`。
 
 ### 终端日志
 
@@ -50,26 +52,17 @@ config/
 
 ```
 [@142vip/nest-starter] [信息] 配置加载
-  启动模式: 生产
-  配置文件: /path/to/config/config.js
-```
-
-单配置文件时的多环境提示：
-
-```
-[@142vip/nest-starter] [警告] 配置提示
-  当前仅发现配置文件: test.config.js
-  多环境配置建议:
-    生产环境: config.js
-    开发环境: local.config.js、test.config.js 等
+  启动模式: 开发
+  配置环境: local
+  配置文件: /path/to/config/local.config.js
 ```
 
 配置异常时输出友好日志后直接退出进程，不打印 Error 堆栈：
 
 ```
 [@142vip/nest-starter] [异常] 配置加载失败
-  未找到生产配置文件: /path/to/config/config.js
-  请在 config 目录创建 config.js
+  配置文件不存在: prod.config.js
+  可选配置: local.config.js, test.config.js
 ```
 
 本地开发交互时按 `Ctrl+C` 会友好退出（nest watch 模式下按一次即可）。
@@ -105,13 +98,15 @@ import { Config } from './config'
 void NestStarter.getInstance().start(AppModule, Config)
 ```
 
+`NestStarter.start()` 会按上述规则解析配置，并用**本次选定**的 `StarterConfig` 注册 Redis、TypeORM、端口等，保证与用户选择的 `xxx.config.js` 一致。
+
 ### 读取配置
 
 ```ts
 import { getConfig, nestStaterConfig, StarterConfig } from '@142vip/nest-starter'
 
-// 启动配置（模块导入时可用）
-console.log(nestStaterConfig.port)
+// 模块导入时的默认配置（resolveSync：优先 prod.config.js）
+const port = nestStaterConfig.port
 
 // 按 Schema 获取
 const starter = getConfig(StarterConfig)
@@ -128,21 +123,19 @@ const starter = getConfig(StarterConfig)
 }
 ```
 
-- `pnpm dev`：`NODE_ENV=local`，按上述本地开发规则选择/确认配置
-- `pnpm start`：生产路径，直接加载 `config.js`
+- `pnpm dev`：`NODE_ENV=local`，交互选择 `xxx.config.js`
+- `pnpm start`：加载 `prod.config.js`
 
 ### 高级选项
-
-通过 `NestConfigModule.register` 第二参数或 `nestConfigUtil` 覆盖默认行为：
 
 ```ts
 import { nestConfigUtil, NestDevEnv } from '@142vip/nest-starter'
 
-// 跳过交互，指定开发环境
+// 跳过交互，指定环境
 const configPath = await nestConfigUtil.resolveAsync({ devConfig: NestDevEnv.Test })
 
 // 显式指定配置文件
-const configPath = await nestConfigUtil.resolveAsync({
+const configPathByPath = await nestConfigUtil.resolveAsync({
   absolutePath: '/path/to/local.config.js',
 })
 ```
