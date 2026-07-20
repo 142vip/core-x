@@ -10,7 +10,7 @@
     "homePage": "https://142vip.cn"
   },
   "scripts": {
-    "dev": "NODE_ENV=local RUN_ENV=test nest start -d -w",
+    "dev": "NODE_ENV=local nest start -d -w",
     "dev:debug": "nest start --debug --watch",
     "dev:prod": "node dist/main",
     "build": "nest build",
