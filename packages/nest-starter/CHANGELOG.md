@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.17 (2026-07-20)
+
+### 🐛 Bug Fixes
+
+- 修复多配置文件时，配置加载异常 &nbsp;-&nbsp; by **chufan** [<samp>(b92b5)</samp>](https://github.com/142vip/core-x/commit/b92b5f0d)
+
+**Release New Version v0.0.1-alpha.17 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/nest-starter)**
+
 ## v0.0.1-alpha.16 (2026-07-20)
 
 ### ✨ Features
