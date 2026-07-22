@@ -1,6 +1,7 @@
 export * from './app.config'
 export * from './config'
 export * from './config.module'
+export * from './nest-app.module'
 export * from './nest-starter'
 // export * from './pkgs'
 // export * from './swagger/swagger.type'

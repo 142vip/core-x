@@ -1,20 +1,19 @@
 import { VipColor, VipInquirer, vipLogger, VipNodeJS } from '@142vip/utils'
+import { exitWithNestCliShutdown } from '../nest-exit.util'
 import { nestProcess } from '../nest-process'
 
 const LOG_PREFIX = `[@142vip/nest-starter]`
 
 /**
- * config 目录约定：仅允许 xxx.config.js，用于多环境区分
- * 示例：local.config.js、test.config.js、prod.config.js
+ * config 目录约定（生产 / 开发隔离）：
+ * - config.js：生产配置（生产模式必须存在）
+ * - xxx.config.js：开发多环境配置（如 local.config.js、test.config.js）
  */
 const CONFIG_DIR_RULES = {
   dirName: 'config',
-  /** 匹配 xxx.config.js，捕获环境名 */
-  filePattern: /^(.+)\.config\.js$/,
+  productionFileName: 'config.js',
+  developmentFilePattern: /^(.+)\.config\.js$/,
 } as const
-
-/** nest cli 子进程启动标识，watch 模式下需通知父进程退出 */
-const NEST_CLI_CHILD_FLAG = '--enable-source-maps'
 
 /** 终端配置日志级别 */
 export enum NestConfigLogLevel {
@@ -31,16 +30,19 @@ const LOG_LEVEL_LABEL: Record<NestConfigLogLevel, string> = {
 
 /** 配置启动模式 */
 export enum NestDevMode {
+  /** 生产：加载 config.js */
   Production = 'production',
+  /** 开发：加载 xxx.config.js */
   Development = 'development',
 }
 
 /**
- * 配置环境标识，对应 xxx.config.js 中的 xxx
- * 例如：Local -> local.config.js，Prod -> prod.config.js
+ * 配置环境标识
+ * - Production 对应 config.js
+ * - 其余对应同名 xxx.config.js（如 Local -> local.config.js）
  */
 export enum NestDevEnv {
-  Prod = 'prod',
+  Production = 'production',
   Local = 'local',
   Test = 'test',
   Dev = 'dev',
@@ -55,7 +57,7 @@ export interface NestConfigPathOptions {
   absolutePath?: string
   /** 预解析结果，供 NestConfigModule.register 跳过重复解析 */
   configPath?: NestConfigPath
-  /** 指定环境名，跳过交互选择 */
+  /** 开发环境标识，跳过交互选择（仅开发模式有效） */
   devConfig?: NestDevEnv
 }
 
@@ -68,8 +70,8 @@ export interface NestConfigPath {
   configFileName: string
 }
 
-/** xxx.config.js 文件描述 */
-interface ConfigFileEntry {
+/** 开发配置文件描述（xxx.config.js） */
+interface DevelopmentConfigFile {
   devEnv: NestDevEnv
   fileName: string
   filePath: string
@@ -78,7 +80,10 @@ interface ConfigFileEntry {
 /** config 目录扫描结果 */
 interface ConfigDirectoryScanResult {
   configDir: string
-  configFiles: ConfigFileEntry[]
+  /** 生产配置 config.js */
+  productionFilePath?: string
+  /** 开发配置 xxx.config.js */
+  developmentFiles: DevelopmentConfigFile[]
 }
 
 /**
@@ -98,10 +103,13 @@ export class NestConfigResolveError extends Error {
 /**
  * Nest 配置路径解析工具
  *
- * 加载规则：
- * - NODE_ENV=local（开发）：交互选择 xxx.config.js；仅一个文件时直接使用
- * - 非 local：按 NODE_ENV 加载对应 {env}.config.js，默认 prod.config.js
- * - resolveSync：不支持交互，优先 prod.config.js，否则唯一配置文件
+ * 模式隔离：
+ * | 模式 | 判定 | 行为 |
+ * |------|------|------|
+ * | 开发 | NODE_ENV=local | 交互选择 xxx.config.js（仅一个时直接使用） |
+ * | 生产 | NODE_ENV !== local | 必须存在并加载 config.js |
+ *
+ * resolveSync：非交互兜底（优先 config.js）；业务启动请用 resolveAsync
  */
 class NestConfigUtil {
   public static isResolveError(error: unknown): error is NestConfigResolveError {
@@ -110,7 +118,7 @@ class NestConfigUtil {
 
   /**
    * 异步解析配置路径
-   * - NestStarter.start() 使用，开发模式下支持交互选择
+   * - NestStarter.start() 使用
    */
   public async resolveAsync(options: NestConfigPathOptions = {}): Promise<NestConfigPath> {
     const explicit = this.resolveExplicit(options)
@@ -121,21 +129,22 @@ class NestConfigUtil {
     const scanResult = this.scanConfigDirectory(options)
 
     if (options.devConfig != null) {
-      return this.resolveByEnv(scanResult, options.devConfig)
+      return this.resolveDevelopmentConfigByEnv(scanResult, options.devConfig)
     }
 
-    // 开发模式：交互选择多环境配置
+    // 开发模式：交互选择 xxx.config.js
     if (nestProcess.isLocalStartNest()) {
-      return this.resolveDevConfig(scanResult)
+      return this.resolveDevelopmentConfig(scanResult)
     }
 
-    // 非开发：按 NODE_ENV 加载对应配置，默认 prod
-    return this.resolveByEnv(scanResult, this.resolveEnvFromNodeEnv())
+    // 生产模式：必须加载 config.js
+    return this.resolveProductionConfig(scanResult)
   }
 
   /**
    * 同步解析配置路径
-   * - 供 NestAppConfigModule 模块导入使用，不支持交互
+   * - 不支持交互；优先 config.js
+   * - 开发场景下若无 config.js 且仅一个 xxx.config.js 则可自动选中
    */
   public resolveSync(options: NestConfigPathOptions = {}): NestConfigPath {
     const explicit = this.resolveExplicit(options)
@@ -146,24 +155,27 @@ class NestConfigUtil {
     const scanResult = this.scanConfigDirectory(options)
 
     if (options.devConfig != null) {
-      return this.resolveByEnv(scanResult, options.devConfig)
+      return this.resolveDevelopmentConfigByEnv(scanResult, options.devConfig)
     }
 
-    const prodFile = scanResult.configFiles.find(file => file.devEnv === NestDevEnv.Prod)
-    if (prodFile != null) {
-      return this.buildConfigPath(scanResult, prodFile)
+    if (scanResult.productionFilePath != null) {
+      return this.resolveProductionConfig(scanResult)
     }
 
-    if (scanResult.configFiles.length === 1) {
-      return this.buildConfigPath(scanResult, scanResult.configFiles[0]!)
+    if (scanResult.developmentFiles.length === 1) {
+      return this.buildDevelopmentConfigPath(scanResult, scanResult.developmentFiles[0]!)
     }
 
-    this.raiseConfigIssue(NestConfigLogLevel.Error, '配置加载失败', [
-      '存在多个配置文件，无法在模块导入阶段自动选择',
-      '请通过 NestStarter.start() 启动并交互选择',
-      '或传入 devConfig 指定环境，例如: devConfig=local',
-      `可选配置: ${scanResult.configFiles.map(file => file.fileName).join(', ') || '无'}`,
-    ])
+    if (scanResult.developmentFiles.length > 0) {
+      this.raiseConfigIssue(NestConfigLogLevel.Error, '配置加载失败', [
+        '模块导入阶段无法自动选择配置文件',
+        '请添加生产配置: config/config.js',
+        '或通过 NestStarter.start()（NODE_ENV=local）交互选择 xxx.config.js',
+        `当前开发配置: ${scanResult.developmentFiles.map(file => file.fileName).join(', ')}`,
+      ])
+    }
+
+    return this.resolveProductionConfig(scanResult)
   }
 
   /** 输出配置加载成功日志（仅 NestStarter.start 传入 configPath 时调用） */
@@ -189,27 +201,26 @@ class NestConfigUtil {
   }
 
   /**
-   * 开发模式配置解析
+   * 开发模式：仅处理 xxx.config.js
    * - 多个文件：终端交互选择
    * - 一个文件：直接使用
-   * - 非 TTY：仅支持唯一文件或报错提示使用 devConfig
    */
-  private async resolveDevConfig(scanResult: ConfigDirectoryScanResult): Promise<NestConfigPath> {
-    if (scanResult.configFiles.length === 0) {
+  private async resolveDevelopmentConfig(scanResult: ConfigDirectoryScanResult): Promise<NestConfigPath> {
+    if (scanResult.developmentFiles.length === 0) {
       this.raiseConfigIssue(NestConfigLogLevel.Error, '配置加载失败', [
-        `config 目录下未找到配置文件`,
-        `请创建 xxx.config.js，例如: local.config.js、test.config.js`,
+        '开发模式下未找到 xxx.config.js',
+        '请创建开发配置，例如: local.config.js、test.config.js',
       ])
     }
 
-    if (scanResult.configFiles.length === 1) {
-      return this.buildConfigPath(scanResult, scanResult.configFiles[0]!)
+    if (scanResult.developmentFiles.length === 1) {
+      return this.buildDevelopmentConfigPath(scanResult, scanResult.developmentFiles[0]!)
     }
 
     if (!VipNodeJS.getProcessStdin().isTTY) {
       this.raiseConfigIssue(NestConfigLogLevel.Error, '配置加载失败', [
-        '当前为非交互终端，无法选择配置文件',
-        `可选环境: ${scanResult.configFiles.map(file => file.devEnv).join('、')}`,
+        '当前为非交互终端，无法选择开发配置',
+        `可选环境: ${scanResult.developmentFiles.map(file => file.devEnv).join('、')}`,
         '请设置 devConfig 指定环境，例如: devConfig=local',
       ])
     }
@@ -219,7 +230,7 @@ class NestConfigUtil {
 
   /** 终端交互选择 xxx.config.js */
   private async promptSelectConfigFile(scanResult: ConfigDirectoryScanResult): Promise<NestConfigPath> {
-    const fileNameChoices = scanResult.configFiles.map(file => file.fileName)
+    const fileNameChoices = scanResult.developmentFiles.map(file => file.fileName)
 
     vipLogger.println()
 
@@ -228,68 +239,68 @@ class NestConfigUtil {
       fileNameChoices,
     ))
 
-    const matchedFile = scanResult.configFiles.find(file => file.fileName === selectedFileName)
+    const matchedFile = scanResult.developmentFiles.find(file => file.fileName === selectedFileName)
     if (matchedFile == null) {
       this.raiseConfigIssue(NestConfigLogLevel.Error, '配置加载失败', [
         `无效的配置选择: ${selectedFileName}`,
       ])
     }
 
-    return this.buildConfigPath(scanResult, matchedFile)
+    return this.buildDevelopmentConfigPath(scanResult, matchedFile)
   }
 
-  /** VipInquirer 在 Ctrl+C 时返回 null，此处安全退出 */
+  /** VipInquirer 在 Ctrl+C 时返回 null，此处安全退出（含 nest watch 父进程） */
   private guardPromptResult<T>(value: T | undefined | null): T {
     if (value == null) {
-      exitPromptCancelled()
+      exitWithNestCliShutdown(0)
     }
     return value
   }
 
-  /** 按环境名匹配 xxx.config.js */
-  private resolveByEnv(scanResult: ConfigDirectoryScanResult, devEnv: NestDevEnv): NestConfigPath {
-    const matchedFile = scanResult.configFiles.find(file => file.devEnv === devEnv)
+  /** 按环境名匹配 xxx.config.js（不可指定 Production，生产请用 config.js） */
+  private resolveDevelopmentConfigByEnv(
+    scanResult: ConfigDirectoryScanResult,
+    devConfig: NestDevEnv,
+  ): NestConfigPath {
+    if (devConfig === NestDevEnv.Production) {
+      return this.resolveProductionConfig(scanResult)
+    }
+
+    const matchedFile = scanResult.developmentFiles.find(file => file.devEnv === devConfig)
     if (matchedFile == null) {
       this.raiseConfigIssue(NestConfigLogLevel.Error, '配置加载失败', [
-        `配置文件不存在: ${devEnv}.config.js`,
-        `可选配置: ${scanResult.configFiles.map(file => file.fileName).join(', ') || '无'}`,
+        `开发配置不存在: ${devConfig}.config.js`,
+        `可选配置: ${scanResult.developmentFiles.map(file => file.fileName).join(', ') || '无'}`,
       ])
     }
 
-    return this.buildConfigPath(scanResult, matchedFile)
+    return this.buildDevelopmentConfigPath(scanResult, matchedFile)
   }
 
-  /**
-   * 非开发启动时，由 NODE_ENV 映射到配置环境
-   * - 未设置或 production → prod（加载 prod.config.js）
-   * - 其余值需与 NestDevEnv 一致（local / test / dev / prod）
-   */
-  private resolveEnvFromNodeEnv(): NestDevEnv {
-    const nodeEnv = nestProcess.getNodeEnv()
-    if (nodeEnv == null || nodeEnv === '' || nodeEnv === 'production') {
-      return NestDevEnv.Prod
-    }
-
-    const matchedEnv = (Object.values(NestDevEnv) as string[]).find(value => value === nodeEnv)
-    if (matchedEnv == null) {
+  /** 生产模式：必须存在 config.js */
+  private resolveProductionConfig(scanResult: ConfigDirectoryScanResult): NestConfigPath {
+    if (scanResult.productionFilePath == null) {
       this.raiseConfigIssue(NestConfigLogLevel.Error, '配置加载失败', [
-        `不支持的 NODE_ENV: ${nodeEnv}`,
-        `可选值: ${Object.values(NestDevEnv).join('、')}（production 等同于 prod）`,
-        `将加载对应的 {env}.config.js`,
+        `未找到生产配置文件: ${VipNodeJS.pathJoin(scanResult.configDir, CONFIG_DIR_RULES.productionFileName)}`,
+        `生产模式必须在 config 目录创建 ${CONFIG_DIR_RULES.productionFileName}`,
       ])
     }
 
-    return matchedEnv as NestDevEnv
+    return {
+      devMode: NestDevMode.Production,
+      devEnv: NestDevEnv.Production,
+      configDir: scanResult.configDir,
+      configFilePath: scanResult.productionFilePath,
+      configFileName: CONFIG_DIR_RULES.productionFileName,
+    }
   }
 
-  private buildConfigPath(
+  private buildDevelopmentConfigPath(
     scanResult: ConfigDirectoryScanResult,
-    configFile: ConfigFileEntry,
+    configFile: DevelopmentConfigFile,
   ): NestConfigPath {
     return {
-      devMode: configFile.devEnv === NestDevEnv.Prod
-        ? NestDevMode.Production
-        : NestDevMode.Development,
+      devMode: NestDevMode.Development,
       devEnv: configFile.devEnv,
       configDir: scanResult.configDir,
       configFilePath: configFile.filePath,
@@ -307,33 +318,52 @@ class NestConfigUtil {
 
     const configDir = VipNodeJS.pathDirname(configFilePath)
     const fileName = configFilePath.split(/[/\\]/).pop()!
-    const envMatch = fileName.match(CONFIG_DIR_RULES.filePattern)
+    const isProductionFile = fileName === CONFIG_DIR_RULES.productionFileName
+    const developmentEnvMatch = fileName.match(CONFIG_DIR_RULES.developmentFilePattern)
 
-    if (envMatch == null) {
+    if (!isProductionFile && developmentEnvMatch == null) {
       this.raiseConfigIssue(NestConfigLogLevel.Error, '配置加载失败', [
         `非法配置文件: ${fileName}`,
-        `仅允许 xxx.config.js，例如: local.config.js、prod.config.js`,
+        `仅允许 ${CONFIG_DIR_RULES.productionFileName} 与 xxx.config.js`,
       ])
     }
 
-    const configFile: ConfigFileEntry = {
-      devEnv: this.parseConfigEnv(envMatch[1]!),
-      fileName,
-      filePath: configFilePath,
+    if (isProductionFile) {
+      return {
+        devMode: NestDevMode.Production,
+        devEnv: NestDevEnv.Production,
+        configDir,
+        configFilePath,
+        configFileName: fileName,
+      }
     }
 
-    return this.buildConfigPath({ configDir, configFiles: [configFile] }, configFile)
+    return {
+      devMode: NestDevMode.Development,
+      devEnv: this.parseDevelopmentEnv(developmentEnvMatch![1]!),
+      configDir,
+      configFilePath,
+      configFileName: fileName,
+    }
   }
 
-  /** 从文件名前缀解析环境标识（local.config.js -> local） */
-  private parseConfigEnv(envName: string): NestDevEnv {
-    const matchedEnv = (Object.values(NestDevEnv) as string[]).find(value => value === envName)
+  /** 从文件名前缀解析开发环境（local.config.js -> local） */
+  private parseDevelopmentEnv(envName: string): NestDevEnv {
+    const matchedEnv = (Object.values(NestDevEnv) as string[])
+      .filter(value => value !== NestDevEnv.Production)
+      .find(value => value === envName)
+
     if (matchedEnv == null) {
+      const supportedEnvList = Object.values(NestDevEnv)
+        .filter(env => env !== NestDevEnv.Production)
+        .join('、')
       this.raiseConfigIssue(NestConfigLogLevel.Error, '配置加载失败', [
-        `不支持的配置环境: ${envName}`,
-        `可选值: ${Object.values(NestDevEnv).join('、')}`,
+        `不支持的开发环境: ${envName}`,
+        `可选值: ${supportedEnvList}`,
+        `生产配置请使用 ${CONFIG_DIR_RULES.productionFileName}`,
       ])
     }
+
     return matchedEnv as NestDevEnv
   }
 
@@ -345,25 +375,36 @@ class NestConfigUtil {
     if (!VipNodeJS.isExistDir(configDirName, cwd)) {
       this.raiseConfigIssue(NestConfigLogLevel.Error, '配置加载失败', [
         `未找到配置目录: ${configDirPath}`,
-        `请创建 ${configDirName} 目录，并添加 xxx.config.js`,
-        `示例: ${configDirName}/local.config.js、${configDirName}/prod.config.js`,
+        `请创建 ${configDirName} 目录`,
+        `生产配置: ${configDirName}/${CONFIG_DIR_RULES.productionFileName}`,
+        `开发配置: ${configDirName}/local.config.js、test.config.js 等`,
       ])
     }
 
     return configDirPath
   }
 
-  /** 扫描 config 目录，仅允许 xxx.config.js */
+  /**
+   * 扫描 config 目录
+   * - config.js → 生产
+   * - xxx.config.js → 开发（xxx 不可为非法环境名）
+   */
   private scanConfigDirectory(options: NestConfigPathOptions): ConfigDirectoryScanResult {
     const configDir = this.resolveConfigDirectory(options)
-    const configFiles: ConfigFileEntry[] = []
+    const developmentFiles: DevelopmentConfigFile[] = []
     const invalidFileNames: string[] = []
+    let productionFilePath: string | undefined
 
     for (const fileName of VipNodeJS.readdirSync(configDir).sort()) {
-      const envMatch = fileName.match(CONFIG_DIR_RULES.filePattern)
-      if (envMatch != null) {
-        configFiles.push({
-          devEnv: this.parseConfigEnv(envMatch[1]!),
+      if (fileName === CONFIG_DIR_RULES.productionFileName) {
+        productionFilePath = VipNodeJS.pathJoin(configDir, fileName)
+        continue
+      }
+
+      const developmentEnvMatch = fileName.match(CONFIG_DIR_RULES.developmentFilePattern)
+      if (developmentEnvMatch != null) {
+        developmentFiles.push({
+          devEnv: this.parseDevelopmentEnv(developmentEnvMatch[1]!),
           fileName,
           filePath: VipNodeJS.pathJoin(configDir, fileName),
         })
@@ -376,12 +417,12 @@ class NestConfigUtil {
     if (invalidFileNames.length > 0) {
       this.raiseConfigIssue(NestConfigLogLevel.Error, '配置加载失败', [
         `config 目录存在非法文件: ${invalidFileNames.join(', ')}`,
-        `仅允许 xxx.config.js`,
-        `示例: local.config.js、test.config.js、prod.config.js`,
+        `仅允许 ${CONFIG_DIR_RULES.productionFileName} 与 xxx.config.js`,
+        `示例: config.js、local.config.js、test.config.js`,
       ])
     }
 
-    return { configDir, configFiles }
+    return { configDir, productionFilePath, developmentFiles }
   }
 
   private printTerminalLog(logLevel: NestConfigLogLevel, title: string, details: string[]): void {
@@ -412,7 +453,8 @@ class NestConfigUtil {
     this.printTerminalLog(logLevel, title, details)
 
     if (logLevel === NestConfigLogLevel.Error && VipNodeJS.getProcessEnv('JEST_WORKER_ID') == null) {
-      VipNodeJS.exitProcess(1)
+      // watch 模式下同步通知 nest CLI，避免仅子进程退出、父进程仍挂起
+      exitWithNestCliShutdown(1)
     }
 
     const error = new NestConfigResolveError(
@@ -426,40 +468,6 @@ class NestConfigUtil {
 
 function buildLogMessage(title: string, details: string[]): string {
   return [title, ...details.map(detail => `  ${detail}`)].join('\n')
-}
-
-/**
- * 配置选择 Ctrl+C 取消后安全退出
- * - VipInquirer 已输出友好提示，此处处理 nest watch 父子进程退出
- */
-function exitPromptCancelled(): never {
-  const stdin = VipNodeJS.getProcessStdin()
-  if (stdin.isTTY && typeof stdin.setRawMode === 'function') {
-    const ttyStdin = stdin as NodeJS.ReadStream & { isRaw?: boolean }
-    if (ttyStdin.isRaw) {
-      try {
-        stdin.setRawMode(false)
-      }
-      catch {
-        // stdin 可能已关闭
-      }
-    }
-  }
-
-  if (VipNodeJS.getProcessArgv().includes(NEST_CLI_CHILD_FLAG)) {
-    const parentPid = VipNodeJS.getProcess().ppid
-    if (parentPid > 1) {
-      try {
-        VipNodeJS.getProcess().kill(parentPid, 'SIGINT')
-      }
-      catch {
-        // 父进程可能已退出
-      }
-    }
-  }
-
-  VipNodeJS.exitProcess(0)
-  return undefined as never
 }
 
 export const nestConfigUtil = new NestConfigUtil()

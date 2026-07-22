@@ -44,48 +44,48 @@ afterEach(() => {
 })
 
 describe('nestConfigUtil', () => {
-  it('非 local 环境按 NODE_ENV 加载对应 xxx.config.js', () => {
-    const previous = setEnv('NODE_ENV', 'prod')
+  it('生产模式同步解析加载 config.js', () => {
+    const previous = setEnv('NODE_ENV', 'production')
     try {
       const cwd = createTempAppDir()
       const configDir = join(cwd, 'config')
       mkdirSync(configDir)
-      writeFileSync(join(configDir, 'prod.config.js'), 'module.exports = {}')
+      writeFileSync(join(configDir, 'config.js'), 'module.exports = {}')
       writeFileSync(join(configDir, 'test.config.js'), 'module.exports = {}')
 
       const result = nestConfigUtil.resolveSync({ cwd })
       expect(result.devMode).toBe(NestDevMode.Production)
-      expect(result.devEnv).toBe(NestDevEnv.Prod)
-      expect(result.configFileName).toBe('prod.config.js')
-      expect(result.configFilePath).toBe(join(configDir, 'prod.config.js'))
+      expect(result.devEnv).toBe(NestDevEnv.Production)
+      expect(result.configFileName).toBe('config.js')
+      expect(result.configFilePath).toBe(join(configDir, 'config.js'))
     }
     finally {
       restoreEnv('NODE_ENV', previous)
     }
   })
 
-  it('同步解析存在多个配置且无 prod 时提示交互启动', () => {
-    const previous = setEnv('NODE_ENV', 'prod')
+  it('生产模式缺少 config.js 时失败', async () => {
+    const previous = setEnv('NODE_ENV', 'production')
     try {
       const cwd = createTempAppDir()
       const configDir = join(cwd, 'config')
       mkdirSync(configDir)
       writeFileSync(join(configDir, 'local.config.js'), 'module.exports = {}')
-      writeFileSync(join(configDir, 'test.config.js'), 'module.exports = {}')
 
-      expect(() => nestConfigUtil.resolveSync({ cwd }))
-        .toThrow(/存在多个配置文件/)
+      await expect(nestConfigUtil.resolveAsync({ cwd }))
+        .rejects
+        .toThrow(/未找到生产配置文件/)
     }
     finally {
       restoreEnv('NODE_ENV', previous)
     }
   })
 
-  it('可通过 devConfig 指定环境', async () => {
+  it('可通过 devConfig 指定开发环境', async () => {
     const cwd = createTempAppDir()
     const configDir = join(cwd, 'config')
     mkdirSync(configDir)
-    writeFileSync(join(configDir, 'prod.config.js'), 'module.exports = {}')
+    writeFileSync(join(configDir, 'config.js'), 'module.exports = {}')
     writeFileSync(join(configDir, 'local.config.js'), 'module.exports = {}')
 
     const result = await nestConfigUtil.resolveAsync({ cwd, devConfig: NestDevEnv.Local })
@@ -94,12 +94,13 @@ describe('nestConfigUtil', () => {
     expect(result.configFilePath).toBe(join(configDir, 'local.config.js'))
   })
 
-  it('开发模式仅有一个配置时直接使用', async () => {
+  it('开发模式仅有一个 xxx.config.js 时直接使用', async () => {
     const previous = setEnv('NODE_ENV', 'local')
     try {
       const cwd = createTempAppDir()
       const configDir = join(cwd, 'config')
       mkdirSync(configDir)
+      writeFileSync(join(configDir, 'config.js'), 'module.exports = {}')
       writeFileSync(join(configDir, 'test.config.js'), 'module.exports = {}')
 
       const result = await nestConfigUtil.resolveAsync({ cwd })
@@ -111,7 +112,7 @@ describe('nestConfigUtil', () => {
     }
   })
 
-  it('开发模式多配置时交互选择', async () => {
+  it('开发模式多配置时交互选择 xxx.config.js', async () => {
     const previous = setEnv('NODE_ENV', 'local')
     const stdinIsTTY = process.stdin.isTTY
     Object.defineProperty(process.stdin, 'isTTY', { value: true, configurable: true })
@@ -123,6 +124,7 @@ describe('nestConfigUtil', () => {
       const cwd = createTempAppDir()
       const configDir = join(cwd, 'config')
       mkdirSync(configDir)
+      writeFileSync(join(configDir, 'config.js'), 'module.exports = {}')
       writeFileSync(join(configDir, 'local.config.js'), 'module.exports = {}')
       writeFileSync(join(configDir, 'test.config.js'), 'module.exports = {}')
 
@@ -138,36 +140,18 @@ describe('nestConfigUtil', () => {
     }
   })
 
-  it('非 local 启动默认加载 prod.config.js', async () => {
+  it('非 local 启动直接加载 config.js', async () => {
     const previous = setEnv('NODE_ENV', undefined)
     try {
       const cwd = createTempAppDir()
       const configDir = join(cwd, 'config')
       mkdirSync(configDir)
-      writeFileSync(join(configDir, 'prod.config.js'), 'module.exports = {}')
+      writeFileSync(join(configDir, 'config.js'), 'module.exports = {}')
       writeFileSync(join(configDir, 'test.config.js'), 'module.exports = {}')
 
       const result = await nestConfigUtil.resolveAsync({ cwd })
       expect(result.devMode).toBe(NestDevMode.Production)
-      expect(result.devEnv).toBe(NestDevEnv.Prod)
-      expect(result.configFileName).toBe('prod.config.js')
-    }
-    finally {
-      restoreEnv('NODE_ENV', previous)
-    }
-  })
-
-  it('NODE_ENV=production 映射到 prod.config.js', async () => {
-    const previous = setEnv('NODE_ENV', 'production')
-    try {
-      const cwd = createTempAppDir()
-      const configDir = join(cwd, 'config')
-      mkdirSync(configDir)
-      writeFileSync(join(configDir, 'prod.config.js'), 'module.exports = {}')
-
-      const result = await nestConfigUtil.resolveAsync({ cwd })
-      expect(result.devEnv).toBe(NestDevEnv.Prod)
-      expect(result.configFileName).toBe('prod.config.js')
+      expect(result.configFileName).toBe('config.js')
     }
     finally {
       restoreEnv('NODE_ENV', previous)
@@ -175,12 +159,12 @@ describe('nestConfigUtil', () => {
   })
 
   it('config 目录存在非法文件时拒绝加载', () => {
-    const previous = setEnv('NODE_ENV', 'prod')
+    const previous = setEnv('NODE_ENV', 'production')
     try {
       const cwd = createTempAppDir()
       const configDir = join(cwd, 'config')
       mkdirSync(configDir)
-      writeFileSync(join(configDir, 'prod.config.js'), 'module.exports = {}')
+      writeFileSync(join(configDir, 'config.js'), 'module.exports = {}')
       writeFileSync(join(configDir, 'invalid.js'), 'module.exports = {}')
 
       expect(() => nestConfigUtil.resolveSync({ cwd }))

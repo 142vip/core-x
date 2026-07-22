@@ -7,7 +7,7 @@ import {
 import { LoggerLevelEnum, NestLoggerModule } from '@142vip/nest-logger'
 import { NestRedisModule } from '@142vip/nest-redis'
 import { NestTypeOrmModule } from '@142vip/nest-typeorm'
-import { vipLogger, VipNodeJS } from '@142vip/utils'
+import { vipLogger } from '@142vip/utils'
 import {
   ClassSerializerInterceptor,
   HttpStatus,
@@ -23,9 +23,10 @@ import {
   NestConfigPath,
   NestConfigResolveError,
   nestConfigUtil,
-  StarterConfig,
 } from './config'
-import { NestConfigModule } from './config.module'
+import { NestConfigModule, nestStaterConfig, useConfigModule } from './config.module'
+import { NestStarterAppModule, resolveAppModule } from './nest-app.module'
+import { armNestWatchForceExit, exitWithNestCliShutdown } from './nest-exit.util'
 import { NestRootModule } from './nest-root.module'
 import { NestUtil } from './nest-util'
 import { SwaggerManager } from './swagger/swagger.manager'
@@ -59,20 +60,26 @@ export class NestStarter {
 
   /**
    * 入口
-   * - 先解析用户选择/环境对应的配置路径
-   * - 再基于该 ConfigModule 读取 StarterConfig，注册 Redis/TypeORM 等
+   * - 开发模式（NODE_ENV=local）：交互选择 xxx.config.js
+   * - 生产模式：加载 config.js
+   * - 选定配置后 useConfigModule，再解析 AppModule（支持 register 按配置加载）
    */
-  public async start(appModule: NestModule, rootConfigSchema: ClassConstructor<NestAppConfig>): Promise<void> {
+  public async start(appModule: NestStarterAppModule, rootConfigSchema: ClassConstructor<NestAppConfig>): Promise<void> {
     const configPath = await this.resolveStartupConfig()
     const ConfigModule = NestConfigModule.register(rootConfigSchema, { configPath })
 
-    // 整个项目配置（与用户选择的 xxx.config.js 一致）
+    // 注册当前生效配置（开发=用户选择，生产=config.js）
+    useConfigModule(ConfigModule, rootConfigSchema)
+
+    // 整个项目配置
     const rootConfig = selectConfig(ConfigModule, rootConfigSchema)
-    const starterConfig = selectConfig(ConfigModule, StarterConfig)
 
     // 开启日志
-    if (starterConfig.enableLogger)
+    if (nestStaterConfig.enableLogger)
       vipLogger.logByBlank(JSON.stringify(rootConfig, null, 2))
+
+    // 配置就绪后再解析业务模块（AppModule.register 内可读 nestStaterConfig）
+    const businessModule = resolveAppModule(appModule)
 
     const rootModule = NestRootModule.register({
       imports: [
@@ -80,10 +87,10 @@ export class NestStarter {
         ConfigModule,
 
         // 全局模块
-        ...this.registerGlobalModules(starterConfig),
+        ...this.registerGlobalModules(),
 
         // 业务模块
-        appModule,
+        businessModule,
       ],
       providers: this.getProviders(),
     })
@@ -99,31 +106,58 @@ export class NestStarter {
     /**
      * 应用日志
      */
-    if (starterConfig.enableLogger)
+    if (nestStaterConfig.enableLogger)
       NestLoggerModule.useLogger(app)
 
     // 路由版本功能
     // apiVersioning必须在swagger之前加载
     app.enableVersioning({ type: VersioningType.URI })
 
-    if (starterConfig.enableSwagger && starterConfig.swagger != null) {
-      new SwaggerManager(starterConfig.swagger).register(app)
+    if (nestStaterConfig.enableSwagger && nestStaterConfig.swagger != null) {
+      new SwaggerManager(nestStaterConfig.swagger).register(app)
 
       // TODO 打印swagger相关信息
     }
 
     // 启用关闭钩子（for优雅下线）
     app.enableShutdownHooks()
+    // nest watch 下避免 Redis/TypeORM 等优雅关闭卡住导致需二次 Ctrl+C
+    armNestWatchForceExit()
 
     // 添加健康检查路由
     app.getHttpAdapter()
       .get('/health', (_req, res) => res.status(HttpStatus.OK).send('SERVER OK'))
 
     // 应用启动
-    await app.listen(starterConfig.port!)
+    await app.listen(nestStaterConfig.port!)
 
     // 优化日志
-    void new NestUtil(app, starterConfig, configPath.configFileName).printAppModuleStarterLogger()
+    void new NestUtil(app, nestStaterConfig, configPath.configFileName).printAppModuleStarterLogger()
+  }
+
+  /**
+   * 注册全局模块
+   * - 使用 nestStaterConfig（当前生效配置）
+   * @protected
+   */
+  protected registerGlobalModules(): NestModule[] {
+    const imports: NestModule[] = []
+
+    if (nestStaterConfig.enableLogger) {
+      imports.push(NestLoggerModule.register({ consoleLogger: { level: LoggerLevelEnum.trace } }))
+    }
+
+    // 注册Redis模块
+    if (nestStaterConfig.redis != null) {
+      imports.push(NestRedisModule.register(nestStaterConfig.redis))
+    }
+
+    // 注册TypeOrm模块
+    if (nestStaterConfig.typeorm != null) {
+      imports.push(NestTypeOrmModule.forRoot(nestStaterConfig.typeorm))
+    }
+
+    return imports
   }
 
   /**
@@ -135,35 +169,10 @@ export class NestStarter {
     }
     catch (error) {
       if (error instanceof NestConfigResolveError) {
-        VipNodeJS.exitProcess(1)
+        exitWithNestCliShutdown(1)
       }
       throw error
     }
-  }
-
-  /**
-   * 注册全局模块
-   * - 使用本次启动选定的 StarterConfig
-   * @protected
-   */
-  protected registerGlobalModules(starterConfig: StarterConfig): NestModule[] {
-    const imports: NestModule[] = []
-
-    if (starterConfig.enableLogger) {
-      imports.push(NestLoggerModule.register({ consoleLogger: { level: LoggerLevelEnum.trace } }))
-    }
-
-    // 注册Redis模块
-    if (starterConfig.redis != null) {
-      imports.push(NestRedisModule.register(starterConfig.redis))
-    }
-
-    // 注册TypeOrm模块
-    if (starterConfig.typeorm != null) {
-      imports.push(NestTypeOrmModule.forRoot(starterConfig.typeorm))
-    }
-
-    return imports
   }
 
   /**

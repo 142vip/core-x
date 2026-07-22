@@ -13,63 +13,41 @@ npm install @142vip/nest-starter
 pnpm i @142vip/nest-starter
 ```
 
-## 配置
+## 快速开始
 
-### 目录约定
+```ts
+// main.ts
+import { NestStarter } from '@142vip/nest-starter'
+import { AppModule } from './app.module'
+import { Config } from './config'
 
-在项目根目录创建 `config/` 目录，**仅允许** `xxx.config.js` 文件，用于多环境区分：
+void NestStarter.getInstance().start(AppModule, Config)
+```
 
-| 文件 | 说明 |
-|------|------|
-| `local.config.js` | 本地开发 |
-| `test.config.js` | 测试 |
-| `dev.config.js` | 开发 |
-| `prod.config.js` | 生产 |
+本地脚本：
 
-示例：
+```json
+{
+  "scripts": {
+    "dev": "NODE_ENV=local nest start -w",
+    "start": "nest start"
+  }
+}
+```
+
+| 命令 | `NODE_ENV` | 行为 |
+|------|------------|------|
+| `pnpm dev` | `local` | 交互选择 `xxx.config.js` |
+| `pnpm start` | 非 `local` | 直接加载 `config.js` |
+
+## 配置目录
 
 ```
 config/
-├── local.config.js
-├── test.config.js
-└── prod.config.js
+├── config.js          # 生产（必须）
+├── local.config.js    # 本地开发
+└── test.config.js     # 测试
 ```
-
-### 加载规则
-
-| 启动方式 | `NODE_ENV` | 行为 |
-|---------|------------|------|
-| 本地开发 | `local` | 多个文件时终端交互选择；仅一个文件时直接使用 |
-| 生产 / 其他 | 非 `local` | 加载 `{NODE_ENV}.config.js`；未设置或 `production` 时默认 `prod.config.js` |
-
-`resolveSync`（模块导入阶段）不支持交互：优先 `prod.config.js`，否则使用唯一配置文件。
-
-支持的环境值（`NestDevEnv`）：`local`、`test`、`dev`、`prod`。`NODE_ENV=production` 会映射为 `prod`。
-
-### 终端日志
-
-配置加载日志仅在 `NestStarter.start()` 启动时输出一次：
-
-```
-[@142vip/nest-starter] [信息] 配置加载
-  启动模式: 开发
-  配置环境: local
-  配置文件: /path/to/config/local.config.js
-```
-
-配置异常时输出友好日志后直接退出进程，不打印 Error 堆栈：
-
-```
-[@142vip/nest-starter] [异常] 配置加载失败
-  配置文件不存在: prod.config.js
-  可选配置: local.config.js, test.config.js
-```
-
-本地开发交互时按 `Ctrl+C` 会友好退出（nest watch 模式下按一次即可）。
-
-### 配置结构
-
-配置文件导出与 `NestAppConfig` 结构一致，至少包含 `starter` 字段：
 
 ```js
 // config/local.config.js
@@ -85,59 +63,138 @@ module.exports = {
 }
 ```
 
-## 使用
+## 使用配置
 
-### 启动应用
+`NestStarter.start()` 选定配置并注册后，业务侧有三种用法。
 
-```ts
-// main.ts
-import { NestStarter } from '@142vip/nest-starter'
-import { AppModule } from './app.module'
-import { Config } from './config'
+### 模块入口设计（AppModule.register）
 
-void NestStarter.getInstance().start(AppModule, Config)
+**不需要**定义超级父类或 `extends` 基类。约定通过 `NestAppModuleClass` 接口 + `resolveAppModule` 完成：
+
+```
+main.ts: start(AppModule, Config)
+    ↓
+NestStarter: resolveAsync → useConfigModule（配置就绪）
+    ↓
+resolveAppModule(AppModule) → 有 register 则调用，无则直接用 Module
+    ↓
+NestFactory.create(NestRootModule)
 ```
 
-`NestStarter.start()` 会按上述规则解析配置，并用**本次选定**的 `StarterConfig` 注册 Redis、TypeORM、端口等，保证与用户选择的 `xxx.config.js` 一致。
+| 方式 | 适用场景 |
+|------|----------|
+| `static register()` | 需按 `nestStaterConfig` 决定 imports（多环境、可选 Redis/TypeORM 等） |
+| 普通 `@Module` 类 | 模块固定、不读启动配置 |
 
-### 读取配置
+为何不用基类约束 `register`：
+
+- TypeScript **不能**在编译期强制子类实现 `static register()`
+- 基类会增加继承成本，但运行时仍要靠 `resolveAppModule` 检测
+- 与 Nest 自带 `DynamicModule.register()` 写法一致，学习成本低
+
+### 1. AppModule 按配置加载模块（推荐）
+
+`@Module({ imports })` 在文件被 import 时就会求值，此时配置尚未选定。
+请使用 **`static register()`**，由 `NestStarter` 在配置就绪后自动调用：
 
 ```ts
-import { getConfig, nestStaterConfig, StarterConfig } from '@142vip/nest-starter'
+// app.module.ts
+import { nestStaterConfig } from '@142vip/nest-starter'
+import { DynamicModule, Module } from '@nestjs/common'
 
-// 模块导入时的默认配置（resolveSync：优先 prod.config.js）
-const port = nestStaterConfig.port
+@Module({})
+export class AppModule {
+  static register(): DynamicModule {
+    const imports = [RestExampleModule]
 
-// 按 Schema 获取
-const starter = getConfig(StarterConfig)
-```
+    if (nestStaterConfig.typeorm != null) {
+      imports.push(TypeormExampleModule)
+    }
+    if (nestStaterConfig.redis != null) {
+      imports.push(RedisExampleModule)
+    }
 
-### 本地开发脚本
-
-```json
-{
-  "scripts": {
-    "dev": "NODE_ENV=local nest start -w",
-    "start": "nest start"
+    return { module: AppModule, imports }
   }
 }
 ```
 
-- `pnpm dev`：`NODE_ENV=local`，交互选择 `xxx.config.js`
-- `pnpm start`：加载 `prod.config.js`
+`main.ts` 仍传 `AppModule` 类即可，无需改启动方式。
 
-### 高级选项
+### 2. Service 依赖注入
+
+```ts
+import { StarterConfig } from '@142vip/nest-starter'
+import { Injectable } from '@nestjs/common'
+
+@Injectable()
+export class XxxService {
+  constructor(private readonly starterConfig: StarterConfig) {}
+}
+```
+
+也可注入自定义根配置类（如 `Config extends NestAppConfig`）。
+
+### 3. 快速读取导出
+
+须在配置就绪后访问（`AppModule.register` 内，或 `start` 完成后）：
+
+```ts
+import { getConfig, nestAppConfig, nestStaterConfig, StarterConfig } from '@142vip/nest-starter'
+
+const port = nestStaterConfig.port
+const starter = nestAppConfig.starter
+const same = getConfig(StarterConfig)
+```
+
+## 说明
+
+- 不要在 `AppModule` 的静态 `@Module({ imports })` 里读取 `nestStaterConfig`
+- 配置已由 `NestStarter` 全局注入，业务侧用 DI / `nestStaterConfig` / `getConfig` 即可
+- 开发模式交互选择时按一次 `Ctrl+C` 即可退出（含 nest watch 父进程）
+
+### 终端日志示例
+
+```
+[@142vip/nest-starter] [信息] 配置加载
+  启动模式: 开发
+  配置环境: local
+  配置文件: /path/to/config/local.config.js
+```
+
+## 高级选项
+
+跳过交互，显式指定开发配置：
 
 ```ts
 import { nestConfigUtil, NestDevEnv } from '@142vip/nest-starter'
 
-// 跳过交互，指定环境
 const configPath = await nestConfigUtil.resolveAsync({ devConfig: NestDevEnv.Test })
+```
 
-// 显式指定配置文件
-const configPathByPath = await nestConfigUtil.resolveAsync({
-  absolutePath: '/path/to/local.config.js',
+或指定绝对路径：
+
+```ts
+const configPath = await nestConfigUtil.resolveAsync({
+  absolutePath: '/abs/path/to/local.config.js',
 })
+```
+
+### PM2 生产部署
+
+```js
+// ecosystem.config.js
+module.exports = {
+  apps: [{
+    name: 'app',
+    script: 'dist/main.js',
+    cwd: __dirname,
+    env: {
+      // 不要设 local；未设置或 production 都会加载 config.js
+      NODE_ENV: 'production',
+    },
+  }],
+}
 ```
 
 ## 参考
