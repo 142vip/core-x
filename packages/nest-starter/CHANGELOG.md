@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.18 (2026-07-22)
+
+### 💅 Refactors
+
+- 重构配置加载模式，支持模块注册 &nbsp;-&nbsp; by **chufan** [<samp>(305b6)</samp>](https://github.com/142vip/core-x/commit/305b6da2)
+
+**Release New Version v0.0.1-alpha.18 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/nest-starter)**
+
 ## v0.0.1-alpha.17 (2026-07-20)
 
 ### 🐛 Bug Fixes
