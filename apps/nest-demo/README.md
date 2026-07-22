@@ -19,14 +19,15 @@ pnpm --filter nest-demo start
 
 ```
 config/
-├── config.js        # 生产（必须）
-├── local.config.js  # 本地开发
-└── test.config.js   # 测试
+├── config.js          # 生产（必须）
+├── local.config.js    # 本地开发
+├── staging.config.js  # 任意环境名均可
+└── test.config.js
 ```
 
 | 命令 | `NODE_ENV` | 加载配置 |
 |------|------------|---------|
-| `pnpm dev` | `local` | 交互选择 `xxx.config.js` |
+| `pnpm dev` | `local` | 交互选择任意 `xxx.config.js` |
 | `pnpm start` | 未设置 | 直接加载 `config.js` |
 
 ## AppModule 按配置加载

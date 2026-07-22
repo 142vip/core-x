@@ -7,11 +7,15 @@ const LOG_PREFIX = `[@142vip/nest-starter]`
 /**
  * config 目录约定（生产 / 开发隔离）：
  * - config.js：生产配置（生产模式必须存在）
- * - xxx.config.js：开发多环境配置（如 local.config.js、test.config.js）
+ * - xxx.config.js：开发配置（任意环境名，如 local、staging、uat）
  */
 const CONFIG_DIR_RULES = {
   dirName: 'config',
+  /** 生产配置文件名 */
   productionFileName: 'config.js',
+  /** 生产环境标识（对应 config.js；不可作为 xxx.config.js 的 xxx） */
+  productionEnv: 'production',
+  /** 匹配 xxx.config.js，捕获环境名 */
   developmentFilePattern: /^(.+)\.config\.js$/,
 } as const
 
@@ -28,24 +32,10 @@ const LOG_LEVEL_LABEL: Record<NestConfigLogLevel, string> = {
   [NestConfigLogLevel.Info]: '信息',
 }
 
-/** 配置启动模式 */
+/** 配置启动模式：生产加载 config.js；开发加载 xxx.config.js */
 export enum NestDevMode {
-  /** 生产：加载 config.js */
   Production = 'production',
-  /** 开发：加载 xxx.config.js */
   Development = 'development',
-}
-
-/**
- * 配置环境标识
- * - Production 对应 config.js
- * - 其余对应同名 xxx.config.js（如 Local -> local.config.js）
- */
-export enum NestDevEnv {
-  Production = 'production',
-  Local = 'local',
-  Test = 'test',
-  Dev = 'dev',
 }
 
 export interface NestConfigPathOptions {
@@ -57,14 +47,20 @@ export interface NestConfigPathOptions {
   absolutePath?: string
   /** 预解析结果，供 NestConfigModule.register 跳过重复解析 */
   configPath?: NestConfigPath
-  /** 开发环境标识，跳过交互选择（仅开发模式有效） */
-  devConfig?: NestDevEnv
+  /**
+   * 指定开发配置环境名，跳过交互
+   * - 对应文件：`{devConfig}.config.js`
+   * - 示例：`local` → local.config.js，`staging` → staging.config.js
+   */
+  devConfig?: string
 }
 
 /** 解析后的配置文件路径信息 */
 export interface NestConfigPath {
+  /** 启动模式 */
   devMode: NestDevMode
-  devEnv: NestDevEnv
+  /** 环境名：生产为 production；开发为文件名前缀（如 local、staging） */
+  devEnv: string
   configDir: string
   configFilePath: string
   configFileName: string
@@ -72,7 +68,7 @@ export interface NestConfigPath {
 
 /** 开发配置文件描述（xxx.config.js） */
 interface DevelopmentConfigFile {
-  devEnv: NestDevEnv
+  devEnv: string
   fileName: string
   filePath: string
 }
@@ -112,10 +108,6 @@ export class NestConfigResolveError extends Error {
  * resolveSync：非交互兜底（优先 config.js）；业务启动请用 resolveAsync
  */
 class NestConfigUtil {
-  public static isResolveError(error: unknown): error is NestConfigResolveError {
-    return error instanceof NestConfigResolveError
-  }
-
   /**
    * 异步解析配置路径
    * - NestStarter.start() 使用
@@ -209,7 +201,7 @@ class NestConfigUtil {
     if (scanResult.developmentFiles.length === 0) {
       this.raiseConfigIssue(NestConfigLogLevel.Error, '配置加载失败', [
         '开发模式下未找到 xxx.config.js',
-        '请创建开发配置，例如: local.config.js、test.config.js',
+        '请创建开发配置，例如: local.config.js、staging.config.js',
       ])
     }
 
@@ -257,19 +249,20 @@ class NestConfigUtil {
     return value
   }
 
-  /** 按环境名匹配 xxx.config.js（不可指定 Production，生产请用 config.js） */
+  /** 按环境名匹配 xxx.config.js（不可传 production，生产请用 config.js） */
   private resolveDevelopmentConfigByEnv(
     scanResult: ConfigDirectoryScanResult,
-    devConfig: NestDevEnv,
+    devConfig: string,
   ): NestConfigPath {
-    if (devConfig === NestDevEnv.Production) {
+    if (devConfig.trim().toLowerCase() === CONFIG_DIR_RULES.productionEnv) {
       return this.resolveProductionConfig(scanResult)
     }
 
-    const matchedFile = scanResult.developmentFiles.find(file => file.devEnv === devConfig)
+    const normalizedDevConfig = this.normalizeDevelopmentEnv(devConfig)
+    const matchedFile = scanResult.developmentFiles.find(file => file.devEnv === normalizedDevConfig)
     if (matchedFile == null) {
       this.raiseConfigIssue(NestConfigLogLevel.Error, '配置加载失败', [
-        `开发配置不存在: ${devConfig}.config.js`,
+        `开发配置不存在: ${normalizedDevConfig}.config.js`,
         `可选配置: ${scanResult.developmentFiles.map(file => file.fileName).join(', ') || '无'}`,
       ])
     }
@@ -288,7 +281,7 @@ class NestConfigUtil {
 
     return {
       devMode: NestDevMode.Production,
-      devEnv: NestDevEnv.Production,
+      devEnv: CONFIG_DIR_RULES.productionEnv,
       configDir: scanResult.configDir,
       configFilePath: scanResult.productionFilePath,
       configFileName: CONFIG_DIR_RULES.productionFileName,
@@ -331,7 +324,7 @@ class NestConfigUtil {
     if (isProductionFile) {
       return {
         devMode: NestDevMode.Production,
-        devEnv: NestDevEnv.Production,
+        devEnv: CONFIG_DIR_RULES.productionEnv,
         configDir,
         configFilePath,
         configFileName: fileName,
@@ -340,31 +333,42 @@ class NestConfigUtil {
 
     return {
       devMode: NestDevMode.Development,
-      devEnv: this.parseDevelopmentEnv(developmentEnvMatch![1]!),
+      devEnv: this.normalizeDevelopmentEnv(developmentEnvMatch![1]!),
       configDir,
       configFilePath,
       configFileName: fileName,
     }
   }
 
-  /** 从文件名前缀解析开发环境（local.config.js -> local） */
-  private parseDevelopmentEnv(envName: string): NestDevEnv {
-    const matchedEnv = (Object.values(NestDevEnv) as string[])
-      .filter(value => value !== NestDevEnv.Production)
-      .find(value => value === envName)
-
-    if (matchedEnv == null) {
-      const supportedEnvList = Object.values(NestDevEnv)
-        .filter(env => env !== NestDevEnv.Production)
-        .join('、')
+  /**
+   * 规范化开发环境名（xxx.config.js 的 xxx）
+   * - 任意合法前缀均可：local、staging、uat-v2 等
+   * - 不可使用 production（生产请用 config.js）
+   */
+  private normalizeDevelopmentEnv(envName: string): string {
+    const normalized = envName.trim().toLowerCase()
+    if (normalized.length === 0) {
       this.raiseConfigIssue(NestConfigLogLevel.Error, '配置加载失败', [
-        `不支持的开发环境: ${envName}`,
-        `可选值: ${supportedEnvList}`,
+        '开发配置环境名不能为空',
+      ])
+    }
+
+    if (normalized === CONFIG_DIR_RULES.productionEnv) {
+      this.raiseConfigIssue(NestConfigLogLevel.Error, '配置加载失败', [
+        `开发配置不可使用环境名: ${envName}`,
         `生产配置请使用 ${CONFIG_DIR_RULES.productionFileName}`,
       ])
     }
 
-    return matchedEnv as NestDevEnv
+    if (!/^[a-z][\w-]*$/.test(normalized)) {
+      this.raiseConfigIssue(NestConfigLogLevel.Error, '配置加载失败', [
+        `非法开发环境名: ${envName}`,
+        '仅允许字母、数字、下划线、连字符，且以字母开头',
+        '示例: local.config.js、staging.config.js、uat-v2.config.js',
+      ])
+    }
+
+    return normalized
   }
 
   private resolveConfigDirectory(options: NestConfigPathOptions): string {
@@ -377,7 +381,7 @@ class NestConfigUtil {
         `未找到配置目录: ${configDirPath}`,
         `请创建 ${configDirName} 目录`,
         `生产配置: ${configDirName}/${CONFIG_DIR_RULES.productionFileName}`,
-        `开发配置: ${configDirName}/local.config.js、test.config.js 等`,
+        `开发配置: ${configDirName}/local.config.js、staging.config.js 等`,
       ])
     }
 
@@ -387,7 +391,7 @@ class NestConfigUtil {
   /**
    * 扫描 config 目录
    * - config.js → 生产
-   * - xxx.config.js → 开发（xxx 不可为非法环境名）
+   * - 任意 xxx.config.js → 开发（xxx 为环境名，如 local、staging、uat）
    */
   private scanConfigDirectory(options: NestConfigPathOptions): ConfigDirectoryScanResult {
     const configDir = this.resolveConfigDirectory(options)
@@ -404,7 +408,7 @@ class NestConfigUtil {
       const developmentEnvMatch = fileName.match(CONFIG_DIR_RULES.developmentFilePattern)
       if (developmentEnvMatch != null) {
         developmentFiles.push({
-          devEnv: this.parseDevelopmentEnv(developmentEnvMatch[1]!),
+          devEnv: this.normalizeDevelopmentEnv(developmentEnvMatch[1]!),
           fileName,
           filePath: VipNodeJS.pathJoin(configDir, fileName),
         })
@@ -418,7 +422,7 @@ class NestConfigUtil {
       this.raiseConfigIssue(NestConfigLogLevel.Error, '配置加载失败', [
         `config 目录存在非法文件: ${invalidFileNames.join(', ')}`,
         `仅允许 ${CONFIG_DIR_RULES.productionFileName} 与 xxx.config.js`,
-        `示例: config.js、local.config.js、test.config.js`,
+        `示例: config.js、local.config.js、staging.config.js`,
       ])
     }
 

@@ -37,17 +37,27 @@ void NestStarter.getInstance().start(AppModule, Config)
 
 | 命令 | `NODE_ENV` | 行为 |
 |------|------------|------|
-| `pnpm dev` | `local` | 交互选择 `xxx.config.js` |
+| `pnpm dev` | `local` | 交互选择任意 `xxx.config.js` |
 | `pnpm start` | 非 `local` | 直接加载 `config.js` |
 
 ## 配置目录
 
+生产与开发隔离：
+
+| 文件 | 模式 | 说明 |
+|------|------|------|
+| `config.js` | 生产 | **必须**；非 `NODE_ENV=local` 时直接加载 |
+| `xxx.config.js` | 开发 | 任意环境名；`NODE_ENV=local` 时交互选择 |
+
 ```
 config/
 ├── config.js          # 生产（必须）
-├── local.config.js    # 本地开发
-└── test.config.js     # 测试
+├── local.config.js    # 本地
+├── staging.config.js  # 预发
+└── uat.config.js      # 任意 xxx 均可
 ```
+
+环境名 `xxx`：字母开头，可含字母、数字、`_`、`-`。不可使用 `production`（请用 `config.js`）。
 
 ```js
 // config/local.config.js
@@ -164,12 +174,12 @@ const same = getConfig(StarterConfig)
 
 ## 高级选项
 
-跳过交互，显式指定开发配置：
+跳过交互，按环境名指定开发配置（对应 `{devConfig}.config.js`）：
 
 ```ts
-import { nestConfigUtil, NestDevEnv } from '@142vip/nest-starter'
+import { nestConfigUtil } from '@142vip/nest-starter'
 
-const configPath = await nestConfigUtil.resolveAsync({ devConfig: NestDevEnv.Test })
+const configPath = await nestConfigUtil.resolveAsync({ devConfig: 'staging' })
 ```
 
 或指定绝对路径：

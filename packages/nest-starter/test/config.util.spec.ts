@@ -2,7 +2,7 @@ import { existsSync, mkdirSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { afterEach, describe, expect, it, jest } from '@jest/globals'
-import { NestConfigResolveError, nestConfigUtil, NestDevEnv, NestDevMode } from '../src/config/config.util'
+import { NestConfigResolveError, nestConfigUtil, NestDevMode } from '../src/config/config.util'
 import { nestProcess } from '../src/nest-process'
 
 const tempDirs: string[] = []
@@ -55,7 +55,7 @@ describe('nestConfigUtil', () => {
 
       const result = nestConfigUtil.resolveSync({ cwd })
       expect(result.devMode).toBe(NestDevMode.Production)
-      expect(result.devEnv).toBe(NestDevEnv.Production)
+      expect(result.devEnv).toBe('production')
       expect(result.configFileName).toBe('config.js')
       expect(result.configFilePath).toBe(join(configDir, 'config.js'))
     }
@@ -88,9 +88,9 @@ describe('nestConfigUtil', () => {
     writeFileSync(join(configDir, 'config.js'), 'module.exports = {}')
     writeFileSync(join(configDir, 'local.config.js'), 'module.exports = {}')
 
-    const result = await nestConfigUtil.resolveAsync({ cwd, devConfig: NestDevEnv.Local })
+    const result = await nestConfigUtil.resolveAsync({ cwd, devConfig: 'local' })
     expect(result.devMode).toBe(NestDevMode.Development)
-    expect(result.devEnv).toBe(NestDevEnv.Local)
+    expect(result.devEnv).toBe('local')
     expect(result.configFilePath).toBe(join(configDir, 'local.config.js'))
   })
 
@@ -104,7 +104,7 @@ describe('nestConfigUtil', () => {
       writeFileSync(join(configDir, 'test.config.js'), 'module.exports = {}')
 
       const result = await nestConfigUtil.resolveAsync({ cwd })
-      expect(result.devEnv).toBe(NestDevEnv.Test)
+      expect(result.devEnv).toBe('test')
       expect(result.configFileName).toBe('test.config.js')
     }
     finally {
@@ -112,7 +112,63 @@ describe('nestConfigUtil', () => {
     }
   })
 
-  it('开发模式多配置时交互选择 xxx.config.js', async () => {
+  it('支持任意 xxx.config.js 开发环境（如 staging）', async () => {
+    const cwd = createTempAppDir()
+    const configDir = join(cwd, 'config')
+    mkdirSync(configDir)
+    writeFileSync(join(configDir, 'config.js'), 'module.exports = {}')
+    writeFileSync(join(configDir, 'staging.config.js'), 'module.exports = {}')
+
+    const result = await nestConfigUtil.resolveAsync({ cwd, devConfig: 'staging' })
+    expect(result.devMode).toBe(NestDevMode.Development)
+    expect(result.devEnv).toBe('staging')
+    expect(result.configFileName).toBe('staging.config.js')
+  })
+
+  it('开发模式扫描目录包含所有 xxx.config.js 供选择', async () => {
+    const previous = setEnv('NODE_ENV', 'local')
+    const stdinIsTTY = process.stdin.isTTY
+    Object.defineProperty(process.stdin, 'isTTY', { value: true, configurable: true })
+    const selectSpy = jest.spyOn(
+      (await import('@142vip/utils')).VipInquirer,
+      'promptSelect',
+    ).mockResolvedValue('uat.config.js')
+    try {
+      const cwd = createTempAppDir()
+      const configDir = join(cwd, 'config')
+      mkdirSync(configDir)
+      writeFileSync(join(configDir, 'config.js'), 'module.exports = {}')
+      writeFileSync(join(configDir, 'local.config.js'), 'module.exports = {}')
+      writeFileSync(join(configDir, 'staging.config.js'), 'module.exports = {}')
+      writeFileSync(join(configDir, 'uat.config.js'), 'module.exports = {}')
+
+      const result = await nestConfigUtil.resolveAsync({ cwd })
+      expect(selectSpy).toHaveBeenCalledWith(
+        expect.stringContaining('请选择配置文件'),
+        ['local.config.js', 'staging.config.js', 'uat.config.js'],
+      )
+      expect(result.devEnv).toBe('uat')
+      expect(result.configFileName).toBe('uat.config.js')
+    }
+    finally {
+      selectSpy.mockRestore()
+      Object.defineProperty(process.stdin, 'isTTY', { value: stdinIsTTY, configurable: true })
+      restoreEnv('NODE_ENV', previous)
+    }
+  })
+
+  it('拒绝 production.config.js 作为开发配置', () => {
+    const cwd = createTempAppDir()
+    const configDir = join(cwd, 'config')
+    mkdirSync(configDir)
+    writeFileSync(join(configDir, 'config.js'), 'module.exports = {}')
+    writeFileSync(join(configDir, 'production.config.js'), 'module.exports = {}')
+
+    expect(() => nestConfigUtil.resolveSync({ cwd }))
+      .toThrow(/开发配置不可使用环境名/)
+  })
+
+  it('开发模式多配置时交互选择 local/test', async () => {
     const previous = setEnv('NODE_ENV', 'local')
     const stdinIsTTY = process.stdin.isTTY
     Object.defineProperty(process.stdin, 'isTTY', { value: true, configurable: true })
@@ -130,7 +186,7 @@ describe('nestConfigUtil', () => {
 
       const result = await nestConfigUtil.resolveAsync({ cwd })
       expect(selectSpy).toHaveBeenCalled()
-      expect(result.devEnv).toBe(NestDevEnv.Local)
+      expect(result.devEnv).toBe('local')
       expect(result.configFileName).toBe('local.config.js')
     }
     finally {
@@ -182,7 +238,7 @@ describe('nestConfigUtil', () => {
 
     const result = nestConfigUtil.resolveSync({ absolutePath: configFile })
     expect(result.configFilePath).toBe(configFile)
-    expect(result.devEnv).toBe(NestDevEnv.Local)
+    expect(result.devEnv).toBe('local')
   })
 
   it('配置异常包含友好提示信息', () => {
