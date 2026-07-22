@@ -8,30 +8,50 @@
 # 安装依赖（在 monorepo 根目录）
 pnpm install
 
-# 本地开发：交互选择 config/*.config.js
+# 本地开发：交互选择 xxx.config.js
 pnpm --filter nest-demo dev
 
-# 生产路径启动：加载 prod.config.js
+# 生产路径启动：直接加载 config.js
 pnpm --filter nest-demo start
 ```
 
-## 配置说明
-
-`config/` 目录仅允许 `xxx.config.js`：
+## 配置
 
 ```
 config/
+├── config.js        # 生产（必须）
 ├── local.config.js  # 本地开发
-├── test.config.js   # 测试
-└── prod.config.js   # 生产（pnpm start）
+└── test.config.js   # 测试
 ```
 
 | 命令 | `NODE_ENV` | 加载配置 |
 |------|------------|---------|
-| `pnpm dev` | `local` | 多文件时交互选择；仅一个文件时直接使用 |
-| `pnpm start` | 未设置 | 加载 `prod.config.js` |
+| `pnpm dev` | `local` | 交互选择 `xxx.config.js` |
+| `pnpm start` | 未设置 | 直接加载 `config.js` |
 
-配置加载失败时，终端会输出 `[@142vip/nest-starter] [异常]` 日志并直接退出，不会打印 Error 堆栈。
+## AppModule 按配置加载
+
+采用 **`static register()` 约定**（无需继承基类）。`NestStarter` 在配置就绪后调用 `resolveAppModule(AppModule)`，再执行 `register()`：
+
+```ts
+@Module({})
+export class AppModule {
+  static register(): DynamicModule {
+    const imports = [ConfigExampleModule, RestExampleModule]
+
+    if (nestStaterConfig.typeorm != null) {
+      imports.push(TypeormExampleModule)
+    }
+    if (nestStaterConfig.redis != null) {
+      imports.push(RedisExampleModule)
+    }
+
+    return { module: AppModule, imports }
+  }
+}
+```
+
+Service 内可直接注入 `StarterConfig`（见 `config-example`）。
 
 ## 入口
 
