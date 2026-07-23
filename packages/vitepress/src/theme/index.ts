@@ -4,7 +4,7 @@ import type { Component } from 'vue'
 import { ElBacktop, ElImage, ElTable, ElTableColumn, ElTag } from 'element-plus'
 import DefaultTheme from 'vitepress/theme'
 import { h } from 'vue'
-import { VipBackTop } from '../components'
+import { VipBackTop, VipMermaid } from '../components'
 // VitePress 在 html 上切换 .dark；需一并加载 EP 暗黑变量，表格/链接等才会跟随主题
 import 'element-plus/theme-chalk/dark/css-vars.css'
 
@@ -28,6 +28,9 @@ interface Theme {
 
 /**
  * 集成vitepress的默认主题，自定义拓展
+ * - Element Plus 基础组件 + 暗黑变量
+ * - 文档页返回顶部
+ * - Mermaid（需在 defineVipVitepressConfig 第二参数启用）
  * - 参考：https://vitepress.dev/guide/extending-default-theme#layout-slots
  */
 export default function defineVipExtendsTheme(theme?: Theme) {
@@ -46,6 +49,8 @@ export default function defineVipExtendsTheme(theme?: Theme) {
       app.component(ElTable)
       app.component(ElTableColumn)
       app.component(ElTag)
+      // Mermaid 组件（配合 defineVipVitepressConfig(..., { mermaid: true })）
+      app.component('VipMermaid', VipMermaid)
     },
     // 自定义拓展，配置覆盖
     ...theme != null ? theme : {},

@@ -25,6 +25,7 @@ const navbarConfig = defineVipNavbarConfig([
       { text: '👩🏻‍💻 示例文档-1', link: '/docs/example/test-1.md' },
       { text: '👨🏻‍💻 示例文档-2', link: '/docs/example/test-2.md' },
       { text: '👨🏻 示例文档-3', link: '/docs/example/test-3.md' },
+      { text: '📐 Mermaid 架构图', link: '/docs/example/mermaid.md' },
     ],
   },
   {
@@ -54,6 +55,7 @@ const sidebarConfig = defineVipSidebarConfig([
       { text: '示例文档-1', link: '/docs/example/test-1.md' },
       { text: '示例文档-2', link: '/docs/example/test-2.md' },
       { text: '示例文档-3', link: '/docs/example/test-3.md' },
+      { text: 'Mermaid 架构图', link: '/docs/example/mermaid.md' },
     ],
   },
 ])
@@ -140,4 +142,7 @@ export default defineVipVitepressConfig({
     'CHANGELOG.md': 'changelog.md',
     'README.md': 'index.md',
   },
+}, {
+  // 拓展启用 Mermaid（不传第二参数则保持 defineVipVitepressConfig 原行为）
+  mermaid: { theme: 'default' },
 })
