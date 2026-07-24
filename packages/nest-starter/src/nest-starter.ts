@@ -60,7 +60,7 @@ export class NestStarter {
 
   /**
    * 入口
-   * - 开发模式（NODE_ENV=local）：交互选择 xxx.config.js
+   * - 开发模式（NODE_ENV=local）：交互选择 xxx.config.js（选择结果缓存，热重载复用）
    * - 生产模式：加载 config.js
    * - 选定配置后 useConfigModule，再解析 AppModule（支持 register 按配置加载）
    */

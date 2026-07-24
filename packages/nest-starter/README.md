@@ -37,8 +37,21 @@ void NestStarter.getInstance().start(AppModule, Config)
 
 | 命令 | `NODE_ENV` | 行为 |
 |------|------------|------|
-| `pnpm dev` | `local` | 交互选择任意 `xxx.config.js` |
+| `pnpm dev` | `local` | 首次交互选择 `xxx.config.js`，热重载自动复用 |
 | `pnpm start` | 非 `local` | 直接加载 `config.js` |
+
+开发模式跳过交互（任选其一）：
+
+```bash
+# 1. 环境变量
+NODE_ENV=local RUN_ENV=local nest start -w
+
+# 2. 首次交互后写入 node_modules/.cache/@142vip/nest-starter/dev-config
+#    同一次 nest watch 会话内热重载自动复用；Ctrl+C 退出后自动清理
+#    重新选择：重启 dev 后再启动（或设置 RUN_ENV）
+```
+
+缓存位于 `node_modules/.cache`（运行时目录），无需加入版本库。
 
 ## 配置目录
 
@@ -162,6 +175,7 @@ const same = getConfig(StarterConfig)
 - 不要在 `AppModule` 的静态 `@Module({ imports })` 里读取 `nestStaterConfig`
 - 配置已由 `NestStarter` 全局注入，业务侧用 DI / `nestStaterConfig` / `getConfig` 即可
 - 开发模式交互选择时按一次 `Ctrl+C` 即可退出（含 nest watch 父进程）
+- 开发模式首次选择后会缓存到 `node_modules/.cache/@142vip/nest-starter/dev-config`，同一次 watch 会话内热重载无需再次选择；Ctrl+C 退出后自动清理
 
 ### 终端日志示例
 
@@ -180,6 +194,13 @@ const same = getConfig(StarterConfig)
 import { nestConfigUtil } from '@142vip/nest-starter'
 
 const configPath = await nestConfigUtil.resolveAsync({ devConfig: 'staging' })
+```
+
+也可用环境变量（`nest start -w` 子进程会继承）：
+
+```bash
+NODE_ENV=local RUN_ENV=staging nest start -w
+# 等价：DEV_CONFIG / NEST_DEV_CONFIG
 ```
 
 或指定绝对路径：

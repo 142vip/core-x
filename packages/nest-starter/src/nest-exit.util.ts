@@ -133,6 +133,10 @@ function findNestCliAncestorPid(): number | undefined {
   return undefined
 }
 
+export function getNestCliAncestorPid(): number | undefined {
+  return findNestCliAncestorPid()
+}
+
 function isNestCliProcessCommand(command: string): boolean {
   return /@nestjs\/cli\b/.test(command)
     || /[/\\](?:@nestjs\/cli\/.*\/)?bin[/\\]nest(?:\.js)?(?:\s|$)/.test(command)

@@ -1,8 +1,19 @@
+import { mkdirSync, unlinkSync } from 'node:fs'
 import { VipColor, VipInquirer, vipLogger, VipNodeJS } from '@142vip/utils'
-import { exitWithNestCliShutdown } from '../nest-exit.util'
+import {
+  exitWithNestCliShutdown,
+  getNestCliAncestorPid,
+  isNestCliSpawnedChild,
+} from '../nest-exit.util'
 import { nestProcess } from '../nest-process'
 
 const LOG_PREFIX = `[@142vip/nest-starter]`
+
+/** 开发配置选择缓存（运行时目录，勿放 dist：nest watch 会清空 dist） */
+const DEV_CONFIG_CACHE_RELATIVE = 'node_modules/.cache/@142vip/nest-starter/dev-config'
+const LEGACY_DEV_CONFIG_FILE = '.nest-starter-dev-config'
+
+let devConfigCacheCleanupArmed = false
 
 /**
  * config 目录约定（生产 / 开发隔离）：
@@ -105,6 +116,12 @@ export class NestConfigResolveError extends Error {
  * | 开发 | NODE_ENV=local | 交互选择 xxx.config.js（仅一个时直接使用） |
  * | 生产 | NODE_ENV !== local | 必须存在并加载 config.js |
  *
+ * 开发模式跳过交互优先级：
+ * 1. options.devConfig / RUN_ENV / DEV_CONFIG / NEST_DEV_CONFIG
+ * 2. 运行时缓存 node_modules/.cache/@142vip/nest-starter/dev-config（同 nest watch 会话内热重载复用）
+ * 3. 仅一个 xxx.config.js
+ * 4. 终端交互选择（并写入缓存）
+ *
  * resolveSync：非交互兜底（优先 config.js）；业务启动请用 resolveAsync
  */
 class NestConfigUtil {
@@ -124,9 +141,13 @@ class NestConfigUtil {
       return this.resolveDevelopmentConfigByEnv(scanResult, options.devConfig)
     }
 
-    // 开发模式：交互选择 xxx.config.js
+    // 开发模式：环境变量 / 缓存 / 交互选择 xxx.config.js
     if (nestProcess.isLocalStartNest()) {
-      return this.resolveDevelopmentConfig(scanResult)
+      const envDevConfig = this.resolveDevConfigFromEnv()
+      if (envDevConfig != null) {
+        return this.resolveDevelopmentConfigByEnv(scanResult, envDevConfig)
+      }
+      return this.resolveDevelopmentConfig(scanResult, options)
     }
 
     // 生产模式：必须加载 config.js
@@ -193,11 +214,31 @@ class NestConfigUtil {
   }
 
   /**
+   * 从环境变量读取开发配置环境名（跨 nest watch 子进程继承）
+   * - RUN_ENV / DEV_CONFIG / NEST_DEV_CONFIG
+   */
+  private resolveDevConfigFromEnv(): string | undefined {
+    const envDevConfig = nestProcess.getRunEnv()
+      ?? nestProcess.getEnv('DEV_CONFIG')
+      ?? nestProcess.getEnv('NEST_DEV_CONFIG')
+
+    if (envDevConfig == null) {
+      return undefined
+    }
+
+    const trimmed = envDevConfig.trim()
+    return trimmed.length > 0 ? trimmed : undefined
+  }
+
+  /**
    * 开发模式：仅处理 xxx.config.js
-   * - 多个文件：终端交互选择
+   * - 多个文件：优先复用上次选择缓存，否则终端交互
    * - 一个文件：直接使用
    */
-  private async resolveDevelopmentConfig(scanResult: ConfigDirectoryScanResult): Promise<NestConfigPath> {
+  private async resolveDevelopmentConfig(
+    scanResult: ConfigDirectoryScanResult,
+    options: NestConfigPathOptions,
+  ): Promise<NestConfigPath> {
     if (scanResult.developmentFiles.length === 0) {
       this.raiseConfigIssue(NestConfigLogLevel.Error, '配置加载失败', [
         '开发模式下未找到 xxx.config.js',
@@ -206,22 +247,55 @@ class NestConfigUtil {
     }
 
     if (scanResult.developmentFiles.length === 1) {
-      return this.buildDevelopmentConfigPath(scanResult, scanResult.developmentFiles[0]!)
+      const only = this.buildDevelopmentConfigPath(scanResult, scanResult.developmentFiles[0]!)
+      this.persistLastDevConfig(scanResult, options, only.devEnv)
+      return only
+    }
+
+    const cachedPath = this.resolveDevelopmentConfigFromCache(scanResult, options)
+    if (cachedPath != null) {
+      return cachedPath
     }
 
     if (!VipNodeJS.getProcessStdin().isTTY) {
       this.raiseConfigIssue(NestConfigLogLevel.Error, '配置加载失败', [
         '当前为非交互终端，无法选择开发配置',
         `可选环境: ${scanResult.developmentFiles.map(file => file.devEnv).join('、')}`,
-        '请设置 devConfig 指定环境，例如: devConfig=local',
+        '请设置 RUN_ENV 或 DEV_CONFIG 指定环境，例如: RUN_ENV=local',
       ])
     }
 
-    return this.promptSelectConfigFile(scanResult)
+    return this.promptSelectConfigFile(scanResult, options)
   }
 
-  /** 终端交互选择 xxx.config.js */
-  private async promptSelectConfigFile(scanResult: ConfigDirectoryScanResult): Promise<NestConfigPath> {
+  /** 读取上次交互选择；文件仍存在则复用（nest watch 热重载不再弹选择） */
+  private resolveDevelopmentConfigFromCache(
+    scanResult: ConfigDirectoryScanResult,
+    options: NestConfigPathOptions,
+  ): NestConfigPath | null {
+    const cachedEnv = this.readLastDevConfig(scanResult, options)
+    if (cachedEnv == null) {
+      return null
+    }
+
+    const matchedFile = scanResult.developmentFiles.find(file => file.devEnv === cachedEnv)
+    if (matchedFile == null) {
+      return null
+    }
+
+    this.printTerminalLog(NestConfigLogLevel.Info, '配置复用', [
+      `沿用上次选择: ${matchedFile.fileName}`,
+      '热重载无需重新选择；重新选择可设置 RUN_ENV 或重启 dev 后重选',
+    ])
+
+    return this.buildDevelopmentConfigPath(scanResult, matchedFile)
+  }
+
+  /** 终端交互选择 xxx.config.js，并写入缓存供热重载复用 */
+  private async promptSelectConfigFile(
+    scanResult: ConfigDirectoryScanResult,
+    options: NestConfigPathOptions,
+  ): Promise<NestConfigPath> {
     const fileNameChoices = scanResult.developmentFiles.map(file => file.fileName)
 
     vipLogger.println()
@@ -238,12 +312,123 @@ class NestConfigUtil {
       ])
     }
 
+    this.persistLastDevConfig(scanResult, options, matchedFile.devEnv)
     return this.buildDevelopmentConfigPath(scanResult, matchedFile)
+  }
+
+  private readLastDevConfig(
+    scanResult: ConfigDirectoryScanResult,
+    options: NestConfigPathOptions,
+  ): string | null {
+    const cwd = options.cwd ?? VipNodeJS.getProcessCwd()
+    const cachePath = VipNodeJS.pathJoin(cwd, DEV_CONFIG_CACHE_RELATIVE)
+
+    if (VipNodeJS.existPath(cachePath)) {
+      try {
+        const raw = VipNodeJS.readFileToStrByUTF8(cachePath).trim()
+        if (raw.length > 0) {
+          let devEnv: string | null = null
+          try {
+            const parsed = JSON.parse(raw) as { devEnv?: string, nestCliPid?: number }
+            if (typeof parsed.devEnv === 'string' && parsed.devEnv.trim().length > 0) {
+              if (parsed.nestCliPid != null) {
+                const currentPid = getNestCliAncestorPid()
+                if (currentPid != null && currentPid === parsed.nestCliPid) {
+                  devEnv = parsed.devEnv.trim().toLowerCase()
+                }
+              }
+              else {
+                devEnv = parsed.devEnv.trim().toLowerCase()
+              }
+            }
+          }
+          catch {
+            const plain = raw.trim().toLowerCase()
+            devEnv = plain.length > 0 ? plain : null
+          }
+
+          if (devEnv != null) {
+            return devEnv
+          }
+        }
+      }
+      catch {
+        // 继续尝试旧版缓存
+      }
+      this.clearLastDevConfig(cwd)
+    }
+
+    for (const legacyPath of [
+      VipNodeJS.pathJoin(scanResult.configDir, LEGACY_DEV_CONFIG_FILE),
+      VipNodeJS.pathJoin(cwd, LEGACY_DEV_CONFIG_FILE),
+    ]) {
+      if (!VipNodeJS.existPath(legacyPath)) {
+        continue
+      }
+
+      try {
+        const content = VipNodeJS.readFileToStrByUTF8(legacyPath).trim().toLowerCase()
+        if (content.length > 0) {
+          this.persistLastDevConfig(scanResult, options, content)
+          try {
+            unlinkSync(legacyPath)
+          }
+          catch { /* ignore */ }
+          return content
+        }
+      }
+      catch {
+        // 继续尝试下一路径
+      }
+    }
+
+    return null
+  }
+
+  private persistLastDevConfig(
+    _scanResult: ConfigDirectoryScanResult,
+    options: NestConfigPathOptions,
+    devEnv: string,
+  ): void {
+    const cwd = options.cwd ?? VipNodeJS.getProcessCwd()
+    const cachePath = VipNodeJS.pathJoin(cwd, DEV_CONFIG_CACHE_RELATIVE)
+    const nestCliPid = isNestCliSpawnedChild() ? getNestCliAncestorPid() : undefined
+    const payload = nestCliPid != null ? { devEnv, nestCliPid } : { devEnv }
+
+    try {
+      mkdirSync(VipNodeJS.pathDirname(cachePath), { recursive: true })
+      VipNodeJS.writeFileByUTF8(cachePath, `${JSON.stringify(payload)}\n`)
+    }
+    catch {
+      // 缓存写入失败不影响启动
+    }
+
+    if (!devConfigCacheCleanupArmed && isNestCliSpawnedChild()) {
+      devConfigCacheCleanupArmed = true
+      VipNodeJS.getProcess().once('SIGINT', () => {
+        this.clearLastDevConfig(cwd)
+      })
+    }
+  }
+
+  private clearLastDevConfig(cwd?: string): void {
+    const cachePath = VipNodeJS.pathJoin(cwd ?? VipNodeJS.getProcessCwd(), DEV_CONFIG_CACHE_RELATIVE)
+    if (!VipNodeJS.existPath(cachePath)) {
+      return
+    }
+
+    try {
+      unlinkSync(cachePath)
+    }
+    catch {
+      // 忽略清理失败
+    }
   }
 
   /** VipInquirer 在 Ctrl+C 时返回 null，此处安全退出（含 nest watch 父进程） */
   private guardPromptResult<T>(value: T | undefined | null): T {
     if (value == null) {
+      this.clearLastDevConfig()
       exitWithNestCliShutdown(0)
     }
     return value
@@ -400,6 +585,11 @@ class NestConfigUtil {
     let productionFilePath: string | undefined
 
     for (const fileName of VipNodeJS.readdirSync(configDir).sort()) {
+      // 忽略隐藏文件（如 .gitkeep）
+      if (fileName.startsWith('.')) {
+        continue
+      }
+
       if (fileName === CONFIG_DIR_RULES.productionFileName) {
         productionFilePath = VipNodeJS.pathJoin(configDir, fileName)
         continue
