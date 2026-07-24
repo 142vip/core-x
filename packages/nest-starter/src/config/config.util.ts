@@ -4,6 +4,8 @@ import {
   exitWithNestCliShutdown,
   getNestCliAncestorPid,
   isNestCliSpawnedChild,
+  registerNestWatchSigintCleanup,
+  restoreStdinAfterPrompt,
 } from '../nest-exit.util'
 import { nestProcess } from '../nest-process'
 
@@ -12,8 +14,6 @@ const LOG_PREFIX = `[@142vip/nest-starter]`
 /** 开发配置选择缓存（运行时目录，勿放 dist：nest watch 会清空 dist） */
 const DEV_CONFIG_CACHE_RELATIVE = 'node_modules/.cache/@142vip/nest-starter/dev-config'
 const LEGACY_DEV_CONFIG_FILE = '.nest-starter-dev-config'
-
-let devConfigCacheCleanupArmed = false
 
 /**
  * config 目录约定（生产 / 开发隔离）：
@@ -304,6 +304,7 @@ class NestConfigUtil {
       `${LOG_PREFIX} 请选择配置文件`,
       fileNameChoices,
     ))
+    restoreStdinAfterPrompt()
 
     const matchedFile = scanResult.developmentFiles.find(file => file.fileName === selectedFileName)
     if (matchedFile == null) {
@@ -403,12 +404,9 @@ class NestConfigUtil {
       // 缓存写入失败不影响启动
     }
 
-    if (!devConfigCacheCleanupArmed && isNestCliSpawnedChild()) {
-      devConfigCacheCleanupArmed = true
-      VipNodeJS.getProcess().once('SIGINT', () => {
-        this.clearLastDevConfig(cwd)
-      })
-    }
+    registerNestWatchSigintCleanup(() => {
+      this.clearLastDevConfig(cwd)
+    })
   }
 
   private clearLastDevConfig(cwd?: string): void {

@@ -96,15 +96,31 @@ export function exitWithNestCliShutdown(exitCode: number): never {
   return undefined as never
 }
 
+let nestWatchSigintCleanup: (() => void) | undefined
+let nestWatchExitArmed = false
+
 /**
- * 应用已启动后：nest watch 下优雅关闭超时则强制退出，避免需二次 Ctrl+C
+ * nest watch 子进程 SIGINT 时附带执行（如清理开发配置缓存）
+ */
+export function registerNestWatchSigintCleanup(cleanup: () => void): void {
+  nestWatchSigintCleanup = cleanup
+}
+
+/**
+ * nest watch 子进程：尽早注册信号处理
+ * - SIGTERM（热重载）：恢复 stdin 后延迟退出，避免 raw mode 残留导致父终端无法 Ctrl+C
+ * - SIGINT：恢复 stdin、执行清理回调后延迟退出
  */
 export function armNestWatchForceExit(timeoutMs = 1500): void {
   if (!isNestCliSpawnedChild()) {
     return
   }
+  if (nestWatchExitArmed) {
+    return
+  }
+  nestWatchExitArmed = true
 
-  const forceExit = (): void => {
+  const scheduleForceExit = (): void => {
     const timer = setTimeout(() => {
       VipNodeJS.exitProcess(0)
     }, timeoutMs)
@@ -112,8 +128,15 @@ export function armNestWatchForceExit(timeoutMs = 1500): void {
   }
 
   const proc = VipNodeJS.getProcess()
-  proc.once('SIGINT', forceExit)
-  proc.once('SIGTERM', forceExit)
+  proc.once('SIGINT', () => {
+    restoreStdinAfterPrompt()
+    nestWatchSigintCleanup?.()
+    scheduleForceExit()
+  })
+  proc.once('SIGTERM', () => {
+    restoreStdinAfterPrompt()
+    scheduleForceExit()
+  })
 }
 
 function findNestCliAncestorPid(): number | undefined {

@@ -65,6 +65,8 @@ export class NestStarter {
    * - 选定配置后 useConfigModule，再解析 AppModule（支持 register 按配置加载）
    */
   public async start(appModule: NestStarterAppModule, rootConfigSchema: ClassConstructor<NestAppConfig>): Promise<void> {
+    armNestWatchForceExit()
+
     const configPath = await this.resolveStartupConfig()
     const ConfigModule = NestConfigModule.register(rootConfigSchema, { configPath })
 
@@ -121,8 +123,6 @@ export class NestStarter {
 
     // 启用关闭钩子（for优雅下线）
     app.enableShutdownHooks()
-    // nest watch 下避免 Redis/TypeORM 等优雅关闭卡住导致需二次 Ctrl+C
-    armNestWatchForceExit()
 
     // 添加健康检查路由
     app.getHttpAdapter()
