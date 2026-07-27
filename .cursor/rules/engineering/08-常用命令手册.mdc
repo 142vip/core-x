@@ -1,0 +1,160 @@
+---
+description: 【必读】启动、编译、打包、发布等常用命令
+alwaysApply: true
+---
+
+# 常用命令手册
+
+> 模型须按本手册执行命令，**优先使用 `pnpm --filter` 精准构建**，避免全仓无效构建。
+
+## 环境要求
+
+- Node `>=18`
+- pnpm `9.6.0`（`packageManager` 锁定，勿用 npm/yarn）
+
+## 命令两种写法（等价）
+
+Monorepo 下 **`pnpm --filter` 与进入对应目录执行脚本等价**（共享根 `node_modules` 与 workspace 链接）。
+
+| 场景 | 仓库根（推荐） | 进入目录（等价） |
+|------|----------------|------------------|
+| 单包 build | `pnpm --filter @142vip/vitepress build` | `cd packages/vitepress && pnpm build` |
+| 单包 test | `pnpm --filter @142vip/utils test` | `cd packages/utils && pnpm test` |
+| 单包 typecheck | `pnpm --filter @142vip/vitepress typecheck` | `cd packages/vitepress && pnpm typecheck` |
+| vitepress-demo dev | `pnpm --filter vitepress-demo dev` | `cd apps/vitepress-demo && pnpm dev` |
+| nest-demo | `pnpm --filter nest-demo start` | `cd apps/nest-demo && pnpm start` |
+| egg-demo | `pnpm --filter egg-demo dev` | `cd apps/egg-demo && pnpm dev` |
+
+**仅在仓库根执行**（无等价 cd）：`pnpm dev` / `pnpm build:docs` / `pnpm build:packages` / `pnpm lint:fix` / `pnpm test`（turbo 全量）等根 `package.json` 脚本。
+
+选用原则：改哪读哪——已在目标目录工作时直接 `pnpm <script>`；在根目录或 CI 中用 `--filter` 更精准。
+
+## CodeGraph（任务开始前必做）
+
+```bash
+# 已有 .codegraph 索引时
+codegraph sync
+
+# 首次或无索引时
+codegraph init
+
+# 查看状态 / 搜索符号
+codegraph status
+codegraph query <关键词>
+```
+
+## 安装
+
+```bash
+pnpm install              # postinstall 会 build:packages
+```
+
+## 开发启动
+
+| 场景 | 命令 | 端口 |
+|------|------|------|
+| 根文档站 | `pnpm dev` | 8080 |
+| 根文档站（代理） | `pnpm dev:proxy` | 8080 |
+| vitepress-demo | `pnpm --filter vitepress-demo dev` | 3080 |
+| nest-demo | `pnpm --filter nest-demo start` | 见 demo 配置 |
+| egg-demo | `pnpm --filter egg-demo dev` | 见 demo 配置 |
+
+## 编译 / 打包
+
+```bash
+# 单包（推荐）
+pnpm --filter @142vip/<pkg> build
+pnpm --filter @142vip/<pkg> typecheck    # 若有
+
+# 全量 packages
+pnpm build:packages                      # turbo @142vip/*
+
+# 全量 demo
+pnpm build:apps                          # turbo *-demo
+
+# 文档站
+pnpm build:docs                          # vitepress + typedoc:api
+pnpm build:docs-proxy
+
+# 完整构建（CI 级，耗时大）
+pnpm build                               # packages + apps + docs
+```
+
+## 测试
+
+```bash
+pnpm --filter @142vip/<pkg> test
+pnpm test                                # turbo 全量
+pnpm test:coverage                       # 根 jest 覆盖率
+```
+
+## 代码质量（提交前 / 任务结束）
+
+```bash
+pnpm lint                                # 检查（须 0 error，warning 可存在）
+pnpm lint:fix                            # 检查 + 自动修复（必须执行）
+```
+
+- **零 error**；warning 允许
+- pre-commit 钩子也会跑 `lint:fix`
+
+## 构建验证（lint:fix 之后）
+
+每次代码变更：`lint:fix` 通过后，对**牵连**包 / demo 做局部 build；范围不明则全量 build。
+
+```bash
+# 局部
+pnpm --filter @142vip/<pkg> build
+pnpm --filter <demo> build
+
+# 保底
+pnpm build                               # packages + apps + docs
+```
+
+## 清理
+
+```bash
+pnpm clean:cache                         # vite/turbo 缓存
+pnpm clean:dist                          # 各包 dist
+pnpm clean                               # 全量清理（慎用）
+```
+
+## 发布与检查
+
+```bash
+pnpm check:commit                        # commit 格式（钩子自动）
+pnpm check:release                       # 发布前检查
+pnpm check:publish                       # dry-run 发布
+pnpm release                             # 正式发布（维护者操作）
+```
+
+发布分支：`next`（`.npmrc` → `publish-branch=next`）
+
+## TypeDoc
+
+```bash
+pnpm typedoc:api                         # docs/apis/
+pnpm typedoc:md
+pnpm typedoc:wiki                        # docs/wiki/
+pnpm typedoc                             # 全量 + lint + build
+```
+
+## 其他
+
+```bash
+pnpm sync:pkg                            # 同步包版本信息
+npx fa <cmd>                             # fairy-cli 入口
+```
+
+`scripts/` 下 CI、交互 build、npm-release、npm-trust、Docker 镜像等见 `15-scripts脚本手册`。
+
+## 模型选用原则
+
+```
+改单包  →  pnpm --filter @142vip/<pkg> build [test] [typecheck]
+         或  cd packages/<pkg> && pnpm build [test] [typecheck]
+改 demo  →  pnpm --filter <demo> dev/build  或  cd apps/<demo> && pnpm dev/build
+改 ESLint/根配置  →  pnpm lint:fix + 关键包 build
+改文档站  →  pnpm build:docs；清单与代码一致见 09（30 包 + 4 demo）
+任务结束  →  pnpm lint:fix（0 error）→ 牵连模块 build → 不明则 pnpm build
+```

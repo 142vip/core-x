@@ -1,0 +1,35 @@
+---
+description: Jest 测试位置与编写约定
+globs: "**/test/**"
+alwaysApply: false
+---
+
+# 测试规范
+
+## 框架
+
+Jest 29 + ts-jest，根配置 `jest.config.ts`，环境 `node`。
+
+## 位置
+
+```
+packages/<name>/test/*.spec.ts
+apps/egg-demo/test/
+```
+
+不用 `__tests__`。
+
+## 原则
+
+- 测行为，不测实现细节
+- bug 修复优先补 repro 测试
+- 不添加无意义的 mock 断言测试
+
+## 运行
+
+```bash
+pnpm --filter @142vip/<pkg> test
+pnpm test
+```
+
+Jest 全局变量已在 `eslint.config.js` 声明。

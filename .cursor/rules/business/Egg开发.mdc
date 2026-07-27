@@ -1,0 +1,34 @@
+---
+description: Egg.js 系列包与插件规范
+globs: "packages/egg*/**/*"
+alwaysApply: false
+---
+
+# Egg 开发
+
+## 包族
+
+`@142vip/egg` + `egg-axios` / `egg-mysql` / `egg-redis` / `egg-sequelize` / `egg-grpc-*` / `egg-swagger` / `egg-validate`
+
+## 插件结构
+
+```
+packages/egg-<name>/src/
+├── app.ts
+└── config/config.default.ts
+```
+
+## 约定
+
+- 插件名 = `package.json` 中 `eggPlugin.name`
+- **8 个子插件无 `build` 脚本**，发布插件目录内 `app.ts` / `agent.ts` 等源码
+- `@142vip/egg` 本体为 unbuild 包
+- 跨插件依赖用 `workspace:*`
+- Demo + 集成测试：`apps/egg-demo/test/`
+
+## 验证
+
+```bash
+pnpm --filter @142vip/egg test
+pnpm --filter egg-demo test
+```

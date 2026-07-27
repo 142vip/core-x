@@ -1,0 +1,39 @@
+---
+description: rules 仅服务模型；仓库代码与对外文档不得引用 rules
+alwaysApply: true
+---
+
+# 规则边界
+
+## 定位
+
+| 路径 | 读者 | 作用 |
+|------|------|------|
+| `.cursor/rules/*.mdc` | **Cursor 模型** | 执行流程、规范、自检 |
+| `.cursor/rules/README.md`、`TODO.md` | **人类** | 了解模型如何工作、待办 |
+| 仓库其余代码与文档 | **人类用户** | 产品能力，不含 rules 指引 |
+
+## 禁止（仓库内除 `.cursor/rules/` 外）
+
+- 链接或路径指向 `.cursor/rules/`、`.mdc` 文件
+- README、注释、代码中写「见 rules」「按 rules 执行」
+- 架构图中单独展示 `.cursor/rules` 节点
+- 包文档要求读者阅读 rules
+
+## 模型义务
+
+- 在**内部**遵循 rules，对外交付不依赖用户阅读 rules
+- 需写入用户可见文档的内容（命令、架构、API）→ 写入**根 README** 或**包 README**，不甩链到 rules
+- 更新 rules 时，同步把用户需要知道的信息落到正式文档（`09-文档同步规范`）
+
+## rules 内引用
+
+- `.mdc` 之间可互相引用（文件名即可）
+- `TODO.md` 不写 `.mdc` 路径；维护约定写在 `11-TODO规范.mdc`
+
+## 自检
+
+```
+□ 本次改动是否在 rules 外新增了对 .cursor/rules 的引用？
+□ 用户需要的命令/架构说明是否已写在正式 README？
+```

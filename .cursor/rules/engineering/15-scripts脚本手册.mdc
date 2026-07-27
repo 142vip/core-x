@@ -1,0 +1,145 @@
+---
+description: scripts/ 目录脚本用途、调用方式与模型使用边界
+alwaysApply: true
+---
+
+# scripts 脚本手册
+
+> `preinstall` 会对 `scripts/*` 执行 `chmod +x`。日常开发优先用根 `package.json` 的 `pnpm` 命令；本节说明 `scripts/` 各脚本的职责，便于模型理解 CI、发布与维护流程。
+
+## 目录结构
+
+```
+scripts/
+├── ci                 # CI 环境安装依赖
+├── build              # 交互式选择包/docs 构建
+├── build-image        # 构建并推送文档站 Docker 镜像
+├── npm-release        # 单包编译 + 发布
+├── npm-trust          # npm OIDC Trusted Publishing 管理
+└── core/
+    ├── build.ts           # build 脚本实现
+    ├── build-image.ts     # build-image 实现
+    └── verify-commit.ts   # commit-msg 校验实现
+```
+
+## 与 package.json 的关系
+
+| 根脚本 | 实际入口 |
+|--------|----------|
+| `pnpm check:commit` | `scripts/core/verify-commit.ts`（`commit-msg` 钩子） |
+| `pnpm build:docs` | `vitepress build` + `typedoc:api`（非 scripts/build） |
+| `pnpm release` | `npx fa release`（fairy-cli，非 scripts/npm-release） |
+
+`scripts/build` 是**维护者可选**的交互式构建，不等同于 `pnpm build`。
+
+## scripts/ci
+
+**用途**：CI / 干净环境安装依赖。
+
+```bash
+./scripts/ci
+# 或指定 registry 参数
+NPM_REGISTRY=https://registry.npmmirror.com ./scripts/ci
+```
+
+**行为**：
+- 确保 `corepack` 与 `pnpm` 可用（`COREPACK_NPM_REGISTRY` 默认 npm 官方源）
+- 执行 `pnpm i --frozen-lockfile --force`
+- 默认 registry：`https://registry.npmmirror.com`
+
+**模型**：本地开发用 `pnpm install` 即可；仅在复现 CI 安装问题时运行。
+
+## scripts/build
+
+**用途**：交互式选择要 build 的目标（基于 `@142vip/utils` 的 `VipMonorepo` + `VipInquirer`）。
+
+```bash
+./scripts/build
+```
+
+**可选目标**：
+- 任意 `@142vip/*` 或 `*-demo`（走 `turbo run build --filter`）
+- `docs` → `npx vitepress build --minify`
+- `docs-proxy` → `NEED_PROXY=true npx vitepress build`
+
+**模型**：日常改单包用 `pnpm --filter` 或进入目录 `pnpm build`（见 `08`）；不必跑交互脚本。
+
+## scripts/build-image
+
+**用途**：构建文档站 Docker 镜像并推送阿里云。
+
+```bash
+./scripts/build-image
+./scripts/build-image --proxy   # NEED_PROXY=true
+```
+
+**行为**（`scripts/core/build-image.ts`）：
+- 读取根 `package.json` 的 name / version / description
+- 镜像名：`{DOCKER_ALIYUNCS_VIP}/docs:{pkgShortName}-{version}`
+- 注入构建参数：作者、git short hash、`NEED_PROXY` 等
+- `VipDocker.buildImage`：build + push + 删除本地镜像
+
+**模型**：仅维护者发布镜像时使用；改代码验证用 `pnpm build:docs`。
+
+## scripts/npm-release
+
+**用途**：**单包**编译全量 packages 后发布到 npm（维护者本地发版辅助）。
+
+```bash
+./scripts/npm-release --list
+./scripts/npm-release fairy-cli
+./scripts/npm-release @142vip/fairy-cli --version 1.2.3
+./scripts/npm-release fairy-cli --dry-run
+```
+
+**流程**：
+1. 解析 `packages/*/package.json`（跳过 `private`）
+2. 可选 `--version` 写入目标包 version
+3. `pnpm build:packages`（编译**所有** `@142vip/*`）
+4. `pnpm publish --filter "<pkg>" --no-git-checks`（`--dry-run` 可模拟）
+
+**发布前**：`npm login --auth-type=web`
+
+**模型**：仓库标准发版走 `pnpm release`（fairy-cli）；`npm-release` 是单包快捷路径，勿与 `pnpm check:publish` 混淆。
+
+## scripts/npm-trust
+
+**用途**：批量配置 npm **GitHub Actions OIDC Trusted Publishing**（配合 `.github/workflows/CD.yaml`）。
+
+```bash
+./scripts/npm-trust --names              # 列出可发布包
+./scripts/npm-trust                        # 打印可复制 trust 命令
+./scripts/npm-trust --check                # 检查未配置 trust 的包
+./scripts/npm-trust --run --only-new       # 批量执行 npm trust github
+```
+
+**环境变量**：`NPM_TRUST_REPO`、`NPM_TRUST_WORKFLOW`、`NPM_TRUST_SCOPE`、`PACKAGES_DIR`
+
+**执行前**：`npm login --auth-type=web`
+
+**模型**：仅维护者配置 CI 发布权限；改业务代码不涉及此脚本。
+
+## scripts/core/verify-commit.ts
+
+**用途**：校验 commit message 符合 Conventional Commits + 仓库 scope 列表。
+
+```bash
+pnpm check:commit   # 通常由 commit-msg 钩子自动调用
+```
+
+**行为**（`@142vip/commit-linter`）：
+- scope 来自 `VipMonorepo.getPkgNames(['./apps/*', './packages/*'])`
+- 格式：`type(scope): subject`（详见 `05-Git与发布`）
+
+**模型**：提交前确保 message 合法；勿跳过 `commit-msg` 钩子。
+
+## 模型选用原则
+
+```
+日常开发 / 改代码     →  package.json 脚本（08 手册），不用 scripts/ 交互脚本
+CI 安装问题复现       →  scripts/ci
+单包本地发版（维护者） →  scripts/npm-release
+CI 发布权限（维护者） →  scripts/npm-trust
+文档 Docker 镜像      →  scripts/build-image
+commit 格式           →  自动钩子；手动 pnpm check:commit
+```

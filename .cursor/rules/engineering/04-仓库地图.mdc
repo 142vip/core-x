@@ -1,0 +1,66 @@
+---
+description: monorepo 结构、pnpm、Turbo、构建分工
+alwaysApply: true
+---
+
+# 仓库地图
+
+> 完整包表、CI、文档来源见 `16-全仓资产清单`。
+
+## 结构
+
+```
+core-x/
+├── packages/          # 30 个 @142vip/* 可发布包
+├── apps/              # nest-demo / egg-demo / vitepress-demo / vuepress-demo
+├── .vitepress/        # 根文档站
+├── docs/              # index.md + TypeDoc（apis/、wiki/）
+├── scripts/           # CI、commit 校验、发布（见 15）
+├── .github/workflows/ # CI.yml · CD.yaml
+├── spider/            # 非 workspace 离线脚本
+└── turbo.json
+```
+
+## 包管理
+
+- **pnpm 9.6**（`preinstall` → `only-allow pnpm`）
+- workspace：`apps/**`、`packages/**`（`pnpm-workspace.yaml`）
+- paths：`@142vip/*` → `packages/*/src`（根 `tsconfig.json`）
+- 过滤：`pnpm --filter @142vip/<name> <script>` ≡ `cd packages/<dir> && pnpm <script>`
+
+## 构建分工
+
+| 类型 | 数量 | 包 | 工具 |
+|------|------|-----|------|
+| unbuild 双格式 | 17 | axios, utils, vitepress, egg, fairy-cli… | `.mjs` + `.cjs` |
+| tsc CommonJS | 5 | nest, nest-starter, nest-logger, nest-redis, nest-typeorm | `dist/*.js` |
+| Egg 插件直发 | 8 | egg-axios … egg-validate | 无 `build` 脚本，发布插件源码 |
+| Demo | 4 | *-demo | 各框架 CLI |
+
+详见 `business/ESM与模块发布`。`@142vip/oauth2.0` 目录为 `packages/oauth`。
+
+## 常用命令
+
+```bash
+pnpm --filter @142vip/<pkg> build
+cd packages/<pkg> && pnpm build          # 等价
+
+pnpm --filter @142vip/<pkg> test
+pnpm --filter vitepress-demo dev         # 或 cd apps/vitepress-demo && pnpm dev
+pnpm lint:fix                            # 零 error（warning 允许）
+pnpm test                                # turbo 全量
+```
+
+## 新增公开 API 检查
+
+- 类型从包入口或 `src/core/index.ts` 导出
+- unbuild 包同步 `package.json` exports
+- 评估 peerDependencies 影响
+- 同步 `16` 包表、`.vitepress/sidebar.ts`、根 README
+
+## 目录整洁（禁止空目录）
+
+- 每个目录须有实质文件（源码、配置、文档、资源），不预建空文件夹
+- 标准包：`src/` + `package.json` + `tsconfig.json`；有测试才建 `test/`
+- 删除文件后目录若变空 → 一并删除（见 `06-收尾与环境清理`）
+- 不用 `.gitkeep` 维持无意义空目录

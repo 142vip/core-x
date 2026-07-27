@@ -1,0 +1,74 @@
+---
+description: Mermaid 图表编写规范（与根 README 图表保持一致）
+alwaysApply: true
+---
+
+# Mermaid 图表规范
+
+仓库内**架构图、流程图、序列图**一律用 Mermaid。目录树可用 ASCII（仅 rules 内 `.mdc`）。
+
+## 权威来源与同步
+
+| 对外（用户可见） | 模型内（rules） |
+|----------------|----------------|
+| 根 `README.md` 为仓库架构/流程**唯一对外图源** | `07-仓库架构与流程.mdc` 与根 README **同构同步** |
+| 包 README 仅画本包流程 | `rules/README.md` 仅画模型工作流 |
+
+改架构/流程图时：**先改根 README，再同步 `07`**（`09`、`14`）。
+
+## 图表清单（当前仓库）
+
+根 README 须包含且保持更新：
+
+1. **仓库架构** `flowchart TB` — 根节点直连 packages / apps / vitepress / scripts / CI
+2. **技术分层** `flowchart LR` — demo → 包 → utils/cli/框架
+3. **模块发布** `flowchart LR` — unbuild / tsc / Egg 直发 → npm
+4. **开发发布** `sequenceDiagram` — Dev → hooks → CI → CD → npm/Pages
+5. **本地开发** `flowchart TD` — install → build → lint → dev → build:docs
+
+rules/README 仅保留**模型工作流** `flowchart TD`（不含仓库业务架构）。
+
+## 画法原则（简洁优先）
+
+1. **少用 `subgraph`**：优先「节点 + 箭头」直接表达关系；仅当必须分组且 ≤2 层时使用
+2. **一眼看懂**：30 秒内能说清「谁 → 谁 → 什么」
+3. **数字准确**：packages **30**、apps **4**、unbuild **17**、Nest tsc **5**、Egg 插件无 build **8**
+4. **端口**：根文档 `8080`、`vitepress-demo` `3080`
+
+## 语法硬性规则
+
+1. **围栏**：独立一行 ` ```mermaid `，前后空行，闭合 ` ``` `
+2. **节点 ID**：仅英文字母数字下划线，如 `VP_SITE`、`PKG_FW`
+3. **显示文本**：中文或 `@142vip/xxx` 放方括号内：`PKGS["packages/ · 30 包"]`
+4. **换行**：节点内用 `<br/>`，不用真实换行
+5. **特殊字符**：标签含 `()`、`:` 时用双引号包裹
+6. **规模**：单图节点 ≤ 15；超出拆图
+
+## 图表类型
+
+| 场景 | 语法 |
+|------|------|
+| 分层、依赖 | `flowchart TB` / `LR` |
+| 步骤、分支 | `flowchart TD` |
+| 时序 | `sequenceDiagram` + `participant` 别名 |
+
+## 禁止
+
+- 根 README 与 `07` 内容不一致
+- 为装饰大量嵌套 subgraph
+- 在仓库对外文档中画 `.cursor/rules`（`14-规则边界`）
+- 截图代替 Mermaid
+- 节点 ID 用中文或含空格
+
+## 示例（模块发布 · 与仓库一致）
+
+```mermaid
+flowchart LR
+  SRC["src/"] --> UB["unbuild<br/>17 包 ESM+CJS"]
+  SRC --> TSC["tsc<br/>Nest 5 包"]
+  SRC --> EGG["Egg 插件 8 包"]
+  UB --> EXP["exports"]
+  TSC --> EXP
+  EGG --> NPM["npm"]
+  EXP --> NPM
+```

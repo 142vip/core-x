@@ -1,0 +1,97 @@
+---
+description: 代码规范、注释原则、最小改动纪律
+alwaysApply: true
+---
+
+# 代码质量
+
+## 核心原则
+
+1. **正确优先**：逻辑清晰、类型准确、边界处理合理
+2. **最小改动**：每行变更须能追溯到用户需求
+3. **风格一致**：匹配周边文件的命名、结构、注释语言
+4. **注释克制**：解释「为什么」，不描述「做了什么」
+
+## 注释规范
+
+### 要写
+
+- 非显而易见的业务规则（如「单参须原样返回以保持兼容」）
+- 技术陷阱规避（如 Nest DI 不能用 type import）
+- 外部依赖限制（如 element-plus 版本锁定原因）
+- 公开 API 的 JSDoc：`@param` `@returns` `@example`
+
+### 不要写
+
+```ts
+// ❌ 重复代码语义
+// 获取用户信息
+const user = getUser()
+
+// ❌ 变更日志式
+// 2024-01-01 修改为 xxx
+
+// ❌ 显而易见的步骤
+// 遍历数组
+items.forEach(...)
+```
+
+### 示例
+
+```ts
+// ✅ 说明非显而易见的行为
+// 无第二参数时原样返回，避免破坏历史调用方
+if (options == null) return userConfig
+
+// ✅ 说明外部约束
+// element-plus 2.14 触发 @vueuse/core@14 的 Rollup 告警，锁定 2.13.1
+```
+
+## 编码纪律
+
+### 做
+
+- 优先复用包内已有函数，不重复造轮子
+- 导出类型与实现同步维护
+- 空值判断用 `!= null` 同时覆盖 null/undefined
+- 改动产生的无用 import/变量一并清理
+
+### 不做
+
+- 未请求的功能、配置项、抽象层
+- 单处使用的 helper 函数
+- 不可能触发的 error handling
+- 顺手「优化」相邻无关代码
+- 200 行能 50 行解决的过度设计
+
+## TypeScript
+
+- 优先 `interface` 描述对象；工具类型用 `type`
+- 避免 `any`；必要时局部使用并注释
+- Nest：**禁止**对注入类使用 `import type`（见 `business/TypeScript规范`）
+
+## 改动自检（实现中随时对照）
+
+```
+□ 是否只改了任务相关文件？
+□ 公开 API 行为是否保持不变？
+□ 注释是否都有存在价值？
+□ 是否有可删除的冗余代码？
+□ 是否已对齐目标模块风格（见 `business/代码风格统一`）？
+```
+
+## 任务结束（必须）
+
+```bash
+pnpm lint:fix
+# 随后对牵连模块做局部 build，见 01 §4、02 §C
+```
+
+- **零 ESLint error**；warning 允许，但勿新增 error
+- 改动文件无 TypeScript 编译错误
+- **lint:fix 之后**，牵连包 / demo 的 `build` 须 exit 0；范围不明则 `pnpm build`
+
+## 沟通
+
+- 用户要求中文回复
+- 代码引用格式：`startLine:endLine:filepath`

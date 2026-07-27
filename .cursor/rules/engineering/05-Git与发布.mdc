@@ -1,0 +1,51 @@
+---
+description: Conventional Commits、分支策略、PR、发布
+alwaysApply: true
+---
+
+# Git 与发布
+
+## Commit 格式
+
+```
+<type>(<scope>): <subject>
+```
+
+| 字段 | 规则 |
+|------|------|
+| type | `feat` `fix` `hotfix` `docs` `style` `refactor` `perf` `test` `build` `ci` `chore` `revert` `release` |
+| scope | 包名（如 `vitepress`）或 `CHANGELOG` `README` `release` |
+| subject | 5–100 字符 |
+
+校验：`commit-msg` → `pnpm check:commit` → `scripts/core/verify-commit.ts`
+
+## 分支
+
+| 变更 | 目标分支 |
+|------|----------|
+| 新特性 | `next` |
+| bugfix / docs / 其他 | `main` |
+
+npm 发布分支：`next`（`.npmrc`）
+
+## 发布 Commit
+
+- GitHub Release：`chore(release): ...`
+- npm：`release(@142vip/xxx): ...`
+
+## PR 自查（`.github/PULL_REQUEST_TEMPLATE/pr_cn.md`）
+
+- 需求背景、方案、是否 breaking
+- 文档 / 演示 / TS / Changelog 勾选
+- 新特性 → `next`，需维护者审核
+
+## Hooks
+
+- `pre-commit` → `pnpm lint:fix`
+- `commit-msg` → 格式校验
+
+## Agent 约束
+
+- 用户未要求：不 commit / push / 建 PR
+- hook 失败：修复后**新 commit**，不 amend 已推送
+- 禁止：`git config` 修改、`--no-verify`、main force push（除非明确要求）

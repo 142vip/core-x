@@ -1,0 +1,46 @@
+---
+description: TypeScript 编码规范与 ESLint 特例
+globs: "**/*.{ts,tsx}"
+alwaysApply: false
+---
+
+# TypeScript 规范
+
+## 配置继承
+
+| 场景 | 文件 |
+|------|------|
+| 通用 package | `tsconfig.package.json` |
+| Nest 包 | `tsconfig.nest-pkg.json`（CommonJS） |
+| 路径别名 | 根 `tsconfig.json` → `@142vip/*` |
+
+## ESLint 特例（`eslint.config.js`）
+
+```js
+'ts/consistent-type-imports': ['off']   // Nest DI 兼容
+'antfu/no-import-dist': 0               // unbuild dist 导出
+```
+
+## 风格
+
+- 对象结构用 `interface`；联合/工具类型用 `type`
+- 导出函数附 JSDoc（与文件注释语言一致）
+- `!= null` 判断空值；避免无说明的 `any`
+
+## 目录约定
+
+```
+packages/<name>/src/core/     # 主逻辑
+packages/<name>/test/*.spec.ts
+```
+
+## Nest 特别提醒
+
+Injectable 类必须值导入：
+
+```ts
+// ❌ 运行时注入失败
+import type { FooService } from './foo.service'
+// ✅
+import { FooService } from './foo.service'
+```

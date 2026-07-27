@@ -1,0 +1,45 @@
+---
+description: 【必读】规则索引与仓库记忆
+alwaysApply: true
+---
+
+# 索引与记忆
+
+> **rules 目的**：沉淀已验证的仓库事实，减少重复探索。`codegraph sync` → 本文件 → `16` → `01` → `02` → `06` → `12` → `14`
+
+## 目录速查
+
+```
+engineering/        工程化（流程 00~17）
+business/           业务（包职责·任务路由·风格·ESM·技术栈专项）
+TODO.md             仅未完成待办
+```
+
+**首读**：`16-全仓资产清单`（30 包 / 4 demo / CI / 文档来源）
+
+## 核心记忆
+
+| 项 | 值 |
+|----|-----|
+| packages | 30 个 npm 包，ESM 优先 + CJS 兼容 |
+| Nest 系 | tsc CommonJS，勿强行改 ESM |
+| 对外文档 | 根 README；**不引用 rules**（`14`） |
+| Mermaid | 根 README ↔ `07` 同构（`10`） |
+| 文档站 | 根 VitePress ↔ 包/demo README ↔ `sidebar.ts`（`09`） |
+| 任务开始 | `codegraph sync` |
+| 任务结束 | `pnpm lint:fix` |
+
+## 任务路由
+
+| 意图 | 规则 |
+|------|------|
+| 全仓结构 | `16-全仓资产清单` |
+| npm 包 / exports | `business/ESM与模块发布`、`business/unbuild打包` |
+| VitePress | `business/VitePress开发` |
+| Nest / Egg | `business/Nest开发` / `business/Egg开发` |
+| 图表 | `10`、更新根 README + `07` |
+| 文档站同步 | `09-文档同步规范`、`business/VitePress开发` |
+| 文档完整性 | `09`：30 包 + 4 demo 与代码一致、不遗漏 |
+| scripts | `15-scripts脚本手册` |
+| Markdown | `17-Markdown文档规范` |
+| 代码质量 | `03` + `pnpm lint` **零 error**（warning 允许）+ 牵连模块 build |

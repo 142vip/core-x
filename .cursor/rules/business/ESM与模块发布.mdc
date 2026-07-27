@@ -1,0 +1,66 @@
+---
+description: packages 下 npm 包 ESM 优先、CJS 兼容、禁止破坏性 exports 变更
+alwaysApply: true
+---
+
+# ESM 与模块发布
+
+`packages/` 下均为发布到 npm 的 `@142vip/*` 包，修改时**默认 ESM、兼容 CJS、不破坏既有引用**。
+
+## 双轨构建（当前仓库）
+
+| 类型 | 包示例 | 构建 | 产物 |
+|------|--------|------|------|
+| unbuild 通用库 | axios、utils、vitepress、egg、grpc… | unbuild | `.mjs` ESM + `.cjs` CJS |
+| Nest 系 | nest、nest-starter、nest-* | `tsc` | CommonJS `.js` |
+
+约 17 个包用 unbuild；Nest 5 个包用 tsc，**勿将 Nest 系强行改 ESM**。
+
+## package.json 约定（unbuild 包）
+
+```json
+{
+  "type": "module",
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "sideEffects": false
+}
+```
+
+- **源码**：ESM 语法（`import` / `export`）
+- **入口优先**：`import` → `.mjs`；`require` → `.cjs`
+- 新增 subpath：`exports` + `build.config.ts` + 类型声明**同步**
+
+## 禁止的破坏性变更
+
+- 删除已有 `exports` 字段或 subpath
+- 将 `main` 从 `.mjs` 改为仅 CJS（除非主版本且 CHANGELOG 说明）
+- 移除 `require` 条件导出（已有 CJS 消费者的包）
+- 修改 Nest 包 `tsconfig.nest-pkg.json` 的 module 为 ESM（全系列迁移前禁止）
+
+## 新增包
+
+1. 默认 unbuild 双格式（见 `unbuild打包.mdc`）
+2. `"type": "module"` + `sideEffects: false`
+3. `publishConfig.access: public`
+
+## 验证
+
+```bash
+pnpm --filter @142vip/<pkg> build
+pnpm check:esm          # 根目录 ESM 检查（发版前）
+pnpm check:publish      # dry-run
+```
+
+## 与代码风格关系
+
+- 业务源码统一 ESM；CJS 仅出现在 **dist 产物**
+- Nest DI 仍禁止 `import type` 注入类（`TypeScript规范`）

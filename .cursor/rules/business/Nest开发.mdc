@@ -1,0 +1,39 @@
+---
+description: NestJS 系列包开发规范
+globs: "packages/nest*/**/*"
+alwaysApply: false
+---
+
+# Nest 开发
+
+## 包族
+
+| 包 | 职责 |
+|----|------|
+| `@142vip/nest` | 基础模块、拦截器、过滤器 |
+| `@142vip/nest-starter` | 启动器、配置、Swagger |
+| `@142vip/nest-logger` | 日志 |
+| `@142vip/nest-redis` | Redis |
+| `@142vip/nest-typeorm` | TypeORM |
+
+## 编译
+
+- `tsc` + `tsconfig.nest-pkg.json`（**CommonJS**，勿改 ESM）
+- Demo：`apps/nest-demo`
+
+## 配置（nest-starter）
+
+- `nest-typed-config` + `selectConfig`
+- 配置工具：`packages/nest-starter/src/config/config.util.ts`
+- 入口：`NestStarter` 单例
+
+## DI 铁律
+
+禁止对 `@Injectable()` 类使用 `import type`。
+
+## 验证
+
+```bash
+pnpm --filter @142vip/nest-starter test
+pnpm --filter @142vip/nest-starter build
+```

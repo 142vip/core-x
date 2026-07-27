@@ -1,0 +1,107 @@
+---
+description: 【必读】任务收尾：释放端口、清理中间文件、禁止空目录
+alwaysApply: true
+---
+
+# 收尾与环境清理
+
+任务交付前（`01-执行流程` 阶段 6）**必须执行**，即使未 commit 也要清理。
+
+## 1. 释放占用端口
+
+Agent 在验证中启动过 dev server / 监听进程时，交付前须释放：
+
+| 常见端口 | 来源 |
+|----------|------|
+| `3080` | `vitepress-demo` dev |
+| `8080` | 根文档站 `pnpm dev` |
+| `3000` / 自定义 | `nest-demo`、egg 等 |
+
+```bash
+# 查看占用（macOS）
+lsof -i :3080 -t
+
+# 结束本任务启动的进程（确认 PID 后再 kill）
+kill <pid>
+```
+
+- 用 `block_until_ms: 0` 放后台的 dev server，**任务结束前须停止**
+- 不要 kill 用户原本就在跑的无关进程；只清理**本次任务启动**的
+- 端口仍被占用时，在交付说明中注明 PID 与处理建议
+
+## 2. 清理中间文件
+
+任务过程中产生的临时产物须删除，**不得提交**：
+
+| 类型 | 示例 | 处理 |
+|------|------|------|
+| 误建目录 | `apps/vitepress-demo/--port/` | 删除 |
+| 调试脚本 | `tmp-*.ts`、`scratch/` | 删除 |
+| 本地日志 | `*.log`（非约定目录） | 删除 |
+| 临时配置 | `.env.local`、`.env.test` | 删除或加入 `.gitignore` |
+| 构建缓存（非常规） | 误建在源码旁的 `dist/` 副本 | 删除 |
+
+**保留**（仓库约定产物）：
+- 各包正式 `dist/`（build 输出，已在 `.gitignore` 的无需提交）
+- `.vitepress/.vite`、`node_modules/`（已在 ignore）
+
+```bash
+git status --short   # 确认无多余 untracked 临时文件
+```
+
+## 3. 禁止空目录
+
+仓库内**不得保留空目录**（无文件、仅 `.gitkeep` 占位也算需审视）。
+
+### 原则
+
+- 每个目录须有明确职责，且至少包含一个实质文件（源码、配置、文档、资源）
+- 不为「以后可能用到」预建空文件夹
+- 删除文件后，若目录变空 → **一并删除该目录**
+
+### 标准包结构
+
+```
+packages/<name>/
+├── src/              # 必有入口与逻辑
+├── test/             # 有测试时；无测试则不建空 test/
+├── package.json
+├── tsconfig.json
+├── build.config.ts   # unbuild 包
+└── README.md
+
+apps/<demo>/
+├── src/ 或框架约定目录
+├── package.json
+└── README.md
+```
+
+### 检查
+
+```bash
+# 查找空目录（排除 node_modules、.git、dist）
+find . -type d -empty \
+  ! -path './node_modules/*' \
+  ! -path './.git/*' \
+  ! -path '*/dist/*' \
+  2>/dev/null
+```
+
+- 发现空目录 → 删除，或补全应有文件
+- **不要**用 `.gitkeep` 维持无意义空目录；确需占位须在 README 说明原因
+
+## 4. 收尾自检清单
+
+```
+□ 本次启动的 dev server 已停止，端口已释放
+□ 无临时文件 / 误建目录残留在工作区
+□ git status 无应删除的 untracked 垃圾
+□ find 空目录检查通过（ relevant 路径）
+□ 模块目录结构符合 04-仓库地图 与 `business/模块开发索引` 约定
+```
+
+## 禁止
+
+- 留下 `--port/` 类误输入产生的目录
+- 提交 `.env`、密钥、本地调试产物
+- 为通过检查而提交 `.gitkeep` 掩盖结构问题

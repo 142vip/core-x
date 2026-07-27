@@ -1,0 +1,114 @@
+---
+description: 【必读】功能完成后的验收与校验清单
+alwaysApply: true
+---
+
+# 验收校验
+
+**全部 relevant 项通过方可交付。** 配合 `01-执行流程` 使用。顺序：**lint:fix → 局部 build → 文档自检**。
+
+## A. 通用验收（每次必做）
+
+- [ ] 已执行 `codegraph sync`（或 `init`）
+- [ ] 先学最新代码，改动范围小且可追溯
+- [ ] 遵循 `business/代码风格统一`、`03-代码质量`、`13-模型协作规范`（简洁输出）
+- [ ] 中文回复用户
+
+## B. ESLint 与编辑器（每次必做 · lint:fix 后）
+
+```bash
+pnpm lint:fix
+```
+
+- [ ] **`pnpm lint` 零 error**（**warning 允许**，不要求清零历史 warning）
+- [ ] **不得因本次改动新增 error**；尽量不新增 warning
+- [ ] 改动文件在 IDE 中**无 TypeScript 错误**；ESLint 无 error 级诊断
+- [ ] pre-commit 钩子可正常通过（钩子跑 `lint:fix`，须无 error）
+- [ ] 不修改 `eslint.config.js` 的 `ignores` 来掩盖本次引入的 **error**
+- [ ] 已全局忽略：`docs/apis/**`、`docs/wiki/**`（TypeDoc 生成物）
+
+## C. 构建验证（**lint:fix 之后必做**）
+
+对本次变更**牵连**的包 / demo 做局部 build；范围不确定时跑全量 `pnpm build`。
+
+```bash
+# 局部（首选）
+pnpm --filter @142vip/<pkg> build
+pnpm --filter <demo> build
+pnpm --filter @142vip/<pkg> typecheck    # 若有
+
+# 保底（牵连范围不明 / 改根配置 / 改多包）
+pnpm build
+```
+
+| 场景 | 最低 build 范围 |
+|------|-----------------|
+| 改单包 | 该包 + 直接消费方 demo（若有） |
+| 改 demo | 该 demo + 其依赖的 `@142vip/*` |
+| 改 vitepress / 根文档 | `@142vip/vitepress` + `vitepress-demo`；大改加 `pnpm build:docs` |
+| 改 exports / peerDeps | 该包 + 所有 workspace 引用方 `build` |
+| 不确定 | `pnpm build` |
+
+- [ ] 牵连模块 / 应用 `build` **exit 0**
+- [ ] `typecheck` exit 0（若包有该脚本且本次涉及）
+- [ ] 新增导出已同步 `package.json` exports / 入口 index
+
+## D. 测试
+
+有逻辑变更时：
+
+```bash
+pnpm --filter @142vip/<pkg> test
+```
+
+- [ ] 相关 `test/*.spec.ts` 通过
+- [ ] bug 修复优先补 repro 测试
+
+## E. 文档与 README（见 `09-文档同步规范`）
+
+- [ ] 根 README / 包 README 与代码一致（**不**含 rules 引用）
+- [ ] **文档清单完整**：30 个包、4 个 demo **不得遗漏**（除非仓库已真实删除）
+- [ ] 根 README 开源模块列表、`sidebar.ts`、首页数据与 `packages/`、`apps/` 一一对应
+- [ ] Markdown 符合 `17-Markdown文档规范`
+- [ ] 根 README 与 `07` Mermaid 同构
+- [ ] VitePress 无死链、无「幽灵」条目（文档有、仓库无）
+- [ ] API 变更已 `build:docs` 或 `typedoc:api`（若影响公开 API 文档）
+- [ ] `TODO.md` 仅含未完成项
+- [ ] 本次是否在 rules 外新增 `.cursor/rules` 引用（`14`）
+
+## F. 按域专项
+
+### VitePress
+
+```bash
+pnpm --filter @142vip/vitepress build && typecheck
+pnpm --filter vitepress-demo build
+```
+
+- [ ] `defineVipVitepressConfig(config)` 单参原样返回
+- [ ] element-plus 保持 2.13.1
+- [ ] 文档站内容与代码结构一致（`09`）
+
+### Nest / Egg / unbuild
+
+见 `business/` 对应文件。
+
+## G. Git（仅用户要求时）
+
+- [ ] commit 格式、分支策略正确
+- [ ] 无敏感文件
+
+## H. 收尾与环境
+
+见 `06-收尾与环境清理`：
+
+- [ ] 端口已释放、无临时文件/空目录
+- [ ] `git status` 无应删垃圾
+
+## 失败处理
+
+```
+失败项 → 修复 → 重跑 lint:fix → 重跑 build → 再勾选
+```
+
+不得带 **lint error** 或 **build 失败** 交付。

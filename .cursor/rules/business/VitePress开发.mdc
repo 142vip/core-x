@@ -1,0 +1,76 @@
+---
+description: VitePress 文档站与 @142vip/vitepress 开发规范
+globs: "{packages/vitepress/**,apps/vitepress-demo/**,.vitepress/**,docs/**}"
+alwaysApply: false
+---
+
+# VitePress 开发
+
+## 文档站与代码同步（必守）
+
+根文档站内容**来源于仓库实际结构**，变更后须与代码一致（细则见 `engineering/09-文档同步规范`）。
+
+**完整性**：根 README 包列表、`.vitepress/sidebar.ts` 须覆盖全部 **30 包 + 4 demo**，整理文档时不得删减仍存在的模块/应用。
+
+| 改什么 | 同步哪里 |
+|--------|----------|
+| 新增/删除包 | `.vitepress/sidebar.ts`、根 README 包列表、包 `README.md` |
+| 包 API / 用法 | `packages/*/README.md`；大改后 `pnpm build:docs` 刷新 `docs/apis/` |
+| demo 端口/命令 | `apps/*/README.md`、`08` 端口表 |
+| 首页模块表格 | 改 `sidebar.ts` + 包 `package.json`（`project-data.ts` 自动聚合） |
+| 导航/URL 重写 | `.vitepress/config.ts` 的 `nav`、`rewrites` |
+
+**勿手改** `docs/apis/` 下 TypeDoc 生成文件；**勿在** `project-data.ts` 重复硬编码包清单。
+
+### 站点结构速查
+
+```
+.vitepress/config.ts      # base、nav、rewrites、主题
+.vitepress/sidebar.ts     # 侧栏分类（包清单权威来源之一）
+docs/index.md             # 首页
+packages/*/README.md      # → /packages/:pkg/
+apps/*/README.md          # → /apps/:pkg/
+docs/apis/                # typedoc:api 生成
+```
+
+## 核心 API（不可破坏）
+
+```ts
+defineVipVitepressConfig(userConfig)                    // 原样返回
+defineVipVitepressConfig(userConfig, { mermaid: true }) // 增量合并 markdown + vite
+```
+
+## 文件职责
+
+| 文件 | 职责 |
+|------|------|
+| `core/vitepress.ts` | 配置入口 |
+| `core/mermaid.ts` | fence 插件 + Vite 预构建 |
+| `core/sass-vite.ts` | Sass modern API（Mermaid 启用时合并） |
+| `theme/index.ts` | `defineVipExtendsTheme` |
+| `components/VipMermaid.vue` | 渲染组件 |
+
+## 依赖边界
+
+- `OPEN_SOURCE_ADDRESS` → 直接从 `@142vip/open-source` 导入
+- `vipDocSite` / `VipPackageJSON` → `@142vip/utils`
+- 复制用 `copy-to-clipboard`，勿再封装
+
+## 版本锁定
+
+- vitepress `1.6.4`
+- element-plus `2.13.1`（勿升 2.14）
+
+## 验证
+
+```bash
+# 仓库根
+pnpm --filter @142vip/vitepress build
+pnpm --filter @142vip/vitepress typecheck
+pnpm --filter vitepress-demo build
+pnpm build:docs              # 根站 + typedoc:api
+
+# 等价：进入目录
+cd packages/vitepress && pnpm build && pnpm typecheck
+cd apps/vitepress-demo && pnpm build
+```

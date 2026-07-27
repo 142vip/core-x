@@ -1,0 +1,113 @@
+---
+description: 【必读】全仓目录、包清单、配置与 CI 资产（模型知识库）
+alwaysApply: true
+---
+
+# 全仓资产清单
+
+> **rules 目的**：整理、沉淀模型对仓库的客观认知，减少重复扫描，提高下次任务效率。内容须与磁盘一致，**不臆造**；变更后同步 `07`、`09`、根 README。
+
+## 根目录关键资产
+
+| 路径 / 文件 | 作用 |
+|-------------|------|
+| `package.json` | 根脚本、workspaces、`simple-git-hooks` |
+| `pnpm-workspace.yaml` | `apps/**`、`packages/**` |
+| `turbo.json` | `build`/`test`/`lint`/`dev` 任务图 |
+| `eslint.config.js` | 全仓 ESLint（`defineVipEslintConfig`） |
+| `tsconfig.json` | 路径别名 `@142vip/*` → `packages/*/src` |
+| `tsconfig.package.json` / `tsconfig.nest-pkg.json` | 分包 TS 模板 |
+| `jest.config.ts` | 根 Jest |
+| `typedoc*.config.js` | API → `docs/apis/`；wiki → `docs/wiki/` |
+| `.vitepress/` | 根文档站配置与主题 |
+| `docs/` | `index.md` 首页 + TypeDoc 产出 |
+| `scripts/` | 见 `15-scripts脚本手册` |
+| `.github/workflows/` | `CI.yml`（PR lint + build:docs）、`CD.yaml`（next 发版 + Pages） |
+| `Dockerfile` / `nginx.conf` | 文档站容器部署 |
+| `spider/` | **非 workspace**：离线爬虫 `.cjs`（文件头 `eslint-disable no-console`） |
+| `.codegraph/` | CodeGraph 索引（任务前 `codegraph sync`） |
+| `dist/` | VitePress 构建输出（`.gitignore`） |
+
+## packages/ · 30 个可发布包
+
+| 目录 | npm 名 | build |
+|------|--------|-------|
+| `axios` | `@142vip/axios` | unbuild |
+| `changelog` | `@142vip/changelog` | unbuild |
+| `commit-linter` | `@142vip/commit-linter` | unbuild |
+| `copyright` | `@142vip/copyright` | unbuild |
+| `data-source` | `@142vip/data-source` | unbuild |
+| `egg` | `@142vip/egg` | unbuild |
+| `egg-axios` | `@142vip/egg-axios` | —（源码直发） |
+| `egg-grpc-client` | `@142vip/egg-grpc-client` | — |
+| `egg-grpc-server` | `@142vip/egg-grpc-server` | — |
+| `egg-mysql` | `@142vip/egg-mysql` | — |
+| `egg-redis` | `@142vip/egg-redis` | — |
+| `egg-sequelize` | `@142vip/egg-sequelize` | — |
+| `egg-swagger` | `@142vip/egg-swagger` | — |
+| `egg-validate` | `@142vip/egg-validate` | — |
+| `eslint-config` | `@142vip/eslint-config` | unbuild |
+| `fairy-cli` | `@142vip/fairy-cli` | unbuild |
+| `grpc` | `@142vip/grpc` | unbuild |
+| `nest` | `@142vip/nest` | tsc |
+| `nest-logger` | `@142vip/nest-logger` | tsc |
+| `nest-redis` | `@142vip/nest-redis` | tsc |
+| `nest-starter` | `@142vip/nest-starter` | tsc |
+| `nest-typeorm` | `@142vip/nest-typeorm` | tsc |
+| `oauth` | `@142vip/oauth2.0` | unbuild（**目录名 oauth，包名 oauth2.0**） |
+| `open-source` | `@142vip/open-source` | unbuild |
+| `redis` | `@142vip/redis` | unbuild |
+| `release-version` | `@142vip/release-version` | unbuild |
+| `typeorm` | `@142vip/typeorm` | unbuild |
+| `utils` | `@142vip/utils` | unbuild |
+| `vitepress` | `@142vip/vitepress` | unbuild |
+| `vuepress` | `@142vip/vuepress` | unbuild |
+
+构建统计：**unbuild 17** · **tsc 5** · **Egg 插件无 build 8**。
+
+## apps/ · 4 个 demo（均 `private`）
+
+| 目录 | 说明 | 常用命令 |
+|------|------|----------|
+| `egg-demo` | Egg 插件集成演示 | `pnpm --filter egg-demo test` |
+| `nest-demo` | Nest 启动演示 | `pnpm --filter nest-demo start` |
+| `vitepress-demo` | VitePress 主题 demo | `dev :3080` / `build` |
+| `vuepress-demo` | VuePress demo | `build` |
+
+## 文档站内容来源
+
+| 对外 URL 路径 | 磁盘来源 |
+|---------------|----------|
+| `/packages/:pkg/` | `packages/:pkg/README.md`（rewrite） |
+| `/apps/:pkg/` | `apps/:pkg/README.md` |
+| `/docs/apis/` | `pnpm typedoc:api` 生成 |
+| `/changelogs/:pkg/` | 各包 `CHANGELOG.md`（rewrite） |
+| 侧栏分类 | `.vitepress/sidebar.ts`（须覆盖上表全部包） |
+
+在线站点：`https://142vip.github.io/core-x`（及 Netlify / Vercel 镜像，见根 README）。
+
+## CI / CD 事实
+
+| 工作流 | 触发 | 主要步骤 |
+|--------|------|----------|
+| `CI.yml` | PR → `next` | `./scripts/ci` → `pnpm lint` → `build:docs` → `build:docs-proxy` |
+| `CD.yaml` | push `next` | GitHub Release、npm 发布（`workflow_dispatch` 选手动包）、GitHub Pages |
+
+发布分支：`next`（`.npmrc` → `publish-branch=next`）。CD 可选包列表与上表 30 包一致。
+
+## 模型扫描顺序（新任务）
+
+```
+1. codegraph sync
+2. 本文件 + business/任务路由索引 + business/包职责地图
+3. 目标路径 Read/Grep（不臆测未读文件）
+4. 08 命令 · 09 文档同步 · 对应 business 专项
+```
+
+## 自检
+
+```
+□ 包数量仍为 30？apps 仍为 4？
+□ sidebar / 根 README 包列表是否包含 oauth2.0（非 oauth）？
+□ 新增目录是否已写入本清单与 04？
+```

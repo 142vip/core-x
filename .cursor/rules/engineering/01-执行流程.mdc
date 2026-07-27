@@ -1,0 +1,97 @@
+---
+description: 【必读】大模型开发工作流（分步执行，严格按序）
+alwaysApply: true
+---
+
+# 执行流程
+
+> 配合 `13-模型协作规范` 分步执行、简洁交付。图表规范见 `10-Mermaid图表规范`。
+
+## 总览
+
+```mermaid
+flowchart TD
+  S0["0 索引 codegraph sync + 16"] --> S1["1 定位 读代码·小范围"]
+  S1 --> S2["2 调研 列文件清单"]
+  S2 --> S3["3 实现 模块风格"]
+  S3 --> S5["5 自检 lint:fix"]
+  S5 --> S4["4 构建 牵连模块局部 build"]
+  S4 --> S6["6 验收 02+09"]
+  S6 --> S7["7 收尾 06"]
+  S7 --> S7b["沉淀 12 更新 rules"]
+```
+
+## 0 · 索引
+
+```bash
+codegraph sync    # 无索引 → codegraph init
+```
+
+读 `00-索引`、`16-全仓资产清单`、`TODO.md`、business/模块规则。
+
+## 1 · 定位
+
+- `任务路由索引` → 目标包
+- **Read/Grep 最新代码**，小范围改动
+- 不明确则问用户
+
+## 2 · 调研（只读）
+
+- 同模块 3~5 文件，对齐 `business/代码风格统一`
+- 输出：待改文件清单 + 每步 verify 命令
+
+## 3 · 实现
+
+- 编码 + 文档/注释同步（`09`，含 VitePress 站点与 sidebar）
+- 新知识沉淀 rules（`12`）
+
+## 4 · 构建验证（**在 lint:fix 之后**）
+
+先完成 §5 `lint:fix`，再对**本次变更牵连**的包 / demo 做局部 build，确保能编译通过。
+
+### 确定范围（由近到远）
+
+| 改动位置 | 至少 build |
+|----------|------------|
+| `packages/<pkg>/` | `@142vip/<pkg>` + 直接依赖方（若有） |
+| `apps/<demo>/` | 该 demo + 其 `package.json` 引用的 workspace 包 |
+| 根配置 / ESLint / TS | 触达的包 + `pnpm lint` 已通过 |
+| `@142vip/vitepress` / `.vitepress/` | `@142vip/vitepress` + `vitepress-demo` + 可选 `pnpm build:docs` |
+| 不确定牵连范围 | **`pnpm build`**（packages + apps + docs，最差保底） |
+
+```bash
+# 局部（推荐）
+pnpm --filter @142vip/<pkg> build
+pnpm --filter <demo> build
+# 或 cd packages/<pkg> && pnpm build
+
+pnpm --filter @142vip/<pkg> typecheck   # 若有
+pnpm --filter @142vip/<pkg> test        # 逻辑变更时
+
+# 范围不明时保底
+pnpm build
+```
+
+- [ ] 牵连模块 / 应用的 `build` **exit 0**
+- [ ] 有 `typecheck` 脚本的包亦通过（若本次改动涉及）
+
+## 5 · 自检 lint:fix（必做 · 在构建验证之前）
+
+```bash
+pnpm lint:fix
+```
+
+- **零 ESLint error**（warning 允许，但不得新增 error）
+- 改动文件无 TypeScript 编译错误
+
+## 6 · 验收
+
+`02-验收校验` 全部 relevant 项通过。
+
+## 7 · 收尾
+
+`06-收尾与环境清理`：端口、临时文件、空目录。
+
+## 禁止
+
+跳步、未 lint:fix 交付、**lint 后有 error**、**牵连模块 build 失败**、大面积未读代码就改、冗长无效输出（见 `13`）

@@ -1,0 +1,44 @@
+---
+description: 【业务】专项规则索引与加载说明
+alwaysApply: true
+---
+
+# 模块开发索引
+
+本目录（`business/`）收纳**包职责、任务路由及各技术栈 / 模块类型的开发专项规则**，与 `engineering/` 中带序号的流程类规则分离。
+
+## 文件清单
+
+| 文件 | globs / apply | 用途 |
+|------|---------------|------|
+| `包职责地图.mdc` | alwaysApply | 各包职责与依赖边界 |
+| `任务路由索引.mdc` | alwaysApply | 意图 → 包 → 路径 → 验证命令 |
+| `代码风格统一.mdc` | alwaysApply | 全仓风格、lint |
+| `ESM与模块发布.mdc` | alwaysApply | ESM 优先、CJS 兼容、exports |
+| `TypeScript规范.mdc` | `**/*.{ts,tsx}` | TS、ESLint 特例 |
+| `Vue组件规范.mdc` | `**/*.vue` | Vue SFC、Element Plus 注册 |
+| `unbuild打包.mdc` | `**/build.config.ts` | unbuild 打包与 exports |
+| `Nest开发.mdc` | `packages/nest*/**/*` | Nest 系列包 |
+| `Egg开发.mdc` | `packages/egg*/**/*` | Egg 插件族 |
+| `VitePress开发.mdc` | `packages/vitepress/**` 等 | 文档站与 Mermaid |
+| `测试规范.mdc` | `**/test/**` | Jest 测试约定 |
+
+## 任务 → 模块规则
+
+| 改动路径 | 加载规则 |
+|----------|----------|
+| `packages/vitepress/`、`.vitepress/`、`apps/vitepress-demo/` | `VitePress开发` + `Vue组件规范` |
+| `packages/nest*/`、`apps/nest-demo/` | `Nest开发` + `TypeScript规范` |
+| `packages/egg*/`、`apps/egg-demo/` | `Egg开发` + `TypeScript规范` |
+| `**/build.config.ts` | `unbuild打包` + `ESM与模块发布` |
+| 任意 TS/TSX | `TypeScript规范` |
+| `**/test/*.spec.ts` | `测试规范` |
+
+## 目录内分工
+
+```
+engineering/00~14  →  流程、Mermaid、TODO、协作、规则边界
+business/*         →  包职责、任务路由、技术栈专项（怎么写代码）
+```
+
+实现阶段（`engineering/01-执行流程` 阶段 3）须同时遵循 **`代码风格统一`** 及本目录匹配的专项规则。

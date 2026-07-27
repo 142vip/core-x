@@ -1,0 +1,41 @@
+---
+description: unbuild 打包与 package.json exports 约定
+globs: "**/build.config.ts"
+alwaysApply: false
+---
+
+# unbuild 打包
+
+## 适用
+
+axios、utils、vitepress、egg、fairy-cli 等 17 个包。
+
+## 标准模板（vitepress）
+
+```ts
+import { defineBuildConfig } from 'unbuild'
+
+export default defineBuildConfig({
+  entries: [
+    { builder: 'mkdist', input: './src', pattern: ['**/*.vue'], loaders: ['vue'] },
+    { builder: 'mkdist', input: './src', pattern: ['**/*.ts'], format: 'cjs', loaders: ['js'] },
+    { builder: 'mkdist', input: './src', pattern: ['**/*.ts'], format: 'esm', loaders: ['js'] },
+  ],
+  declaration: true,
+  clean: true,
+  rollup: { emitCJS: true, inlineDependencies: true },
+})
+```
+
+## 新增 subpath 导出
+
+同步：`build.config.ts` → `package.json` exports → 类型声明。
+
+双格式要求见 `ESM与模块发布`：`import` → `.mjs`，`require` → `.cjs`。
+
+## 验证
+
+```bash
+pnpm --filter @142vip/<pkg> build
+pnpm --filter @142vip/<pkg> typecheck
+```

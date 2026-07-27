@@ -1,0 +1,52 @@
+---
+description: 各包职责划分与依赖边界
+alwaysApply: true
+---
+
+# 包职责地图
+
+## 工程化
+
+| 包 | 用途 |
+|----|------|
+| `@142vip/fairy-cli` | CLI：`fa`/`fairy` |
+| `@142vip/eslint-config` | `defineVipEslintConfig` |
+| `@142vip/commit-linter` | Commit 校验 |
+| `@142vip/changelog` | CHANGELOG 生成 |
+| `@142vip/release-version` | 版本与 tag |
+| `@142vip/utils` | 通用工具 |
+| `@142vip/open-source` | 开源常量 `OPEN_SOURCE_ADDRESS` |
+
+## 数据与网络
+
+| 包 | 用途 |
+|----|------|
+| `@142vip/axios` | HTTP |
+| `@142vip/grpc` | gRPC |
+| `@142vip/redis` | Redis |
+| `@142vip/data-source` | 多数据源 |
+| `@142vip/typeorm` | TypeORM |
+
+## 框架
+
+| 包 | 用途 |
+|----|------|
+| `@142vip/nest*` | Nest 生态（5 包） |
+| `@142vip/egg*` | Egg 生态（9 包） |
+| `@142vip/vitepress` | VitePress 主题/Mermaid |
+| `@142vip/vuepress` | VuePress 封装 |
+| `@142vip/oauth2.0` | OAuth2（目录 `packages/oauth`，npm 名 **oauth2.0**） |
+| `@142vip/copyright` | 软著生成 |
+
+## 依赖边界
+
+- `apps/*-demo`：演示多包组合用法
+- `packages/*`：只依赖必要 `@142vip/*`
+- 常量只在定义包内维护，**不跨包 re-export**
+- workspace 内：`"workspace:*"`；发布：`"access": "public"`
+
+## 文档
+
+- 根 VitePress：`.vitepress/` + 包 README 聚合（`09`、`16`）
+- TypeDoc：`typedoc*.config.js` → `docs/apis/`、`docs/wiki/`（生成物勿手改、勿 lint）
+- 在线：`https://142vip.github.io/core-x`

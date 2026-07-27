@@ -1,0 +1,70 @@
+---
+description: 仓库统一代码风格与模块风格对齐规范
+alwaysApply: true
+---
+
+# 代码风格统一
+
+新增代码**必须对齐目标模块现有风格**，禁止引入与周边不一致的写法。
+
+## 1. 全仓通用（ESLint）
+
+- 配置：根 `eslint.config.js` → `defineVipEslintConfig`（`@142vip/eslint-config`）
+- **Nest 特例**：`ts/consistent-type-imports` 关闭，Injectable 类用值导入
+- 任务结束：`pnpm lint:fix`，**零 error**（warning 允许）
+- 随后对牵连模块执行局部 `build`（见 `01`、`02`）；范围不明则 `pnpm build`
+- **禁止**用 `console.log` 调试遗留；CLI 可用 `vipLogger` / `console.warn|error`
+
+## 2. 按模块对齐（改前必读周边 3~5 个同类文件）
+
+| 模块 | 风格要点 |
+|------|----------|
+| **unbuild 包** | ESM；`src/core/` 主逻辑；`export function` + JSDoc；入口 `index.ts` re-export |
+| **Nest 包** | CommonJS；class + decorator；中文 JSDoc 常见；`test/*.spec.ts` |
+| **Egg 插件** | `app.ts` + `config/config.default.ts`；插件名与 `eggPlugin.name` 一致 |
+| **VitePress** | Vue `<script setup lang="ts">`；SCSS scoped；中文注释；工具放 `components/utils/` |
+| **fairy-cli** | Commander 子命令；与 `utils` 包协作 |
+
+## 3. 命名约定
+
+| 类型 | 约定 | 示例 |
+|------|------|------|
+| Vue 组件文件 | PascalCase | `VipMermaid.vue` |
+| 工具 / 配置 TS | kebab-case 或 camelCase（跟模块） | `starHistory.ts`、`config.util.ts` |
+| 导出函数（vitepress） | `defineVip*` / `getVip*` / `mergeVip*` | `defineVipVitepressConfig` |
+| 常量 | `VIP_*` 或 `SCREAMING_SNAKE` | `VIP_MERMAID_THEMES` |
+| 测试文件 | `*.spec.ts` 放 `test/` | `config.util.spec.ts` |
+
+## 4. Import 风格
+
+```ts
+// unbuild / VitePress：type 与 value 分离（Nest 除外）
+import type { UserConfig } from 'vitepress'
+import { vipMermaidMarkdown } from './mermaid'
+
+// workspace 包
+import { vipLogger } from '@142vip/utils'
+```
+
+## 5. 注释语言
+
+- 与文件内现有注释语言一致（本仓库多为**中文**）
+- 公开 API 附 JSDoc；内部逻辑只在必要时注释
+
+## 6. 新增文件放置
+
+```
+packages/<name>/src/core/       # 核心逻辑
+packages/<name>/src/components/  # Vue 组件（若有）
+packages/<name>/test/           # 测试（有则建，无则不建空目录）
+```
+
+## 7. 风格自检
+
+```
+□ 已 Read 同模块相邻文件？
+□ 命名、导出、目录与模块一致？
+□ pnpm lint:fix 无 error？
+□ 牵连模块 build 通过？
+□ 未引入模块外的格式化/抽象风格？
+```

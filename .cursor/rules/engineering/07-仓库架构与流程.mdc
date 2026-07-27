@@ -1,0 +1,102 @@
+---
+description: 【必读】仓库架构与流程（与根 README Mermaid 同构）
+alwaysApply: true
+---
+
+# 仓库架构与流程
+
+> **对外图源**：根 `README.md`。本文件与根 README **保持同构**，模型改图时两处同步（`10-Mermaid图表规范`）。**不得在仓库其他位置引用 rules**（`14-规则边界`）。
+
+## 1. 仓库架构
+
+```mermaid
+flowchart TB
+  ROOT["core-x · pnpm workspace + turbo"]
+
+  PKGS["packages/ · 30 × @142vip/*"]
+  APPS["apps/ · egg / nest / vitepress / vuepress demo"]
+  VP[".vitepress/ + docs/ · 根文档站 :8080"]
+  TDOC["docs/apis · docs/wiki · TypeDoc"]
+  SCR["scripts/ · CI / 发布 / commit 校验"]
+  GHA[".github/workflows · CI + CD"]
+
+  ROOT --> PKGS
+  ROOT --> APPS
+  ROOT --> VP
+  ROOT --> SCR
+  ROOT --> GHA
+  APPS --> PKGS
+  VP --> PKGS
+  TDOC --> VP
+```
+
+## 2. 技术分层
+
+```mermaid
+flowchart LR
+  DEMO["apps/*-demo ×4"] --> PKG["@142vip/* ×30"]
+  PKG --> UTIL["utils · open-source"]
+  PKG --> CLI["fairy-cli · release-version · eslint-config"]
+  PKG --> FW["Nest · Egg · VitePress · VuePress"]
+```
+
+## 3. 模块发布（ESM + CJS）
+
+```mermaid
+flowchart LR
+  SRC["src/"] --> UB["unbuild · 17 包"]
+  SRC --> TSC["tsc · Nest 5 包"]
+  SRC --> EGG["Egg 插件 8 包 · 无 build 脚本"]
+  UB --> DIST["dist .mjs + .cjs"]
+  TSC --> DIST2["dist .js CJS"]
+  EGG --> NPM["npm @142vip/*"]
+  DIST --> EXP["exports"]
+  DIST2 --> EXP
+  EXP --> NPM
+```
+
+详见 `business/ESM与模块发布`。全仓包清单见 `16-全仓资产清单`。
+
+## 4. 开发与发布
+
+```mermaid
+sequenceDiagram
+  participant Dev as 开发者
+  participant Hook as git hooks
+  participant CI as GitHub CI
+  participant CD as GitHub CD
+  participant NPM as npm
+
+  Dev->>Dev: build / test / lint:fix
+  Dev->>Hook: git commit
+  Hook->>Hook: lint:fix · check:commit
+  Dev->>CI: PR
+  CI->>CI: lint · build:docs
+  CI->>CD: merge next/main
+  CD->>NPM: release @142vip/*
+  CD->>CD: GitHub Pages
+```
+
+## 5. 分支流
+
+```mermaid
+flowchart LR
+  FEAT["feat/fix"] --> PR["PR"]
+  PR -->|新特性| NEXT["next"]
+  PR -->|其他| MAIN["main"]
+  NEXT --> CD["CD"]
+  CD --> NPM["npm"]
+  CD --> PAGES["Pages"]
+```
+
+## 6. 模型工作流
+
+见 `rules/README.md` 流程图（仅模型，不写入根 README）。
+
+## 7. 核心约束
+
+- packages：ESM 优先 + CJS 兼容，不破坏 exports（`business/ESM与模块发布`）
+- `defineVipVitepressConfig(config)` 单参原样返回
+- Nest DI 禁止 `import type`
+- 禁止空目录；任务结束 `pnpm lint:fix`（**零 error**，warning 允许）→ 牵连模块 build
+- 任务开始 `codegraph sync`

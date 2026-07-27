@@ -1,0 +1,35 @@
+---
+description: Vue 3 SFC 与 Element Plus 组件规范
+globs: "**/*.vue"
+alwaysApply: false
+---
+
+# Vue 组件规范
+
+## 技术栈
+
+- Vue 3.5 + `<script setup lang="ts">`
+- Element Plus 按需注册（vitepress 主题）
+
+## 组件注册
+
+```ts
+// element-plus 2.13+ 需显式组件名
+app.component('ElBacktop', ElBacktop)
+app.component('VipMermaid', VipMermaid)
+```
+
+## 样式
+
+- `<style scoped lang="scss">`
+- 暗黑：主题已引入 `element-plus/theme-chalk/dark/css-vars.css`
+- Mermaid 站点自动合并 Sass `api: 'modern'`
+
+## 构建
+
+`.vue` 由 unbuild + mkdist + vue loader 编译（见 `packages/vitepress/build.config.ts`）。
+
+## 注意
+
+- SSR 阶段避免直接访问 `window`/`document`（用 `onMounted`）
+- SVG 从 `@142vip/cdn` 导入，类型见 `env.d.ts`
