@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.6 (2026-07-27)
+
+### ✨ Features
+
+- 支持多环境启动 &nbsp;-&nbsp; by **chufan** [<samp>(bd17b)</samp>](https://github.com/142vip/core-x/commit/bd17bb54)
+- 增加生产环境配置模板，优化配置加载模式 &nbsp;-&nbsp; by **chufan** [<samp>(02082)</samp>](https://github.com/142vip/core-x/commit/02082d14)
+
+**Release New Version v0.0.1-alpha.6 [👉 View New Package On NPM](https://www.npmjs.com/package/nest-demo)**
+
 ## v0.0.1-alpha.5 (2026-05-11)
 
 ### ✨ Features
