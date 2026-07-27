@@ -54,8 +54,4 @@ defineVipVitepressConfig(config, {
 
 规则：亮色用所选官方主题；暗黑一律 `dark`（保证可读）。
 
-站点需第二参数启用：
-
-```ts
-defineVipVitepressConfig(config, { mermaid: { theme: 'default' } })
-```
+样式基于 VitePress CSS 变量（`--vp-c-*`），兼容站点明暗主题；全屏模式适配移动端安全区域。
