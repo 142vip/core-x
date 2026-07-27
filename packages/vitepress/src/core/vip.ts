@@ -78,9 +78,10 @@ export const vipTeamMembers = [
 ]
 
 /**
- * 基本包结构
+ * 基本包结构。
+ * `extends Record<string, unknown>` 便于在 `getPackageJSON<T>()` 等泛型场景下访问扩展字段。
  */
-export interface VipPackageJSON {
+export interface VipPackageJSON extends Record<string, unknown> {
   name: string
   version: string
   description: string

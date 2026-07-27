@@ -2,9 +2,9 @@ import type { MarkdownOptions, UserConfig } from 'vitepress'
 import type { DefaultTheme } from 'vitepress/types/default-theme'
 import type { VipMermaidOptions } from './mermaid-theme'
 import type { NavbarConfig, SidebarConfig } from './types'
-import { vipMermaidMarkdown } from './mermaid'
+import { mergeVipMermaidViteConfig, vipMermaidMarkdown } from './mermaid'
 import { configureVipMermaid } from './mermaid-theme'
-import { mergeVipMermaidViteConfig } from './mermaid-vite'
+import { mergeVipSassViteConfig } from './sass-vite'
 
 /**
  * defineVipVitepressConfig 可选拓展
@@ -53,7 +53,8 @@ export function defineVipVitepressConfig(
   return {
     ...userConfig,
     markdown: defineVipMarkdownConfig(userConfig.markdown),
-    vite: mergeVipMermaidViteConfig(userConfig.vite),
+    // 增量合并 Vite 配置：Sass 现代 API + Mermaid 依赖预构建（不覆盖用户已显式设置的项）
+    vite: mergeVipMermaidViteConfig(mergeVipSassViteConfig(userConfig.vite)),
   }
 }
 

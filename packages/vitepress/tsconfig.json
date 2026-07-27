@@ -1,5 +1,13 @@
 {
   "extends": "../../tsconfig.package.json",
+  "compilerOptions": {
+    // typedoc 子路径导出在严格模式下需显式 paths，否则 typecheck 报找不到模块
+    "paths": {
+      "typedoc": [
+        "./node_modules/typedoc/dist/types/index.d.ts"
+      ]
+    }
+  },
   "include": [
     "src/**/*"
   ],

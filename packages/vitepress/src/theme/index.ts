@@ -43,12 +43,12 @@ export default function defineVipExtendsTheme(theme?: Theme) {
       })
     },
     enhanceApp: ({ app }: EnhanceAppContext) => {
-      // 按需引入
-      app.component(ElBacktop)
-      app.component(ElImage)
-      app.component(ElTable)
-      app.component(ElTableColumn)
-      app.component(ElTag)
+      // element-plus 2.13+ 的 component() 重载需显式传入组件名
+      app.component('ElBacktop', ElBacktop)
+      app.component('ElImage', ElImage)
+      app.component('ElTable', ElTable)
+      app.component('ElTableColumn', ElTableColumn)
+      app.component('ElTag', ElTag)
       // Mermaid 组件（配合 defineVipVitepressConfig(..., { mermaid: true })）
       app.component('VipMermaid', VipMermaid)
     },
