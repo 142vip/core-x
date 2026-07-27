@@ -37,7 +37,9 @@
 - [`@142vip/fairy-cli`](https://www.npmjs.com/package/@142vip/fairy-cli)
 - [`@142vip/grpc`](https://www.npmjs.com/package/@142vip/grpc)
 - [`@142vip/nest`](https://www.npmjs.com/package/@142vip/nest)
+- [`@142vip/nest-logger`](https://www.npmjs.com/package/@142vip/nest-logger)
 - [`@142vip/nest-redis`](https://www.npmjs.com/package/@142vip/nest-redis)
+- [`@142vip/nest-starter`](https://www.npmjs.com/package/@142vip/nest-starter)
 - [`@142vip/nest-typeorm`](https://www.npmjs.com/package/@142vip/nest-typeorm)
 - [`@142vip/oauth2.0`](https://www.npmjs.com/package/@142vip/oauth2.0)
 - [`@142vip/open-source`](https://www.npmjs.com/package/@142vip/open-source)
@@ -51,26 +53,30 @@
 ## 使用
 
 ```shell
-# 安装依赖（需 pnpm 9）
-pnpm install
+# 安装依赖（首选 ./scripts/ci，与 CI 一致；有问题再用 pnpm install）
+./scripts/ci
+# 若 ci 失败：pnpm install
 
-# 文档站开发
+# 文档站开发（根目录）
 pnpm dev                    # 根站 :8080
-pnpm --filter vitepress-demo dev   # demo :3080
 
-# 编译
+# 单包 / demo（推荐进入对应目录）
+cd packages/vitepress && pnpm build
+cd apps/vitepress-demo && pnpm dev      # :3080
+
+# 全量编译（根目录）
 pnpm build:packages         # 所有 @142vip/* 包
 pnpm build:apps             # 所有 *-demo
 pnpm build:docs             # 文档站 + TypeDoc API
 pnpm build                  # 全量
 
-# 代码质量（提交前必跑）
+# 代码质量（根目录，提交前必跑）
 pnpm lint
 pnpm lint:fix
 
 # 测试
 pnpm test
-pnpm --filter @142vip/<pkg> test
+cd packages/utils && pnpm test
 
 # 清理缓存
 pnpm clean:cache
@@ -82,23 +88,25 @@ pnpm 9 + Turbo monorepo：`packages/` 含 30 个可发布 `@142vip/*` npm 包，
 
 ```mermaid
 flowchart TB
-  ROOT["core-x · pnpm workspace + turbo"]
+  ROOT["core-x · pnpm9 + turbo"]
 
   PKGS["packages/ · 30 × @142vip/*"]
-  APPS["apps/ · egg / nest / vitepress / vuepress demo"]
-  VP[".vitepress/ + docs/ · 根文档站 :8080"]
-  TDOC["docs/apis · docs/wiki · TypeDoc"]
-  SCR["scripts/ · CI / 发布 / commit 校验"]
-  GHA[".github/workflows · CI + CD"]
+  APPS["apps/ · 4 × *-demo"]
+  VP[".vitepress/ · 根文档站 :8080"]
+  DOCS["docs/ · index · apis · wiki"]
+  SCR["scripts/ · ci · 发布 · commit"]
+  GHA[".github/ · CI + CD"]
 
   ROOT --> PKGS
   ROOT --> APPS
   ROOT --> VP
+  ROOT --> DOCS
   ROOT --> SCR
   ROOT --> GHA
   APPS --> PKGS
   VP --> PKGS
-  TDOC --> VP
+  DOCS --> VP
+  SCR --> GHA
 ```
 
 ## 技术分层
@@ -138,12 +146,12 @@ sequenceDiagram
   participant CD as GitHub CD
   participant NPM as npm
 
-  Dev->>Dev: build / test / lint:fix
+  Dev->>Dev: cd build · lint:fix · 文档同步
   Dev->>Hook: git commit
   Hook->>Hook: lint:fix · check:commit
-  Dev->>CI: PR
-  CI->>CI: lint · build:docs
-  CI->>CD: merge next/main
+  Dev->>CI: PR → next
+  CI->>CI: scripts/ci · lint · build:docs
+  CI->>CD: merge next
   CD->>NPM: release @142vip/*
   CD->>CD: GitHub Pages
 ```
@@ -152,14 +160,15 @@ sequenceDiagram
 
 ```mermaid
 flowchart TD
-  A["pnpm install"] --> B["改 packages / apps"]
-  B --> C["pnpm --filter @142vip/xxx build"]
-  C --> D["pnpm lint:fix"]
-  D --> E{"文档?"}
-  E -->|根站| F["pnpm dev :8080"]
-  E -->|demo| G["pnpm --filter vitepress-demo dev :3080"]
-  F --> H["pnpm build:docs"]
-  G --> H
+  A["./scripts/ci<br/>失败则 pnpm install"] --> B["改 packages / apps"]
+  B --> C["cd 模块目录 && pnpm build"]
+  C --> D["pnpm lint:fix · 0 error"]
+  D --> E["同步文档 · README · sidebar"]
+  E --> F{"预览?"}
+  F -->|根站 :8080| G["pnpm dev"]
+  F -->|demo :3080| H["cd apps/vitepress-demo && pnpm dev"]
+  G --> I["pnpm build:docs"]
+  H --> I
 ```
 
 ## 趋势

@@ -15,7 +15,6 @@ hero:
     - theme: alt
       text: 📘 JavaScriptCollection
       link: https://github.com/142vip/JavaScriptCollection
-# 功能页
 features:
   - title: 易学易用
     details: 文档丰富、提供完整、丰富的入门方案

@@ -13,17 +13,18 @@
 
 ```bash
 # 在 monorepo 根目录
-pnpm i
+./scripts/ci
+# 或：pnpm install
 
 # 构建包（改了 packages/vitepress 后需要）
-pnpm --filter @142vip/vitepress build
+cd packages/vitepress && pnpm build
 
-# 启动 Demo
-pnpm --filter vitepress-demo dev
+# 启动 Demo（:3080）
+cd apps/vitepress-demo && pnpm dev
 # 打开「Mermaid 架构图」页，切换明暗主题 / 查看 theme=forest 等示例
 
 # 构建校验
-pnpm --filter vitepress-demo build
+cd apps/vitepress-demo && pnpm build
 ```
 
 ## 本 Demo 覆盖的最佳实践
