@@ -4,6 +4,7 @@ import type { VipMermaidOptions } from './mermaid-theme'
 import type { NavbarConfig, SidebarConfig } from './types'
 import { vipMermaidMarkdown } from './mermaid'
 import { configureVipMermaid } from './mermaid-theme'
+import { mergeVipMermaidViteConfig } from './mermaid-vite'
 
 /**
  * defineVipVitepressConfig 可选拓展
@@ -52,6 +53,7 @@ export function defineVipVitepressConfig(
   return {
     ...userConfig,
     markdown: defineVipMarkdownConfig(userConfig.markdown),
+    vite: mergeVipMermaidViteConfig(userConfig.vite),
   }
 }
 
