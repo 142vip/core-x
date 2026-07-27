@@ -20,7 +20,10 @@ alwaysApply: true
 | `jest.config.ts` | 根 Jest |
 | `typedoc*.config.js` | API → `docs/apis/`；wiki → `docs/wiki/` |
 | `.vitepress/` | 根文档站配置与主题 |
-| `docs/` | `index.md` 首页 + TypeDoc 产出 |
+| `docs/index.md` | VitePress 首页 | frontmatter + `HomePage` only |
+| `docs/tech.md` | 维护者备忘 | npm/docker 登录 |
+| `docs/media.md` | 自媒体 | 手改 |
+| `docs/apis/`、`docs/wiki/` | TypeDoc | 生成，勿手改 |
 | `scripts/` | 见 `15-scripts脚本手册` |
 | `.github/workflows/` | `CI.yml`（PR lint + build:docs）、`CD.yaml`（next 发版 + Pages） |
 | `Dockerfile` / `nginx.conf` | 文档站容器部署 |
@@ -69,10 +72,10 @@ alwaysApply: true
 
 | 目录 | 说明 | 常用命令 |
 |------|------|----------|
-| `egg-demo` | Egg 插件集成演示 | `pnpm --filter egg-demo test` |
-| `nest-demo` | Nest 启动演示 | `pnpm --filter nest-demo start` |
-| `vitepress-demo` | VitePress 主题 demo | `dev :3080` / `build` |
-| `vuepress-demo` | VuePress demo | `build` |
+| `egg-demo` | Egg 插件集成演示 | `cd apps/egg-demo && pnpm test` |
+| `nest-demo` | Nest 启动演示 | `cd apps/nest-demo && pnpm start` |
+| `vitepress-demo` | VitePress 主题 demo | `cd apps/vitepress-demo && pnpm dev`（:3080）/ `build` |
+| `vuepress-demo` | VuePress demo | `cd apps/vuepress-demo && pnpm build` |
 
 ## 文档站内容来源
 
@@ -99,9 +102,10 @@ alwaysApply: true
 
 ```
 1. codegraph sync
-2. 本文件 + business/任务路由索引 + business/包职责地图
-3. 目标路径 Read/Grep（不臆测未读文件）
-4. 08 命令 · 09 文档同步 · 对应 business 专项
+2. 依赖未装 → `./scripts/ci`；失败 → `pnpm install`
+3. 本文件 + business/任务路由索引 + business/包职责地图
+4. 目标路径 Read/Grep（不臆测未读文件）
+5. 08 命令 · 09 文档同步 · 对应 business 专项
 ```
 
 ## 自检

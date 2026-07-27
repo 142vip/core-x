@@ -1,129 +1,62 @@
 ---
-description: 代码、README 与 VitePress 文档站同步；禁止在仓库内引用 rules
+description: 代码、README、docs/ 与 VitePress 同步；禁止在仓库内引用 rules
 alwaysApply: true
 ---
 
 # 文档同步规范
 
-代码变更后，**对外文档、VitePress 站点与仓库实际结构一致**。rules 仅模型内部使用（`14-规则边界`）。
+**代码变 → 文档变**（同一任务内）。权威清单：`16-全仓资产清单`。
 
-## 文档完整性（禁止丢模块 / 丢应用）
+## 文档地图
 
-凡列举包、demo、侧栏、架构图的文档，须与磁盘**一一对应**，**不得**在整理文案时删掉仍存在的模块或应用。
-
-| 清单 | 当前基准（以 `16-全仓资产清单` 为准） |
-|------|--------------------------------------|
-| npm 包 | **30** 个（`packages/`，含 `@142vip/oauth2.0` 目录 `oauth`） |
-| demo | **4** 个：`egg-demo`、`nest-demo`、`vitepress-demo`、`vuepress-demo` |
-
-**须保持完整的文档位置**：
-
-- 根 `README.md`「开源模块」列表 → 30 包全覆盖
-- `.vitepress/sidebar.ts` → 30 包 + 4 demo 均有入口（按分类）
-- `engineering/07`、根 README 架构图 → 数量与结构准确
-- `business/包职责地图`、`16` 包表 → 与 `packages/` 同步
-
-**允许删减的唯一情况**：仓库中已**真实删除**对应目录，且同步更新上表全部位置。
-
-**禁止**：
-
-- 文档瘦身时省略「不相关」包/demo
-- sidebar 有条目但 `packages/` 已无对应目录（死链）
-- 根 README 列了 npm 上已不存在的包名
-
-## README 同步范围
-
-| 文档 | 须与之一致 |
-|------|------------|
-| **根 `README.md`** | 架构 Mermaid、命令、包列表、ESM/CJS 说明 |
-| **`packages/*/README.md`** | 该包 API、exports、安装示例 |
-| **`apps/*/README.md`** | demo 启动、端口、依赖 |
-| **包 CHANGELOG** | 公开行为变更 |
-
-**禁止**在根 README、包 README、源码注释中链接或提及 `.cursor/rules`。
-
-## VitePress 根文档站（须与代码同构）
-
-根站由 `.vitepress/` + 各包/应用 README 聚合而成，**不是**独立文案库。
-
-### 站点地图
-
-| 路径 | 职责 | 维护方式 |
+| 位置 | 内容 | 维护方式 |
 |------|------|----------|
-| `.vitepress/config.ts` | 站点 base、nav、rewrites、Vite 别名 | 改导航/重写规则时手改 |
-| `.vitepress/sidebar.ts` | 左侧栏分类与包链接（**包清单权威来源之一**） | 增删包时**必须**同步 |
-| `.vitepress/theme/components/project-data.ts` | 首页表格数据 | 读 `sidebar.ts` + workspace `package.json`，一般**勿硬编码包名** |
-| `docs/index.md` | 首页 hero / features | 品牌文案；快速开始链接须指向存在的包 |
-| `packages/*/README.md` | 模块文档正文 | 重写为 `/packages/:pkg/index.md` |
-| `apps/*/README.md` | demo 文档 | 重写为 `/apps/:pkg/index.md` |
-| `docs/apis/` | API 参考 | **`pnpm typedoc:api` 生成**，勿手改单文件 |
-| `docs/wiki/` | Wiki 文档 | **`pnpm typedoc:wiki` 生成** |
-| `typedoc-sidebar.json` | API 侧栏 | TypeDoc 产出，config 自动读取 |
+| **根 `README.md`** | GitHub 入口：包列表、命令、**五段架构 Mermaid** | 手改；**与 `07` 逐段同构**（`10`） |
+| **`docs/index.md`** | VitePress 首页（hero + `HomePage`） | **勿**粘贴 README 长文/重复 Mermaid |
+| **`docs/tech.md`** | 维护者：npm/docker 登录 | 手改；与脚本/CI 一致 |
+| **`docs/media.md`** | 自媒体 | 手改 |
+| **`docs/apis/`** | API 参考 | `pnpm typedoc:api` / `build:docs` 生成，**勿手改** |
+| **`docs/wiki/`** | Wiki | `pnpm typedoc:wiki` 生成，**勿手改** |
+| **`packages/*/README.md`** | 模块文档 → `/packages/:pkg/` | 改 API 时手改 |
+| **`apps/*/README.md`** | demo 文档 → `/apps/:pkg/` | 改 demo 时手改 |
+| **`.vitepress/`** | 导航、侧栏、首页主题 | 见下表 |
 
-### config.ts 关键约定（变更时检查）
+### `.vitepress/` 与代码
 
-```ts
-// rewrites — 文档 URL 与磁盘路径映射
-':packages/:pkg/README.md' → ':packages/:pkg/index.md'
-':apps/:pkg/README.md'     → ':apps/:pkg/index.md'
-':packages/:pkg/CHANGELOG.md' → 'changelogs/:pkg/changelog.md'
+| 文件 | 同步点 |
+|------|--------|
+| `config.ts` | nav、rewrites、版本号 |
+| `sidebar.ts` | **30 包 + 4 demo**；npm 名准确（如 `oauth2.0`） |
+| `theme/components/project-data.ts` | 读 sidebar + `package.json` |
+| `theme/components/HomePage.vue` | 首页展示 |
+| `docs/index.md` | hero 链接指向现存包 |
 
-// 导航「模块」默认入口
-link: '/packages/fairy-cli/'
+## 完整性（禁止丢模块）
 
-// 开发端口
-根站 pnpm dev → 8080
-```
+- 根 README 包列表：**30** 个 `@142vip/*`
+- `sidebar.ts`：**30 包 + 4 demo**，无死链、无幽灵条目
+- 仅当仓库**真实删除**目录后，才可从上述位置移除
 
-### 必须同步 VitePress 的场景
+## 变更 → 同步
 
-| 变更 | 更新 |
-|------|------|
-| **新增 / 删除 npm 包** | `sidebar.ts` 对应分类条目；根 README 包列表；包 `README.md` |
-| **新增 / 删除 demo** | `sidebar.ts`「最佳实践」；`project-data.ts` 中 `DEMO_APP_DIRS`（若 demo 名变化） |
-| **包重命名 / 移动** | `sidebar.ts` 链接、`rewrites` 无需改（按目录名），但所有硬编码路径须搜一遍 |
-| **公开 API / 用法** | 包 `README.md`；必要时 `pnpm build:docs` 刷新 `docs/apis/` |
-| **demo 端口 / 启动命令** | `apps/*/README.md`；`08` 端口表 |
-| **架构 / 包数量** | 根 README + `07` Mermaid；确认 sidebar 条目数与 `packages/`（30）一致 |
-| **首页展示数据** | 优先改 `sidebar.ts` 与包 `package.json`（description 等），避免在 `project-data.ts` 重复维护 |
+| 代码变更 | 文档动作 |
+|----------|----------|
+| 增删包/demo | README 列表、`sidebar.ts`、`16`、对应 README |
+| 公开 API | 包 README + `typedoc:api` 或 `build:docs` |
+| 命令/端口 | README「使用」、`08`、包/demo README |
+| 架构/数量/CI/本地流程 | **根 README 五段 Mermaid** + `07` 同构（`10` 同步铁律） |
+| VitePress 主题 | `packages/vitepress` + `.vitepress/` + `vitepress-demo` |
 
-### 验证命令
-
-```bash
-# 根站（仓库根目录）
-pnpm dev                    # :8080 预览
-pnpm build:docs             # 构建 + typedoc:api
-
-# 等价：进入目录执行（workspace 依赖仍由根 node_modules 解析）
-cd apps/vitepress-demo && pnpm dev      # :3080
-cd apps/vitepress-demo && pnpm build
-```
-
-改 `@142vip/vitepress` 主题/API 时另见 `business/VitePress开发` 专项验证。
-
-## 其他必须同步的场景
-
-| 变更 | 更新 |
-|------|------|
-| 公开 API | 包 README、JSDoc |
-| `exports` / 构建方式 | README、`business/ESM与模块发布`、根 README「模块发布」图 |
-| 命令 / 端口 | 根 README「使用」、`08` |
-| 流程变化 | 根 README 序列图/流程图、`16` 若目录结构变化 |
-| Markdown 格式 | `17`；对外 `.md` 严格标准语法 |
-| 待办 | `TODO.md` |
-| 新约定 | 写入 rules + **用户需知的写入根/包 README** |
-
-## Mermaid
-
-遵循 `10-Mermaid图表规范`。根 README 为对外唯一架构图源；`07` 与之同构。
-
-## 自检
+## 交付前自检（必做）
 
 ```
-□ 根 README 与 sidebar 是否仍覆盖全部 30 包 + 4 demo（无遗漏、无幽灵）？
-□ 根 README 图表与 packages(30) / apps(4) 一致？
-□ sidebar.ts 是否包含全部可文档化包，且无已删除包的死链？
-□ 包 / demo README 中的命令、端口与 package.json scripts 一致？
-□ API 变更后是否已 build:docs（或 typedoc:api）？
-□ 是否在 rules 外新增了对 .cursor/rules 的引用？
+□ README 30 包 + 4 demo 完整？
+□ sidebar 与 packages/、apps/ 一一对应？oauth 显示 oauth2.0？
+□ docs/index.md 仅为首页（无重复 README 架构段）？
+□ 改动包的 README、docs/tech 等手改文档已更新？
+□ API 变更已 build:docs？
+□ README 与 07 **五段 Mermaid 逐段同构**（图1~5，见 `10` 清单）？
+□ rules 外无 .cursor/rules 引用？
 ```
+
+Mermaid 细则：`10`。Markdown 细则：`17`。

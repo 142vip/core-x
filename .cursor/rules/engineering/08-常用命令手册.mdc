@@ -5,127 +5,123 @@ alwaysApply: true
 
 # 常用命令手册
 
-> 模型须按本手册执行命令，**优先使用 `pnpm --filter` 精准构建**，避免全仓无效构建。
+> 模型须按本手册执行命令。**安装优先 `./scripts/ci`**；**单包 build/test 优先进入模块目录**；全量与根级脚本在仓库根执行。
 
 ## 环境要求
 
 - Node `>=18`
 - pnpm `9.6.0`（`packageManager` 锁定，勿用 npm/yarn）
 
-## 命令两种写法（等价）
+## 安装依赖（首选 scripts/ci，异常可回退）
 
-Monorepo 下 **`pnpm --filter` 与进入对应目录执行脚本等价**（共享根 `node_modules` 与 workspace 链接）。
+```bash
+# 首选：与 GitHub CI 一致（corepack + frozen-lockfile + 镜像源）
+./scripts/ci
 
-| 场景 | 仓库根（推荐） | 进入目录（等价） |
-|------|----------------|------------------|
-| 单包 build | `pnpm --filter @142vip/vitepress build` | `cd packages/vitepress && pnpm build` |
-| 单包 test | `pnpm --filter @142vip/utils test` | `cd packages/utils && pnpm test` |
-| 单包 typecheck | `pnpm --filter @142vip/vitepress typecheck` | `cd packages/vitepress && pnpm typecheck` |
-| vitepress-demo dev | `pnpm --filter vitepress-demo dev` | `cd apps/vitepress-demo && pnpm dev` |
-| nest-demo | `pnpm --filter nest-demo start` | `cd apps/nest-demo && pnpm start` |
-| egg-demo | `pnpm --filter egg-demo dev` | `cd apps/egg-demo && pnpm dev` |
+# 回退：./scripts/ci 失败或环境受限时
+pnpm install
+```
 
-**仅在仓库根执行**（无等价 cd）：`pnpm dev` / `pnpm build:docs` / `pnpm build:packages` / `pnpm lint:fix` / `pnpm test`（turbo 全量）等根 `package.json` 脚本。
+| 场景 | 命令 |
+|------|------|
+| 首次克隆 / 换机 / 与 CI 对齐 | `./scripts/ci` |
+| **ci 报错**（网络、corepack、镜像等） | `pnpm install` |
+| 日常增量、依赖已装全 | `pnpm install` |
+| CI 定义 | `.github/workflows/CI.yml` → `./scripts/ci` |
 
-选用原则：改哪读哪——已在目标目录工作时直接 `pnpm <script>`；在根目录或 CI 中用 `--filter` 更精准。
+**原则**：先试 `./scripts/ci`；有问题再 `pnpm install`，勿跳过安装直接 build。
+
+详见 `15-scripts脚本手册` § scripts/ci。
+
+## 单包命令（优先进入目录）
+
+在对应 `packages/<dir>/` 或 `apps/<demo>/` 下执行 `pnpm <script>` 为**首选**；根目录 `pnpm --filter` 等价，仅在不便 `cd` 时使用。
+
+| 场景 | 首选（模块目录） | 备选（仓库根） |
+|------|------------------|----------------|
+| 单包 build | `cd packages/vitepress && pnpm build` | `pnpm --filter @142vip/vitepress build` |
+| 单包 test | `cd packages/utils && pnpm test` | `pnpm --filter @142vip/utils test` |
+| 单包 typecheck | `cd packages/vitepress && pnpm typecheck` | `pnpm --filter @142vip/vitepress typecheck` |
+| demo dev | `cd apps/vitepress-demo && pnpm dev` | `pnpm --filter vitepress-demo dev` |
+| nest-demo | `cd apps/nest-demo && pnpm start` | `pnpm --filter nest-demo start` |
+| egg-demo | `cd apps/egg-demo && pnpm dev` | `pnpm --filter egg-demo dev` |
+
+**仅在仓库根执行**（无模块目录等价）：`pnpm dev` / `pnpm build:docs` / `pnpm build:packages` / `pnpm lint:fix` / `pnpm test`（turbo 全量）/ `pnpm build`。
+
+选用原则：**改哪进哪** → `cd` 到目标目录执行；安装先试 `./scripts/ci`，失败再 `pnpm install`。
 
 ## CodeGraph（任务开始前必做）
 
 ```bash
-# 已有 .codegraph 索引时
-codegraph sync
-
-# 首次或无索引时
-codegraph init
-
-# 查看状态 / 搜索符号
+codegraph sync    # 无索引 → codegraph init
 codegraph status
 codegraph query <关键词>
-```
-
-## 安装
-
-```bash
-pnpm install              # postinstall 会 build:packages
 ```
 
 ## 开发启动
 
 | 场景 | 命令 | 端口 |
 |------|------|------|
-| 根文档站 | `pnpm dev` | 8080 |
+| 根文档站 | `pnpm dev`（根目录） | 8080 |
 | 根文档站（代理） | `pnpm dev:proxy` | 8080 |
-| vitepress-demo | `pnpm --filter vitepress-demo dev` | 3080 |
-| nest-demo | `pnpm --filter nest-demo start` | 见 demo 配置 |
-| egg-demo | `pnpm --filter egg-demo dev` | 见 demo 配置 |
+| vitepress-demo | `cd apps/vitepress-demo && pnpm dev` | 3080 |
+| nest-demo | `cd apps/nest-demo && pnpm start` | 见 demo 配置 |
+| egg-demo | `cd apps/egg-demo && pnpm dev` | 见 demo 配置 |
 
 ## 编译 / 打包
 
 ```bash
-# 单包（推荐）
-pnpm --filter @142vip/<pkg> build
-pnpm --filter @142vip/<pkg> typecheck    # 若有
+# 单包（首选进入目录）
+cd packages/<pkg> && pnpm build
+cd packages/<pkg> && pnpm typecheck    # 若有
 
-# 全量 packages
+# 全量（根目录）
 pnpm build:packages                      # turbo @142vip/*
-
-# 全量 demo
 pnpm build:apps                          # turbo *-demo
-
-# 文档站
 pnpm build:docs                          # vitepress + typedoc:api
-pnpm build:docs-proxy
-
-# 完整构建（CI 级，耗时大）
-pnpm build                               # packages + apps + docs
+pnpm build                               # 完整构建
 ```
 
 ## 测试
 
 ```bash
-pnpm --filter @142vip/<pkg> test
-pnpm test                                # turbo 全量
-pnpm test:coverage                       # 根 jest 覆盖率
+cd packages/<pkg> && pnpm test
+pnpm test                                # turbo 全量（根目录）
 ```
 
 ## 代码质量（提交前 / 任务结束）
 
 ```bash
-pnpm lint                                # 检查（须 0 error，warning 可存在）
-pnpm lint:fix                            # 检查 + 自动修复（必须执行）
+pnpm lint                                # 0 error，warning 允许
+pnpm lint:fix                            # 必须执行
 ```
-
-- **零 error**；warning 允许
-- pre-commit 钩子也会跑 `lint:fix`
 
 ## 构建验证（lint:fix 之后）
 
-每次代码变更：`lint:fix` 通过后，对**牵连**包 / demo 做局部 build；范围不明则全量 build。
-
 ```bash
-# 局部
-pnpm --filter @142vip/<pkg> build
-pnpm --filter <demo> build
+# 局部（首选进入目录）
+cd packages/<pkg> && pnpm build
+cd apps/<demo> && pnpm build
 
-# 保底
-pnpm build                               # packages + apps + docs
+# 保底（根目录）
+pnpm build
 ```
 
 ## 清理
 
 ```bash
-pnpm clean:cache                         # vite/turbo 缓存
-pnpm clean:dist                          # 各包 dist
-pnpm clean                               # 全量清理（慎用）
+pnpm clean:cache
+pnpm clean:dist
+pnpm clean                               # 慎用
 ```
 
 ## 发布与检查
 
 ```bash
-pnpm check:commit                        # commit 格式（钩子自动）
-pnpm check:release                       # 发布前检查
-pnpm check:publish                       # dry-run 发布
-pnpm release                             # 正式发布（维护者操作）
+pnpm check:commit
+pnpm check:release
+pnpm check:publish
+pnpm release                             # 维护者
 ```
 
 发布分支：`next`（`.npmrc` → `publish-branch=next`）
@@ -133,28 +129,18 @@ pnpm release                             # 正式发布（维护者操作）
 ## TypeDoc
 
 ```bash
-pnpm typedoc:api                         # docs/apis/
-pnpm typedoc:md
-pnpm typedoc:wiki                        # docs/wiki/
-pnpm typedoc                             # 全量 + lint + build
+pnpm typedoc:api
+pnpm typedoc:wiki
+pnpm build:docs
 ```
-
-## 其他
-
-```bash
-pnpm sync:pkg                            # 同步包版本信息
-npx fa <cmd>                             # fairy-cli 入口
-```
-
-`scripts/` 下 CI、交互 build、npm-release、npm-trust、Docker 镜像等见 `15-scripts脚本手册`。
 
 ## 模型选用原则
 
 ```
-改单包  →  pnpm --filter @142vip/<pkg> build [test] [typecheck]
-         或  cd packages/<pkg> && pnpm build [test] [typecheck]
-改 demo  →  pnpm --filter <demo> dev/build  或  cd apps/<demo> && pnpm dev/build
-改 ESLint/根配置  →  pnpm lint:fix + 关键包 build
-改文档站  →  pnpm build:docs；清单与代码一致见 09（30 包 + 4 demo）
-任务结束  →  pnpm lint:fix（0 error）→ 牵连模块 build → 不明则 pnpm build
+安装      →  ./scripts/ci；失败则 pnpm install
+改单包    →  cd packages/<pkg> && pnpm build [test] [typecheck]
+改 demo   →  cd apps/<demo> && pnpm dev/build
+根级任务  →  pnpm lint:fix / build:docs / pnpm build（根目录）
+任务结束  →  lint:fix（0 error）→ 牵连目录 build → 不明则 pnpm build
+文档      →  与代码一致，30 包 + 4 demo 不遗漏（09）
 ```

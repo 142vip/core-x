@@ -16,7 +16,7 @@ flowchart TD
   S2 --> S3["3 实现 模块风格"]
   S3 --> S5["5 自检 lint:fix"]
   S5 --> S4["4 构建 牵连模块局部 build"]
-  S4 --> S6["6 验收 02+09"]
+  S4 --> S6["6 验收 02+09 文档自检"]
   S6 --> S7["7 收尾 06"]
   S7 --> S7b["沉淀 12 更新 rules"]
 ```
@@ -42,7 +42,7 @@ codegraph sync    # 无索引 → codegraph init
 
 ## 3 · 实现
 
-- 编码 + 文档/注释同步（`09`，含 VitePress 站点与 sidebar）
+- 编码 + 同步文档（`09`）+ **若影响架构/流程则更新 README·07 Mermaid**（`10`）
 - 新知识沉淀 rules（`12`）
 
 ## 4 · 构建验证（**在 lint:fix 之后**）
@@ -51,24 +51,23 @@ codegraph sync    # 无索引 → codegraph init
 
 ### 确定范围（由近到远）
 
-| 改动位置 | 至少 build |
-|----------|------------|
-| `packages/<pkg>/` | `@142vip/<pkg>` + 直接依赖方（若有） |
-| `apps/<demo>/` | 该 demo + 其 `package.json` 引用的 workspace 包 |
+| 改动位置 | 至少 build（首选 `cd` 到目录） |
+|----------|-------------------------------|
+| `packages/<pkg>/` | `cd packages/<pkg> && pnpm build` + 直接依赖方 demo（若有） |
+| `apps/<demo>/` | `cd apps/<demo> && pnpm build` + 其 workspace 依赖包 |
 | 根配置 / ESLint / TS | 触达的包 + `pnpm lint` 已通过 |
 | `@142vip/vitepress` / `.vitepress/` | `@142vip/vitepress` + `vitepress-demo` + 可选 `pnpm build:docs` |
 | 不确定牵连范围 | **`pnpm build`**（packages + apps + docs，最差保底） |
 
 ```bash
-# 局部（推荐）
-pnpm --filter @142vip/<pkg> build
-pnpm --filter <demo> build
-# 或 cd packages/<pkg> && pnpm build
+# 局部（首选：进入目录）
+cd packages/<pkg> && pnpm build
+cd apps/<demo> && pnpm build
 
-pnpm --filter @142vip/<pkg> typecheck   # 若有
-pnpm --filter @142vip/<pkg> test        # 逻辑变更时
+cd packages/<pkg> && pnpm typecheck   # 若有
+cd packages/<pkg> && pnpm test        # 逻辑变更时
 
-# 范围不明时保底
+# 范围不明时保底（根目录）
 pnpm build
 ```
 
@@ -84,9 +83,9 @@ pnpm lint:fix
 - **零 ESLint error**（warning 允许，但不得新增 error）
 - 改动文件无 TypeScript 编译错误
 
-## 6 · 验收
+## 6 · 验收（含文档自检）
 
-`02-验收校验` 全部 relevant 项通过。
+`02-验收校验` 全部 relevant 项通过，**必须完成 §E 文档与 VitePress 自检**（`09` 对照表）。
 
 ## 7 · 收尾
 
@@ -94,4 +93,4 @@ pnpm lint:fix
 
 ## 禁止
 
-跳步、未 lint:fix 交付、**lint 后有 error**、**牵连模块 build 失败**、大面积未读代码就改、冗长无效输出（见 `13`）
+跳步、未 lint:fix 交付、**lint 后有 error**、**牵连模块 build 失败**、**代码改了文档未同步**、大面积未读代码就改、冗长无效输出（见 `13`）

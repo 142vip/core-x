@@ -34,6 +34,6 @@ alwaysApply: false
 ## 验证
 
 ```bash
-pnpm --filter @142vip/nest-starter test
-pnpm --filter @142vip/nest-starter build
+cd packages/nest-starter && pnpm test
+cd packages/nest-starter && pnpm build
 ```

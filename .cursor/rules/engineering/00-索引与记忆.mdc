@@ -5,41 +5,33 @@ alwaysApply: true
 
 # 索引与记忆
 
-> **rules 目的**：沉淀已验证的仓库事实，减少重复探索。`codegraph sync` → 本文件 → `16` → `01` → `02` → `06` → `12` → `14`
+> 模型单次任务路径：`codegraph sync` → **`16`** → **`business/任务路由`** → 读代码小改 → **`01`** 流程
 
-## 目录速查
-
-```
-engineering/        工程化（流程 00~17）
-business/           业务（包职责·任务路由·风格·ESM·技术栈专项）
-TODO.md             仅未完成待办
-```
-
-**首读**：`16-全仓资产清单`（30 包 / 4 demo / CI / 文档来源）
-
-## 核心记忆
+## 速查（30 包 · 4 demo）
 
 | 项 | 值 |
 |----|-----|
-| packages | 30 个 npm 包，ESM 优先 + CJS 兼容 |
-| Nest 系 | tsc CommonJS，勿强行改 ESM |
-| 对外文档 | 根 README；**不引用 rules**（`14`） |
-| Mermaid | 根 README ↔ `07` 同构（`10`） |
-| 文档站 | 根 VitePress ↔ 包/demo README ↔ `sidebar.ts`（`09`） |
-| 任务开始 | `codegraph sync` |
-| 任务结束 | `pnpm lint:fix` |
+| 安装 | `./scripts/ci` 首选；失败 → `pnpm install` |
+| build | `cd packages/<dir>` 或 `cd apps/<demo>` 后 `pnpm build` |
+| 结束 | `lint:fix`（0 error）→ 牵连 build → **`09` 文档自检** |
+| 文档 | 根 README + `docs/` + `.vitepress/` + 包 README，与代码同步 |
+| 图表 | 根 README ↔ `07` 五段同构；变更见 `10` 同步铁律 |
+| 对外 | **不引用** `.cursor/rules`（`14`） |
 
-## 任务路由
+## 读哪条规则
 
-| 意图 | 规则 |
-|------|------|
-| 全仓结构 | `16-全仓资产清单` |
-| npm 包 / exports | `business/ESM与模块发布`、`business/unbuild打包` |
-| VitePress | `business/VitePress开发` |
-| Nest / Egg | `business/Nest开发` / `business/Egg开发` |
-| 图表 | `10`、更新根 README + `07` |
-| 文档站同步 | `09-文档同步规范`、`business/VitePress开发` |
-| 文档完整性 | `09`：30 包 + 4 demo 与代码一致、不遗漏 |
-| scripts | `15-scripts脚本手册` |
-| Markdown | `17-Markdown文档规范` |
-| 代码质量 | `03` + `pnpm lint` **零 error**（warning 允许）+ 牵连模块 build |
+| 第一步 | 文件 |
+|--------|------|
+| 不知道改哪 | `business/任务路由索引` |
+| 不知道有哪些包 | `engineering/16-全仓资产清单` |
+| 执行顺序 | `engineering/01` → `02` 验收 |
+| 命令怎么跑 | `engineering/08` |
+| 文档怎么同步 | `engineering/09`（含 `docs/`） |
+| 写代码风格 | `business/代码风格统一` + 路径匹配专项（`business/模块开发索引`） |
+
+## 目录
+
+```
+engineering/   00~17  流程·命令·文档·Mermaid·scripts
+business/      包职责·路由·风格·ESM·技术栈专项
+```

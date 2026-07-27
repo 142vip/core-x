@@ -26,7 +26,9 @@ core-x/
 - **pnpm 9.6**（`preinstall` → `only-allow pnpm`）
 - workspace：`apps/**`、`packages/**`（`pnpm-workspace.yaml`）
 - paths：`@142vip/*` → `packages/*/src`（根 `tsconfig.json`）
-- 过滤：`pnpm --filter @142vip/<name> <script>` ≡ `cd packages/<dir> && pnpm <script>`
+- workspace：`apps/**`、`packages/**`
+- 安装：**首选** `./scripts/ci`（与 CI 一致）；`pnpm install` 作本地快速方式
+- 单包脚本：**首选** `cd packages/<dir> && pnpm <script>`；`pnpm --filter` 为备选
 
 ## 构建分工
 
@@ -42,13 +44,13 @@ core-x/
 ## 常用命令
 
 ```bash
-pnpm --filter @142vip/<pkg> build
-cd packages/<pkg> && pnpm build          # 等价
+./scripts/ci                             # 安装依赖（首选）
 
-pnpm --filter @142vip/<pkg> test
-pnpm --filter vitepress-demo dev         # 或 cd apps/vitepress-demo && pnpm dev
+cd packages/<pkg> && pnpm build
+cd packages/<pkg> && pnpm test
+cd apps/vitepress-demo && pnpm dev
 pnpm lint:fix                            # 零 error（warning 允许）
-pnpm test                                # turbo 全量
+pnpm test                                # turbo 全量（根目录）
 ```
 
 ## 新增公开 API 检查

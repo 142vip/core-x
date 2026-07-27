@@ -55,7 +55,7 @@ alwaysApply: true
 ## 验证
 
 ```bash
-pnpm --filter @142vip/<pkg> build
+cd packages/<pkg> && pnpm build
 pnpm check:esm          # 根目录 ESM 检查（发版前）
 pnpm check:publish      # dry-run
 ```

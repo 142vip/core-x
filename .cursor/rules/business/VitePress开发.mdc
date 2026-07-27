@@ -8,29 +8,44 @@ alwaysApply: false
 
 ## 文档站与代码同步（必守）
 
-根文档站内容**来源于仓库实际结构**，变更后须与代码一致（细则见 `engineering/09-文档同步规范`）。
+**代码变更 → 同步文档与站点**（细则 `engineering/09-文档同步规范`）。交付前必须做 **09 文档自检**。
 
-**完整性**：根 README 包列表、`.vitepress/sidebar.ts` 须覆盖全部 **30 包 + 4 demo**，整理文档时不得删减仍存在的模块/应用。
+### 三层须一致
+
+| 层 | 路径 | 说明 |
+|----|------|------|
+| 主题包 | `packages/vitepress/` | `@142vip/vitepress` 源码、组件、API |
+| 根站配置 | `.vitepress/` | 导航、侧栏、首页、主题扩展 |
+| 站点正文 | `packages/*/README.md`、`apps/*/README.md`、`docs/`（见 `09` 文档地图） |
+
+### 改什么 → 同步什么
 
 | 改什么 | 同步哪里 |
 |--------|----------|
-| 新增/删除包 | `.vitepress/sidebar.ts`、根 README 包列表、包 `README.md` |
-| 包 API / 用法 | `packages/*/README.md`；大改后 `pnpm build:docs` 刷新 `docs/apis/` |
-| demo 端口/命令 | `apps/*/README.md`、`08` 端口表 |
-| 首页模块表格 | 改 `sidebar.ts` + 包 `package.json`（`project-data.ts` 自动聚合） |
-| 导航/URL 重写 | `.vitepress/config.ts` 的 `nav`、`rewrites` |
+| 新增/删除包或 demo | `sidebar.ts`、根 README 包列表、`16`、对应 `README.md` |
+| 包 API / 用法 | `packages/*/README.md`；刷新 `docs/apis/`（`build:docs`） |
+| demo 端口/命令 | `apps/*/README.md`、`08` |
+| 导航 / 版本 / rewrites | `.vitepress/config.ts` |
+| 侧栏分类 / 链接 | `.vitepress/sidebar.ts` |
+| 首页表格 / demo 列表 | `sidebar.ts`、`project-data.ts`（`DEMO_APP_DIRS` 若 demo 名变） |
+| 首页 UI | `theme/components/HomePage.vue`、`docs/index.md`（**仅** hero + HomePage） |
+| 主题继承 / 注册 | `theme/index.ts` 对齐 `@142vip/vitepress` |
 
-**勿手改** `docs/apis/` 下 TypeDoc 生成文件；**勿在** `project-data.ts` 重复硬编码包清单。
+**禁止**：文档有、代码无（幽灵条目）；代码有、sidebar/README 无（遗漏）；手改 `docs/apis/` 生成文件。
 
-### 站点结构速查
+### `.vitepress/` 文件职责
 
 ```
-.vitepress/config.ts      # base、nav、rewrites、主题
-.vitepress/sidebar.ts     # 侧栏分类（包清单权威来源之一）
-docs/index.md             # 首页
-packages/*/README.md      # → /packages/:pkg/
-apps/*/README.md          # → /apps/:pkg/
-docs/apis/                # typedoc:api 生成
+.vitepress/
+├── config.ts                 # nav、rewrites、主题配置、版本
+├── sidebar.ts                # 侧栏（30 包 + 4 demo）
+├── theme/
+│   ├── index.ts              # defineVipExtendsTheme
+│   ├── style.css
+│   └── components/
+│       ├── HomePage.vue
+│       └── project-data.ts   # 首页数据（读 sidebar + package.json）
+docs/index.md                 # 首页 frontmatter + HomePage
 ```
 
 ## 核心 API（不可破坏）
@@ -40,7 +55,7 @@ defineVipVitepressConfig(userConfig)                    // 原样返回
 defineVipVitepressConfig(userConfig, { mermaid: true }) // 增量合并 markdown + vite
 ```
 
-## 文件职责
+## 文件职责（packages/vitepress）
 
 | 文件 | 职责 |
 |------|------|
@@ -64,13 +79,8 @@ defineVipVitepressConfig(userConfig, { mermaid: true }) // 增量合并 markdown
 ## 验证
 
 ```bash
-# 仓库根
-pnpm --filter @142vip/vitepress build
-pnpm --filter @142vip/vitepress typecheck
-pnpm --filter vitepress-demo build
-pnpm build:docs              # 根站 + typedoc:api
-
-# 等价：进入目录
 cd packages/vitepress && pnpm build && pnpm typecheck
 cd apps/vitepress-demo && pnpm build
+pnpm build:docs              # 根站 + typedoc:api；验证 .vitepress 与文档一致
+pnpm dev                     # 可选预览 :8080
 ```

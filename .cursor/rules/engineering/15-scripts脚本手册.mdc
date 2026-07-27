@@ -34,11 +34,11 @@ scripts/
 
 ## scripts/ci
 
-**用途**：CI / 干净环境安装依赖。
+**用途**：**仓库首选**的依赖安装方式（CI 与本地均适用）。
 
 ```bash
 ./scripts/ci
-# 或指定 registry 参数
+# 或指定 registry
 NPM_REGISTRY=https://registry.npmmirror.com ./scripts/ci
 ```
 
@@ -47,7 +47,10 @@ NPM_REGISTRY=https://registry.npmmirror.com ./scripts/ci
 - 执行 `pnpm i --frozen-lockfile --force`
 - 默认 registry：`https://registry.npmmirror.com`
 
-**模型**：本地开发用 `pnpm install` 即可；仅在复现 CI 安装问题时运行。
+**模型**：
+- **首选** `./scripts/ci`（首次克隆、清环境、与 CI 对齐）
+- **回退** `pnpm install`：当 `./scripts/ci` 失败（网络、corepack、registry 等）或仅需本地增量时
+- 两者 `postinstall` 均会触发 `build:packages`
 
 ## scripts/build
 
@@ -62,7 +65,7 @@ NPM_REGISTRY=https://registry.npmmirror.com ./scripts/ci
 - `docs` → `npx vitepress build --minify`
 - `docs-proxy` → `NEED_PROXY=true npx vitepress build`
 
-**模型**：日常改单包用 `pnpm --filter` 或进入目录 `pnpm build`（见 `08`）；不必跑交互脚本。
+**模型**：日常改单包**优先** `cd packages/<pkg> && pnpm build`（见 `08`）；`scripts/build` 为交互式可选。
 
 ## scripts/build-image
 
@@ -136,8 +139,8 @@ pnpm check:commit   # 通常由 commit-msg 钩子自动调用
 ## 模型选用原则
 
 ```
-日常开发 / 改代码     →  package.json 脚本（08 手册），不用 scripts/ 交互脚本
-CI 安装问题复现       →  scripts/ci
+日常开发 / 改代码     →  cd 模块目录 build；安装 ./scripts/ci，失败则 pnpm install
+CI 安装               →  scripts/ci（与 CI.yml 一致）
 单包本地发版（维护者） →  scripts/npm-release
 CI 发布权限（维护者） →  scripts/npm-trust
 文档 Docker 镜像      →  scripts/build-image

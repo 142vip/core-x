@@ -32,20 +32,20 @@ pnpm lint:fix
 对本次变更**牵连**的包 / demo 做局部 build；范围不确定时跑全量 `pnpm build`。
 
 ```bash
-# 局部（首选）
-pnpm --filter @142vip/<pkg> build
-pnpm --filter <demo> build
-pnpm --filter @142vip/<pkg> typecheck    # 若有
+# 局部（首选：进入目录）
+cd packages/<pkg> && pnpm build
+cd apps/<demo> && pnpm build
+cd packages/<pkg> && pnpm typecheck    # 若有
 
-# 保底（牵连范围不明 / 改根配置 / 改多包）
+# 保底（根目录）
 pnpm build
 ```
 
 | 场景 | 最低 build 范围 |
 |------|-----------------|
-| 改单包 | 该包 + 直接消费方 demo（若有） |
-| 改 demo | 该 demo + 其依赖的 `@142vip/*` |
-| 改 vitepress / 根文档 | `@142vip/vitepress` + `vitepress-demo`；大改加 `pnpm build:docs` |
+| 改单包 | `cd packages/<pkg> && pnpm build` + 消费方 demo |
+| 改 demo | `cd apps/<demo> && pnpm build` + 其 `@142vip/*` 依赖 |
+| 改 vitepress / 根文档 | `cd packages/vitepress && pnpm build` + `cd apps/vitepress-demo && pnpm build`；大改加 `pnpm build:docs` |
 | 改 exports / peerDeps | 该包 + 所有 workspace 引用方 `build` |
 | 不确定 | `pnpm build` |
 
@@ -58,36 +58,37 @@ pnpm build
 有逻辑变更时：
 
 ```bash
-pnpm --filter @142vip/<pkg> test
+cd packages/<pkg> && pnpm test
 ```
 
 - [ ] 相关 `test/*.spec.ts` 通过
 - [ ] bug 修复优先补 repro 测试
 
-## E. 文档与 README（见 `09-文档同步规范`）
+## E. 文档与站点自检（代码变更后必做 · 见 `09`）
 
-- [ ] 根 README / 包 README 与代码一致（**不**含 rules 引用）
-- [ ] **文档清单完整**：30 个包、4 个 demo **不得遗漏**（除非仓库已真实删除）
-- [ ] 根 README 开源模块列表、`sidebar.ts`、首页数据与 `packages/`、`apps/` 一一对应
-- [ ] Markdown 符合 `17-Markdown文档规范`
-- [ ] 根 README 与 `07` Mermaid 同构
-- [ ] VitePress 无死链、无「幽灵」条目（文档有、仓库无）
-- [ ] API 变更已 `build:docs` 或 `typedoc:api`（若影响公开 API 文档）
-- [ ] `TODO.md` 仅含未完成项
-- [ ] 本次是否在 rules 外新增 `.cursor/rules` 引用（`14`）
+完成 lint + build 后，**逐项对照 `09` 自检表**，确认文档与代码匹配。
+
+- [ ] 根 README / 包 README / demo README 与本次代码改动一致
+- [ ] **清单完整**：30 包 + 4 demo，无遗漏、无幽灵条目、无死链
+- [ ] `.vitepress/sidebar.ts` 与 `packages/`、`apps/` 一一对应
+- [ ] **`.vitepress/`** 已检查：`config.ts`（nav/版本）、`theme/` 首页数据与代码一致
+- [ ] **`docs/`** 与代码一致：`index.md` 仅首页；`tech.md`/`media.md` 手改内容已更新；`apis/` 已生成
+- [ ] API 变更已 `build:docs` 或 `typedoc:api`
+- [ ] 根 README 与 `07` **五段 Mermaid 同构**（`10` 变更对照表）；Markdown 符合 `17`
+- [ ] `TODO.md` 仅含未完成项；rules 外无 `.cursor/rules` 引用（`14`）
 
 ## F. 按域专项
 
 ### VitePress
 
 ```bash
-pnpm --filter @142vip/vitepress build && typecheck
-pnpm --filter vitepress-demo build
+cd packages/vitepress && pnpm build && pnpm typecheck
+cd apps/vitepress-demo && pnpm build
 ```
 
 - [ ] `defineVipVitepressConfig(config)` 单参原样返回
 - [ ] element-plus 保持 2.13.1
-- [ ] 文档站内容与代码结构一致（`09`）
+- [ ] 文档站、`.vitepress/` 与代码结构一致（`09` 自检表已全部勾选）
 
 ### Nest / Egg / unbuild
 

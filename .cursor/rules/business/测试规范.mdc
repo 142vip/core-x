@@ -28,8 +28,8 @@ apps/egg-demo/test/
 ## 运行
 
 ```bash
-pnpm --filter @142vip/<pkg> test
-pnpm test
+cd packages/<pkg> && pnpm test
+pnpm test                 # 全量（根目录）
 ```
 
 Jest 全局变量已在 `eslint.config.js` 声明。

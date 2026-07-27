@@ -36,6 +36,6 @@ export default defineBuildConfig({
 ## 验证
 
 ```bash
-pnpm --filter @142vip/<pkg> build
-pnpm --filter @142vip/<pkg> typecheck
+cd packages/<pkg> && pnpm build
+cd packages/<pkg> && pnpm typecheck
 ```

@@ -5,29 +5,31 @@ alwaysApply: true
 
 # 仓库架构与流程
 
-> **对外图源**：根 `README.md`。本文件与根 README **保持同构**，模型改图时两处同步（`10-Mermaid图表规范`）。**不得在仓库其他位置引用 rules**（`14-规则边界`）。
+> **对外图源**：根 `README.md`。本文件与根 README **五段 Mermaid 保持同构**（`10-Mermaid图表规范`）。**改图必两处同步**。
 
 ## 1. 仓库架构
 
 ```mermaid
 flowchart TB
-  ROOT["core-x · pnpm workspace + turbo"]
+  ROOT["core-x · pnpm9 + turbo"]
 
   PKGS["packages/ · 30 × @142vip/*"]
-  APPS["apps/ · egg / nest / vitepress / vuepress demo"]
-  VP[".vitepress/ + docs/ · 根文档站 :8080"]
-  TDOC["docs/apis · docs/wiki · TypeDoc"]
-  SCR["scripts/ · CI / 发布 / commit 校验"]
-  GHA[".github/workflows · CI + CD"]
+  APPS["apps/ · 4 × *-demo"]
+  VP[".vitepress/ · 根文档站 :8080"]
+  DOCS["docs/ · index · apis · wiki"]
+  SCR["scripts/ · ci · 发布 · commit"]
+  GHA[".github/ · CI + CD"]
 
   ROOT --> PKGS
   ROOT --> APPS
   ROOT --> VP
+  ROOT --> DOCS
   ROOT --> SCR
   ROOT --> GHA
   APPS --> PKGS
   VP --> PKGS
-  TDOC --> VP
+  DOCS --> VP
+  SCR --> GHA
 ```
 
 ## 2. 技术分层
@@ -46,7 +48,7 @@ flowchart LR
 flowchart LR
   SRC["src/"] --> UB["unbuild · 17 包"]
   SRC --> TSC["tsc · Nest 5 包"]
-  SRC --> EGG["Egg 插件 8 包 · 无 build 脚本"]
+  SRC --> EGG["Egg 插件 8 包 · 无 build"]
   UB --> DIST["dist .mjs + .cjs"]
   TSC --> DIST2["dist .js CJS"]
   EGG --> NPM["npm @142vip/*"]
@@ -55,7 +57,7 @@ flowchart LR
   EXP --> NPM
 ```
 
-详见 `business/ESM与模块发布`。全仓包清单见 `16-全仓资产清单`。
+详见 `business/ESM与模块发布`。包清单见 `16-全仓资产清单`。
 
 ## 4. 开发与发布
 
@@ -67,12 +69,12 @@ sequenceDiagram
   participant CD as GitHub CD
   participant NPM as npm
 
-  Dev->>Dev: build / test / lint:fix
+  Dev->>Dev: cd build · lint:fix · 文档同步
   Dev->>Hook: git commit
   Hook->>Hook: lint:fix · check:commit
-  Dev->>CI: PR
-  CI->>CI: lint · build:docs
-  CI->>CD: merge next/main
+  Dev->>CI: PR → next
+  CI->>CI: scripts/ci · lint · build:docs
+  CI->>CD: merge next
   CD->>NPM: release @142vip/*
   CD->>CD: GitHub Pages
 ```
@@ -89,14 +91,29 @@ flowchart LR
   CD --> PAGES["Pages"]
 ```
 
-## 6. 模型工作流
+## 6. 本地开发流程
 
-见 `rules/README.md` 流程图（仅模型，不写入根 README）。
+与根 README §本地开发 **逐字同构**。
 
-## 7. 核心约束
+```mermaid
+flowchart TD
+  A["./scripts/ci<br/>失败则 pnpm install"] --> B["改 packages / apps"]
+  B --> C["cd 模块目录 && pnpm build"]
+  C --> D["pnpm lint:fix · 0 error"]
+  D --> E["同步文档 · README · sidebar"]
+  E --> F{"预览?"}
+  F -->|根站 :8080| G["pnpm dev"]
+  F -->|demo :3080| H["cd apps/vitepress-demo && pnpm dev"]
+  G --> I["pnpm build:docs"]
+  H --> I
+```
 
-- packages：ESM 优先 + CJS 兼容，不破坏 exports（`business/ESM与模块发布`）
-- `defineVipVitepressConfig(config)` 单参原样返回
-- Nest DI 禁止 `import type`
-- 禁止空目录；任务结束 `pnpm lint:fix`（**零 error**，warning 允许）→ 牵连模块 build
-- 任务开始 `codegraph sync`
+## 7. 模型工作流
+
+见 `rules/README.md`（仅模型，不写入根 README）。
+
+## 8. 核心约束
+
+- packages：ESM 优先 + CJS 兼容（`business/ESM与模块发布`）
+- Mermaid：根 README ↔ 本文件 **五段同构**；结构变化时同步（`10`）
+- 任务结束：`lint:fix`（0 error）→ cd build → 文档自检（`09`）

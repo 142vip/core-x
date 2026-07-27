@@ -29,6 +29,6 @@ packages/egg-<name>/src/
 ## 验证
 
 ```bash
-pnpm --filter @142vip/egg test
-pnpm --filter egg-demo test
+cd packages/egg && pnpm test
+cd apps/egg-demo && pnpm test
 ```

@@ -15,11 +15,12 @@ alwaysApply: true
 
 | 发现 | 更新目标 |
 |------|----------|
-| 新命令 / 端口 | `08`、**根 README**「使用」 |
+| 新命令 / 端口 / 安装方式 | `08`、**根 README**「使用」 |
 | scripts 行为变化 | `15-scripts脚本手册` |
 | 新目录 / 新包 | `16-全仓资产清单`、`04`、`business/包职责地图` |
-| 架构 / ESM | **根 README** + `07`（Mermaid 同构，少用 subgraph） |
+| 架构 / ESM | **根 README** + `07` 五段 Mermaid 同构（`10`） |
 | Markdown 约定 | `17` |
+| VitePress / `.vitepress` | `09` 自检表、`business/VitePress开发`、根 README |
 | exports / 构建 | `business/ESM与模块发布`、包 README |
 | 模块写法 | `business/` 对应文件 |
 | 流程 / 验收 | `01`、`02` |

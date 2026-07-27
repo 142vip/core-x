@@ -5,32 +5,32 @@ alwaysApply: true
 
 # 任务路由索引
 
-> 收到任务后，用本表定位「改哪里、读什么规则、跑什么命令」。
+> 收到任务后，用本表定位「改哪里、读什么规则、跑什么命令」。验证**首选** `cd` 模块目录；安装**首选** `./scripts/ci`。
 
 ## 意图 → 包 → 路径 → 验证
 
 | 意图 | 目标包 | 关键路径 | 验证命令 |
 |------|--------|----------|----------|
-| 文档站主题/组件 | `@142vip/vitepress` | `packages/vitepress/src/` | `build` + `typecheck` + `vitepress-demo build` |
-| 根文档配置 | — | `.vitepress/config.ts` | `pnpm build:docs` 或 `pnpm dev` |
-| demo 文档 | `vitepress-demo` | `apps/vitepress-demo/.vitepress/` | `pnpm --filter vitepress-demo build` |
+| 文档站主题/组件 | `@142vip/vitepress` | `packages/vitepress/src/` | `cd packages/vitepress && pnpm build`；`cd apps/vitepress-demo && pnpm build` |
+| 根文档配置 | — | `.vitepress/config.ts` | `pnpm build:docs` 或 `pnpm dev`（根目录） |
+| demo 文档 | `vitepress-demo` | `apps/vitepress-demo/.vitepress/` | `cd apps/vitepress-demo && pnpm build` |
 | Mermaid 图表 | `@142vip/vitepress` | `components/VipMermaid.vue`, `core/mermaid.ts` | 同上 |
-| Nest 启动/配置 | `@142vip/nest-starter` | `packages/nest-starter/src/` | `test` + `nest-demo` |
-| Nest 日志/Redis/ORM | `nest-logger` 等 | `packages/nest-*/` | `pnpm --filter @142vip/nest-* test` |
-| Egg 插件 | `@142vip/egg-*` | `packages/egg-*/src/` | `test` + `egg-demo test` |
-| HTTP 客户端 | `@142vip/axios` | `packages/axios/src/` | `test` + `build` |
-| gRPC | `@142vip/grpc` | `packages/grpc/src/` | `test` + `build` |
-| 数据源 | `@142vip/data-source` | `packages/data-source/src/` | `test` + `build` |
-| CLI 工具 | `@142vip/fairy-cli` | `packages/fairy-cli/src/` | `test` + `build` |
-| 版本发布 | `@142vip/release-version` | `packages/release-version/` | `test` |
+| Nest 启动/配置 | `@142vip/nest-starter` | `packages/nest-starter/src/` | `cd packages/nest-starter && pnpm test`；`cd apps/nest-demo && pnpm start` |
+| Nest 日志/Redis/ORM | `nest-logger` 等 | `packages/nest-*/` | `cd packages/nest-<name> && pnpm test` |
+| Egg 插件 | `@142vip/egg-*` | `packages/egg-*/src/` | `cd packages/egg && pnpm test`；`cd apps/egg-demo && pnpm test` |
+| HTTP 客户端 | `@142vip/axios` | `packages/axios/src/` | `cd packages/axios && pnpm test build` |
+| gRPC | `@142vip/grpc` | `packages/grpc/src/` | `cd packages/grpc && pnpm test build` |
+| 数据源 | `@142vip/data-source` | `packages/data-source/src/` | `cd packages/data-source && pnpm test build` |
+| CLI 工具 | `@142vip/fairy-cli` | `packages/fairy-cli/src/` | `cd packages/fairy-cli && pnpm test build` |
+| 版本发布 | `@142vip/release-version` | `packages/release-version/` | `cd packages/release-version && pnpm test` |
 | ESLint 规则 | `@142vip/eslint-config` | `packages/eslint-config/` | 根 `pnpm lint:fix` |
-| 开源链接/常量 | `@142vip/open-source` | `packages/open-source/src/constants/` | `build` |
-| VuePress | `@142vip/vuepress` | `packages/vuepress/` | `vuepress-demo build` |
+| 开源链接/常量 | `@142vip/open-source` | `packages/open-source/src/constants/` | `cd packages/open-source && pnpm build` |
+| VuePress | `@142vip/vuepress` | `packages/vuepress/` | `cd apps/vuepress-demo && pnpm build` |
 
 ## 跨包改动判断
 
 ```
-只改一个包？     → 单包 build/test 即可
+只改一个包？     → cd 该包目录 build/test
 改公开 API？     → 检查 dependents + demo + 文档
 改 peerDeps？    → 检查所有消费方 package.json
 改根 ESLint/TS？ → 全仓 lint:fix + 关键包 build
@@ -40,10 +40,10 @@ alwaysApply: true
 
 | Demo | 验证命令 | 覆盖包 |
 |------|----------|--------|
-| `vitepress-demo` | `pnpm --filter vitepress-demo build` | vitepress, open-source, utils |
-| `nest-demo` | `pnpm --filter nest-demo start` | nest-starter 等 |
-| `egg-demo` | `pnpm --filter egg-demo test` | egg 插件族 |
-| `vuepress-demo` | `pnpm --filter vuepress-demo build` | vuepress |
+| `vitepress-demo` | `cd apps/vitepress-demo && pnpm build` | vitepress, open-source, utils |
+| `nest-demo` | `cd apps/nest-demo && pnpm start` | nest-starter 等 |
+| `egg-demo` | `cd apps/egg-demo && pnpm test` | egg 插件族 |
+| `vuepress-demo` | `cd apps/vuepress-demo && pnpm build` | vuepress |
 
 ## 不确定时
 
@@ -53,4 +53,8 @@ alwaysApply: true
 
 ## 命令写法
 
-`pnpm --filter <name> <script>` 与 `cd` 到对应 `packages/` / `apps/` 目录后执行 `pnpm <script>` **等价**（详见 `engineering/08-常用命令手册`）。根级脚本（`pnpm dev`、`build:docs`、`lint:fix`）仅在仓库根执行。
+- **安装**：`./scripts/ci`（首选）；失败或受限时用 `pnpm install`
+- **build / test / dev**：`cd packages/<dir>` 或 `cd apps/<demo>` 后 `pnpm <script>`（首选）
+- **根目录**：`pnpm dev`、`build:docs`、`lint:fix`、`pnpm build`
+
+`pnpm --filter` 与 `cd` 后执行等价，仅在不便切换目录时使用（详见 `engineering/08-常用命令手册`）。
