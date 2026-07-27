@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { VPTeamMembers } from 'vitepress/theme'
-import { vipTeamMembers } from '../core'
+import { vipTeamMembers } from '../core/vip'
 </script>
 
 <template>
