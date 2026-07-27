@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.25 (2026-07-27)
+
+### ✨ Features
+
+- 优化mermaid集成方案，支持全屏、缩放功能 &nbsp;-&nbsp; by **chufan** [<samp>(8d85c)</samp>](https://github.com/142vip/core-x/commit/8d85cef8)
+- 支持`mermaid`内容复制功能 &nbsp;-&nbsp; by **chufan** [<samp>(74170)</samp>](https://github.com/142vip/core-x/commit/74170bf4)
+- 对依赖进行小版本升级，优化组件导入方式，支持sass高版本编译 &nbsp;-&nbsp; by **chufan** [<samp>(58fd0)</samp>](https://github.com/142vip/core-x/commit/58fd03fb)
+
+**Release New Version v0.0.1-alpha.25 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/vitepress)**
+
 ## v0.0.1-alpha.24 (2026-07-27)
 
 ### 🐛 Bug Fixes
