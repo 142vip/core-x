@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.21 (2026-07-27)
+
+### 🐛 Bug Fixes
+
+- 修复进程异常时，终端退出失败问题 &nbsp;-&nbsp; by **chufan** [<samp>(e294c)</samp>](https://github.com/142vip/core-x/commit/e294ca91)
+
+**Release New Version v0.0.1-alpha.21 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/nest-starter)**
+
 ## v0.0.1-alpha.20 (2026-07-24)
 
 ### ✨ Features
