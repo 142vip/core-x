@@ -566,6 +566,9 @@ importers:
       '@142vip/open-source':
         specifier: workspace:*
         version: link:../open-source
+      copy-to-clipboard:
+        specifier: 4.0.2
+        version: 4.0.2
       element-plus:
         specifier: 2.9.7
         version: 2.9.7(vue@3.5.22(typescript@5.9.3))
@@ -5499,6 +5502,9 @@ packages:
   copy-anything@3.0.5:
     resolution: {integrity: sha512-yCEafptTtb4bk7GLEQoM8KVJpxAfdBJYaXyzQEgQQQgYrZiDp8SJmGKlYza6CYjEDNstAdNdKA3UuoULlEbS6w==}
     engines: {node: '>=12.13'}
+
+  copy-to-clipboard@4.0.2:
+    resolution: {integrity: sha512-gklSft7IuhriZKHKpuoA1fpJSLPNgvUMWMo5BlnzAJm0zNKnznoSv23IjtNqclx8eKi6ZcdvFFzYEER/+U1LoQ==}
 
   copy-to@2.0.1:
     resolution: {integrity: sha512-3DdaFaU/Zf1AnpLiFDeNCD4TOWe3Zl2RZaTzUvWiIk5ERzcCodOE20Vqq4fzCbNoHURFHT4/us/Lfq+S2zyY4w==}
@@ -16666,6 +16672,8 @@ snapshots:
   copy-anything@3.0.5:
     dependencies:
       is-what: 4.1.16
+
+  copy-to-clipboard@4.0.2: {}
 
   copy-to@2.0.1: {}
 

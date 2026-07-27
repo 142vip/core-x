@@ -78,6 +78,7 @@
   "dependencies": {
     "@142vip/cdn": "0.0.1-alpha.0",
     "@142vip/open-source": "workspace:*",
+    "copy-to-clipboard": "4.0.2",
     "element-plus": "2.9.7",
     "mermaid": "11.12.0",
     "vitepress": "1.6.4",

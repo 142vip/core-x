@@ -1,6 +1,6 @@
 import type { UserConfig } from 'vitepress'
 
-const MERMAID_OPTIMIZE_DEPS = ['mermaid', '@braintree/sanitize-url'] as const
+const MERMAID_OPTIMIZE_DEPS = ['mermaid', '@braintree/sanitize-url', 'copy-to-clipboard'] as const
 
 function mergeOptimizeDepsInclude(
   existing: string | string[] | undefined,
