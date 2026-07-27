@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { ElImage, ElLink } from 'element-plus'
+import { computed } from 'vue'
 import { useData } from 'vitepress'
 import { VIP_OPEN_SOURCE_SPONSORS } from './constants/openSource'
 import { getStarHistorySvgUrl } from './utils/starHistory'
@@ -7,11 +8,15 @@ import 'element-plus/theme-chalk/base.css'
 import 'element-plus/theme-chalk/el-image.css'
 import 'element-plus/theme-chalk/el-link.css'
 
-defineProps<{
+const props = defineProps<{
   repoNames?: string[]
 }>()
 
 const { isDark } = useData()
+
+const starHistorySrc = computed(() =>
+  getStarHistorySvgUrl(props.repoNames, isDark.value),
+)
 </script>
 
 <template>
@@ -73,7 +78,7 @@ const { isDark } = useData()
     <h2>趋势</h2>
     <div class="vip-open-source__star-history">
       <ElImage
-        :src="getStarHistorySvgUrl(repoNames, isDark)"
+        :src="starHistorySrc"
         alt="Github Star History"
         title="Github Star History"
         class="vip-open-source__star-img"
@@ -118,7 +123,6 @@ const { isDark } = useData()
 .vip-open-source__star-history {
   display: flex;
   justify-content: center;
-  align-content: center;
 }
 
 .vip-open-source__star-img {

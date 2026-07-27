@@ -175,7 +175,7 @@ flowchart TD
 
 <a href="https://github.com/142vip/core-x" title="@142vip/core-x">
   <picture>
-    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=142vip/core-x,142vip/408CSFamily,142vip/JavaScriptCollection&type=Date" />
+    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=142vip%2Fcore-x%2C142vip%2F408csfamily%2C142vip%2Fjavascriptcollection&type=Date&sealed_token=iaO-GLnvLpYHibmRk7lxdWHU5MRcN8yp072DbAkSuka6yVP87RCc245bDe_8qXluQuI-105rgdN5qw_G7omm8P05FDOB4ir6De_EdwCOyZUuxWCQE-LfbA" />
   </picture>
 </a>
 

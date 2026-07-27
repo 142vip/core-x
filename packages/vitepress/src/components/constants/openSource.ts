@@ -19,3 +19,7 @@ export const VIP_STAR_HISTORY_DEFAULT_REPOS = [
   '142vip/408CSFamily',
   '142vip/JavaScriptCollection',
 ] as const
+
+/** star-history.com 签发的 sealed token，用于匿名访问 SVG API */
+export const VIP_STAR_HISTORY_SEALED_TOKEN
+  = 'iaO-GLnvLpYHibmRk7lxdWHU5MRcN8yp072DbAkSuka6yVP87RCc245bDe_8qXluQuI-105rgdN5qw_G7omm8P05FDOB4ir6De_EdwCOyZUuxWCQE-LfbA'
