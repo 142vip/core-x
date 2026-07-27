@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.24 (2026-07-27)
+
+### 🐛 Bug Fixes
+
+- 修复mermaid异常，兼容CJS/ESM语法 &nbsp;-&nbsp; by **142vip.cn** [<samp>(5aef0)</samp>](https://github.com/142vip/core-x/commit/5aef09af)
+
+**Release New Version v0.0.1-alpha.24 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/vitepress)**
+
 ## v0.0.1-alpha.23 (2026-07-27)
 
 ### ✨ Features
