@@ -1,6 +1,6 @@
 # @142vip/core-x
 
-`X`代表一切都有可能，`core-x` 仓库是基于自身技术栈在进行工程化实践中封装的工具包、通用模块
+`X`代表一切都有可能，`core-x` 仓库是基于自身技术栈在进行工程化实践中封装的工具包、通用模块。
 
 ## 在线浏览
 
@@ -39,7 +39,7 @@
 - [`@142vip/nest`](https://www.npmjs.com/package/@142vip/nest)
 - [`@142vip/nest-redis`](https://www.npmjs.com/package/@142vip/nest-redis)
 - [`@142vip/nest-typeorm`](https://www.npmjs.com/package/@142vip/nest-typeorm)
-- [`@142vip/oauth`](https://www.npmjs.com/package/@142vip/oauth)
+- [`@142vip/oauth2.0`](https://www.npmjs.com/package/@142vip/oauth2.0)
 - [`@142vip/open-source`](https://www.npmjs.com/package/@142vip/open-source)
 - [`@142vip/redis`](https://www.npmjs.com/package/@142vip/redis)
 - [`@142vip/release-version`](https://www.npmjs.com/package/@142vip/release-version)
@@ -51,29 +51,115 @@
 ## 使用
 
 ```shell
-# 根据lock文件安装依赖
-./scripts/ci
+# 安装依赖（需 pnpm 9）
+pnpm install
 
-# 删除开发、编译缓存目录，例如：node_modules、dist、.vite、.vitepress
-pnpm clean
+# 文档站开发
+pnpm dev                    # 根站 :8080
+pnpm --filter vitepress-demo dev   # demo :3080
 
-# 运行文档站点
-pnpm dev
+# 编译
+pnpm build:packages         # 所有 @142vip/* 包
+pnpm build:apps             # 所有 *-demo
+pnpm build:docs             # 文档站 + TypeDoc API
+pnpm build                  # 全量
 
-# 编译打包文档
-pnpm build:docs
-
-# 编译所有的模块
-pnpm build:packages
-
-# 编译所有
-pnpm build
-
-# 代码风格检查
+# 代码质量（提交前必跑）
 pnpm lint
-
-# 基于Eslint修复代码风格异常
 pnpm lint:fix
+
+# 测试
+pnpm test
+pnpm --filter @142vip/<pkg> test
+
+# 清理缓存
+pnpm clean:cache
+```
+
+## 仓库架构
+
+pnpm 9 + Turbo monorepo：`packages/` 含 30 个可发布 `@142vip/*` npm 包，`apps/` 含 4 个 `*-demo` 示例。
+
+```mermaid
+flowchart TB
+  ROOT["core-x · pnpm workspace + turbo"]
+
+  PKGS["packages/ · 30 × @142vip/*"]
+  APPS["apps/ · egg / nest / vitepress / vuepress demo"]
+  VP[".vitepress/ + docs/ · 根文档站 :8080"]
+  TDOC["docs/apis · docs/wiki · TypeDoc"]
+  SCR["scripts/ · CI / 发布 / commit 校验"]
+  GHA[".github/workflows · CI + CD"]
+
+  ROOT --> PKGS
+  ROOT --> APPS
+  ROOT --> VP
+  ROOT --> SCR
+  ROOT --> GHA
+  APPS --> PKGS
+  VP --> PKGS
+  TDOC --> VP
+```
+
+## 技术分层
+
+```mermaid
+flowchart LR
+  DEMO["apps/*-demo ×4"] --> PKG["@142vip/* ×30"]
+  PKG --> UTIL["utils · open-source"]
+  PKG --> CLI["fairy-cli · release-version · eslint-config"]
+  PKG --> FW["Nest · Egg · VitePress · VuePress"]
+```
+
+## 模块发布
+
+npm 包默认 **ESM** 交付，**同时提供 CJS** 以兼容 `require`（unbuild 双格式）；Nest 系为 CommonJS；Egg 子插件多为源码直发。
+
+```mermaid
+flowchart LR
+  SRC["src/"] --> UB["unbuild · 17 包"]
+  SRC --> TSC["tsc · Nest 5 包"]
+  SRC --> EGG["Egg 插件 8 包 · 无 build 脚本"]
+  UB --> DIST["dist .mjs + .cjs"]
+  TSC --> DIST2["dist .js CJS"]
+  EGG --> NPM["npm @142vip/*"]
+  DIST --> EXP["exports"]
+  DIST2 --> EXP
+  EXP --> NPM
+```
+
+## 开发与发布流程
+
+```mermaid
+sequenceDiagram
+  participant Dev as 开发者
+  participant Hook as git hooks
+  participant CI as GitHub CI
+  participant CD as GitHub CD
+  participant NPM as npm
+
+  Dev->>Dev: build / test / lint:fix
+  Dev->>Hook: git commit
+  Hook->>Hook: lint:fix · check:commit
+  Dev->>CI: PR
+  CI->>CI: lint · build:docs
+  CI->>CD: merge next/main
+  CD->>NPM: release @142vip/*
+  CD->>CD: GitHub Pages
+```
+
+## 本地开发流程
+
+```mermaid
+flowchart TD
+  A["pnpm install"] --> B["改 packages / apps"]
+  B --> C["pnpm --filter @142vip/xxx build"]
+  C --> D["pnpm lint:fix"]
+  D --> E{"文档?"}
+  E -->|根站| F["pnpm dev :8080"]
+  E -->|demo| G["pnpm --filter vitepress-demo dev :3080"]
+  F --> H["pnpm build:docs"]
+  G --> H
 ```
 
 ## 趋势

@@ -191,6 +191,11 @@ const vitepressConfig: any = defineVipVitepressConfig({
       // ElementPlus(),
     ],
   },
+}, {
+  // 参考：https://www.npmjs.com/package/@142vip/vitepress
+  mermaid: {
+    theme: true,
+  },
 })
 
 /**
