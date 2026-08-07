@@ -646,8 +646,8 @@ importers:
         specifier: 4.7.4
         version: 4.7.4
       hls.js:
-        specifier: 1.6.13
-        version: 1.6.13
+        specifier: 1.6.17
+        version: 1.6.17
       markdown-it:
         specifier: 14.1.0
         version: 14.1.0
@@ -677,7 +677,7 @@ importers:
         version: 2.0.0-rc.26(@vuepress/bundler-vite@2.0.0-rc.26(@types/node@24.3.1)(jiti@2.7.0)(sass-embedded@1.93.2)(sass@1.102.0)(terser@5.44.0)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.9.0))(typescript@5.9.3)(vue@3.5.22(typescript@5.9.3))
       vuepress-theme-hope:
         specifier: 2.0.0-rc.95
-        version: 2.0.0-rc.95(hw43lomq25avgpv76vqgrgssby)
+        version: 2.0.0-rc.95(vk63ckla2ayds4c4fgtbucg2di)
 
 packages:
 
@@ -1234,6 +1234,7 @@ packages:
 
   '@clickhouse/client-common@1.18.5':
     resolution: {integrity: sha512-g9LwcS1dvkatKDsIjT1PwUHldsiYzwdKAB0nXfd9APLd+t4PrNJa+my+dXcqJdmcWyhWjKLP/2/ztBwgxp+sbQ==}
+    deprecated: 'Deprecated: import from @clickhouse/client or @clickhouse/client-web instead.'
 
   '@clickhouse/client@1.18.5':
     resolution: {integrity: sha512-4FfoyMkFWhsdNMuXsoEL6l3c12svA63BBJBtDo9SrxRZ14RdmN6jLr/rF3f84BK8cFoxETZCSeKlsbk6NNYebw==}
@@ -7147,8 +7148,8 @@ packages:
   help-me@5.0.0:
     resolution: {integrity: sha512-7xgomUX6ADmcYzFik0HzAxh/73YlKR9bmFzf51CZwR+b6YtzU2m0u49hQCqV6SvlqIqsaxovfwdvbnsw3b/zpg==}
 
-  hls.js@1.6.13:
-    resolution: {integrity: sha512-hNEzjZNHf5bFrUNvdS4/1RjIanuJ6szpWNfTaX5I6WfGynWXGT7K/YQLYtemSvFExzeMdgdE4SsyVLJbd5PcZA==}
+  hls.js@1.6.17:
+    resolution: {integrity: sha512-NUplVGVuc1hSPwdB/9/cbRkUmLrYi75/hqiXKdA+l300pJNxDu96R7jRb2imDzWJqIUF4I5ThmAdp9GvOCXsuQ==}
 
   hookable@5.5.3:
     resolution: {integrity: sha512-Yc+BQe8SvoXH1643Qez1zqLRmbA5rCL+sSmk6TVos0LWVfNIB7PGncdlId77WzLGSIB5KaWgTaNTs2lNVEI6VQ==}
@@ -18952,7 +18953,7 @@ snapshots:
 
   help-me@5.0.0: {}
 
-  hls.js@1.6.13: {}
+  hls.js@1.6.17: {}
 
   hookable@5.5.3: {}
 
@@ -23571,7 +23572,7 @@ snapshots:
     optionalDependencies:
       typescript: 5.9.3
 
-  vuepress-plugin-components@2.0.0-rc.95(dashjs@4.7.4)(hls.js@1.6.13)(sass-embedded@1.93.2)(sass@1.102.0)(typescript@5.9.3)(vidstack@1.12.13(webpack-sources@3.5.0))(vuepress@2.0.0-rc.26(@vuepress/bundler-vite@2.0.0-rc.26(@types/node@24.3.1)(jiti@2.7.0)(sass-embedded@1.93.2)(sass@1.102.0)(terser@5.44.0)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.9.0))(typescript@5.9.3)(vue@3.5.22(typescript@5.9.3))):
+  vuepress-plugin-components@2.0.0-rc.95(dashjs@4.7.4)(hls.js@1.6.17)(sass-embedded@1.93.2)(sass@1.102.0)(typescript@5.9.3)(vidstack@1.12.13(webpack-sources@3.5.0))(vuepress@2.0.0-rc.26(@vuepress/bundler-vite@2.0.0-rc.26(@types/node@24.3.1)(jiti@2.7.0)(sass-embedded@1.93.2)(sass@1.102.0)(terser@5.44.0)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.9.0))(typescript@5.9.3)(vue@3.5.22(typescript@5.9.3))):
     dependencies:
       '@stackblitz/sdk': 1.11.0
       '@vuepress/helper': 2.0.0-rc.114(typescript@5.9.3)(vuepress@2.0.0-rc.26(@vuepress/bundler-vite@2.0.0-rc.26(@types/node@24.3.1)(jiti@2.7.0)(sass-embedded@1.93.2)(sass@1.102.0)(terser@5.44.0)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.9.0))(typescript@5.9.3)(vue@3.5.22(typescript@5.9.3)))
@@ -23585,7 +23586,7 @@ snapshots:
       vuepress-shared: 2.0.0-rc.95(typescript@5.9.3)(vuepress@2.0.0-rc.26(@vuepress/bundler-vite@2.0.0-rc.26(@types/node@24.3.1)(jiti@2.7.0)(sass-embedded@1.93.2)(sass@1.102.0)(terser@5.44.0)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.9.0))(typescript@5.9.3)(vue@3.5.22(typescript@5.9.3)))
     optionalDependencies:
       dashjs: 4.7.4
-      hls.js: 1.6.13
+      hls.js: 1.6.17
       sass: 1.102.0
       sass-embedded: 1.93.2
       vidstack: 1.12.13(webpack-sources@3.5.0)
@@ -23622,7 +23623,7 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
-  vuepress-theme-hope@2.0.0-rc.95(hw43lomq25avgpv76vqgrgssby):
+  vuepress-theme-hope@2.0.0-rc.95(vk63ckla2ayds4c4fgtbucg2di):
     dependencies:
       '@vuepress/helper': 2.0.0-rc.114(typescript@5.9.3)(vuepress@2.0.0-rc.26(@vuepress/bundler-vite@2.0.0-rc.26(@types/node@24.3.1)(jiti@2.7.0)(sass-embedded@1.93.2)(sass@1.102.0)(terser@5.44.0)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.9.0))(typescript@5.9.3)(vue@3.5.22(typescript@5.9.3)))
       '@vuepress/plugin-active-header-links': 2.0.0-rc.114(typescript@5.9.3)(vuepress@2.0.0-rc.26(@vuepress/bundler-vite@2.0.0-rc.26(@types/node@24.3.1)(jiti@2.7.0)(sass-embedded@1.93.2)(sass@1.102.0)(terser@5.44.0)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.9.0))(typescript@5.9.3)(vue@3.5.22(typescript@5.9.3)))
@@ -23661,7 +23662,7 @@ snapshots:
       chokidar: 4.0.3
       vue: 3.5.40(typescript@5.9.3)
       vuepress: 2.0.0-rc.26(@vuepress/bundler-vite@2.0.0-rc.26(@types/node@24.3.1)(jiti@2.7.0)(sass-embedded@1.93.2)(sass@1.102.0)(terser@5.44.0)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.9.0))(typescript@5.9.3)(vue@3.5.22(typescript@5.9.3))
-      vuepress-plugin-components: 2.0.0-rc.95(dashjs@4.7.4)(hls.js@1.6.13)(sass-embedded@1.93.2)(sass@1.102.0)(typescript@5.9.3)(vidstack@1.12.13(webpack-sources@3.5.0))(vuepress@2.0.0-rc.26(@vuepress/bundler-vite@2.0.0-rc.26(@types/node@24.3.1)(jiti@2.7.0)(sass-embedded@1.93.2)(sass@1.102.0)(terser@5.44.0)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.9.0))(typescript@5.9.3)(vue@3.5.22(typescript@5.9.3)))
+      vuepress-plugin-components: 2.0.0-rc.95(dashjs@4.7.4)(hls.js@1.6.17)(sass-embedded@1.93.2)(sass@1.102.0)(typescript@5.9.3)(vidstack@1.12.13(webpack-sources@3.5.0))(vuepress@2.0.0-rc.26(@vuepress/bundler-vite@2.0.0-rc.26(@types/node@24.3.1)(jiti@2.7.0)(sass-embedded@1.93.2)(sass@1.102.0)(terser@5.44.0)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.9.0))(typescript@5.9.3)(vue@3.5.22(typescript@5.9.3)))
       vuepress-plugin-md-enhance: 2.0.0-rc.95(@vue/repl@4.7.0)(markdown-it@14.1.0)(sass-embedded@1.93.2)(sass@1.102.0)(typescript@5.9.3)(vuepress@2.0.0-rc.26(@vuepress/bundler-vite@2.0.0-rc.26(@types/node@24.3.1)(jiti@2.7.0)(sass-embedded@1.93.2)(sass@1.102.0)(terser@5.44.0)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.9.0))(typescript@5.9.3)(vue@3.5.22(typescript@5.9.3)))
       vuepress-shared: 2.0.0-rc.95(typescript@5.9.3)(vuepress@2.0.0-rc.26(@vuepress/bundler-vite@2.0.0-rc.26(@types/node@24.3.1)(jiti@2.7.0)(sass-embedded@1.93.2)(sass@1.102.0)(terser@5.44.0)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.9.0))(typescript@5.9.3)(vue@3.5.22(typescript@5.9.3)))
     optionalDependencies:
