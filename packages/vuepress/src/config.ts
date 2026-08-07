@@ -9,7 +9,7 @@ import { getVuepressDefaultViteBundler } from './plugins/plugin-vite-bundler'
 export type VipVuepressUserConfig = UserConfig
 
 /**
- * 定义 vuepress 配置
+ * 在原 config 上补全默认项后返回（lang / bundler / head / shouldPrefetch）。
  */
 export function defineVipVuepressConfig(config: VipVuepressUserConfig): VipVuepressUserConfig {
   // 支持汉语，单语言：https://theme-hope.vuejs.press/zh/config/i18n.html

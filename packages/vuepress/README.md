@@ -5,11 +5,10 @@
 
 ## 使用
 
+安装本包即可，**VuePress 运行时与主题依赖已内置**（版本见 `package.json` 的 `dependencies`），无需再单独安装 `vuepress` / `vuepress-theme-hope` 等：
+
 ```shell
-# npm
-npm install @142vip/vuepress -D
-# pnpm
-pnpm i @142vip/vuepress -D
+pnpm add -D @142vip/vuepress
 ```
 
 ## 配置

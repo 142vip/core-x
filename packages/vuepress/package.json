@@ -1,5 +1,6 @@
 {
   "name": "@142vip/vuepress",
+  "type": "module",
   "version": "0.0.1-alpha.18",
   "private": false,
   "description": "VuePress使用的最佳实践，基于vuepress-theme-hope的封装",
@@ -32,7 +33,11 @@
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
+  "bin": {
+    "vuepress": "./bin/vuepress.js"
+  },
   "files": [
+    "bin",
     "dist"
   ],
   "scripts": {
@@ -45,28 +50,18 @@
     "url": "https://github.com/142vip",
     "homePage": "https://142vip.cn"
   },
-  "peerDependencies": {
+  "dependencies": {
     "@vue/repl": "4.7.0",
     "@vuepress/bundler-vite": "2.0.0-rc.26",
-    "@vuepress/plugin-markdown-image": "2.0.0-rc.115",
-    "@vuepress/plugin-markdown-tab": "2.0.0-rc.115",
-    "@vuepress/plugin-redirect": "2.0.0-rc.115",
-    "@vuepress/plugin-slimsearch": "2.0.0-rc.115",
-    "@vuepress/plugin-watermark": "2.0.0-rc.115",
-    "@vueuse/shared": "13.9.0",
-    "cli-spinners": "3.3.0",
-    "dashjs": "4.7.4",
-    "hls.js": "1.6.13",
-    "markdown-it": "14.1.0",
-    "markdown-it-emoji": "3.0.0",
-    "mermaid": "11.12.0",
-    "reveal.js": "5.2.1",
-    "sass-embedded": "1.93.2",
-    "unicorn-magic": "0.3.0",
-    "vidstack": "1.12.13",
-    "vue": "3.5.22",
+    "@vuepress/plugin-slimsearch": "2.0.0-rc.120",
+    "@vuepress/plugin-watermark": "2.0.0-rc.120",
+    "@vueuse/core": "14.4.0",
+    "@vueuse/shared": "14.4.0",
+    "mermaid": "11.16.0",
+    "sass-embedded": "1.97.3",
+    "vue": "3.5.40",
     "vuepress": "2.0.0-rc.26",
-    "vuepress-theme-hope": "2.0.0-rc.95"
+    "vuepress-theme-hope": "2.0.0-rc.99"
   },
   "publishConfig": {
     "access": "public",

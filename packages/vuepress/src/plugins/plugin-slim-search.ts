@@ -13,7 +13,7 @@ export const slimSearchCNLocals: Partial<SlimSearchLocaleData> = {
   navigate: '切换',
   exit: '关闭',
   loading: '正在努力搜索中...',
-  queryHistory: '搜素文字历史',
+  queryHistory: '搜索文字历史',
   resultHistory: '搜索结果',
   emptyHistory: '没有搜索历史',
   emptyResult: '无法找到相关结果',
