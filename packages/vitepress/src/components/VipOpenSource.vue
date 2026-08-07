@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ElImage, ElLink } from 'element-plus'
-import { computed } from 'vue'
 import { useData } from 'vitepress'
+import { computed } from 'vue'
 import { VIP_OPEN_SOURCE_SPONSORS } from './constants/openSource'
 import { getStarHistorySvgUrl } from './utils/starHistory'
 import 'element-plus/theme-chalk/base.css'
