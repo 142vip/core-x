@@ -9,6 +9,8 @@
 
 ## 介绍
 
+本 demo 仅依赖 `@142vip/vuepress`（另含演示用的 `@142vip/open-source`、`@142vip/utils`），用于验证开箱即用与功能正确性。
+
 ```bash
 # 在项目根目录下载依赖
 pnpm i
