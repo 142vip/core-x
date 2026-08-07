@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.27 (2026-08-07)
+
+### 📦 Build
+
+- 升级 element-plus 与 vue-sfc-transformer 补丁版本 &nbsp;-&nbsp; by **chufan** and **Cursor** [<samp>(28720)</samp>](https://github.com/142vip/core-x/commit/28720778)
+
+**Release New Version v0.0.1-alpha.27 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/vitepress)**
+
 ## v0.0.1-alpha.26 (2026-07-27)
 
 ### 🐛 Bug Fixes
