@@ -53,7 +53,26 @@ console.log(version, query, date, base)
 - `vipDataTransform`
 - `vipLodash`
 - `VipDocSite`、`vipDocSite`
-- `enums` 目录下的枚举与类型
+- `enums` 目录下的枚举与类型（含 `TimeDurationMs`、`TimeDurationSec` 等纯数值枚举，浏览器 / 服务端均可使用）
+
+#### 时间跨度枚举
+
+毫秒与秒两套枚举，适用于 TTL、缓存过期、轮询间隔等场景：
+
+```ts
+// 浏览器 / 同构：根入口或 browser 子路径
+import { TimeDurationMs, TimeDurationSec } from '@142vip/utils'
+import { TimeDurationMs } from '@142vip/utils/browser'
+
+// 仅需枚举、避免带入其他工具时
+import { TimeDurationMs, TimeDurationSec } from '@142vip/utils/enums'
+
+// Node 服务端
+import { TimeDurationSec } from '@142vip/utils/node'
+
+const cacheTtl = TimeDurationMs.FIVE_MINUTE
+const redisExpire = TimeDurationSec.ONE_DAY
+```
 
 ### Node 服务端场景
 

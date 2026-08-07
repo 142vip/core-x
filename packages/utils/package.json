@@ -23,19 +23,28 @@
   "exports": {
     ".": {
       "browser": {
+        "types": "./dist/browser.d.ts",
         "import": "./dist/browser.mjs",
         "require": "./dist/browser.cjs"
       },
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
       "require": "./dist/index.cjs"
     },
     "./browser": {
+      "types": "./dist/browser.d.ts",
       "import": "./dist/browser.mjs",
       "require": "./dist/browser.cjs"
     },
     "./node": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/node.mjs",
       "require": "./dist/node.cjs"
+    },
+    "./enums": {
+      "types": "./dist/enums/index.d.ts",
+      "import": "./dist/enums/index.mjs",
+      "require": "./dist/enums/index.cjs"
     }
   },
   "main": "./dist/index.mjs",
