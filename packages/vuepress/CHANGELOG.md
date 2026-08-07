@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.19 (2026-08-07)
+
+### ✨ Features
+
+- 内置运行时依赖，支持开箱即用 &nbsp;-&nbsp; by **chufan** and **Cursor** [<samp>(f1ab6)</samp>](https://github.com/142vip/core-x/commit/f1ab688d)
+
+### 🐛 Bug Fixes
+
+- 消除开箱即用场景下的启动告警 &nbsp;-&nbsp; by **chufan** and **Cursor** [<samp>(08c90)</samp>](https://github.com/142vip/core-x/commit/08c9027e)
+
+**Release New Version v0.0.1-alpha.19 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/vuepress)**
+
 ## v0.0.1-alpha.18 (2025-10-21)
 
 ### ✨ Features

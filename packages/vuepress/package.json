@@ -1,7 +1,7 @@
 {
   "name": "@142vip/vuepress",
   "type": "module",
-  "version": "0.0.1-alpha.18",
+  "version": "0.0.1-alpha.19",
   "private": false,
   "description": "VuePress使用的最佳实践，基于vuepress-theme-hope的封装",
   "author": "mmdapl <mmdapl@163.com>",
