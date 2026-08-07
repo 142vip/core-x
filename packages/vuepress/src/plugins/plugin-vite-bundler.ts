@@ -23,6 +23,14 @@ export function getVuepressDefaultViteBundler(): Bundler {
       build: {
         chunkSizeWarningLimit: 4096,
       },
+      css: {
+        preprocessorOptions: {
+          scss: {
+            // 上游 theme-hope / sass-palette 仍使用旧版 Sass if() 语法
+            silenceDeprecations: ['if-function'],
+          },
+        },
+      },
       resolve: {
         alias: bundledVueUseAlias,
       },

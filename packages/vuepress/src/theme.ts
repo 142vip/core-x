@@ -224,14 +224,18 @@ const baseThemeOptions: ThemeOptions = {
  * 参考：https://theme-hope.vuejs.press/zh/config/intro.html
  */
 export function getVipHopeTheme(userConfig: ThemeOptions) {
-  return hopeTheme({
-    ...baseThemeOptions,
-    ...userConfig,
-    plugins: {
-      ...baseThemePluginOptions,
-      ...userConfig.plugins,
+  return hopeTheme(
+    {
+      ...baseThemeOptions,
+      ...userConfig,
+      plugins: {
+        ...baseThemePluginOptions,
+        ...userConfig.plugins,
+      },
     },
-  })
+    // @142vip/vuepress 已内置 vuepress，使用方无需在 package.json 中单独声明
+    { checkVuePress: false },
+  )
 }
 
 /**
