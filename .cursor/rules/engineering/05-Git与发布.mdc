@@ -17,6 +17,27 @@ alwaysApply: true
 | scope | 包名（如 `vitepress`）或 `CHANGELOG` `README` `release` |
 | subject | 5–100 字符 |
 
+### type 选用（必守）
+
+| 场景 | 推荐 type | 勿用 |
+|------|-----------|------|
+| 新功能、能力变更、对外行为变化 | `feat` | `chore` |
+| 缺陷修复 | `fix` / `hotfix` | `chore` |
+| 依赖升级且影响运行/构建产物 | `build` | `chore` |
+| 演示站验证业务功能 | `feat` / `test`（视是否新增用例） | `chore` |
+| **`.cursor/**` 提示词、规则、配置** | **`chore`** | `docs` / `feat` |
+| 仓库内其他文档、规范、注释（非 `.cursor`） | `docs` | — |
+| 纯工具链/脚本/配置，**不改变**业务行为 | `chore` | — |
+
+**`chore` 仅用于与业务功能无关的维护**（如 release 元数据、无关脚本整理、**`.cursor` 目录**）。凡影响包 API、站点行为、依赖运行时、demo 功能验证的提交，不得使用 `chore`。
+
+**`.cursor` 提交示例**（scope 可省略）：
+
+```
+chore: 补充 Git 提交 type 选用说明
+chore: 更新 VitePress 开发规范 element-plus 版本
+```
+
 校验：`commit-msg` → `pnpm check:commit` → `scripts/core/verify-commit.ts`
 
 ## 分支

@@ -87,7 +87,7 @@ cd apps/vitepress-demo && pnpm build
 ```
 
 - [ ] `defineVipVitepressConfig(config)` 单参原样返回
-- [ ] element-plus 保持 2.13.1
+- [ ] element-plus 保持 2.13.7（勿升 2.14）
 - [ ] 文档站、`.vitepress/` 与代码结构一致（`09` 自检表已全部勾选）
 
 ### Nest / Egg / unbuild

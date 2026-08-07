@@ -73,8 +73,8 @@ defineVipVitepressConfig(userConfig, { mermaid: true }) // 增量合并 markdown
 
 ## 版本锁定
 
-- vitepress `1.6.4`
-- element-plus `2.13.1`（勿升 2.14）
+- vitepress `1.6.4`（当前稳定版最新）
+- element-plus `2.13.7`（2.13 线补丁；勿升 2.14，见 `engineering/03-代码质量`）
 
 ## 验证
 

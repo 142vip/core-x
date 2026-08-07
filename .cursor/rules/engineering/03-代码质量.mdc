@@ -44,7 +44,7 @@ items.forEach(...)
 if (options == null) return userConfig
 
 // ✅ 说明外部约束
-// element-plus 2.14 触发 @vueuse/core@14 的 Rollup 告警，锁定 2.13.1
+// element-plus 2.14 触发 @vueuse/core@14 的 Rollup 告警，锁定 2.13.x（当前 2.13.7）
 ```
 
 ## 编码纪律
