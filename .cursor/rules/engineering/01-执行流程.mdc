@@ -14,7 +14,7 @@ flowchart TD
   S0["0 索引 codegraph sync + 16"] --> S1["1 定位 读代码·小范围"]
   S1 --> S2["2 调研 列文件清单"]
   S2 --> S3["3 实现 模块风格"]
-  S3 --> S5["5 自检 lint:fix"]
+  S3 --> S5["5 自检 局部 lint"]
   S5 --> S4["4 构建 牵连模块局部 build"]
   S4 --> S6["6 验收 02+09 文档自检"]
   S6 --> S7["7 收尾 06"]
@@ -45,43 +45,47 @@ codegraph sync    # 无索引 → codegraph init
 - 编码 + 同步文档（`09`）+ **若影响架构/流程则更新 README·07 Mermaid**（`10`）
 - 新知识沉淀 rules（`12`）
 
-## 4 · 构建验证（**在 lint:fix 之后**）
+## 4 · 构建验证（**在 lint 之后 · 局部优先**）
 
-先完成 §5 `lint:fix`，再对**本次变更牵连**的包 / demo 做局部 build，确保能编译通过。
+先完成 §5 局部 lint，再对**直接牵连**的包 / demo build。**禁止**无必要时跑全仓 `pnpm build`。
 
-### 确定范围（由近到远）
+### 确定范围（够用即停）
 
-| 改动位置 | 至少 build（首选 `cd` 到目录） |
-|----------|-------------------------------|
-| `packages/<pkg>/` | `cd packages/<pkg> && pnpm build` + 直接依赖方 demo（若有） |
-| `apps/<demo>/` | `cd apps/<demo> && pnpm build` + 其 workspace 依赖包 |
-| 根配置 / ESLint / TS | 触达的包 + `pnpm lint` 已通过 |
-| `@142vip/vitepress` / `.vitepress/` | `@142vip/vitepress` + `vitepress-demo` + 可选 `pnpm build:docs` |
-| 不确定牵连范围 | **`pnpm build`**（packages + apps + docs，最差保底） |
+| 改动位置 | 至少 build |
+|----------|------------|
+| `packages/<pkg>/` | `cd packages/<pkg> && pnpm build` |
+| `apps/<demo>/` | `cd apps/<demo> && pnpm build` |
+| `@142vip/vitepress` / `.vitepress/` | `packages/vuepress` + `apps/vuepress-demo` |
+| 改 `exports` / `peerDeps` | 该包 + **直接** workspace 引用方 |
+| 仅 `.cursor/rules/**`、纯问答、仅 `.md` | **跳过** |
+| 跨多包 / 根构建链 / 仍不明 | **最后保底** `pnpm build` |
 
 ```bash
-# 局部（首选：进入目录）
 cd packages/<pkg> && pnpm build
-cd apps/<demo> && pnpm build
-
-cd packages/<pkg> && pnpm typecheck   # 若有
+cd packages/<pkg> && pnpm typecheck   # 有脚本且涉及
 cd packages/<pkg> && pnpm test        # 逻辑变更时
-
-# 范围不明时保底（根目录）
-pnpm build
 ```
 
-- [ ] 牵连模块 / 应用的 `build` **exit 0**
-- [ ] 有 `typecheck` 脚本的包亦通过（若本次改动涉及）
+- [ ] 牵连模块 `build` **exit 0**（未牵连的**不跑**）
+- [ ] **禁止**为保险默认全仓 build
 
-## 5 · 自检 lint:fix（必做 · 在构建验证之前）
+## 5 · 自检 lint（必做 · 在构建之前 · **局部优先**）
 
 ```bash
+# 默认
+npx eslint packages/<pkg> --fix
+npx eslint apps/<demo> --fix
+
+# 改根 ESLint/TS、跨多顶层目录、用户将 commit
 pnpm lint:fix
 ```
 
-- **零 ESLint error**（warning 允许，但不得新增 error）
-- 改动文件无 TypeScript 编译错误
+| 可跳过 | 须局部 lint | 须全仓 `pnpm lint:fix` |
+|--------|-------------|------------------------|
+| 纯问答、仅 rules | 单包 / demo / 指定文件 | 根 `eslint.config.js`、根 TS 配置 |
+
+- **零 ESLint error**（warning 允许）
+- **禁止**无必要时全仓 lint
 
 ## 6 · 验收（含文档自检）
 
@@ -93,4 +97,4 @@ pnpm lint:fix
 
 ## 禁止
 
-跳步、未 lint:fix 交付、**lint 后有 error**、**牵连模块 build 失败**、**代码改了文档未同步**、大面积未读代码就改、冗长无效输出（见 `13`）
+跳步、未 lint 交付、**lint 后有 error**、**牵连模块 build 失败**、**无必要跑全仓 lint/build**、**代码改了文档未同步**、大面积未读代码就改、冗长无效输出（见 `13`）

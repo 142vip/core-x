@@ -98,6 +98,8 @@ find . -type d -empty \
 □ git status 无应删除的 untracked 垃圾
 □ find 空目录检查通过（ relevant 路径）
 □ 模块目录结构符合 04-仓库地图 与 `business/模块开发索引` 约定
+□ 改动路径局部 lint 零 error（见 02 §B；无必要不全仓 lint:fix）
+□ 牵连模块局部 build exit 0（见 01 §4、02 §C；无必要不全仓 build）
 ```
 
 ## 禁止

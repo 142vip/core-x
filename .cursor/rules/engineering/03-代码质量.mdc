@@ -80,16 +80,26 @@ if (options == null) return userConfig
 □ 是否已对齐目标模块风格（见 `business/代码风格统一`）？
 ```
 
-## 任务结束（必须）
+## 任务结束（必须 · **局部优先**）
 
 ```bash
-pnpm lint:fix
-# 随后对牵连模块做局部 build，见 01 §4、02 §C
+# 1. 局部 lint（默认）
+npx eslint packages/<pkg> --fix
+
+# 2. 局部 build（仅牵连包）
+cd packages/<pkg> && pnpm build && pnpm typecheck   # 有 typecheck 时
 ```
 
-- **零 ESLint error**；warning 允许，但勿新增 error
-- 改动文件无 TypeScript 编译错误
-- **lint:fix 之后**，牵连包 / demo 的 `build` 须 exit 0；范围不明则 `pnpm build`
+| 步骤 | 默认 | 全仓保底（少用） |
+|------|------|------------------|
+| Lint | `npx eslint <改动路径> --fix` | `pnpm lint:fix` |
+| Build | `cd packages/<pkg> && pnpm build` | `pnpm build` |
+
+**可跳过 lint + build**：纯问答、仅 `.cursor/rules/**`、仅 `.md` 且未动 TS/JS。
+
+- 改动路径 **零 ESLint error**；warning 允许，勿新增 error
+- 牵连包 `build` exit 0
+- **强约束**：禁止无必要时跑全仓 `pnpm lint:fix` / `pnpm build`
 
 ## 沟通
 

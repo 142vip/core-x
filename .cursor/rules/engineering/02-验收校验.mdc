@@ -5,7 +5,9 @@ alwaysApply: true
 
 # 验收校验
 
-**全部 relevant 项通过方可交付。** 配合 `01-执行流程` 使用。顺序：**lint:fix → 局部 build → 文档自检**。
+**全部 relevant 项通过方可交付。** 配合 `01-执行流程` 使用。顺序：**局部 lint → 局部 build → 文档自检**。
+
+> **强约束**：自检**默认局部**；与本次改动无关的包 / 目录**跳过**；全仓 `pnpm lint:fix` / `pnpm build` **仅作最后保底**。
 
 ## A. 通用验收（每次必做）
 
@@ -14,48 +16,56 @@ alwaysApply: true
 - [ ] 遵循 `business/代码风格统一`、`03-代码质量`、`13-模型协作规范`（简洁输出）
 - [ ] 中文回复用户
 
-## B. ESLint 与编辑器（每次必做 · lint:fix 后）
+## B. ESLint 与编辑器（**局部 lint 优先**）
 
 ```bash
+npx eslint packages/<pkg> --fix
+npx eslint apps/<demo> --fix
+
+# 改根 ESLint/TS、跨多顶层目录、用户将 commit
 pnpm lint:fix
 ```
 
-- [ ] **`pnpm lint` 零 error**（**warning 允许**，不要求清零历史 warning）
-- [ ] **不得因本次改动新增 error**；尽量不新增 warning
-- [ ] 改动文件在 IDE 中**无 TypeScript 错误**；ESLint 无 error 级诊断
-- [ ] pre-commit 钩子可正常通过（钩子跑 `lint:fix`，须无 error）
-- [ ] 不修改 `eslint.config.js` 的 `ignores` 来掩盖本次引入的 **error**
-- [ ] 已全局忽略：`docs/apis/**`、`docs/wiki/**`（TypeDoc 生成物）
+| 可跳过 | 须局部 lint | 须全仓 `pnpm lint:fix` |
+|--------|-------------|------------------------|
+| 纯问答、仅 `.cursor/rules/**` | 单包 / demo / 指定文件 | 根 `eslint.config.js`、根 TS 配置 |
+| 仅 `.md` 无 TS/JS | | 跨 `packages/` + `apps/` + 根配置 |
 
-## C. 构建验证（**lint:fix 之后必做**）
+- [ ] 改动路径 **零 ESLint error**（warning 允许）
+- [ ] **不得因本次改动新增 error**
+- [ ] **禁止**无必要时全仓 lint
+- [ ] 不修改 `eslint.config.js` 的 `ignores` 掩盖 error
+- [ ] 已全局忽略：`docs/apis/**`、`docs/wiki/**`
 
-对本次变更**牵连**的包 / demo 做局部 build；范围不确定时跑全量 `pnpm build`。
+## C. 构建验证（**lint 之后 · 局部 build 优先**）
+
+仅对**直接牵连**的包 / demo build；**未改动的不跑**。
 
 ```bash
-# 局部（首选：进入目录）
 cd packages/<pkg> && pnpm build
 cd apps/<demo> && pnpm build
-cd packages/<pkg> && pnpm typecheck    # 若有
+cd packages/<pkg> && pnpm typecheck    # 有脚本且涉及
 
-# 保底（根目录）
+# 仅范围仍不明时
 pnpm build
 ```
 
-| 场景 | 最低 build 范围 |
-|------|-----------------|
-| 改单包 | `cd packages/<pkg> && pnpm build` + 消费方 demo |
-| 改 demo | `cd apps/<demo> && pnpm build` + 其 `@142vip/*` 依赖 |
-| 改 vitepress / 根文档 | `cd packages/vitepress && pnpm build` + `cd apps/vitepress-demo && pnpm build`；大改加 `pnpm build:docs` |
-| 改 exports / peerDeps | 该包 + 所有 workspace 引用方 `build` |
-| 不确定 | `pnpm build` |
+| 场景 | 最低 build | 可跳过 |
+|------|------------|--------|
+| 改单包 | `packages/<pkg>` | 未牵连 demo 可不跑 demo |
+| 改 demo | `apps/<demo>` + 其 workspace 依赖（若需要） | — |
+| 改 vitepress | `packages/vuepress` + `apps/vuepress-demo` | 小改不加 `build:docs` |
+| 改 exports / peerDeps | 该包 + **直接**引用方 | — |
+| 仅 rules / 纯问答 / 仅 `.md` | — | **跳过** |
+| 仍不明 | `pnpm build` | 最后手段 |
 
-- [ ] 牵连模块 / 应用 `build` **exit 0**
-- [ ] `typecheck` exit 0（若包有该脚本且本次涉及）
+- [ ] 牵连模块 `build` **exit 0**
+- [ ] **禁止**为保险默认全仓 build
 - [ ] 新增导出已同步 `package.json` exports / 入口 index
 
 ## D. 测试
 
-有逻辑变更时：
+有逻辑变更时，**仅跑牵连包**：
 
 ```bash
 cd packages/<pkg> && pnpm test
@@ -82,8 +92,8 @@ cd packages/<pkg> && pnpm test
 ### VitePress
 
 ```bash
-cd packages/vitepress && pnpm build && pnpm typecheck
-cd apps/vitepress-demo && pnpm build
+cd packages/vuepress && pnpm build && pnpm typecheck
+cd apps/vuepress-demo && pnpm build
 ```
 
 - [ ] `defineVipVitepressConfig(config)` 单参原样返回
@@ -109,7 +119,7 @@ cd apps/vitepress-demo && pnpm build
 ## 失败处理
 
 ```
-失败项 → 修复 → 重跑 lint:fix → 重跑 build → 再勾选
+失败项 → 修复 → 重跑局部 lint → 重跑局部 build → 再勾选
 ```
 
-不得带 **lint error** 或 **build 失败** 交付。
+不得带 **lint error** 或 **build 失败** 交付。**禁止**无必要时用全仓命令代替局部验证。

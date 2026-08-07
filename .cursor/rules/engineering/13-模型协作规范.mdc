@@ -50,6 +50,38 @@ alwaysApply: true
 阶段 6~7  →  结构化交付（见上模板）
 ```
 
+## 任务结束前自检（必做 · **局部优先 · 强执行**）
+
+交付前须完成自检，但**默认只验证改动范围**，提高效率：
+
+```bash
+# ① 局部 lint（默认）
+npx eslint packages/<pkg> --fix
+
+# ② 局部 build（仅直接牵连包）
+cd packages/<pkg> && pnpm build
+```
+
+### 决策表
+
+| 检查 | 默认 | 跳过 | 全仓保底 |
+|------|------|------|----------|
+| Lint | `npx eslint <改动路径> --fix` | 纯问答 / 仅 rules | 根 ESLint·TS 配置变更；用户将 commit |
+| Build | `cd packages/<pkg> && pnpm build` | 纯问答 / 仅 rules / 仅 `.md` | 范围仍不明 |
+
+### 强约束（禁止）
+
+- **禁止**任务结束时默认跑 `pnpm lint:fix`（全仓扫描耗时长）
+- **禁止**任务结束时默认跑 `pnpm build`（含 docs 全量构建耗时长）
+- **禁止**对未改动的包 / demo 做 build「图安心」
+- 自检未通过 → 修复后**重跑局部命令**，仍失败再扩大范围
+
+### 要求
+
+- 改动路径 **零 ESLint error**（warning 允许）
+- 牵连模块 **build exit 0**
+- 纯问答、未改代码 → 跳过 lint / build
+
 ## 代码引用
 
 使用 `startLine:endLine:filepath`，便于跳转。
