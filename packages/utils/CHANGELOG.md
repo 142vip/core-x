@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.53 (2026-08-07)
+
+### ✨ Features
+
+- 新增时间跨度枚举并支持跨端引用 &nbsp;-&nbsp; by **chufan** and **Cursor** [<samp>(5e6cc)</samp>](https://github.com/142vip/core-x/commit/5e6ccdf0)
+
+**Release New Version v0.0.1-alpha.53 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/utils)**
+
 ## v0.0.1-alpha.52 (2026-06-24)
 
 ### 🐛 Bug Fixes
