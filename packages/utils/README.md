@@ -45,7 +45,7 @@ console.log(version, query, date, base)
 
 - `VipColor`
 - `VipConsole`、`vipLogger`
-- `VipDayjs`、`vipDayjs`
+- `VipDayjs`、`vipDayjs`（日期模板见 `DateFormatTemplate`）
 - `VipSemver`
 - `VipNanoId`、`vipNanoId`
 - `VipQs`、`vipQs`
@@ -53,7 +53,7 @@ console.log(version, query, date, base)
 - `vipDataTransform`
 - `vipLodash`
 - `VipDocSite`、`vipDocSite`
-- `enums` 目录下的枚举与类型（含 `TimeDurationMs`、`TimeDurationSec` 等纯数值枚举，浏览器 / 服务端均可使用）
+- `enums` 目录下的枚举与类型（含 `TimeDurationMs`、`TimeDurationSec` 等，浏览器 / 服务端均可使用）
 
 #### 时间跨度枚举
 
@@ -72,6 +72,21 @@ import { TimeDurationSec } from '@142vip/utils/node'
 
 const cacheTtl = TimeDurationMs.FIVE_MINUTE
 const redisExpire = TimeDurationSec.ONE_DAY
+```
+
+#### 日期格式模板枚举
+
+定义在 `dayjs` 模块内，配合 `vipDayjs.formatDateToStr` 使用：
+
+```ts
+import { DateFormatTemplate, vipDayjs } from '@142vip/utils'
+
+vipDayjs.formatDateToStr(new Date()) // YYYY-MM-DD HH:mm:ss
+vipDayjs.formatDateToStr(new Date(), DateFormatTemplate.DATE) // YYYY-MM-DD
+vipDayjs.formatDateToStr(new Date(), DateFormatTemplate.DATE_DOT) // YYYY.MM.DD
+vipDayjs.formatDateToStr(new Date(), DateFormatTemplate.DATE_SLASH) // YYYY/MM/DD
+vipDayjs.formatDateToStr(new Date(), DateFormatTemplate.MONTH_DAY_TIME) // MM/DD HH:mm
+vipDayjs.formatDateToStr(new Date(), DateFormatTemplate.DATETIME_CN) // YYYY年MM月DD日 HH:mm:ss
 ```
 
 ### Node 服务端场景
