@@ -87,6 +87,8 @@ vipDayjs.formatDateToStr(new Date(), DateFormatTemplate.DATE_DOT) // YYYY.MM.DD
 vipDayjs.formatDateToStr(new Date(), DateFormatTemplate.DATE_SLASH) // YYYY/MM/DD
 vipDayjs.formatDateToStr(new Date(), DateFormatTemplate.MONTH_DAY_TIME) // MM/DD HH:mm
 vipDayjs.formatDateToStr(new Date(), DateFormatTemplate.DATETIME_CN) // YYYY年MM月DD日 HH:mm:ss
+vipDayjs.formatMonthDay(new Date()) // 8月9日
+vipDayjs.formatMonthDay(new Date(), 'en') // Aug 9
 ```
 
 ### Node 服务端场景

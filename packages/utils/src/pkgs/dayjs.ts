@@ -28,6 +28,10 @@ export enum DateFormatTemplate {
   MONTH_DAY_SLASH = 'MM/DD',
   /** 月/日 时:分 → 08/09 15:20 */
   MONTH_DAY_TIME = 'MM/DD HH:mm',
+  /** 中文月日 → 8月9日 */
+  MONTH_DAY_CN = 'M月D日',
+  /** 英文月日 → Aug 9 */
+  MONTH_DAY_EN = 'MMM D',
   /** 时:分:秒 → 15:20:30 */
   TIME = 'HH:mm:ss',
   /** 时:分 → 15:20 */
@@ -97,6 +101,19 @@ export class VipDayjs {
    */
   public formatDateToStr(date: ConfigType, template?: DateFormatTemplate | string): string {
     return dayjs(date).format(template ?? this.FORMAT_TEMPLATE_STR)
+  }
+
+  /**
+   * 格式化为月日（时间轴标题等）
+   * - 中文：`8月9日`
+   * - 英文：`Aug 9`
+   */
+  public formatMonthDay(date: ConfigType, locale = 'zh'): string {
+    const d = dayjs(date)
+    if (!d.isValid()) {
+      return typeof date === 'string' ? date : ''
+    }
+    return d.format(locale === 'en' ? DateFormatTemplate.MONTH_DAY_EN : DateFormatTemplate.MONTH_DAY_CN)
   }
 
   /**
