@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.54 (2026-08-14)
+
+### ✨ Features
+
+- 新增 DateFormatTemplate 并整合到 VipDayjs &nbsp;-&nbsp; by **chufan** [<samp>(2354a)</samp>](https://github.com/142vip/core-x/commit/2354a542)
+- 新增 VipDayjs.formatMonthDay 月日格式化 &nbsp;-&nbsp; by **chufan** [<samp>(d0ae0)</samp>](https://github.com/142vip/core-x/commit/d0ae0e63)
+
+**Release New Version v0.0.1-alpha.54 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/utils)**
+
 ## v0.0.1-alpha.53 (2026-08-07)
 
 ### ✨ Features
