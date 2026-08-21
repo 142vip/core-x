@@ -71,7 +71,7 @@
     "commander": "12.1.0",
     "convert-gitmoji": "0.1.5",
     "cosmiconfig": "^9.0.0",
-    "dayjs": "1.11.13",
+    "dayjs": "1.11.23",
     "detect-port": "^2.1.0",
     "js-yaml": "4.1.0",
     "klona": "2.0.6",
