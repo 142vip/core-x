@@ -31,12 +31,18 @@ pnpm i @142vip/utils
 适合浏览器、SSR 前端、同构代码中直接使用的能力，优先从根入口导入即可：
 
 ```ts
-import { vipDayjs, vipDocSite, vipQs, VipSemver } from '@142vip/utils'
+import { isJsonRecord, toJsonRecord, vipDayjs, vipDocSite, vipQs, VipSemver } from '@142vip/utils'
 
 const version = VipSemver.valid('1.2.3')
 const query = vipQs.stringify({ page: 1, size: 10 })
 const date = vipDayjs().format('YYYY-MM-DD')
 const base = vipDocSite.getBase('core-x')
+
+// 外部 JSON 边界：避免 `value as Record<string, unknown>`
+const payload = toJsonRecord(apiResponse)
+if (isJsonRecord(nested)) {
+  console.log(nested.items)
+}
 
 console.log(version, query, date, base)
 ```
@@ -51,7 +57,7 @@ console.log(version, query, date, base)
 - `VipQs`、`vipQs`
 - `VipYaml`
 - `vipDataTransform`
-- `vipLodash`
+- `vipLodash`、`isJsonRecord`、`toJsonRecord`（`JsonRecord` 类型；边界 JSON 对象收窄）
 - `VipDocSite`、`vipDocSite`
 - `enums` 目录下的枚举与类型（含 `TimeDurationMs`、`TimeDurationSec` 等，浏览器 / 服务端均可使用）
 
@@ -89,6 +95,8 @@ vipDayjs.formatDateToStr(new Date(), DateFormatTemplate.MONTH_DAY_TIME) // MM/DD
 vipDayjs.formatDateToStr(new Date(), DateFormatTemplate.DATETIME_CN) // YYYY年MM月DD日 HH:mm:ss
 vipDayjs.formatMonthDay(new Date()) // 8月9日
 vipDayjs.formatMonthDay(new Date(), 'en') // Aug 9
+vipDayjs.formatToISOStr() // ISO-8601 UTC
+vipDayjs.isBeforeByTtl(cachedAtMs, TimeDurationMs.ONE_MINUTE) // 是否在 1 分钟内
 ```
 
 ### Node 服务端场景
