@@ -140,11 +140,20 @@ export class VipDayjs {
   }
 
   /**
-   * 格式化时间为ISO字符串
-   * @param date
+   * 格式化为 ISO-8601 字符串（UTC）。
+   * 用于 `meta.fetchedAt`、Token 过期时间等业务持久化字段。
    */
   public formatToISOStr(date?: ConfigType): string {
     return dayjs(date).toISOString()
+  }
+
+  /**
+   * 判断自 `anchorMs` 起是否仍在 `ttlMs` 有效期内（`now - anchorMs < ttlMs`）。
+   * 用于内存/Session 缓存、前端热数据节流等。
+   */
+  public isBeforeByTtl(anchorMs: number, ttlMs: number, nowMs?: number): boolean {
+    const now = nowMs ?? this.getCurrentTimestamp()
+    return now - anchorMs < ttlMs
   }
 }
 
