@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.55 (2026-08-25)
+
+### ✨ Features
+
+- 新增 isJsonRecord/toJsonRecord 类型守卫 &nbsp;-&nbsp; by **chufan** [<samp>(892aa)</samp>](https://github.com/142vip/core-x/commit/892aa290)
+- 新增 vipDayjs.isBeforeByTtl TTL 判断 &nbsp;-&nbsp; by **chufan** [<samp>(2ae2d)</samp>](https://github.com/142vip/core-x/commit/2ae2d6de)
+
+### 📖 Documentation
+
+- 同步 JsonRecord 与 isBeforeByTtl 文档 &nbsp;-&nbsp; by **chufan** [<samp>(2b43b)</samp>](https://github.com/142vip/core-x/commit/2b43b936)
+
+**Release New Version v0.0.1-alpha.55 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/utils)**
+
 ## v0.0.1-alpha.54 (2026-08-14)
 
 ### ✨ Features
