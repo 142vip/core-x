@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.56 (2026-08-26)
+
+### ✨ Features
+
+- `vipLodash` 挂载 `compactMap` 并合并 JSON 守卫 &nbsp;-&nbsp; by **chufan** [<samp>(f4044)</samp>](https://github.com/142vip/core-x/commit/f4044e65)
+
+**Release New Version v0.0.1-alpha.56 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/utils)**
+
 ## v0.0.1-alpha.55 (2026-08-25)
 
 ### ✨ Features
