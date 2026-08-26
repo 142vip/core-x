@@ -26,6 +26,7 @@ alwaysApply: false
 - 对象结构用 `interface`；联合/工具类型用 `type`
 - 导出函数附 JSDoc（与文件注释语言一致）
 - `!= null` 判断空值；避免无说明的 `any`
+- JSON 边界：`vipLodash.isJsonRecord` / `vipLodash.toJsonRecord`；数组去 falsy：`vipLodash.compactMap`（见 `engineering/03`）
 
 ## 目录约定
 

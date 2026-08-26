@@ -63,6 +63,32 @@ if (options == null) return userConfig
 - 不可能触发的 error handling
 - 顺手「优化」相邻无关代码
 - 200 行能 50 行解决的过度设计
+- **手改** `package.json` `version` 或 `CHANGELOG.md`（见 `05` §版本与 CHANGELOG）
+- 无意义数组拷贝：`compactMap([...iterable], …)`、`[...alreadyArray]` 仅为了再传参——`matchAll` 用 `Array.from`，已是数组则直传
+- 泛化变量名 `result` / `data` / `res` 承载业务语义——用具名变量（如 `articles`、`syncPayload`）
+- 领域层重复 `String(x).trim()`：边界 `normalize*` / DTO 一次收窄后，内层信任类型
+
+## `@142vip/utils` · `vipLodash` 扩展
+
+lodash 二次封装统一挂在 **`vipLodash`** 上，**禁止**再从根入口单独 import 扩展方法：
+
+| 扩展 | 用途 |
+|------|------|
+| `vipLodash.isJsonRecord` | 外部 JSON 平面对象守卫（`isPlainObject` + 类型收窄） |
+| `vipLodash.toJsonRecord` | `unknown` → `JsonRecord`，非对象返回 `{}` |
+| `vipLodash.compactMap` | `map` + `compact` 去 falsy，替代 `.map().filter()` |
+
+```ts
+import { vipLodash, type JsonRecord } from '@142vip/utils'
+
+const row = vipLodash.toJsonRecord(raw)
+if (vipLodash.isJsonRecord(nested)) { /* … */ }
+const names = vipLodash.compactMap(users, u => u.nickname)
+```
+
+应用内自写 `isRecord` / 顶层 `compactMap` import：优先改为 `vipLodash.*`（JSON 边界语义用 `isJsonRecord`）。
+
+**`vipLodash` 实现约束**：`{ ...lodashBase, ...extensions }` 展开挂载；扩展键**不得**与 lodash 原生同名（禁止覆盖 `map` / `pick` 等）。
 
 ## TypeScript
 

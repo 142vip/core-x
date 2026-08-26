@@ -64,6 +64,18 @@ npm 发布分支：`next`（`.npmrc`）
 - GitHub Release：`chore(release): ...`
 - npm：`release(@142vip/xxx): ...`
 
+## 版本与 CHANGELOG（Agent · 必守）
+
+`pnpm release` / `fa release` 会**自动** bump 各包 `package.json` 的 `version` 并写入 `CHANGELOG.md`。
+
+| 禁止（除非用户明确要求手工发版） | 应做 |
+|------|------|
+| 手改 `packages/*/package.json` 的 `version` | 发版走 `pnpm release`，或等维护者交互发版 |
+| 手改 `packages/*/CHANGELOG.md` | 由 release 工具生成；文档只改 `README` 等对外说明 |
+| 为「对齐版本」提前改 CHANGELOG 占位 | 在 `README` / rules 记待发能力；发版后再对齐 lock |
+
+日常功能迭代：**只改 `src` + `README`**；版本号与 CHANGELOG 留给 release 流程。
+
 ## PR 自查（`.github/PULL_REQUEST_TEMPLATE/pr_cn.md`）
 
 - 需求背景、方案、是否 breaking
