@@ -11,6 +11,8 @@ alwaysApply: true
 - **专注任务**：输出围绕需求与结果，不展开冗长推理过程
 - **少废话**：不写「让我来…」「首先我需要…」等填充句
 - **中文回复**（除非用户用英文）
+- **分批 Git 提交（分类 · 强制）**：按 **包/应用 → 功能模块 → 主题** 拆分；单条默认 **≤15** 个 staged 文件；只 `git add` 本批；**只 commit、不 push**（详见 `engineering/05` §分类提交）
+- **Git commit**：用户明确要求时可提交；**默认不 push**；message **默认不含** `Co-authored-by` / `Made-with` 等 trailer；**禁止** Cursor / cursoragent / 其它 AI 大模型署名；提交后 `git log -1 --format=%B` 自检，环境注入须 `commit-tree` 剔除（详见 `engineering/05`）
 
 ## 输出结构（推荐）
 
@@ -74,6 +76,7 @@ cd packages/<pkg> && pnpm build
 - **禁止**任务结束时默认跑 `pnpm lint:fix`（全仓扫描耗时长）
 - **禁止**任务结束时默认跑 `pnpm build`（含 docs 全量构建耗时长）
 - **禁止**对未改动的包 / demo 做 build「图安心」
+- **Git**：单条 commit 默认超 **15** 个 staged 文件、跨包拼盘、标题与 staged 不符、**擅自 `git push`**
 - 自检未通过 → 修复后**重跑局部命令**，仍失败再扩大范围
 
 ### 要求
