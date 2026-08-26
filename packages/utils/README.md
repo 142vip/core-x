@@ -76,7 +76,8 @@ console.log(version, query, date, base)
 扩展方法**仅**通过 `vipLodash.xxx` 调用，根入口不单独 export。新增扩展时**禁止**与 lodash 已有方法同名。
 
 ```ts
-import { vipLodash, type JsonRecord } from '@142vip/utils'
+import type { JsonRecord } from '@142vip/utils'
+import { vipLodash } from '@142vip/utils'
 
 vipLodash.pick(obj, ['a']) // lodash 原生
 vipLodash.compactMap(list, item => item.name) // 扩展
