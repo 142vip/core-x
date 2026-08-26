@@ -31,7 +31,7 @@ pnpm i @142vip/utils
 适合浏览器、SSR 前端、同构代码中直接使用的能力，优先从根入口导入即可：
 
 ```ts
-import { isJsonRecord, toJsonRecord, vipDayjs, vipDocSite, vipQs, VipSemver } from '@142vip/utils'
+import { vipDayjs, vipDocSite, vipLodash, vipQs, VipSemver } from '@142vip/utils'
 
 const version = VipSemver.valid('1.2.3')
 const query = vipQs.stringify({ page: 1, size: 10 })
@@ -39,10 +39,12 @@ const date = vipDayjs().format('YYYY-MM-DD')
 const base = vipDocSite.getBase('core-x')
 
 // 外部 JSON 边界：避免 `value as Record<string, unknown>`
-const payload = toJsonRecord(apiResponse)
-if (isJsonRecord(nested)) {
+const payload = vipLodash.toJsonRecord(apiResponse)
+if (vipLodash.isJsonRecord(nested)) {
   console.log(nested.items)
 }
+
+const names = vipLodash.compactMap(users, user => user.nickname)
 
 console.log(version, query, date, base)
 ```
@@ -57,9 +59,28 @@ console.log(version, query, date, base)
 - `VipQs`、`vipQs`
 - `VipYaml`
 - `vipDataTransform`
-- `vipLodash`、`isJsonRecord`、`toJsonRecord`（`JsonRecord` 类型；边界 JSON 对象收窄）
+- `vipLodash`（lodash 原生 + 扩展；见下节）
 - `VipDocSite`、`vipDocSite`
 - `enums` 目录下的枚举与类型（含 `TimeDurationMs`、`TimeDurationSec` 等，浏览器 / 服务端均可使用）
+
+#### `vipLodash`（lodash 扩展 · 不覆盖原生）
+
+`vipLodash` = **lodash 全量方法**（去掉 `VERSION`）+ 少量 **新增** 扩展键。实现为对象展开：先 `...lodashBase`，再 `...vipLodashExtensions`，**不会改写** `pick` / `map` / `isPlainObject` 等原生行为。
+
+| 扩展方法 | 说明 |
+|----------|------|
+| `isJsonRecord` | 平面对象守卫（语义同 `isPlainObject` + TS 收窄） |
+| `toJsonRecord` | `unknown` → `JsonRecord`，非对象返回 `{}` |
+| `compactMap` | `map` 后 `compact` 去 falsy |
+
+扩展方法**仅**通过 `vipLodash.xxx` 调用，根入口不单独 export。新增扩展时**禁止**与 lodash 已有方法同名。
+
+```ts
+import { vipLodash, type JsonRecord } from '@142vip/utils'
+
+vipLodash.pick(obj, ['a']) // lodash 原生
+vipLodash.compactMap(list, item => item.name) // 扩展
+```
 
 #### 时间跨度枚举
 

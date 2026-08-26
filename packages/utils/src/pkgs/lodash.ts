@@ -3,23 +3,44 @@ import _ from 'lodash'
 /** 外部 JSON 解析后的平面对象；键为 string，值为任意 JSON 可序列化类型 */
 export type JsonRecord = Record<string, unknown>
 
-/**
- * 判断 `unknown` 是否为平面对象（非数组、非 null、非 Date 等）。
- * 语义与 `vipLodash.isPlainObject` 一致，附带 TypeScript 类型收窄。
- */
-export function isJsonRecord(value: unknown): value is JsonRecord {
+type CompactFalsy = false | 0 | '' | null | undefined
+
+function isJsonRecord(value: unknown): value is JsonRecord {
   return _.isPlainObject(value)
 }
 
-/**
- * 将边界 `unknown` 收窄为 `JsonRecord`；非平面对象时返回 `{}`。
- * 用于 HTTP / CDN JSON 字段读取，避免 `value as Record<string, unknown>`。
- */
-export function toJsonRecord(value: unknown): JsonRecord {
+function toJsonRecord(value: unknown): JsonRecord {
   return isJsonRecord(value) ? value : {}
 }
 
+function compactMap<T, R>(
+  collection: readonly T[] | null | undefined,
+  iteratee: (item: T, index: number) => R,
+): Array<Exclude<R, CompactFalsy>> {
+  if (collection == null) {
+    return []
+  }
+  return _.compact(collection.map(iteratee)) as Array<Exclude<R, CompactFalsy>>
+}
+
+const lodashBase = _.omit(_, ['VERSION'])
+
 /**
- * lodash的一些方法
+ * 在 lodash 之上的扩展方法（命名勿与 lodash 原生冲突，避免覆盖 `pick` / `map` 等）。
  */
-export const vipLodash = _.omit(_, ['VERSION'])
+const vipLodashExtensions = {
+  isJsonRecord,
+  toJsonRecord,
+  compactMap,
+} as const
+
+export type VipLodash = typeof lodashBase & typeof vipLodashExtensions
+
+/**
+ * lodash 二次封装：先展开 lodash 原生能力，再挂载扩展。
+ * 扩展键与 lodash 原生方法互斥；新增扩展前须确认 lodash 无同名导出。
+ */
+export const vipLodash = {
+  ...lodashBase,
+  ...vipLodashExtensions,
+} as VipLodash
