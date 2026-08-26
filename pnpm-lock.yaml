@@ -561,8 +561,8 @@ importers:
   packages/vitepress:
     dependencies:
       '@142vip/cdn':
-        specifier: 0.0.1-alpha.0
-        version: 0.0.1-alpha.0
+        specifier: 0.0.1-alpha.2
+        version: 0.0.1-alpha.2
       '@142vip/open-source':
         specifier: workspace:*
         version: link:../open-source
@@ -651,8 +651,8 @@ importers:
 
 packages:
 
-  '@142vip/cdn@0.0.1-alpha.0':
-    resolution: {integrity: sha512-htO4peq8MPoPBsdyHx76D5uDGIMmq7/a30qIhGQWp0mU8tcoxSMP6sgvwU00XqB2tOiDo5uAOeQcanP635oAFA==}
+  '@142vip/cdn@0.0.1-alpha.2':
+    resolution: {integrity: sha512-FZSR2Z/RezrvaUo9IlNcZAaOv391w6hM7EoQVtIcIwI/F/im1oHZyceM6Q4z97PIQWGevabQ9QPswLtLKKoV0Q==}
 
   '@algolia/autocomplete-core@1.17.7':
     resolution: {integrity: sha512-BjiPOW6ks90UKl7TwMv7oNQMnzU+t/wk9mgIDi6b1tXpUek7MW0lbNOUHpvam9pe3lVCf4xPFT+lK7s+e+fs7Q==}
@@ -1184,6 +1184,7 @@ packages:
 
   '@clickhouse/client-common@1.18.5':
     resolution: {integrity: sha512-g9LwcS1dvkatKDsIjT1PwUHldsiYzwdKAB0nXfd9APLd+t4PrNJa+my+dXcqJdmcWyhWjKLP/2/ztBwgxp+sbQ==}
+    deprecated: 'Deprecated: import from @clickhouse/client or @clickhouse/client-web instead.'
 
   '@clickhouse/client@1.18.5':
     resolution: {integrity: sha512-4FfoyMkFWhsdNMuXsoEL6l3c12svA63BBJBtDo9SrxRZ14RdmN6jLr/rF3f84BK8cFoxETZCSeKlsbk6NNYebw==}
@@ -6490,6 +6491,7 @@ packages:
   eslint@9.35.0:
     resolution: {integrity: sha512-QePbBFMJFjgmlE+cXAlbHZbHpdFVS2E/6vzCy7aKlebddvl1vadiC4JFV5u/wqTkNUwEV8WrQi257jf5f06hrg==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
     hasBin: true
     peerDependencies:
       jiti: '*'
@@ -11351,7 +11353,7 @@ packages:
 
 snapshots:
 
-  '@142vip/cdn@0.0.1-alpha.0': {}
+  '@142vip/cdn@0.0.1-alpha.2': {}
 
   '@algolia/autocomplete-core@1.17.7(@algolia/client-search@5.15.0)(algoliasearch@5.15.0)(search-insights@2.17.2)':
     dependencies:
