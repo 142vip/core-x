@@ -24,7 +24,10 @@
     "@142vip",
     "@142vip/fairy-cli",
     "@142vip/release-version",
-    "@142vip/utils"
+    "@142vip/utils",
+    "@142vip/agent-skills",
+    "ai",
+    "agent-skills"
   ],
   "sideEffects": false,
   "exports": {
@@ -61,6 +64,7 @@
     "homePage": "https://142vip.cn"
   },
   "dependencies": {
+    "@142vip/agent-skills": "workspace:*",
     "@142vip/axios": "workspace:*",
     "@142vip/changelog": "workspace:*",
     "@142vip/commit-linter": "workspace:*",

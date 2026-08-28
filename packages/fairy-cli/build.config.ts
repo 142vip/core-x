@@ -11,4 +11,8 @@ export default defineBuildConfig({
     emitCJS: true,
     inlineDependencies: true,
   },
+  // agent-skills 含 skills/ 静态资源，运行时 require/import，禁止内联打包
+  externals: [
+    '@142vip/agent-skills',
+  ],
 })

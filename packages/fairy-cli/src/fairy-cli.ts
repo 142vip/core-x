@@ -1,6 +1,7 @@
 import { VipCommander, VipNodeJS } from '@142vip/utils'
 import { description, name, version } from '../package.json'
 import {
+  aiMain,
   changelogMain,
   cleanUpMain,
   commitMain,
@@ -51,6 +52,9 @@ export async function fairyCliMain(): Promise<void> {
 
   // fairy-cli commit
   await commitMain(program)
+
+  // fairy-cli ai / fa ai —— 集成 @142vip/agent-skills
+  await aiMain(program)
 
   // 参数解析
   await program.parseAsync(VipNodeJS.getProcessArgv())

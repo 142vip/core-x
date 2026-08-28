@@ -45,9 +45,67 @@ Commands:
   clean|cl [options]              快速清理项目
   copyright|cr [options]          软件著作权登记的源代码文档生成
   commit|co [options] [vip]       Git Commit 提交信息
+  ai|a [options] [action]         AI Agent Skills 管理
   help [command]                  display help for command
 
 ```
+
+### ai 命令
+
+快速使用 [`@142vip/agent-skills`](https://www.npmjs.com/package/@142vip/agent-skills)，将通用 Agent Skills（`code-dev` / `self-check` / `commit`）同步到项目 `.agents/skills/`。
+**不会**覆盖本地 `business-map`。底层直接复用 `syncAgentSkills` API。
+
+选项类型：`AiCommandOptions extends VipAgentSkillCliOptions`（与 `vip-agent-skills` 的 `--target` / `--dry-run` / `--force` / `--check` 语义对齐，可从 `@142vip/fairy-cli` 或 `@142vip/agent-skills` 引用）。
+#### 查看命令
+
+```shell
+npx fa ai -h
+# 或
+npx fairy ai -h
+```
+
+```text
+Usage: @142vip/fairy-cli ai|a [options] [action]
+
+快速使用 @142vip/agent-skills：同步 / 校验通用 Agent Skills 到项目 .agents/skills/
+
+Arguments:
+  action              操作：sync | check | info（默认 sync）
+
+Options:
+  --dry-run           试运行，不写盘
+  -t, --target <dir>  下游项目根目录（默认 cwd）
+  --force             目标无 package.json 时仍继续
+  --check             校验模式（等价于 action=check）
+  -h, --help          display help for command
+```
+
+#### 使用示例
+
+```shell
+# 同步到当前目录（默认 action=sync）
+fa ai
+fa ai sync
+fa ai sync -t .
+
+# 试运行（只打印，不写盘）
+fa ai sync --dry-run
+
+# 校验下游镜像是否与包内 skills 一致
+fa ai check
+fa ai check -t .
+fa ai --check
+
+# 查看已安装 agent-skills 版本与 skill 列表
+fa ai info
+
+# 别名 a
+fa a sync -t . --dry-run
+```
+
+环境变量：未传 `--target` 时，可读 `AGENT_SKILLS_TARGET`。
+
+依赖：需已安装 `@142vip/agent-skills`（开发期可用本地 `file:` 路径）。
 
 ### copyright命令
 
@@ -198,6 +256,7 @@ npx fa clean --deps --ignore-tips --all
 ## 相关
 
 - [del](https://www.npmjs.com/package/del)
+- [@142vip/agent-skills](https://www.npmjs.com/package/@142vip/agent-skills)
 - [@142vip/changelog](https://www.npmjs.com/package/@142vip/changelog)
 - [@142vip/commit-linter](https://www.npmjs.com/package/@142vip/commit-linter)
 - [@142vip/release-version](https://www.npmjs.com/package/@142vip/release-version)

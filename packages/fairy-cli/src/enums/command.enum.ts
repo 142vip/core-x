@@ -15,6 +15,8 @@ export enum CommandEnum {
   SYNC = 'sync',
   COPYRIGHT = 'copyright',
   COMMIT = 'commit',
+  /** Agent Skills 集成（@142vip/agent-skills） */
+  AI = 'ai',
 }
 
 /**
@@ -86,5 +88,12 @@ export const CLI_COMMAND_DETAIL: VipCommanderDetailRecord<CommandEnum> = {
     summary: 'Git Commit 提交信息',
     description: '快速进行Git Commit 提交信息，并检验提交信息是否符合规范',
     aliases: ['co', 'com'],
+  },
+  [CommandEnum.AI]: {
+    // 仅命令名；action 由 commands/ai.ts 的 .argument 声明，避免与 commander 参数重复
+    command: 'ai',
+    summary: 'AI Agent Skills 管理',
+    description: '快速使用 @142vip/agent-skills：同步 / 校验通用 Agent Skills（code-dev、self-check、commit）到项目 .agents/skills/',
+    aliases: ['a'],
   },
 }
