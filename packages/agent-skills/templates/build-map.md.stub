@@ -1,0 +1,24 @@
+# Build / Lint 映射（本仓填写）
+
+> 供 `self-check` skill 读取。**不要**把本文件内容写进 `@142vip/agent-skills`。
+
+## 局部 Lint
+
+```bash
+# 示例：按本仓实际修改
+npx eslint --fix --max-warnings 0 <paths>
+```
+
+## 受影响 Build
+
+| 改动路径 | 命令 |
+|----------|------|
+| `apps/<app>/**` | |
+| `packages/<name>/**` | |
+| 仅文档 / Agent 规范 | `git diff --check`（不跑 app build） |
+
+## 交付收口
+
+```bash
+# 本仓全量或矩阵命令
+```
