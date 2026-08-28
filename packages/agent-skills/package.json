@@ -1,0 +1,72 @@
+{
+  "name": "@142vip/agent-skills",
+  "type": "module",
+  "version": "0.0.1-alpha.0",
+  "private": false,
+  "description": "通用 Agent Skills 包：提供 code-dev / self-check / commit 等通用 skills 的同步工具与真源",
+  "author": {
+    "name": "mmdapl",
+    "email": "mmdapl@163.com"
+  },
+  "license": "MIT",
+  "homepage": "https://142vip.github.io/core-x/packages/agent-skills/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/142vip/core-x.git",
+    "directory": "packages/agent-skills"
+  },
+  "bugs": {
+    "url": "https://github.com/142vip/core-x/issues"
+  },
+  "keywords": [
+    "公众号搜：储凡",
+    "142vip",
+    "@142vip",
+    "@142vip/agent-skills",
+    "agent-skills",
+    "ai",
+    "skills"
+  ],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "vip-agent-skills": "./bin/vip-agent-skills.cjs"
+  },
+  "files": [
+    "bin",
+    "dist",
+    "skills",
+    "templates"
+  ],
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "scripts": {
+    "test": "npx jest",
+    "test:coverage": "npx jest --coverage",
+    "build": "unbuild",
+    "typecheck": "tsc --noEmit"
+  },
+  "authorInfo": {
+    "name": "微信公众号：储凡",
+    "email": "fairy_vip@2925.com",
+    "url": "https://github.com/142vip",
+    "homePage": "https://142vip.cn"
+  },
+  "dependencies": {
+    "@142vip/utils": "0.0.1-alpha.56"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  }
+}
