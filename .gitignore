@@ -20,3 +20,5 @@ dist/
 **/.temp
 **/.cache
 **/local.config.js
+# WorkBuddy 本地会话笔记（不进仓库；稳定约定写 AGENTS / .agents/skills）
+.workbuddy/memory/
