@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## v0.0.1-alpha.1 (2026-08-28)
+
+### ✨ Features
+
+- 新增 `syncAgentSkills` API 与 `vip-agent-skills` CLI &nbsp;-&nbsp; by **chufan** [<samp>(e5f5a)</samp>](https://github.com/142vip/core-x/commit/e5f5ab97)
+
+### 📖 Documentation
+
+- 补充通用 skills 真源与 AGENTS 模板 &nbsp;-&nbsp; by **chufan** [<samp>(f3874)</samp>](https://github.com/142vip/core-x/commit/f3874ba8)
+
+**Release New Version v0.0.1-alpha.1 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/agent-skills)**
+
 ## v0.0.1-alpha.0 (2026-08-27)
 
 ### ✨ Features
