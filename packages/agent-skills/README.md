@@ -11,7 +11,6 @@
 | `self-check` | 改完自检：局部 lint + 受影响 build + 文档同步 + `TODO.md` 维护闭环 |
 | `commit` | Git 提交：Conventional Commits、分类提交、反引号、trailer 纪律、Agent 只 commit 不擅自 push |
 
-
 ## 安装
 
 ```bash

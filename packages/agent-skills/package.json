@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.1-alpha.2",
   "private": false,
-  "description": "通用 Agent Skills 包：提供 workflow / code-dev / self-check / commit 等通用 skills 的同步工具与真源",
+  "description": "通用 Agent Skills 包：提供 workflow / code-dev / self-check / commit 等通用 skills 的同步工具",
   "author": {
     "name": "mmdapl",
     "email": "mmdapl@163.com"
