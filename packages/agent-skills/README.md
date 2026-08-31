@@ -34,6 +34,26 @@ yarn add -D @142vip/agent-skills
 pnpm exec vip-agent-skills --target .
 pnpm exec vip-agent-skills --target . --dry-run
 pnpm exec vip-agent-skills --target . --check
+
+# 或者使用脚手架
+npx vip-agent-skills -h
+
+Usage: vip-agent-skills [options]
+
+将 @142vip/agent-skills 的通用 skills 写入下游项目 .agents/skills/。
+永不创建 / 覆盖 / 删除 business-map。
+Env: AGENT_SKILLS_TARGET 可在未传 --target 时指定下游根目录。
+
+Options:
+  -v,--version         VipCommander Version By @142vip
+  --dry-run            试运行 (default: false)
+  -t, --target <path>  下游项目根目录（默认 cwd）
+  --check              比对包与下游镜像是否一致（不一致 exit 1） (default: false)
+  --force              目标无 package.json 也继续 (default: false)
+  -h, --help           display help for command
+
+Commands:
+  help [command]       display help for command
 ```
 
 同步结果：
