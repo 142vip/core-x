@@ -53,9 +53,7 @@ Commands:
 ### ai 命令
 
 快速使用 [`@142vip/agent-skills`](https://www.npmjs.com/package/@142vip/agent-skills)，将通用 Agent Skills（`workflow` / `code-dev` / `self-check` / `commit`）同步到项目 `.agents/skills/`。
-**不会**覆盖本地 `business-map`。底层直接复用 `syncAgentSkills` API。
 
-选项类型：`AiCommandOptions extends VipAgentSkillCliOptions`（与 `vip-agent-skills` 的 `--target` / `--dry-run` / `--force` / `--check` 语义对齐，可从 `@142vip/fairy-cli` 或 `@142vip/agent-skills` 引用）。
 #### 查看命令
 
 ```shell
