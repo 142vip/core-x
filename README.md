@@ -19,6 +19,7 @@
 
 ### 开源模块
 
+- [`@142vip/agent-skills`](https://www.npmjs.com/package/@142vip/agent-skills)
 - [`@142vip/axios`](https://www.npmjs.com/package/@142vip/axios)
 - [`@142vip/changelog`](https://www.npmjs.com/package/@142vip/changelog)
 - [`@142vip/commit-linter`](https://www.npmjs.com/package/@142vip/commit-linter)
@@ -84,13 +85,13 @@ pnpm clean:cache
 
 ## 仓库架构
 
-pnpm 9 + Turbo monorepo：`packages/` 含 30 个可发布 `@142vip/*` npm 包，`apps/` 含 4 个 `*-demo` 示例。
+pnpm 9 + Turbo monorepo：`packages/` 含 31 个可发布 `@142vip/*` npm 包，`apps/` 含 4 个 `*-demo` 示例。
 
 ```mermaid
 flowchart TB
   ROOT["core-x · pnpm9 + turbo"]
 
-  PKGS["packages/ · 30 × @142vip/*"]
+  PKGS["packages/ · 31 × @142vip/*"]
   APPS["apps/ · 4 × *-demo"]
   VP[".vitepress/ · 根文档站 :8080"]
   DOCS["docs/ · index · apis · wiki"]
@@ -113,7 +114,7 @@ flowchart TB
 
 ```mermaid
 flowchart LR
-  DEMO["apps/*-demo ×4"] --> PKG["@142vip/* ×30"]
+  DEMO["apps/*-demo ×4"] --> PKG["@142vip/* ×31"]
   PKG --> UTIL["utils · open-source"]
   PKG --> CLI["fairy-cli · release-version · eslint-config"]
   PKG --> FW["Nest · Egg · VitePress · VuePress"]
@@ -125,7 +126,7 @@ npm 包默认 **ESM** 交付，**同时提供 CJS** 以兼容 `require`（unbuil
 
 ```mermaid
 flowchart LR
-  SRC["src/"] --> UB["unbuild · 17 包"]
+  SRC["src/"] --> UB["unbuild · 18 包"]
   SRC --> TSC["tsc · Nest 5 包"]
   SRC --> EGG["Egg 插件 8 包 · 无 build 脚本"]
   UB --> DIST["dist .mjs + .cjs"]

@@ -33,13 +33,13 @@ import HomePage from '@theme/components/HomePage.vue'
 
 ## 仓库架构
 
-pnpm 9 + Turbo monorepo：`packages/` 含 30 个可发布 `@142vip/*` npm 包，`apps/` 含 4 个 `*-demo` 示例。
+pnpm 9 + Turbo monorepo：`packages/` 含 31 个可发布 `@142vip/*` npm 包，`apps/` 含 4 个 `*-demo` 示例。
 
 ```mermaid
 flowchart TB
   ROOT["core-x · pnpm workspace + turbo"]
 
-  PKGS["packages/ · 30 × @142vip/*"]
+  PKGS["packages/ · 31 × @142vip/*"]
   APPS["apps/ · egg / nest / vitepress / vuepress demo"]
   VP[".vitepress/ + docs/ · 根文档站 :8080"]
   TDOC["docs/apis · docs/wiki · TypeDoc"]

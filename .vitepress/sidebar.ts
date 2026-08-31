@@ -33,6 +33,7 @@ export const sidebarConfig = defineVipSidebarConfig([
     text: `🏆 ${ProjectId.INFRA}`,
     items: [
       { text: '@142vip/fairy-cli', link: '/packages/fairy-cli/index.md' },
+      { text: '@142vip/agent-skills', link: '/packages/agent-skills/index.md' },
       { text: '@142vip/changelog', link: '/packages/changelog/index.md' },
       { text: '@142vip/release-version', link: '/packages/release-version/index.md' },
       { text: '@142vip/eslint-config', link: '/packages/eslint-config/index.md' },
