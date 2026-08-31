@@ -11,8 +11,9 @@ alwaysApply: true
 
 ```
 core-x/
-├── packages/          # 30 个 @142vip/* 可发布包
+├── packages/          # 31 个 @142vip/* 可发布包
 ├── apps/              # nest-demo / egg-demo / vitepress-demo / vuepress-demo
+├── .agents/skills/    # agent-skills 下游镜像（fa ai sync 生成，随仓库提交）
 ├── .vitepress/        # 根文档站
 ├── docs/              # index.md + TypeDoc（apis/、wiki/）
 ├── scripts/           # CI、commit 校验、发布（见 15）

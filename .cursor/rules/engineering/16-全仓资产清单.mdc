@@ -29,12 +29,14 @@ alwaysApply: true
 | `Dockerfile` / `nginx.conf` | 文档站容器部署 |
 | `spider/` | **非 workspace**：离线爬虫 `.cjs`（文件头 `eslint-disable no-console`） |
 | `.codegraph/` | CodeGraph 索引（任务前 `codegraph sync`） |
+| `.agents/skills/` | agent-skills 下游镜像（`fa ai sync` 生成；**随仓库提交**，供编辑器/Agent 读取） |
 | `dist/` | VitePress 构建输出（`.gitignore`） |
 
-## packages/ · 30 个可发布包
+## packages/ · 31 个可发布包
 
 | 目录 | npm 名 | build |
 |------|--------|-------|
+| `agent-skills` | `@142vip/agent-skills` | unbuild |
 | `axios` | `@142vip/axios` | unbuild |
 | `changelog` | `@142vip/changelog` | unbuild |
 | `commit-linter` | `@142vip/commit-linter` | unbuild |
@@ -66,7 +68,17 @@ alwaysApply: true
 | `vitepress` | `@142vip/vitepress` | unbuild |
 | `vuepress` | `@142vip/vuepress` | unbuild |
 
-构建统计：**unbuild 17** · **tsc 5** · **Egg 插件无 build 8**。
+构建统计：**unbuild 18** · **tsc 5** · **Egg 插件无 build 8**。
+
+## agent-skills 资产（`.agents/skills/`）
+
+| 项 | 说明 |
+|----|------|
+| 真源 | `packages/agent-skills/skills/<name>/SKILL.md`（`workflow` · `code-dev` · `self-check` · `commit`） |
+| 同步入口 | `fa ai sync` / `fa ai check`（fairy-cli）或 `pnpm exec vip-agent-skills --target .` |
+| 下游镜像 | `.agents/skills/`（**随仓库提交**，供编辑器/Agent 读取；勿手改镜像，改真源） |
+| 业务映射 | `business-map` 仅下游项目本地，永不进包 |
+| 维护规则 | 改 skills 真源 → 局部 build → 刷新镜像 → `--check` 防漂移（见 `self-check` skill §通用 skill 包维护） |
 
 ## apps/ · 4 个 demo（均 `private`）
 
@@ -96,7 +108,7 @@ alwaysApply: true
 | `CI.yml` | PR → `next` | `./scripts/ci` → `pnpm lint` → `build:docs` → `build:docs-proxy` |
 | `CD.yaml` | push `next` | GitHub Release、npm 发布（`workflow_dispatch` 选手动包）、GitHub Pages |
 
-发布分支：`next`（`.npmrc` → `publish-branch=next`）。CD 可选包列表与上表 30 包一致。
+发布分支：`next`（`.npmrc` → `publish-branch=next`）。CD 可选包列表与上表 31 包一致。
 
 ## 模型扫描顺序（新任务）
 
@@ -111,7 +123,8 @@ alwaysApply: true
 ## 自检
 
 ```
-□ 包数量仍为 30？apps 仍为 4？
+□ 包数量仍为 31？apps 仍为 4？
 □ sidebar / 根 README 包列表是否包含 oauth2.0（非 oauth）？
 □ 新增目录是否已写入本清单与 04？
+□ 新包是否已加入 `CD.yaml` 手动发版选项列表？
 ```

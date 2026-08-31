@@ -38,7 +38,7 @@ alwaysApply: false
 ```
 .vitepress/
 ├── config.ts                 # nav、rewrites、主题配置、版本
-├── sidebar.ts                # 侧栏（30 包 + 4 demo）
+├── sidebar.ts                # 侧栏（31 包 + 4 demo）
 ├── theme/
 │   ├── index.ts              # defineVipExtendsTheme
 │   ├── style.css

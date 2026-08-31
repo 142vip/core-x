@@ -26,15 +26,15 @@ alwaysApply: true
 | 文件 | 同步点 |
 |------|--------|
 | `config.ts` | nav、rewrites、版本号 |
-| `sidebar.ts` | **30 包 + 4 demo**；npm 名准确（如 `oauth2.0`） |
+| `sidebar.ts` | **31 包 + 4 demo**；npm 名准确（如 `oauth2.0`） |
 | `theme/components/project-data.ts` | 读 sidebar + `package.json` |
 | `theme/components/HomePage.vue` | 首页展示 |
 | `docs/index.md` | hero 链接指向现存包 |
 
 ## 完整性（禁止丢模块）
 
-- 根 README 包列表：**30** 个 `@142vip/*`
-- `sidebar.ts`：**30 包 + 4 demo**，无死链、无幽灵条目
+- 根 README 包列表：**31** 个 `@142vip/*`
+- `sidebar.ts`：**31 包 + 4 demo**，无死链、无幽灵条目
 - 仅当仓库**真实删除**目录后，才可从上述位置移除
 
 ## 变更 → 同步
@@ -50,7 +50,7 @@ alwaysApply: true
 ## 交付前自检（必做）
 
 ```
-□ README 30 包 + 4 demo 完整？
+□ README 31 包 + 4 demo 完整？
 □ sidebar 与 packages/、apps/ 一一对应？oauth 显示 oauth2.0？
 □ docs/index.md 仅为首页（无重复 README 架构段）？
 □ 改动包的 README、docs/tech 等手改文档已更新？

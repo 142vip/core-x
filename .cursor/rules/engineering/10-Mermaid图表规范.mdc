@@ -56,7 +56,7 @@ CI/CD/钩子/分支变    →  图4 开发与发布 · 07§5 分支流
 ## 画法原则
 
 1. **少用 subgraph**；节点 + 箭头直连
-2. **数字准确**：30 包 · 4 demo · unbuild 17 · Nest 5 · Egg 8
+2. **数字准确**：31 包 · 4 demo · unbuild 18 · Nest 5 · Egg 8
 3. **端口**：根站 8080 · vitepress-demo 3080
 4. 单图节点 ≤ 15
 

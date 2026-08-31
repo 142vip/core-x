@@ -13,7 +13,7 @@ alwaysApply: true
 flowchart TB
   ROOT["core-x · pnpm9 + turbo"]
 
-  PKGS["packages/ · 30 × @142vip/*"]
+  PKGS["packages/ · 31 × @142vip/*"]
   APPS["apps/ · 4 × *-demo"]
   VP[".vitepress/ · 根文档站 :8080"]
   DOCS["docs/ · index · apis · wiki"]
@@ -36,7 +36,7 @@ flowchart TB
 
 ```mermaid
 flowchart LR
-  DEMO["apps/*-demo ×4"] --> PKG["@142vip/* ×30"]
+  DEMO["apps/*-demo ×4"] --> PKG["@142vip/* ×31"]
   PKG --> UTIL["utils · open-source"]
   PKG --> CLI["fairy-cli · release-version · eslint-config"]
   PKG --> FW["Nest · Egg · VitePress · VuePress"]
@@ -46,7 +46,7 @@ flowchart LR
 
 ```mermaid
 flowchart LR
-  SRC["src/"] --> UB["unbuild · 17 包"]
+  SRC["src/"] --> UB["unbuild · 18 包"]
   SRC --> TSC["tsc · Nest 5 包"]
   SRC --> EGG["Egg 插件 8 包 · 无 build"]
   UB --> DIST["dist .mjs + .cjs"]

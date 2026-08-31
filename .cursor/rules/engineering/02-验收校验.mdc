@@ -79,7 +79,7 @@ cd packages/<pkg> && pnpm test
 完成 lint + build 后，**逐项对照 `09` 自检表**，确认文档与代码匹配。
 
 - [ ] 根 README / 包 README / demo README 与本次代码改动一致
-- [ ] **清单完整**：30 包 + 4 demo，无遗漏、无幽灵条目、无死链
+- [ ] **清单完整**：31 包 + 4 demo，无遗漏、无幽灵条目、无死链
 - [ ] `.vitepress/sidebar.ts` 与 `packages/`、`apps/` 一一对应
 - [ ] **`.vitepress/`** 已检查：`config.ts`（nav/版本）、`theme/` 首页数据与代码一致
 - [ ] **`docs/`** 与代码一致：`index.md` 仅首页；`tech.md`/`media.md` 手改内容已更新；`apis/` 已生成

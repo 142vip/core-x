@@ -142,5 +142,5 @@ pnpm build:docs
 改 demo   →  cd apps/<demo> && pnpm dev/build
 根级任务  →  pnpm lint:fix / build:docs / pnpm build（根目录）
 任务结束  →  lint:fix（0 error）→ 牵连目录 build → 不明则 pnpm build
-文档      →  与代码一致，30 包 + 4 demo 不遗漏（09）
+文档      →  与代码一致，31 包 + 4 demo 不遗漏（09）
 ```

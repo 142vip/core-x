@@ -10,6 +10,7 @@ alwaysApply: true
 | 包 | 用途 |
 |----|------|
 | `@142vip/fairy-cli` | CLI：`fa`/`fairy` |
+| `@142vip/agent-skills` | 通用 Agent Skills（`workflow`/`code-dev`/`self-check`/`commit`）真源与 `syncAgentSkills` API；`fa ai` 集成；发版流程留本仓 `05` 不进包 |
 | `@142vip/eslint-config` | `defineVipEslintConfig` |
 | `@142vip/commit-linter` | Commit 校验 |
 | `@142vip/changelog` | CHANGELOG 生成 |
