@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 
+## v0.0.3-alpha.31 (2026-08-31)
+
+### ✨ Features
+
+- 新增 `fa ai` 命令集成 agent-skills &nbsp;-&nbsp; by **chufan** [<samp>(fcef3)</samp>](https://github.com/142vip/core-x/commit/fcef3aac)
+
+**Release New Version v0.0.3-alpha.31 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/fairy-cli)**
+
 ## v0.0.3-alpha.30 (2025-11-04)
 
 ### 🐛 Bug Fixes
