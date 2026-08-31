@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## v0.0.1-alpha.2 (2026-08-31)
+
+### ✨ Features
+
+- 通用 skills 升级为 4 件套并同步镜像 &nbsp;-&nbsp; by **chufan** [<samp>(f52f4)</samp>](https://github.com/142vip/core-x/commit/f52f45bf)
+
+**Release New Version v0.0.1-alpha.2 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/agent-skills)**
+
 ## v0.0.1-alpha.1 (2026-08-28)
 
 ### ✨ Features
