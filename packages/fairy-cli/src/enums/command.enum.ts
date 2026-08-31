@@ -93,7 +93,7 @@ export const CLI_COMMAND_DETAIL: VipCommanderDetailRecord<CommandEnum> = {
     // 仅命令名；action 由 commands/ai.ts 的 .argument 声明，避免与 commander 参数重复
     command: 'ai',
     summary: 'AI Agent Skills 管理',
-    description: '快速使用 @142vip/agent-skills：同步 / 校验通用 Agent Skills（code-dev、self-check、commit）到项目 .agents/skills/',
+    description: '快速使用 @142vip/agent-skills：同步 / 校验通用 Agent Skills（workflow、code-dev、self-check、commit）到项目 .agents/skills/',
     aliases: ['a'],
   },
 }
