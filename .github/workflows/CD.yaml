@@ -20,6 +20,7 @@ on:
         required: true
         type: choice
         options:
+          - '@142vip/agent-skills'
           - '@142vip/axios'
           - '@142vip/changelog'
           - '@142vip/commit-linter'
