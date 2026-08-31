@@ -1,7 +1,7 @@
 # <ProjectName> 项目开发指南
 
 > **L0 真源**：本仓库 AI / Agent 规范以本文件为准。
-> 通用流程 skill 来自已安装的 `@142vip/agent-skills`（`code-dev` / `self-check` / `commit`）。
+> 通用流程 skill 来自已安装的 `@142vip/agent-skills`（`workflow` / `code-dev` / `self-check` / `commit`）。
 > 用 `pnpm exec vip-agent-skills --target .` 刷到 `.agents/skills/`；`--check` 可检测漂移。
 > **业务落点 / 模块地图**（若有）只放在本仓 `.agents/skills/` 下的本地 skill，**永不**打进 `@142vip/agent-skills`。
 

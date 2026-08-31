@@ -3,8 +3,9 @@
  * 包名 / 版本一律从 package.json 读取，见 paths.ts。
  */
 
-/** 本包装载并允许同步的 skill 目录名；永不含 business-map */
+/** 本包装载并允许同步的 skill 目录名；永不含 business-map 等仓库私有 skill */
 export const CORE_SKILL_NAMES = [
+  'workflow',
   'code-dev',
   'self-check',
   'commit',

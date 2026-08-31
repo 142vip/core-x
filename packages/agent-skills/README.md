@@ -1,6 +1,17 @@
 # @142vip/agent-skills
 
-面向 **AI 编码 Agent** 的可安装 Skills 包：把「写代码 / 改完自检 / Git 提交 / TODO 迭代」等通用流程沉淀为标准 `SKILL.md`，跨仓库、跨工具（Cursor / Claude Code / Codex / WorkBuddy 等）复用。
+面向 **AI 编码 Agent** 的可安装 Skills 包：把「执行管线 / 写代码 / 改完自检 / Git 提交 / TODO 迭代」等通用流程沉淀为标准 `SKILL.md`，跨仓库、跨工具（Cursor / Claude Code / Codex / WorkBuddy 等）复用。
+
+## 通用 Skills（4 件套）
+
+| Skill | 职责 |
+|-------|------|
+| `workflow` | 高效执行管线：默认读取顺序、场景策略（小改 / 单模块 / 跨模块 / 仅文档 / 调查类）、规则治理分层与知识沉淀、回复模板 |
+| `code-dev` | 代码开发：命名、函数、类型、SOLID、前后端 / 数据库、注释日志、最小改动、lint 策略、依赖本地修复 |
+| `self-check` | 改完自检：局部 lint + 受影响 build + 文档同步 + `TODO.md` 维护闭环 |
+| `commit` | Git 提交：Conventional Commits、分类提交、反引号、trailer 纪律、Agent 只 commit 不擅自 push |
+
+真源统一在本仓 `packages/agent-skills/skills/`；仓库私有内容（如业务落点 `business-map`、发版流水线细节）**永不**进本包——发版等仓库专属流程留在各仓 `AGENTS.md` / rules。
 
 ## 安装
 
@@ -31,11 +42,12 @@ pnpm exec vip-agent-skills --target . --check
 
 ```text
 .agents/skills/
+  workflow/SKILL.md
   code-dev/SKILL.md
   self-check/SKILL.md
   commit/SKILL.md
   business-map/                  # 若项目已有，保持不动
-  .agent-skills-baseline.json    # check 用基线（包名/版本/时间/synced skills）
+  agent-skills.json              # 同步基线（包名/版本/时间/synced skills）
 ```
 
 ### 2. 在代码中调用（ESM / CJS）
@@ -87,8 +99,9 @@ TODO.md                           # 可选：未完成待办（self-check 会维
   project/
     build-map.md                  # self-check 读本仓构建命令（可选）
   skills/
-    business-map/                 # 仅本项目业务落点
-    code-dev/                     # 来自本包
+    business-map/                 # 仅本项目业务落点（本包永不同步）
+    workflow/                     # 来自本包
+    code-dev/
     self-check/
     commit/
 ```
