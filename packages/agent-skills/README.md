@@ -1,6 +1,6 @@
 # @142vip/agent-skills
 
-面向 **AI 编码 Agent** 的可安装 Skills 包：把「执行管线 / 写代码 / 改完自检 / Git 提交 / TODO 迭代」等通用流程沉淀为标准 `SKILL.md`，跨仓库、跨工具（Cursor / Claude Code / Codex / WorkBuddy 等）复用。
+面向 **AI 编码 Agent** 的可安装 Skills 包：通用流程沉淀为标准 `SKILL.md`，跨仓库、跨工具（Cursor / Claude Code / Codex / WorkBuddy 等）复用。
 
 ## 通用 Skills（4 件套）
 
@@ -11,7 +11,6 @@
 | `self-check` | 改完自检：局部 lint + 受影响 build + 文档同步 + `TODO.md` 维护闭环 |
 | `commit` | Git 提交：Conventional Commits、分类提交、反引号、trailer 纪律、Agent 只 commit 不擅自 push |
 
-真源统一在本仓 `packages/agent-skills/skills/`；仓库私有内容（如业务落点 `business-map`、发版流水线细节）**永不**进本包——发版等仓库专属流程留在各仓 `AGENTS.md` / rules。
 
 ## 安装
 
@@ -47,7 +46,7 @@ pnpm exec vip-agent-skills --target . --check
   self-check/SKILL.md
   commit/SKILL.md
   business-map/                  # 若项目已有，保持不动
-  agent-skills.json              # 同步基线（包名/版本/时间/synced skills）
+  agent-skills.json              # 同步基线（包名/版本/synced skills）
 ```
 
 ### 2. 在代码中调用（ESM / CJS）
@@ -84,7 +83,7 @@ import type {
   VipAgentSkillSyncResult,
 } from '@142vip/agent-skills'
 
-/** 例：core-x AiCommandOptions extends CLI 选项 */
+/** 例：在下游代码中拓展 */
 export interface AiCommandOptions extends VipAgentSkillCliOptions {
   model?: string
 }

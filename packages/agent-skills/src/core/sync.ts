@@ -7,14 +7,12 @@
 import {
   VipColor,
   VipConsole,
-  vipDayjs,
   VipJSON,
   VipNodeJS,
   VipPackageJSON,
 } from '@142vip/utils'
 import {
   AGENT_SKILLS_BASELINE_FILE_NAME,
-  AGENT_SKILLS_BASELINE_NOTE,
   BUSINESS_MAP_SKILL_NAME,
   CORE_SKILL_NAMES,
   DOWNSTREAM_SKILLS_SEGMENTS,
@@ -249,10 +247,7 @@ export function syncAgentSkills(options: VipAgentSkillSyncOptions): VipAgentSkil
   const baseline = {
     package: packageName,
     version,
-    // 禁止 new Date()；持久化时间戳用 vipDayjs.formatToISOStr
-    syncedAt: vipDayjs.formatToISOStr(),
     skills: syncedSkillNames,
-    note: AGENT_SKILLS_BASELINE_NOTE,
   }
   const baselinePath = VipNodeJS.pathJoin(destSkillsDir, AGENT_SKILLS_BASELINE_FILE_NAME)
   if (dryRun) {
