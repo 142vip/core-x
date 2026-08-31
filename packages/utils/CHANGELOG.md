@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.57 (2026-08-31)
+
+### ✨ Features
+
+- `vipLodash` 新增 `pickDiffFields` 与 `omitUndefined` &nbsp;-&nbsp; by **chufan** [<samp>(9fa1e)</samp>](https://github.com/142vip/core-x/commit/9fa1e0c1)
+
+**Release New Version v0.0.1-alpha.57 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/utils)**
+
 ## v0.0.1-alpha.56 (2026-08-26)
 
 ### ✨ Features
