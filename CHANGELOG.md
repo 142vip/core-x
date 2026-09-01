@@ -2,6 +2,102 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.42 (2026-09-01)
+
+### ✨ Features
+
+- 全面拥抱Vibe Coding，梳理提示词工程规范 &nbsp;-&nbsp; by **chufan** [<samp>(def2a)</samp>](https://github.com/142vip/core-x/commit/def2abcd)
+- 升级工程提示词，明确约束 &nbsp;-&nbsp; by **chufan** [<samp>(0bcfa)</samp>](https://github.com/142vip/core-x/commit/0bcfa868)
+- **@142vip/agent-skills**:
+  - 新增 `syncAgentSkills` API 与 `vip-agent-skills` CLI &nbsp;-&nbsp; by **chufan** [<samp>(e5f5a)</samp>](https://github.com/142vip/core-x/commit/e5f5ab97)
+  - 通用 skills 升级为 4 件套并同步镜像 &nbsp;-&nbsp; by **chufan** [<samp>(f52f4)</samp>](https://github.com/142vip/core-x/commit/f52f45bf)
+- **@142vip/fairy-cli**:
+  - 新增 `fa ai` 命令集成 agent-skills &nbsp;-&nbsp; by **chufan** [<samp>(fcef3)</samp>](https://github.com/142vip/core-x/commit/fcef3aac)
+- **@142vip/utils**:
+  - 新增时间跨度枚举并支持跨端引用 &nbsp;-&nbsp; by **chufan** and **Cursor** [<samp>(5e6cc)</samp>](https://github.com/142vip/core-x/commit/5e6ccdf0)
+  - 新增 DateFormatTemplate 并整合到 VipDayjs &nbsp;-&nbsp; by **chufan** [<samp>(2354a)</samp>](https://github.com/142vip/core-x/commit/2354a542)
+  - 新增 VipDayjs.formatMonthDay 月日格式化 &nbsp;-&nbsp; by **chufan** [<samp>(d0ae0)</samp>](https://github.com/142vip/core-x/commit/d0ae0e63)
+  - 新增 isJsonRecord/toJsonRecord 类型守卫 &nbsp;-&nbsp; by **chufan** [<samp>(892aa)</samp>](https://github.com/142vip/core-x/commit/892aa290)
+  - 新增 vipDayjs.isBeforeByTtl TTL 判断 &nbsp;-&nbsp; by **chufan** [<samp>(2ae2d)</samp>](https://github.com/142vip/core-x/commit/2ae2d6de)
+  - `vipLodash` 挂载 `compactMap` 并合并 JSON 守卫 &nbsp;-&nbsp; by **chufan** [<samp>(f4044)</samp>](https://github.com/142vip/core-x/commit/f4044e65)
+  - `vipLodash` 新增 `pickDiffFields` 与 `omitUndefined` &nbsp;-&nbsp; by **chufan** [<samp>(9fa1e)</samp>](https://github.com/142vip/core-x/commit/9fa1e0c1)
+  - `VipDayjs` 新增 `getOriginDayjs`/`getYear` 并复用内部调用 &nbsp;-&nbsp; by **chufan** [<samp>(fb56c)</samp>](https://github.com/142vip/core-x/commit/fb56c6a2)
+- **@142vip/vitepress**:
+  - 优化mermaid集成方案，支持全屏、缩放功能 &nbsp;-&nbsp; by **chufan** [<samp>(8d85c)</samp>](https://github.com/142vip/core-x/commit/8d85cef8)
+  - 支持`mermaid`内容复制功能 &nbsp;-&nbsp; by **chufan** [<samp>(74170)</samp>](https://github.com/142vip/core-x/commit/74170bf4)
+  - 对依赖进行小版本升级，优化组件导入方式，支持sass高版本编译 &nbsp;-&nbsp; by **chufan** [<samp>(58fd0)</samp>](https://github.com/142vip/core-x/commit/58fd03fb)
+  - 页脚版权年份支持动态 `copyrightYear` 参数 &nbsp;-&nbsp; by **chufan** [<samp>(974b7)</samp>](https://github.com/142vip/core-x/commit/974b77c3)
+  - 项目表格第三列溢出省略与文档列原生元素化 &nbsp;-&nbsp; by **chufan** [<samp>(a4ee6)</samp>](https://github.com/142vip/core-x/commit/a4ee6919)
+  - 联系人/开源组件移除 ElLink/ElImage 弃用用法 &nbsp;-&nbsp; by **chufan** [<samp>(a5ce4)</samp>](https://github.com/142vip/core-x/commit/a5ce4450)
+- **@142vip/vuepress**:
+  - 内置运行时依赖，支持开箱即用 &nbsp;-&nbsp; by **chufan** and **Cursor** [<samp>(f1ab6)</samp>](https://github.com/142vip/core-x/commit/f1ab688d)
+- **vuepress-demo**:
+  - 验证 @142vip/vuepress 开箱即用 &nbsp;-&nbsp; by **chufan** and **Cursor** [<samp>(16066)</samp>](https://github.com/142vip/core-x/commit/160667a1)
+
+### 🐛 Bug Fixes
+
+- **@142vip/eslint-config**:
+  - Markdown 内嵌代码块 ESLint 降级与 options 合并 &nbsp;-&nbsp; by **chufan** [<samp>(41aa3)</samp>](https://github.com/142vip/core-x/commit/41aa352c)
+- **@142vip/vitepress**:
+  - 修改star趋势历史显示异常，切换域名 &nbsp;-&nbsp; by **chufan** [<samp>(64dd0)</samp>](https://github.com/142vip/core-x/commit/64dd0514)
+- **@142vip/vuepress**:
+  - 消除开箱即用场景下的启动告警 &nbsp;-&nbsp; by **chufan** and **Cursor** [<samp>(08c90)</samp>](https://github.com/142vip/core-x/commit/08c9027e)
+
+### 📖 Documentation
+
+- 同步 `vipLodash` 扩展约定与发版文件维护约束 &nbsp;-&nbsp; by **chufan** [<samp>(30646)</samp>](https://github.com/142vip/core-x/commit/30646fd1)
+- 文档站同步 agent-skills 资产与包计数 &nbsp;-&nbsp; by **chufan** [<samp>(58e36)</samp>](https://github.com/142vip/core-x/commit/58e3681b)
+- 新增 Agent 治理体系（AGENTS.md 真源 + .agents 入口 + 工具薄入口） &nbsp;-&nbsp; by **chufan** [<samp>(81271)</samp>](https://github.com/142vip/core-x/commit/812710c6)
+- 同步 Git 推送约束至 L0 与协作规则 &nbsp;-&nbsp; by **chufan** [<samp>(cafe2)</samp>](https://github.com/142vip/core-x/commit/cafe23bf)
+- 站点配置优化——路径封装、类型清理与 SEO/JSON-LD 注入 &nbsp;-&nbsp; by **chufan** [<samp>(d0fdc)</samp>](https://github.com/142vip/core-x/commit/d0fdc322)
+- 品牌资产升级——Logo 精简为组织名 v3 并重建多尺寸 favicon &nbsp;-&nbsp; by **chufan** [<samp>(29148)</samp>](https://github.com/142vip/core-x/commit/29148fa6)
+- 站点配置重构——SEO 拆分至 seo.ts、侧边栏按路径拆分至 sidebar.ts &nbsp;-&nbsp; by **chufan** [<samp>(597b2)</samp>](https://github.com/142vip/core-x/commit/597b2925)
+- **@142vip/agent-skills**:
+  - 补充通用 skills 真源与 AGENTS 模板 &nbsp;-&nbsp; by **chufan** [<samp>(f3874)</samp>](https://github.com/142vip/core-x/commit/f3874ba8)
+  - README 补充 `vip-agent-skills` CLI 用法示例 &nbsp;-&nbsp; by **chufan** [<samp>(e79ce)</samp>](https://github.com/142vip/core-x/commit/e79cef88)
+  - 通用 skill 强化「交付 ≠ 提交」约束并同步镜像 &nbsp;-&nbsp; by **chufan** [<samp>(ba60d)</samp>](https://github.com/142vip/core-x/commit/ba60dbde)
+  - 通用 skill 收紧「push 由用户手动操作」约束并同步镜像 &nbsp;-&nbsp; by **chufan** [<samp>(3aa0c)</samp>](https://github.com/142vip/core-x/commit/3aa0cc72)
+- **@142vip/fairy-cli**:
+  - README 精简 `ai` 命令说明 &nbsp;-&nbsp; by **chufan** [<samp>(9bb37)</samp>](https://github.com/142vip/core-x/commit/9bb37449)
+- **@142vip/utils**:
+  - 同步 JsonRecord 与 isBeforeByTtl 文档 &nbsp;-&nbsp; by **chufan** [<samp>(2b43b)</samp>](https://github.com/142vip/core-x/commit/2b43b936)
+
+### 📦 Build
+
+- **@142vip/vitepress**:
+  - 升级 element-plus 与 vue-sfc-transformer 补丁版本 &nbsp;-&nbsp; by **chufan** and **Cursor** [<samp>(28720)</samp>](https://github.com/142vip/core-x/commit/28720778)
+
+### 😏 Release Packages
+
+- **@142vip/agent-skills**:
+  - Publish `v0.0.1-alpha.1` &nbsp;-&nbsp; by **chufan** [<samp>(a234b)</samp>](https://github.com/142vip/core-x/commit/a234b281)
+  - Publish `v0.0.1-alpha.2` &nbsp;-&nbsp; by **chufan** [<samp>(d7428)</samp>](https://github.com/142vip/core-x/commit/d7428258)
+  - Publish `v0.0.1-alpha.3` &nbsp;-&nbsp; by **chufan** [<samp>(0de72)</samp>](https://github.com/142vip/core-x/commit/0de72201)
+  - Publish `v0.0.1-alpha.4` &nbsp;-&nbsp; by **chufan** [<samp>(c6269)</samp>](https://github.com/142vip/core-x/commit/c6269611)
+- **@142vip/eslint-config**:
+  - Publish `v0.0.1-alpha.6` &nbsp;-&nbsp; by **chufan** [<samp>(2b28b)</samp>](https://github.com/142vip/core-x/commit/2b28b272)
+- **@142vip/fairy-cli**:
+  - Publish `v0.0.3-alpha.31` &nbsp;-&nbsp; by **chufan** [<samp>(38d7c)</samp>](https://github.com/142vip/core-x/commit/38d7c2f6)
+  - Publish `v0.0.3-alpha.32` &nbsp;-&nbsp; by **chufan** [<samp>(bd43f)</samp>](https://github.com/142vip/core-x/commit/bd43f113)
+- **@142vip/utils**:
+  - Publish `v0.0.1-alpha.53` &nbsp;-&nbsp; by **chufan** [<samp>(fee62)</samp>](https://github.com/142vip/core-x/commit/fee62f07)
+  - Publish `v0.0.1-alpha.54` &nbsp;-&nbsp; by **chufan** [<samp>(dabe3)</samp>](https://github.com/142vip/core-x/commit/dabe3885)
+  - Publish `v0.0.1-alpha.55` &nbsp;-&nbsp; by **chufan** [<samp>(f1a1b)</samp>](https://github.com/142vip/core-x/commit/f1a1b3cf)
+  - Publish `v0.0.1-alpha.56` &nbsp;-&nbsp; by **chufan** [<samp>(a01d7)</samp>](https://github.com/142vip/core-x/commit/a01d74c6)
+  - Publish `v0.0.1-alpha.57` &nbsp;-&nbsp; by **chufan** [<samp>(01261)</samp>](https://github.com/142vip/core-x/commit/012615ba)
+  - Publish `v0.0.1-alpha.58` &nbsp;-&nbsp; by **chufan** [<samp>(0c299)</samp>](https://github.com/142vip/core-x/commit/0c299e78)
+- **@142vip/vitepress**:
+  - Publish `v0.0.1-alpha.25` &nbsp;-&nbsp; by **chufan** [<samp>(9005c)</samp>](https://github.com/142vip/core-x/commit/9005c258)
+  - Publish `v0.0.1-alpha.26` &nbsp;-&nbsp; by **chufan** [<samp>(8c032)</samp>](https://github.com/142vip/core-x/commit/8c0328f5)
+  - Publish `v0.0.1-alpha.27` &nbsp;-&nbsp; by **chufan** [<samp>(4e431)</samp>](https://github.com/142vip/core-x/commit/4e431177)
+  - Publish `v0.0.1-alpha.28` &nbsp;-&nbsp; by **chufan** [<samp>(24751)</samp>](https://github.com/142vip/core-x/commit/24751803)
+- **@142vip/vuepress**:
+  - Publish `v0.0.1-alpha.19` &nbsp;-&nbsp; by **chufan** [<samp>(83a4a)</samp>](https://github.com/142vip/core-x/commit/83a4a611)
+- **vuepress-demo**:
+  - Publish `v0.0.1-alpha.7` &nbsp;-&nbsp; by **chufan** [<samp>(53909)</samp>](https://github.com/142vip/core-x/commit/53909144)
+
+**Release New Version v0.0.1-alpha.42 [👉 View Changes On GitHub](https://github.com/142vip/core-x/compare/v0.0.1-alpha.41...v0.0.1-alpha.42)**
+
 ## v0.0.1-alpha.41 (2026-07-27)
 
 ### ✨ Features
