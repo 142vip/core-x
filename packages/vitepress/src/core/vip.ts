@@ -9,6 +9,7 @@ interface FooterParams {
   orgLink: string
   owner?: string
   ownerLink: string
+  copyrightYear?: number
 }
 
 /**
@@ -26,7 +27,7 @@ export function getVipFooter(params: FooterParams): VipFooter {
   return {
     message: `The License <a href="${params.license}">📖 MIT </a>`,
     copyright: `
-Release ${params.pkgName}@${params.pkgVersion} 😏<br> Copyright © 2019-present.&nbsp;
+Release ${params.pkgName}@${params.pkgVersion} 😏<br> Copyright © 2019-${params.copyrightYear ?? 'present'}.&nbsp;
 Repo <a href="${params.orgLink}" style="margin-right:5px;">${params.orgName ?? '@142vip'}</a>&nbsp;
 Author <a href=${params.ownerLink}>👉${params.owner ?? '储凡'}</a>
 `,
