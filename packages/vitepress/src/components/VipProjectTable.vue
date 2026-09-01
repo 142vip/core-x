@@ -1,18 +1,11 @@
 <script lang="ts" setup>
 import type { VipProject } from '@142vip/vitepress'
-import {
-  ElDivider,
-  ElImage,
-  ElLink,
-  ElTable,
-  ElTableColumn,
-} from 'element-plus'
+import { ElImage, ElLink, ElTable, ElTableColumn } from 'element-plus'
 import 'element-plus/theme-chalk/base.css'
-import 'element-plus/theme-chalk/el-divider.css'
-import 'element-plus/theme-chalk/el-image.css'
-import 'element-plus/theme-chalk/el-link.css'
 import 'element-plus/theme-chalk/el-table-column.css'
 import 'element-plus/theme-chalk/el-table.css'
+import 'element-plus/theme-chalk/el-tooltip.css'
+import 'element-plus/theme-chalk/el-popper.css'
 
 defineProps<{
   data: VipProject[]
@@ -52,7 +45,13 @@ function npmVersionBadgeUrl(name: string) {
     >
       <ElTableColumn header-align="center" label="项目名称" min-width="160" prop="name" />
       <ElTableColumn align="center" header-align="center" label="项目代号" min-width="48" prop="id" />
-      <ElTableColumn header-align="center" label="功能描述" min-width="280" prop="description" />
+      <ElTableColumn
+        header-align="center"
+        label="功能描述"
+        min-width="280"
+        prop="description"
+        show-overflow-tooltip
+      />
       <ElTableColumn align="center" header-align="center" label="当前版本" min-width="112">
         <template #default="{ row }">
           <ElLink
@@ -76,41 +75,74 @@ function npmVersionBadgeUrl(name: string) {
           />
         </template>
       </ElTableColumn>
-      <ElTableColumn align="left" header-align="center" label="文档" width="148">
+      <ElTableColumn align="left" header-align="center" label="文档" width="165">
         <template #default="{ row }">
           <div class="vip-project-table__doc">
-            <ElLink
+            <a
+              class="vip-project-table__doc-link"
               :href="row.sourceCode"
-              :underline="false"
-              class="vip-project-table__doc-link"
               rel="noopener noreferrer"
               target="_blank"
-              type="primary"
             >
+              <svg
+                aria-hidden="true"
+                class="vip-project-table__doc-icon"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.6"
+                viewBox="0 0 16 16"
+              >
+                <path d="M5.5 3.5 2 8l3.5 4.5" />
+                <path d="M10.5 3.5 14 8l-3.5 4.5" />
+              </svg>
               源码
-            </ElLink>
-            <ElDivider class="vip-project-table__doc-divider" direction="vertical" />
-            <ElLink
+            </a>
+            <span class="vip-project-table__doc-sep" aria-hidden="true" />
+            <a
+              class="vip-project-table__doc-link"
               :href="row.changelog"
-              :underline="false"
-              class="vip-project-table__doc-link"
               rel="noopener noreferrer"
               target="_blank"
-              type="primary"
             >
+              <svg
+                aria-hidden="true"
+                class="vip-project-table__doc-icon"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.6"
+                viewBox="0 0 16 16"
+              >
+                <circle cx="8" cy="8" r="5.5" />
+                <path d="M8 5v3.2l2.2 1.3" />
+              </svg>
               日志
-            </ElLink>
-            <ElDivider class="vip-project-table__doc-divider" direction="vertical" />
-            <ElLink
-              :href="row.readme"
-              :underline="false"
+            </a>
+            <span class="vip-project-table__doc-sep" aria-hidden="true" />
+            <a
               class="vip-project-table__doc-link"
+              :href="row.readme"
               rel="noopener noreferrer"
               target="_blank"
-              type="primary"
             >
+              <svg
+                aria-hidden="true"
+                class="vip-project-table__doc-icon"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.6"
+                viewBox="0 0 16 16"
+              >
+                <path d="M4 1.5h5l3 3v10H4z" />
+                <path d="M9 1.5v3h3" />
+              </svg>
               文档
-            </ElLink>
+            </a>
           </div>
         </template>
       </ElTableColumn>
@@ -119,10 +151,12 @@ function npmVersionBadgeUrl(name: string) {
 </template>
 
 <style lang="scss" scoped>
-$vip-table-radius: 10px;
+$vip-table-radius: 12px;
 
 .vip-project-table__title {
   margin-top: 0;
+  font-size: 20px;
+  line-height: 1.4;
 }
 
 .vip-project-table-scroll {
@@ -154,38 +188,78 @@ $vip-table-radius: 10px;
 }
 
 .vip-project-table {
+  // 将 element-plus 设计令牌统一映射为 VitePress 主题变量，亮/暗模式自动跟随文档站
+  --el-color-primary: var(--vp-c-brand-1);
+  --el-color-primary-light-3: var(--vp-c-brand-2);
+  --el-color-primary-light-5: var(--vp-c-brand-soft);
+  --el-border-color: var(--vp-c-divider);
+  --el-border-color-lighter: var(--vp-c-divider-light);
+  --el-border-color-light: var(--vp-c-divider-light);
+  --el-fill-color-blank: var(--vp-c-bg);
+  --el-fill-color-light: var(--vp-c-bg-soft);
+  --el-fill-color-lighter: var(--vp-c-bg-soft);
+  --el-fill-color-extra-light: var(--vp-c-bg-soft);
+  --el-fill-color-dark: var(--vp-c-divider);
+  --el-text-color-regular: var(--vp-c-text-1);
+  --el-text-color-primary: var(--vp-c-text-1);
+  --el-text-color-secondary: var(--vp-c-text-2);
+  --el-text-color-placeholder: var(--vp-c-text-3);
+
   width: 100%;
   min-width: 760px;
   border-radius: $vip-table-radius !important;
+  overflow: hidden;
 
-  :deep(.el-link),
-  :deep(.el-link:is(:hover, :focus, :active)) {
-    text-decoration: none !important;
+  :deep(.el-table__cell) {
+    padding-top: 6px;
+    padding-bottom: 6px;
   }
-}
 
-.vip-project-table__badge-link {
-  display: inline-flex;
-  vertical-align: middle;
-  line-height: 0;
-}
+  // 源码 / 日志 / 文档链接组
+  .vip-project-table__doc {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    white-space: nowrap;
+  }
 
-.vip-project-table__doc {
-  display: inline-flex;
-  flex-wrap: nowrap;
-  align-items: center;
-  white-space: nowrap;
-}
+  .vip-project-table__doc-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    padding: 2px 6px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--vp-c-brand-1);
+    text-decoration: none !important;
+    border-radius: 6px;
+    transition:
+      color 0.2s,
+      background-color 0.2s;
 
-.vip-project-table__doc-link {
-  padding: 2px;
-}
+    &:is(:hover, :focus-visible) {
+      color: var(--vp-c-brand-2);
+      background-color: var(--vp-c-brand-soft);
+    }
 
-.vip-project-table__doc-divider.el-divider--vertical {
-  flex-shrink: 0;
-  align-self: center;
-  margin: 0 4px;
-  height: 14px;
-  border-color: var(--el-border-color-lighter);
+    &:focus-visible {
+      outline: 2px solid var(--vp-c-brand-1);
+      outline-offset: 1px;
+    }
+  }
+
+  .vip-project-table__doc-icon {
+    width: 13px;
+    height: 13px;
+    flex-shrink: 0;
+  }
+
+  .vip-project-table__doc-sep {
+    width: 1px;
+    height: 13px;
+    flex-shrink: 0;
+    margin: 0 2px;
+    background-color: var(--vp-c-divider);
+  }
 }
 </style>
