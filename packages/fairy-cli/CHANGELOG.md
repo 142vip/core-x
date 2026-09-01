@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 
+## v0.0.3-alpha.32 (2026-09-01)
+
+### 📖 Documentation
+
+- README 精简 `ai` 命令说明 &nbsp;-&nbsp; by **chufan** [<samp>(9bb37)</samp>](https://github.com/142vip/core-x/commit/9bb37449)
+
+**Release New Version v0.0.3-alpha.32 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/fairy-cli)**
+
 ## v0.0.3-alpha.31 (2026-08-31)
 
 ### ✨ Features
