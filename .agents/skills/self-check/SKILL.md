@@ -157,7 +157,7 @@ npx eslint --fix --max-warnings 0 path/to/a.ts path/to/b.vue
 
 ## 交付收口自检（用户要交付/全量验收）
 
-> **自检 ≠ 提交**：本流程只做质量验证，验证通过即交付结果；`git commit` / `push` 仍须用户明确指令（见 `commit` skill），不得把「自检通过」当作「可以自动提交」。
+> **自检 ≠ 提交**：本流程只做质量验证，验证通过即交付结果；`git commit` 仍须用户明确指令、**`git push` 由用户手动操作**（见 `commit` skill），不得把「自检通过」当作「可以自动提交」。
 
 在日常自检基础上追加：
 
@@ -232,7 +232,7 @@ npx eslint --fix --max-warnings 0 path/to/a.ts path/to/b.vue
 - 新增/调整：…（优先级）
 ```
 
-> 提交：未获用户指令不 commit / 不 push；用户要求时按 `commit` skill 执行。
+> 提交：未获用户指令不 commit；**push 由用户手动操作**；用户要求提交时按 `commit` skill 执行。
 
 ### 交付
 

@@ -1,6 +1,6 @@
 ---
 name: agent-commit
-description: 跨项目 Git 提交规范。当用户要求提交代码、写 commit message、整理改动准备提交时使用。覆盖 Conventional Commits、分类提交、文件粒度、Agent 仅在用户明确要求时 commit、不擅自 push。scope 枚举与 trailer 以本仓 AGENTS.md 为准。按意图触发。
+description: 跨项目 Git 提交规范。当用户要求提交代码、写 commit message、整理改动准备提交时使用。覆盖 Conventional Commits、分类提交、文件粒度、Agent 仅在用户明确要求时 commit、不执行 push（推送由用户手动操作）。scope 枚举与 trailer 以本仓 AGENTS.md 为准。按意图触发。
 ---
 
 # Git 提交规范（通用核心）
@@ -80,7 +80,7 @@ fix(docs): 补充 `BaseVo` 使用说明
 
 - message 前缀须与 CI 触发规则**逐字匹配**（如 `` release(<pkg>): publish `vX.Y.Z` ``）；前缀写错 → 流水线不触发
 - 发版前与用户二次确认清单与顺序；一次只处理一个模块（CD 只看 HEAD commit message）
-- 错误 message 已推送时：**禁止** force push；可补同版本空 commit 修正 message，确认后再推
+- 错误 message 已推送时：**禁止** force push；可补同版本空 commit 修正 message，由用户手动推送
 
 ---
 
@@ -132,7 +132,7 @@ fix(docs): 补充 `BaseVo` 使用说明
 | 操作 | 条件 |
 |------|------|
 | **commit** | 用户明确要求时可执行；只 stage 相关文件 |
-| **push** | **禁止擅自执行**；须先列 commit 摘要并二次确认 |
+| **push** | **agent 不执行**；提交完成后列出 commit 摘要，由用户手动 `git push` |
 | **PR** | 用户明确要求才创建 |
 | **未要求 commit** | 不主动提交 |
 
@@ -145,7 +145,7 @@ fix(docs): 补充 `BaseVo` 使用说明
 ### 执行补充
 
 - 工作区已有大量无关 diff 时不要混入本批
-- commit 失败先修再新 commit；禁止擅自 amend / push
+- commit 失败先修再新 commit；禁止擅自 amend；push 一律由用户手动
 
 ---
 
@@ -166,7 +166,7 @@ fix(docs): 补充 `BaseVo` 使用说明
 
 - **多类混杂**：诚实概括或拆 commit，不假装单一目的
 - **过于分散**：可用较宽 `chore` 概括，仍须可追溯
-- **push**：列表 → 确认 → 再 `git push`
+- **push**：agent 不执行；提交完成后给出 commit 摘要，由用户手动 `git push`
 
 ## 参考
 
