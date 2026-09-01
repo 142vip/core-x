@@ -1,12 +1,6 @@
 import type { DefaultTheme } from 'vitepress/theme'
 import { OPEN_SOURCE_ADDRESS } from '@142vip/open-source'
-import {
-  vipDayjs,
-  vipDocSite,
-  VipJSON,
-  VipNodeJS,
-  VipPackageJSON,
-} from '@142vip/utils'
+import { vipDayjs, VipJSON, VipNodeJS, VipPackageJSON } from '@142vip/utils'
 import {
   defineVipNavbarConfig,
   defineVipVitepressConfig,
@@ -15,38 +9,9 @@ import {
   zhSearch,
 } from '@142vip/vitepress'
 
-import {
-  getDemoSideBarConfig,
-  getOpenSourcePkgSideBarConfig,
-  sidebarConfig,
-} from './sidebar'
-
-// ============================================================
-// 站点基础信息（SEO）
-// ============================================================
-
-/** 站点线上地址（GitHub Pages），用于 og:url 等绝对链接 */
-const SITE_URL = 'https://142vip.github.io/core-x'
-
-/**
- * 站点 SEO 关键词
- * - 贴合仓库业务：TypeScript 工程化工具集、Monorepo、Egg.js/Nest.js 框架封装
- */
-const SITE_KEYWORDS = [
-  '142vip',
-  'core-x',
-  'TypeScript',
-  'Node.js',
-  'Egg.js',
-  'Nest.js',
-  '工程化',
-  'Monorepo',
-  '工具库',
-  'axios',
-  'grpc',
-  'redis',
-  'typeorm',
-].join(', ')
+// 站点 SEO 与侧边栏配置已拆分至独立模块，本文件仅保留入口装配
+import { seoHead, SITE_DESCRIPTION, siteBase } from './seo'
+import { changelogSidebarConfig, createDocApiSidebarConfig, rootSidebarConfig } from './sidebar'
 
 // ============================================================
 // 路径解析工具
@@ -72,65 +37,22 @@ function resolveFromRoot(...paths: string[]): string {
 // 数据读取
 // ============================================================
 
+/** 根 package.json 信息（名称、版本、描述），供导航栏 / 页脚使用 */
+const pkg = VipPackageJSON.getPackageJSON<{ description: string }>()
+
 /**
  * TypeDoc API 侧边栏数据
  * - 由 `pnpm typedoc:md`（.typedoc/md.config.js）生成到 `docs/apis/typedoc-sidebar.json`
  * - 用 `VipJSON.parse` 显式声明泛型，替代隐式 any 推断
+ * - 仅 config.ts（Node 上下文）读取；sidebar.ts 保持纯数据，避免浏览器端打包 Node API
  */
 const typedocSidebar = VipJSON.parse<DefaultTheme.SidebarItem[]>(
   VipNodeJS.readFileToStrByUTF8(resolveFromRoot('docs/apis/typedoc-sidebar.json')),
   [],
 )
 
-/** 根 package.json 信息（名称、版本、描述），供导航栏 / 页脚 / SEO 使用 */
-const pkg = VipPackageJSON.getPackageJSON<{ description: string }>()
-
-/** 站点 SEO 描述（与根 package.json description 保持一致） */
-const SITE_DESCRIPTION = pkg.description
-
-/**
- * 结构化数据（JSON-LD）：142vip 组织 + core-x 站点实体
- * - 帮助搜索引擎识别组织身份、官网域名与社交账号矩阵
- * - 通过 @graph 合并 Organization / WebSite 两种 schema，仅注入一个 script 标签
- * - JSON-LD 内的 `<` 需转义为 `\u003c`，避免破坏 HTML 解析
- * - 参考：https://schema.org/Organization
- */
-const SITE_JSON_LD = JSON.stringify({
-  '@context': 'https://schema.org',
-  '@graph': [
-    {
-      '@type': 'Organization',
-      '@id': `${SITE_URL}/#organization`,
-      'name': OPEN_SOURCE_ADDRESS.GITHUB_ORGANIZATION_NAME,
-      'alternateName': pkg.name,
-      'description': SITE_DESCRIPTION,
-      'url': OPEN_SOURCE_ADDRESS.HOME_PAGE_DOMAIN_VIP,
-      'logo': `${SITE_URL}/logo.png`,
-      // 组织/作者的公开主页矩阵：GitHub / Gitee / npm / 自媒体
-      'sameAs': [
-        SITE_URL,
-        OPEN_SOURCE_ADDRESS.HOME_PAGE_GITHUB_VIP,
-        OPEN_SOURCE_ADDRESS.HOME_PAGE_GITHUB_MMDAPL,
-        OPEN_SOURCE_ADDRESS.HOME_PAGE_GITEE_VIP,
-        OPEN_SOURCE_ADDRESS.HOME_PAGE_NPM_MMDAPL,
-        OPEN_SOURCE_ADDRESS.HOME_PAGE_CSDN,
-        OPEN_SOURCE_ADDRESS.HOME_PAGE_BILIBILI,
-        OPEN_SOURCE_ADDRESS.HOME_PAGE_JUE_JIN,
-      ],
-    },
-    {
-      '@type': 'WebSite',
-      '@id': `${SITE_URL}/#website`,
-      'name': pkg.name,
-      'url': SITE_URL,
-      'inLanguage': 'zh-CN',
-      'publisher': { '@id': `${SITE_URL}/#organization` },
-    },
-  ],
-}).replace(/</g, '\\u003c')
-
-/** 站点的 base 路径（GitHub Pages 子路径部署时形如 /core-x/） */
-const siteBase = vipDocSite.getBase('core-x')
+/** API 文档侧边栏（`/docs/apis/`）：备用站点 + typedoc 文档正文 */
+const docApiSidebarConfig = createDocApiSidebarConfig(typedocSidebar)
 
 // ============================================================
 // 导航栏
@@ -205,35 +127,8 @@ export default defineVipVitepressConfig({
   // 编译产物静态资源目录
   assetsDir: 'static',
   metaChunk: true,
-  // 站点 head 标签：基础 SEO + 社交分享卡片（Open Graph / Twitter Card）
-  head: [
-    // 站点图标（需带 base 前缀，GitHub Pages 子路径部署时才能正确加载）
-    ['link', { rel: 'icon', href: `${siteBase}favicon.ico` }],
-    // canonical：声明站点权威地址，避免重复内容
-    ['link', { rel: 'canonical', href: SITE_URL }],
-    // 基础 SEO
-    ['meta', { name: 'description', content: SITE_DESCRIPTION }],
-    ['meta', { name: 'keywords', content: SITE_KEYWORDS }],
-    ['meta', { name: 'author', content: '142vip' }],
-    // Open Graph：社交平台分享卡片
-    ['meta', { property: 'og:locale', content: 'zh_CN' }],
-    ['meta', { property: 'og:type', content: 'website' }],
-    ['meta', { property: 'og:site_name', content: pkg.name }],
-    ['meta', { property: 'og:title', content: `${pkg.name} - X一切都有可能` }],
-    ['meta', { property: 'og:description', content: SITE_DESCRIPTION }],
-    ['meta', { property: 'og:url', content: SITE_URL }],
-    ['meta', { property: 'og:image', content: `${SITE_URL}/logo.png` }],
-    // Twitter Card
-    ['meta', { name: 'twitter:card', content: 'summary' }],
-    ['meta', { name: 'twitter:title', content: pkg.name }],
-    ['meta', { name: 'twitter:description', content: SITE_DESCRIPTION }],
-    ['meta', { name: 'twitter:image', content: `${SITE_URL}/logo.png` }],
-    // 结构化数据（JSON-LD）：142vip 组织 + core-x 站点实体，增强搜索引擎对组织信息的识别
-    // 注意：vitepress renderHead 将元组第三元素作为标签 innerHTML 原样输出（type 非 javascript 时不走 esbuild）
-    ['script', { type: 'application/ld+json' }, SITE_JSON_LD],
-    // 浏览器主题色（与 VitePress 默认品牌色 indigo 保持一致）
-    ['meta', { name: 'theme-color', content: '#646cff' }],
-  ],
+  // 站点 head 标签：基础 SEO + 社交分享卡片 + 结构化数据（完整清单见 ./seo.ts）
+  head: seoHead,
   markdown: {
     // 代码高亮主题：暗色 dracula-soft / 亮色 vitesse-light
     theme: {
@@ -251,32 +146,14 @@ export default defineVipVitepressConfig({
     // 导航栏
     nav: navbarConfig,
     logo: '/logo.png',
+    // 侧边栏按路径拆分维护，完整配置见 ./sidebar.ts
     sidebar: {
-      '/': sidebarConfig,
+      // 根路径侧边栏：全量包与 Demo 分组
+      '/': rootSidebarConfig,
       // API 文档侧边栏：typedoc 生成的侧边栏数据
-      '/docs/apis/': {
-        text: 'API',
-        items: [
-          {
-            text: '备用站点',
-            items: [
-              { text: 'API - wiki', link: 'https://github.com/142vip/core-x/wiki' },
-              // 标记为外部链接
-              { text: 'API - typedoc', link: '/apis/', target: '_self' },
-            ],
-          },
-          { text: 'API - 文档', items: typedocSidebar },
-        ],
-      },
+      '/docs/apis/': docApiSidebarConfig,
       // 变更日志侧边栏：各包 changelog + 最佳实践/开源模块快捷入口
-      '/changelogs/': {
-        base: '',
-        items: [
-          { text: '@142vip/core-x', link: '/changelogs/core-x/changelog.html' },
-          { text: '✔️ 最佳实践', items: getDemoSideBarConfig() },
-          { text: '🧰 开源模块', items: getOpenSourcePkgSideBarConfig() },
-        ],
-      },
+      '/changelogs/': changelogSidebarConfig,
     },
     returnToTopLabel: '返回顶部',
     sidebarMenuLabel: '左侧菜单',
