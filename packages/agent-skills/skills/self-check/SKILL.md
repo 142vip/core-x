@@ -13,7 +13,7 @@ description: 代码修改后的质量验证与 TODO 迭代流程（跨项目）�
 
 - 刚完成编写/修改，准备回复用户
 - 修复 Bug / 重构后
-- 用户要求交付、提交、全量验收
+- 用户要求交付 / 全量验收（自检通过 ≠ 提交；git 提交仍须用户指令）
 - 任务实质推进了功能 / 债项（无论用户是否提到 TODO）
 
 ## 核心原则
@@ -37,7 +37,7 @@ description: 代码修改后的质量验证与 TODO 迭代流程（跨项目）�
 2. 若误改了下游 `.agents/skills/` 镜像 → **同一任务回写包内文件**，禁止只改镜像
 3. 改了 TS/CLI 时：`pnpm --filter @142vip/agent-skills build`
 4. `pnpm exec vip-agent-skills --target .` 刷新镜像；`--check` 防漂移
-5. 实质变更 → 发版；其它下游项目 upgrade 后再 sync
+5. 实质变更 → 按维护者节奏发版（**发版是独立动作**，由维护者决定时机与版本）；未发版期间，变更已通过镜像同步给本仓使用
 
 `business-map` 仅下游项目本地 skill，不进入上述流程。
 
@@ -155,7 +155,9 @@ npx eslint --fix --max-warnings 0 path/to/a.ts path/to/b.vue
 
 ---
 
-## 交付收口自检（用户要交付/提交/全量验收）
+## 交付收口自检（用户要交付/全量验收）
+
+> **自检 ≠ 提交**：本流程只做质量验证，验证通过即交付结果；`git commit` / `push` 仍须用户明确指令（见 `commit` skill），不得把「自检通过」当作「可以自动提交」。
 
 在日常自检基础上追加：
 
@@ -229,6 +231,8 @@ npx eslint --fix --max-warnings 0 path/to/a.ts path/to/b.vue
 - 移除：…
 - 新增/调整：…（优先级）
 ```
+
+> 提交：未获用户指令不 commit / 不 push；用户要求时按 `commit` skill 执行。
 
 ### 交付
 

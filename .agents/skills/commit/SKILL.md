@@ -1,6 +1,6 @@
 ---
 name: agent-commit
-description: 跨项目 Git 提交规范。当用户要求提交代码、写 commit message、整理改动准备提交时使用。覆盖 Conventional Commits、分类提交、文件粒度、Agent 只 commit 不擅自 push。scope 枚举与 trailer 以本仓 AGENTS.md 为准。按意图触发。
+description: 跨项目 Git 提交规范。当用户要求提交代码、写 commit message、整理改动准备提交时使用。覆盖 Conventional Commits、分类提交、文件粒度、Agent 仅在用户明确要求时 commit、不擅自 push。scope 枚举与 trailer 以本仓 AGENTS.md 为准。按意图触发。
 ---
 
 # Git 提交规范（通用核心）
@@ -12,7 +12,7 @@ description: 跨项目 Git 提交规范。当用户要求提交代码、写 comm
 ## 触发场景
 
 - 用户要求提交 / commit / 写 commit message / 整理改动提交
-- **用户未要求时：不主动 commit**
+- **用户未要求时：不主动 commit、更不 push**（交付结果 ≠ 提交）
 
 ## 前置：读取暂存区与最近提交
 
@@ -150,6 +150,8 @@ fix(docs): 补充 `BaseVo` 使用说明
 ---
 
 ## 执行步骤
+
+> **门闩**：仅当用户明确要求提交（commit / 写 message / 整理改动提交）时才进入本流程；未要求 → 不 stage、不 commit、不 push，到此为止仅交付结果。
 
 1. 读 status / cached diff / 近期 log
 2. 暂存区空 → 说明无法提交

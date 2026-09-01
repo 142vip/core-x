@@ -325,6 +325,7 @@ class ExampleService {
 | 为齐全填空值传参 | 无法区分「未筛选」 |
 | 顺手改无关代码、留注释废码 | 违反最小改动与 VCS 纪律 |
 | **lint 不通过就提交 / 宣称完成** | 日常：改动路径零 error；交付：仓库根全量 lint 按本仓策略通过（见下「Lint 策略」） |
+| 未获用户明确要求就 `git commit` / `git push` | 提交权在用户；交付 ≠ 提交（见 `commit`） |
 
 ---
 
@@ -452,7 +453,7 @@ pnpm install
 5. **局部 Lint**：本仓约定命令（常见 `eslint --fix --max-warnings 0 <paths>`）
 6. **受影响 Build**：见 `self-check` 与 `.agents/project/build-map.md`（若有）
 7. **TODO 维护**（若根目录存在 `TODO.md`）：见 `self-check`
-8. **回复用户**：结论 + 验证 + 变更清单
+8. **回复用户**：结论 + 验证 + 变更清单（**不主动 commit / push**；提交仅用户指令触发，见 `commit`）
 
 ## 参考
 
