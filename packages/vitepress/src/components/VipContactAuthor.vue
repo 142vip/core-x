@@ -1,9 +1,5 @@
 <script lang="ts" setup>
-import { ElImage, ElLink } from 'element-plus'
 import { VIP_CONTACT_PLATFORM_LINKS, VIP_CONTACT_WECHAT_QR } from './constants/contactPlatforms'
-import 'element-plus/theme-chalk/base.css'
-import 'element-plus/theme-chalk/el-image.css'
-import 'element-plus/theme-chalk/el-link.css'
 </script>
 
 <template>
@@ -15,33 +11,32 @@ import 'element-plus/theme-chalk/el-link.css'
     </p>
 
     <div class="vip-contact-author__wechat">
-      <ElImage
+      <img
         :src="VIP_CONTACT_WECHAT_QR"
         alt="关注微信公众号或添加好友联系储凡"
         class="vip-contact-author__wechat-img"
-        fit="contain"
         title="关注微信公众号或添加好友联系储凡"
-      />
+        loading="lazy"
+      >
     </div>
 
     <div class="vip-contact-author__platform-link">
-      <ElLink
+      <a
         v-for="item in VIP_CONTACT_PLATFORM_LINKS"
         :key="item.href"
         :href="item.href"
         :title="item.title"
-        :underline="false"
         class="vip-contact-author__platform-anchor"
         rel="nofollow noreferrer"
         target="_blank"
       >
-        <ElImage
+        <img
           :alt="item.alt"
           :src="item.icon"
           class="vip-contact-author__platform-img"
-          fit="contain"
-        />
-      </ElLink>
+          loading="lazy"
+        >
+      </a>
     </div>
 
     <p>
@@ -64,6 +59,7 @@ import 'element-plus/theme-chalk/el-link.css'
 .vip-contact-author__wechat-img {
   margin: 10px;
   border-radius: 5px;
+  object-fit: contain;
 }
 
 .vip-contact-author__platform-link {
@@ -79,10 +75,13 @@ import 'element-plus/theme-chalk/el-link.css'
   display: inline-flex;
   margin: 5px;
   line-height: 0;
+  color: inherit;
+  text-decoration: none;
 }
 
 .vip-contact-author__platform-img {
   width: 24px;
   height: 24px;
+  object-fit: contain;
 }
 </style>
