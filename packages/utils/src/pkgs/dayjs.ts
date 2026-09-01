@@ -1,5 +1,4 @@
-import type { ConfigType } from 'dayjs'
-import dayjs from 'dayjs'
+import dayjs, { ConfigType, Dayjs } from 'dayjs'
 
 /**
  * dayjs 常用日期格式模板。
@@ -59,17 +58,30 @@ export class VipDayjs {
   private readonly FORMAT_TEMPLATE_STR_DATE = DateFormatTemplate.DATE
 
   /**
+   * 获取原始dayjs对象
+   */
+  public getOriginDayjs(date?: dayjs.ConfigType): Dayjs {
+    return dayjs(date)
+  }
+
+  public getYear(): number {
+    return this.getOriginDayjs().year()
+  }
+
+  /**
    * 获取当前时间戳。单位：毫秒
    */
   public getCurrentTimestamp(): number {
-    return dayjs().valueOf()
+    const dayjs = this.getOriginDayjs()
+    return dayjs.valueOf()
   }
 
   /**
    * 获取时间戳。单位：毫秒
    */
   public getTimestamp(date: ConfigType): number {
-    return dayjs(date).valueOf()
+    const dayjs = this.getOriginDayjs(date)
+    return dayjs.valueOf()
   }
 
   /**
@@ -100,7 +112,8 @@ export class VipDayjs {
    * 时间格式化，默认： 年-月-日 时:分:秒
    */
   public formatDateToStr(date: ConfigType, template?: DateFormatTemplate | string): string {
-    return dayjs(date).format(template ?? this.FORMAT_TEMPLATE_STR)
+    const dayjs = this.getOriginDayjs(date)
+    return dayjs.format(template ?? this.FORMAT_TEMPLATE_STR)
   }
 
   /**
@@ -109,11 +122,11 @@ export class VipDayjs {
    * - 英文：`Aug 9`
    */
   public formatMonthDay(date: ConfigType, locale = 'zh'): string {
-    const d = dayjs(date)
-    if (!d.isValid()) {
+    const dayjs = this.getOriginDayjs(date)
+    if (!dayjs.isValid()) {
       return typeof date === 'string' ? date : ''
     }
-    return d.format(locale === 'en' ? DateFormatTemplate.MONTH_DAY_EN : DateFormatTemplate.MONTH_DAY_CN)
+    return dayjs.format(locale === 'en' ? DateFormatTemplate.MONTH_DAY_EN : DateFormatTemplate.MONTH_DAY_CN)
   }
 
   /**
@@ -144,7 +157,8 @@ export class VipDayjs {
    * 用于 `meta.fetchedAt`、Token 过期时间等业务持久化字段。
    */
   public formatToISOStr(date?: ConfigType): string {
-    return dayjs(date).toISOString()
+    const dayjs = this.getOriginDayjs(date)
+    return dayjs.toISOString()
   }
 
   /**
