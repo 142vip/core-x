@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.28 (2026-09-01)
+
+### ✨ Features
+
+- 页脚版权年份支持动态 `copyrightYear` 参数 &nbsp;-&nbsp; by **chufan** [<samp>(974b7)</samp>](https://github.com/142vip/core-x/commit/974b77c3)
+- 项目表格第三列溢出省略与文档列原生元素化 &nbsp;-&nbsp; by **chufan** [<samp>(a4ee6)</samp>](https://github.com/142vip/core-x/commit/a4ee6919)
+- 联系人/开源组件移除 ElLink/ElImage 弃用用法 &nbsp;-&nbsp; by **chufan** [<samp>(a5ce4)</samp>](https://github.com/142vip/core-x/commit/a5ce4450)
+
+**Release New Version v0.0.1-alpha.28 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/vitepress)**
+
 ## v0.0.1-alpha.27 (2026-08-07)
 
 ### 📦 Build
