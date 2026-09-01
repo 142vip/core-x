@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.58 (2026-09-01)
+
+### ✨ Features
+
+- `VipDayjs` 新增 `getOriginDayjs`/`getYear` 并复用内部调用 &nbsp;-&nbsp; by **chufan** [<samp>(fb56c)</samp>](https://github.com/142vip/core-x/commit/fb56c6a2)
+
+**Release New Version v0.0.1-alpha.58 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/utils)**
+
 ## v0.0.1-alpha.57 (2026-08-31)
 
 ### ✨ Features
