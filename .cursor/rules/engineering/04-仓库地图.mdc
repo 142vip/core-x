@@ -13,7 +13,11 @@ alwaysApply: true
 core-x/
 ├── packages/          # 31 个 @142vip/* 可发布包
 ├── apps/              # nest-demo / egg-demo / vitepress-demo / vuepress-demo
-├── .agents/skills/    # agent-skills 下游镜像（fa ai sync 生成，随仓库提交）
+├── AGENTS.md          # L0 真源：Agent 项目开发指南
+├── .agents/           # Agent 治理入口（README.md）+ skills/ 镜像（fa ai sync 生成）
+├── .codex/            # Codex 薄入口（README.md）
+├── .cursor/           # Cursor 入口（README.md）+ rules/**
+├── .workbuddy/        # WorkBuddy 入口（README.md）+ memory/（不入库）
 ├── .vitepress/        # 根文档站
 ├── docs/              # index.md + TypeDoc（apis/、wiki/）
 ├── scripts/           # CI、commit 校验、发布（见 15）

@@ -1,6 +1,7 @@
-# core-x Cursor Rules
+# Cursor 工作入口
 
-> 仅模型与维护者使用，**不出现在**仓库对外文档（`14`）。
+> **薄入口**：Cursor 的细粒度规则在 `.cursor/rules/**`（`.mdc` 自动加载）；项目规范以根 `AGENTS.md` 为准，治理见 `.agents/README.md`。
+> 本文件是 Cursor 在 core-x 的工作入口（含 rules 索引）；**不出现在**仓库对外文档（`14`）。
 
 ## 单次任务路径
 
@@ -9,7 +10,7 @@ codegraph sync → 16 全仓清单 → 任务路由 → 读代码小改
 → lint:fix(0 error) → cd 牵连模块 build → 09 文档自检 → 交付
 ```
 
-## 目录
+## rules 目录
 
 | 目录 | 职责 |
 |------|------|
@@ -35,3 +36,7 @@ codegraph sync → 16 全仓清单 → 任务路由 → 读代码小改
 | ESM | `business/ESM与模块发布` |
 
 新事实沉淀：`12`。包表变更同步：`16` + 根 README + `sidebar.ts`。
+
+## 通用 Skills（镜像）
+
+`.agents/skills/{workflow,code-dev,self-check,commit}/SKILL.md` 由 `fa ai sync` 从 `@142vip/agent-skills` 刷出；**写通用流程只改真源 `packages/agent-skills/skills/**`，禁止只改镜像**（见 `.agents/README.md`）。

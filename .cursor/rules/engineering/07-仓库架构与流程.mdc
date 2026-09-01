@@ -110,7 +110,7 @@ flowchart TD
 
 ## 7. 模型工作流
 
-见 `rules/README.md`（仅模型，不写入根 README）。
+见 `.cursor/README.md`（仅模型，不写入根 README）。
 
 ## 8. 核心约束
 

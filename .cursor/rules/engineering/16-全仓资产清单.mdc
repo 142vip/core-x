@@ -29,7 +29,13 @@ alwaysApply: true
 | `Dockerfile` / `nginx.conf` | 文档站容器部署 |
 | `spider/` | **非 workspace**：离线爬虫 `.cjs`（文件头 `eslint-disable no-console`） |
 | `.codegraph/` | CodeGraph 索引（任务前 `codegraph sync`） |
+| `AGENTS.md` | **L0 真源**：Agent 项目开发指南（边界 · 栈 · Git · 高效路径） |
+| `.agents/README.md` | Agent 治理入口（架构 · 层级 · 真源回写 · 维护） |
 | `.agents/skills/` | agent-skills 下游镜像（`fa ai sync` 生成；**随仓库提交**，供编辑器/Agent 读取） |
+| `.codex/README.md` | Codex 薄入口 |
+| `.cursor/README.md` | Cursor 工作入口（rules 索引；规则本体在 `.cursor/rules/**`） |
+| `.workbuddy/README.md` | WorkBuddy 工作入口 |
+| `.workbuddy/memory/` | WorkBuddy 会话记忆（每日日志 + MEMORY.md；**不入库**） |
 | `dist/` | VitePress 构建输出（`.gitignore`） |
 
 ## packages/ · 31 个可发布包
