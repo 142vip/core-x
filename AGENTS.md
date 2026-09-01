@@ -72,7 +72,7 @@
 - **格式**：Conventional Commits + `@142vip/commit-linter`（commit-msg 钩子校验）
 - **分类提交**：包 / 应用 → 功能域 → 主题；单条默认 ≤15 staged 文件；只 `git add` 本批路径，**禁止 `git add -A`**
 - **分支**：新特性上 `next`；fix / docs 可上 `main`；npm 发版分支 `next`
-- **Agent 约束**：只 `git commit`，默认不 `git push`；**禁止** commit message 含 `Co-authored-by` 等 AI 工具署名 trailer
+- **Agent 约束**：只 `git commit`，**不执行 `git push`**（推送由用户手动操作）；**禁止** commit message 含 `Co-authored-by` 等 AI 工具署名 trailer
 - 详细规范见 `.cursor/rules/engineering/05-Git与发布` 与 `commit` skill
 
 ## 改完自检（铁律）

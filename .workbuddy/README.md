@@ -16,4 +16,4 @@
   - `MEMORY.md`：长期项目笔记（技术分层、热点、协作硬约束）
 - **禁止**把 `memory/` 内容提交进 git；稳定知识只写 L0 / L1（`AGENTS.md` / `.agents/**`）
 - 单次任务路径：`AGENTS.md`「高效默认路径」→ `workflow` skill 定场景策略 → 小改 → 局部 lint → 受影响 build → 文档同步
-- 提交：只 commit 不 push；分类提交规范见 `commit` skill
+- 提交：只 commit、不 push（**push 由用户手动操作**）；分类提交规范见 `commit` skill
