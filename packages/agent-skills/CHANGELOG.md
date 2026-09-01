@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## v0.0.1-alpha.4 (2026-09-01)
+
+### 📖 Documentation
+
+- README 补充 `vip-agent-skills` CLI 用法示例 &nbsp;-&nbsp; by **chufan** [<samp>(e79ce)</samp>](https://github.com/142vip/core-x/commit/e79cef88)
+- 通用 skill 强化「交付 ≠ 提交」约束并同步镜像 &nbsp;-&nbsp; by **chufan** [<samp>(ba60d)</samp>](https://github.com/142vip/core-x/commit/ba60dbde)
+- 通用 skill 收紧「push 由用户手动操作」约束并同步镜像 &nbsp;-&nbsp; by **chufan** [<samp>(3aa0c)</samp>](https://github.com/142vip/core-x/commit/3aa0cc72)
+
+**Release New Version v0.0.1-alpha.4 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/agent-skills)**
+
 ## v0.0.1-alpha.3 (2026-08-31)
 
 **No Significant Changes**
