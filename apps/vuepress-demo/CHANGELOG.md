@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file. See [Conven
 
 <!-- #region recent-alpha -->
 
+## v0.0.1-alpha.7 (2026-09-01)
+
+### ✨ Features
+
+- 验证 @142vip/vuepress 开箱即用 &nbsp;-&nbsp; by **chufan** and **Cursor** [<samp>(16066)</samp>](https://github.com/142vip/core-x/commit/160667a1)
+
+**Release New Version v0.0.1-alpha.7 [👉 View New Package On NPM](https://www.npmjs.com/package/vuepress-demo)**
+
 ## v0.0.1-alpha.6 (2025-05-18)
 
 ### ✨ Features
