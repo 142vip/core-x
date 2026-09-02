@@ -68,7 +68,7 @@
     "registry": "https://registry.npmjs.org"
   },
   "peerDependencies": {
-    "@142vip/cdn": "0.0.1-alpha.0",
+    "@142vip/cdn": "0.0.1-alpha.2",
     "@142vip/open-source": "workspace:*",
     "element-plus": "2.13.7",
     "mermaid": "11.16.0",
@@ -76,7 +76,7 @@
     "vue": "3.5.40"
   },
   "dependencies": {
-    "@142vip/cdn": "0.0.1-alpha.0",
+    "@142vip/cdn": "0.0.1-alpha.2",
     "@142vip/open-source": "workspace:*",
     "copy-to-clipboard": "4.0.2",
     "element-plus": "2.13.7",
