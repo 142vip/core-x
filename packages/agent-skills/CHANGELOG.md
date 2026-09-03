@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## v0.0.1-alpha.5 (2026-09-03)
+
+**No Significant Changes**
+
 ## v0.0.1-alpha.4 (2026-09-01)
 
 ### 📖 Documentation
