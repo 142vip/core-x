@@ -4,7 +4,7 @@ import {
   defineVipNavbarConfig,
   defineVipSidebarConfig,
   defineVipVitepressConfig,
-  getVipFooter,
+  enableVipFooter,
   getVipThemeConfig,
   zhSearch,
 } from '@142vip/vitepress'
@@ -103,8 +103,10 @@ export default defineVipVitepressConfig({
     sidebar: {
       '/': sidebarConfig,
     },
-    // 页脚
-    footer: getVipFooter({
+    // 全局页脚
+    ...enableVipFooter({
+      showBackTop: true,
+      showBadge: true,
       license: OPEN_SOURCE_ADDRESS.GITHUB_REPO_CORE_X,
       pkgName: pkg.name,
       pkgVersion: pkg.version,

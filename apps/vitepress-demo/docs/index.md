@@ -27,9 +27,3 @@ features:
     details: 适用工程化，可复用性极高，支持Monorepo模式
     icon: 🧰
 ---
-
-<script setup>
-import HomePage from '@theme/components/HomePage.vue'
-</script>
-
-<HomePage/>
