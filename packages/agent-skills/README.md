@@ -126,6 +126,18 @@ TODO.md                           # 可选：未完成待办（self-check 会维
 
 冲突优先级：`AGENTS.md` > `.agents/project/*` > 已同步的通用 skills。
 
+## 下游使用铁律
+
+| 禁止 | 应做 |
+|------|------|
+| 手改已同步的 `workflow` / `code-dev` / `self-check` / `commit` 并提交 | 通用流程变更 → 改 **本包真源** `skills/<name>/SKILL.md` → 发版 |
+| 在下游「本地定制」覆盖包内容 | 下游 upgrade → `pnpm exec vip-agent-skills --target .` |
+| Commit 写入 `Co-authored-by: Cursor …` 等 Agent / 大模型 trailer | 见 `commit` skill；message 零产品痕迹 |
+
+下游**仅本地维护**（不被本包覆盖）：`AGENTS.md` · `business-map` · `.agents/project/*` · 工具薄入口。
+
+防漂移：`pnpm exec vip-agent-skills --target . --check`（不一致 exit 1）。
+
 ## 证书
 
 [MIT](https://opensource.org/license/MIT)

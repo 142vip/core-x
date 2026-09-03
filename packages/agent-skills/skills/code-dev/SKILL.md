@@ -1,6 +1,6 @@
 ---
 name: agent-code-dev
-description: 跨项目高质量代码生成规范（code-dev）。当用户要求实现功能、修复 Bug、重构代码、编写组件或接口、生成代码片段时使用。覆盖命名与常量、函数与 SOLID、类型与对象、Nest/HTTP 分层、数据库、注释与日志、最小改动。项目栈与包名以仓库 AGENTS.md 为准。按意图触发。
+description: 跨项目高质量代码生成规范（code-dev）。当用户要求实现功能、修复 Bug、重构代码、编写组件或接口、生成代码片段时使用。覆盖命名与常量、函数与 SOLID、类型纪律（禁止 any、慎用 unknown、尽最大努力声明类型）、Nest/HTTP 分层、数据库、注释与日志、最小改动、下游禁止手改通用 skill 镜像。项目栈与包名以仓库 AGENTS.md 为准。按意图触发。
 ---
 
 # 代码开发规范（通用核心）
@@ -39,12 +39,12 @@ description: 跨项目高质量代码生成规范（code-dev）。当用户要�
 
 1. **首选应用指定的端口号**：从项目约定（`package.json` 的 `dev` / `start` 脚本、`vite.config`、`.env*`、根 `scripts/` 等）读取**已声明**的目标端口（如脚本 `vite --port 9527` 或 `vite.config.ts` 的 `server.port`）。
 2. **端口被占 → 复用现有实例**：
-   - 启动前用 `lsof -nP -iTCP:<port> -sTCP:LISTEN` 探测；若已有进程在 LISTEN（且 PID 仍存活），**直接复用，不另起新进程**。
-   - `lsof` 仅返回 LISTEN 记录不代表进程真活着（kernel 可能已回收 socket 元信息）——必须用 `curl -m 3 -o /dev/null -w "%{http_code}" http://127.0.0.1:<port>/` 或 `nc -zv` 真实探活。
+    - 启动前用 `lsof -nP -iTCP:<port> -sTCP:LISTEN` 探测；若已有进程在 LISTEN（且 PID 仍存活），**直接复用，不另起新进程**。
+    - `lsof` 仅返回 LISTEN 记录不代表进程真活着（kernel 可能已回收 socket 元信息）——必须用 `curl -m 3 -o /dev/null -w "%{http_code}" http://127.0.0.1:<port>/` 或 `nc -zv` 真实探活。
 3. **不擅自偏移端口**：不要在 `Vite` / `next dev` 等框架自动"尝试下一个端口"时盲目接受新端口。如果目标端口被占且无响应，先停掉占用进程（或让用户确认），再启动；不要在原工作区同时存在 9527 / 9528 两个 dev 实例。
 4. **后台进程必须收尾**：
-   - 使用 `Bash` `run_in_background: true` 启动的 dev / build watcher / 长连接服务，**任务回复前必须**调用 `TaskStop` 或 `pkill -f <pattern>` 关闭；保留进程会让下一次任务的端口探测 / 日志查看 / 资源占用都受影响。
-   - 对于非后台的一次性命令（`pnpm build`、`pnpm typecheck` 等），执行完毕即结束，不留进程。
+    - 使用 `Bash` `run_in_background: true` 启动的 dev / build watcher / 长连接服务，**任务回复前必须**调用 `TaskStop` 或 `pkill -f <pattern>` 关闭；保留进程会让下一次任务的端口探测 / 日志查看 / 资源占用都受影响。
+    - 对于非后台的一次性命令（`pnpm build`、`pnpm typecheck` 等），执行完毕即结束，不留进程。
 5. **禁止跨任务占着不释放**：一个任务链中已开的后台 dev 服务，下一个无关任务**不能继续依赖**；必要时先 `TaskStop` 旧实例再起新实例，避免孤儿进程累积。
 6. **改动涉及 dev / preview / docker-compose 端口**：在 `package.json`、`vite.config.ts`、`nest-cli.json` 等调整端口前，**先与本仓 README / AGENTS.md 核对**，避免改完无人更新文档导致团队成员启动失败。
 
@@ -121,22 +121,39 @@ const syncedAt = vipDayjs.formatToISOStr()
 
 ---
 
-## 类型、interface 与导出边界
+## 类型纪律（强制）
+
+| 规则 | 要求 |
+|------|------|
+| **禁止 `any`** | 触及与新增代码一律不用；无「临时 any / 先写完再改」例外 |
+| **慎用 `unknown`** | 仅外部边界（HTTP / JSON / Storage 入参）且**同一函数内**立刻用守卫收窄；禁止领域层、props、返回值长期停在 `unknown` |
+| **尽最大努力声明类型** | 优先 `interface` / 联合 / `enum` / 泛型；不确定则读同模块既有类型并对齐，禁止用 `any`/`unknown` 偷懒 |
+| **少用 `as`** | 仅边界单点并注释原因；领域层用 `instanceof` / 库守卫 / 具名 type guard |
+| **风格统一** | 类型命名、文件放置、导出粒度与同模块现有代码一致 |
 
 - 运行时校验只在边界：HTTP DTO、JSON normalize、Storage
-- **禁止非必要 `any` / `as`**；`as` 仅边界单点并注释；领域层用 `instanceof`、库守卫、具名 type guard
+- **禁止无效数组展开**：已是数组禁止 `[...arr]` 仅为传参或再 `.filter`/`.map`；防 sort 突变用 `toSorted`/`toReversed`；Iterable→数组用 `Array.from`；必要隔离拷贝用 `.slice()` 并注释
+- **禁止无意义 `String(` / `Number(` / `Boolean(`**：已知标量类型直接用；边界一次 normalize / DTO Transform
 - `interface`：按作用域放模块 `*.interface.ts` 或文件顶部；≥2 处引用再独立文件并 export
 - **导出命名空间克制**：域内类型不要泄漏到无关上层（如 User 表的 `UserType` 不要挂到 Database 根导出）
 - 禁止零信息量 `export type A = B` 完全等价别名
 
 ```ts
-// ✅ 边界 unknown + 守卫（优先本仓已有，如 vipLodash.isJsonRecord）
+// ✅ 边界 unknown + 守卫（优先本仓已有守卫）；领域层勿长期停在 unknown
 function parseExternalData(raw: unknown): ParsedData {
   if (!isJsonRecord(raw))
     throw new Error('Invalid data')
   const name = typeof raw.name === 'string' && raw.name.trim() ? raw.name.trim() : undefined
   return { name }
 }
+
+// ❌ 无效展开
+const sorted = [...items].sort(cmp)
+items.filter(fn) // 已是数组却先 [...items].filter
+
+// ✅
+const sorted = items.toSorted(cmp)
+Array.from(someSet).toSorted()
 ```
 
 ---
@@ -299,9 +316,9 @@ class ExampleService {
 - **具体边界以本仓 `AGENTS.md` / 规则为准**（哪些包互不依赖、谁可依赖谁）
 - **判断标准**：见各包 `package.json` 的 `dependencies` 与源码 `import`；任何反向或超出职责的引用即违规
 - 常见约定模式（示例）：
-  - 基础通用包之间**互不依赖**（避免循环与职责混淆）
-  - 业务应用可依赖共享包；共享包**禁止**反向依赖应用
-  - 跨层依赖方向单一：低层 ← 高层，禁止横向互引
+    - 基础通用包之间**互不依赖**（避免循环与职责混淆）
+    - 业务应用可依赖共享包；共享包**禁止**反向依赖应用
+    - 跨层依赖方向单一：低层 ← 高层，禁止横向互引
 - **新增包先写边界**：在 `README.md` 的「职责边界」段写清「依赖谁 / 不依赖谁 / 谁依赖我」
 
 ---
@@ -310,11 +327,12 @@ class ExampleService {
 
 | 禁止 | 原因 |
 |------|------|
-| `any` / 领域层滥用 `as` | 破坏类型安全 |
+| `any` / 领域层 `unknown` 偷懒 / 滥用 `as` | 破坏类型安全；先写准类型再实现 |
 | 魔法值 / 明文常量冒充枚举 | 难维护 |
 | 空壳命名（默认 `result` / `data` / `info` / `temp` 等） | 读代码靠猜；须贴业务 |
 | 业务路径 `new Date()` / 散落 `Date.now()` | 不统一时区与格式；用 `vipDayjs` |
-| 中途 `Boolean(x)` 洗布尔 | 应在类型/默认参数/边界校验收口 |
+| 中途 `Boolean(x)` / 无意义 `Number`/`String` | 应在类型/默认参数/边界校验收口 |
+| `[...arr].sort` / 无效 `[...arr]` 再 filter | 用 `toSorted` / 直接调用 / `Array.from` |
 | 无意义 `buildXxxResult` 薄工厂 | 直接 `return { ... }` |
 | 内联 `(await ...)` | 难调试 |
 | 否定条件堆叠 / 双重否定 | 难读 |
@@ -421,8 +439,20 @@ pnpm install
 
 ### 真源统一
 
-- 通用能力（skill / 工具 / 配置）的**真源**在发布它的 monorepo（`@142vip` 生态为 `core-x` 的 `packages/<name>/`）；升级、发布都走真源仓
-- 下游仓**不持有**本地同名包副本；通过 npm 版本引用；本地联调可临时用 `link:` / `file:` 协议，发布后切回正式版本
+- 通用能力（skill / 工具 / 配置）的**唯一真源**在发布它的 monorepo（`@142vip` 生态为 `core-x` 的 `packages/<name>/`）；升级、发布都走真源仓
+- 下游仓**不持有**本地同名包副本；通过 npm 版本引用；本地联调可临时用 `link:` / `file:`，发布后切回正式版本
+
+### 下游镜像（强制 · 消费方必守）
+
+已由 `vip-agent-skills` / `fa ai sync` 写入下游的通用 skill（`workflow` · `code-dev` · `self-check` · `commit`）：
+
+| 禁止 | 应做 |
+|------|------|
+| 在下游仓手改这些镜像「本地定制」通用流程 | 改通用约束 → 改 **`@142vip/agent-skills` 真源**对应 `skills/<name>/SKILL.md` |
+| 只把通用 skill 改动 commit 在下游镜像 | 真源改完 → 发版 → 下游 upgrade → `pnpm exec vip-agent-skills --target .` |
+| 用下游 PR 覆盖包已同步内容 | 下游只维护不被覆盖的：`AGENTS.md` · `business-map` · `.agents/project/*` · 工具薄入口 |
+
+漂移检测：`pnpm exec vip-agent-skills --target . --check`（不一致 exit 1）。
 
 ### workspace 依赖协议（monorepo 包）
 

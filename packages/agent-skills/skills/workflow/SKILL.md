@@ -84,8 +84,7 @@ description: 跨项目高效执行管线与知识沉淀规范。当开始一个�
 
 | 发现 | 写回目标 |
 |------|----------|
-| 跨项目通用编码 / 自检 / Git 提交流程 | **通用 skill 真源**（`@142vip/agent-skills`）→ 发版 → 下游升级 |
-| 本仓编码纪律 / 边界 | 根 `AGENTS.md` |
+| 跨项目通用编码 / 自检 / Git 提交流程 | **必须**写回 `@142vip/agent-skills` 真源 `skills/<name>/SKILL.md` → 发版 → 下游 upgrade；**禁止**只改下游镜像 || 本仓编码纪律 / 边界 | 根 `AGENTS.md` |
 | 本仓业务落点 / 近期模式 | `.agents/skills/business-map` |
 | 本仓构建命令映射 | `.agents/project/build-map.md` |
 | 某工具命令习惯 | L2 工具薄入口 |
@@ -94,11 +93,14 @@ description: 跨项目高效执行管线与知识沉淀规范。当开始一个�
 
 ### 铁律
 
-- **单一真源**：通用流程只维护在通用 skill 包内；**禁止只改镜像不改包**（误改镜像 → 同一任务回写包内文件）
+- **单一真源**：通用流程只维护在 `@142vip/agent-skills` 包内 `skills/<name>/SKILL.md`
+- **下游禁止手改镜像**：`vip-agent-skills` / `fa ai sync` 已覆盖的 `workflow` / `code-dev` / `self-check` / `commit` **不得**在下游仓本地改完就提交；改进必须回写真源 skill → 发版 → 下游 upgrade + sync
+- **禁止只改镜像不改包**（真源仓内误改镜像 → 同一任务回写包内文件）
 - `business-map` 等业务落点 skill **永不**进 npm 包、永不被同步工具覆盖
 - 工具薄入口**禁止**复制编码纪律全文（只补「怎么搜 / 怎么改 / 怎么批」差异）
 - 会话 memory 不进仓库；稳定知识只写 L0 / L1
 - 对外交付与业务文档**不引用**内部 rules 路径
+- Commit message **禁止** Agent / IDE / 大模型 trailer（见 `commit` skill）
 
 ## 回复模板（强制精简）
 
