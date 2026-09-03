@@ -3,15 +3,15 @@
  * VipMermaid：渲染 Mermaid 架构图，并按内容尺寸自动切换展示模式。
  *
  * - 静态模式：内容可完整展示时居中显示，高度随内容自适应
- * - 交互模式：内容超出区域时启用缩放、平移、还原与全屏
+ * - 交互模式：内容超出区域时提供缩放、平移、还原与全屏；悬停显示「启用交互」按钮，点击后挂载滚轮/拖拽
  */
 import copy from 'copy-to-clipboard'
-import { useData } from 'vitepress'
 import { nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import {
   renderVipMermaidSvg,
   resolveVipMermaidTheme,
 } from '../core/mermaid-theme'
+import { useVipDocTheme } from './composables/useVipDocTheme'
 import { getVipMermaidInteractiveViewportHeight, measureVipMermaidFit, useVipMermaidViewport } from './utils/vip-mermaid-viewport'
 
 type VipMermaidCopyState = 'idle' | 'copied' | 'failed'
@@ -23,7 +23,7 @@ const props = defineProps<{
   theme?: string
 }>()
 
-const { isDark } = useData()
+const { isDark } = useVipDocTheme()
 const panelRef = ref<HTMLElement | null>(null)
 const inlineViewportRef = ref<HTMLElement | null>(null)
 const inlineContentRef = ref<HTMLElement | null>(null)
@@ -34,6 +34,8 @@ const fullscreenOpen = ref(false)
 const fullscreenContent = ref('')
 /** 内容超出展示区域时为 true，此时启用缩放、平移与全屏 */
 const needsInteraction = ref(false)
+/** 用户点击图表后为 true，才挂载滚轮/拖拽，避免与页面滚动冲突 */
+const panZoomArmed = ref(false)
 /** 已成功渲染 SVG 时为 true，用于显示复制等通用操作 */
 const hasContent = ref(false)
 const copyState = ref<VipMermaidCopyState>('idle')
@@ -102,6 +104,7 @@ function updateDisplayMode(): void {
   const content = inlineContentRef.value
   if (panel == null || content == null || content.innerHTML.length === 0) {
     needsInteraction.value = false
+    panZoomArmed.value = false
     inlineViewport.unmountViewport()
     inlineViewport.resetTransform()
     return
@@ -113,6 +116,7 @@ function updateDisplayMode(): void {
 
   if (measure == null) {
     needsInteraction.value = false
+    panZoomArmed.value = false
     inlineViewport.unmountViewport()
     inlineViewport.resetTransform()
     return
@@ -121,10 +125,17 @@ function updateDisplayMode(): void {
   needsInteraction.value = !measure.fitsNaturally
 
   if (needsInteraction.value) {
-    inlineViewport.mountViewport()
+    if (panZoomArmed.value) {
+      inlineViewport.mountViewport()
+    }
+    else {
+      inlineViewport.unmountViewport()
+    }
     inlineViewport.fitToView()
     return
   }
+
+  panZoomArmed.value = false
 
   inlineViewport.unmountViewport()
   inlineViewport.resetTransform()
@@ -197,6 +208,26 @@ function closeFullscreen(): void {
   fullscreenOpen.value = false
   document.body.classList.remove('vip-mermaid-fs-open')
   fullscreenViewport.unmountViewport()
+}
+
+/** 交互模式：挂载滚轮/拖拽（点击图表或操作栏提示钮后触发） */
+function activatePanZoomArm(): void {
+  if (!needsInteraction.value || panZoomArmed.value) {
+    return
+  }
+
+  panZoomArmed.value = true
+  inlineViewport.mountViewport()
+  inlineViewport.fitToView()
+}
+
+/** 点击图表区域启用交互；操作栏内其它按钮不触发 */
+function onViewportClick(event: MouseEvent): void {
+  const target = event.target as HTMLElement | null
+  if (target?.closest('.vip-mermaid__actions') != null) {
+    return
+  }
+  activatePanZoomArm()
 }
 
 /** 监听 Esc 键关闭全屏 */
@@ -316,13 +347,41 @@ watch(
     >
       <div
         ref="inlineViewportRef"
-        :class="{ 'vip-mermaid__viewport--interactive': needsInteraction }"
+        :class="{
+          'vip-mermaid__viewport--interactive': needsInteraction,
+          'vip-mermaid__viewport--armed': panZoomArmed,
+        }"
         class="vip-mermaid__viewport"
+        @click="onViewportClick"
       >
         <div
           v-if="hasContent"
           class="vip-mermaid__actions"
+          @click.stop
         >
+          <button
+            v-if="needsInteraction && !panZoomArmed"
+            aria-label="点击启用缩放与拖拽"
+            class="vip-mermaid__btn"
+            title="点击启用缩放与拖拽"
+            type="button"
+            @click="activatePanZoomArm"
+          >
+            <svg
+              aria-hidden="true"
+              class="vip-mermaid__icon"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M9 11V6a2 2 0 1 1 4 0v5M9 11H7a2 2 0 0 0-2 2v1a5 5 0 0 0 5 5h4a5 5 0 0 0 5-5v-1a2 2 0 0 0-2-2h-2"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+              />
+            </svg>
+          </button>
           <button
             :aria-label="getCopyLabel(copyState)"
             :class="{
@@ -626,16 +685,21 @@ watch(
   padding: 16px; /* 与 VIP_MERMAID_FIT_PADDING 一致 */
 }
 
-/* 交互模式：固定高度视口，支持拖拽与滚轮 / 双指缩放 */
+/* 交互模式：固定高度视口；默认不抢滚轮，点击后进入 armed 状态 */
 .vip-mermaid__viewport--interactive {
   height: min(70vh, 560px);
   padding: 0;
   overflow: hidden;
+  touch-action: auto;
+  cursor: pointer;
+}
+
+.vip-mermaid__viewport--interactive.vip-mermaid__viewport--armed {
   touch-action: none;
   cursor: grab;
 }
 
-.vip-mermaid__viewport--interactive:active {
+.vip-mermaid__viewport--interactive.vip-mermaid__viewport--armed:active {
   cursor: grabbing;
 }
 
