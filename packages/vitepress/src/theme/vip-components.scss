@@ -1,0 +1,209 @@
+/**
+ * @142vip/vitepress 首页 / 文档内嵌组件共用样式。
+ * 由 defineVipExtendsTheme 一次性引入，亮暗随 VitePress `--vp-c-*` 切换。
+ */
+
+/* Element Plus 令牌 → VitePress 主题变量（挂到有 EP 组件的根节点） */
+.vip-element-plus-vp-theme {
+  --el-color-primary: var(--vp-c-brand-1);
+  --el-color-primary-light-3: var(--vp-c-brand-2);
+  --el-color-primary-light-5: var(--vp-c-brand-soft);
+  --el-border-color: var(--vp-c-divider);
+  --el-border-color-lighter: var(--vp-c-divider-light, var(--vp-c-divider));
+  --el-border-color-light: var(--vp-c-divider-light, var(--vp-c-divider));
+  --el-fill-color-blank: var(--vp-c-bg);
+  --el-fill-color-light: var(--vp-c-bg-soft);
+  --el-fill-color-lighter: var(--vp-c-bg-soft);
+  --el-fill-color-extra-light: var(--vp-c-bg-soft);
+  --el-fill-color-dark: var(--vp-c-divider);
+  --el-text-color-regular: var(--vp-c-text-1);
+  --el-text-color-primary: var(--vp-c-text-1);
+  --el-text-color-secondary: var(--vp-c-text-2);
+  --el-text-color-placeholder: var(--vp-c-text-3);
+  --el-bg-color: var(--vp-c-bg);
+  --el-bg-color-overlay: var(--vp-c-bg-elv, var(--vp-c-bg-soft));
+}
+
+/* 文档区块：标题对齐 VitePress `.vp-doc h2`（##），可用 CSS 变量微调 */
+.vip-doc-section {
+  --vip-section-h2-font-size: 24px;
+  --vip-section-h2-line-height: 32px;
+  --vip-section-h2-letter-spacing: -0.02em;
+  --vip-section-h2-padding-top: 24px;
+  --vip-section-h2-margin-top: 48px;
+  --vip-section-h2-margin-bottom: 16px;
+  --vip-section-block-gap: clamp(28px, 4vw, 40px);
+
+  margin: var(--vip-section-block-gap) 0;
+  color: var(--vp-c-text-1);
+}
+
+/*
+ * 首页等非 `.vp-doc` 场景：补齐与文档 ## 一致的字号 / 顶部分割线。
+ * 已在 `.vp-doc` 内时交给 VitePress，避免双重 margin / border。
+ */
+.vip-doc-section h2 {
+  font-weight: 600;
+  color: var(--vp-c-text-1);
+}
+
+.vip-home-page .vip-doc-section h2,
+:not(.vp-doc) > .vip-doc-section > h2 {
+  margin: var(--vip-section-h2-margin-top) 0 var(--vip-section-h2-margin-bottom);
+  padding-top: var(--vip-section-h2-padding-top);
+  border-top: 1px solid var(--vp-c-divider);
+  letter-spacing: var(--vip-section-h2-letter-spacing);
+  line-height: var(--vip-section-h2-line-height);
+  font-size: var(--vip-section-h2-font-size);
+}
+
+.vip-doc-section p {
+  margin: 0 0 12px;
+  line-height: 1.7;
+  color: var(--vp-c-text-2);
+}
+
+/** 区块说明：对齐 VitePress `.vp-doc blockquote` 默认样式（divider 竖线，非品牌色） */
+.vip-doc-section__desc {
+  margin: 16px 0;
+  padding-left: 16px;
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--vp-c-text-2);
+  border-left: 2px solid var(--vp-c-divider);
+  transition:
+    border-color 0.5s,
+    color 0.5s;
+}
+
+/* AppSiteFooter：固定暗色，不随 VitePress 亮/暗切换（避免 `var(--vp-c-bg)` 随主题变化） */
+.vip-footer-host {
+  position: relative;
+  z-index: var(--vp-z-index-footer);
+  width: 100%;
+}
+
+$vip-footer-dark-bg: #161618;
+$vip-footer-dark-text: 235, 235, 245;
+
+.vip-footer-host--dark {
+  --base-text-color: #{$vip-footer-dark-text};
+  --primary-color: 60, 126, 109;
+  color-scheme: dark;
+  background-color: $vip-footer-dark-bg;
+  color: rgba(var(--base-text-color), 0.82);
+
+  /* 全局 CSS（非 Vue SFC）：用后代选择器覆盖 AppSiteFooter，勿用 :deep() */
+  .global-footer__surface {
+    border-top-color: rgba(var(--base-text-color), 0.14);
+    box-shadow: inset 0 1px 0 rgba(var(--base-text-color), 0.04);
+    background-color: $vip-footer-dark-bg;
+    background-image: linear-gradient(
+      180deg,
+      rgba(var(--base-text-color), 0.012) 0%,
+      rgba(var(--base-text-color), 0.022) 100%
+    );
+
+    &::after {
+      background: linear-gradient(180deg, rgba(var(--base-text-color), 0.06), transparent);
+    }
+  }
+
+  .global-footer__inner {
+    /* 底部留白交给 meta（Release / 徽章），避免与 copyright 叠出大空白 */
+    padding-bottom: 4px;
+    background-image: linear-gradient(
+      180deg,
+      rgba(var(--base-text-color), 0.012) 0%,
+      rgba(var(--base-text-color), 0.022) 100%
+    );
+  }
+
+  .global-footer__copyright {
+    margin-top: 28px;
+    margin-bottom: 0;
+    padding-top: 16px;
+    padding-bottom: 0;
+    border-top-color: rgba(var(--base-text-color), 0.14);
+    color: rgba(var(--base-text-color), 0.55);
+  }
+
+  .el-link {
+    --el-link-text-color: rgba(var(--base-text-color), 0.72);
+    --el-link-hover-text-color: rgba(var(--base-text-color), 0.92);
+  }
+}
+
+.vip-footer-host__meta {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: 2px 16px 22px;
+  text-align: center;
+  background-color: $vip-footer-dark-bg;
+}
+
+.vip-footer-host__release {
+  margin: 0 0 8px;
+  padding: 0;
+  font-size: 0.88rem;
+  line-height: 1.4;
+  color: rgba(235, 235, 245, 0.55);
+  text-align: center;
+}
+
+.vip-footer-host__badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px 12px;
+  margin: 0;
+  padding: 0;
+}
+
+.vip-footer-host__badge {
+  display: inline-flex;
+  line-height: 0;
+  border-radius: 4px;
+  overflow: hidden;
+  opacity: 0.95;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.2s ease;
+
+  img {
+    display: block;
+    height: 20px;
+    width: auto;
+    max-width: 100%;
+  }
+
+  &:hover,
+  &:focus-visible {
+    opacity: 1;
+    transform: translateY(-1px);
+    filter: brightness(1.08);
+  }
+
+  &:focus-visible {
+    outline: 2px solid rgba(60, 126, 109, 0.9);
+    outline-offset: 2px;
+  }
+}
+
+@media (max-width: 640px) {
+  .vip-footer-host__meta {
+    padding-bottom: 18px;
+  }
+
+  .vip-footer-host__badges {
+    gap: 8px 10px;
+  }
+
+  .vip-footer-host__badge img {
+    height: 18px;
+  }
+}
+
