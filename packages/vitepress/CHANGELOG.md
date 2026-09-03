@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.29 (2026-09-03)
+
+### ✨ Features
+
+- 新增 `enableVipFooter` 与 `showBadge` 页脚能力 &nbsp;-&nbsp; by **chufan** [<samp>(efd67)</samp>](https://github.com/142vip/core-x/commit/efd67e55)
+- 优化首页组件并新增 `VipGithubPins` &nbsp;-&nbsp; by **chufan** [<samp>(b4fe5)</samp>](https://github.com/142vip/core-x/commit/b4fe5bd6)
+
+### 💅 Refactors
+
+- 常量与工具文件改为 kebab-case &nbsp;-&nbsp; by **chufan** [<samp>(a5b97)</samp>](https://github.com/142vip/core-x/commit/a5b97b38)
+
+### 📦 Build
+
+- 类型声明迁入 `types/` 并接入 `@142vip/vue` &nbsp;-&nbsp; by **chufan** [<samp>(7d054)</samp>](https://github.com/142vip/core-x/commit/7d054b09)
+
+**Release New Version v0.0.1-alpha.29 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/vitepress)**
+
 ## v0.0.1-alpha.28 (2026-09-01)
 
 ### ✨ Features
