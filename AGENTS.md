@@ -37,7 +37,8 @@
 
 | 规则 | 要求 |
 |------|------|
-| **禁止 `any`** | 触及与新增代码一律不用；边界用 `unknown` + 具名守卫 |
+| **禁止 `any`** | 触及与新增代码一律不用；无例外 |
+| **慎用 `unknown`** | 仅边界入口且同一函数内具名守卫收窄；尽最大努力声明类型；领域层勿长期停在 `unknown` |
 | **少用 `as`** | 仅边界单点；领域层用 `instanceof` / 守卫函数 |
 | **`async`/`await`** | 返回 `Promise` 的方法须 `async`，体内用 `await`；禁止内联 `(await expr)` 写进实参 / 返回值 |
 | **删除未使用代码** | 未使用的 `import`、变量、函数、类型须删除 |
@@ -72,7 +73,7 @@
 - **格式**：Conventional Commits + `@142vip/commit-linter`（commit-msg 钩子校验）
 - **分类提交**：包 / 应用 → 功能域 → 主题；单条默认 ≤15 staged 文件；只 `git add` 本批路径，**禁止 `git add -A`**
 - **分支**：新特性上 `next`；fix / docs 可上 `main`；npm 发版分支 `next`
-- **Agent 约束**：只 `git commit`，**不执行 `git push`**（推送由用户手动操作）；**禁止** commit message 含 `Co-authored-by` 等 AI 工具署名 trailer
+- **Agent 约束**：只 `git commit`，**不执行 `git push`**（推送由用户手动操作）；**绝对禁止** commit message 含 Agent / IDE / 大模型痕迹（如 `Co-authored-by: Cursor <cursoragent@cursor.com>`、`Made-with: Cursor` 等）
 - 详细规范见 `.cursor/rules/engineering/05-Git与发布` 与 `commit` skill
 
 ## 改完自检（铁律）

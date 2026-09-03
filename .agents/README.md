@@ -34,7 +34,7 @@
 | **L3** | `.cursor/rules/**` | Cursor 触发层（内参，不对外） |
 
 **冲突**：L0 > L1a 正文 > L2 > L3。
-**禁止**：会话 memory 进仓库；第二真源；**只改镜像不改包**；对外文档引用 `.cursor/rules` 路径。
+**禁止**：会话 memory 进仓库；第二真源；**只改镜像不改包**；下游仓手改已 sync 的通用 skill 镜像；对外文档引用 `.cursor/rules` 路径；commit 写入 Agent / 大模型 trailer。
 
 ---
 
@@ -53,7 +53,8 @@
 2. `.agents/skills/{workflow,code-dev,self-check,commit}` 只是本仓**镜像**：Agent 日常从这里读，但**写通用流程时必须落包内**。
 3. 若误改了镜像：同一任务内把 diff **完整回写**到包内对应 `SKILL.md`，再刷镜像，**禁止遗漏**。
 4. 包内 skill 有实质变更 → 走 `@142vip/agent-skills` **发版**；下游仓库 `upgrade` 后执行 `pnpm exec vip-agent-skills --target .`。
-5. 本仓无 `business-map`（业务落点 skill 仅存在于下游应用仓，永不进包）。
+5. **下游消费仓**：禁止手改已 sync 的通用 skill 并提交；改进必须进入真源仓对应 skill 文档后再发版同步。
+6. 本仓无 `business-map`（业务落点 skill 仅存在于下游应用仓，永不进包）。
 
 ### 本仓命令
 

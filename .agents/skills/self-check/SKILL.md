@@ -29,15 +29,26 @@ description: 代码修改后的质量验证与 TODO 迭代流程（跨项目）�
 - 仅改 Agent 规范文档（`AGENTS.md`、`.agents/**`、工具薄入口、编辑器 rules）：可不跑应用 build，用 `git diff --check`
 - 本轮若启动了 dev / docs 长进程：回复前关闭并确认端口释放（若环境允许）
 
-### 通用 skill 包维护（仅维护本包的 monorepo）
+### 通用 skill 维护
 
-若本轮动过 `code-dev` / `self-check` / `commit`：
+#### A. 真源仓（维护 `@142vip/agent-skills` 的 monorepo）
 
-1. 通用 skill 正文维护在 `@142vip/agent-skills` 包内 `skills/<name>/SKILL.md`
-2. 若误改了下游 `.agents/skills/` 镜像 → **同一任务回写包内文件**，禁止只改镜像
+若本轮动过 `workflow` / `code-dev` / `self-check` / `commit`：
+
+1. **只改**包内 `packages/agent-skills/skills/<name>/SKILL.md`（唯一真源）
+2. 若误改了 `.agents/skills/` 镜像 → **同一任务回写**包内文件，禁止只改镜像
 3. 改了 TS/CLI 时：`pnpm --filter @142vip/agent-skills build`
 4. `pnpm exec vip-agent-skills --target .` 刷新镜像；`--check` 防漂移
-5. 实质变更 → 按维护者节奏发版（**发版是独立动作**，由维护者决定时机与版本）；未发版期间，变更已通过镜像同步给本仓使用
+5. 实质变更 → 按维护者节奏发版（发版是独立动作）
+
+#### B. 下游仓（仅消费本包）
+
+| 禁止 | 应做 |
+|------|------|
+| 手改已同步的 `workflow` / `code-dev` / `self-check` / `commit` 镜像并提交 | 通用约束变更 → 提 PR / 改动到 **真源仓**对应 skill 文档 |
+| 用下游 commit「覆盖」包内容 | 下游 upgrade 包版本后执行 `pnpm exec vip-agent-skills --target .` |
+
+下游**仅可本地维护**：`AGENTS.md` · `business-map` · `.agents/project/*` · 工具薄入口（不被 sync 覆盖）。
 
 `business-map` 仅下游项目本地 skill，不进入上述流程。
 
@@ -184,7 +195,9 @@ npx eslint --fix --max-warnings 0 path/to/a.ts path/to/b.vue
 
 | 检查项 | 规则 |
 |--------|------|
-| 类型安全 | 禁止 `any`；边界 `unknown` + 守卫；少用 `as` |
+| 类型安全 | **禁止 `any`**；慎用 `unknown`（仅边界+立即收窄）；尽最大努力声明类型；少用 `as` |
+| Commit trailer | **禁止** `Co-authored-by: Cursor …` 及任何 Agent / 大模型 / IDE 产品 trailer（见 `commit`） |
+| 通用 skill 镜像 | 下游**禁止**手改已 sync 的通用 skill；改进回写真源包（见 `workflow` / `code-dev`） |
 | 命名 / 常量 | 无魔法值；枚举显式字面量；同概念同词；无单字母心理映射 |
 | 业务语义命名 | 慎用 `result` / `data` / `info` / `temp` 等空壳词；变量/返回值须贴业务对象 |
 | 无意义包装 | 禁止仅透传 lib 的一层函数（如本地 `pathJoin` → `VipNodeJS.pathJoin`）；有组合逻辑再封装；禁止无意义 `buildXxxResult` |
