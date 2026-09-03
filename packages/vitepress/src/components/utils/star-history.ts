@@ -1,7 +1,7 @@
 import {
   VIP_STAR_HISTORY_DEFAULT_REPOS,
   VIP_STAR_HISTORY_SEALED_TOKEN,
-} from '../constants/openSource'
+} from '../constants/open-source.constant'
 
 const STAR_HISTORY_API = 'https://api.star-history.com/svg'
 

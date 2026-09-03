@@ -3,11 +3,35 @@ import csdnIcon from '@142vip/cdn/media/svg/csdn.svg'
 import giteeIcon from '@142vip/cdn/media/svg/gitee.svg'
 import githubIcon from '@142vip/cdn/media/svg/github.svg'
 import juejinIcon from '@142vip/cdn/media/svg/juejin.svg'
+import chuFanImage from '@142vip/cdn/media/wechat/chu-fan-443-450x450.jpg'
+import chuFanCodeImage from '@142vip/cdn/media/wechat/chu-fan-code-450x450.webp'
 import { OPEN_SOURCE_ADDRESS } from '@142vip/open-source'
 
+/** 联系我们双二维码单项（图 + 无障碍文案 + 展示标题） */
+export interface SiteContactQrItem {
+  src: string
+  alt: string
+  caption: string
+}
+
 /**
- * 联系作者 — 平台外链
+ * 联系我们双二维码：联系作者区块、页脚、OAuth 宣传区等共用同一数据源。
+ * 顺序：公众号 → 个人微信。
  */
+export const SITE_CONTACT_QR_ITEMS: readonly SiteContactQrItem[] = [
+  {
+    src: chuFanCodeImage,
+    alt: '关注公众号',
+    caption: '关注公众号',
+  },
+  {
+    src: chuFanImage,
+    alt: '加微信好友',
+    caption: '加微信好友',
+  },
+] as const
+
+/** 联系作者 — 平台外链 */
 export const VIP_CONTACT_PLATFORM_LINKS = [
   {
     href: OPEN_SOURCE_ADDRESS.HOME_PAGE_GITHUB_MMDAPL,
@@ -40,8 +64,3 @@ export const VIP_CONTACT_PLATFORM_LINKS = [
     icon: csdnIcon,
   },
 ]
-
-/**
- * 联系作者 — 微信二维码
- */
-export const VIP_CONTACT_WECHAT_QR = 'https://cdn.statically.io/gh/142vip/cdn_service@main/apps/media/wechat/main-code.png'
