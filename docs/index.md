@@ -27,10 +27,6 @@ features:
     icon: 🧰
 ---
 
-<script setup>
-import HomePage from '@theme/components/HomePage.vue'
-</script>
-
 ## 仓库架构
 
 pnpm 9 + Turbo monorepo：`packages/` 含 31 个可发布 `@142vip/*` npm 包，`apps/` 含 4 个 `*-demo` 示例。
@@ -116,5 +112,3 @@ flowchart TD
   F --> H["pnpm build:docs"]
   G --> H
 ```
-
-<HomePage/>

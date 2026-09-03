@@ -4,7 +4,7 @@ import { vipDayjs, VipJSON, VipNodeJS, VipPackageJSON } from '@142vip/utils'
 import {
   defineVipNavbarConfig,
   defineVipVitepressConfig,
-  getVipFooter,
+  enableVipFooter,
   getVipThemeConfig,
   zhSearch,
 } from '@142vip/vitepress'
@@ -158,8 +158,10 @@ export default defineVipVitepressConfig({
     returnToTopLabel: '返回顶部',
     sidebarMenuLabel: '左侧菜单',
     darkModeSwitchLabel: '切换主题',
-    // 页脚：开源协议 + 仓库信息 + 动态版权年份
-    footer: getVipFooter({
+    // 全局页脚（LayoutVipFooter）；关闭 VitePress 默认单行 footer
+    ...enableVipFooter({
+      showBackTop: true,
+      showBadge: true,
       license: OPEN_SOURCE_ADDRESS.LICENCE_CORE_X,
       pkgName: pkg.name,
       pkgVersion: pkg.version,

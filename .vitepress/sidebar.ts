@@ -22,7 +22,10 @@ export enum ProjectId {
 /**
  * 根路径侧边栏（`/`）
  * - 按项目分组展示全部开源包与最佳实践 Demo 入口
- * - 分组顺序同时决定首页表格「开源模块」的数据排列（见 theme/components/project-data.ts）
+ * - 分组顺序同时决定首页表格数据（`getTableData`）：
+ *   - 「最佳实践」→ `getTableData('example')`
+ *   - 其余开源分组 → `getTableData('project')`
+ *   （见 `.vitepress/theme/components/project-data.ts`）
  */
 export const rootSidebarConfig = defineVipSidebarConfig([
   {
