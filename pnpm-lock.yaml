@@ -575,6 +575,12 @@ importers:
       '@142vip/open-source':
         specifier: workspace:*
         version: link:../open-source
+      '@142vip/vue':
+        specifier: 0.1.6-alpha.25
+        version: 0.1.6-alpha.25(@element-plus/icons-vue@2.3.2(vue@3.5.40(typescript@5.9.3)))(element-plus@2.13.7(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(pinia@3.0.4(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(vue@3.5.40(typescript@5.9.3))
+      '@element-plus/icons-vue':
+        specifier: 2.3.2
+        version: 2.3.2(vue@3.5.40(typescript@5.9.3))
       copy-to-clipboard:
         specifier: 4.0.2
         version: 4.0.2
@@ -668,6 +674,14 @@ packages:
 
   '@142vip/utils@0.0.1-alpha.56':
     resolution: {integrity: sha512-C82JA39YIKSbTwBkGHFCfXUFt3so8wfyZhgS7QuDANFQY8glVPAhcObCV6skd/mA8gVZOYQUu5Bk2CE97+Rfow==}
+
+  '@142vip/vue@0.1.6-alpha.25':
+    resolution: {integrity: sha512-r6ctIxLJjZqwVB7VbM/j16hQqYOhRqR2Ogolo9Bn/IEudUkwDCzRj+qm/JRsspxRwq4iJMuDHRiwahW3whrvYw==}
+    peerDependencies:
+      '@element-plus/icons-vue': 2.3.2
+      element-plus: 2.13.6
+      pinia: 3.0.4
+      vue: 3.5.31
 
   '@algolia/autocomplete-core@1.17.7':
     resolution: {integrity: sha512-BjiPOW6ks90UKl7TwMv7oNQMnzU+t/wk9mgIDi6b1tXpUek7MW0lbNOUHpvam9pe3lVCf4xPFT+lK7s+e+fs7Q==}
@@ -4212,17 +4226,26 @@ packages:
   '@vue/devtools-api@6.6.4':
     resolution: {integrity: sha512-sGhTPMuXqZ1rVOk32RylztWkfXTRhuS7vgAKv0zjqk8gbsHkJ7xfFf+jbySxt7tWObEJwyKaHMikV/WGDiQm8g==}
 
+  '@vue/devtools-api@7.7.10':
+    resolution: {integrity: sha512-KxtEpUOOpFz/qOGRrAwA36QF7DqIA+FXgCYit9mk9wjbaZt0sXOFz81ElOZtKA4HbWHUdwNjZHBFsFFyp5BZiA==}
+
   '@vue/devtools-api@7.7.6':
     resolution: {integrity: sha512-b2Xx0KvXZObePpXPYHvBRRJLDQn5nhKjXh7vUhMEtWxz1AYNFOVIsh5+HLP8xDGL7sy+Q7hXeUxPHB/KgbtsPw==}
 
   '@vue/devtools-api@8.2.1':
     resolution: {integrity: sha512-6u4vXBlIBAC1wMplIZgpyPn7uh/s4Bf6F5bMzvLv+EdJ0aHs/+4B7Ygv864EStQSjRbsRzTko/kUG1A1IejQ3A==}
 
+  '@vue/devtools-kit@7.7.10':
+    resolution: {integrity: sha512-3WNi2Kq4tbpVbmhml7RiphmAt0279oh3fKNeWMQIrltfX8Q91b4i5PL8DtyNKdwmcsGrV4fg+erwWOmD05CLIw==}
+
   '@vue/devtools-kit@7.7.6':
     resolution: {integrity: sha512-geu7ds7tem2Y7Wz+WgbnbZ6T5eadOvozHZ23Atk/8tksHMFOFylKi1xgGlQlVn0wlkEf4hu+vd5ctj1G4kFtwA==}
 
   '@vue/devtools-kit@8.2.1':
     resolution: {integrity: sha512-FIGIuq3AWReEpbAHY/cRGeHDfI0qOb8OCQ3YjbEAX04uaxIDbGc9rhkbVcG7rnfHPXE3RsU5KrWOu9V/okd8AQ==}
+
+  '@vue/devtools-shared@7.7.10':
+    resolution: {integrity: sha512-wOPslzB8vTvpxwdaOcR2qAbwmuSP0L+rhpoC6Cf56V3Jip+HWb7PQQXOUPgBNQARpXsbQX/+mvi8kKucmBGRwQ==}
 
   '@vue/devtools-shared@7.7.6':
     resolution: {integrity: sha512-yFEgJZ/WblEsojQQceuyK6FzpFDx4kqrz2ohInxNj5/DnhoX023upTv4OD6lNPLAA5LLkbwPVb10o/7b+Y4FVA==}
@@ -4866,6 +4889,11 @@ packages:
   aws-ssl-profiles@1.1.2:
     resolution: {integrity: sha512-NZKeq9AfyQvEeNlN0zSYAaWrmBffJh3IELMZfRpJVWgrpEbtEpnjvzqBPf+mxoI287JohRDoa+/nsfqqiZmF6g==}
     engines: {node: '>= 6.0.0'}
+
+  axios-retry@4.5.0:
+    resolution: {integrity: sha512-aR99oXhpEDGo0UuAlYcn2iGRds30k366Zfa05XWScR9QaQD4JYiP3/1Qt1u7YlefUOK+cn0CcwoL1oefavQUlQ==}
+    peerDependencies:
+      axios: 0.x || 1.x
 
   axios@1.11.0:
     resolution: {integrity: sha512-1Lx3WLFQWm3ooKDYZD1eXmoGO9fxYQjrycfHFC8P0sCfQVXyROp0p9PFWBehewBOdCwHc+f/b8I0fMto5eSfwA==}
@@ -7350,6 +7378,10 @@ packages:
     resolution: {integrity: sha512-MjYsKHO5O7mCsmRGxWcLWheFqN9DJ/2TmngvjKXihe6efViPqc274+Fx/4fYj/r03+ESvBdTXK0V6tA3rgez1g==}
     engines: {node: '>= 0.4'}
 
+  is-retry-allowed@2.2.0:
+    resolution: {integrity: sha512-XVm7LOeLpTW4jV19QSH38vkswxoLud8sQ57YwJVTPWdiaI9I8keEhGFpBlslyVsgdQy4Opg8QOLb8YRgsyZiQg==}
+    engines: {node: '>=10'}
+
   is-stream@2.0.1:
     resolution: {integrity: sha512-hFoiJiTl63nn+kstHGBtewWSKnQLpyb155KHheA1l39uvtO9nWIop1p3udqPcUd/xbF1VLMO4n7OI6p7RbngDg==}
     engines: {node: '>=8'}
@@ -8863,6 +8895,15 @@ packages:
     resolution: {integrity: sha512-QP88BAKvMam/3NxH6vj2o21R6MjxZUAd6nlwAS/pnGvN9IVLocLHxGYIzFhg6fUQ+5th6P4dv4eW9jX3DSIj7A==}
     engines: {node: '>=12'}
 
+  pinia@3.0.4:
+    resolution: {integrity: sha512-l7pqLUFTI/+ESXn6k3nu30ZIzW5E2WZF/LaHJEpoq6ElcLD+wduZoB2kBN19du6K/4FDpPMazY2wJr+IndBtQw==}
+    peerDependencies:
+      typescript: '>=4.5.0'
+      vue: ^3.5.11
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+
   pino-abstract-transport@2.0.0:
     resolution: {integrity: sha512-F63x5tizV6WCh4R6RHyi2Ml+M70DNRXt/+HANowMflpgGFMAym/VKm6G7ZOQRjqN7XbGxK1Lg9t6ZrtzOaivMw==}
 
@@ -9260,6 +9301,10 @@ packages:
 
   qs@6.14.0:
     resolution: {integrity: sha512-YWWTjgABSKcvs/nWBi9PycY/JiPJqOD4JA6o9Sej2AtvSGarXxKC3OQSk4pAarbdQlKAh5D4FCQkJNkW+GAn3w==}
+    engines: {node: '>=0.6'}
+
+  qs@6.15.0:
+    resolution: {integrity: sha512-mAZTtNCeetKMH+pSjrb76NAM8V9a05I9aBZOHztWy/UqcJdQYNsf59vrRKWnojAT9Y+GbIvoTBC++CPHqpDBhQ==}
     engines: {node: '>=0.6'}
 
   qs@6.15.3:
@@ -11392,6 +11437,23 @@ snapshots:
     transitivePeerDependencies:
       - '@types/node'
       - typescript
+
+  '@142vip/vue@0.1.6-alpha.25(@element-plus/icons-vue@2.3.2(vue@3.5.40(typescript@5.9.3)))(element-plus@2.13.7(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(pinia@3.0.4(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(vue@3.5.40(typescript@5.9.3))':
+    dependencies:
+      '@142vip/cdn': 0.0.1-alpha.2
+      '@element-plus/icons-vue': 2.3.2(vue@3.5.40(typescript@5.9.3))
+      axios: 1.17.0
+      axios-retry: 4.5.0(axios@1.17.0)
+      copy-to-clipboard: 4.0.2
+      defu: 6.1.7
+      element-plus: 2.13.7(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3))
+      localforage: 1.10.0
+      pinia: 3.0.4(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3))
+      qs: 6.15.0
+      vue: 3.5.40(typescript@5.9.3)
+    transitivePeerDependencies:
+      - debug
+      - supports-color
 
   '@algolia/autocomplete-core@1.17.7(@algolia/client-search@5.15.0)(algoliasearch@5.15.0)(search-insights@2.17.2)':
     dependencies:
@@ -15029,6 +15091,10 @@ snapshots:
 
   '@vue/devtools-api@6.6.4': {}
 
+  '@vue/devtools-api@7.7.10':
+    dependencies:
+      '@vue/devtools-kit': 7.7.10
+
   '@vue/devtools-api@7.7.6':
     dependencies:
       '@vue/devtools-kit': 7.7.6
@@ -15036,6 +15102,16 @@ snapshots:
   '@vue/devtools-api@8.2.1':
     dependencies:
       '@vue/devtools-kit': 8.2.1
+
+  '@vue/devtools-kit@7.7.10':
+    dependencies:
+      '@vue/devtools-shared': 7.7.10
+      birpc: 2.6.1
+      hookable: 5.5.3
+      mitt: 3.0.1
+      perfect-debounce: 1.0.0
+      speakingurl: 14.0.1
+      superjson: 2.2.2
 
   '@vue/devtools-kit@7.7.6':
     dependencies:
@@ -15053,6 +15129,10 @@ snapshots:
       birpc: 2.6.1
       hookable: 5.5.3
       perfect-debounce: 2.1.0
+
+  '@vue/devtools-shared@7.7.10':
+    dependencies:
+      rfdc: 1.4.1
 
   '@vue/devtools-shared@7.7.6':
     dependencies:
@@ -15921,6 +16001,11 @@ snapshots:
       ee-first: 1.1.1
 
   aws-ssl-profiles@1.1.2: {}
+
+  axios-retry@4.5.0(axios@1.17.0):
+    dependencies:
+      axios: 1.17.0
+      is-retry-allowed: 2.2.0
 
   axios@1.11.0:
     dependencies:
@@ -18989,6 +19074,8 @@ snapshots:
       has-tostringtag: 1.0.2
       hasown: 2.0.2
 
+  is-retry-allowed@2.2.0: {}
+
   is-stream@2.0.1: {}
 
   is-type-of@1.4.0:
@@ -19721,7 +19808,6 @@ snapshots:
   lie@3.1.1:
     dependencies:
       immediate: 3.0.6
-    optional: true
 
   lie@3.3.0:
     dependencies:
@@ -19772,7 +19858,6 @@ snapshots:
   localforage@1.10.0:
     dependencies:
       lie: 3.1.1
-    optional: true
 
   locate-path@3.0.0:
     dependencies:
@@ -20969,6 +21054,13 @@ snapshots:
 
   picomatch@4.0.4: {}
 
+  pinia@3.0.4(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)):
+    dependencies:
+      '@vue/devtools-api': 7.7.10
+      vue: 3.5.40(typescript@5.9.3)
+    optionalDependencies:
+      typescript: 5.9.3
+
   pino-abstract-transport@2.0.0:
     dependencies:
       split2: 4.2.0
@@ -21383,6 +21475,10 @@ snapshots:
   qs@6.14.0:
     dependencies:
       side-channel: 1.1.0
+
+  qs@6.15.0:
+    dependencies:
+      side-channel: 1.1.1
 
   qs@6.15.3:
     dependencies:
@@ -22945,7 +23041,7 @@ snapshots:
   untyped@2.0.0:
     dependencies:
       citty: 0.1.6
-      defu: 6.1.4
+      defu: 6.1.7
       jiti: 2.4.2
       knitwork: 1.2.0
       scule: 1.3.0

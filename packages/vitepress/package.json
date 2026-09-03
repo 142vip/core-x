@@ -21,7 +21,10 @@
     "@142vip/vuepress",
     "vuepress"
   ],
-  "sideEffects": false,
+  "sideEffects": [
+    "**/*.css",
+    "dist/theme/**"
+  ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -54,10 +57,8 @@
     "homePage": "https://142vip.cn"
   },
   "files": [
-    "components.d.ts",
     "dist",
-    "theme.d.ts",
-    "workspace.d.ts"
+    "types"
   ],
   "scripts": {
     "build": "unbuild",
@@ -70,6 +71,8 @@
   "peerDependencies": {
     "@142vip/cdn": "0.0.1-alpha.2",
     "@142vip/open-source": "workspace:*",
+    "@142vip/vue": "0.1.6-alpha.25",
+    "@element-plus/icons-vue": "2.3.2",
     "element-plus": "2.13.7",
     "mermaid": "11.16.0",
     "vitepress": "1.6.4",
@@ -78,6 +81,8 @@
   "dependencies": {
     "@142vip/cdn": "0.0.1-alpha.2",
     "@142vip/open-source": "workspace:*",
+    "@142vip/vue": "0.1.6-alpha.25",
+    "@element-plus/icons-vue": "2.3.2",
     "copy-to-clipboard": "4.0.2",
     "element-plus": "2.13.7",
     "mermaid": "11.16.0",

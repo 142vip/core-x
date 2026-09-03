@@ -1,8 +1,6 @@
 import type { VipPackageJSON } from '../core/vip'
 import { indexWorkspacePackageJsonGlob } from './glob-package-json'
 
-export { indexWorkspacePackageJsonGlob, normalizeGlobPackageJsonModule } from './glob-package-json'
-
 export interface WorkspacePackageMaps {
   packagesByDir: Record<string, VipPackageJSON>
   appsByDir: Record<string, VipPackageJSON>

@@ -23,6 +23,12 @@ export default defineBuildConfig({
       format: 'esm',
       loaders: ['js'],
     },
+    {
+      builder: 'mkdist',
+      input: './src/theme',
+      pattern: ['**/*.scss'],
+      loaders: ['sass'],
+    },
   ],
   declaration: true,
   clean: true,
