@@ -12,7 +12,7 @@ alwaysApply: true
 | 位置 | 内容 | 维护方式 |
 |------|------|----------|
 | **根 `README.md`** | GitHub 入口：包列表、命令、**五段架构 Mermaid** | 手改；**与 `07` 逐段同构**（`10`） |
-| **`docs/index.md`** | VitePress 首页（hero + `HomePage`） | **勿**粘贴 README 长文/重复 Mermaid |
+| **`docs/index.md`** | VitePress 首页 frontmatter（hero/features）；可选 Markdown 正文 | **HomePage** 由 `.vitepress/theme` 插槽注入，勿在 md 中 import 组件 |
 | **`docs/tech.md`** | 维护者：npm/docker 登录 | 手改；与脚本/CI 一致 |
 | **`docs/media.md`** | 自媒体 | 手改 |
 | **`docs/apis/`** | API 参考 | `pnpm typedoc:api` / `build:docs` 生成，**勿手改** |
@@ -27,9 +27,10 @@ alwaysApply: true
 |------|--------|
 | `config.ts` | nav、rewrites、版本号 |
 | `sidebar.ts` | **31 包 + 4 demo**；npm 名准确（如 `oauth2.0`） |
-| `theme/components/project-data.ts` | 读 sidebar + `package.json` |
-| `theme/components/HomePage.vue` | 首页展示 |
-| `docs/index.md` | hero 链接指向现存包 |
+| `theme/components/project-data.ts` | `getTableData('example' \| 'project')`：侧栏 + `package.json` |
+| `theme/components/HomePage.vue` | 首页展示（经 `defineVipExtendsTheme` 的 `homePage`，挂在正文下方） |
+| `theme/index.ts` | `defineVipExtendsTheme` + `homePage` |
+| `docs/index.md` | hero/features frontmatter；链接指向现存包 |
 
 ## 完整性（禁止丢模块）
 

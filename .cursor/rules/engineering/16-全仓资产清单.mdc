@@ -20,7 +20,7 @@ alwaysApply: true
 | `jest.config.ts` | 根 Jest |
 | `typedoc*.config.js` | API → `docs/apis/`；wiki → `docs/wiki/` |
 | `.vitepress/` | 根文档站配置与主题 |
-| `docs/index.md` | VitePress 首页 | frontmatter + `HomePage` only |
+| `docs/index.md` | VitePress 首页 | frontmatter（hero/features）；`HomePage` 由 theme 插槽注入 |
 | `docs/tech.md` | 维护者备忘 | npm/docker 登录 |
 | `docs/media.md` | 自媒体 | 手改 |
 | `docs/apis/`、`docs/wiki/` | TypeDoc | 生成，勿手改 |

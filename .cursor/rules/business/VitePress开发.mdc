@@ -27,8 +27,8 @@ alwaysApply: false
 | demo 端口/命令 | `apps/*/README.md`、`08` |
 | 导航 / 版本 / rewrites | `.vitepress/config.ts` |
 | 侧栏分类 / 链接 | `.vitepress/sidebar.ts` |
-| 首页表格 / demo 列表 | `sidebar.ts`、`project-data.ts`（`DEMO_APP_DIRS` 若 demo 名变） |
-| 首页 UI | `theme/components/HomePage.vue`、`docs/index.md`（**仅** hero + HomePage） |
+| 首页表格 / demo 列表 | `sidebar.ts` → `getTableData('example' \| 'project')`（`project-data.ts`），勿再维护 Demo 白名单 |
+| 首页 UI | `theme/components/HomePage.vue`；经 `defineVipExtendsTheme({ homePage })` 注入正文下方（**勿**在 `docs/index.md` 里 import） |
 | 主题继承 / 注册 | `theme/index.ts` 对齐 `@142vip/vitepress` |
 
 **禁止**：文档有、代码无（幽灵条目）；代码有、sidebar/README 无（遗漏）；手改 `docs/apis/` 生成文件。
@@ -40,12 +40,12 @@ alwaysApply: false
 ├── config.ts                 # nav、rewrites、主题配置、版本
 ├── sidebar.ts                # 侧栏（31 包 + 4 demo）
 ├── theme/
-│   ├── index.ts              # defineVipExtendsTheme
+│   ├── index.ts              # defineVipExtendsTheme({ homePage: () => h(HomePage) })
 │   ├── style.css
 │   └── components/
 │       ├── HomePage.vue
 │       └── project-data.ts   # 首页数据（读 sidebar + package.json）
-docs/index.md                 # 首页 frontmatter + HomePage
+docs/index.md                 # 首页 frontmatter（hero/features）；可选 Markdown 正文
 ```
 
 ## 核心 API（不可破坏）
