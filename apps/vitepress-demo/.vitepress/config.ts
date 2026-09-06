@@ -110,8 +110,6 @@ export default defineVipVitepressConfig({
       license: OPEN_SOURCE_ADDRESS.GITHUB_REPO_CORE_X,
       pkgName: pkg.name,
       pkgVersion: pkg.version,
-      orgLink: OPEN_SOURCE_ADDRESS.HOME_PAGE_GITHUB_VIP,
-      ownerLink: OPEN_SOURCE_ADDRESS.HOME_PAGE_GITHUB_MMDAPL,
     }),
 
     // 搜索
