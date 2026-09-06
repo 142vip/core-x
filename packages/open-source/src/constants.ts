@@ -13,6 +13,7 @@ export enum OPEN_SOURCE_ADDRESS {
   GITHUB_REPO_JSC = 'https://github.com/142vip/JavaScriptCollection',
   GITHUB_REPO_CORE_X = 'https://github.com/142vip/core-x',
   GITHUB_REPO_OAUTH = 'https://github.com/142vip/142vip-oauth',
+  GITHUB_REPO_CDN_SERVICE = 'https://github.com/142vip/cdn_service',
 
   GITEE_REPO_408 = 'https://gitee.com/chufan443/408CSFamily',
   GITEE_REPO_JSC = 'https://gitee.com/chufan443/JavaScriptCollection',
@@ -53,7 +54,7 @@ export enum OPEN_SOURCE_ADDRESS {
   // 域名
   HOME_PAGE_DOMAIN_VIP = 'https://142vip.cn',
   HOME_PAGE_DOMAIN_408 = 'https://408.142vip.cn',
-  // HOME_PAGE_DOMAIN_JSC = 'https://js.142vip.cn',
+  HOME_PAGE_DOMAIN_JSC = 'https://code.142vip.cn',
 
   // 证书
   LICENCE_GITHUB = 'https://github.com/142vip/LICENSE',
@@ -68,6 +69,10 @@ export enum OPEN_SOURCE_ADDRESS {
   BEI_AN_URL = 'https://beian.miit.gov.cn/#/Integrated/index',
 
   // doc site站点
+  SITE_DEPLOY_CDN_SERVICE_GITHUB = 'https://142vip.github.io/cdn_service',
+  // SITE_DEPLOY_CDN_SERVICE_VERCEL = 'https://pkg-x.vercel.app',
+  // SITE_DEPLOY_CDN_SERVICE_NETLIFY = 'https://pkg-x.netlify.app',
+
   SITE_DEPLOY_CORE_X_GITHUB = 'https://142vip.github.io/core-x',
   SITE_DEPLOY_CORE_X_VERCEL = 'https://pkg-x.vercel.app',
   SITE_DEPLOY_CORE_X_NETLIFY = 'https://pkg-x.netlify.app',
