@@ -576,8 +576,8 @@ importers:
         specifier: workspace:*
         version: link:../open-source
       '@142vip/vue':
-        specifier: 0.1.6-alpha.25
-        version: 0.1.6-alpha.25(@element-plus/icons-vue@2.3.2(vue@3.5.40(typescript@5.9.3)))(element-plus@2.13.7(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(pinia@3.0.4(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(vue@3.5.40(typescript@5.9.3))
+        specifier: 0.1.6-alpha.27
+        version: 0.1.6-alpha.27(@element-plus/icons-vue@2.3.2(vue@3.5.40(typescript@5.9.3)))(element-plus@2.13.7(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(pinia@3.0.4(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(vue@3.5.40(typescript@5.9.3))
       '@element-plus/icons-vue':
         specifier: 2.3.2
         version: 2.3.2(vue@3.5.40(typescript@5.9.3))
@@ -675,8 +675,8 @@ packages:
   '@142vip/utils@0.0.1-alpha.56':
     resolution: {integrity: sha512-C82JA39YIKSbTwBkGHFCfXUFt3so8wfyZhgS7QuDANFQY8glVPAhcObCV6skd/mA8gVZOYQUu5Bk2CE97+Rfow==}
 
-  '@142vip/vue@0.1.6-alpha.25':
-    resolution: {integrity: sha512-r6ctIxLJjZqwVB7VbM/j16hQqYOhRqR2Ogolo9Bn/IEudUkwDCzRj+qm/JRsspxRwq4iJMuDHRiwahW3whrvYw==}
+  '@142vip/vue@0.1.6-alpha.27':
+    resolution: {integrity: sha512-DLWSXw8k1KyS5GOBR4gBk94hf4dr7X46mcS9PDUAB3LSWr9fxRjYEaN8qd+qYbG6+pQtOsuFMLVLcyxEWG7mXQ==}
     peerDependencies:
       '@element-plus/icons-vue': 2.3.2
       element-plus: 2.13.6
@@ -5127,10 +5127,6 @@ packages:
 
   call-bind@1.0.8:
     resolution: {integrity: sha512-oKlSFMcMwpUg2ednkhQ454wfWiU/ul3CkJe/PEHcTKuiX6RpbehUiFMXu13HalGZxfUwCQzZG747YXBn1im9ww==}
-    engines: {node: '>= 0.4'}
-
-  call-bound@1.0.3:
-    resolution: {integrity: sha512-YTd+6wGlNlPxSuri7Y6X8tY2dmm12UMH66RpKMhiX6rsk5wXXnYgbUcOt8kiS31/AjfoTOvCsE+w8nZQLQnzHA==}
     engines: {node: '>= 0.4'}
 
   call-bound@1.0.4:
@@ -11438,9 +11434,10 @@ snapshots:
       - '@types/node'
       - typescript
 
-  '@142vip/vue@0.1.6-alpha.25(@element-plus/icons-vue@2.3.2(vue@3.5.40(typescript@5.9.3)))(element-plus@2.13.7(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(pinia@3.0.4(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(vue@3.5.40(typescript@5.9.3))':
+  '@142vip/vue@0.1.6-alpha.27(@element-plus/icons-vue@2.3.2(vue@3.5.40(typescript@5.9.3)))(element-plus@2.13.7(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(pinia@3.0.4(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(vue@3.5.40(typescript@5.9.3))':
     dependencies:
       '@142vip/cdn': 0.0.1-alpha.2
+      '@142vip/open-source': 0.0.1-alpha.3
       '@element-plus/icons-vue': 2.3.2(vue@3.5.40(typescript@5.9.3))
       axios: 1.17.0
       axios-retry: 4.5.0(axios@1.17.0)
@@ -16337,11 +16334,6 @@ snapshots:
       es-define-property: 1.0.1
       get-intrinsic: 1.3.0
       set-function-length: 1.2.2
-
-  call-bound@1.0.3:
-    dependencies:
-      call-bind-apply-helpers: 1.0.2
-      get-intrinsic: 1.3.0
 
   call-bound@1.0.4:
     dependencies:
@@ -22159,7 +22151,7 @@ snapshots:
   side-channel-list@1.0.0:
     dependencies:
       es-errors: 1.3.0
-      object-inspect: 1.13.3
+      object-inspect: 1.13.4
 
   side-channel-list@1.0.1:
     dependencies:
@@ -22168,17 +22160,17 @@ snapshots:
 
   side-channel-map@1.0.1:
     dependencies:
-      call-bound: 1.0.3
+      call-bound: 1.0.4
       es-errors: 1.3.0
       get-intrinsic: 1.3.0
-      object-inspect: 1.13.3
+      object-inspect: 1.13.4
 
   side-channel-weakmap@1.0.2:
     dependencies:
-      call-bound: 1.0.3
+      call-bound: 1.0.4
       es-errors: 1.3.0
       get-intrinsic: 1.3.0
-      object-inspect: 1.13.3
+      object-inspect: 1.13.4
       side-channel-map: 1.0.1
 
   side-channel@1.1.0:

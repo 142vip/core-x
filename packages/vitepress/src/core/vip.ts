@@ -1,9 +1,15 @@
-import type { FooterIconLinkItem, FooterLinkItem } from '@142vip/vue/components'
-import type { SiteContactQrItem } from '@142vip/vue/constants'
-import { OPEN_SOURCE_ADDRESS } from '@142vip/open-source'
+import type {
+  VipFooterBadgeLink,
+  VipFooterContent,
+  VipFooterLink,
+  VipFooterSocialLink,
+  VipFooterLabels as VueVipFooterLabels,
+} from '@142vip/vue/components'
+
+export type { VipFooterBadgeLink, VipFooterLink, VipFooterSocialLink }
 
 /**
- * 页脚参数
+ * 页脚参数（`getVipFooter` 生成 VitePress 默认单行 footer 文案）
  */
 interface FooterParams {
   license: string
@@ -38,101 +44,34 @@ Author <a href=${params.ownerLink}>👉${params.owner ?? '储凡'}</a>
   }
 }
 
-/** 与 `@142vip/vue` `AppSiteFooter` 文案字段对齐 */
-export interface VipFooterLabels {
-  resources: string
-  openSource: string
-  friends: string
-  contact: string
-  baiduStats: string
-  icp: string
-  copyright: string
-  backTop: string
-}
-
-/** 页脚 Release 行下方的徽章链接（shields.io 等） */
-export interface VipFooterBadgeLink {
-  href: string
-  src: string
-  alt: string
+/** 与 `@142vip/vue` `VipFooter` 文案对齐；`backTop` 仅用于 `VipBackTop` 无障碍文案 */
+export type VipFooterLabels = VueVipFooterLabels & {
+  backTop?: string
 }
 
 /**
  * VitePress `themeConfig.vipFooter` 配置。
  * - 设为 `false` 可关闭 `defineVipExtendsTheme` 注入的全局页脚
- * - 对象字段均可选；链接与文案未传时由 `AppSiteFooter` 内置默认提供
+ * - 内容字段继承 `@142vip/vue` `VipFooterContent`，未传时由 `VipFooter` 内置默认提供
  */
-export interface VipFooterConfig {
+export interface VipFooterConfig extends VipFooterContent {
   labels?: Partial<VipFooterLabels>
-  resourceLinks?: readonly FooterLinkItem[]
-  openSourceLinks?: readonly FooterLinkItem[]
-  friendLinks?: readonly FooterLinkItem[]
-  contactQrItems?: readonly SiteContactQrItem[]
-  socialLinks?: readonly FooterIconLinkItem[]
-  /**
-   * 是否显示回到顶部（由 `LayoutVipFooter` 挂载 `VipBackTop`）。
-   * 默认 `false`；`enableVipFooter` 写入默认值，可显式传 `true` 开启。
-   */
+  /** 是否显示回到顶部（由 `defineVipExtendsTheme` 挂载 `@142vip/vue` `VipBackTop`） */
   showBackTop?: boolean
-  /**
-   * Release 行下方的徽章区：
-   * - `true`：展示 {@link getVipFooterBadgeLinks} 默认集（GitHub / 官网 / npm）
-   * - `false` 或未传：不展示
-   * - `VipFooterBadgeLink[]`：完全自定义列表
-   */
-  showBadge?: boolean | readonly VipFooterBadgeLink[]
-  /** 文档站 Release 行展示用（非 AppSiteFooter prop） */
+  /** 仅 `getVipFooter` 使用；全局页脚请用 `VipFooter` */
   license?: string
-  pkgName?: string
-  pkgVersion?: string
-  orgLink?: string
-  ownerLink?: string
-  copyrightYear?: number
 }
 
-/**
- * 默认页脚徽章：GitHub / 官网 / npm（`showBadge: true` 时使用）。
- */
-export function getVipFooterBadgeLinks(): VipFooterBadgeLink[] {
-  return [
-    {
-      href: OPEN_SOURCE_ADDRESS.HOME_PAGE_GITHUB_VIP,
-      src: 'https://img.shields.io/badge/GitHub-142vip-181717?logo=github&logoColor=white',
-      alt: 'GitHub',
-    },
-    {
-      href: OPEN_SOURCE_ADDRESS.HOME_PAGE_DOMAIN_VIP,
-      src: 'https://img.shields.io/badge/Website-142vip.cn-0b3d52',
-      alt: 'Website',
-    },
-    {
-      href: OPEN_SOURCE_ADDRESS.HOME_PAGE_NPM_MMDAPL,
-      src: 'https://img.shields.io/badge/NPM-%40142vip-CB3837?logo=npm&logoColor=white',
-      alt: 'NPM',
-    },
-  ]
-}
+/** 剥离 VitePress 扩展字段，其余透传 `VipFooter`（`variant: admin` 为文档站约定） */
+export function toVipFooterComponentProps(config: VipFooterConfig) {
+  const { showBackTop: _showBackTop, license: _license, labels, ...rest } = config
+  const { backTop: _backTop, ...footerLabels } = labels ?? {}
 
-/**
- * 将 `showBadge` 规范为可渲染的徽章列表。
- * - `true` → 默认徽章；`false` / `undefined` → 空；数组 → 拷贝为普通对象并过滤无效项
- */
-export function resolveVipFooterBadgeLinks(
-  showBadge: VipFooterConfig['showBadge'],
-): VipFooterBadgeLink[] {
-  if (showBadge === true) {
-    return getVipFooterBadgeLinks()
+  return {
+    variant: 'admin' as const,
+    ...rest,
+    ...(Object.keys(footerLabels).length > 0 ? { labels: footerLabels } : {}),
   }
-  if (showBadge == null || showBadge === false || !Array.isArray(showBadge)) {
-    return []
-  }
-  return showBadge
-    .map(item => ({
-      href: String(item.href ?? ''),
-      src: String(item.src ?? ''),
-      alt: String(item.alt ?? ''),
-    }))
-    .filter(item => item.href.length > 0 && item.src.length > 0)
 }
 
 /**
@@ -143,7 +82,7 @@ export function resolveVipFooterBadgeLinks(
  * ```ts
  * enableVipFooter({
  *   showBackTop: true,
- *   showBadge: true, // 或自定义 VipFooterBadgeLink[]
+ *   showBadge: true,
  *   pkgName: pkg.name,
  *   pkgVersion: pkg.version,
  * })
@@ -152,19 +91,9 @@ export function resolveVipFooterBadgeLinks(
 export function enableVipFooter(
   params?: VipFooterConfig,
 ): { footer: false, vipFooter: VipFooterConfig } {
-  const showBadge = params?.showBadge
-  // 数组入参归一化为普通对象，避免 themeConfig Proxy / 只读数组在渲染侧踩坑
-  const normalizedShowBadge = Array.isArray(showBadge)
-    ? resolveVipFooterBadgeLinks(showBadge)
-    : showBadge
-
   return {
     footer: false,
-    vipFooter: {
-      showBackTop: false,
-      ...params,
-      ...(normalizedShowBadge !== undefined ? { showBadge: normalizedShowBadge } : {}),
-    },
+    vipFooter: params ?? {},
   }
 }
 
@@ -212,4 +141,11 @@ export interface VipProject extends VipPackageJSON {
   changelog: string
   readme: string
   sourceCode: string
+}
+
+/** `VipHomePage` 中单个 `VipProjectTable` 配置 */
+export interface VipHomeTableConfig {
+  title: string
+  data: VipProject[]
+  id?: string
 }

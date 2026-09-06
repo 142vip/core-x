@@ -1,6 +1,6 @@
 /// <reference types="vite/client" />
 
-/** 包内 TypeScript 模块声明（构建工具不生成，需在 types 目录统一维护） */
+/** 包内 ambient 模块声明与 VitePress 类型增强（构建工具不生成，统一在此维护） */
 
 declare module '*.vue' {
   import type { DefineComponent } from 'vue'
@@ -24,36 +24,17 @@ declare module '@142vip/cdn/media/wechat/*.webp' {
   export default src
 }
 
-/** @142vip/vue 子路径导出（package exports 指向源码，node 解析需显式声明） */
-declare module '@142vip/vue/components' {
-  import type { DefineComponent } from 'vue'
+/**
+ * VitePress `themeConfig` 扩展（原 `types/vitepress-theme.d.ts`）。
+ * 须先 re-export 官方类型，再合并 `ThemeConfig`，避免覆盖 `useData` 等导出。
+ */
+declare module 'vitepress' {
+  export * from 'vitepress/dist/client/index.js'
+  export * from 'vitepress/dist/node/index.js'
+  export * from 'vitepress/types/shared.js'
 
-  export interface FooterLinkItem {
-    label: string
-    href: string
-    title?: string
-    subTitle?: string
+  interface ThemeConfig {
+    /** 全局页脚；`false` 关闭 `defineVipExtendsTheme` 注入的 `VipFooter` */
+    vipFooter?: false | import('../src/core/vip').VipFooterConfig
   }
-
-  export interface FooterIconLinkItem {
-    href: string
-    icon: string
-    title: string
-  }
-
-  export const AppSiteFooter: DefineComponent<Record<string, unknown>, Record<string, unknown>, unknown>
-  export const siteFooterSocialLinks: readonly FooterIconLinkItem[]
-  export function getSiteFooterResourceLinks(variant: 'main' | 'admin'): FooterLinkItem[]
-  export const SITE_FOOTER_OPEN_SOURCE_LINKS: readonly FooterLinkItem[]
-  export const SITE_FOOTER_FRIEND_LINKS: readonly FooterLinkItem[]
-}
-
-declare module '@142vip/vue/constants' {
-  export interface SiteContactQrItem {
-    src: string
-    alt: string
-    caption: string
-  }
-
-  export const SITE_CONTACT_QR_ITEMS: readonly SiteContactQrItem[]
 }

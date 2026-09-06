@@ -153,6 +153,9 @@ export function getVipThemeConfig(themeConfig: any) {
     externalLinkIcon: false,
     // 忽略死链接，参考：https://vitepress.dev/zh/reference/site-config#ignoredeadlinks
     ignoreDeadLinks: 'localhostLinks',
+    returnToTopLabel: '返回顶部',
+    sidebarMenuLabel: '左侧菜单',
+    darkModeSwitchLabel: '切换主题',
     ...themeConfig,
   }
 }

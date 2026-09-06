@@ -1,6 +1,9 @@
 /**
- * @142vip/vitepress 首页 / 文档内嵌组件共用样式。
- * 由 defineVipExtendsTheme 一次性引入，亮暗随 VitePress `--vp-c-*` 切换。
+ * `defineVipExtendsTheme` 主题样式（与 `theme/index.ts` 同目录）。
+ *
+ * - `.vip-element-plus-vp-theme` / `.vip-doc-section`：首页与文档内 EP 组件对齐 VP `--vp-c-*`
+ * - `.vip-footer-host`：文档站 admin 页脚外壳（`global-footer` 槽位 + 暗色 token；间距由 `VipFooter` 内置样式负责）
+ * - `.vip-footer-floating-dock`：`showBackTop` 时 `VipBackTop` 定位与安全区
  */
 
 /* Element Plus 令牌 → VitePress 主题变量（挂到有 EP 组件的根节点） */
@@ -76,7 +79,7 @@
     color 0.5s;
 }
 
-/* AppSiteFooter：固定暗色，不随 VitePress 亮/暗切换（避免 `var(--vp-c-bg)` 随主题变化） */
+/* VitePress 文档站：`VipFooter` admin 变体固定暗色外壳（不随 VP 亮/暗切换） */
 .vip-footer-host {
   position: relative;
   z-index: var(--vp-z-index-footer);
@@ -86,16 +89,14 @@
 $vip-footer-dark-bg: #161618;
 $vip-footer-dark-text: 235, 235, 245;
 
-.vip-footer-host--dark {
+/* 对齐 `@142vip/vue` admin 页脚槽位：`.global-footer` + `__surface`，不覆盖 `__inner` / 徽章区内边距 */
+.vip-footer-host .global-footer.vip-footer-host--dark {
   --base-text-color: #{$vip-footer-dark-text};
   --primary-color: 60, 126, 109;
   color-scheme: dark;
-  background-color: $vip-footer-dark-bg;
-  color: rgba(var(--base-text-color), 0.82);
 
-  /* 全局 CSS（非 Vue SFC）：用后代选择器覆盖 AppSiteFooter，勿用 :deep() */
   .global-footer__surface {
-    border-top-color: rgba(var(--base-text-color), 0.14);
+    border-top: 1px solid rgba(var(--base-text-color), 0.14);
     box-shadow: inset 0 1px 0 rgba(var(--base-text-color), 0.04);
     background-color: $vip-footer-dark-bg;
     background-image: linear-gradient(
@@ -103,29 +104,6 @@ $vip-footer-dark-text: 235, 235, 245;
       rgba(var(--base-text-color), 0.012) 0%,
       rgba(var(--base-text-color), 0.022) 100%
     );
-
-    &::after {
-      background: linear-gradient(180deg, rgba(var(--base-text-color), 0.06), transparent);
-    }
-  }
-
-  .global-footer__inner {
-    /* 底部留白交给 meta（Release / 徽章），避免与 copyright 叠出大空白 */
-    padding-bottom: 4px;
-    background-image: linear-gradient(
-      180deg,
-      rgba(var(--base-text-color), 0.012) 0%,
-      rgba(var(--base-text-color), 0.022) 100%
-    );
-  }
-
-  .global-footer__copyright {
-    margin-top: 28px;
-    margin-bottom: 0;
-    padding-top: 16px;
-    padding-bottom: 0;
-    border-top-color: rgba(var(--base-text-color), 0.14);
-    color: rgba(var(--base-text-color), 0.55);
   }
 
   .el-link {
@@ -134,76 +112,49 @@ $vip-footer-dark-text: 235, 235, 245;
   }
 }
 
-.vip-footer-host__meta {
-  position: relative;
-  z-index: 1;
-  margin: 0;
-  padding: 2px 16px 22px;
-  text-align: center;
-  background-color: $vip-footer-dark-bg;
-}
-
-.vip-footer-host__release {
-  margin: 0 0 8px;
-  padding: 0;
-  font-size: 0.88rem;
-  line-height: 1.4;
-  color: rgba(235, 235, 245, 0.55);
-  text-align: center;
-}
-
-.vip-footer-host__badges {
+/* `showBackTop`：`@142vip/vue` `VipBackTop` 在 VP 布局中的 fixed 浮动坞（`--vip-fab-*` 对齐 VP 主题） */
+.vip-footer-floating-dock {
+  position: fixed;
+  right: max(24px, env(safe-area-inset-right, 0px));
+  bottom: calc(48px + env(safe-area-inset-bottom, 0px));
+  z-index: var(--vp-z-index-local-nav);
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 10px 12px;
-  margin: 0;
-  padding: 0;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  pointer-events: none;
+
+  --vip-fab-fg: var(--vp-c-text-1);
+  --vip-fab-bg: color-mix(in srgb, var(--vp-c-bg-elv, var(--vp-c-bg)) 88%, transparent);
+  --vip-fab-bg-hover: var(--vp-c-bg-soft);
+  --vip-fab-border: color-mix(in srgb, var(--vp-c-divider) 80%, transparent);
+  --vip-fab-active-border: color-mix(in srgb, var(--vp-c-brand-1) 35%, transparent);
+  --vip-fab-shadow: 0 2px 8px color-mix(in srgb, var(--vp-c-text-1) 8%, transparent);
+  --vip-color-accent-blue: var(--vp-c-brand-1);
 }
 
-.vip-footer-host__badge {
-  display: inline-flex;
-  line-height: 0;
-  border-radius: 4px;
-  overflow: hidden;
-  opacity: 0.95;
-  transition:
-    opacity 0.2s ease,
-    transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
-    filter 0.2s ease;
+.vip-footer-floating-dock__back-top.vip-back-top {
+  pointer-events: auto;
+}
 
-  img {
-    display: block;
-    height: 20px;
-    width: auto;
-    max-width: 100%;
-  }
-
-  &:hover,
-  &:focus-visible {
-    opacity: 1;
-    transform: translateY(-1px);
-    filter: brightness(1.08);
-  }
-
-  &:focus-visible {
-    outline: 2px solid rgba(60, 126, 109, 0.9);
-    outline-offset: 2px;
-  }
+html.dark .vip-footer-floating-dock {
+  --vip-fab-fg: rgba(235, 235, 245, 0.72);
+  --vip-fab-bg: color-mix(in srgb, #1b1b1f 78%, transparent);
+  --vip-fab-bg-hover: color-mix(in srgb, #1b1b1f 90%, transparent);
+  --vip-fab-border: rgba(235, 235, 245, 0.16);
+  --vip-fab-shadow: 0 2px 10px rgba(0, 0, 0, 0.32);
 }
 
 @media (max-width: 640px) {
-  .vip-footer-host__meta {
-    padding-bottom: 18px;
-  }
-
-  .vip-footer-host__badges {
-    gap: 8px 10px;
-  }
-
-  .vip-footer-host__badge img {
-    height: 18px;
+  .vip-footer-floating-dock {
+    right: max(16px, env(safe-area-inset-right, 0px));
+    bottom: calc(56px + env(safe-area-inset-bottom, 0px));
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .vip-footer-floating-dock .vip-back-top,
+  .vip-footer-floating-dock .vip-back-top__icon {
+    transition: none;
+  }
+}
