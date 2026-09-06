@@ -8,7 +8,7 @@ import chuFanCodeImage from '@142vip/cdn/media/wechat/chu-fan-code-450x450.webp'
 import { OPEN_SOURCE_ADDRESS } from '@142vip/open-source'
 
 /** 联系我们双二维码单项（图 + 无障碍文案 + 展示标题） */
-export interface SiteContactQrItem {
+export interface VipContactQrItem {
   src: string
   alt: string
   caption: string
@@ -18,7 +18,7 @@ export interface SiteContactQrItem {
  * 联系我们双二维码：联系作者区块、页脚、OAuth 宣传区等共用同一数据源。
  * 顺序：公众号 → 个人微信。
  */
-export const SITE_CONTACT_QR_ITEMS: readonly SiteContactQrItem[] = [
+export const VIP_CONTACT_QR_ITEMS: readonly VipContactQrItem[] = [
   {
     src: chuFanCodeImage,
     alt: '关注公众号',

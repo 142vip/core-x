@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ElImage, ElLink, ElSpace } from 'element-plus'
-import { SITE_CONTACT_QR_ITEMS, VIP_CONTACT_PLATFORM_LINKS } from './constants/contact-platforms.constant'
+import { VIP_CONTACT_PLATFORM_LINKS, VIP_CONTACT_QR_ITEMS } from './constants/contact-platforms.constant'
 import 'element-plus/theme-chalk/base.css'
 import 'element-plus/theme-chalk/el-image.css'
 import 'element-plus/theme-chalk/el-link.css'
@@ -34,7 +34,7 @@ withDefaults(
       class="vip-contact-author__wechat"
     >
       <div
-        v-for="qrItem in SITE_CONTACT_QR_ITEMS"
+        v-for="qrItem in VIP_CONTACT_QR_ITEMS"
         :key="qrItem.caption"
         class="vip-contact-author__wechat-item"
       >

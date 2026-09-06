@@ -31,14 +31,20 @@ export default defineVipVitepressConfig({
 
 ```ts
 import defineVipExtendsTheme from '@142vip/vitepress/theme'
-import { h } from 'vue'
-import HomePage from './components/HomePage.vue'
+import { getTableData } from './project-data'
 
-// HomePage 挂在首页 Markdown 正文之后、页脚之前
+// VipHomePage 由主题注入，挂在首页 Markdown 正文之后、页脚之前
 export default defineVipExtendsTheme(undefined, {
-  homePage: () => h(HomePage),
+  homePage: {
+    tables: [
+      { title: '最佳实践', data: getTableData('example') },
+      { title: '开源模块', data: getTableData('project') },
+    ],
+  },
 })
 ```
+
+`homePage` 传入配置对象时挂载内置 `VipHomePage`；`showTeam` / `showOpenSource` / `defaultSlot` 可扩展团队、开源与联系作者等区块。完全自定义时可传 `() => h(...)`，传 `false` 关闭。
 
 ### 3. 写图（需已启用 mermaid）
 
@@ -65,11 +71,13 @@ flowchart LR
 
 交互能力仅在内容超出时出现；小图保持简洁，大图才提供缩放与全屏。所有图表均支持复制 Markdown 代码块（` ```mermaid ` fence，不含主题配置）到剪贴板。样式使用 VitePress CSS 变量，兼容明暗主题与移动端。
 
-## 页脚 `showBadge`
+## 页脚 `showBackTop` / `showBadge`
+
+在 `enableVipFooter({ showBackTop: true })` 时挂载 `@142vip/vue` 的 `VipBackTop`；`pkgName` / `pkgVersion` / `showBadge` 透传 `VipFooter` 渲染 Release 与徽章。
 
 | 值 | 行为 |
 |----|------|
-| `true` | 展示 `getVipFooterBadgeLinks()` 默认徽章 |
+| `true` | 展示 `@142vip/vue` `VipFooter` 默认徽章（`showBadge: true`） |
 | `false` / 未传 | 不展示徽章 |
 | `VipFooterBadgeLink[]` | 自定义 `href` / `src` / `alt` 列表 |
 
