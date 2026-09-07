@@ -4,7 +4,7 @@ import type { VipMermaidOptions } from './mermaid-theme'
 import type { NavbarConfig, SidebarConfig } from './types'
 import { mergeVipMermaidViteConfig, vipMermaidMarkdown } from './mermaid'
 import { configureVipMermaid } from './mermaid-theme'
-import { mergeVipSassViteConfig } from './sass-vite'
+import { mergeVipViteConfig } from './vite'
 
 /**
  * defineVipVitepressConfig 可选拓展
@@ -38,9 +38,14 @@ export function defineVipVitepressConfig(
   userConfig: UserConfig<DefaultTheme.Config>,
   options?: DefineVipVitepressConfigOptions,
 ): UserConfig<DefaultTheme.Config> {
-  // 保持原行为：无第二参数 / 未启用 mermaid 时，原样返回
+  const viteWithDefaults = mergeVipViteConfig(userConfig.vite)
+
+  // 无第二参数 / 未启用 mermaid 时，仅合并 SSR 与 cdn 资产打包所需 Vite 配置
   if (options == null || options.mermaid == null || options.mermaid === false) {
-    return userConfig
+    return {
+      ...userConfig,
+      vite: viteWithDefaults,
+    }
   }
 
   if (options.mermaid !== true) {
@@ -53,8 +58,8 @@ export function defineVipVitepressConfig(
   return {
     ...userConfig,
     markdown: defineVipMarkdownConfig(userConfig.markdown),
-    // 增量合并 Vite 配置：Sass 现代 API + Mermaid 依赖预构建（不覆盖用户已显式设置的项）
-    vite: mergeVipMermaidViteConfig(mergeVipSassViteConfig(userConfig.vite)),
+    // 增量合并 Vite 配置：cdn SSR 打包 + Sass modern API + Mermaid 预构建
+    vite: mergeVipMermaidViteConfig(mergeVipViteConfig(userConfig.vite, { sass: true })),
   }
 }
 
