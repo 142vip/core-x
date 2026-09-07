@@ -1,6 +1,6 @@
 ---
 name: agent-commit
-description: 跨项目 Git 提交规范。当用户要求提交代码、写 commit message、整理改动准备提交时使用。覆盖 Conventional Commits、分类提交、文件粒度、绝对禁止 Agent/大模型/IDE trailer（如 Co-authored-by: Cursor）、Agent 仅在用户明确要求时 commit、不执行 push。scope 枚举与 trailer 以本仓 AGENTS.md 为准。按意图触发。
+description: "跨项目 Git 提交规范。当用户要求提交代码、写 commit message、整理改动准备提交时使用。覆盖 Conventional Commits、分类提交、文件粒度、绝对禁止 Agent/大模型/IDE trailer（如 Co-authored-by: Cursor）、Agent 仅在用户明确要求时 commit、不执行 push。scope 枚举与 trailer 以本仓 AGENTS.md 为准。按意图触发。"
 ---
 
 # Git 提交规范（通用核心）
