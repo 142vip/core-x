@@ -61,7 +61,7 @@ defineVipVitepressConfig(userConfig, { mermaid: true }) // 增量合并 markdown
 |------|------|
 | `core/vitepress.ts` | 配置入口 |
 | `core/mermaid.ts` | fence 插件 + Vite 预构建 |
-| `core/sass-vite.ts` | Sass modern API（Mermaid 启用时合并） |
+| `core/vite.ts` | SSR cdn 资产打包 + Sass modern API（`mergeVipViteConfig`） |
 | `theme/index.ts` | `defineVipExtendsTheme` |
 | `components/VipMermaid.vue` | 渲染组件 |
 
