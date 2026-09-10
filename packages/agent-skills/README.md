@@ -9,7 +9,7 @@
 | `workflow` | 高效执行管线：默认读取顺序、场景策略（小改 / 单模块 / 跨模块 / 仅文档 / 调查类）、规则治理分层与知识沉淀、回复模板 |
 | `code-dev` | 代码开发：命名、函数、类型、SOLID、前后端 / 数据库、注释日志、最小改动、lint 策略、依赖本地修复 |
 | `self-check` | 改完自检：局部 lint + 受影响 build + 文档同步 + `TODO.md` 维护闭环 |
-| `commit` | Git 提交：Conventional Commits、分类提交、反引号、trailer 纪律、Agent 只 commit 不擅自 push |
+| `commit` | Git 提交：Conventional Commits、分类提交、反引号、trailer 纪律、每条 commit 后清 trailer 脚本、Agent 只 commit 不擅自 push |
 
 ## 安装
 

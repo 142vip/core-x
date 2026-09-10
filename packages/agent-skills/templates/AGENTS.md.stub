@@ -34,7 +34,7 @@
 
 - Conventional Commits
 - **scope 枚举**：（填写本仓应用/包名）
-- Agent：只 commit，不擅自 push
+- Agent：只 commit，不擅自 push；禁止 IDE/Agent 工具 trailer；每条 commit 后按 skill `commit` §「Commit 后清 trailer」剔除环境注入（勿信 Attribution 已关）
 
 ## AI / Agent
 

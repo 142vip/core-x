@@ -196,7 +196,7 @@ npx eslint --fix --max-warnings 0 path/to/a.ts path/to/b.vue
 | 检查项 | 规则 |
 |--------|------|
 | 类型安全 | **禁止 `any`**；慎用 `unknown`（仅边界+立即收窄）；尽最大努力声明类型；少用 `as` |
-| Commit trailer | **禁止** `Co-authored-by: Cursor …` 及任何 Agent / 大模型 / IDE 产品 trailer（见 `commit`） |
+| Commit trailer | **禁止** IDE/Agent 产品 trailer；用户要求提交时每条 commit 后必跑 `commit` §「Commit 后清 trailer」脚本并抽查 `%B` |
 | 通用 skill 镜像 | 下游**禁止**手改已 sync 的通用 skill；改进回写真源包（见 `workflow` / `code-dev`） |
 | 命名 / 常量 | 无魔法值；枚举显式字面量；同概念同词；无单字母心理映射 |
 | 业务语义命名 | 慎用 `result` / `data` / `info` / `temp` 等空壳词；变量/返回值须贴业务对象 |
