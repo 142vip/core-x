@@ -1,6 +1,7 @@
 import type { HeadConfig } from 'vitepress'
 import { OPEN_SOURCE_ADDRESS } from '@142vip/open-source'
 import { vipDocSite, VipPackageJSON } from '@142vip/utils'
+import { getVipBrandCdnUrl } from '@142vip/vitepress'
 
 // ============================================================
 // SEO 站点信息（从 .vitepress/config.ts 拆分而来）
@@ -35,8 +36,11 @@ const pkg = VipPackageJSON.getPackageJSON<{ description: string }>()
 /** 站点 SEO 描述（与根 package.json description 保持一致） */
 export const SITE_DESCRIPTION = pkg.description
 
-/** 站点的 base 路径（GitHub Pages 子路径部署时形如 /core-x/），favicon 等静态资源需带此前缀 */
+/** 站点的 base 路径（GitHub Pages 子路径部署时形如 /core-x/） */
 export const siteBase = vipDocSite.getBase('core-x')
+
+/** 品牌 Logo 绝对 URL（覆盖包默认 `vip-logo`，供 JSON-LD / 社交卡片） */
+const siteLogoUrl = getVipBrandCdnUrl('svg/x-logo.svg')
 
 /**
  * 结构化数据（JSON-LD）：142vip 组织 + core-x 站点实体
@@ -55,7 +59,7 @@ const SITE_JSON_LD = JSON.stringify({
       'alternateName': pkg.name,
       'description': SITE_DESCRIPTION,
       'url': OPEN_SOURCE_ADDRESS.HOME_PAGE_DOMAIN_VIP,
-      'logo': `${SITE_URL}/logo.png`,
+      'logo': siteLogoUrl,
       // 组织/作者的公开主页矩阵：GitHub / Gitee / npm / 自媒体
       'sameAs': [
         SITE_URL,
@@ -85,8 +89,8 @@ const SITE_JSON_LD = JSON.stringify({
  * - 注意：vitepress renderHead 将元组第三元素作为标签 innerHTML 原样输出（type 非 javascript 时不走 esbuild）
  */
 export const seoHead: HeadConfig[] = [
-  // 站点图标（需带 base 前缀，GitHub Pages 子路径部署时才能正确加载）
-  ['link', { rel: 'icon', href: `${siteBase}favicon.ico` }],
+  // 站点图标（`x-favicon`；覆盖包默认 `vip-favicon.ico`）
+  ['link', { rel: 'icon', href: getVipBrandCdnUrl('icons/x-favicon.ico') }],
   // canonical：声明站点权威地址，避免重复内容
   ['link', { rel: 'canonical', href: SITE_URL }],
   // 基础 SEO
@@ -100,12 +104,12 @@ export const seoHead: HeadConfig[] = [
   ['meta', { property: 'og:title', content: `${pkg.name} - X一切都有可能` }],
   ['meta', { property: 'og:description', content: SITE_DESCRIPTION }],
   ['meta', { property: 'og:url', content: SITE_URL }],
-  ['meta', { property: 'og:image', content: `${SITE_URL}/logo.png` }],
+  ['meta', { property: 'og:image', content: siteLogoUrl }],
   // Twitter Card
   ['meta', { name: 'twitter:card', content: 'summary' }],
   ['meta', { name: 'twitter:title', content: pkg.name }],
   ['meta', { name: 'twitter:description', content: SITE_DESCRIPTION }],
-  ['meta', { name: 'twitter:image', content: `${SITE_URL}/logo.png` }],
+  ['meta', { name: 'twitter:image', content: siteLogoUrl }],
   // 结构化数据（JSON-LD）：142vip 组织 + core-x 站点实体，增强搜索引擎对组织信息的识别
   ['script', { type: 'application/ld+json' }, SITE_JSON_LD],
   // 浏览器主题色（与 VitePress 默认品牌色 indigo 保持一致）

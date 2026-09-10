@@ -5,6 +5,7 @@ import {
   defineVipNavbarConfig,
   defineVipVitepressConfig,
   enableVipFooter,
+  getVipBrandCdnUrl,
   getVipThemeConfig,
   zhSearch,
 } from '@142vip/vitepress'
@@ -105,47 +106,28 @@ const navbarConfig = defineVipNavbarConfig([
 /**
  * vitepress 站点配置
  * - 返回类型由 defineVipVitepressConfig 自动推断为 UserConfig<DefaultTheme.Config>，无需显式 any
+ * - 通用项（lang / markdown / 目录等）由 `defaultVipThemeConfig` 合并
+ * - favicon / og:image：见 `seoHead`（`getVipBrandCdnUrl` 覆盖包默认 vip 品牌）
+ * - logo：`getVipThemeConfig` 中显式配置，覆盖包默认 `VIP_DEFAULT_LOGO`
  * - 第二参数启用 Mermaid 图表支持
  */
 export default defineVipVitepressConfig({
   base: siteBase,
-  lang: 'zh-CN',
   title: '@142vip工程化',
   titleTemplate: ':title - 等等我呀，还在努力',
   description: SITE_DESCRIPTION,
-  srcDir: './',
-  // 排除部分：不参与文档站构建
-  srcExclude: ['node_modules', 'scripts'],
   // 忽略 wiki 产物的站内互链
   // - typedoc-github-wiki-theme 生成的 `../wiki/xxx` 相对链接专为 GitHub Wiki 站内互链设计
   // - vitepress 站内无对应页面，属于预期失效，故用正则精确忽略（不影响其它死链检测）
   ignoreDeadLinks: [/\.\.\/wiki\//],
-  // 编译输出目录
-  outDir: './dist',
-  // dev 模式下的缓存目录，默认 cache
-  cacheDir: './.vitepress/.vite',
-  // 编译产物静态资源目录
-  assetsDir: 'static',
-  metaChunk: true,
   // 站点 head 标签：基础 SEO + 社交分享卡片 + 结构化数据（完整清单见 ./seo.ts）
   head: seoHead,
-  markdown: {
-    // 代码高亮主题：暗色 dracula-soft / 亮色 vitesse-light
-    theme: {
-      dark: 'dracula-soft',
-      light: 'vitesse-light',
-    },
-    // 自定义属性定界符（配合插件使用）
-    attrs: {
-      leftDelimiter: '%{',
-      rightDelimiter: '}%',
-    },
-  },
   // 配置主题
   themeConfig: getVipThemeConfig({
+    // 导航栏 Logo（覆盖包默认 `vip-logo.svg`）
+    logo: getVipBrandCdnUrl('svg/x-logo.svg'),
     // 导航栏
     nav: navbarConfig,
-    logo: '/logo.png',
     // 侧边栏按路径拆分维护，完整配置见 ./sidebar.ts
     sidebar: {
       // 根路径侧边栏：全量包与 Demo 分组
@@ -180,15 +162,6 @@ export default defineVipVitepressConfig({
         },
       },
     },
-    // 社交链接
-    socialLinks: [
-      { icon: 'github', link: OPEN_SOURCE_ADDRESS.GITHUB_REPO_CORE_X },
-      { icon: 'gitee', link: OPEN_SOURCE_ADDRESS.GITEE_REPO_CORE_X },
-      { icon: 'npm', link: OPEN_SOURCE_ADDRESS.HOME_PAGE_NPM_MMDAPL },
-      { icon: 'csdn', link: OPEN_SOURCE_ADDRESS.HOME_PAGE_CSDN },
-      { icon: 'bilibili', link: OPEN_SOURCE_ADDRESS.HOME_PAGE_BILIBILI },
-      { icon: 'juejin', link: OPEN_SOURCE_ADDRESS.HOME_PAGE_JUE_JIN },
-    ],
     // 编辑链接：跳转 GitHub 对应源码文件
     editLink: {
       pattern: `${OPEN_SOURCE_ADDRESS.GITHUB_REPO_CORE_X}/edit/next/:path`,
@@ -212,9 +185,6 @@ export default defineVipVitepressConfig({
         '@apps': resolveFromRoot('apps'),
       },
     },
-    // 配置静态资源目录（publicDir：favicon/logo 等原样拷贝到产物根目录）
-    // 参考：https://cn.vitejs.dev/config/shared-options.html#publicdir
-    publicDir: resolveFromRoot('.vitepress/assets'),
     plugins: [
       // element-plus 自动导入，参考：https://element-plus.org/zh-CN/guide/quickstart.html
       // ElementPlus(),
