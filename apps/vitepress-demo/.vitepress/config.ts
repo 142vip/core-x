@@ -5,13 +5,14 @@ import {
   defineVipSidebarConfig,
   defineVipVitepressConfig,
   enableVipFooter,
+  getVipBrandCdnUrl,
   getVipThemeConfig,
   zhSearch,
 } from '@142vip/vitepress'
 
 const pkg = VipPackageJSON.getPackageJSON<{ description: string }>()
 
-// 站点的base路径
+// 站点的 base 路径
 const siteBase = vipDocSite.getBase('core-x')
 
 /**
@@ -62,42 +63,30 @@ const sidebarConfig = defineVipSidebarConfig([
 
 /**
  * 所有配置
+ * - 通用项（lang / markdown / 目录等）由 `defaultVipThemeConfig` 合并
+ * - favicon / logo：`getVipBrandCdnUrl` 覆盖包默认 vip 品牌（见 `head` / `themeConfig.logo`）
+ * - socialLinks：覆盖 `defaultVipSocialLinks` 为组织主页
  */
 export default defineVipVitepressConfig({
   base: siteBase,
-  lang: 'zh-CN',
   title: '@142vip/vitepress-demo',
   titleTemplate: ':title - 等等我呀，还在努力',
   description: '@142vip/vitepress模块包的使用Demo演示',
-  srcDir: './',
   // 排除部分
   srcExclude: [],
-  // 编译输出目录
-  outDir: './dist',
-  // dev 模式下的缓存目录，默认cache
-  cacheDir: './.vitepress/.vite',
-  assetsDir: 'static',
-  metaChunk: true,
   head: [
+    // favicon（覆盖包默认 `vip-favicon.ico`）
+    ['link', { rel: 'icon', href: getVipBrandCdnUrl('icons/x-favicon.ico') }],
     ['meta', { name: 'theme-color', content: '#3c8772' }],
     ['meta', { property: 'og:url', content: 'https://github.com/142vip/core-x' }],
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:title', content: '@142vip/core-x' }],
     ['meta', { property: 'og:description', content: `${pkg.name} - @142vip/vitepress-demo演示项目` }],
   ],
-  // markdown
-  markdown: {
-    theme: {
-      dark: 'dracula-soft',
-      light: 'vitesse-light',
-    },
-    attrs: {
-      leftDelimiter: '%{',
-      rightDelimiter: '}%',
-    },
-  },
   // 配置主题
   themeConfig: getVipThemeConfig({
+    // 导航栏 Logo（覆盖包默认 `vip-logo.svg`）
+    logo: getVipBrandCdnUrl('svg/x-logo.svg'),
     // 导航栏
     nav: navbarConfig,
     sidebar: {
@@ -125,7 +114,7 @@ export default defineVipVitepressConfig({
         },
       },
     },
-    // 一些链接
+    // 一些链接（覆盖 `defaultVipSocialLinks` 为组织主页）
     socialLinks: [
       { icon: 'github', link: OPEN_SOURCE_ADDRESS.HOME_PAGE_GITHUB_VIP },
       { icon: 'gitee', link: OPEN_SOURCE_ADDRESS.HOME_PAGE_GITEE_VIP },
