@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.31 (2026-09-10)
+
+### ✨ Features
+
+- 品牌默认项并入 `config.ts`，改用 CDN URL &nbsp;-&nbsp; by **chufan** [<samp>(12c8f)</samp>](https://github.com/142vip/core-x/commit/12c8f016)
+
+### 📖 Documentation
+
+- 补充 favicon/logo 与 `getVipBrandCdnUrl` 使用说明 &nbsp;-&nbsp; by **chufan** [<samp>(139ad)</samp>](https://github.com/142vip/core-x/commit/139adcb3)
+
+**Release New Version v0.0.1-alpha.31 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/vitepress)**
+
 ## v0.0.1-alpha.30 (2026-09-10)
 
 ### ✨ Features
