@@ -81,7 +81,7 @@
   "dependencies": {
     "@142vip/cdn": "0.0.1-alpha.2",
     "@142vip/open-source": "workspace:*",
-    "@142vip/vue": "0.1.6-alpha.27",
+    "@142vip/vue": "0.1.6-alpha.29",
     "@element-plus/icons-vue": "2.3.2",
     "copy-to-clipboard": "4.0.2",
     "element-plus": "2.13.7",

@@ -576,8 +576,8 @@ importers:
         specifier: workspace:*
         version: link:../open-source
       '@142vip/vue':
-        specifier: 0.1.6-alpha.27
-        version: 0.1.6-alpha.27(@element-plus/icons-vue@2.3.2(vue@3.5.40(typescript@5.9.3)))(element-plus@2.13.7(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(pinia@3.0.4(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(vue@3.5.40(typescript@5.9.3))
+        specifier: 0.1.6-alpha.29
+        version: 0.1.6-alpha.29(@element-plus/icons-vue@2.3.2(vue@3.5.40(typescript@5.9.3)))(element-plus@2.13.7(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(pinia@3.0.4(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(vue@3.5.40(typescript@5.9.3))
       '@element-plus/icons-vue':
         specifier: 2.3.2
         version: 2.3.2(vue@3.5.40(typescript@5.9.3))
@@ -672,11 +672,14 @@ packages:
   '@142vip/open-source@0.0.1-alpha.3':
     resolution: {integrity: sha512-h5z1XpRcJfw7Mm1uQRTv4JMXd80MK7A2IfKV6PHO/EE2wtujwy6BOU0xri0cI4OwQ9CMhIm4uJ+kuuKUArJ1Uw==}
 
+  '@142vip/open-source@0.0.1-alpha.4':
+    resolution: {integrity: sha512-8SS1ftuyi/07Sv6TXU9PDQMwjL+G12u+iF7IGpByUIjg1i+5YW1j5XIowQxkw5WwLtwHvvk+1A76neaLRN6heQ==}
+
   '@142vip/utils@0.0.1-alpha.56':
     resolution: {integrity: sha512-C82JA39YIKSbTwBkGHFCfXUFt3so8wfyZhgS7QuDANFQY8glVPAhcObCV6skd/mA8gVZOYQUu5Bk2CE97+Rfow==}
 
-  '@142vip/vue@0.1.6-alpha.27':
-    resolution: {integrity: sha512-DLWSXw8k1KyS5GOBR4gBk94hf4dr7X46mcS9PDUAB3LSWr9fxRjYEaN8qd+qYbG6+pQtOsuFMLVLcyxEWG7mXQ==}
+  '@142vip/vue@0.1.6-alpha.29':
+    resolution: {integrity: sha512-Eui7amDW0TC9ra+msilO7HHR4Qn41H1qD7NAJvMskh170arurZsPVSLL0tMWqijWX9sSIQ68rkAfypllV7S2Og==}
     peerDependencies:
       '@element-plus/icons-vue': 2.3.2
       element-plus: 2.13.6
@@ -11413,6 +11416,8 @@ snapshots:
 
   '@142vip/open-source@0.0.1-alpha.3': {}
 
+  '@142vip/open-source@0.0.1-alpha.4': {}
+
   '@142vip/utils@0.0.1-alpha.56(@types/node@24.13.3)(typescript@5.9.3)':
     dependencies:
       '@142vip/open-source': 0.0.1-alpha.3
@@ -11434,10 +11439,10 @@ snapshots:
       - '@types/node'
       - typescript
 
-  '@142vip/vue@0.1.6-alpha.27(@element-plus/icons-vue@2.3.2(vue@3.5.40(typescript@5.9.3)))(element-plus@2.13.7(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(pinia@3.0.4(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(vue@3.5.40(typescript@5.9.3))':
+  '@142vip/vue@0.1.6-alpha.29(@element-plus/icons-vue@2.3.2(vue@3.5.40(typescript@5.9.3)))(element-plus@2.13.7(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(pinia@3.0.4(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(vue@3.5.40(typescript@5.9.3))':
     dependencies:
       '@142vip/cdn': 0.0.1-alpha.2
-      '@142vip/open-source': 0.0.1-alpha.3
+      '@142vip/open-source': 0.0.1-alpha.4
       '@element-plus/icons-vue': 2.3.2(vue@3.5.40(typescript@5.9.3))
       axios: 1.17.0
       axios-retry: 4.5.0(axios@1.17.0)
