@@ -9,6 +9,11 @@ declare module '*.vue' {
   export default component
 }
 
+declare module '@142vip/cdn/media/icons/*.ico' {
+  const src: string
+  export default src
+}
+
 declare module '@142vip/cdn/media/svg/*.svg' {
   const src: string
   export default src

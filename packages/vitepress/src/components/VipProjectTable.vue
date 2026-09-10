@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { VipProject } from '@142vip/vitepress'
+import type { VipProject } from '../core/vip'
 import { ElImage, ElLink, ElTable, ElTableColumn } from 'element-plus'
 import { h } from 'vue'
 import 'element-plus/theme-chalk/base.css'

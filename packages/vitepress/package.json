@@ -69,7 +69,7 @@
     "registry": "https://registry.npmjs.org"
   },
   "peerDependencies": {
-    "@142vip/cdn": "0.0.1-alpha.2",
+    "@142vip/cdn": "0.0.1-alpha.3",
     "@142vip/open-source": "workspace:*",
     "@142vip/vue": "0.1.6-alpha.27",
     "@element-plus/icons-vue": "2.3.2",
@@ -79,7 +79,7 @@
     "vue": "3.5.40"
   },
   "dependencies": {
-    "@142vip/cdn": "0.0.1-alpha.2",
+    "@142vip/cdn": "0.0.1-alpha.3",
     "@142vip/open-source": "workspace:*",
     "@142vip/vue": "0.1.6-alpha.29",
     "@element-plus/icons-vue": "2.3.2",

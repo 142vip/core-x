@@ -1,4 +1,62 @@
+import type { HeadConfig, MarkdownOptions, UserConfig } from 'vitepress'
+import type { DefaultTheme } from 'vitepress/types/default-theme'
 import type { ZhSearchConfig } from './types'
+import { getProductionCdnUrl } from '@142vip/cdn'
+import { OPEN_SOURCE_ADDRESS } from '@142vip/open-source'
+
+// ============================================================
+// 品牌资源（`@142vip/cdn` 生产 CDN）
+// ============================================================
+
+/** 默认 favicon（`media/icons/vip-favicon.ico`） */
+export const VIP_DEFAULT_FAVICON = getProductionCdnUrl('media/icons/vip-favicon.ico')
+
+/** 默认 Logo（`media/svg/vip-logo.svg`） */
+export const VIP_DEFAULT_LOGO = getProductionCdnUrl('media/svg/vip-logo.svg')
+
+/** 默认 favicon `head` 元组；站点在 `head` 配置 `rel="icon"` 时不注入 */
+export const defaultVipFaviconHead: HeadConfig = [
+  'link',
+  { rel: 'icon', href: VIP_DEFAULT_FAVICON },
+]
+
+/**
+ * 将 `@142vip/cdn` media 相对路径转为生产 CDN URL。
+ * @param relativePath 如 `svg/x-logo.svg` 或 `media/svg/vip-logo.svg`
+ * @example getVipBrandCdnUrl('icons/x-favicon.ico')
+ */
+export function getVipBrandCdnUrl(relativePath: string): string {
+  const normalized = relativePath.startsWith('media/')
+    ? relativePath
+    : `media/${relativePath.replace(/^\//, '')}`
+
+  return getProductionCdnUrl(normalized)
+}
+
+function headHasFavicon(head: HeadConfig[]): boolean {
+  return head.some((item) => {
+    if (!Array.isArray(item) || item[0] !== 'link') {
+      return false
+    }
+    const attrs = item[1]
+    return attrs != null && typeof attrs === 'object' && 'rel' in attrs && attrs.rel === 'icon'
+  })
+}
+
+/**
+ * 合并默认 favicon；`head` 已含 `rel="icon"` 时不注入（站点可覆盖 vip 默认）。
+ */
+export function mergeVipDefaultHead(head: HeadConfig[] = []): HeadConfig[] {
+  if (headHasFavicon(head)) {
+    return head
+  }
+
+  return [defaultVipFaviconHead, ...head]
+}
+
+// ============================================================
+// 国际化与搜索
+// ============================================================
 
 /**
  * 中文语言包配置
@@ -37,9 +95,7 @@ export const i18n = {
   ariaSidebarNav: '侧边栏导航',
 }
 
-/**
- * 搜索-中文
- */
+/** 搜索-中文（Algolia DocSearch `locales`） */
 export const zhSearch: ZhSearchConfig = {
   root: {
     placeholder: '搜索文档',
@@ -84,78 +140,77 @@ export const zhSearch: ZhSearchConfig = {
   },
 }
 
-/**
- * 默认主题配置
- */
-export const defaultVipThemeConfig = {
-  lang: 'zh-CN',
-  srcDir: 'manuscripts',
-  // 编译输出目录
-  outDir: './dist',
-  // dev 模式下的缓存目录，默认cache
-  cacheDir: './.vitepress/.vite',
-  assetsDir: 'static',
-  metaChunk: true,
-  themeConfig: {
-    // 导航栏
-    i18n,
-    lastUpdated: {
-      text: '最近更新时间',
-    },
-    editLink: {
-      pattern: 'https://github.com/142vip/core-x/edit/main/docs/:path',
-      text: '在Github上编辑',
-    },
-    // 一些链接
-    socialLinks: [
-      {
-        icon: 'github',
-        link: 'https://github.com/142vip/core-x',
-      },
-      { icon: 'npm', link: 'https://www.npmjs.com/search?q=%40142vip' },
-    ],
-    search: {
-      provider: 'local',
-    },
-    externalLinkIcon: true,
+// ============================================================
+// 主题默认项
+// ============================================================
+
+/** 142vip 常用社交链接（可在 `themeConfig.socialLinks` 中覆盖或扩展） */
+export const defaultVipSocialLinks: DefaultTheme.SocialLink[] = [
+  { icon: 'github', link: OPEN_SOURCE_ADDRESS.GITHUB_REPO_CORE_X },
+  { icon: 'gitee', link: OPEN_SOURCE_ADDRESS.GITEE_REPO_CORE_X },
+  { icon: 'npm', link: OPEN_SOURCE_ADDRESS.HOME_PAGE_NPM_MMDAPL },
+  { icon: 'csdn', link: OPEN_SOURCE_ADDRESS.HOME_PAGE_CSDN },
+  { icon: 'bilibili', link: OPEN_SOURCE_ADDRESS.HOME_PAGE_BILIBILI },
+  { icon: 'juejin', link: OPEN_SOURCE_ADDRESS.HOME_PAGE_JUE_JIN },
+]
+
+/** 默认 Markdown 配置（代码高亮主题、属性定界符） */
+export const defaultVipMarkdown: MarkdownOptions = {
+  theme: {
+    dark: 'dracula-soft',
+    light: 'vitesse-light',
+  },
+  attrs: {
+    leftDelimiter: '%{',
+    rightDelimiter: '}%',
   },
 }
 
 /**
+ * 站点级默认配置（`defineVipVitepressConfig` 自动合并）
+ * - favicon：经 `mergeVipDefaultHead` 注入；`head` 已配置 `rel="icon"` 时不覆盖
+ * - logo / socialLinks：经 `getVipThemeConfig` 注入；传入字段可覆盖
+ */
+export const defaultVipThemeConfig: UserConfig<DefaultTheme.Config> = {
+  lang: 'zh-CN',
+  srcDir: './',
+  srcExclude: ['node_modules', 'scripts'],
+  outDir: './dist',
+  cacheDir: './.vitepress/.vite',
+  assetsDir: 'static',
+  metaChunk: true,
+  markdown: defaultVipMarkdown,
+}
+
+/**
  * 获取主题配置
- * todo 优化类型
+ * - 默认 `logo` / `socialLinks` 为 vip 品牌；站点在 `themeConfig` 传入同名字段即可覆盖
  * - https://vitepress.dev/zh/reference/default-theme-config
  */
-export function getVipThemeConfig(themeConfig: any) {
+export function getVipThemeConfig(themeConfig: Partial<DefaultTheme.Config> = {}): DefaultTheme.Config {
   return {
-    // 单页右侧目录
     aside: true,
-
-    // 最近更新
     lastUpdated: {
       text: '最后更新于',
     },
     notFound: {
       title: '页面找不到啦',
-      quote: `但是，如果你不改变你的方向，如果你继续寻找，你最终可能会到达你要去的地方。`,
+      quote: '但是，如果你不改变你的方向，如果你继续寻找，你最终可能会到达你要去的地方。',
       linkText: '返回首页',
     },
-
     docFooter: {
       prev: '上一篇',
       next: '下一篇',
     },
-    // 单页标题
     outline: {
       label: '本页内容',
     },
-    // 关闭外链图标
     externalLinkIcon: false,
-    // 忽略死链接，参考：https://vitepress.dev/zh/reference/site-config#ignoredeadlinks
-    ignoreDeadLinks: 'localhostLinks',
     returnToTopLabel: '返回顶部',
     sidebarMenuLabel: '左侧菜单',
     darkModeSwitchLabel: '切换主题',
+    logo: VIP_DEFAULT_LOGO,
+    socialLinks: defaultVipSocialLinks,
     ...themeConfig,
   }
 }

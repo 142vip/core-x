@@ -570,8 +570,8 @@ importers:
   packages/vitepress:
     dependencies:
       '@142vip/cdn':
-        specifier: 0.0.1-alpha.2
-        version: 0.0.1-alpha.2
+        specifier: 0.0.1-alpha.3
+        version: 0.0.1-alpha.3
       '@142vip/open-source':
         specifier: workspace:*
         version: link:../open-source
@@ -668,6 +668,9 @@ packages:
 
   '@142vip/cdn@0.0.1-alpha.2':
     resolution: {integrity: sha512-FZSR2Z/RezrvaUo9IlNcZAaOv391w6hM7EoQVtIcIwI/F/im1oHZyceM6Q4z97PIQWGevabQ9QPswLtLKKoV0Q==}
+
+  '@142vip/cdn@0.0.1-alpha.3':
+    resolution: {integrity: sha512-Mt5lRYcAh+33QXSBmMKO5c2ccim3VsXk0tWadJInGClx6QoicvGqigOe0mcULBRhh3n4j4IayW2tFMevwKndKA==}
 
   '@142vip/open-source@0.0.1-alpha.3':
     resolution: {integrity: sha512-h5z1XpRcJfw7Mm1uQRTv4JMXd80MK7A2IfKV6PHO/EE2wtujwy6BOU0xri0cI4OwQ9CMhIm4uJ+kuuKUArJ1Uw==}
@@ -11413,6 +11416,8 @@ packages:
 snapshots:
 
   '@142vip/cdn@0.0.1-alpha.2': {}
+
+  '@142vip/cdn@0.0.1-alpha.3': {}
 
   '@142vip/open-source@0.0.1-alpha.3': {}
 

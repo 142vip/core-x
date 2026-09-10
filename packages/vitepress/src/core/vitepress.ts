@@ -2,6 +2,7 @@ import type { MarkdownOptions, UserConfig } from 'vitepress'
 import type { DefaultTheme } from 'vitepress/types/default-theme'
 import type { VipMermaidOptions } from './mermaid-theme'
 import type { NavbarConfig, SidebarConfig } from './types'
+import { defaultVipMarkdown, defaultVipThemeConfig, mergeVipDefaultHead } from './config'
 import { mergeVipMermaidViteConfig, vipMermaidMarkdown } from './mermaid'
 import { configureVipMermaid } from './mermaid-theme'
 import { mergeVipViteConfig } from './vite'
@@ -19,33 +20,54 @@ export interface DefineVipVitepressConfigOptions {
   mermaid?: boolean | VipMermaidOptions
 }
 
+function mergeVipMarkdownConfig(markdown?: MarkdownOptions): MarkdownOptions {
+  const defaultTheme = defaultVipMarkdown.theme
+  const userTheme = markdown?.theme
+
+  const mergedTheme = typeof defaultTheme === 'object' && defaultTheme != null
+    ? typeof userTheme === 'object' && userTheme != null
+      ? { ...defaultTheme, ...userTheme }
+      : defaultTheme
+    : userTheme ?? defaultTheme
+
+  return {
+    ...defaultVipMarkdown,
+    ...markdown,
+    theme: mergedTheme,
+    attrs: {
+      ...defaultVipMarkdown.attrs,
+      ...markdown?.attrs,
+    },
+  }
+}
+
 /**
  * 定义 Vitepress 配置
- * - 原行为：`defineVipVitepressConfig(config)` 原样返回
- * - 拓展：第二参数可启用 Mermaid 等
+ * - 自动合并 `defaultVipThemeConfig`、默认 favicon `head`、SSR Vite 配置
+ * - favicon：在站点 `head` 配置；logo / socialLinks：在 `getVipThemeConfig` 配置
  *
  * @example
  * ```ts
- * // 原用法（不变）
- * defineVipVitepressConfig({ title: 'Docs' })
- *
- * // 启用 Mermaid
- * defineVipVitepressConfig(config, { mermaid: true })
- * defineVipVitepressConfig(config, { mermaid: { theme: 'forest' } })
+ * defineVipVitepressConfig({
+ *   title: 'Docs',
+ *   themeConfig: getVipThemeConfig({ nav: [] }),
+ * }, { mermaid: true })
  * ```
  */
 export function defineVipVitepressConfig(
   userConfig: UserConfig<DefaultTheme.Config>,
   options?: DefineVipVitepressConfigOptions,
 ): UserConfig<DefaultTheme.Config> {
-  const viteWithDefaults = mergeVipViteConfig(userConfig.vite)
+  const configWithDefaults = {
+    ...defaultVipThemeConfig,
+    ...userConfig,
+    head: mergeVipDefaultHead(userConfig.head),
+    markdown: mergeVipMarkdownConfig(userConfig.markdown),
+    vite: mergeVipViteConfig(userConfig.vite),
+  }
 
-  // 无第二参数 / 未启用 mermaid 时，仅合并 SSR 与 cdn 资产打包所需 Vite 配置
   if (options == null || options.mermaid == null || options.mermaid === false) {
-    return {
-      ...userConfig,
-      vite: viteWithDefaults,
-    }
+    return configWithDefaults
   }
 
   if (options.mermaid !== true) {
@@ -56,9 +78,8 @@ export function defineVipVitepressConfig(
   }
 
   return {
-    ...userConfig,
+    ...configWithDefaults,
     markdown: defineVipMarkdownConfig(userConfig.markdown),
-    // 增量合并 Vite 配置：cdn SSR 打包 + Sass modern API + Mermaid 预构建
     vite: mergeVipMermaidViteConfig(mergeVipViteConfig(userConfig.vite, { sass: true })),
   }
 }
@@ -70,7 +91,7 @@ export function defineVipMarkdownConfig(markdown: MarkdownOptions = {}): Markdow
   const userConfig = markdown.config
 
   return {
-    ...markdown,
+    ...mergeVipMarkdownConfig(markdown),
     config(md) {
       vipMermaidMarkdown(md)
       userConfig?.(md)
