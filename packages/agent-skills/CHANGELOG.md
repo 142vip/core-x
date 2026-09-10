@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## v0.0.1-alpha.6 (2026-09-10)
+
+### 🐛 Bug Fixes
+
+- `commit` skill frontmatter 引号包裹 `description` &nbsp;-&nbsp; by **chufan** [<samp>(312a1)</samp>](https://github.com/142vip/core-x/commit/312a1bc0)
+
+**Release New Version v0.0.1-alpha.6 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/agent-skills)**
+
 ## v0.0.1-alpha.5 (2026-09-03)
 
 **No Significant Changes**
