@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.30 (2026-09-10)
+
+### ✨ Features
+
+- 全局页脚改用 `@142vip/vue` `VipFooter` &nbsp;-&nbsp; by **chufan** [<samp>(0ef49)</samp>](https://github.com/142vip/core-x/commit/0ef49ff6)
+- 内置 `VipHomePage` 并优化 `VipGithubPins` 响应式 &nbsp;-&nbsp; by **chufan** [<samp>(89ff6)</samp>](https://github.com/142vip/core-x/commit/89ff6974)
+
+### 🐛 Bug Fixes
+
+- `mergeVipViteConfig` 修复 SSR 下 `@142vip/cdn` 静态资源打包 &nbsp;-&nbsp; by **chufan** [<samp>(896f6)</samp>](https://github.com/142vip/core-x/commit/896f6f8b)
+
+**Release New Version v0.0.1-alpha.30 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/vitepress)**
+
 ## v0.0.1-alpha.29 (2026-09-03)
 
 ### ✨ Features
