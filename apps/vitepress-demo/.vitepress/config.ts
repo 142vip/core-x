@@ -61,21 +61,14 @@ const sidebarConfig = defineVipSidebarConfig([
   },
 ])
 
-/**
- * 所有配置
- * - 通用项（lang / markdown / 目录等）由 `defaultVipThemeConfig` 合并
- * - favicon / logo：`getVipBrandCdnUrl` 覆盖包默认 vip 品牌（见 `head` / `themeConfig.logo`）
- * - socialLinks：覆盖 `defaultVipSocialLinks` 为组织主页
- */
+/** Demo 站点配置：只写与包默认不同的品牌、导航与页脚 */
 export default defineVipVitepressConfig({
   base: siteBase,
   title: '@142vip/vitepress-demo',
   titleTemplate: ':title - 等等我呀，还在努力',
   description: '@142vip/vitepress模块包的使用Demo演示',
-  // 排除部分
   srcExclude: [],
   head: [
-    // favicon（覆盖包默认 `vip-favicon.ico`）
     ['link', { rel: 'icon', href: getVipBrandCdnUrl('icons/x-favicon.ico') }],
     ['meta', { name: 'theme-color', content: '#3c8772' }],
     ['meta', { property: 'og:url', content: 'https://github.com/142vip/core-x' }],
@@ -83,16 +76,14 @@ export default defineVipVitepressConfig({
     ['meta', { property: 'og:title', content: '@142vip/core-x' }],
     ['meta', { property: 'og:description', content: `${pkg.name} - @142vip/vitepress-demo演示项目` }],
   ],
-  // 配置主题
   themeConfig: getVipThemeConfig({
-    // 导航栏 Logo（覆盖包默认 `vip-logo.svg`）
     logo: getVipBrandCdnUrl('svg/x-logo.svg'),
-    // 导航栏
     nav: navbarConfig,
-    sidebar: {
-      '/': sidebarConfig,
+    sidebar: { '/': sidebarConfig },
+    socialLinks: {
+      github: OPEN_SOURCE_ADDRESS.HOME_PAGE_GITHUB_VIP,
+      gitee: OPEN_SOURCE_ADDRESS.HOME_PAGE_GITEE_VIP,
     },
-    // 全局页脚
     ...enableVipFooter({
       showBackTop: true,
       showBadge: true,
@@ -100,27 +91,15 @@ export default defineVipVitepressConfig({
       pkgName: pkg.name,
       pkgVersion: pkg.version,
     }),
-
-    // 搜索
     search: {
       provider: 'algolia',
       options: {
         appId: '69JA242WYX',
         apiKey: 'dec73bdf3277684a92aaa734e3b776c0',
         indexName: 'core-x',
-        locales: {
-          // 支持中文搜索
-          ...zhSearch,
-        },
+        locales: { ...zhSearch },
       },
     },
-    // 一些链接（覆盖 `defaultVipSocialLinks` 为组织主页）
-    socialLinks: [
-      { icon: 'github', link: OPEN_SOURCE_ADDRESS.HOME_PAGE_GITHUB_VIP },
-      { icon: 'gitee', link: OPEN_SOURCE_ADDRESS.HOME_PAGE_GITEE_VIP },
-      { icon: 'npm', link: OPEN_SOURCE_ADDRESS.HOME_PAGE_NPM_MMDAPL },
-    ],
-    // 编辑链接
     editLink: {
       pattern: `${OPEN_SOURCE_ADDRESS.GITHUB_REPO_CORE_X}/edit/next/:path`,
       text: '在 Github 上对本页提出修改建议',
@@ -133,5 +112,7 @@ export default defineVipVitepressConfig({
   },
 }, {
   // 拓展启用 Mermaid（不传第二参数则保持 defineVipVitepressConfig 原行为）
-  mermaid: { theme: 'default' },
+  mermaid: {
+    theme: 'default',
+  },
 })
