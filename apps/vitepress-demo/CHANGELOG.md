@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file. See [Conven
 
 <!-- #region recent-alpha -->
 
+## v0.0.1-alpha.7 (2026-09-11)
+
+### ✨ Features
+
+- 对齐主题 `homePage`、页脚与演示表格数据 &nbsp;-&nbsp; by **chufan** [<samp>(ce4ff)</samp>](https://github.com/142vip/core-x/commit/ce4fff35)
+- 同步文档站主题与 `enableVipFooter` 配置 &nbsp;-&nbsp; by **chufan** [<samp>(64ebb)</samp>](https://github.com/142vip/core-x/commit/64ebb2c8)
+
+### 💅 Refactors
+
+- 对齐 CDN 品牌 favicon/logo 配置 &nbsp;-&nbsp; by **chufan** [<samp>(01266)</samp>](https://github.com/142vip/core-x/commit/01266dd8)
+- 精简 `themeConfig`，`socialLinks` 仅补组织主页 &nbsp;-&nbsp; by **chufan** [<samp>(7618b)</samp>](https://github.com/142vip/core-x/commit/7618b978)
+
+**Release New Version v0.0.1-alpha.7 [👉 View New Package On NPM](https://www.npmjs.com/package/vitepress-demo)**
+
 ## v0.0.1-alpha.6 (2026-05-11)
 
 ### ✨ Features
