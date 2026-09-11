@@ -10,26 +10,21 @@
 
 ```ts
 import {
-  defaultVipSocialLinks,
   defineVipVitepressConfig,
   enableVipFooter,
   getVipBrandCdnUrl,
   getVipThemeConfig,
-  VIP_DEFAULT_FAVICON,
-  VIP_DEFAULT_LOGO,
 } from '@142vip/vitepress'
 
 export default defineVipVitepressConfig({
   title: 'My Docs',
-  // favicon：在 head 配置，已含 icon 时不注入默认项
-  head: [
-    ['link', { rel: 'icon', href: VIP_DEFAULT_FAVICON }],
-  ],
   themeConfig: getVipThemeConfig({
     nav: [],
-    // logo / socialLinks 有默认值，按需覆盖
-    logo: VIP_DEFAULT_LOGO,
-    socialLinks: defaultVipSocialLinks,
+    // 仅补本仓库地址，npm/csdn 等沿用包默认
+    socialLinks: {
+      github: 'https://github.com/your-org/your-repo',
+      gitee: 'https://gitee.com/your-org/your-repo',
+    },
     ...enableVipFooter({
       showBackTop: true,
       showBadge: true,
@@ -116,12 +111,14 @@ flowchart LR
 | `VIP_DEFAULT_FAVICON` / `VIP_DEFAULT_LOGO` | 包默认 **vip** 品牌 CDN 地址 |
 | `getVipBrandCdnUrl` | 自定义 media 路径转 CDN URL（站点覆盖用） |
 | `defaultVipFaviconHead` | 默认 favicon `head` 元组 |
-| `defaultVipSocialLinks` | 142vip 常用 `themeConfig.socialLinks` |
+| `defaultVipSocialLinks` | 通用社交链接（npm/csdn 等，**不含** github/gitee） |
+| `resolveVipSocialLinks` | 合并默认项与用户 `socialLinks` 配置 |
 | `defaultVipThemeConfig` | 站点级默认配置（`defineVipVitepressConfig` 内部合并） |
 
 - **favicon**：在站点 `head` 配置 `rel="icon"` 覆盖 vip 默认；未配置时自动注入 `VIP_DEFAULT_FAVICON`
 - **logo**：`getVipThemeConfig` 默认 `VIP_DEFAULT_LOGO`；传入 `logo` 覆盖（如 `getVipBrandCdnUrl('svg/x-logo.svg')`）
-- **socialLinks**：默认 `defaultVipSocialLinks`；传入可覆盖
+- **socialLinks**：默认 npm/csdn/bilibili/juejin；传对象按 icon 名覆盖或追加（如只写 `github` / `gitee` URL）；传数组则整表替换
+- **页脚**：`...enableVipFooter({ ... })` 可直接展开进 `getVipThemeConfig`（`footer: false` + `vipFooter`）
 
 组件内图片推荐静态 `import '@142vip/cdn/media/...'`（见 `VipContactAuthor`）。
 
