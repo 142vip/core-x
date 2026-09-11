@@ -105,42 +105,30 @@ const navbarConfig = defineVipNavbarConfig([
 
 /**
  * vitepress 站点配置
- * - 返回类型由 defineVipVitepressConfig 自动推断为 UserConfig<DefaultTheme.Config>，无需显式 any
- * - 通用项（lang / markdown / 目录等）由 `defaultVipThemeConfig` 合并
- * - favicon / og:image：见 `seoHead`（`getVipBrandCdnUrl` 覆盖包默认 vip 品牌）
- * - logo：`getVipThemeConfig` 中显式配置，覆盖包默认 `VIP_DEFAULT_LOGO`
- * - 第二参数启用 Mermaid 图表支持
+ * - 通用项（lang / markdown / 目录等）由 `defaultVipThemeConfig` 合并，此处只写站点差异
+ * - 品牌 favicon / og:image：见 `seo.ts`；导航 logo 见下方 `getVipBrandCdnUrl`
  */
 export default defineVipVitepressConfig({
   base: siteBase,
   title: '@142vip工程化',
   titleTemplate: ':title - 等等我呀，还在努力',
   description: SITE_DESCRIPTION,
-  // 忽略 wiki 产物的站内互链
-  // - typedoc-github-wiki-theme 生成的 `../wiki/xxx` 相对链接专为 GitHub Wiki 站内互链设计
-  // - vitepress 站内无对应页面，属于预期失效，故用正则精确忽略（不影响其它死链检测）
+  // typedoc-github-wiki-theme 的 `../wiki/` 链专为 GitHub Wiki 设计，站内无对应页
   ignoreDeadLinks: [/\.\.\/wiki\//],
-  // 站点 head 标签：基础 SEO + 社交分享卡片 + 结构化数据（完整清单见 ./seo.ts）
   head: seoHead,
-  // 配置主题
   themeConfig: getVipThemeConfig({
-    // 导航栏 Logo（覆盖包默认 `vip-logo.svg`）
     logo: getVipBrandCdnUrl('svg/x-logo.svg'),
-    // 导航栏
     nav: navbarConfig,
-    // 侧边栏按路径拆分维护，完整配置见 ./sidebar.ts
     sidebar: {
-      // 根路径侧边栏：全量包与 Demo 分组
       '/': rootSidebarConfig,
-      // API 文档侧边栏：typedoc 生成的侧边栏数据
       '/docs/apis/': docApiSidebarConfig,
-      // 变更日志侧边栏：各包 changelog + 最佳实践/开源模块快捷入口
       '/changelogs/': changelogSidebarConfig,
     },
-    returnToTopLabel: '返回顶部',
-    sidebarMenuLabel: '左侧菜单',
-    darkModeSwitchLabel: '切换主题',
-    // 全局页脚（`@142vip/vue` `VipFooter`）；关闭 VitePress 默认单行 footer
+    // 仅补本仓库 github/gitee，其余 npm/csdn 等沿用包默认
+    socialLinks: {
+      github: OPEN_SOURCE_ADDRESS.GITHUB_REPO_CORE_X,
+      gitee: OPEN_SOURCE_ADDRESS.GITEE_REPO_CORE_X,
+    },
     ...enableVipFooter({
       showBackTop: true,
       showBadge: true,
@@ -148,8 +136,6 @@ export default defineVipVitepressConfig({
       pkgName: pkg.name,
       pkgVersion: pkg.version,
     }),
-
-    // 搜索：Algolia DocSearch（支持中文）
     search: {
       provider: 'algolia',
       options: {
