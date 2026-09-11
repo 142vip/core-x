@@ -39,6 +39,10 @@ declare module 'vitepress' {
   export * from 'vitepress/types/shared.js'
 
   interface ThemeConfig {
+    /**
+     * 页脚配置；`false` 关闭 VitePress 默认单行 footer（配合 `enableVipFooter`）
+     */
+    footer?: import('vitepress/types/default-theme').DefaultTheme.Footer | false
     /** 全局页脚；`false` 关闭 `defineVipExtendsTheme` 注入的 `VipFooter` */
     vipFooter?: false | import('../src/core/vip').VipFooterConfig
   }

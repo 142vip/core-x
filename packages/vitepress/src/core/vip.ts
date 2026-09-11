@@ -74,6 +74,12 @@ export function toVipFooterComponentProps(config: VipFooterConfig) {
   }
 }
 
+/** `getVipThemeConfig` 可展开的页脚片段（`footer: false` + `vipFooter`） */
+export interface VipThemeFooterSlice {
+  footer: false
+  vipFooter: VipFooterConfig
+}
+
 /**
  * 启用全局页脚并关闭 VitePress 默认单行 footer。
  * 与 `getVipThemeConfig` 搭配：`getVipThemeConfig({ ...enableVipFooter(params), nav })`
@@ -90,7 +96,7 @@ export function toVipFooterComponentProps(config: VipFooterConfig) {
  */
 export function enableVipFooter(
   params?: VipFooterConfig,
-): { footer: false, vipFooter: VipFooterConfig } {
+): VipThemeFooterSlice {
   return {
     footer: false,
     vipFooter: params ?? {},

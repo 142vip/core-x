@@ -1,6 +1,7 @@
 import type { HeadConfig, MarkdownOptions, UserConfig } from 'vitepress'
 import type { DefaultTheme } from 'vitepress/types/default-theme'
 import type { ZhSearchConfig } from './types'
+import type { VipFooterConfig } from './vip'
 import { getProductionCdnUrl } from '@142vip/cdn'
 import { OPEN_SOURCE_ADDRESS } from '@142vip/open-source'
 
@@ -144,15 +145,81 @@ export const zhSearch: ZhSearchConfig = {
 // 主题默认项
 // ============================================================
 
-/** 142vip 常用社交链接（可在 `themeConfig.socialLinks` 中覆盖或扩展） */
+/** 预设社交 icon 顺序（`resolveVipSocialLinks` 合并时按此排序） */
+export const VIP_SOCIAL_LINK_ICONS = [
+  'github',
+  'gitee',
+  'npm',
+  'csdn',
+  'bilibili',
+  'juejin',
+] as const
+
+export type VipSocialLinkIcon = typeof VIP_SOCIAL_LINK_ICONS[number]
+
+/**
+ * 按 icon 名覆盖链接；未传入的项保留 `defaultVipSocialLinks` 默认值。
+ * github / gitee 各项目仓库不同，默认不含，由站点传入。
+ */
+export type VipSocialLinkMap = Partial<Record<VipSocialLinkIcon, string>>
+
+function getSocialLinkIconName(icon: DefaultTheme.SocialLinkIcon): string {
+  return typeof icon === 'string' ? icon : 'custom'
+}
+
+/**
+ * 142vip 通用社交链接（不含 github / gitee，各项目仓库地址由站点 `socialLinks` 补充）
+ */
 export const defaultVipSocialLinks: DefaultTheme.SocialLink[] = [
-  { icon: 'github', link: OPEN_SOURCE_ADDRESS.GITHUB_REPO_CORE_X },
-  { icon: 'gitee', link: OPEN_SOURCE_ADDRESS.GITEE_REPO_CORE_X },
+  // { icon: 'github', link: '...' },
+  // { icon: 'gitee', link: '...' },
   { icon: 'npm', link: OPEN_SOURCE_ADDRESS.HOME_PAGE_NPM_MMDAPL },
   { icon: 'csdn', link: OPEN_SOURCE_ADDRESS.HOME_PAGE_CSDN },
   { icon: 'bilibili', link: OPEN_SOURCE_ADDRESS.HOME_PAGE_BILIBILI },
   { icon: 'juejin', link: OPEN_SOURCE_ADDRESS.HOME_PAGE_JUE_JIN },
 ]
+
+/**
+ * 合并默认社交链接与用户配置。
+ * - 传数组：整表替换（完全自定义）
+ * - 传对象：按 icon 名覆盖或追加（如仅补 `github` / `gitee` URL）
+ */
+export function resolveVipSocialLinks(
+  input?: DefaultTheme.SocialLink[] | VipSocialLinkMap,
+): DefaultTheme.SocialLink[] {
+  if (Array.isArray(input)) {
+    return input
+  }
+
+  const linkByIcon = new Map<string, DefaultTheme.SocialLink>()
+  for (const item of defaultVipSocialLinks) {
+    linkByIcon.set(getSocialLinkIconName(item.icon), item)
+  }
+
+  if (input != null) {
+    for (const icon of VIP_SOCIAL_LINK_ICONS) {
+      const url = input[icon]
+      if (url != null && url !== '') {
+        linkByIcon.set(icon, { icon, link: url })
+      }
+    }
+  }
+
+  return VIP_SOCIAL_LINK_ICONS
+    .filter(icon => linkByIcon.has(icon))
+    .map(icon => linkByIcon.get(icon)!)
+}
+
+/** 扩展后的 VitePress 主题配置（含 `vipFooter`） */
+export type VipThemeConfig = DefaultTheme.Config & {
+  footer?: DefaultTheme.Footer | false
+  vipFooter?: false | VipFooterConfig
+}
+
+/** `getVipThemeConfig` 入参；`socialLinks` 支持数组或按 icon 名覆盖 */
+export type VipThemeConfigInput = Omit<Partial<VipThemeConfig>, 'socialLinks'> & {
+  socialLinks?: DefaultTheme.SocialLink[] | VipSocialLinkMap
+}
 
 /** 默认 Markdown 配置（代码高亮主题、属性定界符） */
 export const defaultVipMarkdown: MarkdownOptions = {
@@ -184,10 +251,13 @@ export const defaultVipThemeConfig: UserConfig<DefaultTheme.Config> = {
 
 /**
  * 获取主题配置
- * - 默认 `logo` / `socialLinks` 为 vip 品牌；站点在 `themeConfig` 传入同名字段即可覆盖
+ * - 默认 `logo` / `socialLinks`；`socialLinks` 可传 `VipSocialLinkMap` 仅补 github/gitee 等
+ * - `...enableVipFooter()` 返回值可直接展开入参
  * - https://vitepress.dev/zh/reference/default-theme-config
  */
-export function getVipThemeConfig(themeConfig: Partial<DefaultTheme.Config> = {}): DefaultTheme.Config {
+export function getVipThemeConfig(themeConfig: VipThemeConfigInput = {}): VipThemeConfig {
+  const { socialLinks, ...rest } = themeConfig
+
   return {
     aside: true,
     lastUpdated: {
@@ -210,7 +280,7 @@ export function getVipThemeConfig(themeConfig: Partial<DefaultTheme.Config> = {}
     sidebarMenuLabel: '左侧菜单',
     darkModeSwitchLabel: '切换主题',
     logo: VIP_DEFAULT_LOGO,
-    socialLinks: defaultVipSocialLinks,
-    ...themeConfig,
+    socialLinks: resolveVipSocialLinks(socialLinks),
+    ...rest,
   }
 }
