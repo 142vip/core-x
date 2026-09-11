@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.32 (2026-09-11)
+
+### ✨ Features
+
+- `socialLinks` 支持按 icon 合并，`enableVipFooter` 类型对齐 &nbsp;-&nbsp; by **chufan** [<samp>(32fc5)</samp>](https://github.com/142vip/core-x/commit/32fc53b5)
+
+### 📖 Documentation
+
+- 补充 `socialLinks` 合并与 `enableVipFooter` 展开说明 &nbsp;-&nbsp; by **chufan** [<samp>(3dfd1)</samp>](https://github.com/142vip/core-x/commit/3dfd1a7e)
+
+**Release New Version v0.0.1-alpha.32 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/vitepress)**
+
 ## v0.0.1-alpha.31 (2026-09-10)
 
 ### ✨ Features
