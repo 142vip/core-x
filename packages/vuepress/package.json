@@ -52,7 +52,7 @@
   },
   "dependencies": {
     "@vue/repl": "4.7.0",
-    "@vuepress/bundler-vite": "2.0.0-rc.26",
+    "@vuepress/bundler-vite": "2.0.0-rc.31",
     "@vuepress/plugin-slimsearch": "2.0.0-rc.120",
     "@vuepress/plugin-watermark": "2.0.0-rc.120",
     "@vueuse/core": "14.4.0",
