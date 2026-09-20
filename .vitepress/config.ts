@@ -177,7 +177,6 @@ export default defineVipVitepressConfig({
     ],
   },
 }, {
-  // 参考：https://www.npmjs.com/package/@142vip/vitepress
-  // 启用 Mermaid 图表（使用默认主题，暗黑模式下自动切换官方 dark 主题）
+  appBuildLog: { version: pkg.version },
   mermaid: true,
 })

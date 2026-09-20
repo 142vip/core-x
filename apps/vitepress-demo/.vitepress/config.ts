@@ -111,8 +111,6 @@ export default defineVipVitepressConfig({
     'README.md': 'index.md',
   },
 }, {
-  // 拓展启用 Mermaid（不传第二参数则保持 defineVipVitepressConfig 原行为）
-  mermaid: {
-    theme: 'default',
-  },
+  appBuildLog: { version: pkg.version },
+  mermaid: { theme: 'default' },
 })
