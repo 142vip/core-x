@@ -2,6 +2,7 @@ import type { EnhanceAppContext } from 'vitepress/dist/client'
 import type { Awaitable } from 'vitepress/types/shared'
 import type { Component, VNode } from 'vue'
 import type { VipHomeTableConfig } from '../core/vip'
+import { setupVipAppBuildLog } from '@142vip/vue'
 import { VipBackTop, VipFooter } from '@142vip/vue/components'
 import { ElIcon, ElImage, ElLink, ElSpace, ElTable, ElTableColumn, ElTag } from 'element-plus'
 import { useData } from 'vitepress'
@@ -163,6 +164,8 @@ export default function defineVipExtendsTheme(
       })
     },
     enhanceApp: ({ app }: EnhanceAppContext) => {
+      setupVipAppBuildLog()
+
       // element-plus 2.13+ 的 component() 重载需显式传入组件名
       app.component('ElIcon', ElIcon)
       app.component('ElImage', ElImage)

@@ -33,9 +33,12 @@ export default defineVipVitepressConfig({
     }),
   }),
 }, {
+  appBuildLog: { version: '0.0.1' },
   mermaid: true,
 })
 ```
+
+第二参数 `appBuildLog` 会在浏览器控制台打印站点版本与更新时间（主题已自动调用 `@142vip/vue` 的 `setupVipAppBuildLog`）。
 
 包内默认为 **vip** 品牌（`VIP_DEFAULT_FAVICON` / `VIP_DEFAULT_LOGO`）；站点在 `config.ts` 显式覆盖，例如 core-x 使用 **x** 系列：
 

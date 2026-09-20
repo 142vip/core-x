@@ -2,6 +2,7 @@ import type { MarkdownOptions, UserConfig } from 'vitepress'
 import type { DefaultTheme } from 'vitepress/types/default-theme'
 import type { VipMermaidOptions } from './mermaid-theme'
 import type { NavbarConfig, SidebarConfig } from './types'
+import type { VipAppBuildLogOptions } from './vite'
 import { defaultVipMarkdown, defaultVipThemeConfig, mergeVipDefaultHead } from './config'
 import { mergeVipMermaidViteConfig, vipMermaidMarkdown } from './mermaid'
 import { configureVipMermaid } from './mermaid-theme'
@@ -18,6 +19,10 @@ export interface DefineVipVitepressConfigOptions {
    * - 不传第二参数时：保持原行为，不改动 userConfig
    */
   mermaid?: boolean | VipMermaidOptions
+  /**
+   * 浏览器控制台打印站点版本与更新时间（`@142vip/vue` `setupVipAppBuildLog`）
+   */
+  appBuildLog?: VipAppBuildLogOptions
 }
 
 function mergeVipMarkdownConfig(markdown?: MarkdownOptions): MarkdownOptions {
@@ -63,7 +68,9 @@ export function defineVipVitepressConfig(
     ...userConfig,
     head: mergeVipDefaultHead(userConfig.head),
     markdown: mergeVipMarkdownConfig(userConfig.markdown),
-    vite: mergeVipViteConfig(userConfig.vite),
+    vite: mergeVipViteConfig(userConfig.vite, {
+      appBuildLog: options?.appBuildLog,
+    }),
   }
 
   if (options == null || options.mermaid == null || options.mermaid === false) {
@@ -80,7 +87,10 @@ export function defineVipVitepressConfig(
   return {
     ...configWithDefaults,
     markdown: defineVipMarkdownConfig(userConfig.markdown),
-    vite: mergeVipMermaidViteConfig(mergeVipViteConfig(userConfig.vite, { sass: true })),
+    vite: mergeVipMermaidViteConfig(mergeVipViteConfig(userConfig.vite, {
+      sass: true,
+      appBuildLog: options?.appBuildLog,
+    })),
   }
 }
 

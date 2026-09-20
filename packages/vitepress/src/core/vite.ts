@@ -1,7 +1,13 @@
 import type { UserConfig } from 'vitepress'
+import { createVipAppBuildTime } from '@142vip/vue/vite'
 
 type ViteConfig = NonNullable<UserConfig['vite']>
 type ViteSsrNoExternal = NonNullable<NonNullable<ViteConfig['ssr']>['noExternal']>
+
+/** 浏览器控制台输出版本 / 更新时间（构建期 `define` + HTML meta） */
+export interface VipAppBuildLogOptions {
+  version: string
+}
 
 /** Sass 现代 API（Vite 5.4+），消除 `legacy-js-api` 弃用告警 */
 const VIP_SASS_MODERN_API = 'modern' as const
@@ -15,6 +21,8 @@ const VIP_SSR_NO_EXTERNAL_PACKAGES = ['@142vip/vue', '@142vip/cdn'] as const
 export interface MergeVipViteConfigOptions {
   /** 合并 Sass modern API（启用 Mermaid 等 SCSS 主题样式时使用） */
   sass?: boolean
+  /** 注入 `BUILD_TIME` / `VIP_APP_VERSION` 并在主题启动时打印控制台版本信息 */
+  appBuildLog?: VipAppBuildLogOptions
 }
 
 function mergeSsrNoExternal(existing?: ViteSsrNoExternal): ViteSsrNoExternal {
@@ -76,9 +84,23 @@ export function mergeVipViteConfig(
     },
   }
 
-  if (!options.sass) {
-    return withSsr
+  let merged = withSsr
+
+  if (options.appBuildLog != null) {
+    const appBuild = createVipAppBuildTime({
+      version: options.appBuildLog.version,
+      pluginName: 'vip-vitepress-html-build-time',
+    })
+    merged = {
+      ...merged,
+      define: { ...merged.define, ...appBuild.define },
+      plugins: [...(merged.plugins ?? []), appBuild.plugin],
+    }
   }
 
-  return mergeSassModernApi(withSsr)
+  if (!options.sass) {
+    return merged
+  }
+
+  return mergeSassModernApi(merged)
 }

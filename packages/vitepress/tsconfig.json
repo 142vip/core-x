@@ -1,10 +1,19 @@
 {
   "extends": "../../tsconfig.package.json",
   "compilerOptions": {
-    // typedoc 子路径导出在严格模式下需显式 paths，否则 typecheck 报找不到模块
+    "moduleResolution": "bundler",
     "paths": {
       "typedoc": [
         "./node_modules/typedoc/dist/types/index.d.ts"
+      ],
+      "vitepress/types/default-theme": [
+        "./node_modules/vitepress/types/default-theme.d.ts"
+      ],
+      "vitepress/types/shared": [
+        "./node_modules/vitepress/types/shared.d.ts"
+      ],
+      "vitepress/dist/client": [
+        "./node_modules/vitepress/dist/client/index.d.ts"
       ]
     }
   },
