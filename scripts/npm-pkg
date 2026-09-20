@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+#
+# =============================================================================
+# npm-pkg — 从 packages/_example 脚手架创建新的 @142vip/* 包
+# =============================================================================
+#
+# 用法:
+#   ./scripts/npm-pkg <包目录名>
+#   ./scripts/npm-pkg <包目录名> --description "一句话描述"
+#   ./scripts/npm-pkg <包目录名> --group tools
+#
+# 分组 (--group): business | tools | egg | nest | blog | infra（默认 tools）
+#
+# 流程:
+#   1. 复制 packages/_example（最小母版，private）
+#   2. 按仓库规范改写为可发布包（package.json / 源码 / README / CHANGELOG）
+#   3. 同步 .vitepress/sidebar.ts、根 README、CD.yaml、.typedoc/config.js
+#   4. 新包 pnpm build + typecheck 自检
+#
+# =============================================================================
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+if node --experimental-strip-types -e "0" >/dev/null 2>&1; then
+  exec node --experimental-strip-types "${ROOT}/scripts/core/npm-pkg.ts" "$@"
+fi
+exec npx node --loader ts-node/esm --no-warnings "${ROOT}/scripts/core/npm-pkg.ts" "$@"

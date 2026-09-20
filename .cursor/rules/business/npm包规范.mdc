@@ -1,0 +1,148 @@
+---
+description: 【业务】@142vip/* npm 包 README、FEATURES、CHANGELOG 与 npm-pkg 脚手架约定
+alwaysApply: true
+---
+
+# npm 包规范
+
+> 新建包：`./scripts/npm-pkg <目录名>`（复制 `packages/_example` 母版后改写）。
+> README 母版：`packages/_example/README.md`。FEATURES 母版：`packages/_example/FEATURES.md`。
+
+## README 与 FEATURES 分工
+
+| 文件 | 读者 | 发布 | 文风 |
+|------|------|------|------|
+| `README.md` | 包使用者（npm / 文档站） | 是 | **使用说明**：怎么装、怎么配、怎么跑通；短示例优先，少列符号表 |
+| `FEATURES.md` | 二次开发 / 维护者 | **否**（通常不进 `files`） | **技术说明**：导出、路径、类型、配置键、行为边界；便于检索与对照源码 |
+| `CHANGELOG.md` | 全体 | 是 | `pnpm release` 生成，禁止手改版本节 |
+
+两者同级：`packages/<dir>/README.md` 与 `packages/<dir>/FEATURES.md`。
+
+### 文风（强制）
+
+- **README**：使用说明；装、配、跑通；短示例优先；能力用 `- [x]` 写清，**禁止**用「等」省略未写出的能力
+- **FEATURES**：技术说明；路径、类型签名、默认值、行为边界；**优先** ` ```ts ` / ` ```shell ` 与无序列表，**少用表格**
+- **禁止**无意义罗列：不要把类上每个方法名堆成目录式清单却不写参数/返回值/行为；同文件一批琐碎 getter 可写「见 `src/...`」并只展开关键 API
+- **禁止**套话与生成腔（「本文件旨在…」「为了更好地…」「综上所述」「供 Agent / 大模型…」）；直述事实
+- **禁止**对外文档暴露业务仓**内部应用代号**（如 `vip-main` / `vip-admin` / `vip-api`）；用「主站 / 管理后台 / API 服务」，或只写公开域名与包名；Nginx upstream 标识可放在 ` ```nginx ` 源码块内，正文勿当产品名宣传
+- FEATURES 开场：`技术说明。不随 npm 发布。`
+
+## README 结构（对外 · 与 `_example` 同构）
+
+二级标题**固定顺序**，章节本身不可省略：
+
+```markdown
+# @142vip/<包名>
+
+[![NPM version](...)](https://www.npmjs.com/package/@142vip/<包名>)
+
+一句话描述（与 package.json description 一致或更准确）
+
+## 安装
+## 功能
+## 配置
+## 使用
+## 升级
+## 参考
+## 证书
+```
+
+### 「无」怎么用（重要）
+
+| 情况 | 写法 |
+|------|------|
+| 该节**有**可写内容（源码里确实存在的配置 / 用法 / 链接） | **按实际情况写**，对照 `package.json` 与源码 |
+| 该节**确实没有**（常量包无运行时配置、CLI 无 config 文件、无 demo） | 正文单独一行 **`无`** |
+| 说不清、没读源码 | **先读代码再写**；禁止用「无」掩盖本该有的内容，也禁止乱编示例凑篇幅 |
+
+「无」= 内容不适用 / 生成不出来，**不是**默认填空，**不是**偷懒。
+
+| 章节 | 内容要求 |
+|------|----------|
+| `#` + 徽章 + 描述 | 包名与 `package.json` `name` 一致（`oauth` → `@142vip/oauth2.0`）；徽章单独成行 |
+| `## 安装` | **同一** ` ```shell ` 内写 `npm` + `pnpm`，每条前加注释（`# npm` / `# pnpm`）；工具链包加 `-D` |
+| `## 功能` | `- [x]` 清单，与当前能力一致；未完成用 `- [ ]` |
+| `## 配置` | 有则写简明怎么配；**确无配置**才写 `无` |
+| `## 使用` | 最小可运行示例（符号须真实导出）；CLI 可含 `-h` |
+| `## 升级` | 同一 ` ```shell `：注释 `# 依赖更新` + 一行 `pnpm upgrade @142vip/<pkg>`（对外开发者直接更新依赖，**不加** `-F`）；private 母版可写 `无` |
+| `## 参考` | 真实链接；npm 链接文案为包名（**禁止** `on npm`）；**禁止**链到 core-x 文档站（`142vip.github.io/core-x`） |
+| `## 证书` | MIT + 版权段，**全仓固定** |
+
+禁止：跳过二级标题、调换顺序、编造不存在的 API/类型/配置键、链接 `.cursor/rules/`。
+
+### CLI 包（fairy-cli / changelog / release-version / agent-skills 等）
+
+- `## 使用` 须含总 `-h`（或等价）与主要参数；完整 flags 写入 FEATURES
+- 文案用「CHANGELOG 日志记录」，勿单写「CHANGELOG Markdown」
+
+## FEATURES 结构（对内 · 强制）
+
+二级标题**固定顺序**；「无」规则同 README（有则详写，确无才写 `无`）。
+
+```markdown
+# @142vip/<pkg>
+
+技术说明。不随 npm 发布。
+
+## 定位
+## 功能
+## 配置
+## 最佳实践
+## 构建
+## 验证
+## 演示
+```
+
+| 章节 | 内容要求 |
+|------|----------|
+| `## 定位` | 包职责与边界（做什么 / 不做什么），技术表述 |
+| `## 功能` | **详细**：导出符号、子路径、类/方法、CLI 全参；可分 `###`；对齐源码 |
+| `## 配置` | 完整键与 peer；**确无**才写 `无` |
+| `## 最佳实践` | 基于真实接入的注意点（边界、易错）；勿空泛 |
+| `## 构建` | 构建方式 + 命令 |
+| `## 验证` | 验证命令 |
+| `## 演示` | 有则写公开 demo（如 `apps/*-demo`）；**确无**才写 `无` |
+
+### FEATURES 写法（强制）
+
+```
+推荐形态（按优先级）
+1. ```ts / ```shell / ```text  —— 类型、签名、配置片段、目录树
+2. - 无序列表 —— 一条一事：符号 + 行为 / 路径 / 默认值
+3. 短表 —— 仅多列对照（域名↔上游、env↔含义）时偶用；默认不用
+```
+
+- 关键 API：贴签名或最小源码，说明副作用 / 默认值 / 边界
+- 配置键、CLI flag、`exports` 子路径：列表写全，**禁止**「等」
+- **不要**无信息量的「方法名墙」；琐碎面可指向源文件，关键面展开
+- 细节不够就读源码补全；**禁止**未读源码编造符号表
+
+FEATURES 须**紧跟代码**：公开 API 变更时同任务更新。
+## CHANGELOG
+
+- 首版由 `npm-pkg` 从 `_example` 复制
+- 发版由 `pnpm release` 维护
+
+## npm-pkg 产出约定
+
+复制 `_example` 后须具备完整 README / FEATURES 上述章节（确无内容的节写「无」，有则写实）+ `CHANGELOG.md`，并同步 sidebar、根 README、`CD.yaml`、`.typedoc/config.js`，末尾 `pnpm build` + `typecheck`。
+
+`_example` 为 `private` 母版，**不计入** 31 可发布包。
+
+## 文档随代码同步（同任务）
+
+| 代码变更 | 文档 |
+|----------|------|
+| 公开 API / exports | README「功能/使用」+ FEATURES「功能」详细符号 |
+| 配置键 / peerDeps | README「配置」简明 + FEATURES「配置」完整 |
+| 用法约定变化 | FEATURES「最佳实践」 |
+| 仅内部重构 | FEATURES 有误导时改 |
+
+## 禁止
+
+- 包 README 链接 `.cursor/rules/`
+- FEATURES 列入未导出符号
+- 手改 `package.json` `version` / CHANGELOG 发版节（见 `engineering/05`）
+- 将 FEATURES.md 加入 `package.json` `files`
+- README / FEATURES 省略固定二级标题或打乱顺序
+- 未读源码就写「无」或编造示例 / 符号表

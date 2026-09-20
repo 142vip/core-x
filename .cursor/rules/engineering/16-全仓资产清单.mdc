@@ -76,6 +76,12 @@ alwaysApply: true
 
 构建统计：**unbuild 18** · **tsc 5** · **Egg 插件无 build 8**。
 
+## packages/ · 非发布脚手架
+
+| 目录 | npm 名 | 说明 |
+|------|--------|------|
+| `_example` | `@142vip/_example` | **private**，unbuild 最小母版；`./scripts/npm-pkg <名>` 创建新包，**不计入**上表 31 可发布包 |
+
 ## agent-skills 资产（`.agents/skills/`）
 
 | 项 | 说明 |

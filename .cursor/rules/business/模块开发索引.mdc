@@ -14,6 +14,7 @@ alwaysApply: true
 | `TypeScript规范` | `**/*.{ts,tsx}` |
 | `Vue组件规范` | `**/*.vue` |
 | `unbuild打包` | `**/build.config.ts` |
+| `npm包规范` | `packages/**/README.md`、`packages/**/FEATURES.md`、`packages/**/package.json` |
 | `Nest开发` | `packages/nest*/**` |
 | `Egg开发` | `packages/egg*/**` |
 | `VitePress开发` | `vitepress`、`.vitepress`、`vitepress-demo`、`docs/**` |
@@ -21,6 +22,6 @@ alwaysApply: true
 
 ## alwaysApply（business/）
 
-`包职责地图` · `任务路由索引` · `代码风格统一` · `ESM与模块发布`
+`包职责地图` · `任务路由索引` · `代码风格统一` · `ESM与模块发布` · `npm包规范`
 
 实现时同时遵循 `engineering/01` 与上表匹配项。

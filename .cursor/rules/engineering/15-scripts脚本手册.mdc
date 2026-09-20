@@ -14,11 +14,13 @@ scripts/
 ├── ci                 # CI 环境安装依赖
 ├── build              # 交互式选择包/docs 构建
 ├── build-image        # 构建并推送文档站 Docker 镜像
+├── npm-pkg            # 从 _example 脚手架创建新 npm 包并同步文档
 ├── npm-release        # 单包编译 + 发布
 ├── npm-trust          # npm OIDC Trusted Publishing 管理
 └── core/
     ├── build.ts           # build 脚本实现
     ├── build-image.ts     # build-image 实现
+    ├── npm-pkg.ts         # npm-pkg 实现
     └── verify-commit.ts   # commit-msg 校验实现
 ```
 
@@ -83,6 +85,24 @@ NPM_REGISTRY=https://registry.npmmirror.com ./scripts/ci
 - `VipDocker.buildImage`：build + push + 删除本地镜像
 
 **模型**：仅维护者发布镜像时使用；改代码验证用 `pnpm build:docs`。
+
+## scripts/npm-pkg
+
+**用途**：从 `packages/_example` 脚手架创建新的 `@142vip/*` 包，并同步文档站与 CI 配置。
+
+```bash
+./scripts/npm-pkg <包目录名>
+./scripts/npm-pkg my-pkg --description "一句话描述"
+./scripts/npm-pkg my-pkg --group infra   # business | tools | egg | nest | blog | infra
+```
+
+**行为**（`scripts/core/npm-pkg.ts`）：
+1. 复制 `packages/_example` 母版（最小 private 骨架）
+2. 按规范改写为可发布包：`package.json`（`publishConfig`）、源码重命名、`README` / `FEATURES` / `CHANGELOG`
+3. 同步 `.vitepress/sidebar.ts`、根 `README`、`.github/workflows/CD.yaml`、`.typedoc/config.js`
+4. 新包 `pnpm build` + `typecheck` 自检
+
+**模型**：新建 unbuild 包时优先用本脚本；`_example` 仅母版，不计入 31 可发布包。
 
 ## scripts/npm-release
 
