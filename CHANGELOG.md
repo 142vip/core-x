@@ -2,6 +2,83 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.43 (2026-09-20)
+
+### ✨ Features
+
+- 根文档站接入 `homePage`、`getTableData` 与页脚配置 &nbsp;-&nbsp; by **chufan** [<samp>(7b54d)</samp>](https://github.com/142vip/core-x/commit/7b54d4d9)
+- **@142vip/open-source**:
+  - 补充 CDN 与 JSC 站点常量 &nbsp;-&nbsp; by **chufan** [<samp>(8987e)</samp>](https://github.com/142vip/core-x/commit/8987e7a9)
+- **@142vip/vitepress**:
+  - 新增 `enableVipFooter` 与 `showBadge` 页脚能力 &nbsp;-&nbsp; by **chufan** [<samp>(efd67)</samp>](https://github.com/142vip/core-x/commit/efd67e55)
+  - 优化首页组件并新增 `VipGithubPins` &nbsp;-&nbsp; by **chufan** [<samp>(b4fe5)</samp>](https://github.com/142vip/core-x/commit/b4fe5bd6)
+  - 全局页脚改用 `@142vip/vue` `VipFooter` &nbsp;-&nbsp; by **chufan** [<samp>(0ef49)</samp>](https://github.com/142vip/core-x/commit/0ef49ff6)
+  - 内置 `VipHomePage` 并优化 `VipGithubPins` 响应式 &nbsp;-&nbsp; by **chufan** [<samp>(89ff6)</samp>](https://github.com/142vip/core-x/commit/89ff6974)
+  - 品牌默认项并入 `config.ts`，改用 CDN URL &nbsp;-&nbsp; by **chufan** [<samp>(12c8f)</samp>](https://github.com/142vip/core-x/commit/12c8f016)
+  - `socialLinks` 支持按 icon 合并，`enableVipFooter` 类型对齐 &nbsp;-&nbsp; by **chufan** [<samp>(32fc5)</samp>](https://github.com/142vip/core-x/commit/32fc53b5)
+  - 第二参数 `appBuildLog` 接入 `@142vip/vue` &nbsp;-&nbsp; by **chufan** [<samp>(40784)</samp>](https://github.com/142vip/core-x/commit/407844d5)
+- **@142vip/vuepress**:
+  - 第二参数 `appBuildLog` 接入 `@142vip/vue` &nbsp;-&nbsp; by **chufan** [<samp>(17364)</samp>](https://github.com/142vip/core-x/commit/17364ae4)
+- **vitepress-demo**:
+  - 对齐主题 `homePage`、页脚与演示表格数据 &nbsp;-&nbsp; by **chufan** [<samp>(ce4ff)</samp>](https://github.com/142vip/core-x/commit/ce4fff35)
+  - 同步文档站主题与 `enableVipFooter` 配置 &nbsp;-&nbsp; by **chufan** [<samp>(64ebb)</samp>](https://github.com/142vip/core-x/commit/64ebb2c8)
+  - 根文档站与 demo 启用 `appBuildLog` &nbsp;-&nbsp; by **chufan** [<samp>(f68ee)</samp>](https://github.com/142vip/core-x/commit/f68eeadb)
+- **vuepress-demo**:
+  - 启用 `appBuildLog` 控制台版本日志 &nbsp;-&nbsp; by **chufan** [<samp>(55163)</samp>](https://github.com/142vip/core-x/commit/55163a01)
+
+### 🐛 Bug Fixes
+
+- **@142vip/agent-skills**:
+  - `commit` skill frontmatter 引号包裹 `description` &nbsp;-&nbsp; by **chufan** [<samp>(312a1)</samp>](https://github.com/142vip/core-x/commit/312a1bc0)
+- **@142vip/vitepress**:
+  - `mergeVipViteConfig` 修复 SSR 下 `@142vip/cdn` 静态资源打包 &nbsp;-&nbsp; by **chufan** [<samp>(896f6)</samp>](https://github.com/142vip/core-x/commit/896f6f8b)
+- **deps**:
+  - Update dependency @142vip/cdn to v0.0.1-alpha.2 &nbsp;-&nbsp; by **renovate[bot]** in https://github.com/142vip/core-x/issues/830 [<samp>(91a98)</samp>](https://github.com/142vip/core-x/commit/91a980a2)
+
+### 💅 Refactors
+
+- 根文档站 favicon/logo 改用 CDN，移除本地静态资源 &nbsp;-&nbsp; by **chufan** [<samp>(d7cc6)</samp>](https://github.com/142vip/core-x/commit/d7cc6eb7)
+- 根站 `themeConfig` 精简，仅补 github/gitee 社交链接 &nbsp;-&nbsp; by **chufan** [<samp>(23430)</samp>](https://github.com/142vip/core-x/commit/234308b5)
+- **@142vip/vitepress**:
+  - 常量与工具文件改为 kebab-case &nbsp;-&nbsp; by **chufan** [<samp>(a5b97)</samp>](https://github.com/142vip/core-x/commit/a5b97b38)
+- **vitepress-demo**:
+  - 对齐 CDN 品牌 favicon/logo 配置 &nbsp;-&nbsp; by **chufan** [<samp>(01266)</samp>](https://github.com/142vip/core-x/commit/01266dd8)
+  - 精简 `themeConfig`，`socialLinks` 仅补组织主页 &nbsp;-&nbsp; by **chufan** [<samp>(7618b)</samp>](https://github.com/142vip/core-x/commit/7618b978)
+
+### 📖 Documentation
+
+- 各包补充 `FEATURES.md` 并按使用向整理 `README` &nbsp;-&nbsp; by **chufan** [<samp>(d5375)</samp>](https://github.com/142vip/core-x/commit/d5375952)
+- **@142vip/vitepress**:
+  - 补充 favicon/logo 与 `getVipBrandCdnUrl` 使用说明 &nbsp;-&nbsp; by **chufan** [<samp>(139ad)</samp>](https://github.com/142vip/core-x/commit/139adcb3)
+  - 补充 `socialLinks` 合并与 `enableVipFooter` 展开说明 &nbsp;-&nbsp; by **chufan** [<samp>(3dfd1)</samp>](https://github.com/142vip/core-x/commit/3dfd1a7e)
+
+### 📦 Build
+
+- **@142vip/vitepress**:
+  - 类型声明迁入 `types/` 并接入 `@142vip/vue` &nbsp;-&nbsp; by **chufan** [<samp>(7d054)</samp>](https://github.com/142vip/core-x/commit/7d054b09)
+
+### 😏 Release Packages
+
+- **@142vip/agent-skills**:
+  - Publish `v0.0.1-alpha.5` &nbsp;-&nbsp; by **chufan** [<samp>(48218)</samp>](https://github.com/142vip/core-x/commit/48218e05)
+  - Publish `v0.0.1-alpha.6` &nbsp;-&nbsp; by **chufan** [<samp>(57a86)</samp>](https://github.com/142vip/core-x/commit/57a86279)
+- **@142vip/fairy-cli**:
+  - Publish `v0.0.3-alpha.33` &nbsp;-&nbsp; by **chufan** [<samp>(738cd)</samp>](https://github.com/142vip/core-x/commit/738cd534)
+- **@142vip/open-source**:
+  - Publish `v0.0.1-alpha.4` &nbsp;-&nbsp; by **chufan** [<samp>(ae829)</samp>](https://github.com/142vip/core-x/commit/ae829504)
+- **@142vip/vitepress**:
+  - Publish `v0.0.1-alpha.29` &nbsp;-&nbsp; by **chufan** [<samp>(26401)</samp>](https://github.com/142vip/core-x/commit/26401e0f)
+  - Publish `v0.0.1-alpha.30` &nbsp;-&nbsp; by **chufan** [<samp>(f9760)</samp>](https://github.com/142vip/core-x/commit/f976082a)
+  - Publish `v0.0.1-alpha.31` &nbsp;-&nbsp; by **chufan** [<samp>(21ffc)</samp>](https://github.com/142vip/core-x/commit/21ffce0e)
+  - Publish `v0.0.1-alpha.32` &nbsp;-&nbsp; by **chufan** [<samp>(4966e)</samp>](https://github.com/142vip/core-x/commit/4966e041)
+  - Publish `v0.0.1-alpha.33` &nbsp;-&nbsp; by **chufan** [<samp>(7dcde)</samp>](https://github.com/142vip/core-x/commit/7dcde004)
+- **@142vip/vuepress**:
+  - Publish `v0.0.1-alpha.20` &nbsp;-&nbsp; by **chufan** [<samp>(1fb09)</samp>](https://github.com/142vip/core-x/commit/1fb091b5)
+- **vitepress-demo**:
+  - Publish `v0.0.1-alpha.7` &nbsp;-&nbsp; by **chufan** [<samp>(faa3b)</samp>](https://github.com/142vip/core-x/commit/faa3bbf7)
+
+**Release New Version v0.0.1-alpha.43 [👉 View Changes On GitHub](https://github.com/142vip/core-x/compare/v0.0.1-alpha.42...v0.0.1-alpha.43)**
+
 ## v0.0.1-alpha.42 (2026-09-01)
 
 ### ✨ Features
