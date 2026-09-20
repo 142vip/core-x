@@ -93,18 +93,15 @@ const copyrightHtmlStr = `
 
 /**
  * 站点配置
+ * - `locales` / `lang` 由 `defineVipVuepressConfig` 默认注入 zh-CN，此处可不写
+ * - `appBuildLog`：控制台输出版本与构建时间
  */
 export default defineVipVuepressConfig({
-  locales: {
-    '/': {
-      lang: 'zh-CN',
-    },
-  },
   base: vipDocSite.getBase(''),
   title: pkg.name,
   description: pkg.description,
   port: 5200,
-  // 默认会给
+  // 默认会给 favicon；需要时可自行传 head
   // head: [
   //   ['link', { rel: 'icon', href: 'favicon.ico' }],
   // ],
