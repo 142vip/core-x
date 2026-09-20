@@ -11,6 +11,7 @@ export default defineBuildConfig({
   externals: [
     '@142vip/vue',
     '@142vip/vue/vite',
+    '@142vip/vue/utils',
     'vue',
     'mermaid',
     'sass-embedded',

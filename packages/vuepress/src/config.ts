@@ -22,13 +22,25 @@ export interface DefineVipVuepressConfigOptions {
 }
 
 /**
- * 在原 config 上补全默认项后返回（lang / bundler / head / shouldPrefetch）。
+ * 在原 config 上补全默认项后返回。
+ *
+ * 默认：
+ * - `locales` / `lang` → 见 {@link resolveVipVuepressLocales}（可用户自定义，不覆盖已有字段）
+ * - `bundler` → Vite
+ * - 无 `head` 时补 favicon
+ * - `shouldPrefetch: false`
+ *
+ * 可选第二参数 `appBuildLog`：注入 `buildTime` meta + 客户端 `setupVipAppBuildLog`
+ *（客户端从 `@142vip/vue/utils` 导入，避免 SSR 拉主入口 constants 中的 `.jpg`）。
  */
 export function defineVipVuepressConfig(
   config: VipVuepressUserConfig,
   options?: DefineVipVuepressConfigOptions,
 ): VipVuepressUserConfig {
-  // 支持汉语，单语言：https://theme-hope.vuejs.press/zh/config/i18n.html
+  // 单语言中文默认；用户自定义 locales 优先，不整表替换
+  // https://theme-hope.vuejs.press/zh/config/i18n.html
+  config.locales = resolveVipVuepressLocales(config.locales)
+
   if (config.lang == null) {
     config.lang = 'zh-CN'
   }
@@ -69,22 +81,35 @@ export function defineVipVuepressConfig(
     ]
   }
 
-  // todo 给该模块预留初始化值
-  // else {
-  //   config.head = [
-  //     ...config.head,
-  //     ['meta', { property: 'og:url', content: 'https://github.com/142vip/core-x' }],
-  //     ['meta', { property: 'og:type', content: 'website' }],
-  //     ['meta', { property: 'og:title', content: '@142vip/core-x' }],
-  //     ['meta', { property: 'og:description', content: `${pkgName} - 一切都有可能` }],
-  //   ]
-  // }
-
   if (config.shouldPrefetch == null) {
     config.shouldPrefetch = false
   }
 
   return config
+}
+
+/**
+ * 解析站点 `locales`：未传则默认 `'/' → zh-CN`；已传则保留用户路径与字段，
+ * 仅当存在 `'/'` 且未写 `lang` 时补全 `lang: 'zh-CN'`（不新增路径、不覆盖已有值）。
+ */
+export function resolveVipVuepressLocales(
+  locales: VipVuepressUserConfig['locales'],
+): NonNullable<VipVuepressUserConfig['locales']> {
+  if (locales == null) {
+    return {
+      '/': { lang: 'zh-CN' },
+    }
+  }
+
+  const rootLocale = locales['/']
+  if (rootLocale != null && rootLocale.lang == null) {
+    locales['/'] = {
+      ...rootLocale,
+      lang: 'zh-CN',
+    }
+  }
+
+  return locales
 }
 
 /**

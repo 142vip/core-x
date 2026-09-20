@@ -92,12 +92,7 @@ export const baseThemePluginOptions: ThemePluginsOptions = {
  * 基础主题配置
  */
 const baseThemeOptions: ThemeOptions = {
-  // 多语言配置
-  // locales: {
-  //   '/': {
-  //     lang: 'zh-CN',
-  //   },
-  // },
+  // 站点 locales 由 defineVipVuepressConfig 默认注入（'/' → zh-CN）
   // navbarIcon: false,
   // 在深色模式和浅色模式之间切换
   darkmode: 'toggle',

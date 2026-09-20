@@ -4,7 +4,7 @@
 
 ## 定位
 
-基于 [vuepress-theme-hope](https://theme-hope.vuejs.press/) 的 VuePress 2 封装：默认中文配置、Vite bundler、SlimSearch 中文、阅读时间、Mermaid 插件预设。供 `apps/vuepress-demo` 与历史 VuePress 站点使用。
+基于 [vuepress-theme-hope](https://theme-hope.vuejs.press/) 的 VuePress 2 封装：默认中文 `locales`、Vite bundler、SlimSearch 中文、阅读时间、Mermaid 插件预设；可选 `appBuildLog`。供 `apps/vuepress-demo` 与历史 VuePress 站点使用。
 
 ## 功能
 
@@ -15,83 +15,53 @@
 
 ### 站点配置（`src/config.ts`）
 
-- `defineVipVuepressConfig(config, options?): VipVuepressUserConfig`
-  - 默认 `lang: 'zh-CN'`
-  - 默认 `bundler: getVuepressDefaultViteBundler(...)`
-  - `options.appBuildLog` 时注入 `buildTime` meta + `createVipAppBuildLogPlugin`
-  - 无 `head` 时补 `favicon.ico` link
-  - 默认 `shouldPrefetch: false`
-- `defineVipNavbarConfig(options): NavbarOptions`（`navbar(options)`）
-- `defineVipSidebarConfig(options): SidebarOptions`（`sidebar(options)`）
-- `VUEPRESS_DEFAULT_DOCS_DIR`：`'docs'`
-- `VipVuepressUserConfig`：别名 `UserConfig`
-- `DefineVipVuepressConfigOptions`：`appBuildLog?: { version, buildTime? }`
+```text
+defineVipVuepressConfig(config, options?): VipVuepressUserConfig
+```
+
+默认补全：
+
+- `locales`：未传 → `{ '/': { lang: 'zh-CN' } }`；已传则保留用户配置，仅当存在 `'/'` 且缺 `lang` 时补全（不新增路径、不覆盖字段）
+- `lang` 缺失时 → `'zh-CN'`
+- `bundler` 缺失时 → `getVuepressDefaultViteBundler({ appBuild })`
+- `head` 缺失时 → favicon link；若启用 `appBuildLog` 另追加 `buildTime` meta
+- `shouldPrefetch` 缺失时 → `false`
+
+第二参数：
+
+```text
+options.appBuildLog?: { version: string; buildTime?: string }
+```
+
+启用时：`createVipAppBuildTime`（`@142vip/vue/vite`）+ `createVipAppBuildLogPlugin`（客户端 `setupVipAppBuildLog` 从 `@142vip/vue/utils` 导入，**不**走主入口）。
+
+另有：`resolveVipVuepressLocales`、`defineVipNavbarConfig` / `defineVipSidebarConfig`、`VUEPRESS_DEFAULT_DOCS_DIR`、`VipVuepressUserConfig`。
 
 ### 主题（`src/theme.ts`）
 
-- `getVipHopeTheme(userConfig: ThemeOptions)`：`hopeTheme({ ...baseThemeOptions, ...userConfig, plugins: merge })`，`checkVuePress: false`
-- `baseThemePluginOptions`（默认插件）：
-  - `readingTime.wordPerMinute: 100`
-  - `watermark.enabled: false`
-  - `copyright: false`
-  - `blog: false`
-  - `copyCode.showInMobile: true`
-  - `catalog: false`
-  - `slimsearch.locales['/']` → `slimSearchCNLocals`
-  - `nprogress: true`
-  - `git: true`
-- `baseThemeOptions` 摘要：
-  - `darkmode: 'toggle'`
-  - `hostname: 'https://142vip.cn'`
-  - `favicon: '/favicon.ico'`、`logo: '/favicon.icon'`
-  - `navbarLayout`：start `Brand`，end `Links` / `Language` / `Search` / `Outlook` / `Repo`
-  - `pageInfo`：`Author`、`Original`、`Date`、`Category`、`Tag`、`ReadingTime`
-  - `docsDir: 'docs'`、`docsBranch: 'next'`
-  - `repoLabel: 'GitHub'`、`repoDisplay: true`
-  - `changelog: true`、`contributors: 'content'`
-  - `themeColor: true`、`externalLinkIcon: false`、`displayFooter: true`
-  - `markdown`：`tasklist`、`playground`（`ts`/`vue`）、`sub`/`sup`/`vPre`、`vuePlayground`、`include`、`mermaid`、`align`、`tabs`、`codeTabs`；`highlighter.langs`：`ts`、`js`、`vue`、`json`、`json5`、`jsonc`、`jsx`、`lua`、`diff`、`c`、`c++`、`dockerfile`、`nginx`、`proto`、`java`、`javascript`、`typescript`、`yaml`、`text`、`graphql`、`http`、`python`、`xml`
-- `handleImportCodePath(pathArray, cwd?)`：Markdown 代码块 `@code` 路径替换
+- `getVipHopeTheme(userConfig)`：合并 `baseThemeOptions` 与用户配置，`checkVuePress: false`
+- `handleImportCodePath(pathArray, cwd?)`：Markdown 代码块路径别名
 
-### 插件（`src/plugins/`）
+### 插件 / 客户端
 
-- `createVipAppBuildLogPlugin(): PluginObject`（客户端 `setupVipAppBuildLog`）
-- `getVuepressDefaultViteBundler(options?): Bundler`
-  - `VuepressViteBundlerOptions`：`appBuild?`（`createVipAppBuildTime` 注入 define）
-- `slimSearchCNLocals`：SlimSearch 中文文案（`plugin-slim-search.ts`）
-
-### 客户端（`src/client.ts`）
-
-- `defineClientConfig`：`enhance()` 内 `setupVipAppBuildLog()`
-
-### 类型（`src/types/app-build-info.ts`）
-
-- 应用构建信息相关类型（供 bundler / 插件使用）
+- `createVipAppBuildLogPlugin()` → `clientConfigFile` 指向 `dist/client.mjs`
+- `getVuepressDefaultViteBundler({ appBuild? })`
+- `slimSearchCNLocals`
 
 ## 配置
 
-### `defineVipVuepressConfig` 第二参数
+无独立运行时配置文件。自定义 / 多语言直接传 `locales`；包内不整表替换，也不覆盖用户已写字段。
 
-- `appBuildLog.version`（必填）
-- `appBuildLog.buildTime`（可选，默认当前构建时间）
-
-### 主题自定义
-
-传入 `getVipHopeTheme({ nav, sidebar, plugins: { ... } })` 覆盖 `baseThemeOptions` 与 `baseThemePluginOptions` 任意字段。
-
-无独立 `vuepress.config` 文件名约定；配置写在消费方 `docs/.vuepress/config.ts`。
+依赖：`@142vip/vue` `>=0.1.6-alpha.32`（需带 `./utils` 子路径）。
 
 ## 最佳实践
 
-- 新文档站优先 `@142vip/vitepress`（core-x 根站已迁移）；本包维护既有 VuePress 项目
-- 单语言中文站直接用 `defineVipVuepressConfig`，勿重复设置 `lang`
-- 需要构建版本控制台输出时传 `appBuildLog`，与 VitePress 侧 `setupVipAppBuildLog` 行为一致
-- Markdown 引入仓库源码用 `handleImportCodePath` 统一路径别名
+- 单语言中文站：不必重复写 `locales` / `lang`
+- 需要控制台版本日志时传 `appBuildLog`
+- Markdown 源码引入用 `handleImportCodePath`
 - 主题插件合并时展开 `userConfig.plugins`，避免覆盖默认 `slimsearch` / `readingTime`
 
 ## 构建
-
-`unbuild` 双格式
 
 ```shell
 cd packages/vuepress && pnpm build
@@ -106,4 +76,4 @@ cd apps/vuepress-demo && pnpm build
 
 ## 演示
 
-`apps/vuepress-demo`：Hope 主题与 `@142vip/vuepress` 配置示例。
+`apps/vuepress-demo`。

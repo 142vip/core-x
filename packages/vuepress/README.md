@@ -18,28 +18,58 @@ pnpm add -D @142vip/vuepress
 
 ## 功能
 
-- [x] `defineVipVuepressConfig`：补全 `lang`、`bundler`、favicon、`shouldPrefetch`
+- [x] `defineVipVuepressConfig`：默认 `locales['/'].lang` / `lang` 为 `zh-CN`，补全 `bundler`、favicon、`shouldPrefetch`
+- [x] 可选 `appBuildLog`：构建时间 meta + 控制台版本日志（`@142vip/vue/utils`）
 - [x] `getVipHopeTheme`：基于 theme-hope 的默认插件与 Markdown 能力
 - [x] `defineVipNavbarConfig` / `defineVipSidebarConfig`：导航与侧栏
 - [x] 内置 Mermaid、代码高亮语言、slimsearch 中文、复制代码
-- [x] 可选构建时间注入与浏览器控制台版本日志
 - [x] bin：`vuepress`（转发至 bundled CLI）
 
 ## 配置
 
-`docs/.vuepress/config.ts` 示例：
+单语言中文站一般不必手写 `locales` / `lang`：
 
 ```ts
 import { defineVipVuepressConfig, getVipHopeTheme } from '@142vip/vuepress'
-import { defaultTheme } from 'vuepress'
 
 export default defineVipVuepressConfig({
+  title: '我的文档',
+  description: '…',
   theme: getVipHopeTheme({
     navbar: [],
     sidebar: {},
   }),
 }, {
+  // 可选：浏览器控制台打印版本与更新时间
   appBuildLog: { version: '1.0.0' },
+})
+```
+
+包内默认（未传 `locales` 时）等价于：
+
+```ts
+locales: {
+  '/': {
+    lang: 'zh-CN',
+  },
+}
+```
+
+自定义示例（用户字段优先，缺 `lang` 时才补 `zh-CN`）：
+
+```ts
+export default defineVipVuepressConfig({
+  locales: {
+    '/': {
+      // lang 可省略，默认 zh-CN
+      title: '中文站',
+    },
+    '/en/': {
+      lang: 'en-US',
+      title: 'English',
+    },
+  },
+  theme: getVipHopeTheme({ navbar: [], sidebar: {} }),
 })
 ```
 
