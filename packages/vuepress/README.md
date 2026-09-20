@@ -56,8 +56,12 @@ export default defineVipVuepressConfig({
     // contributors: true,
 
   }),
+}, {
+  appBuildLog: { version: '0.0.1' },
 })
 ```
+
+第二参数 `appBuildLog` 会自动注入构建时间与浏览器控制台版本日志，无需额外 `client.ts`。
 
 ## 命令
 

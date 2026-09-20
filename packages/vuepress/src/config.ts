@@ -1,6 +1,8 @@
 import type { UserConfig } from '@vuepress/cli'
 import type { NavbarOptions, SidebarOptions } from 'vuepress-theme-hope'
+import { createVipAppBuildTime } from '@142vip/vue/vite'
 import { navbar, sidebar } from 'vuepress-theme-hope'
+import { createVipAppBuildLogPlugin } from './plugins/plugin-app-build-log'
 import { getVuepressDefaultViteBundler } from './plugins/plugin-vite-bundler'
 
 /**
@@ -8,18 +10,56 @@ import { getVuepressDefaultViteBundler } from './plugins/plugin-vite-bundler'
  */
 export type VipVuepressUserConfig = UserConfig
 
+export interface VipVuepressAppBuildLogOptions {
+  version: string
+  /** 默认当前构建时间 */
+  buildTime?: string
+}
+
+export interface DefineVipVuepressConfigOptions {
+  /** 浏览器控制台打印站点版本与更新时间 */
+  appBuildLog?: VipVuepressAppBuildLogOptions
+}
+
 /**
  * 在原 config 上补全默认项后返回（lang / bundler / head / shouldPrefetch）。
  */
-export function defineVipVuepressConfig(config: VipVuepressUserConfig): VipVuepressUserConfig {
+export function defineVipVuepressConfig(
+  config: VipVuepressUserConfig,
+  options?: DefineVipVuepressConfigOptions,
+): VipVuepressUserConfig {
   // 支持汉语，单语言：https://theme-hope.vuejs.press/zh/config/i18n.html
   if (config.lang == null) {
     config.lang = 'zh-CN'
   }
 
-  // 默认vite编译
+  const appBuild = options?.appBuildLog != null
+    ? createVipAppBuildTime({
+        version: options.appBuildLog.version,
+        buildTime: options.appBuildLog.buildTime,
+        pluginName: 'vip-vuepress-html-build-time',
+      })
+    : null
+
+  // 默认 vite 编译；可选注入构建时间 define
   if (config.bundler == null) {
-    config.bundler = getVuepressDefaultViteBundler()
+    config.bundler = getVuepressDefaultViteBundler({
+      appBuild,
+    })
+  }
+
+  if (appBuild != null) {
+    config.head = [
+      ...(config.head ?? []),
+      ['meta', {
+        name: 'buildTime',
+        content: appBuild.buildTime,
+      }],
+    ]
+    config.plugins = [
+      ...(config.plugins ?? []),
+      createVipAppBuildLogPlugin(),
+    ]
   }
 
   // 配置ico

@@ -576,8 +576,8 @@ importers:
         specifier: workspace:*
         version: link:../open-source
       '@142vip/vue':
-        specifier: 0.1.6-alpha.29
-        version: 0.1.6-alpha.29(@element-plus/icons-vue@2.3.2(vue@3.5.40(typescript@5.9.3)))(element-plus@2.13.7(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(pinia@3.0.4(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(vue@3.5.40(typescript@5.9.3))
+        specifier: 0.1.6-alpha.31
+        version: 0.1.6-alpha.31(@element-plus/icons-vue@2.3.2(vue@3.5.40(typescript@5.9.3)))(element-plus@2.13.7(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(pinia@3.0.4(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(vue@3.5.40(typescript@5.9.3))
       '@element-plus/icons-vue':
         specifier: 2.3.2
         version: 2.3.2(vue@3.5.40(typescript@5.9.3))
@@ -630,6 +630,9 @@ importers:
 
   packages/vuepress:
     dependencies:
+      '@142vip/vue':
+        specifier: 0.1.6-alpha.31
+        version: 0.1.6-alpha.31(@element-plus/icons-vue@2.3.2(vue@3.5.40(typescript@5.9.3)))(element-plus@2.13.7(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(pinia@3.0.4(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(vue@3.5.40(typescript@5.9.3))
       '@vue/repl':
         specifier: 4.7.0
         version: 4.7.0
@@ -666,9 +669,6 @@ importers:
 
 packages:
 
-  '@142vip/cdn@0.0.1-alpha.2':
-    resolution: {integrity: sha512-FZSR2Z/RezrvaUo9IlNcZAaOv391w6hM7EoQVtIcIwI/F/im1oHZyceM6Q4z97PIQWGevabQ9QPswLtLKKoV0Q==}
-
   '@142vip/cdn@0.0.1-alpha.3':
     resolution: {integrity: sha512-Mt5lRYcAh+33QXSBmMKO5c2ccim3VsXk0tWadJInGClx6QoicvGqigOe0mcULBRhh3n4j4IayW2tFMevwKndKA==}
 
@@ -681,8 +681,8 @@ packages:
   '@142vip/utils@0.0.1-alpha.56':
     resolution: {integrity: sha512-C82JA39YIKSbTwBkGHFCfXUFt3so8wfyZhgS7QuDANFQY8glVPAhcObCV6skd/mA8gVZOYQUu5Bk2CE97+Rfow==}
 
-  '@142vip/vue@0.1.6-alpha.29':
-    resolution: {integrity: sha512-Eui7amDW0TC9ra+msilO7HHR4Qn41H1qD7NAJvMskh170arurZsPVSLL0tMWqijWX9sSIQ68rkAfypllV7S2Og==}
+  '@142vip/vue@0.1.6-alpha.31':
+    resolution: {integrity: sha512-/uu33rKRu2R5FWjn4Q/IVza3I0t6CG9P31vgt4Usaa9KUnVNH+xLqiqTrqY+QKLxXxmv9Ge1nCqfR25kgE/CIw==}
     peerDependencies:
       '@element-plus/icons-vue': 2.3.2
       element-plus: 2.13.6
@@ -11415,8 +11415,6 @@ packages:
 
 snapshots:
 
-  '@142vip/cdn@0.0.1-alpha.2': {}
-
   '@142vip/cdn@0.0.1-alpha.3': {}
 
   '@142vip/open-source@0.0.1-alpha.3': {}
@@ -11444,9 +11442,9 @@ snapshots:
       - '@types/node'
       - typescript
 
-  '@142vip/vue@0.1.6-alpha.29(@element-plus/icons-vue@2.3.2(vue@3.5.40(typescript@5.9.3)))(element-plus@2.13.7(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(pinia@3.0.4(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(vue@3.5.40(typescript@5.9.3))':
+  '@142vip/vue@0.1.6-alpha.31(@element-plus/icons-vue@2.3.2(vue@3.5.40(typescript@5.9.3)))(element-plus@2.13.7(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(pinia@3.0.4(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(vue@3.5.40(typescript@5.9.3))':
     dependencies:
-      '@142vip/cdn': 0.0.1-alpha.2
+      '@142vip/cdn': 0.0.1-alpha.3
       '@142vip/open-source': 0.0.1-alpha.4
       '@element-plus/icons-vue': 2.3.2(vue@3.5.40(typescript@5.9.3))
       axios: 1.17.0

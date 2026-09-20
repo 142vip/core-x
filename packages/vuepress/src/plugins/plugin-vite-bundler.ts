@@ -1,3 +1,4 @@
+import type { VipAppBuildTimeResult } from '@142vip/vue/vite'
 import type { Bundler } from '@vuepress/core'
 import { createRequire } from 'node:module'
 import path from 'node:path'
@@ -16,10 +17,23 @@ const bundledVueUseAlias = {
   '@vueuse/shared': resolveBundledPackage('@vueuse/shared'),
 } as const
 
+export interface VuepressViteBundlerOptions {
+  /** `createVipAppBuildTime` 返回值；传入时注入 `BUILD_TIME` / `VIP_APP_VERSION` */
+  appBuild?: VipAppBuildTimeResult | null
+}
+
 /** 默认 Vite bundler：大 chunk 阈值 + 锁定 @vueuse 解析。 */
-export function getVuepressDefaultViteBundler(): Bundler {
+export function getVuepressDefaultViteBundler(options: VuepressViteBundlerOptions = {}): Bundler {
+  const appBuild = options.appBuild ?? null
+
   return viteBundler({
     viteOptions: {
+      ...(appBuild != null
+        ? {
+            define: appBuild.define,
+            plugins: [appBuild.plugin],
+          }
+        : {}),
       build: {
         chunkSizeWarningLimit: 4096,
       },
