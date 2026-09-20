@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.33 (2026-09-20)
+
+### ✨ Features
+
+- 第二参数 `appBuildLog` 接入 `@142vip/vue` &nbsp;-&nbsp; by **chufan** [<samp>(40784)</samp>](https://github.com/142vip/core-x/commit/407844d5)
+
+**Release New Version v0.0.1-alpha.33 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/vitepress)**
+
 ## v0.0.1-alpha.32 (2026-09-11)
 
 ### ✨ Features
