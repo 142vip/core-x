@@ -91,7 +91,7 @@ VitePress 文档站工具包：默认主题配置、Mermaid 图表、Element Plu
 - `defineVipExtendsTheme(theme?, options?)`（default export）
 - `VipExtendsThemeOptions`：`layoutSlots?`、`homePage?`（`false` | `VipHomePageThemeOptions` | 自定义 VNode 函数）
 - `VipHomePageThemeOptions`：`tables?`、`tableSectionId?`、`showTeam?`、`showOpenSource?`、`defaultSlot?`
-- 行为：extends VitePress DefaultTheme；注册 Element Plus 基础组件 + `VipMermaid`；`layout-bottom` 注入首页块 + 用户插槽 + `VipFooter` / `VipBackTop`；`setupVipAppBuildLog`
+- 行为：extends VitePress DefaultTheme；注册 Element Plus 基础组件 + `VipMermaid`；`layout-bottom` 注入首页块 + 用户插槽 + `VipFooter` / `VipBackTop`；`setupVipAppBuildLog`（`@142vip/vue/utils`）
 
 ### `defaultVipThemeConfig` 站点默认
 
