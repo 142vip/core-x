@@ -47,7 +47,7 @@ export default defineVipVuepressConfig({
 
 包内默认（未传 `locales` 时）等价于：
 
-```ts
+```text
 locales: {
   '/': {
     lang: 'zh-CN',
