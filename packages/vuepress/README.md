@@ -1,77 +1,78 @@
 # @142vip/vuepress
 
 [![NPM version](https://img.shields.io/npm/v/@142vip/vuepress?labelColor=0b3d52&color=1da469&label=version)](https://www.npmjs.com/package/@142vip/vuepress)
-`VuePress`使用的最佳实践，基于`vuepress-theme-hope`插件封装
 
-## 使用
+VuePress 使用的最佳实践，基于 vuepress-theme-hope 的封装
 
-安装本包即可，**VuePress 运行时与主题依赖已内置**（版本见 `package.json` 的 `dependencies`），无需再单独安装 `vuepress` / `vuepress-theme-hope` 等：
+## 安装
+
+包内已 bundled `vuepress`、`vuepress-theme-hope`；使用方通常无需单独声明 `vuepress`。
 
 ```shell
+# npm
+npm install -D @142vip/vuepress
+
+# pnpm
 pnpm add -D @142vip/vuepress
 ```
 
+## 功能
+
+- [x] `defineVipVuepressConfig`：补全 `lang`、`bundler`、favicon、`shouldPrefetch`
+- [x] `getVipHopeTheme`：基于 theme-hope 的默认插件与 Markdown 能力
+- [x] `defineVipNavbarConfig` / `defineVipSidebarConfig`：导航与侧栏
+- [x] 内置 Mermaid、代码高亮语言、slimsearch 中文、复制代码
+- [x] 可选构建时间注入与浏览器控制台版本日志
+- [x] bin：`vuepress`（转发至 bundled CLI）
+
 ## 配置
 
-在根目录新建`vuepress.config.ts`文件，配置参考：
+`docs/.vuepress/config.ts` 示例：
 
 ```ts
-import {
-  defineVipVuepressConfig,
-  getVipHopeTheme,
-  handleImportCodePath,
-} from '@142vip/vuepress'
+import { defineVipVuepressConfig, getVipHopeTheme } from '@142vip/vuepress'
+import { defaultTheme } from 'vuepress'
 
 export default defineVipVuepressConfig({
-  // 基础配置
-  // ...
-
-  // 支持中文
-  locales: {
-    '/': {
-      lang: 'zh-CN',
-    },
-  },
-
-  // markdown配置
-  markdown: {
-    // 导入代码
-    importCode: {
-      handleImportPath: handleImportCodePath([
-        ['@code', 'code/'],
-        ['~', ''],
-      ]),
-    },
-    headers: {
-      level: [2, 3, 4],
-    },
-  },
-  // 主题配置
   theme: getVipHopeTheme({
-    // 一些主题配置
-    // ...
-
-    // changelog和贡献者
-    // changelog: true,
-    // contributors: true,
-
+    navbar: [],
+    sidebar: {},
   }),
 }, {
-  appBuildLog: { version: '0.0.1' },
+  appBuildLog: { version: '1.0.0' },
 })
 ```
 
-第二参数 `appBuildLog` 会自动注入构建时间与浏览器控制台版本日志，无需额外 `client.ts`。
+## 使用
 
-## 命令
+开发与构建（使用包内 bin）：
 
 ```shell
-# 本地开发
-npx vuepress dev
-
-# 编辑
-npx vuepress build
+pnpm vuepress dev docs
+pnpm vuepress build docs
 ```
+
+代码块路径别名（Markdown `<!-- @include -->`）：
+
+```ts
+import { handleImportCodePath } from '@142vip/vuepress'
+
+const resolver = handleImportCodePath([['@code', './code']])
+```
+
+默认文档目录常量：`VUEPRESS_DEFAULT_DOCS_DIR`（`'docs'`）。
+
+## 升级
+
+```shell
+# 依赖更新
+pnpm upgrade @142vip/vuepress
+```
+
+## 参考
+
+- [@142vip/vuepress](https://www.npmjs.com/package/@142vip/vuepress)
+- [vuepress-theme-hope](https://theme-hope.vuejs.press/)
 
 ## 证书
 

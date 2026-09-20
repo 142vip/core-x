@@ -2,56 +2,73 @@
 
 [![NPM version](https://img.shields.io/npm/v/@142vip/grpc?labelColor=0b3d52&color=1da469&label=version)](https://www.npmjs.com/package/@142vip/grpc)
 
-`Grpc`工具包，支持`proto`文件加载、解析，`Grpc`客户端、服务端数据连接交互，支持健康检查。
+Grpc 工具包，支持 proto 文件加载、解析，Grpc 客户端、服务端数据连接交互，支持健康检查。
 
 ## 安装
 
 ```shell
 # npm
 npm install @142vip/grpc
+
 # pnpm
-pnpm i @142vip/grpc
+pnpm add @142vip/grpc
 ```
+
+## 功能
+
+- [x] `GrpcProtoLoader` 加载 proto 并解析 service
+- [x] `GrpcClient` 注册/获取 gRPC 服务客户端
+- [x] `GrpcServer` 注册服务、监听端口、内置健康检查
+- [x] `grpcSimpleHandler` / `grpcStreamHandler` 服务端方法包装
+- [x] 示例：`GrpcExampleService` `GrpcExampleServerManager`
+- [x] 包内 `pnpm dev:client` / `dev:server` 示例脚本
+
+## 配置
+
+`GrpcProtoLoader` 默认 `DEFAULT_LOADER_OPTIONS`（`keepCase`、`longs: String`、`enums: String`）；可传入 `VipProtoLoaderOptions` 覆盖。
 
 ## 使用
 
-### Proto解析
+```ts
+import {
+  exampleProto,
+  exampleProtoServicePath,
+  GrpcClient,
+  GrpcProtoLoader,
+  GrpcServer,
+  grpcSimpleHandler,
+} from '@142vip/grpc'
 
-默认解析配置：
+const loader = new GrpcProtoLoader(exampleProto)
+const ServiceCtor = loader.getClientServiceConstructor(exampleProtoServicePath)
 
-```typescript
-export const DEFAULT_LOADER_OPTIONS: VipProtoLoaderOptions = {
-  keepCase: true,
-  longs: String,
-  enums: String,
-  defaults: true,
-  oneofs: true,
-}
+const client = new GrpcClient('localhost:50051')
+client.registerService(exampleProtoServicePath, ServiceCtor)
+
+const server = new GrpcServer()
+// server.addService(...) 见包内 example
+await server.listen('0.0.0.0:50051')
 ```
 
-### GRPC服务端
+本地示例：
 
-### GRPC客户端
+```shell
+cd packages/grpc && pnpm dev:server
+cd packages/grpc && pnpm dev:client
+```
 
-## 最佳实践
+## 升级
 
-- [GRPC服务端示例](example-client.js)
-- [GRPC客户端示例](example-server.js)
-
-## 健康检查
-
-- [health.proto](https://github.com/142vip/core-x/tree/main/packages/grpc/protos/health.proto)
-
-## 单元测试
-
-- [proto-loader.spec.ts](https://github.com/142vip/core-x/tree/main/packages/grpc/test/proto-loader.spec.ts)
-- [grpc-client.spec.ts](https://github.com/142vip/core-x/tree/main/packages/grpc/test/grpc-client.spec.ts)
-- [grpc-server.spec.ts](https://github.com/142vip/core-x/tree/main/packages/grpc/test/grpc-server.spec.ts)
+```shell
+# 依赖更新
+pnpm upgrade @142vip/grpc
+```
 
 ## 参考
 
-- [GRPC 官网](https://grpc.io/docs/)
-- [GRPC Node 官方文档](https://grpc.io/docs/languages/node/)
+- [@142vip/grpc](https://www.npmjs.com/package/@142vip/grpc)
+- [@grpc/grpc-js](https://www.npmjs.com/package/@grpc/grpc-js)
+- [@142vip/egg-grpc-client](https://www.npmjs.com/package/@142vip/egg-grpc-client) / [egg-grpc-server](https://www.npmjs.com/package/@142vip/egg-grpc-server)
 
 ## 证书
 

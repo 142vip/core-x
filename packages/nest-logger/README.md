@@ -2,105 +2,80 @@
 
 [![NPM version](https://img.shields.io/npm/v/@142vip/nest-logger?labelColor=0b3d52&color=1da469&label=version)](https://www.npmjs.com/package/@142vip/nest-logger)
 
+Nest.js 框架日志模块，集成终端、文件等形式日志
+
 ## 安装
 
 ```shell
 # npm
-npm install @142vip/nest-logger
+npm install @142vip/nest-logger @142vip/nest
+
 # pnpm
-pnpm i @142vip/nest-logger
+pnpm add @142vip/nest-logger @142vip/nest
 ```
+
+## 功能
+
+- [x] 基于 `nestjs-pino` + `pino` 的 Nest 日志模块
+- [x] `NestLoggerModule.register` 注册多路输出（终端 / 文件）
+- [x] `NestLoggerModule.useLogger` 替换 Nest 内置 Logger
+- [x] `@InjectLogger()` 注入 `PinoLogger`（封装 `InjectPinoLogger`）
+- [x] 终端美化输出 `ConsoleLogger`（`pino-pretty`）
+- [x] HTTP 请求 `x-request-id` 作为 `genReqId`
 
 ## 配置
 
-## 日志注册
+通过 `NestLoggerConfig` 传入 `register`：
 
-```typescript
+```ts
+import { LoggerLevelEnum, NestLoggerModule } from '@142vip/nest-logger'
+
 NestLoggerModule.register({
-  consoleLogger: {
-    // ...
-  },
-  fileLogger: {
-    // ...
-  },
+  consoleLogger: { level: LoggerLevelEnum.info },
+  // fileLogger: pino destination stream（可选）
 })
 ```
 
-## 开启日志
+`@142vip/nest-starter` 在 `enableLogger: true` 时自动注册，默认终端级别 `trace`。
 
-```typescript
-// app 实例，使用Logger
+## 使用
+
+服务内注入日志：
+
+```ts
+import { InjectLogger } from '@142vip/nest-logger'
+import { Injectable } from '@nestjs/common'
+import { PinoLogger } from 'nestjs-pino'
+
+@Injectable()
+export class AppService {
+  constructor(@InjectLogger(AppService.name) private readonly logger: PinoLogger) {}
+
+  demo() {
+    this.logger.info('hello')
+  }
+}
+```
+
+应用启动后启用框架日志：
+
+```ts
+import { NestLoggerModule } from '@142vip/nest-logger'
+
 NestLoggerModule.useLogger(app)
 ```
-## 日志打印
 
-### 使用 `Logger` 类，不推荐
+## 升级
 
-```typescript
-import { Logger } from '@nestjs/common'
-
-export class MyService {
-  private readonly logger = new Logger(MyService.name)
-  foo() {
-    this.logger.verbose({ foo: 'bar' }, 'baz %s', 'qux')
-    this.logger.debug('foo %s %o', 'bar', { baz: 'qux' })
-    this.logger.log('foo')
-  }
-}
-```
-
-### 使用 `InjectLogger` 装饰器，推荐
-
-```typescript
-import { InjectLogger, NestLogger } from '@142vip/nest-logger'
-
-export class MyService {
-  constructor(
-    private readonly logger: PinoLogger
-  ) {
-    this.logger.setContext(MyService.name)
-  }
-
-  constructor(
-    @InjectLogger(MyService.name)
-    private readonly logger: NestLogger
-  ) {}
-
-  foo() {
-    // PinoLogger has same methods as pino instance
-    this.logger.trace({ foo: 'bar' }, 'baz %s', 'qux')
-    this.logger.debug('foo %s %o', 'bar', { baz: 'qux' })
-    this.logger.info('foo')
-  }
-}
-```
-
-### 构造函数初始化
-
-```typescript
-import { InjectLogger, NestLogger } from '@142vip/nest-logger'
-
-export class MyService {
-  constructor(
-    private readonly logger: NestLogger
-  ) {
-    this.logger.setContext(MyService.name)
-  }
-
-  foo() {
-    this.logger.trace({ foo: 'bar' }, 'baz %s', 'qux')
-    this.logger.debug('foo %s %o', 'bar', { baz: 'qux' })
-    this.logger.info('foo')
-  }
-}
+```shell
+# 依赖更新
+pnpm upgrade @142vip/nest-logger
 ```
 
 ## 参考
 
-- [nestjs-pino](https://www.npmjs.com/package/nestjs-pino)
-- [pino](https://github.com/pinojs/pino)
-- [pino-pretty](https://github.com/pinojs/pino-pretty)
-- [pino-http](https://github.com/pinojs/pino-http)
+- [@142vip/nest-logger](https://www.npmjs.com/package/@142vip/nest-logger)
+- [nestjs-pino](https://github.com/iamolegga/nestjs-pino)
 
 ## 证书
 

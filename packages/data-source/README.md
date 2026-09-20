@@ -2,134 +2,62 @@
 
 [![NPM version](https://img.shields.io/npm/v/@142vip/data-source?labelColor=0b3d52&color=1da469&label=version)](https://www.npmjs.com/package/@142vip/data-source)
 
-**TIPS：没数据源，可视化、数字孪生就是玩单机**
-
-## 介绍
-
-`@142vip/data-source`模块可以用来连接多种数据源，支持从数据源快速获取数据
+通用型数据源：SQL / 文档库、HTTP API、CSV 的统一连接与解析。
 
 ## 安装
 
-```bash
+按需安装对应数据库驱动（见 `package.json` peerDependencies）。
+
+```shell
 # npm
 npm install @142vip/data-source
+
 # pnpm
-pnpm i @142vip/data-source
+pnpm add @142vip/data-source
 ```
 
-### 简单使用
+## 功能
 
-按照数据来源，将数据源分为CSV型、API型、SQL数据库型三种类型。
+- [x] SQL / 文档库：`VipMysql`、`VipPostgreSql`、`VipOracle`、`VipSqlServer`、`VipMongo`、`VipClickhouse`
+- [x] API 类：`VipHttpApi` `VipAliGatewayApi` `VipDTableApi` `VipDtStackApi`
+- [x] `VipCsv` CSV 解析
+- [x] 统一 `DataSourceParseResponse` 返回结构
+- [x] `DataSourceManager` 接口（表/库元数据约定）
 
-- [CSV](./docs/csv.md)
-- API
-  - [ALI Gateway API](docs/apis/vip-ali-gateway-api.md)
-  - [DTable API](docs/apis/vip-dtable-api.md)
-  - [DTStack API](docs/apis/vip-dtstack-api.md)
-  - [HTTP API](docs/apis/vip-http-api.md)
-- SQL
-  - [ClickHouse数据库](docs/sql/vip-clickhouse.md)
-  - [达梦数据库](docs/sql/vip-dameng.md)
-  - [DB2数据库](docs/sql/vip-ibm-db.md)
-  - [KingBase金仓数据库](docs/sql/vip-kingbase.md)
-  - [MySQL数据库](docs/sql/vip-mysql.md)
-  - [SQL Server数据库](docs/sql/vip-mssql.md)
-  - [Oracle数据库](docs/sql/vip-oracle.md)
-  - [PostgreSQL数据库](docs/sql/vip-postgresql.md)
-  - [MongoDB数据库](docs/sql/vip-mongo.md)
+## 配置
 
-### 新增数据源
+各连接器使用各自的 `*Options`（多数 SQL 类继承 `DataSourceConnectionOptions`：`host` `port` `username` `password` `querySql`）。
 
-#### 定义接口类型
+## 使用
 
 ```ts
-export interface MyDataSourceOptions {
-  // coding xxx
+import { VipMysql } from '@142vip/data-source'
+
+const mysql = new VipMysql()
+const result = await mysql.getConnectionData({
+  host: '127.0.0.1',
+  port: 3306,
+  username: 'root',
+  password: 'secret',
+  database: 'demo',
+  querySql: 'SELECT 1 AS n',
+})
+
+if (result.success) {
+  console.log(result.data)
 }
 ```
 
-#### 初始化连接器
+## 升级
 
-```ts
-import { DataSourceConnector } from '@142vip/data-source'
-
-export class MyDataSource implements DataSourceConnector<MyDataSourceOptions> {
-  /**
-   * 获取连接数据
-   */
-  public async getConnectionData(options: MyDataSourceOptions): Promise<DataSourceParseResponse> {
-    try {
-      // coding xxx
-    }
-    catch (error) {
-      return handlerDataSourceConnectError(VipPostgreSql.name, error)
-    }
-    finally {
-      await pgClient?.end()
-    }
-  }
-}
-```
-
-#### 进一步拓展
-
-基于`DataSourceManager`接口，封装`parseData`、`testConnect`、`getDataBaseNames`等常用方法。
-
-```ts
-/**
- * 自定义数据源
- */
-export class MyDataSource implements DataSourceManager {
-  /**
-   * 解析数据
-   */
-  public async parseData(): Promise<DataSourceParseResponse> {
-    // coding xxx
-  }
-
-  /**
-   * 测试连接
-   */
-  public testConnect(): Promise<DataSourceParseResponse> {
-    // coding xxx
-  }
-
-  /**
-   * 获取表名列表
-   */
-  public getDataBaseNames(): Promise<DataSourceParseResponse<string[]>> {
-    // coding xxx
-  }
-
-  /**
-   * 获取表名列表
-   */
-  public getTableNames(): Promise<DataSourceParseResponse<DataSourceTable[]>> {
-    // coding xxx
-  }
-
-  /**
-   * 获取表字段列表
-   */
-  public getTableColumns(tableName: string, schema?: string): Promise<DataSourceParseResponse<DataSourceColumn[]>> {
-    // coding xxx
-  }
-}
+```shell
+# 依赖更新
+pnpm upgrade @142vip/data-source
 ```
 
 ## 参考
 
-- [aliyun-api-gateway](https://www.npmjs.com/package/aliyun-api-gateway)
-- [axios](https://www.npmjs.com/package/axios)
-- [clickhouse](https://www.npmjs.com/package/clickhouse)
-- [csv-parse](https://www.npmjs.com/package/csv-parse)
-- [dmdb](https://www.npmjs.com/package/dmdb)
-- [ibm_db](https://www.npmjs.com/package/ibm_db)
-- [iconv-lite](https://www.npmjs.com/package/iconv-lite)
-- [mssql](https://www.npmjs.com/package/mssql)
-- [oracledb](https://www.npmjs.com/package/oracledb)
-- [pg](https://www.npmjs.com/package/pg)
-- [mongodb](https://www.npmjs.com/package/mongodb)
+- [@142vip/data-source](https://www.npmjs.com/package/@142vip/data-source)
 
 ## 证书
 

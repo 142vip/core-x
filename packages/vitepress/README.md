@@ -1,139 +1,94 @@
 # @142vip/vitepress
 
-基于 VitePress 的文档站封装：主题、Element Plus、**Mermaid 架构图**、全局页脚、默认品牌 favicon/Logo（`@142vip/cdn`）。
+[![NPM version](https://img.shields.io/npm/v/@142vip/vitepress?labelColor=0b3d52&color=1da469&label=version)](https://www.npmjs.com/package/@142vip/vitepress)
 
-## 快速开始
+基于 VitePress 框架搭建静态站点的常用工具包，提供 Element Plus 相关组件和主题
 
-### 1. 配置
+## 安装
 
-`defineVipVitepressConfig` 自动合并 `defaultVipThemeConfig`（语言、目录、Markdown 等）与默认 favicon `head`。
+须满足 `peerDependencies`（版本见本包 `package.json`：`vitepress`、`vue`、`element-plus`、`mermaid`）。
+
+```shell
+# npm
+npm install @142vip/vitepress
+
+# pnpm
+pnpm add @142vip/vitepress
+```
+
+## 功能
+
+- [x] `defineVipVitepressConfig`：合并默认主题、head、favicon、Vite SSR 配置
+- [x] 可选 Mermaid 支持（`{ mermaid: true }`）
+- [x] `getVipThemeConfig` / `enableVipFooter`：导航、社交链接、全局页脚
+- [x] `defineVipExtendsTheme`：扩展默认主题 + Element Plus + `VipMermaid` + 首页区块
+- [x] 文档组件：`VipMermaid`、`VipHomePage`、`VipProjectTable`
+- [x] `@142vip/vitepress/workspace`：Monorepo `package.json` 索引工具
+- [x] TypeDoc 默认配置 `getVipTypedocDefaultConfig`
+
+## 配置
+
+`.vitepress/config.ts` 示例：
 
 ```ts
 import {
   defineVipVitepressConfig,
   enableVipFooter,
-  getVipBrandCdnUrl,
   getVipThemeConfig,
 } from '@142vip/vitepress'
 
 export default defineVipVitepressConfig({
   title: 'My Docs',
   themeConfig: getVipThemeConfig({
-    nav: [],
-    // 仅补本仓库地址，npm/csdn 等沿用包默认
-    socialLinks: {
-      github: 'https://github.com/your-org/your-repo',
-      gitee: 'https://gitee.com/your-org/your-repo',
-    },
-    ...enableVipFooter({
-      showBackTop: true,
-      showBadge: true,
-      pkgName: '@142vip/example',
-      pkgVersion: '0.0.1',
-    }),
+    nav: [{ text: 'Guide', link: '/guide' }],
+    ...enableVipFooter({ showBackTop: true }),
   }),
-}, {
-  appBuildLog: { version: '0.0.1' },
-  mermaid: true,
-})
+}, { mermaid: true })
 ```
 
-第二参数 `appBuildLog` 会在浏览器控制台打印站点版本与更新时间（主题已自动调用 `@142vip/vue` 的 `setupVipAppBuildLog`）。
-
-包内默认为 **vip** 品牌（`VIP_DEFAULT_FAVICON` / `VIP_DEFAULT_LOGO`）；站点在 `config.ts` 显式覆盖，例如 core-x 使用 **x** 系列：
+`.vitepress/theme/index.ts`：
 
 ```ts
-getVipThemeConfig({
-  nav: [],
-  logo: getVipBrandCdnUrl('svg/x-logo.svg'),
-})
+import { defineVipExtendsTheme } from '@142vip/vitepress/theme'
 
-head: [['link', { rel: 'icon', href: getVipBrandCdnUrl('icons/x-favicon.ico') }]]
-```
-
-### 2. 主题
-
-```ts
-import defineVipExtendsTheme from '@142vip/vitepress/theme'
-import { getTableData } from './project-data'
-
-// VipHomePage 由主题注入，挂在首页 Markdown 正文之后、页脚之前
 export default defineVipExtendsTheme(undefined, {
-  homePage: {
-    tables: [
-      { title: '最佳实践', data: getTableData('example') },
-      { title: '开源模块', data: getTableData('project') },
-    ],
-  },
+  homePage: { showTeam: true, showOpenSource: true },
 })
 ```
 
-`homePage` 传入配置对象时挂载内置 `VipHomePage`；`showTeam` / `showOpenSource` / `defaultSlot` 可扩展团队、开源与联系作者等区块。完全自定义时可传 `() => h(...)`，传 `false` 关闭。
+## 使用
 
-### 3. 写图（需已启用 mermaid）
+Markdown 中使用 Mermaid（已启用时）：
 
-````md
+````markdown
 ```mermaid
-flowchart LR
-  A --> B
-```
-
-```mermaid theme=forest
 flowchart LR
   A --> B
 ```
 ````
 
-**主题规则**：亮色使用所选官方主题；暗黑模式统一使用官方 `dark`，保证可读性。
+组件子路径：
 
-**展示模式**（`VipMermaid` 自动判断，无需额外配置）：
+```ts
+import { VipHomePage, VipMermaid } from '@142vip/vitepress/components'
+```
 
-| 模式 | 触发条件 | 行为 |
-|------|----------|------|
-| 静态 | 图可完整放入容器 | 居中展示，高度随内容自适应，无操作按钮 |
-| 交互 | 宽或高超出展示区域 | 固定视口、自动缩放居中，支持拖拽、滚轮 / 双指缩放、还原与全屏 |
-
-交互能力仅在内容超出时出现；小图保持简洁，大图才提供缩放与全屏。所有图表均支持复制 Markdown 代码块（` ```mermaid ` fence，不含主题配置）到剪贴板。样式使用 VitePress CSS 变量，兼容明暗主题与移动端。
-
-## 页脚 `showBackTop` / `showBadge`
-
-在 `enableVipFooter({ showBackTop: true })` 时挂载 `@142vip/vue` 的 `VipBackTop`；`pkgName` / `pkgVersion` / `showBadge` 透传 `VipFooter` 渲染 Release 与徽章。
-
-| 值 | 行为 |
-|----|------|
-| `true` | 展示 `@142vip/vue` `VipFooter` 默认徽章（`showBadge: true`） |
-| `false` / 未传 | 不展示徽章 |
-| `VipFooterBadgeLink[]` | 自定义 `href` / `src` / `alt` 列表 |
-
-## 默认 favicon / Logo / 社交链接
-
-品牌与站点默认项集中在 `core/config.ts` 导出：
-
-| 导出 | 用途 |
-|------|------|
-| `VIP_DEFAULT_FAVICON` / `VIP_DEFAULT_LOGO` | 包默认 **vip** 品牌 CDN 地址 |
-| `getVipBrandCdnUrl` | 自定义 media 路径转 CDN URL（站点覆盖用） |
-| `defaultVipFaviconHead` | 默认 favicon `head` 元组 |
-| `defaultVipSocialLinks` | 通用社交链接（npm/csdn 等，**不含** github/gitee） |
-| `resolveVipSocialLinks` | 合并默认项与用户 `socialLinks` 配置 |
-| `defaultVipThemeConfig` | 站点级默认配置（`defineVipVitepressConfig` 内部合并） |
-
-- **favicon**：在站点 `head` 配置 `rel="icon"` 覆盖 vip 默认；未配置时自动注入 `VIP_DEFAULT_FAVICON`
-- **logo**：`getVipThemeConfig` 默认 `VIP_DEFAULT_LOGO`；传入 `logo` 覆盖（如 `getVipBrandCdnUrl('svg/x-logo.svg')`）
-- **socialLinks**：默认 npm/csdn/bilibili/juejin；传对象按 icon 名覆盖或追加（如只写 `github` / `gitee` URL）；传数组则整表替换
-- **页脚**：`...enableVipFooter({ ... })` 可直接展开进 `getVipThemeConfig`（`footer: false` + `vipFooter`）
-
-组件内图片推荐静态 `import '@142vip/cdn/media/...'`（见 `VipContactAuthor`）。
-
-## Demo
+## 升级
 
 ```shell
-pnpm --filter @142vip/vitepress build
-pnpm --filter vitepress-demo dev
+# 依赖更新
+pnpm upgrade @142vip/vitepress
 ```
+
+## 参考
+
+- [@142vip/vitepress](https://www.npmjs.com/package/@142vip/vitepress)
+- [VitePress 文档](https://vitepress.dev/)
 
 ## 证书
 
 [MIT](https://opensource.org/license/MIT)
 
 Copyright (c) 2019-present, @142vip 储凡
+
+**仅供学习参考，商业使用请保留作者版权信息，作者不保证也不承担任何软件的使用风险。**

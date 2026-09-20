@@ -1,87 +1,60 @@
 # @142vip/redis
 
+[![NPM version](https://img.shields.io/npm/v/@142vip/redis?labelColor=0b3d52&color=1da469&label=version)](https://www.npmjs.com/package/@142vip/redis)
+
+Redis 通用工具，基于 ioredis 的封装。
+
 ## 安装
 
 ```shell
 # npm
-npm install @142vip/redis
+npm install @142vip/redis ioredis
+
 # pnpm
-pnpm i @142vip/redis
+pnpm add @142vip/redis ioredis
 ```
 
-## 使用
+## 功能
 
-### 创建工厂类
-```typescript
-import { RedisFactory } from '@142vip/redis'
-
-// 初始化工厂类实例
-const redisFactory = new RedisFactory()
-```
-
-- `redisFactory.createClient()` ：创建客户端
-- `redisFactory.createCluster()` ：创建集群客户端
-- `redisFactory.getClient()` ：获取客户端
+- [x] `RedisFactory` 创建单机/哨兵/集群客户端
+- [x] `RedisMode` 连接模式枚举
+- [x] `RedisConfig` / `RedisClientConfig` / `RedisClusterConfig` 类型
 
 ## 配置
 
-### 简单&哨兵模式
-```typescript
-// 默认连接 127.0.0.1:6379
-redisFactory.getClient()
-// 连接 127.0.0.1:6380, db 4,使用密码 123456
-redisFactory.getClient({
-  url: 'redis://:123456@127.0.0.1:6380/4',
-})
-// 用户名、密码都可以通过 URI 传递。
-redisFactory.getClient({
-  url: 'redis://username:password@127.0.0.1:6380/4',
-})
-redisFactory.getClient({
-  port: 6379, // 端口
-  host: '127.0.0.1', // host主机地址
-  username: 'default', // 需要redis版本大于6
-  password: 'my-top-secret',
-  db: 0, // 默认0
-})
-```
+`RedisClientConfig` 继承 ioredis `RedisOptions`，可选 `url`。
 
-### 集群模式
+集群使用 `clusterNodes` + 可选 `clusterOptions`。
 
-```typescript
-redisFactory.getClient({
-  clusterNodes: [
-    {
-      host: '127.0.0.1',
-      port: 6379,
-    },
-    {
-      host: '127.0.0.1',
-      port: 6380,
-    },
-  ],
-  // 可选
-  clusterOptions: {
-    // 集群模式下，每个节点的连接配置
-    redisOptions: {
-      username: 'default', // 需要redis版本大于6
-      password: 'my-top-secret',
-      db: 0, // 默认0
-    },
-  },
+## 使用
+
+```ts
+import { RedisFactory } from '@142vip/redis'
+
+const factory = new RedisFactory()
+
+// 单机或 URL
+const client = factory.createClient({ host: '127.0.0.1', port: 6379 })
+// 或 factory.getClient({ url: 'redis://127.0.0.1:6379' })
+
+// 集群
+const cluster = factory.createCluster({
+  clusterNodes: [{ host: '127.0.0.1', port: 7000 }],
 })
 ```
 
-## 最佳实践
+## 升级
 
-- [egg-redis](https://github.com/eggjs/egg-redis)
-- [@142vip/nest-redis](https://github.com/142vip/nest-redis)
+```shell
+# 依赖更新
+pnpm upgrade @142vip/redis
+```
 
 ## 参考
 
-- [IORedis Npm](https://www.npmjs.com/package/redis)
-- [IORedis Github](https://github.com/luin/ioredis)
-- [IORedis 官网](https://redis.io/)
+- [@142vip/redis](https://www.npmjs.com/package/@142vip/redis)
+- [ioredis](https://github.com/redis/ioredis)
+- [@142vip/nest-redis](https://www.npmjs.com/package/@142vip/nest-redis)
 
 ## 证书
 

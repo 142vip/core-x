@@ -17,7 +17,8 @@ alwaysApply: true
 | **`docs/media.md`** | 自媒体 | 手改 |
 | **`docs/apis/`** | API 参考 | `pnpm typedoc:api` / `build:docs` 生成，**勿手改** |
 | **`docs/wiki/`** | Wiki | `pnpm typedoc:wiki` 生成，**勿手改** |
-| **`packages/*/README.md`** | 模块文档 → `/packages/:pkg/` | 改 API 时手改 |
+| **`packages/*/README.md`** | 对外使用说明 → `/packages/:pkg/` | 怎么装、怎么配、怎么用；固定 H2；少堆符号表（见 `npm包规范`） |
+| **`packages/*/FEATURES.md`** | 对内技术说明，**不**进 npm `files` | 源码片段 + 列表；少用表；禁无意义罗列（见 `npm包规范`） |
 | **`apps/*/README.md`** | demo 文档 → `/apps/:pkg/` | 改 demo 时手改 |
 | **`.vitepress/`** | 导航、侧栏、首页主题 | 见下表 |
 
@@ -43,7 +44,7 @@ alwaysApply: true
 | 代码变更 | 文档动作 |
 |----------|----------|
 | 增删包/demo | README 列表、`sidebar.ts`、`16`、对应 README |
-| 公开 API | 包 README + `typedoc:api` 或 `build:docs` |
+| 公开 API | 包 README + FEATURES + `typedoc:api` 或 `build:docs` |
 | 命令/端口 | README「使用」、`08`、包/demo README |
 | 架构/数量/CI/本地流程 | **根 README 五段 Mermaid** + `07` 同构（`10` 同步铁律） |
 | VitePress 主题 | `packages/vitepress` + `.vitepress/` + `vitepress-demo` |
@@ -54,7 +55,7 @@ alwaysApply: true
 □ README 31 包 + 4 demo 完整？
 □ sidebar 与 packages/、apps/ 一一对应？oauth 显示 oauth2.0？
 □ docs/index.md 仅为首页（无重复 README 架构段）？
-□ 改动包的 README、docs/tech 等手改文档已更新？
+□ 改动包的 README、FEATURES、docs/tech 等手改文档已更新？
 □ API 变更已 build:docs？
 □ README 与 07 **五段 Mermaid 逐段同构**（图1~5，见 `10` 清单）？
 □ rules 外无 .cursor/rules 引用？

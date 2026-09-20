@@ -2,184 +2,71 @@
 
 [![NPM version](https://img.shields.io/npm/v/@142vip/utils?labelColor=0b3d52&color=1da469&label=version)](https://www.npmjs.com/package/@142vip/utils)
 
-通用型基础工具集合，对常用模块的二次集成
+通用型基础工具集合，对常用模块的二次集成。
 
 ## 安装
 
 ```shell
 # npm
-npm install @142vip/utils -D
+npm install @142vip/utils
+
 # pnpm
-pnpm i @142vip/utils
+pnpm add @142vip/utils
 ```
 
-## 说明
+## 功能
 
-`@142vip/utils` 同时提供 Node 服务端和浏览器客户端可消费的工具能力。
+- [x] Node：`VipNodeJS`、`VipGit`、`VipDocker`、`VipExecutor`、`VipMonorepo`、`VipNpm`、`VipPackageJSON`
+- [x] 封装：`vipDayjs`、`vipLodash`、`VipSemver`、`VipCommander`、`vipConfig`、`VipInquirer`
+- [x] `@142vip/utils/enums`：`HttpStatus`、`TimeDurationMs`、`HttpMethod`、`ProcessExitCodeEnum`
+- [x] `@142vip/utils/browser`：浏览器安全子集（无 Node API）
+- [x] `@142vip/utils/node`：Node 专用入口
 
-- 默认从 `@142vip/utils` 导入时：
-  浏览器构建工具会优先命中 browser-safe 导出，避免把 `node:fs`、`child_process` 等 Node 运行时能力打进前端包。
-- Node 运行时从 `@142vip/utils` 导入时：
-  仍然可以拿到完整能力，兼容现有服务端用法。
-- 如果业务需要显式约束运行时：
-  可以使用 `@142vip/utils/browser` 或 `@142vip/utils/node`。
+## 配置
+
+`vipConfig.loadCliConfig(name, defaults)` 按模块名走 cosmiconfig（如 `changelog`、`bumpx`）。
 
 ## 使用
 
-### 浏览器 / 通用场景
-
-适合浏览器、SSR 前端、同构代码中直接使用的能力，优先从根入口导入即可：
-
 ```ts
-import { vipDayjs, vipDocSite, vipLodash, vipQs, VipSemver } from '@142vip/utils'
+import { vipDayjs, VipGit, vipLodash, vipLogger } from '@142vip/utils'
+import { HttpStatus, TimeDurationMs } from '@142vip/utils/enums'
 
-const version = VipSemver.valid('1.2.3')
-const query = vipQs.stringify({ page: 1, size: 10 })
-const date = vipDayjs().format('YYYY-MM-DD')
-const base = vipDocSite.getBase('core-x')
+vipDayjs.formatCurrentDateToYMD()
+vipLodash.compactMap([1, 0, 2], n => n || undefined)
+VipGit.parseCommitMsg('feat(utils): 示例')
+vipLogger.log('ok')
 
-// 外部 JSON 边界：避免 `value as Record<string, unknown>`
-const payload = vipLodash.toJsonRecord(apiResponse)
-if (vipLodash.isJsonRecord(nested)) {
-  console.log(nested.items)
+if (code === HttpStatus.OK) {
+  // …
 }
-
-const names = vipLodash.compactMap(users, user => user.nickname)
-
-console.log(version, query, date, base)
 ```
 
-当前浏览器安全导出的能力主要包括：
-
-- `VipColor`
-- `VipConsole`、`vipLogger`
-- `VipDayjs`、`vipDayjs`（日期模板见 `DateFormatTemplate`）
-- `VipSemver`
-- `VipNanoId`、`vipNanoId`
-- `VipQs`、`vipQs`
-- `VipYaml`
-- `vipDataTransform`
-- `vipLodash`（lodash 原生 + 扩展；见下节）
-- `VipDocSite`、`vipDocSite`
-- `enums` 目录下的枚举与类型（含 `TimeDurationMs`、`TimeDurationSec` 等，浏览器 / 服务端均可使用）
-
-#### `vipLodash`（lodash 扩展 · 不覆盖原生）
-
-`vipLodash` = **lodash 全量方法**（去掉 `VERSION`）+ 少量 **新增** 扩展键。实现为对象展开：先 `...lodashBase`，再 `...vipLodashExtensions`，**不会改写** `pick` / `map` / `isPlainObject` 等原生行为。
-
-| 扩展方法 | 说明 |
-|----------|------|
-| `isJsonRecord` | 平面对象守卫（语义同 `isPlainObject` + TS 收窄） |
-| `toJsonRecord` | `unknown` → `JsonRecord`，非对象返回 `{}` |
-| `compactMap` | `map` 后 `compact` 去 falsy |
-
-扩展方法**仅**通过 `vipLodash.xxx` 调用，根入口不单独 export。新增扩展时**禁止**与 lodash 已有方法同名。
+浏览器只引子集：
 
 ```ts
-import type { JsonRecord } from '@142vip/utils'
-import { vipLodash } from '@142vip/utils'
-
-vipLodash.pick(obj, ['a']) // lodash 原生
-vipLodash.compactMap(list, item => item.name) // 扩展
+import { vipDayjs, vipLodash } from '@142vip/utils/browser'
 ```
 
-#### 时间跨度枚举
-
-毫秒与秒两套枚举，适用于 TTL、缓存过期、轮询间隔等场景：
+CLI：
 
 ```ts
-// 浏览器 / 同构：根入口或 browser 子路径
-import { TimeDurationMs, TimeDurationSec } from '@142vip/utils'
-import { TimeDurationMs } from '@142vip/utils/browser'
+import { VipCommander } from '@142vip/utils'
 
-// 仅需枚举、避免带入其他工具时
-import { TimeDurationMs, TimeDurationSec } from '@142vip/utils/enums'
-
-// Node 服务端
-import { TimeDurationSec } from '@142vip/utils/node'
-
-const cacheTtl = TimeDurationMs.FIVE_MINUTE
-const redisExpire = TimeDurationSec.ONE_DAY
+const program = new VipCommander('my-cli', '1.0.0', '描述')
+program.init({ summary: '...' }).parse(process.argv)
 ```
 
-#### 日期格式模板枚举
+## 升级
 
-定义在 `dayjs` 模块内，配合 `vipDayjs.formatDateToStr` 使用：
-
-```ts
-import { DateFormatTemplate, vipDayjs } from '@142vip/utils'
-
-vipDayjs.formatDateToStr(new Date()) // YYYY-MM-DD HH:mm:ss
-vipDayjs.formatDateToStr(new Date(), DateFormatTemplate.DATE) // YYYY-MM-DD
-vipDayjs.formatDateToStr(new Date(), DateFormatTemplate.DATE_DOT) // YYYY.MM.DD
-vipDayjs.formatDateToStr(new Date(), DateFormatTemplate.DATE_SLASH) // YYYY/MM/DD
-vipDayjs.formatDateToStr(new Date(), DateFormatTemplate.MONTH_DAY_TIME) // MM/DD HH:mm
-vipDayjs.formatDateToStr(new Date(), DateFormatTemplate.DATETIME_CN) // YYYY年MM月DD日 HH:mm:ss
-vipDayjs.formatMonthDay(new Date()) // 8月9日
-vipDayjs.formatMonthDay(new Date(), 'en') // Aug 9
-vipDayjs.formatToISOStr() // ISO-8601 UTC
-vipDayjs.isBeforeByTtl(cachedAtMs, TimeDurationMs.ONE_MINUTE) // 是否在 1 分钟内
+```shell
+# 依赖更新
+pnpm upgrade @142vip/utils
 ```
-
-### Node 服务端场景
-
-Node 服务端可以继续直接使用根入口，保留现有完整能力：
-
-```ts
-import { VipExecutor, VipInquirer, VipPackageJSON } from '@142vip/utils'
-
-async function bootstrap() {
-  const packageJSON = VipPackageJSON.getPackageJSON()
-  console.log(packageJSON.name)
-
-  const { stdout } = await VipExecutor.execCommand('node -v')
-  console.log(stdout)
-
-  const result = await VipInquirer.promptCheckBox(['dev', 'test', 'prod'])
-  console.log(result)
-}
-
-void bootstrap()
-```
-
-下面这些能力依赖 Node 运行时，不适合浏览器直接引入：
-
-- `VipExecutor`
-- `VipPackageJSON`
-- `VipNodeJS`
-- `VipDocker`
-- `VipGit`
-- `VipMonorepo`
-- `VipNpm`
-- `VipInquirer`
-- `VipJSON`
-- `VipConfig`
-- `VipCommander`
-
-### 显式指定入口
-
-如果项目本身是复杂 monorepo、SSR 或自定义构建链路，建议按运行时显式导入：
-
-```ts
-import { vipDocSite, VipSemver } from '@142vip/utils/browser'
-import { VipExecutor, VipPackageJSON } from '@142vip/utils/node'
-```
-
-这样可以减少构建工具对条件导出的差异处理，导入语义也更明确。
-
-## 升级说明
-
-当前版本对导出结构做了运行时分流，但保持了原有 Node 场景的根入口兼容：
-
-- 已有 Node 服务端代码通常不需要改动。
-- 浏览器客户端如果之前因为 `@142vip/utils` 根入口触发 Node 内置模块报错，现在可以直接继续使用根入口。
-- 如果业务代码强依赖特定运行时，推荐改成 `@142vip/utils/browser` 或 `@142vip/utils/node`，让依赖边界更清晰。
 
 ## 参考
 
-- [inquirer](https://www.npmjs.com/package/inquirer)
-- [semver](https://www.npmjs.com/package/semver)
-- [qs](https://www.npmjs.com/package/qs)
+- [@142vip/utils](https://www.npmjs.com/package/@142vip/utils)
 
 ## 证书
 

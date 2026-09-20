@@ -1,145 +1,89 @@
 # @142vip/agent-skills
 
-面向 **AI 编码 Agent** 的可安装 Skills 包：通用流程沉淀为标准 `SKILL.md`，跨仓库、跨工具（Cursor / Claude Code / Codex / WorkBuddy 等）复用。
+[![NPM version](https://img.shields.io/npm/v/@142vip/agent-skills?labelColor=0b3d52&color=1da469&label=version)](https://www.npmjs.com/package/@142vip/agent-skills)
 
-## 通用 Skills（4 件套）
-
-| Skill | 职责 |
-|-------|------|
-| `workflow` | 高效执行管线：默认读取顺序、场景策略（小改 / 单模块 / 跨模块 / 仅文档 / 调查类）、规则治理分层与知识沉淀、回复模板 |
-| `code-dev` | 代码开发：命名、函数、类型、SOLID、前后端 / 数据库、注释日志、最小改动、lint 策略、依赖本地修复 |
-| `self-check` | 改完自检：局部 lint + 受影响 build + 文档同步 + `TODO.md` 维护闭环 |
-| `commit` | Git 提交：Conventional Commits、分类提交、反引号、trailer 纪律、每条 commit 后清 trailer 脚本、Agent 只 commit 不擅自 push |
+通用 Agent Skills 包：同步 `workflow`、`code-dev`、`self-check`、`commit` 到下游项目
 
 ## 安装
 
-```bash
-# pnpm（推荐）
-pnpm add -D @142vip/agent-skills
-
+```shell
 # npm
 npm install -D @142vip/agent-skills
 
-# yarn
-yarn add -D @142vip/agent-skills
+# pnpm
+pnpm add -D @142vip/agent-skills
 ```
+
+## 功能
+
+- [x] 内置 4 个通用 Skill：`workflow`、`code-dev`、`self-check`、`commit`
+- [x] `syncAgentSkills` API：将包内 skills 同步到下游 `.agents/skills/`
+- [x] `check` 模式：比对下游镜像与包内 skills 是否一致
+- [x] 永不创建 / 覆盖 / 删除下游本地 `business-map`
+- [x] CLI：`vip-agent-skills`（亦可通过 `fa ai` 调用）
+- [x] 同步后写入基线文件 `.agents/skills/agent-skills.json`
+
+## 配置
+
+可选环境变量：
+
+| 变量 | 说明 |
+|------|------|
+| `AGENT_SKILLS_TARGET` | 未传 `--target` 时的下游项目根目录 |
 
 ## 使用
 
-### 1. 同步 Skills 到下游项目（推荐）
+CLI 同步到当前项目：
 
-将通用 skill 写入下游项目 `.agents/skills/`（**不**动本地 `business-map`）：
-
-```bash
+```shell
 pnpm exec vip-agent-skills --target .
-pnpm exec vip-agent-skills --target . --dry-run
+```
+
+校验漂移（不一致时 exit 1）：
+
+```shell
 pnpm exec vip-agent-skills --target . --check
-
-# 或者使用脚手架
-npx vip-agent-skills -h
-
-Usage: vip-agent-skills [options]
-
-将 @142vip/agent-skills 的通用 skills 写入下游项目 .agents/skills/。
-永不创建 / 覆盖 / 删除 business-map。
-Env: AGENT_SKILLS_TARGET 可在未传 --target 时指定下游根目录。
-
-Options:
-  -v,--version         VipCommander Version By @142vip
-  --dry-run            试运行 (default: false)
-  -t, --target <path>  下游项目根目录（默认 cwd）
-  --check              比对包与下游镜像是否一致（不一致 exit 1） (default: false)
-  --force              目标无 package.json 也继续 (default: false)
-  -h, --help           display help for command
-
-Commands:
-  help [command]       display help for command
 ```
 
-同步结果：
-
-```text
-.agents/skills/
-  workflow/SKILL.md
-  code-dev/SKILL.md
-  self-check/SKILL.md
-  commit/SKILL.md
-  business-map/                  # 若项目已有，保持不动
-  agent-skills.json              # 同步基线（包名/版本/synced skills）
-```
-
-### 2. 在代码中调用（ESM / CJS）
-
-```js
-// ESM
-import {
-  CORE_SKILL_NAMES,
-  getVersion,
-  syncAgentSkills,
-} from '@142vip/agent-skills'
-
-console.log(getVersion(), CORE_SKILL_NAMES)
-syncAgentSkills({ target: process.cwd() })
-```
-
-```js
-// CommonJS
-const {
-  CORE_SKILL_NAMES,
-  syncAgentSkills,
-  getVersion,
-} = require('@142vip/agent-skills')
-
-syncAgentSkills({ target: process.cwd(), dryRun: true })
-```
-
-### 3. 类型（可给 core-x 等继承）
+编程式 API：
 
 ```ts
-import type {
-  VipAgentSkillCliOptions,
-  VipAgentSkillSyncOptions,
-  VipAgentSkillSyncResult,
-} from '@142vip/agent-skills'
+import { syncAgentSkills } from '@142vip/agent-skills'
 
-/** 例：在下游代码中拓展 */
-export interface AiCommandOptions extends VipAgentSkillCliOptions {
-  model?: string
-}
+const result = syncAgentSkills({
+  target: '/path/to/repo',
+  dryRun: false,
+  check: false,
+  force: false,
+})
+
+console.log(result.synced, result.dest, result.ok)
 ```
 
-## 推荐布局
+通过 `@142vip/fairy-cli`：
 
-```text
-AGENTS.md                         # 项目规范
-TODO.md                           # 可选：未完成待办（self-check 会维护）
-.agents/
-  project/
-    build-map.md                  # self-check 读本仓构建命令（可选）
-  skills/
-    business-map/                 # 仅本项目业务落点（本包永不同步）
-    workflow/                     # 来自本包
-    code-dev/
-    self-check/
-    commit/
+```shell
+fa ai sync -t .
+fa ai check -t .
+fa ai info
 ```
 
-冲突优先级：`AGENTS.md` > `.agents/project/*` > 已同步的通用 skills。
+## 升级
 
-## 下游使用铁律
+```shell
+# 依赖更新
+pnpm upgrade @142vip/agent-skills
+```
 
-| 禁止 | 应做 |
-|------|------|
-| 手改已同步的 `workflow` / `code-dev` / `self-check` / `commit` 并提交 | 通用流程变更 → 改 **本包真源** `skills/<name>/SKILL.md` → 发版 |
-| 在下游「本地定制」覆盖包内容 | 下游 upgrade → `pnpm exec vip-agent-skills --target .` |
-| Commit 写入 `Co-authored-by: Cursor …` 等 Agent / 大模型 trailer | 见 `commit` skill；message 零产品痕迹 |
+## 参考
 
-下游**仅本地维护**（不被本包覆盖）：`AGENTS.md` · `business-map` · `.agents/project/*` · 工具薄入口。
-
-防漂移：`pnpm exec vip-agent-skills --target . --check`（不一致 exit 1）。
+- [@142vip/agent-skills](https://www.npmjs.com/package/@142vip/agent-skills)
+- [@142vip/fairy-cli](https://www.npmjs.com/package/@142vip/fairy-cli)
 
 ## 证书
 
 [MIT](https://opensource.org/license/MIT)
 
-Copyright (c) 2019-present, 142vip 储凡
+Copyright (c) 2019-present, @142vip 储凡
+
+**仅供学习参考，商业使用请保留作者版权信息，作者不保证也不承担任何软件的使用风险。**

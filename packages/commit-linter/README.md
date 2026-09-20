@@ -2,72 +2,59 @@
 
 [![NPM version](https://img.shields.io/npm/v/@142vip/commit-linter?labelColor=0b3d52&color=1da469&label=version)](https://www.npmjs.com/package/@142vip/commit-linter)
 
-Git Commit信息校验工具，统一团队提交规范
+Git Commit 信息校验工具。
 
 ## 安装
 
-```bash
+```shell
 # npm
-npm install @142vip/commit-linter -D
+npm install @142vip/commit-linter
+
 # pnpm
-pnpm i @142vip/commit-linter -D
+pnpm add @142vip/commit-linter
 ```
+
+## 功能
+
+- [x] `commitLiner` 校验 Conventional Commits 格式
+- [x] 内置 `gitCommitTypes` 与默认 type / scope 列表
+- [x] 校验失败时打印标准 commit 模板并 `exit(1)`
+- [x] 可扩展自定义 `types` / `scopes`
+
+## 配置
+
+在 `commit-msg` 钩子或脚本中调用；可选传入 `GitCommitLinterOptions`：
+
+| 字段 | 说明 |
+|------|------|
+| `types` | 额外允许的 commit type（与默认列表合并） |
+| `scopes` | 额外允许的 scope（与默认列表合并） |
 
 ## 使用
 
 ```ts
-const { type, scope, subject, commit } = commitLiner({
-  // scopes 为可选参数
-  scopes: ['release'],
-})
-
-// 配置
-/**
- * Git Commit信息校验参数
- */
-export interface GitCommitLinterOptions {
-  /**
-   * Git Commit支持的Type列表，默认支持：
-   */
-  types?: string[]
-  /**
-   * Git Commit支持的Scope列表
-   */
-  scopes?: string[]
-}
-```
-
-## 最佳实践
-
-创建`verify-commit.ts`文件，添加如下代码：
-
-```ts
 import { commitLiner } from '@142vip/commit-linter'
-import { VipColor, VipConsole, vipLogger } from '@142vip/utils'
 
-/**
- * 验证Git Commit信息
- */
-async function verifyCommitMain(): Promise<void> {
-  const { type, scope, subject, commit } = commitLiner()
+// 从 git 读取 HEAD commit 第一行并校验
+commitLiner({ scopes: ['@142vip/utils', 'vitepress'] })
 
-  // 提交符合规范，打印相关信息
-  VipConsole.log(`type: ${type}, scope: ${scope}, subject: ${subject}`)
-  vipLogger.logByBlank(`${VipColor.greenBright('Git Commit: ')} ${VipColor.green(commit)}`)
-}
-
-void verifyCommitMain()
+// 或传入 commit 字符串
+commitLiner(undefined, 'feat(utils): 新增工具函数')
 ```
 
-修改`package.json`文件，配置`check:commit`命令，添加如下代码：
+仓库根目录通过 `pnpm check:commit` → `scripts/core/verify-commit.ts` 集成。
 
-```json5
-{
-  "scripts": {
-    "check:commit": "npx node --loader ts-node/esm --no-warnings scripts/core/verify-commit.ts"
-  }
-}
+## 升级
+
+```shell
+# 依赖更新
+pnpm upgrade @142vip/commit-linter
 ```
+
+## 参考
+
+- [@142vip/commit-linter](https://www.npmjs.com/package/@142vip/commit-linter)
+- [Conventional Commits](https://www.conventionalcommits.org/)
 
 ## 证书
 

@@ -5,7 +5,7 @@
   "description": "Egg.js框架下参数校验插件，支持对RESTful接口参数校验",
   "author": "mmdapl <mmdapl@163.com>",
   "license": "MIT",
-  "homepage": "https://142vip.github.io/core-x/packages/egg-swagger/",
+  "homepage": "https://142vip.github.io/core-x/packages/egg-validate/",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/142vip/core-x.git",

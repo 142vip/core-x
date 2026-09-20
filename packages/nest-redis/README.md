@@ -2,71 +2,90 @@
 
 [![NPM version](https://img.shields.io/npm/v/@142vip/nest-redis?labelColor=0b3d52&color=1da469&label=version)](https://www.npmjs.com/package/@142vip/nest-redis)
 
+Nest.js 框架下 Redis 使用最佳实践
+
 ## 安装
 
 ```shell
 # npm
-npm install @142vip/nest-redis
+npm install @142vip/nest-redis @142vip/nest @142vip/redis
+
 # pnpm
-pnpm i @142vip/nest-redis
+pnpm add @142vip/nest-redis @142vip/nest @142vip/redis
 ```
+
+## 功能
+
+- [x] 全局动态模块 `NestRedisModule.register`
+- [x] `RedisService`：JSON 序列化的 `setEx` / `getEx` / `del`（延迟双删）
+- [x] `@InjectRedisClient()` 注入底层 `RedisClient`（`@142vip/redis`）
+- [x] `RedisKeyManager` 统一 key 前缀
 
 ## 配置
 
-```typescript
-import { RedisConfig } from '@142vip/redis'
+`RedisConfig`（与 `@142vip/redis` 一致）常见字段：`url?: string`。
 
-// 简单配置
-const config: RedisConfig = {
-  url: 'redis://localhost:6379',
-}
+在 `nest-starter` 的 `config/*.js` 中：
 
-// 集群配置
-const clusterConfig: RedisConfig = {
-  clusterNodes: [
-    {
-      url: 'redis://localhost:6379',
-    },
-    {
-      url: 'redis://localhost:6380',
-    },
-  ],
+```js
+module.exports = {
+  starter: {
+    port: 3000,
+    redis: { url: 'redis://127.0.0.1:6379' },
+  },
 }
-// ...
 ```
 
 ## 使用
 
-### 模块注入
-```typescript
-import { RedisModule } from '@142vip/nest-redis'
+注册模块（`nest-starter` 在 `starter.redis` 存在时自动注册）：
 
-@Module({
-  imports: [RedisModule.register({
-    url: 'redis://localhost:6379',
-  })],
-})
-export class AppModule {}
+```ts
+import { NestRedisModule } from '@142vip/nest-redis'
+
+NestRedisModule.register({ url: 'redis://127.0.0.1:6379' })
 ```
 
-### 使用服务
-```typescript
-import { RedisService } from '@142vip/nest-redis'
+注入使用：
+
+```ts
+import type { RedisClient } from '@142vip/redis'
+import { InjectRedisClient, RedisService } from '@142vip/nest-redis'
+import { Injectable } from '@nestjs/common'
 
 @Injectable()
-export class AppService {
+export class CacheService {
   constructor(
-    private readonly redisService: RedisService
+    private readonly redis: RedisService,
+    @InjectRedisClient() private readonly client: RedisClient,
   ) {}
+
+  async save(key: string, value: unknown, ttlMinutes: number) {
+    await this.redis.setEx(key, value, ttlMinutes * 60)
+  }
 }
 ```
 
-`RedisService`类实例化后，可以直接使用类对应的方法，代码的最佳实践，可以参考模块：[redis-example](https://github.com/142vip/core-x/apps/nest-demo/src/core/redis-example)
+Key 前缀：
+
+```ts
+import { RedisKeyManager } from '@142vip/nest-redis'
+
+const keys = new RedisKeyManager('my-app')
+keys.generateKey('user:1') // my-app:user:1
+```
+
+## 升级
+
+```shell
+# 依赖更新
+pnpm upgrade @142vip/nest-redis
+```
 
 ## 参考
 
-- [NPM @142vip/redis](https://www.npmjs.com/package/@142vip/redis)
-- [Redis 官网](https://redis.io/)
+- [@142vip/nest-redis](https://www.npmjs.com/package/@142vip/nest-redis)
+- [@142vip/redis](https://www.npmjs.com/package/@142vip/redis)
 
 ## 证书
 
