@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.21 (2026-09-20)
+
+### 🐛 Bug Fixes
+
+- `appBuildLog` 改用 `@142vip/vue/utils` 并默认 `locales` &nbsp;-&nbsp; by **chufan** [<samp>(d0ae1)</samp>](https://github.com/142vip/core-x/commit/d0ae1cd7)
+
+### 📖 Documentation
+
+- 默认 `locales` 示例改用 `text` 围栏 &nbsp;-&nbsp; by **chufan** [<samp>(e1e22)</samp>](https://github.com/142vip/core-x/commit/e1e22062)
+
+**Release New Version v0.0.1-alpha.21 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/vuepress)**
+
 ## v0.0.1-alpha.20 (2026-09-20)
 
 ### ✨ Features
