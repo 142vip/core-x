@@ -115,6 +115,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/vuepress
 
+  packages/_example: {}
+
   packages/agent-skills:
     dependencies:
       '@142vip/utils':
