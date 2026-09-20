@@ -153,4 +153,6 @@ export default defineVipVuepressConfig({
       },
     },
   }),
+}, {
+  appBuildLog: { version: pkg.version },
 })
