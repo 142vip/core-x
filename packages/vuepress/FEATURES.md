@@ -42,11 +42,16 @@ options.appBuildLog?: { version: string; buildTime?: string }
 - `getVipHopeTheme(userConfig)`：合并 `baseThemeOptions` 与用户配置，`checkVuePress: false`
 - `handleImportCodePath(pathArray, cwd?)`：Markdown 代码块路径别名
 
-### 插件 / 客户端
+### 插件（`src/plugins/`）
 
-- `createVipAppBuildLogPlugin()` → `clientConfigFile` 指向 `dist/client.mjs`
-- `getVuepressDefaultViteBundler({ appBuild? })`
-- `slimSearchCNLocals`
+入口 `index.ts` 统一导出：
+
+- `createVipAppBuildLogPlugin()` → `plugin-app-build-log.ts`；`clientConfigFile` 指向 `dist/client.mjs`
+- `getVuepressDefaultViteBundler({ appBuild? })` → `plugin-vite-bundler.ts`
+- `VuepressViteBundlerOptions`
+- `slimSearchCNLocals` → `plugin-slim-search.ts`（SlimSearch 中文文案）
+
+包内 `config.ts` / `theme.ts` 均从 `./plugins` 导入。
 
 ## 配置
 

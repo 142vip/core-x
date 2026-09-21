@@ -2,8 +2,10 @@ import type { UserConfig } from '@vuepress/cli'
 import type { NavbarOptions, SidebarOptions } from 'vuepress-theme-hope'
 import { createVipAppBuildTime } from '@142vip/vue/vite'
 import { navbar, sidebar } from 'vuepress-theme-hope'
-import { createVipAppBuildLogPlugin } from './plugins/plugin-app-build-log'
-import { getVuepressDefaultViteBundler } from './plugins/plugin-vite-bundler'
+import {
+  createVipAppBuildLogPlugin,
+  getVuepressDefaultViteBundler,
+} from './plugins'
 
 /**
  * 用户配置
