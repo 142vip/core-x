@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.22 (2026-09-21)
+
+### 💅 Refactors
+
+- `plugins/index.ts` 统一插件导出入口 &nbsp;-&nbsp; by **chufan** [<samp>(00988)</samp>](https://github.com/142vip/core-x/commit/00988d27)
+
+**Release New Version v0.0.1-alpha.22 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/vuepress)**
+
 ## v0.0.1-alpha.21 (2026-09-20)
 
 ### 🐛 Bug Fixes
