@@ -51,7 +51,7 @@
     "homePage": "https://142vip.cn"
   },
   "dependencies": {
-    "@142vip/vue": "0.1.6-alpha.32",
+    "@142vip/vue": "0.1.6-alpha.33",
     "@vue/repl": "4.7.0",
     "@vuepress/bundler-vite": "2.0.0-rc.26",
     "@vuepress/plugin-slimsearch": "2.0.0-rc.120",

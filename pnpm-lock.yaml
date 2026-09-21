@@ -633,8 +633,8 @@ importers:
   packages/vuepress:
     dependencies:
       '@142vip/vue':
-        specifier: 0.1.6-alpha.32
-        version: 0.1.6-alpha.32(@element-plus/icons-vue@2.3.2(vue@3.5.40(typescript@5.9.3)))(element-plus@2.13.7(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(pinia@3.0.4(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(vue@3.5.40(typescript@5.9.3))
+        specifier: 0.1.6-alpha.33
+        version: 0.1.6-alpha.33(@element-plus/icons-vue@2.3.2(vue@3.5.40(typescript@5.9.3)))(element-plus@2.13.7(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(pinia@3.0.4(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(vue@3.5.40(typescript@5.9.3))
       '@vue/repl':
         specifier: 4.7.0
         version: 4.7.0
@@ -685,6 +685,14 @@ packages:
 
   '@142vip/vue@0.1.6-alpha.32':
     resolution: {integrity: sha512-yyiYZpq87SpW0gl4rzHITDfwPk4TOHXjTe9YqjF07WkOeiaL/yg050wIORbMlbgdvyDOPsgL6Gk5MN3twYYEEA==}
+    peerDependencies:
+      '@element-plus/icons-vue': 2.3.2
+      element-plus: 2.13.6
+      pinia: 3.0.4
+      vue: 3.5.31
+
+  '@142vip/vue@0.1.6-alpha.33':
+    resolution: {integrity: sha512-NOyMrshket7HMp1KlAtGLZ4XTvIeFJ+ieXJkaqkhfCZre20x2nmKrgGuiY1RE918rfD4ubhDbN//4HcEbOU2+Q==}
     peerDependencies:
       '@element-plus/icons-vue': 2.3.2
       element-plus: 2.13.6
@@ -11445,6 +11453,24 @@ snapshots:
       - typescript
 
   '@142vip/vue@0.1.6-alpha.32(@element-plus/icons-vue@2.3.2(vue@3.5.40(typescript@5.9.3)))(element-plus@2.13.7(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(pinia@3.0.4(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(vue@3.5.40(typescript@5.9.3))':
+    dependencies:
+      '@142vip/cdn': 0.0.1-alpha.3
+      '@142vip/open-source': 0.0.1-alpha.4
+      '@element-plus/icons-vue': 2.3.2(vue@3.5.40(typescript@5.9.3))
+      axios: 1.17.0
+      axios-retry: 4.5.0(axios@1.17.0)
+      copy-to-clipboard: 4.0.2
+      defu: 6.1.7
+      element-plus: 2.13.7(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3))
+      localforage: 1.10.0
+      pinia: 3.0.4(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3))
+      qs: 6.15.0
+      vue: 3.5.40(typescript@5.9.3)
+    transitivePeerDependencies:
+      - debug
+      - supports-color
+
+  '@142vip/vue@0.1.6-alpha.33(@element-plus/icons-vue@2.3.2(vue@3.5.40(typescript@5.9.3)))(element-plus@2.13.7(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(pinia@3.0.4(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(vue@3.5.40(typescript@5.9.3))':
     dependencies:
       '@142vip/cdn': 0.0.1-alpha.3
       '@142vip/open-source': 0.0.1-alpha.4
