@@ -1,5 +1,6 @@
 import type { Plugin } from '@vuepress/core'
 import { addViteConfig } from '@vuepress/helper'
+import { VIP_VUEPRESS_SSR_NO_EXTERNAL_PACKAGES } from './plugin-vite-bundler'
 
 export interface VipVuepressViteBuildPluginOptions {
   /**
@@ -10,7 +11,7 @@ export interface VipVuepressViteBuildPluginOptions {
 }
 
 /**
- * 通过 `extendsBundlerOptions` 合并 Vite 构建参数，覆盖 theme-hope 默认的 chunk 告警阈值。
+ * 通过 `extendsBundlerOptions` 合并 Vite 构建参数（chunk 阈值 + `ssr.noExternal`）。
  */
 export function createVipViteBuildPlugin(
   options: VipVuepressViteBuildPluginOptions = {},
@@ -23,6 +24,9 @@ export function createVipViteBuildPlugin(
       addViteConfig(bundlerOptions, app, {
         build: {
           chunkSizeWarningLimit,
+        },
+        ssr: {
+          noExternal: VIP_VUEPRESS_SSR_NO_EXTERNAL_PACKAGES,
         },
       })
     },

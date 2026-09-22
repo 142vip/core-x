@@ -17,12 +17,17 @@ const bundledVueUseAlias = {
   '@vueuse/shared': resolveBundledPackage('@vueuse/shared'),
 } as const
 
+/**
+ * SSR 须内联打包 `@142vip/vue`、`@142vip/cdn`，避免 Node 直接加载 `.jpg`（`ERR_UNKNOWN_FILE_EXTENSION`）。
+ */
+export const VIP_VUEPRESS_SSR_NO_EXTERNAL_PACKAGES = ['@142vip/vue', '@142vip/cdn']
+
 export interface VuepressViteBundlerOptions {
   /** `createVipAppBuildTime` 返回值；传入时注入 `BUILD_TIME` / `VIP_APP_VERSION` */
   appBuild?: VipAppBuildTimeResult | null
 }
 
-/** 默认 Vite bundler：大 chunk 阈值 + 锁定 @vueuse 解析。 */
+/** 默认 Vite bundler：大 chunk 阈值 + 锁定 @vueuse 解析 + SSR 打包 `@142vip/cdn` 静态资源。 */
 export function getVuepressDefaultViteBundler(options: VuepressViteBundlerOptions = {}): Bundler {
   const appBuild = options.appBuild ?? null
 
@@ -49,7 +54,7 @@ export function getVuepressDefaultViteBundler(options: VuepressViteBundlerOption
         alias: bundledVueUseAlias,
       },
       ssr: {
-        noExternal: Object.keys(bundledVueUseAlias),
+        noExternal: Object.keys(bundledVueUseAlias).concat(VIP_VUEPRESS_SSR_NO_EXTERNAL_PACKAGES),
       },
     },
     vuePluginOptions: {},

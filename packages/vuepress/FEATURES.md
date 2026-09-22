@@ -49,9 +49,10 @@ options.appBuildLog?: { version: string; buildTime?: string }
 入口 `index.ts` 统一导出：
 
 - `createVipAppBuildLogPlugin()` → `plugin-app-build-log.ts`；`clientConfigFile` 指向 `dist/client.mjs`
-- `getVuepressDefaultViteBundler({ appBuild? })` → `plugin-vite-bundler.ts`
+- `getVuepressDefaultViteBundler({ appBuild? })` → `plugin-vite-bundler.ts`；`ssr.noExternal` 含 `VIP_VUEPRESS_SSR_NO_EXTERNAL_PACKAGES`
+- `VIP_VUEPRESS_SSR_NO_EXTERNAL_PACKAGES`：`['@142vip/vue', '@142vip/cdn']`，避免 SSR 加载 `.jpg` 报错
 - `VuepressViteBundlerOptions`
-- `createVipViteBuildPlugin({ chunkSizeWarningLimit? })` → `plugin-vite-build.ts`；`extendsBundlerOptions` 合并 Vite `chunkSizeWarningLimit`（默认 8192）
+- `createVipViteBuildPlugin({ chunkSizeWarningLimit? })` → `plugin-vite-build.ts`；`extendsBundlerOptions` 合并 Vite `chunkSizeWarningLimit`（默认 8192）与 `ssr.noExternal`
 - `slimSearchCNLocals` → `plugin-slim-search.ts`（SlimSearch 中文文案）
 
 ### 侧栏类型（`src/sidebar.ts`）
