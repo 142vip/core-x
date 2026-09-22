@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.25 (2026-09-22)
+
+### ✨ Features
+
+- 新增 `createVipViteBuildPlugin` 与 `getVipHopeTheme` 默认项 &nbsp;-&nbsp; by **chufan** [<samp>(634d1)</samp>](https://github.com/142vip/core-x/commit/634d1637)
+
+### 🐛 Bug Fixes
+
+- SSR 内联 `@142vip/vue` / `@142vip/cdn` 修复 demo 构建 &nbsp;-&nbsp; by **chufan** [<samp>(a4bbd)</samp>](https://github.com/142vip/core-x/commit/a4bbdc8e)
+
+**Release New Version v0.0.1-alpha.25 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/vuepress)**
+
 ## v0.0.1-alpha.24 (2026-09-21)
 
 **No Significant Changes**
