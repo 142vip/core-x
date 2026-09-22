@@ -9,6 +9,7 @@ export default defineBuildConfig({
   clean: true,
   // VuePress 生态由 dependencies 提供，构建产物仅包含本包封装逻辑
   externals: [
+    '@142vip/open-source',
     '@142vip/vue',
     '@142vip/vue/vite',
     '@142vip/vue/utils',

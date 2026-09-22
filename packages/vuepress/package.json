@@ -51,9 +51,11 @@
     "homePage": "https://142vip.cn"
   },
   "dependencies": {
+    "@142vip/open-source": "workspace:*",
     "@142vip/vue": "0.1.6-alpha.34",
     "@vue/repl": "4.7.0",
     "@vuepress/bundler-vite": "2.0.0-rc.26",
+    "@vuepress/helper": "2.0.0-rc.120",
     "@vuepress/plugin-slimsearch": "2.0.0-rc.120",
     "@vuepress/plugin-watermark": "2.0.0-rc.120",
     "@vueuse/core": "14.4.0",

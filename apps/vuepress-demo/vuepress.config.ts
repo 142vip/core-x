@@ -1,6 +1,7 @@
 import { OPEN_SOURCE_ADDRESS, OPEN_SOURCE_AUTHOR } from '@142vip/open-source'
-import { GitGeneralBranch, vipDocSite, VipPackageJSON } from '@142vip/utils'
+import { vipDocSite, VipPackageJSON } from '@142vip/utils'
 import {
+  createVipViteBuildPlugin,
   defineVipNavbarConfig,
   defineVipSidebarConfig,
   defineVipVuepressConfig,
@@ -56,7 +57,6 @@ export const sidebarConfig = defineVipSidebarConfig({
   '/example': [
     {
       text: '示例文档',
-      // prefix: 'example',
       collapsible: false,
       children: [
         { text: '示例文档-1', link: 'test-1.md' },
@@ -101,6 +101,10 @@ export default defineVipVuepressConfig({
   title: pkg.name,
   description: pkg.description,
   port: 5200,
+  plugins: [
+    // theme-hope 默认 chunk 告警阈值较低，大文档站需通过插件 extendsBundlerOptions 合并
+    createVipViteBuildPlugin(),
+  ],
   // 默认会给 favicon；需要时可自行传 head
   // head: [
   //   ['link', { rel: 'icon', href: 'favicon.ico' }],
@@ -130,15 +134,9 @@ export default defineVipVuepressConfig({
     // 仓库
     repo: '142vip/core-x/tree/next/packages/vuepress',
     repoLabel: 'GitHub',
-
-    // 文档路径，开启编辑功能
-    docsDir: 'docs',
-    docsBranch: GitGeneralBranch.NEXT,
-    // // 主题布局选项
-    // docsRepo: RepoAddress,
+    // `author` / `docsDir` / `docsBranch` / `contributors` 由 getVipHopeTheme 默认注入
 
     changelog: true,
-    contributors: true,
 
     plugins: {
       // 水印

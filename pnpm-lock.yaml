@@ -632,6 +632,9 @@ importers:
 
   packages/vuepress:
     dependencies:
+      '@142vip/open-source':
+        specifier: workspace:*
+        version: link:../open-source
       '@142vip/vue':
         specifier: 0.1.6-alpha.34
         version: 0.1.6-alpha.34(@element-plus/icons-vue@2.3.2(vue@3.5.40(typescript@5.9.3)))(element-plus@2.13.7(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(pinia@3.0.4(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(vue@3.5.40(typescript@5.9.3))
@@ -641,6 +644,9 @@ importers:
       '@vuepress/bundler-vite':
         specifier: 2.0.0-rc.26
         version: 2.0.0-rc.26(@types/node@24.13.3)(jiti@2.7.0)(sass-embedded@1.97.3)(sass@1.102.0)(terser@5.44.0)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.9.0)
+      '@vuepress/helper':
+        specifier: 2.0.0-rc.120
+        version: 2.0.0-rc.120(typescript@5.9.3)(vuepress@2.0.0-rc.26(@vuepress/bundler-vite@2.0.0-rc.26(@types/node@24.13.3)(jiti@2.7.0)(sass-embedded@1.97.3)(sass@1.102.0)(terser@5.44.0)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.9.0))(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))
       '@vuepress/plugin-slimsearch':
         specifier: 2.0.0-rc.120
         version: 2.0.0-rc.120(typescript@5.9.3)(vuepress@2.0.0-rc.26(@vuepress/bundler-vite@2.0.0-rc.26(@types/node@24.13.3)(jiti@2.7.0)(sass-embedded@1.97.3)(sass@1.102.0)(terser@5.44.0)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.9.0))(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))

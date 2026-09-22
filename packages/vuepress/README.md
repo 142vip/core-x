@@ -20,8 +20,10 @@ pnpm add -D @142vip/vuepress
 
 - [x] `defineVipVuepressConfig`：默认 `locales['/'].lang` / `lang` 为 `zh-CN`，补全 `bundler`、favicon、`shouldPrefetch`
 - [x] 可选 `appBuildLog`：构建时间 meta + 控制台版本日志（`@142vip/vue/utils`）
-- [x] `getVipHopeTheme`：基于 theme-hope 的默认插件与 Markdown 能力
+- [x] `getVipHopeTheme`：基于 theme-hope 的默认插件与 Markdown 能力；未写时默认 `author` / `docsDir` / `docsBranch` / `contributors`
 - [x] `defineVipNavbarConfig` / `defineVipSidebarConfig`：导航与侧栏
+- [x] `createVipViteBuildPlugin`：合并 Vite 构建参数（chunk 告警阈值）
+- [x] `DocsSidebarLink` / `DocsSidebarGroup` 等侧栏配置类型
 - [x] 内置 Mermaid、代码高亮语言、slimsearch 中文、复制代码
 - [x] bin：`vuepress`（转发至 bundled CLI）
 
@@ -38,6 +40,7 @@ export default defineVipVuepressConfig({
   theme: getVipHopeTheme({
     navbar: [],
     sidebar: {},
+    // author / docsDir / docsBranch / contributors 可省略，走包内默认
   }),
 }, {
   // 可选：浏览器控制台打印版本与更新时间
@@ -70,6 +73,17 @@ export default defineVipVuepressConfig({
     },
   },
   theme: getVipHopeTheme({ navbar: [], sidebar: {} }),
+})
+```
+
+大文档站构建 chunk 告警：
+
+```ts
+import { createVipViteBuildPlugin, defineVipVuepressConfig } from '@142vip/vuepress'
+
+export default defineVipVuepressConfig({
+  plugins: [createVipViteBuildPlugin()],
+  // ...
 })
 ```
 

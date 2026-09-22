@@ -1,8 +1,13 @@
 import type { ThemeOptions, ThemePluginsOptions } from 'vuepress-theme-hope'
 import path from 'node:path'
 import process from 'node:process'
+import { OPEN_SOURCE_AUTHOR } from '@142vip/open-source'
 import { hopeTheme } from 'vuepress-theme-hope'
+import { VUEPRESS_DEFAULT_DOCS_DIR } from './config'
 import { slimSearchCNLocals } from './plugins'
+
+/** theme-hope 默认文档分支（与仓库 npm 发版分支 `next` 对齐） */
+export const VIP_VUEPRESS_DEFAULT_DOCS_BRANCH = 'next'
 
 /**
  * 主题中插件的一些配置
@@ -116,8 +121,6 @@ const baseThemeOptions: ThemeOptions = {
   // 打印按钮
   print: false,
   hostname: 'https://142vip.cn',
-  // 默认作者，https://theme-hope.vuejs.press/zh/config/theme/basic.html#author
-  // author: OPEN_SOURCE_AUTHOR,
   favicon: '/favicon.ico',
   logo: '/favicon.icon',
 
@@ -135,8 +138,6 @@ const baseThemeOptions: ThemeOptions = {
     'Tag',
     'ReadingTime',
   ],
-  docsDir: 'docs',
-  docsBranch: 'next',
   // 主题布局选项
   // docsRepo: RepoAddress,
   // repo: '142vip/JavaScriptCollection',
@@ -146,7 +147,6 @@ const baseThemeOptions: ThemeOptions = {
 
   // https://ecosystem.vuejs.press/zh/plugins/development/git.html#changelog
   changelog: true,
-  contributors: 'content',
 
   // 主题色选择器
   themeColor: true,
@@ -215,19 +215,32 @@ const baseThemeOptions: ThemeOptions = {
 }
 
 /**
+ * 合并用户主题配置与包内默认项；用户已写字段优先，未写则补全。
+ *
+ * 默认补全：`author`、`docsDir`、`docsBranch`、`contributors`。
+ */
+function resolveVipHopeThemeOptions(userConfig: ThemeOptions): ThemeOptions {
+  return {
+    ...baseThemeOptions,
+    ...userConfig,
+    author: userConfig.author ?? OPEN_SOURCE_AUTHOR,
+    docsDir: userConfig.docsDir ?? VUEPRESS_DEFAULT_DOCS_DIR,
+    docsBranch: userConfig.docsBranch ?? VIP_VUEPRESS_DEFAULT_DOCS_BRANCH,
+    contributors: userConfig.contributors ?? true,
+    plugins: {
+      ...baseThemePluginOptions,
+      ...userConfig.plugins,
+    },
+  }
+}
+
+/**
  * 主题相关配置
  * 参考：https://theme-hope.vuejs.press/zh/config/intro.html
  */
 export function getVipHopeTheme(userConfig: ThemeOptions) {
   return hopeTheme(
-    {
-      ...baseThemeOptions,
-      ...userConfig,
-      plugins: {
-        ...baseThemePluginOptions,
-        ...userConfig.plugins,
-      },
-    },
+    resolveVipHopeThemeOptions(userConfig),
     // @142vip/vuepress 已内置 vuepress，使用方无需在 package.json 中单独声明
     { checkVuePress: false },
   )

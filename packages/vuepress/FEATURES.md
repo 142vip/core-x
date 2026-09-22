@@ -40,6 +40,8 @@ options.appBuildLog?: { version: string; buildTime?: string }
 ### 主题（`src/theme.ts`）
 
 - `getVipHopeTheme(userConfig)`：合并 `baseThemeOptions` 与用户配置，`checkVuePress: false`
+- 用户未写时默认补全：`author` → `OPEN_SOURCE_AUTHOR`；`docsDir` → `VUEPRESS_DEFAULT_DOCS_DIR`（`'docs'`）；`docsBranch` → `VIP_VUEPRESS_DEFAULT_DOCS_BRANCH`（`'next'`）；`contributors` → `true`
+- `VIP_VUEPRESS_DEFAULT_DOCS_BRANCH`：默认文档分支常量
 - `handleImportCodePath(pathArray, cwd?)`：Markdown 代码块路径别名
 
 ### 插件（`src/plugins/`）
@@ -49,15 +51,20 @@ options.appBuildLog?: { version: string; buildTime?: string }
 - `createVipAppBuildLogPlugin()` → `plugin-app-build-log.ts`；`clientConfigFile` 指向 `dist/client.mjs`
 - `getVuepressDefaultViteBundler({ appBuild? })` → `plugin-vite-bundler.ts`
 - `VuepressViteBundlerOptions`
+- `createVipViteBuildPlugin({ chunkSizeWarningLimit? })` → `plugin-vite-build.ts`；`extendsBundlerOptions` 合并 Vite `chunkSizeWarningLimit`（默认 8192）
 - `slimSearchCNLocals` → `plugin-slim-search.ts`（SlimSearch 中文文案）
 
-包内 `config.ts` / `theme.ts` 均从 `./plugins` 导入。
+### 侧栏类型（`src/sidebar.ts`）
+
+- `DocsSidebarLink` / `DocsSidebarGroup` / `DocsSidebarItem` / `DocsSidebarConfig`：手写侧栏配置的类型辅助，由主入口导出
+
+包内 `config.ts` / `theme.ts` 从 `./plugins` 导入；主入口 `index.ts` 导出 `./plugins` 与 `./sidebar`（类型）。
 
 ## 配置
 
 无独立运行时配置文件。自定义 / 多语言直接传 `locales`；包内不整表替换，也不覆盖用户已写字段。
 
-依赖：`@142vip/vue` `>=0.1.6-alpha.32`（需带 `./utils` 子路径）。
+依赖：`@142vip/open-source`、`@142vip/vue` `>=0.1.6-alpha.32`（需带 `./utils` 子路径）。
 
 ## 最佳实践
 
