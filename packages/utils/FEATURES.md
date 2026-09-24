@@ -113,12 +113,20 @@ prereleaseTypes = ['premajor', 'preminor', 'prepatch', 'prerelease']
 releaseTypes = [...prereleaseTypes, 'major', 'minor', 'patch']
 ```
 
-#### `VipCommander` / `vipConfig` / `VipInquirer`
+#### `VipCommander` / `VipPackageCliCommander` / `vipConfig` / `VipInquirer`
 
 ```text
-new VipCommander(name, version, description?)
+new VipCommander(name, version, description?)  // 构造函数 helpCommand(false)，禁用默认 help 子命令
   .init(options).parse(process.argv)
-// init 默认注入：--trace / --dry-run / --vip / helpCommand
+
+// packages CLI 统一基类（fairy-cli / changelog / releasex / agent-skills）
+new VipPackageCliCommander(name, version, description?)
+  .registerRootOptions()                    // fa 根：--trace / --help
+  .registerSubcommand(detail, { registerBusinessOptions, action })
+  .bootstrapStandalone(detail, options, argv) // standalone bin
+
+// 选项默认：vipCommanderDefaultOptions（= vipCommanderSubcommandOptions）
+// 根程序 registerRootOptions 仅 trace + help；子命令 / standalone 走 appendCommonOptions
 
 vipConfig.loadCliConfig<T>(configName, defaults, cosmiconfigOptions?)
 vipConfig.mergeCommanderConfig(cliConfig, commanderConfig) // 后者覆盖前者
@@ -160,7 +168,7 @@ CliCommandBaseOptions // dryRun? / vip? / logger?
 
 ## 配置
 
-- CLI 配置名由调用方传入（如 `changelog`、`bumpx`），走 cosmiconfig
+- CLI 配置名由调用方传入（如 `changelog`、`releasex`），走 cosmiconfig
 - 文档站 base：`NEED_PROXY=true` 时 `getBase(name)` 返回 `/${name}/`
 
 ## 最佳实践
@@ -169,7 +177,8 @@ CliCommandBaseOptions // dryRun? / vip? / logger?
 - 日期：`vipDayjs` + `DateFormatTemplate`
 - HTTP 状态比较：`HttpStatus`（`@142vip/utils/enums`）
 - 前端只引 `@142vip/utils/browser`
-- 自写 CLI：继承 `VipCommander`，保持 `-v` / `--trace` / `--dry-run` 一致
+- packages 下 CLI：优先 `VipPackageCliCommander` + `registerSubcommand` / `bootstrapStandalone`
+- 其它 CLI：继承 `VipCommander`，保持 `-v` / `--trace` / `--dry-run` 一致
 
 ## 构建
 
