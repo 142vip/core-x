@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.34 (2026-09-28)
+
+### 🐛 Bug Fixes
+
+- `setupVipAppBuildLog` 改从 `@142vip/vue/utils` 导入 &nbsp;-&nbsp; by **chufan** [<samp>(8a78a)</samp>](https://github.com/142vip/core-x/commit/8a78a09a)
+
+**Release New Version v0.0.1-alpha.34 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/vitepress)**
+
 ## v0.0.1-alpha.33 (2026-09-20)
 
 ### ✨ Features
