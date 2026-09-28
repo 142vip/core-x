@@ -16,11 +16,11 @@ pnpm add @142vip/egg-sequelize @142vip/egg sequelize
 
 ## 功能
 
-- [x] `SequelizeORM` 封装连接与 `authenticate` 重试（最多 3 次，`SequelizeConnectionRefusedError`）
-- [x] 单实例 / 多实例挂载到 `app.sequelize`
-- [x] `app.sequelize.getInstance()` 返回 Sequelize 实例
-- [x] `EggSequelizeAppBoot` / `EggSequelizeAgentBoot`
-- [ ] `core/sequelize-plus.js` 为独立遗留加载器（`sequelizePlus` 配置），**未**接入当前 `app.js`
+- ✅ `SequelizeORM` 封装连接与 `authenticate` 重试（最多 3 次，`SequelizeConnectionRefusedError`）
+- ✅ 单实例 / 多实例挂载到 `app.sequelize`
+- ✅ `app.sequelize.getInstance()` 返回 Sequelize 实例
+- ✅ `EggSequelizeAppBoot` / `EggSequelizeAgentBoot`
+- ⬜ `core/sequelize-plus.js` 为独立遗留加载器（`sequelizePlus` 配置），**未**接入当前 `app.js`
 
 ## 配置
 

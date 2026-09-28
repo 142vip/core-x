@@ -16,11 +16,11 @@ pnpm add @142vip/axios
 
 ## 功能
 
-- [x] `createVipAxios` / `vipAxios` 创建带扩展方法的 Axios 实例
-- [x] `AxiosFactory` 工厂与 `clearInterceptor` / `getConfig`
-- [x] 默认请求/响应拦截器与 VIP 响应解包（`HttpStatus.OK` 时返回 `data`）
-- [x] `HttpStatus`、`HttpMethod` 枚举
-- [x] 爬虫场景随机 `User-Agent` / `Accept-Language` 请求头
+- ✅ `createVipAxios` / `vipAxios` 创建带扩展方法的 Axios 实例
+- ✅ `AxiosFactory` 工厂与 `clearInterceptor` / `getConfig`
+- ✅ 默认请求/响应拦截器与 VIP 响应解包（`HttpStatus.OK` 时返回 `data`）
+- ✅ `HttpStatus`、`HttpMethod` 枚举
+- ✅ 爬虫场景随机 `User-Agent` / `Accept-Language` 请求头
 
 ## 配置
 

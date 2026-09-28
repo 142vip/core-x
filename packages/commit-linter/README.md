@@ -16,10 +16,10 @@ pnpm add @142vip/commit-linter
 
 ## 功能
 
-- [x] `commitLiner` 校验 Conventional Commits 格式
-- [x] 内置 `gitCommitTypes` 与默认 type / scope 列表
-- [x] 校验失败时打印标准 commit 模板并 `exit(1)`
-- [x] 可扩展自定义 `types` / `scopes`
+- ✅ `commitLiner` 校验 Conventional Commits 格式
+- ✅ 内置 `gitCommitTypes` 与默认 type / scope 列表
+- ✅ 校验失败时打印标准 commit 模板并 `exit(1)`
+- ✅ 可扩展自定义 `types` / `scopes`
 
 ## 配置
 

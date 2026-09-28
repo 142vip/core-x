@@ -16,9 +16,9 @@ pnpm add @142vip/egg-swagger @142vip/egg
 
 ## 功能
 
-- [x] 插件注册与 `EggPluginBoot` 生命周期
-- [x] `app.swagger.getInstance()` 挂载约定
-- [ ] `createEggSwaggerInstance` 仅打印初始化日志，**未**集成 Swagger UI / OpenAPI 生成
+- ✅ 插件注册与 `EggPluginBoot` 生命周期
+- ✅ `app.swagger.getInstance()` 挂载约定
+- ⬜ `createEggSwaggerInstance` 仅打印初始化日志，**未**集成 Swagger UI / OpenAPI 生成
 
 ## 配置
 

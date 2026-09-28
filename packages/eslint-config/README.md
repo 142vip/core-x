@@ -16,10 +16,10 @@ pnpm add -D @142vip/eslint-config eslint
 
 ## 功能
 
-- [x] `defineVipEslintConfig` 基于 `@antfu/eslint-config` 的扁平配置
-- [x] 默认开启 TypeScript、Vue、JSONC、YAML、Markdown 处理
-- [x] Markdown 内嵌代码块规则降级（教学示例不误报）
-- [x] `baseEslintRules`：`no-console` warn 与受限 `console` 调用
+- ✅ `defineVipEslintConfig` 基于 `@antfu/eslint-config` 的扁平配置
+- ✅ 默认开启 TypeScript、Vue、JSONC、YAML、Markdown 处理
+- ✅ Markdown 内嵌代码块规则降级（教学示例不误报）
+- ✅ `baseEslintRules`：`no-console` warn 与受限 `console` 调用
 
 ## 配置
 
