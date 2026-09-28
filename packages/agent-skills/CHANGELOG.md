@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## v0.0.1-alpha.7 (2026-09-28)
+
+### 💅 Refactors
+
+- CLI 对齐 `VipPackageCliCommander` 注册方式 &nbsp;-&nbsp; by **chufan** [<samp>(ea1dd)</samp>](https://github.com/142vip/core-x/commit/ea1dd623)
+
+**Release New Version v0.0.1-alpha.7 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/agent-skills)**
+
 ## v0.0.1-alpha.6 (2026-09-10)
 
 ### 🐛 Bug Fixes
