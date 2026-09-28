@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 
+## v0.0.3-alpha.34 (2026-09-28)
+
+### 💅 Refactors
+
+- 抽取 `http`/`command` 工具并收敛 `CLI_COMMAND_DETAIL` &nbsp;-&nbsp; by **chufan** [<samp>(b3cdb)</samp>](https://github.com/142vip/core-x/commit/b3cdbd3c)
+- `fairyCliMain` 直连 `bin/fa.cjs` 并内联 `changelog` 子命令 &nbsp;-&nbsp; by **chufan** [<samp>(ecb51)</samp>](https://github.com/142vip/core-x/commit/ecb515c2)
+
+### 📦 Build
+
+- 更新 `package.json` 入口与 Jest/unbuild 配置 &nbsp;-&nbsp; by **chufan** [<samp>(70a37)</samp>](https://github.com/142vip/core-x/commit/70a376b5)
+
+**Release New Version v0.0.3-alpha.34 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/fairy-cli)**
+
 ## v0.0.3-alpha.33 (2026-09-11)
 
 **No Significant Changes**
