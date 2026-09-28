@@ -41,11 +41,11 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "bin": {
-    "fa": "./cli.mjs",
-    "fairy": "./cli.mjs"
+    "fa": "./bin/fa.cjs",
+    "fairy": "./bin/fa.cjs"
   },
   "files": [
-    "*.mjs",
+    "bin",
     "dist"
   ],
   "engines": {
@@ -65,12 +65,10 @@
   },
   "dependencies": {
     "@142vip/agent-skills": "workspace:*",
-    "@142vip/axios": "workspace:*",
     "@142vip/changelog": "workspace:*",
     "@142vip/commit-linter": "workspace:*",
     "@142vip/release-version": "workspace:*",
-    "@142vip/utils": "workspace:*",
-    "del": "8.0.0"
+    "@142vip/utils": "workspace:*"
   },
   "publishConfig": {
     "access": "public",

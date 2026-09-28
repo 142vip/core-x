@@ -18,19 +18,20 @@ pnpm add -D @142vip/fairy-cli
 
 ## 功能
 
-- [x] 登录 Docker / npm（`login`）
-- [x] 依赖安装（`install`）
-- [x] Monorepo 版本发布（`release`）
-- [x] CHANGELOG 生成（`changelog`）
-- [x] npm 镜像推送（`publish`）
-- [x] CNPM 包同步（`sync`）
-- [x] 项目部署（`deploy`）
-- [x] ESLint 检查与格式化（`lint`）
-- [x] 清理构建产物（`clean`）
-- [x] 软著源代码文档生成（`copyright`）
-- [x] Git Commit 规范提交（`commit`）
-- [x] Agent Skills 同步与校验（`ai`，集成 `@142vip/agent-skills`）
-- [x] 编程式 API：`fairyCliMain`、`releasePackage`、`printPreCheckRelease`
+- ✅ 子命令通用选项：`--dry-run`（打印将执行的命令/HTTP 步骤）、`--vip`（@142vip Monorepo 专用，见 `release` / `sync`）
+- ✅ 登录 Docker / npm（`login`）
+- ✅ 依赖安装（`install`）
+- ✅ Monorepo 版本发布（`release`）
+- ✅ CHANGELOG 生成（`changelog`）
+- ✅ npm 镜像推送（`publish`）
+- ✅ CNPM 包同步（`sync`）
+- ✅ 项目部署（`deploy`）
+- ✅ ESLint 检查与格式化（`lint`）
+- ✅ 清理构建产物（`clean`）
+- ✅ 软著源代码文档生成（`copyright`）
+- ✅ Git Commit 规范提交（`commit`）
+- ✅ Agent Skills 同步与校验（`ai`，集成 `@142vip/agent-skills`）
+- ✅ 编程式 API：`fairyCliMain`、`releasePackage`、`buildReleaseVersionOptions`、`printPreCheckRelease`
 
 ## 配置
 
@@ -76,6 +77,14 @@ Commands:
 ```shell
 # Monorepo 交互发版（@142vip 组织）
 fa release --vip -F './packages/*'
+
+# 试运行：打印将执行的命令/HTTP 步骤，不写盘、不提交
+fa release --vip --dry-run
+fa sync --vip --dry-run
+fa clean --deps --dry-run
+
+# 发布时标记 GitHub Release 为 Pre-release（默认 Latest）
+fa release --vip --prerelease
 
 # 同步 Agent Skills 到当前项目
 fa ai sync -t .
