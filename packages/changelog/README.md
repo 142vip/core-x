@@ -6,7 +6,7 @@
 
 ## 安装
 
-CLI 全局命令：`changelog` / `ch`。
+CLI 全局命令：`changelog` / `ch`；亦可通过 `fa changelog`（`@142vip/fairy-cli`）调用。
 
 ```shell
 # npm
@@ -18,11 +18,12 @@ pnpm add @142vip/changelog
 
 ## 功能
 
-- [x] CLI 从 Git 提交生成 CHANGELOG Markdown
-- [x] 可选写入 `CHANGELOG.md` 并创建 GitHub Release
-- [x] API：`ChangelogAPI` `parseCliOptions` `defineChangelogConfig`
-- [x] Monorepo `scopeName` 支持
-- [x] 贡献者解析（GitHub API）
+- ✅ CLI 从 Git 提交生成 CHANGELOG Markdown
+- ✅ 可选写入 `CHANGELOG.md` 并创建 GitHub Release
+- ✅ API：`changelogApi` · `parseCliOptions` · `defineChangelogConfig`
+- ✅ `fa changelog` 直连本包，无需 `npx changelog`
+- ✅ Monorepo `scopeName` 支持
+- ✅ 贡献者解析（GitHub API，Node 18+ 原生 `fetch`）
 
 ## 配置
 
@@ -32,32 +33,39 @@ pnpm add @142vip/changelog
 
 ## 使用
 
-CLI：
+CLI（standalone）：
 
 ```shell
 npx changelog -h
 npx changelog --from v1.0.0 --to v1.1.0 --output CHANGELOG.md --dry-run
 ```
 
+fairy-cli：
+
+```shell
+fa changelog -h
+fa changelog --dry-run
+```
+
 程序化：
 
 ```ts
-import { ChangelogAPI } from '@142vip/changelog'
+import { changelogApi } from '@142vip/changelog'
 
-await ChangelogAPI.changelogCoreHandler({ to: 'v1.0.0', dryRun: true })
+await changelogApi.changelogCoreHandler({ to: 'v1.0.0', dryRun: true })
 ```
 
-### CLI 主要参数（`changelog -h`）
+### CLI 主要参数（`changelog -h` / `fa changelog -h`）
 
 | 参数 | 说明 |
 |------|------|
 | `--token` | GitHub Token |
 | `--from` / `--to` | 提交范围起止标签 |
 | `--name` | Release 名称 |
-| `--github` | 仓库，如 `@142vip/core-x` |
+| `--github` | 仓库，如 `142vip/core-x` |
 | `--output` | CHANGELOG 输出路径 |
 | `--scopeName` | Monorepo 包名 |
-| `--prerelease` | 预发布标记（默认 true） |
+| `--prerelease` | 标记为 GitHub Pre-release（默认 false，即 Latest） |
 | `--dry-run` | 试运行 |
 | `--trace` | 日志追踪 |
 
