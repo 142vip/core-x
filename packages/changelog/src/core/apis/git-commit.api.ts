@@ -1,13 +1,17 @@
-import type { Commit, GitCommitAuthor, GitCommitDiffOptions, GitCommitRaw, GitCommitRecord, GitCommitReference } from '../enums'
+import type {
+  Commit,
+  GitCommitAuthor,
+  GitCommitDiffOptions,
+  GitCommitRaw,
+  GitCommitRecord,
+  GitCommitReference,
+} from '../changelog.interface'
 import { VipExecutor, VipGit, vipLodash } from '@142vip/utils'
-import { GitCommitMessageType } from '../enums'
-import { MarkdownAPI } from './markdown.api'
+import { GitCommitMessageType } from '../changelog.interface'
+import { markdownAPI } from './markdown.api'
 
-/**
- * 获取不同tag之间的commit记录
- */
+/** 获取两个 ref 之间的 commit 记录（`git log` pretty 格式） */
 async function getGitCommitDiff(options: GitCommitDiffOptions): Promise<GitCommitRaw[]> {
-  // https://git-scm.com/docs/pretty-formats
   if (options.to == null) {
     options.to = 'HEAD'
   }
@@ -18,14 +22,15 @@ async function getGitCommitDiff(options: GitCommitDiffOptions): Promise<GitCommi
     options.from = ''
   }
 
-  // 获取commit记录
-  const commitStr = VipExecutor.execCommandSync(`git --no-pager log "${options.from}${options.to}" --pretty="----%n%s|%h|%an|%ae%n%b" --name-status`)
+  const commitStr = VipExecutor.execCommandSync(
+    `git --no-pager log "${options.from}${options.to}" --pretty="----%n%s|%h|%an|%ae%n%b" --name-status`,
+  )
 
   return commitStr
     .split('----\n')
     .splice(1)
     .map<GitCommitRaw>((line) => {
-      const [firstLine, ..._body] = line.split('\n')
+      const [firstLine, ...bodyLines] = line.split('\n')
       const [
         message,
         shortHash,
@@ -37,13 +42,12 @@ async function getGitCommitDiff(options: GitCommitDiffOptions): Promise<GitCommi
         message,
         shortHash,
         author: { name: authorName, email: authorEmail },
-        body: _body.join('\n'),
+        body: bodyLines.join('\n'),
       }
     })
 }
 
 // https://www.conventionalcommits.org/en/v1.0.0/
-// https://regex101.com/r/FSfNvA/1
 const ConventionalCommitRegex
   = /(?<emoji>:.+:|(\uD83C[\uDF00-\uDFFF])|(\uD83D[\uDC00-\uDE4F\uDE80-\uDEFF])|[\u2600-\u2B55])?( *)(?<type>[a-z]+)(\((?<scope>.+)\))?(?<breaking>!)?: (?<description>.+)/i
 
@@ -53,18 +57,14 @@ const CoAuthoredByRegex = /co-authored-by:\s*(?<name>.+)(<(?<email>.+)>)/gi
 const PullRequestRE = /\([ a-z]*(#\d+)\s*\)/g
 const IssueRE = /(#\d+)/g
 
-/**
- * 解析所有Commit信息
- */
+/** 批量解析 Conventional Commits，过滤无法匹配的提交 */
 function parseGitCommits(commits: GitCommitRaw[], scopeMap: Record<string, string>): GitCommitRecord[] {
   return commits
     .map(commit => parseGitCommit(commit, scopeMap))
     .filter(v => v != null)
 }
 
-/**
- * 解析单条Commit记录
- */
+/** 解析单条 Conventional Commit */
 function parseGitCommit(commit: GitCommitRaw, scopeMap: Record<string, string>): GitCommitRecord | null {
   const match = commit.message.match(ConventionalCommitRegex)
   if (match == null || match.groups == null) {
@@ -75,14 +75,11 @@ function parseGitCommit(commit: GitCommitRaw, scopeMap: Record<string, string>):
   const hasBreakingBody = /breaking change:/i.test(commit.body)
 
   let scope = match.groups.scope || ''
-
   scope = scopeMap[scope] || scope
 
-  // 破坏性改动
   const isBreaking = Boolean(match.groups.breaking || hasBreakingBody)
   let description = match.groups.description
 
-  // Extract references from message
   const references: GitCommitReference[] = []
   for (const m of description.matchAll(PullRequestRE)) {
     references.push({ type: GitCommitMessageType.PULL_REQUEST, value: m[1] })
@@ -94,15 +91,13 @@ function parseGitCommit(commit: GitCommitRaw, scopeMap: Record<string, string>):
   }
   references.push({ type: GitCommitMessageType.HASH, value: commit.shortHash })
 
-  // Remove references and normalize
   description = description.replace(PullRequestRE, '').trim()
 
-  // Find all authors
   const authors: GitCommitAuthor[] = [commit.author]
-  for (const match of commit.body.matchAll(CoAuthoredByRegex)) {
+  for (const coAuthorMatch of commit.body.matchAll(CoAuthoredByRegex)) {
     authors.push({
-      name: (match.groups?.name ?? '').trim(),
-      email: (match.groups?.email ?? '').trim(),
+      name: (coAuthorMatch.groups?.name ?? '').trim(),
+      email: (coAuthorMatch.groups?.email ?? '').trim(),
     })
   }
 
@@ -117,9 +112,7 @@ function parseGitCommit(commit: GitCommitRaw, scopeMap: Record<string, string>):
   }
 }
 
-/**
- * 生成Markdown文档记录的每行记录
- */
+/** 将提交列表渲染为 CHANGELOG Markdown 正文 */
 async function parseCommitsToMarkdownStr(commits: Commit[], options: {
   emoji: boolean
   group?: boolean | 'multiple'
@@ -138,11 +131,10 @@ async function parseCommitsToMarkdownStr(commits: Commit[], options: {
 }): Promise<string> {
   const lines: string[] = []
 
-  // 存在，处理破坏性改动
   if (options.titles.breakingChanges != null) {
     const breaking = commits.filter(c => c.isBreaking)
     lines.push(
-      ...MarkdownAPI.formatSection(breaking, {
+      ...markdownAPI.formatSection(breaking, {
         emoji: options.emoji,
         group: options.group,
         scopeName: options.scopeName,
@@ -158,7 +150,6 @@ async function parseCommitsToMarkdownStr(commits: Commit[], options: {
   let changes = commits.filter(c => !c.isBreaking)
 
   if (options.scopeName != null) {
-    // 遇到第一个release就跳出，避免重复记录版本
     const commitsInScopeName: Commit[] = []
 
     for (const commit of changes) {
@@ -170,23 +161,20 @@ async function parseCommitsToMarkdownStr(commits: Commit[], options: {
     changes = commitsInScopeName
   }
 
-  // 普通提交
   const group = vipLodash.groupBy(changes, 'type')
 
   let commitTypes = Object.keys(options.types)
 
-  // monorepo的子模块，不记录release信息
   if (options.scopeName != null) {
     commitTypes = commitTypes.filter(type => type !== 'release')
   }
   for (const type of commitTypes) {
-    // 子模块时，不记录发布信息
     if (options.scopeName != null && type === 'release') {
       break
     }
 
     const commitsByType = group[type] || []
-    const sections = MarkdownAPI.formatSection(commitsByType, {
+    const sections = markdownAPI.formatSection(commitsByType, {
       emoji: options.emoji,
       group: options.group,
       scopeName: options.scopeName,
@@ -199,16 +187,13 @@ async function parseCommitsToMarkdownStr(commits: Commit[], options: {
     lines.push(...sections)
   }
 
-  // 没有变更内容
   if (!lines.length) {
-    lines.push(MarkdownAPI.getNoSignificantChanges())
+    lines.push(markdownAPI.getNoSignificantChanges())
   }
   else {
     const description = options.scopeName != null
-      // 发布模块包，添加NPM版本
-      ? MarkdownAPI.getNPMVersionDescription(options.scopeName, options.name)
-      // 发布根目录，添加Github Release版本
-      : MarkdownAPI.getGithubVersionDescription({
+      ? markdownAPI.getNPMVersionDescription(options.scopeName, options.name)
+      : markdownAPI.getGithubVersionDescription({
           baseUrl: options.baseUrl,
           repo: options.repo,
           fromVersion: options.from,
@@ -218,12 +203,14 @@ async function parseCommitsToMarkdownStr(commits: Commit[], options: {
     lines.push(description)
   }
 
-  // commit提交信息emoji表情转换
   return VipGit.convertEmoji(lines.join('\n').trim(), true)
 }
 
-export const GitCommitAPI = {
-  getGitCommitDiff,
-  parseGitCommits,
-  parseCommitsToMarkdownStr,
+/** Git 提交解析与 Markdown 聚合 */
+export class GitCommitAPI {
+  getGitCommitDiff = getGitCommitDiff
+  parseGitCommits = parseGitCommits
+  parseCommitsToMarkdownStr = parseCommitsToMarkdownStr
 }
+
+export const gitCommitAPI = new GitCommitAPI()

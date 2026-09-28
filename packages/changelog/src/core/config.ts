@@ -1,23 +1,17 @@
-import type { ChangelogCliOptions, ChangelogGenerateOptions } from '../enums'
+import type { ChangelogCliOptions, ChangelogGenerateOptions } from './changelog.interface'
 import { vipConfig, VipGit } from '@142vip/utils'
 
-/**
- * changelog默认的名称配置
- */
-export const CONFIG_DEFAULT_NAME = 'changelog' as string
+/** cosmiconfig 配置文件名 */
+export const CONFIG_DEFAULT_NAME = 'changelog' as const
 
-/**
- * changelog默认的header配置
- */
+/** 新建 CHANGELOG.md 时的文件头 */
 export const CONFIG_DEFAULT_HEADER = `# Changelog
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-` as string
+` as const
 
-/**
- * 默认配置
- */
+/** 默认生成配置（可被 changelog 配置文件与 CLI 覆盖） */
 export const ChangelogDefaultConfig = {
   scopeMap: {},
   header: CONFIG_DEFAULT_HEADER,
@@ -40,42 +34,30 @@ export const ChangelogDefaultConfig = {
   emoji: true,
   baseUrl: 'github.com',
   baseUrlApi: 'api.github.com',
-  prerelease: true,
+  prerelease: false,
 }
 
-/**
- * 定义配置文件
- * - 合并默认配置
- */
+/** 类型安全的 changelog 配置声明（供用户配置文件引用） */
 export function defineChangelogConfig(config: ChangelogGenerateOptions): ChangelogGenerateOptions {
   return config
 }
 
-/**
- * 加载配置，读取配置文件
- */
+/** 从 cosmiconfig 加载用户配置，并与 `ChangelogDefaultConfig` 合并 */
 export function loadChangelogConfig() {
   return vipConfig.loadCliConfig<ChangelogGenerateOptions>(CONFIG_DEFAULT_NAME, ChangelogDefaultConfig)
 }
 
 /**
- * 加载配置
- * 将用户自定义配置和默认配置合并
+ * 合并配置文件、CLI 参数，并补全 from / to / repo 等 Git 上下文
  */
 export function parseCliOptions(cliOptions: ChangelogCliOptions): ChangelogGenerateOptions {
-  // 新写法
   const changelogConfig = loadChangelogConfig()
-
-  // cli配置合并
   const config = vipConfig.mergeCommanderConfig<ChangelogGenerateOptions>(changelogConfig, cliOptions)
 
-  // 发布的版本
   if (config.to == null) {
-    // 标签 > 分支  优化一下： 分支的头可能没有tag
     config.to = VipGit.getTagInHead() ?? VipGit.getCurrentBranch()
   }
 
-  // release name
   if (config.name == null) {
     config.name = config.to
   }
@@ -84,17 +66,14 @@ export function parseCliOptions(cliOptions: ChangelogCliOptions): ChangelogGener
     config.from = VipGit.getLastMatchingTag(config.to) || VipGit.getRecentCommitHash()
   }
 
-  // 仓库地址
   if (config.repo == null) {
     config.repo = VipGit.getGitHubRepo(config.baseUrl!)
   }
 
-  // 是否是预览版本
   if (config.prerelease == null) {
-    config.prerelease = VipGit.isPrerelease(config.to)
+    config.prerelease = false
   }
 
-  // todo 支持多个scope生成
   config.scopeName = cliOptions.scopeName
 
   return config

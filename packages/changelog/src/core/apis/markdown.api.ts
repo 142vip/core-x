@@ -1,58 +1,78 @@
-import type { Commit, GitCommitReference } from '../enums'
+import type { Commit, GitCommitReference } from '../changelog.interface'
 import { vipLodash } from '@142vip/utils'
-import { GitCommitMessageType } from '../enums'
+import { ChangelogReferenceDisplay, GitCommitMessageType } from '../changelog.interface'
 
-function formatReferences(references: GitCommitReference[], baseUrl: string, github: string, type: 'issues' | 'hash'): string {
+/**
+ * 按展示分组格式化提交引用为 Markdown 片段
+ */
+function formatReferences(
+  references: GitCommitReference[],
+  baseUrl: string,
+  github: string,
+  display: ChangelogReferenceDisplay,
+): string {
   const refs = references
-    .filter((i) => {
-      if (type === 'issues')
-        return i.type === GitCommitMessageType.ISSUE || i.type === GitCommitMessageType.PULL_REQUEST
-      return i.type === GitCommitMessageType.HASH
+    .filter((ref) => {
+      if (display === ChangelogReferenceDisplay.ISSUES) {
+        return ref.type === GitCommitMessageType.ISSUE || ref.type === GitCommitMessageType.PULL_REQUEST
+      }
+      return ref.type === GitCommitMessageType.HASH
     })
     .map((ref) => {
-      if (!github)
+      if (!github) {
         return ref.value
-      if (ref.type === GitCommitMessageType.PULL_REQUEST || ref.type === GitCommitMessageType.ISSUE)
+      }
+      if (ref.type === GitCommitMessageType.PULL_REQUEST || ref.type === GitCommitMessageType.ISSUE) {
         return `https://${baseUrl}/${github}/issues/${ref.value.slice(1)}`
+      }
 
-      // 截取前面5个字符
       return `[<samp>(${ref.value.slice(0, 5)})</samp>](https://${baseUrl}/${github}/commit/${ref.value})`
     })
 
   const referencesString = join(refs).trim()
 
-  if (type === 'issues')
+  if (display === ChangelogReferenceDisplay.ISSUES) {
     return referencesString && `in ${referencesString}`
+  }
   return referencesString
 }
 
-/**
- * 格式化每行commit信息
- */
+/** 格式化单条 commit 的 Markdown 行（描述 + 作者 + 引用） */
 function formatLine(commit: Commit, options: {
   baseUrl: string
   repo: string
   capitalize: boolean
 }): string {
-  const prRefs = formatReferences(commit.references, options.baseUrl, options.repo as string, 'issues')
-  const hashRefs = formatReferences(commit.references, options.baseUrl, options.repo as string, 'hash')
+  const prRefs = formatReferences(
+    commit.references,
+    options.baseUrl,
+    options.repo,
+    ChangelogReferenceDisplay.ISSUES,
+  )
+  const hashRefs = formatReferences(
+    commit.references,
+    options.baseUrl,
+    options.repo,
+    ChangelogReferenceDisplay.HASH,
+  )
 
   let authors = join([
     ...new Set(commit.resolvedAuthors?.map(i => i.login ? `@${i.login}` : `**${i.name}**`)),
   ])?.trim()
 
-  if (authors)
+  if (authors) {
     authors = `by ${authors}`
+  }
 
-  // 拼接ref
   let refs = [
     authors,
     prRefs,
     hashRefs,
   ].filter(i => i?.trim()).join(' ')
 
-  if (refs)
+  if (refs) {
     refs = `&nbsp;-&nbsp; ${refs}`
+  }
 
   const description = options.capitalize ? capitalize(commit.description) : commit.description
 
@@ -61,12 +81,8 @@ function formatLine(commit: Commit, options: {
     .join(' ')
 }
 
-/**
- * 格式化标题
- * - 添加表情包
- */
+/** 章节标题（可选去除 emoji） */
 function formatTitle(name: string, emoji: boolean): string {
-  // 加表情包
   if (!emoji) {
     const emojisRE = /([\u2700-\u27BF\uE000-\uF8FF\u2011-\u26FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|\uD83E[\uDD10-\uDDFF])/g
     name = name.replace(emojisRE, '')
@@ -75,9 +91,7 @@ function formatTitle(name: string, emoji: boolean): string {
   return `### ${name.trim()}`
 }
 
-/**
- * 格式化Section
- */
+/** 将一组 commit 格式化为 Markdown 章节 */
 function formatSection(commits: Commit[], options: {
   emoji: boolean
   group?: boolean | 'multiple'
@@ -88,45 +102,38 @@ function formatSection(commits: Commit[], options: {
   scopeMap: Record<string, string>
   sectionName: string
 }): string[] {
-  if (!commits.length)
+  if (!commits.length) {
     return []
+  }
 
-  // monorepo模式下，不显示Release记录
   if (options.scopeName != null) {
-    // 过滤出只包含子模块的提交记录
     commits = commits.filter(commit => commit.scope === options.scopeName)
   }
 
-  // 注意空行
   const lines: string[] = ['', formatTitle(options.sectionName, options.emoji), '']
 
   const scopes = vipLodash.groupBy(commits, 'scope') as Record<string, Commit[]>
 
   const useScopeGroup = options.group
 
-  // 生成monorepo中的md，只显示该模块的
   if (options.scopeName != null) {
-    // 对于没有匹配到子模块的记录，直接返回
     if (scopes[options.scopeName] == null) {
       return []
     }
-    // lines里每条记录就是一次commit提交，第一次遇到release(xxx)跳出，避免记录别的版本
-    const commits = scopes[options.scopeName].reverse()
-    for (const commit of commits) {
+    const scopedCommits = scopes[options.scopeName].reverse()
+    for (const commit of scopedCommits) {
       if (commit.type === 'release') {
         break
       }
       lines.push(`- ${formatLine(commit, vipLodash.pick(options, 'baseUrl', 'repo', 'capitalize'))}`)
     }
   }
-  // root dir 普通模式
   else {
     Object.keys(scopes).sort().forEach((scope) => {
       let padding = ''
       let prefix = ''
       const scopeText = `**${options.scopeMap[scope] || scope}**`
 
-      // 按照scope分类
       if (scope && (useScopeGroup === true || (useScopeGroup === 'multiple' && scopes[scope].length > 1))) {
         lines.push(`- ${scopeText}:`)
         padding = '  '
@@ -135,7 +142,6 @@ function formatSection(commits: Commit[], options: {
         prefix = `${scopeText}: `
       }
 
-      // lines里每条记录就是一次commit提交
       lines.push(
         ...scopes[scope]
           .reverse()
@@ -151,33 +157,33 @@ function capitalize(str: string): string {
 }
 
 function join(array?: string[], glue = ', ', finalGlue = ' and '): string {
-  if (!array || array.length === 0)
+  if (!array || array.length === 0) {
     return ''
+  }
 
-  if (array.length === 1)
+  if (array.length === 1) {
     return array[0]
+  }
 
-  if (array.length === 2)
+  if (array.length === 2) {
     return array.join(finalGlue)
+  }
 
   return `${array.slice(0, -1).join(glue)}${finalGlue}${array.slice(-1)}`
 }
 
-/**
- * 无内容更新
- */
+/** 无有效变更时的占位文案 */
 function getNoSignificantChanges(): string {
   return '\n**No Significant Changes**'
 }
 
-/**
- * 获取npm版本描述
- */
+/** Monorepo 子包发版时的 NPM 版本说明行 */
 function getNPMVersionDescription(pkgName: string, pkgVersion: string) {
   const npmURI = `https://www.npmjs.com/package/${pkgName}`
   return `\n**Release New Version ${pkgVersion} [👉 View New Package On NPM](${npmURI})**`
 }
 
+/** 仓库根发版时的 GitHub compare 说明行 */
 function getGithubVersionDescription({ baseUrl, repo, fromVersion, toVersion }: {
   baseUrl: string
   repo: string
@@ -188,9 +194,12 @@ function getGithubVersionDescription({ baseUrl, repo, fromVersion, toVersion }: 
   return `\n**Release New Version ${toVersion} [👉 View Changes On GitHub](${url})**`
 }
 
-export const MarkdownAPI = {
-  formatSection,
-  getNoSignificantChanges,
-  getNPMVersionDescription,
-  getGithubVersionDescription,
+/** CHANGELOG Markdown 片段格式化 */
+export class MarkdownAPI {
+  formatSection = formatSection
+  getNoSignificantChanges = getNoSignificantChanges
+  getNPMVersionDescription = getNPMVersionDescription
+  getGithubVersionDescription = getGithubVersionDescription
 }
+
+export const markdownAPI = new MarkdownAPI()
