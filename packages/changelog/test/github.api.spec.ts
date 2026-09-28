@@ -87,7 +87,7 @@ describe('githubAPI.buildGithubReleaseRequestBody', () => {
     expect(body).not.toHaveProperty('make_latest')
   })
 
-  it('未传 prerelease 时默认为 Latest', () => {
+  it('未传 prerelease 时按 tag 推断稳定版并附带 make_latest', () => {
     const body = githubAPI.buildGithubReleaseRequestBody({
       content: 'release notes',
       name: 'v1.0.0',
@@ -95,5 +95,26 @@ describe('githubAPI.buildGithubReleaseRequestBody', () => {
     })
     expect(body.prerelease).toBe(false)
     expect(body.make_latest).toBe(true)
+  })
+
+  it('未传 prerelease 时 alpha tag 推断为预发布且不附带 make_latest', () => {
+    const body = githubAPI.buildGithubReleaseRequestBody({
+      content: 'release notes',
+      name: 'v0.0.1-alpha.44',
+      tag: 'v0.0.1-alpha.44',
+    })
+    expect(body.prerelease).toBe(true)
+    expect(body).not.toHaveProperty('make_latest')
+  })
+
+  it('更新 Release（PATCH）时不附带 make_latest', () => {
+    const body = githubAPI.buildGithubReleaseRequestBody({
+      content: 'release notes',
+      name: 'v1.0.0',
+      tag: 'v1.0.0',
+      prerelease: false,
+      includeMakeLatest: false,
+    })
+    expect(body).not.toHaveProperty('make_latest')
   })
 })

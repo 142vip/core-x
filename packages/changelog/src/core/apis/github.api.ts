@@ -1,5 +1,5 @@
 import type { Commit, GitAuthorInfo } from '../changelog.interface'
-import { HttpMethod, VipColor, VipConsole, vipLogger, vipQs } from '@142vip/utils'
+import { HttpMethod, VipColor, VipConsole, VipGit, vipLogger, vipQs } from '@142vip/utils'
 
 interface GitHubSearchUsersResponse {
   items: Array<{ login: string }>
@@ -40,7 +40,17 @@ async function fetchGitHubJson<T>(url: string, init: {
   })
 
   if (!response.ok) {
-    throw new Error(`GitHub API ${response.status} ${response.statusText}`)
+    let detail = ''
+    try {
+      const errorBody = await response.json() as { message?: string, errors?: unknown }
+      if (errorBody.message) {
+        detail = `: ${errorBody.message}`
+      }
+    }
+    catch {
+      // 非 JSON 错误体忽略
+    }
+    throw new Error(`GitHub API ${response.status} ${response.statusText}${detail}`)
   }
 
   if (response.status === 204) {
@@ -196,16 +206,21 @@ function buildGithubReleaseRequestBody(options: {
   tag: string
   draft?: boolean
   prerelease?: boolean
+  /** 仅 POST 新建 Release 时可传 `make_latest`；PATCH 携带会触发 422 */
+  includeMakeLatest?: boolean
 }) {
-  const prerelease = options.prerelease ?? false
-  return {
+  const prerelease = options.prerelease ?? VipGit.isPrerelease(options.tag)
+  const body: Record<string, unknown> = {
     body: options.content,
     name: options.name,
     tag_name: options.tag,
     draft: options.draft ?? false,
     prerelease,
-    ...(prerelease ? {} : { make_latest: true }),
   }
+  if (!prerelease && (options.includeMakeLatest ?? true)) {
+    body.make_latest = true
+  }
+  return body
 }
 
 /** 创建或更新 GitHub Release */
@@ -242,6 +257,7 @@ async function createGithubRelease(options: {
     tag: options.tag,
     draft: options.draft,
     prerelease: options.prerelease,
+    includeMakeLatest: method === HttpMethod.POST,
   })
 
   if (method === HttpMethod.POST) {

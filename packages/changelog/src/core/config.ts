@@ -70,8 +70,11 @@ export function parseCliOptions(cliOptions: ChangelogCliOptions): ChangelogGener
     config.repo = VipGit.getGitHubRepo(config.baseUrl!)
   }
 
-  if (config.prerelease == null) {
-    config.prerelease = false
+  if (typeof cliOptions.prerelease === 'boolean') {
+    config.prerelease = cliOptions.prerelease
+  }
+  else {
+    config.prerelease = VipGit.isPrerelease(config.to)
   }
 
   config.scopeName = cliOptions.scopeName

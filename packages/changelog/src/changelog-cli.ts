@@ -21,7 +21,7 @@ function registerChangelogOptions(command: VipCommander): void {
     .option('--github <github>', '仓库地址，如 142vip/core-x')
     .option('--output <output>', 'CHANGELOG 输出路径（建议绝对路径）')
     .option('--scopeName <scopeName>', 'Monorepo 子包名')
-    .option('--prerelease', '标记为 GitHub Pre-release（默认 Latest）', false)
+    .option('--prerelease', '强制标记为 GitHub Pre-release（默认按目标 tag 推断）')
 }
 
 /** standalone bin 与 `fa changelog` 共用的 action */

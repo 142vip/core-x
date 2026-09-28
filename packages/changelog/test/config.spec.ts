@@ -15,12 +15,21 @@ describe('ChangelogDefaultConfig', () => {
 })
 
 describe('parseCliOptions', () => {
-  it('未传 prerelease 时保持默认 false', () => {
+  it('未传 prerelease 时按目标版本推断（稳定版为 Latest）', () => {
     const config = parseCliOptions(baseCliOptions)
     expect(config.prerelease).toBe(false)
     expect(config.from).toBe('v0.1.0')
     expect(config.to).toBe('v1.0.0')
     expect(config.repo).toBe('142vip/core-x')
+  })
+
+  it('未传 prerelease 时 alpha 标签推断为预发布', () => {
+    const config = parseCliOptions({
+      ...baseCliOptions,
+      to: 'v0.0.1-alpha.44',
+      name: 'v0.0.1-alpha.44',
+    })
+    expect(config.prerelease).toBe(true)
   })
 
   it('CLI 传入 prerelease 可覆盖为 true', () => {
