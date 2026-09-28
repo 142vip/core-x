@@ -1,5 +1,12 @@
 import type { ChangelogCliOptions } from './core/changelog.interface'
-import { isVipConsoleTraceEnabled, VipColor, VipCommander, VipConsole, VipNodeJS, VipPackageCliCommander } from '@142vip/utils'
+import {
+  isVipConsoleTraceEnabled,
+  VipColor,
+  VipCommander,
+  VipConsole,
+  VipNodeJS,
+  VipPackageCliCommander,
+} from '@142vip/utils'
 import { description, name, version } from '../package.json'
 import { changelogApi } from './core/apis/changelog.api'
 

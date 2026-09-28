@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.25 (2026-09-28)
+
+### 🐛 Bug Fixes
+
+- 修复 GitHub Release 422（预发布推断与 PATCH `make_latest`） &nbsp;-&nbsp; by **chufan** [<samp>(6d384)</samp>](https://github.com/142vip/core-x/commit/6d38402f)
+
+**Release New Version v0.0.1-alpha.25 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/changelog)**
+
 ## v0.0.1-alpha.24 (2026-09-28)
 
 ### 💅 Refactors
