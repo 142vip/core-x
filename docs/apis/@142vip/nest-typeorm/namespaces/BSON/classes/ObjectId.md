@@ -1,0 +1,289 @@
+[API 参考](../../../../../index.md) / [@142vip/nest-typeorm](../../../index.md) / [BSON](../index.md) / ObjectId
+
+# 类: ObjectId
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/bson.typings.d.ts:815
+
+A class representation of the BSON ObjectId type.
+
+## theme_extends
+
+- [`BSONValue`](BSONValue.md)
+
+## 构造函数
+
+### 构造函数
+
+> **new ObjectId**(`inputId?`): `ObjectId`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/bson.typings.d.ts:823
+
+Create an ObjectId type
+
+#### 参数
+
+##### inputId?
+
+`string` \| `number` \| `Uint8Array`\<`ArrayBufferLike`\> \| `ObjectId` \| [`ObjectIdLike`](../interfaces/ObjectIdLike.md)
+
+Can be a 24 character hex string, 12 byte binary Buffer, or a number.
+
+#### 返回
+
+`ObjectId`
+
+#### 重写了
+
+[`BSONValue`](BSONValue.md).[`constructor`](BSONValue.md#constructor)
+
+## 属性
+
+### cacheHexString
+
+> `static` **cacheHexString**: `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/bson.typings.d.ts:817
+
+## 访问器
+
+### \_bsontype
+
+#### Getter 签名
+
+> **get** **\_bsontype**(): `"ObjectId"`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/bson.typings.d.ts:816
+
+##### 返回
+
+`"ObjectId"`
+
+#### 重写了
+
+[`BSONValue`](BSONValue.md).[`_bsontype`](BSONValue.md#bsontype)
+
+***
+
+### id
+
+#### Getter 签名
+
+> **get** **id**(): `Uint8Array`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/bson.typings.d.ts:828
+
+The ObjectId bytes
+
+##### 返回
+
+`Uint8Array`
+
+## 方法
+
+### equals()
+
+> **equals**(`otherId`): `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/bson.typings.d.ts:850
+
+Compares the equality of this ObjectId with `otherID`.
+
+#### 参数
+
+##### otherId
+
+`string` \| `ObjectId` \| [`ObjectIdLike`](../interfaces/ObjectIdLike.md)
+
+ObjectId instance to compare against.
+
+#### 返回
+
+`boolean`
+
+***
+
+### getTimestamp()
+
+> **getTimestamp**(): `Date`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/bson.typings.d.ts:852
+
+Returns the generation date (accurate up to the second) that this ID was generated.
+
+#### 返回
+
+`Date`
+
+***
+
+### inspect()
+
+> **inspect**(): `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/bson.typings.d.ts:873
+
+#### 返回
+
+`string`
+
+#### 重写了
+
+[`BSONValue`](BSONValue.md).[`inspect`](BSONValue.md#inspect)
+
+***
+
+### toHexString()
+
+> **toHexString**(): `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/bson.typings.d.ts:831
+
+Returns the ObjectId id as a 24 character hex string representation
+
+#### 返回
+
+`string`
+
+***
+
+### toJSON()
+
+> **toJSON**(): `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/bson.typings.d.ts:844
+
+Converts to its JSON the 24 character hex string representation.
+
+#### 返回
+
+`string`
+
+***
+
+### toString()
+
+> **toString**(`encoding?`): `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/bson.typings.d.ts:842
+
+Converts the id into a 24 character hex string for printing, unless encoding is provided.
+
+#### 参数
+
+##### encoding?
+
+`"base64"` \| `"hex"`
+
+hex or base64
+
+#### 返回
+
+`string`
+
+***
+
+### createFromBase64()
+
+> `static` **createFromBase64**(`base64`): `ObjectId`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/bson.typings.d.ts:866
+
+Creates an ObjectId instance from a base64 string
+
+#### 参数
+
+##### base64
+
+`string`
+
+#### 返回
+
+`ObjectId`
+
+***
+
+### createFromHexString()
+
+> `static` **createFromHexString**(`hexString`): `ObjectId`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/bson.typings.d.ts:864
+
+Creates an ObjectId from a hex string representation of an ObjectId.
+
+#### 参数
+
+##### hexString
+
+`string`
+
+create a ObjectId from a passed in 24 character hexstring.
+
+#### 返回
+
+`ObjectId`
+
+***
+
+### createFromTime()
+
+> `static` **createFromTime**(`time`): `ObjectId`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/bson.typings.d.ts:858
+
+Creates an ObjectId from a second based number, with the rest of the ObjectId zeroed out. Used for comparisons or sorting the ObjectId.
+
+#### 参数
+
+##### time
+
+`number`
+
+an integer number representing a number of seconds.
+
+#### 返回
+
+`ObjectId`
+
+***
+
+### generate()
+
+> `static` **generate**(`time?`): `Uint8Array`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/bson.typings.d.ts:837
+
+Generate a 12 byte id buffer used in ObjectId's
+
+#### 参数
+
+##### time?
+
+`number`
+
+pass in a second based timestamp.
+
+#### 返回
+
+`Uint8Array`
+
+***
+
+### isValid()
+
+> `static` **isValid**(`id`): `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/bson.typings.d.ts:872
+
+Checks if a value is a valid bson ObjectId
+
+#### 参数
+
+##### id
+
+`string` \| `number` \| `Uint8Array`\<`ArrayBufferLike`\> \| `ObjectId` \| [`ObjectIdLike`](../interfaces/ObjectIdLike.md)
+
+ObjectId instance to validate.
+
+#### 返回
+
+`boolean`

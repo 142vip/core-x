@@ -1,0 +1,98 @@
+[API 参考](../../../index.md) / [@142vip/nest-typeorm](../index.md) / EntityOptions
+
+# 接口: EntityOptions
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/decorator/options/EntityOptions.d.ts:5
+
+Describes all entity's options.
+
+## 属性
+
+### comment?
+
+> `optional` **comment?**: `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/decorator/options/EntityOptions.d.ts:45
+
+Table comment. Not supported by all database types.
+
+***
+
+### database?
+
+> `optional` **database?**: `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/decorator/options/EntityOptions.d.ts:25
+
+Database name. Used in Mysql and Sql Server.
+
+***
+
+### engine?
+
+> `optional` **engine?**: `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/decorator/options/EntityOptions.d.ts:21
+
+Table's database engine type (like "InnoDB", "MyISAM", etc).
+It is used only during table creation.
+If you update this value and table is already created, it will not change table's engine type.
+Note that not all databases support this option.
+
+***
+
+### name?
+
+> `optional` **name?**: `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/decorator/options/EntityOptions.d.ts:10
+
+Table name.
+If not specified then naming strategy will generate table name from entity name.
+
+***
+
+### orderBy?
+
+> `optional` **orderBy?**: [`OrderByCondition`](../type-aliases/OrderByCondition.md) \| ((`object`) => `any`)
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/decorator/options/EntityOptions.d.ts:14
+
+Specifies a default order by used for queries from this table when no explicit order by is specified.
+
+***
+
+### schema?
+
+> `optional` **schema?**: `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/decorator/options/EntityOptions.d.ts:29
+
+Schema name. Used in Postgres and Sql Server.
+
+***
+
+### synchronize?
+
+> `optional` **synchronize?**: `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/decorator/options/EntityOptions.d.ts:35
+
+Indicates if schema synchronization is enabled or disabled for this entity.
+If it will be set to false then schema sync will and migrations ignore this entity.
+By default schema synchronization is enabled for all entities.
+
+***
+
+### withoutRowid?
+
+> `optional` **withoutRowid?**: `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/decorator/options/EntityOptions.d.ts:41
+
+If set to 'true' this option disables Sqlite's default behaviour of secretly creating
+an integer primary key column named 'rowid' on table creation.
+
+#### 参阅
+
+https://www.sqlite.org/withoutrowid.html.

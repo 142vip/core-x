@@ -2,14 +2,18 @@
 
 # 类: VipCommander
 
-定义于: [packages/utils/src/pkgs/commander.ts:38](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/utils/src/pkgs/commander.ts#L38)
+定义于: [packages/utils/src/pkgs/commander.ts:93](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/commander.ts#L93)
 
-终端交互
+终端交互（基础类）
 参考：https://www.npmjs.com/package/commander
 
 ## theme_extends
 
 - `Command`
+
+## theme_extended_by
+
+- [`VipPackageCliCommander`](VipPackageCliCommander.md)
 
 ## 构造函数
 
@@ -17,7 +21,7 @@
 
 > **new VipCommander**(`name`, `version`, `description?`): `VipCommander`
 
-定义于: [packages/utils/src/pkgs/commander.ts:39](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/utils/src/pkgs/commander.ts#L39)
+定义于: [packages/utils/src/pkgs/commander.ts:94](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/commander.ts#L94)
 
 #### 参数
 
@@ -39,7 +43,7 @@
 
 #### 重写了
 
-`Command.constructor`
+`CommanderRoot.constructor`
 
 ## 属性
 
@@ -51,7 +55,7 @@
 
 #### 继承自
 
-`Command.args`
+`CommanderRoot.args`
 
 ***
 
@@ -63,7 +67,7 @@
 
 #### 继承自
 
-`Command.commands`
+`CommanderRoot.commands`
 
 ***
 
@@ -75,19 +79,19 @@
 
 #### 继承自
 
-`Command.options`
+`CommanderRoot.options`
 
 ***
 
 ### parent
 
-> **parent**: `null` \| `Command`
+> **parent**: `Command` \| `null`
 
 定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:303
 
 #### 继承自
 
-`Command.parent`
+`CommanderRoot.parent`
 
 ***
 
@@ -99,7 +103,7 @@
 
 #### 继承自
 
-`Command.processedArgs`
+`CommanderRoot.processedArgs`
 
 ***
 
@@ -111,7 +115,7 @@
 
 #### 继承自
 
-`Command.registeredArguments`
+`CommanderRoot.registeredArguments`
 
 ## 方法
 
@@ -148,7 +152,7 @@ program
 
 #### 继承自
 
-`Command.action`
+`CommanderRoot.action`
 
 ***
 
@@ -174,7 +178,7 @@ Define argument syntax for command, adding a prepared argument.
 
 #### 继承自
 
-`Command.addArgument`
+`CommanderRoot.addArgument`
 
 ***
 
@@ -206,7 +210,7 @@ See .command() for creating an attached subcommand which inherits settings from 
 
 #### 继承自
 
-`Command.addCommand`
+`CommanderRoot.addCommand`
 
 ***
 
@@ -232,7 +236,7 @@ Add prepared custom help command.
 
 ##### 继承自
 
-`Command.addHelpCommand`
+`CommanderRoot.addHelpCommand`
 
 #### 调用签名
 
@@ -260,7 +264,7 @@ since v12, instead use helpCommand
 
 ##### 继承自
 
-`Command.addHelpCommand`
+`CommanderRoot.addHelpCommand`
 
 #### 调用签名
 
@@ -284,7 +288,7 @@ since v12, instead use helpCommand
 
 ##### 继承自
 
-`Command.addHelpCommand`
+`CommanderRoot.addHelpCommand`
 
 ***
 
@@ -309,7 +313,7 @@ This is an alternative to using helpOption() to customise the flags and descript
 
 #### 继承自
 
-`Command.addHelpOption`
+`CommanderRoot.addHelpOption`
 
 ***
 
@@ -342,7 +346,7 @@ and 'beforeAll' or 'afterAll' to affect this command and all its subcommands.
 
 ##### 继承自
 
-`Command.addHelpText`
+`CommanderRoot.addHelpText`
 
 #### 调用签名
 
@@ -371,7 +375,7 @@ and 'beforeAll' or 'afterAll' to affect this command and all its subcommands.
 
 ##### 继承自
 
-`Command.addHelpText`
+`CommanderRoot.addHelpText`
 
 ***
 
@@ -397,7 +401,7 @@ See .option() and .requiredOption() for creating and attaching an option in a si
 
 #### 继承自
 
-`Command.addOption`
+`CommanderRoot.addOption`
 
 ***
 
@@ -427,7 +431,7 @@ You may call more than once to add multiple aliases. Only the first alias is sho
 
 ##### 继承自
 
-`Command.alias`
+`CommanderRoot.alias`
 
 #### 调用签名
 
@@ -443,7 +447,7 @@ Get alias for the command.
 
 ##### 继承自
 
-`Command.alias`
+`CommanderRoot.alias`
 
 ***
 
@@ -473,7 +477,7 @@ readonly `string`[]
 
 ##### 继承自
 
-`Command.aliases`
+`CommanderRoot.aliases`
 
 #### 调用签名
 
@@ -489,7 +493,7 @@ Get aliases for the command.
 
 ##### 继承自
 
-`Command.aliases`
+`CommanderRoot.aliases`
 
 ***
 
@@ -515,7 +519,7 @@ Allow excess command-arguments on the command line. Pass false to make excess ar
 
 #### 继承自
 
-`Command.allowExcessArguments`
+`CommanderRoot.allowExcessArguments`
 
 ***
 
@@ -541,7 +545,7 @@ Allow unknown options on the command line.
 
 #### 继承自
 
-`Command.allowUnknownOption`
+`CommanderRoot.allowUnknownOption`
 
 ***
 
@@ -556,7 +560,7 @@ Allow unknown options on the command line.
 Define argument syntax for command.
 
 The default is that the argument is required, and you can explicitly
-indicate this with <> around the name. Put [] around the name for an optional argument.
+indicate this with \<\> around the name. Put [] around the name for an optional argument.
 
 ##### 类型参数
 
@@ -597,7 +601,7 @@ program.argument('[output-file]');
 
 ##### 继承自
 
-`Command.argument`
+`CommanderRoot.argument`
 
 #### 调用签名
 
@@ -608,7 +612,7 @@ program.argument('[output-file]');
 Define argument syntax for command.
 
 The default is that the argument is required, and you can explicitly
-indicate this with <> around the name. Put [] around the name for an optional argument.
+indicate this with \<\> around the name. Put [] around the name for an optional argument.
 
 ##### 参数
 
@@ -639,7 +643,7 @@ program.argument('[output-file]');
 
 ##### 继承自
 
-`Command.argument`
+`CommanderRoot.argument`
 
 ***
 
@@ -673,7 +677,7 @@ program.arguments('<cmd> [env]');
 
 #### 继承自
 
-`Command.arguments`
+`CommanderRoot.arguments`
 
 ***
 
@@ -707,7 +711,7 @@ Alter parsing of short flags with optional values.
 
 #### 继承自
 
-`Command.combineFlagAndOptionalValue`
+`CommanderRoot.combineFlagAndOptionalValue`
 
 ***
 
@@ -758,7 +762,7 @@ program
 
 ##### 继承自
 
-`Command.command`
+`CommanderRoot.command`
 
 #### 调用签名
 
@@ -808,7 +812,7 @@ program
 
 ##### 继承自
 
-`Command.command`
+`CommanderRoot.command`
 
 ***
 
@@ -835,7 +839,7 @@ or with a subclass of Help by overriding createHelp().
 
 ##### 继承自
 
-`Command.configureHelp`
+`CommanderRoot.configureHelp`
 
 #### 调用签名
 
@@ -851,7 +855,7 @@ Get configuration
 
 ##### 继承自
 
-`Command.configureHelp`
+`CommanderRoot.configureHelp`
 
 ***
 
@@ -890,7 +894,7 @@ outputError(str, write) // used for displaying errors, and not used for displayi
 
 ##### 继承自
 
-`Command.configureOutput`
+`CommanderRoot.configureOutput`
 
 #### 调用签名
 
@@ -906,7 +910,7 @@ Get configuration
 
 ##### 继承自
 
-`Command.configureOutput`
+`CommanderRoot.configureOutput`
 
 ***
 
@@ -932,7 +936,7 @@ Copy settings that are useful to have in common across root command and subcomma
 
 #### 继承自
 
-`Command.copyInheritedSettings`
+`CommanderRoot.copyInheritedSettings`
 
 ***
 
@@ -963,7 +967,7 @@ create the argument. You can override createArgument to return a custom argument
 
 #### 继承自
 
-`Command.createArgument`
+`CommanderRoot.createArgument`
 
 ***
 
@@ -990,7 +994,7 @@ create the command. You can override createCommand to customise subcommands.
 
 #### 继承自
 
-`Command.createCommand`
+`CommanderRoot.createCommand`
 
 ***
 
@@ -1009,7 +1013,7 @@ or by overriding Help properties using configureHelp().
 
 #### 继承自
 
-`Command.createHelp`
+`CommanderRoot.createHelp`
 
 ***
 
@@ -1040,7 +1044,7 @@ create the option. You can override createOption to return a custom option.
 
 #### 继承自
 
-`Command.createOption`
+`CommanderRoot.createOption`
 
 ***
 
@@ -1068,7 +1072,7 @@ Set the description.
 
 ##### 继承自
 
-`Command.description`
+`CommanderRoot.description`
 
 #### 调用签名
 
@@ -1096,7 +1100,7 @@ since v8, instead use .argument to add command argument with description
 
 ##### 继承自
 
-`Command.description`
+`CommanderRoot.description`
 
 #### 调用签名
 
@@ -1112,7 +1116,7 @@ Get the description.
 
 ##### 继承自
 
-`Command.description`
+`CommanderRoot.description`
 
 ***
 
@@ -1141,7 +1145,7 @@ The default behaviour is non-positional and global options may appear anywhere o
 
 #### 继承自
 
-`Command.enablePositionalOptions`
+`CommanderRoot.enablePositionalOptions`
 
 ***
 
@@ -1169,7 +1173,7 @@ Display error message and exit (or call exitOverride).
 
 #### 继承自
 
-`Command.error`
+`CommanderRoot.error`
 
 ***
 
@@ -1205,11 +1209,11 @@ program.executableDir('subcommands')
 
 ##### 继承自
 
-`Command.executableDir`
+`CommanderRoot.executableDir`
 
 #### 调用签名
 
-> **executableDir**(): `null` \| `string`
+> **executableDir**(): `string` \| `null`
 
 定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:893
 
@@ -1217,11 +1221,11 @@ Get the executable search directory.
 
 ##### 返回
 
-`null` \| `string`
+`string` \| `null`
 
 ##### 继承自
 
-`Command.executableDir`
+`CommanderRoot.executableDir`
 
 ***
 
@@ -1245,7 +1249,7 @@ Register callback to use as replacement for calling process.exit.
 
 #### 继承自
 
-`Command.exitOverride`
+`CommanderRoot.exitOverride`
 
 ***
 
@@ -1269,7 +1273,7 @@ Retrieve option value.
 
 #### 继承自
 
-`Command.getOptionValue`
+`CommanderRoot.getOptionValue`
 
 ***
 
@@ -1293,7 +1297,7 @@ Get source of option value.
 
 #### 继承自
 
-`Command.getOptionValueSource`
+`CommanderRoot.getOptionValueSource`
 
 ***
 
@@ -1317,7 +1321,7 @@ Get source of option value. See also .optsWithGlobals().
 
 #### 继承自
 
-`Command.getOptionValueSourceWithGlobals`
+`CommanderRoot.getOptionValueSourceWithGlobals`
 
 ***
 
@@ -1345,7 +1349,7 @@ Outputs built-in help, and custom text added using `.addHelpText()`.
 
 ##### 继承自
 
-`Command.help`
+`CommanderRoot.help`
 
 #### 调用签名
 
@@ -1369,7 +1373,7 @@ since v7
 
 ##### 继承自
 
-`Command.help`
+`CommanderRoot.help`
 
 ***
 
@@ -1408,7 +1412,7 @@ program.helpCommand(true) // add help command even if no subcommands
 
 ##### 继承自
 
-`Command.helpCommand`
+`CommanderRoot.helpCommand`
 
 #### 调用签名
 
@@ -1439,7 +1443,7 @@ program.helpCommand(true) // add help command even if no subcommands
 
 ##### 继承自
 
-`Command.helpCommand`
+`CommanderRoot.helpCommand`
 
 ***
 
@@ -1463,7 +1467,7 @@ Return command help documentation.
 
 #### 继承自
 
-`Command.helpInformation`
+`CommanderRoot.helpInformation`
 
 ***
 
@@ -1481,7 +1485,7 @@ to disable the built-in help option.
 
 ##### flags?
 
-`string` | `boolean`
+`string` \| `boolean`
 
 ##### description?
 
@@ -1493,7 +1497,7 @@ to disable the built-in help option.
 
 #### 继承自
 
-`Command.helpOption`
+`CommanderRoot.helpOption`
 
 ***
 
@@ -1521,17 +1525,15 @@ Add hook for life cycle event.
 
 #### 继承自
 
-`Command.hook`
+`CommanderRoot.hook`
 
 ***
 
 ### init()
 
-> **init**(`options`, `args`): `Command`
+> **init**(`options`): `VipCommander`
 
-定义于: [packages/utils/src/pkgs/commander.ts:53](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/utils/src/pkgs/commander.ts#L53)
-
-初始化，不包括命令
+定义于: [packages/utils/src/pkgs/commander.ts:109](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/commander.ts#L109)
 
 #### 参数
 
@@ -1539,24 +1541,17 @@ Add hook for life cycle event.
 
 `Pick`\<[`VipCommanderDetailOptions`](../interfaces/VipCommanderDetailOptions.md), `"summary"` \| `"description"`\>
 
-##### args
-
-[`VipCommanderOptions`](../interfaces/VipCommanderOptions.md) = `{}`
-
 #### 返回
 
-`Command`
+`VipCommander`
 
 ***
 
 ### initCommand()
 
-> **initCommand**(`options`, `args`): `Command`
+> **initCommand**(`options`): `VipCommander`
 
-定义于: [packages/utils/src/pkgs/commander.ts:63](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/utils/src/pkgs/commander.ts#L63)
-
-对命令初始化，增加aliases，summary，description等信息
-- 增加默认的一些参数
+定义于: [packages/utils/src/pkgs/commander.ts:116](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/commander.ts#L116)
 
 #### 参数
 
@@ -1564,13 +1559,9 @@ Add hook for life cycle event.
 
 [`VipCommanderDetailOptions`](../interfaces/VipCommanderDetailOptions.md)
 
-##### args
-
-[`VipCommanderOptions`](../interfaces/VipCommanderOptions.md) = `{}`
-
 #### 返回
 
-`Command`
+`VipCommander`
 
 ***
 
@@ -1598,7 +1589,7 @@ Set the name of the command.
 
 ##### 继承自
 
-`Command.name`
+`CommanderRoot.name`
 
 #### 调用签名
 
@@ -1614,7 +1605,7 @@ Get the name of the command.
 
 ##### 继承自
 
-`Command.name`
+`CommanderRoot.name`
 
 ***
 
@@ -1649,7 +1640,7 @@ program.nameFromFilename(require.main.filename)
 
 #### 继承自
 
-`Command.nameFromFilename`
+`CommanderRoot.nameFromFilename`
 
 ***
 
@@ -1665,7 +1656,7 @@ Add a listener (callback) for when events occur. (Implemented using EventEmitter
 
 ##### event
 
-`string` | `symbol`
+`string` \| `symbol`
 
 ##### listener
 
@@ -1677,7 +1668,7 @@ Add a listener (callback) for when events occur. (Implemented using EventEmitter
 
 #### 继承自
 
-`Command.on`
+`CommanderRoot.on`
 
 ***
 
@@ -1708,7 +1699,7 @@ See the README for more details, and see also addOption() and requiredOption().
 
 ###### defaultValue?
 
-`string` | `boolean` | `string`[]
+`string` \| `boolean` \| `string`[]
 
 ##### 返回
 
@@ -1728,7 +1719,7 @@ program
 
 ##### 继承自
 
-`Command.option`
+`CommanderRoot.option`
 
 #### 调用签名
 
@@ -1785,7 +1776,7 @@ program
 
 ##### 继承自
 
-`Command.option`
+`CommanderRoot.option`
 
 #### 调用签名
 
@@ -1809,7 +1800,7 @@ program
 
 ###### defaultValue?
 
-`string` | `boolean` | `string`[]
+`string` \| `boolean` \| `string`[]
 
 ##### 返回
 
@@ -1821,7 +1812,7 @@ since v7, instead use choices or a custom function
 
 ##### 继承自
 
-`Command.option`
+`CommanderRoot.option`
 
 ***
 
@@ -1845,7 +1836,7 @@ Return an object containing local option values as key-value pairs
 
 #### 继承自
 
-`Command.opts`
+`CommanderRoot.opts`
 
 ***
 
@@ -1869,7 +1860,7 @@ Return an object containing merged local and global option values as key-value p
 
 #### 继承自
 
-`Command.optsWithGlobals`
+`CommanderRoot.optsWithGlobals`
 
 ***
 
@@ -1897,7 +1888,7 @@ Outputs built-in help, and custom text added using `.addHelpText()`.
 
 ##### 继承自
 
-`Command.outputHelp`
+`CommanderRoot.outputHelp`
 
 #### 调用签名
 
@@ -1921,7 +1912,7 @@ since v7
 
 ##### 继承自
 
-`Command.outputHelp`
+`CommanderRoot.outputHelp`
 
 ***
 
@@ -1968,15 +1959,15 @@ program.parse(my-args, { from: 'user' }); // just user supplied arguments, nothi
 
 #### 继承自
 
-`Command.parse`
+`CommanderRoot.parse`
 
 ***
 
 ### parseAsync()
 
-> **parseAsync**(`argv?`, `parseOptions?`): `Promise`\<`VipCommander`\>
+> **parseAsync**(`argv?`): `Promise`\<`VipCommander`\>
 
-定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:761
+定义于: [packages/utils/src/pkgs/commander.ts:123](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/commander.ts#L123)
 
 Parse `argv`, setting options and invoking commands when defined.
 
@@ -1993,10 +1984,6 @@ Or call with an array of strings to parse, and optionally where the user argumen
 
 readonly `string`[]
 
-##### parseOptions?
-
-`ParseOptions`
-
 #### 返回
 
 `Promise`\<`VipCommander`\>
@@ -2011,9 +1998,9 @@ await program.parseAsync(process.argv); // assume argv[0] is app and argv[1] is 
 await program.parseAsync(my-args, { from: 'user' }); // just user supplied arguments, nothing special about argv[0]
 ```
 
-#### 继承自
+#### 重写了
 
-`Command.parseAsync`
+`CommanderRoot.parseAsync`
 
 ***
 
@@ -2026,11 +2013,11 @@ await program.parseAsync(my-args, { from: 'user' }); // just user supplied argum
 Parse options from `argv` removing known options,
 and return argv split into operands and unknown arguments.
 
-    argv => operands, unknown
-    --known kkk op => [op], []
-    op --known kkk => [op], []
-    sub --unknown uuu op => [sub], [--unknown uuu op]
-    sub -- --unknown uuu op => [sub --unknown uuu op], []
+    argv =\> operands, unknown
+    --known kkk op =\> [op], []
+    op --known kkk =\> [op], []
+    sub --unknown uuu op =\> [sub], [--unknown uuu op]
+    sub -- --unknown uuu op =\> [sub --unknown uuu op], []
 
 #### 参数
 
@@ -2044,7 +2031,7 @@ and return argv split into operands and unknown arguments.
 
 #### 继承自
 
-`Command.parseOptions`
+`CommanderRoot.parseOptions`
 
 ***
 
@@ -2074,7 +2061,7 @@ The default behaviour is non-positional and options may appear before or after c
 
 #### 继承自
 
-`Command.passThroughOptions`
+`CommanderRoot.passThroughOptions`
 
 ***
 
@@ -2103,7 +2090,7 @@ The `flags` string contains the short and/or long flags, separated by comma, a p
 
 ###### defaultValue?
 
-`string` | `boolean` | `string`[]
+`string` \| `boolean` \| `string`[]
 
 ##### 返回
 
@@ -2111,7 +2098,7 @@ The `flags` string contains the short and/or long flags, separated by comma, a p
 
 ##### 继承自
 
-`Command.requiredOption`
+`CommanderRoot.requiredOption`
 
 #### 调用签名
 
@@ -2154,7 +2141,7 @@ The `flags` string contains the short and/or long flags, separated by comma, a p
 
 ##### 继承自
 
-`Command.requiredOption`
+`CommanderRoot.requiredOption`
 
 #### 调用签名
 
@@ -2178,7 +2165,7 @@ The `flags` string contains the short and/or long flags, separated by comma, a p
 
 ###### defaultValue?
 
-`string` | `boolean` | `string`[]
+`string` \| `boolean` \| `string`[]
 
 ##### 返回
 
@@ -2190,7 +2177,7 @@ since v7, instead use choices or a custom function
 
 ##### 继承自
 
-`Command.requiredOption`
+`CommanderRoot.requiredOption`
 
 ***
 
@@ -2218,7 +2205,7 @@ Store option value.
 
 #### 继承自
 
-`Command.setOptionValue`
+`CommanderRoot.setOptionValue`
 
 ***
 
@@ -2250,7 +2237,7 @@ Store option value and where the value came from.
 
 #### 继承自
 
-`Command.setOptionValueWithSource`
+`CommanderRoot.setOptionValueWithSource`
 
 ***
 
@@ -2266,7 +2253,7 @@ Display the help or a custom message after an error occurs.
 
 ##### displayHelp?
 
-`string` | `boolean`
+`string` \| `boolean`
 
 #### 返回
 
@@ -2274,7 +2261,7 @@ Display the help or a custom message after an error occurs.
 
 #### 继承自
 
-`Command.showHelpAfterError`
+`CommanderRoot.showHelpAfterError`
 
 ***
 
@@ -2298,7 +2285,7 @@ Display suggestion of similar commands for unknown commands, or options for unkn
 
 #### 继承自
 
-`Command.showSuggestionAfterError`
+`CommanderRoot.showSuggestionAfterError`
 
 ***
 
@@ -2327,7 +2314,7 @@ or store separately (specify false). In both cases the option values can be acce
 
 ##### 继承自
 
-`Command.storeOptionsAsProperties`
+`CommanderRoot.storeOptionsAsProperties`
 
 #### 调用签名
 
@@ -2358,7 +2345,7 @@ or store separately (specify false). In both cases the option values can be acce
 
 ##### 继承自
 
-`Command.storeOptionsAsProperties`
+`CommanderRoot.storeOptionsAsProperties`
 
 #### 调用签名
 
@@ -2383,7 +2370,7 @@ or store separately (specify false). In both cases the option values can be acce
 
 ##### 继承自
 
-`Command.storeOptionsAsProperties`
+`CommanderRoot.storeOptionsAsProperties`
 
 ***
 
@@ -2411,7 +2398,7 @@ Set the summary. Used when listed as subcommand of parent.
 
 ##### 继承自
 
-`Command.summary`
+`CommanderRoot.summary`
 
 #### 调用签名
 
@@ -2427,7 +2414,7 @@ Get the summary.
 
 ##### 继承自
 
-`Command.summary`
+`CommanderRoot.summary`
 
 ***
 
@@ -2455,7 +2442,7 @@ Set the command usage.
 
 ##### 继承自
 
-`Command.usage`
+`CommanderRoot.usage`
 
 #### 调用签名
 
@@ -2471,7 +2458,7 @@ Get the command usage.
 
 ##### 继承自
 
-`Command.usage`
+`CommanderRoot.usage`
 
 ***
 
@@ -2510,11 +2497,11 @@ You can optionally supply the  flags and description to override the defaults.
 
 ##### 继承自
 
-`Command.version`
+`CommanderRoot.version`
 
 #### 调用签名
 
-> **version**(): `undefined` \| `string`
+> **version**(): `string` \| `undefined`
 
 定义于: node\_modules/.pnpm/commander@12.1.0/node\_modules/commander/typings/index.d.ts:319
 
@@ -2522,8 +2509,8 @@ Get the program version.
 
 ##### 返回
 
-`undefined` \| `string`
+`string` \| `undefined`
 
 ##### 继承自
 
-`Command.version`
+`CommanderRoot.version`

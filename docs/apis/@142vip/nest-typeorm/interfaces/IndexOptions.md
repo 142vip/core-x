@@ -1,0 +1,119 @@
+[API 参考](../../../index.md) / [@142vip/nest-typeorm](../index.md) / IndexOptions
+
+# 接口: IndexOptions
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/decorator/options/IndexOptions.d.ts:4
+
+Describes all index options.
+
+## 属性
+
+### background?
+
+> `optional` **background?**: `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/decorator/options/IndexOptions.d.ts:46
+
+Builds the index in the background so that building an index an does not block other database activities.
+This option is only supported for mongodb database.
+
+***
+
+### concurrent?
+
+> `optional` **concurrent?**: `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/decorator/options/IndexOptions.d.ts:51
+
+Create the index using the CONCURRENTLY modifier
+Works only in postgres.
+
+***
+
+### expireAfterSeconds?
+
+> `optional` **expireAfterSeconds?**: `number`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/decorator/options/IndexOptions.d.ts:56
+
+Specifies a time to live, in seconds.
+This option is only supported for mongodb database.
+
+***
+
+### fulltext?
+
+> `optional` **fulltext?**: `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/decorator/options/IndexOptions.d.ts:18
+
+The FULLTEXT modifier indexes the entire column and does not allow prefixing.
+Works only in MySQL.
+
+***
+
+### nullFiltered?
+
+> `optional` **nullFiltered?**: `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/decorator/options/IndexOptions.d.ts:26
+
+NULL_FILTERED indexes are particularly useful for indexing sparse columns, where most rows contain a NULL value.
+In these cases, the NULL_FILTERED index can be considerably smaller and more efficient to maintain than
+a normal index that includes NULL values.
+
+Works only in Spanner.
+
+***
+
+### parser?
+
+> `optional` **parser?**: `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/decorator/options/IndexOptions.d.ts:31
+
+Fulltext parser.
+Works only in MySQL.
+
+***
+
+### sparse?
+
+> `optional` **sparse?**: `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/decorator/options/IndexOptions.d.ts:41
+
+If true, the index only references documents with the specified field.
+These indexes use less space but behave differently in some situations (particularly sorts).
+This option is only supported for mongodb database.
+
+***
+
+### spatial?
+
+> `optional` **spatial?**: `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/decorator/options/IndexOptions.d.ts:13
+
+The SPATIAL modifier indexes the entire column and does not allow indexed columns to contain NULL values.
+Works only in MySQL and PostgreSQL.
+
+***
+
+### unique?
+
+> `optional` **unique?**: `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/decorator/options/IndexOptions.d.ts:8
+
+Indicates if this composite index must be unique or not.
+
+***
+
+### where?
+
+> `optional` **where?**: `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/decorator/options/IndexOptions.d.ts:35
+
+Index filter condition.

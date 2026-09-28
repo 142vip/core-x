@@ -2,9 +2,9 @@
 
 # 类: PaginationDto
 
-定义于: [dtos/pagination.dto.ts:8](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/nest/src/dtos/pagination.dto.ts#L8)
+定义于: [dtos/pagination.dto.ts:18](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/nest/src/dtos/pagination.dto.ts#L18)
 
-默认分页参数
+分页入参
 
 ## 构造函数
 
@@ -22,7 +22,7 @@
 
 > **pageNum**: `number`
 
-定义于: [dtos/pagination.dto.ts:16](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/nest/src/dtos/pagination.dto.ts#L16)
+定义于: [dtos/pagination.dto.ts:31](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/nest/src/dtos/pagination.dto.ts#L31)
 
 页号 默认1
 
@@ -32,6 +32,6 @@
 
 > **pageSize**: `number`
 
-定义于: [dtos/pagination.dto.ts:25](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/nest/src/dtos/pagination.dto.ts#L25)
+定义于: [dtos/pagination.dto.ts:45](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/nest/src/dtos/pagination.dto.ts#L45)
 
 单页大小，默认10

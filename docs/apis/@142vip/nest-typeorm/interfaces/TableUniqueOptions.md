@@ -1,0 +1,38 @@
+[API 参考](../../../index.md) / [@142vip/nest-typeorm](../index.md) / TableUniqueOptions
+
+# 接口: TableUniqueOptions
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/schema-builder/options/TableUniqueOptions.d.ts:4
+
+Database's table unique constraint options.
+
+## 属性
+
+### columnNames
+
+> **columnNames**: `string`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/schema-builder/options/TableUniqueOptions.d.ts:12
+
+Columns that contains this constraint.
+
+***
+
+### deferrable?
+
+> `optional` **deferrable?**: `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/schema-builder/options/TableUniqueOptions.d.ts:17
+
+Set this foreign key constraint as "DEFERRABLE" e.g. check constraints at start
+or at the end of a transaction
+
+***
+
+### name?
+
+> `optional` **name?**: `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/schema-builder/options/TableUniqueOptions.d.ts:8
+
+Constraint name.

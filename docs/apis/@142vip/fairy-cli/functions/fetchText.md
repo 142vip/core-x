@@ -1,0 +1,23 @@
+[API 参考](../../../index.md) / [@142vip/fairy-cli](../index.md) / fetchText
+
+# 函数: fetchText()
+
+> **fetchText**(`url`, `init?`): `Promise`\<`string`\>
+
+定义于: [packages/fairy-cli/src/utils/http.util.ts:46](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/fairy-cli/src/utils/http.util.ts#L46)
+
+请求并读取纯文本（同步日志等）
+
+## 参数
+
+### url
+
+`string`
+
+### init?
+
+`RequestInit`
+
+## 返回
+
+`Promise`\<`string`\>

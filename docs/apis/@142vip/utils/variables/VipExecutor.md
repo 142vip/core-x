@@ -4,13 +4,13 @@
 
 > `const` **VipExecutor**: `object`
 
-定义于: [packages/utils/src/core/exec.ts:221](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/utils/src/core/exec.ts#L221)
+定义于: [packages/utils/src/core/exec.ts:221](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/core/exec.ts#L221)
 
 执行器
 
 ## 类型声明
 
-### commandStandardExecutor()
+### commandStandardExecutor
 
 > **commandStandardExecutor**: (`cmd`) => `Promise`\<[`StandardExecutorResponse`](../interfaces/StandardExecutorResponse.md)\>
 
@@ -28,7 +28,7 @@
 
 `Promise`\<[`StandardExecutorResponse`](../interfaces/StandardExecutorResponse.md)\>
 
-### execCommand()
+### execCommand
 
 > **execCommand**: (`cmd`, `opts?`) => `Promise`\<[`CommandResponse`](../interfaces/CommandResponse.md)\>
 
@@ -48,7 +48,7 @@
 
 `Promise`\<[`CommandResponse`](../interfaces/CommandResponse.md)\>
 
-### execCommandSync()
+### execCommandSync
 
 > **execCommandSync**: (`cmd`, `cwd?`) => `string`
 
@@ -66,7 +66,7 @@
 
 `string`
 
-### execShell()
+### execShell
 
 > **execShell**: (`commands`) => `Promise`\<`void`\>
 
@@ -76,15 +76,15 @@
 
 ##### commands
 
-`string` | [`ShellCommand`](../interfaces/ShellCommand.md) | [`ShellCommand`](../interfaces/ShellCommand.md)[]
+`string` \| [`ShellCommand`](../interfaces/ShellCommand.md) \| [`ShellCommand`](../interfaces/ShellCommand.md)[]
 
 #### 返回
 
 `Promise`\<`void`\>
 
-### getCommandTrimResponse()
+### getCommandTrimResponse
 
-> **getCommandTrimResponse**: (`command`) => `Promise`\<`null` \| `string`\>
+> **getCommandTrimResponse**: (`command`) => `Promise`\<`string` \| `null`\>
 
 获取命令执行的trim操作后的结果
 
@@ -96,4 +96,4 @@
 
 #### 返回
 
-`Promise`\<`null` \| `string`\>
+`Promise`\<`string` \| `null`\>

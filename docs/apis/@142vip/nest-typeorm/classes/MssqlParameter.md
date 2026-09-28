@@ -1,0 +1,777 @@
+[API 参考](../../../index.md) / [@142vip/nest-typeorm](../index.md) / MssqlParameter
+
+# 类: MssqlParameter
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/sqlserver/MssqlParameter.d.ts:6
+
+Sql server driver requires parameter types to be specified fo input parameters used in the query.
+
+## 参阅
+
+https://github.com/patriksimek/node-mssql#data-types
+
+## 构造函数
+
+### 构造函数
+
+> **new MssqlParameter**(`value`, `type`): `MssqlParameter`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/sqlserver/MssqlParameter.d.ts:11
+
+#### 参数
+
+##### value
+
+`any`
+
+##### type
+
+`"bit"`
+
+#### 返回
+
+`MssqlParameter`
+
+### 构造函数
+
+> **new MssqlParameter**(`value`, `type`): `MssqlParameter`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/sqlserver/MssqlParameter.d.ts:12
+
+#### 参数
+
+##### value
+
+`any`
+
+##### type
+
+`"bigint"`
+
+#### 返回
+
+`MssqlParameter`
+
+### 构造函数
+
+> **new MssqlParameter**(`value`, `type`, `precision?`, `scale?`): `MssqlParameter`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/sqlserver/MssqlParameter.d.ts:13
+
+#### 参数
+
+##### value
+
+`any`
+
+##### type
+
+`"decimal"`
+
+##### precision?
+
+`number`
+
+##### scale?
+
+`number`
+
+#### 返回
+
+`MssqlParameter`
+
+### 构造函数
+
+> **new MssqlParameter**(`value`, `type`): `MssqlParameter`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/sqlserver/MssqlParameter.d.ts:14
+
+#### 参数
+
+##### value
+
+`any`
+
+##### type
+
+`"float"`
+
+#### 返回
+
+`MssqlParameter`
+
+### 构造函数
+
+> **new MssqlParameter**(`value`, `type`): `MssqlParameter`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/sqlserver/MssqlParameter.d.ts:15
+
+#### 参数
+
+##### value
+
+`any`
+
+##### type
+
+`"int"`
+
+#### 返回
+
+`MssqlParameter`
+
+### 构造函数
+
+> **new MssqlParameter**(`value`, `type`): `MssqlParameter`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/sqlserver/MssqlParameter.d.ts:16
+
+#### 参数
+
+##### value
+
+`any`
+
+##### type
+
+`"money"`
+
+#### 返回
+
+`MssqlParameter`
+
+### 构造函数
+
+> **new MssqlParameter**(`value`, `type`, `precision?`, `scale?`): `MssqlParameter`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/sqlserver/MssqlParameter.d.ts:17
+
+#### 参数
+
+##### value
+
+`any`
+
+##### type
+
+`"numeric"`
+
+##### precision?
+
+`number`
+
+##### scale?
+
+`number`
+
+#### 返回
+
+`MssqlParameter`
+
+### 构造函数
+
+> **new MssqlParameter**(`value`, `type`): `MssqlParameter`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/sqlserver/MssqlParameter.d.ts:18
+
+#### 参数
+
+##### value
+
+`any`
+
+##### type
+
+`"smallint"`
+
+#### 返回
+
+`MssqlParameter`
+
+### 构造函数
+
+> **new MssqlParameter**(`value`, `type`): `MssqlParameter`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/sqlserver/MssqlParameter.d.ts:19
+
+#### 参数
+
+##### value
+
+`any`
+
+##### type
+
+`"smallmoney"`
+
+#### 返回
+
+`MssqlParameter`
+
+### 构造函数
+
+> **new MssqlParameter**(`value`, `type`): `MssqlParameter`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/sqlserver/MssqlParameter.d.ts:20
+
+#### 参数
+
+##### value
+
+`any`
+
+##### type
+
+`"real"`
+
+#### 返回
+
+`MssqlParameter`
+
+### 构造函数
+
+> **new MssqlParameter**(`value`, `type`): `MssqlParameter`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/sqlserver/MssqlParameter.d.ts:21
+
+#### 参数
+
+##### value
+
+`any`
+
+##### type
+
+`"tinyint"`
+
+#### 返回
+
+`MssqlParameter`
+
+### 构造函数
+
+> **new MssqlParameter**(`value`, `type`, `length?`): `MssqlParameter`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/sqlserver/MssqlParameter.d.ts:22
+
+#### 参数
+
+##### value
+
+`any`
+
+##### type
+
+`"char"`
+
+##### length?
+
+`number`
+
+#### 返回
+
+`MssqlParameter`
+
+### 构造函数
+
+> **new MssqlParameter**(`value`, `type`, `length?`): `MssqlParameter`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/sqlserver/MssqlParameter.d.ts:23
+
+#### 参数
+
+##### value
+
+`any`
+
+##### type
+
+`"nchar"`
+
+##### length?
+
+`number`
+
+#### 返回
+
+`MssqlParameter`
+
+### 构造函数
+
+> **new MssqlParameter**(`value`, `type`): `MssqlParameter`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/sqlserver/MssqlParameter.d.ts:24
+
+#### 参数
+
+##### value
+
+`any`
+
+##### type
+
+`"text"`
+
+#### 返回
+
+`MssqlParameter`
+
+### 构造函数
+
+> **new MssqlParameter**(`value`, `type`): `MssqlParameter`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/sqlserver/MssqlParameter.d.ts:25
+
+#### 参数
+
+##### value
+
+`any`
+
+##### type
+
+`"ntext"`
+
+#### 返回
+
+`MssqlParameter`
+
+### 构造函数
+
+> **new MssqlParameter**(`value`, `type`, `length?`): `MssqlParameter`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/sqlserver/MssqlParameter.d.ts:26
+
+#### 参数
+
+##### value
+
+`any`
+
+##### type
+
+`"varchar"`
+
+##### length?
+
+`number`
+
+#### 返回
+
+`MssqlParameter`
+
+### 构造函数
+
+> **new MssqlParameter**(`value`, `type`, `length?`): `MssqlParameter`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/sqlserver/MssqlParameter.d.ts:27
+
+#### 参数
+
+##### value
+
+`any`
+
+##### type
+
+`"nvarchar"`
+
+##### length?
+
+`number`
+
+#### 返回
+
+`MssqlParameter`
+
+### 构造函数
+
+> **new MssqlParameter**(`value`, `type`): `MssqlParameter`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/sqlserver/MssqlParameter.d.ts:28
+
+#### 参数
+
+##### value
+
+`any`
+
+##### type
+
+`"xml"`
+
+#### 返回
+
+`MssqlParameter`
+
+### 构造函数
+
+> **new MssqlParameter**(`value`, `type`, `scale?`): `MssqlParameter`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/sqlserver/MssqlParameter.d.ts:29
+
+#### 参数
+
+##### value
+
+`any`
+
+##### type
+
+`"time"`
+
+##### scale?
+
+`number`
+
+#### 返回
+
+`MssqlParameter`
+
+### 构造函数
+
+> **new MssqlParameter**(`value`, `type`): `MssqlParameter`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/sqlserver/MssqlParameter.d.ts:30
+
+#### 参数
+
+##### value
+
+`any`
+
+##### type
+
+`"date"`
+
+#### 返回
+
+`MssqlParameter`
+
+### 构造函数
+
+> **new MssqlParameter**(`value`, `type`): `MssqlParameter`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/sqlserver/MssqlParameter.d.ts:31
+
+#### 参数
+
+##### value
+
+`any`
+
+##### type
+
+`"datetime"`
+
+#### 返回
+
+`MssqlParameter`
+
+### 构造函数
+
+> **new MssqlParameter**(`value`, `type`, `scale?`): `MssqlParameter`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/sqlserver/MssqlParameter.d.ts:32
+
+#### 参数
+
+##### value
+
+`any`
+
+##### type
+
+`"datetime2"`
+
+##### scale?
+
+`number`
+
+#### 返回
+
+`MssqlParameter`
+
+### 构造函数
+
+> **new MssqlParameter**(`value`, `type`, `scale?`): `MssqlParameter`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/sqlserver/MssqlParameter.d.ts:33
+
+#### 参数
+
+##### value
+
+`any`
+
+##### type
+
+`"datetimeoffset"`
+
+##### scale?
+
+`number`
+
+#### 返回
+
+`MssqlParameter`
+
+### 构造函数
+
+> **new MssqlParameter**(`value`, `type`): `MssqlParameter`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/sqlserver/MssqlParameter.d.ts:34
+
+#### 参数
+
+##### value
+
+`any`
+
+##### type
+
+`"smalldatetime"`
+
+#### 返回
+
+`MssqlParameter`
+
+### 构造函数
+
+> **new MssqlParameter**(`value`, `type`): `MssqlParameter`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/sqlserver/MssqlParameter.d.ts:35
+
+#### 参数
+
+##### value
+
+`any`
+
+##### type
+
+`"uniqueidentifier"`
+
+#### 返回
+
+`MssqlParameter`
+
+### 构造函数
+
+> **new MssqlParameter**(`value`, `type`): `MssqlParameter`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/sqlserver/MssqlParameter.d.ts:36
+
+#### 参数
+
+##### value
+
+`any`
+
+##### type
+
+`"variant"`
+
+#### 返回
+
+`MssqlParameter`
+
+### 构造函数
+
+> **new MssqlParameter**(`value`, `type`): `MssqlParameter`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/sqlserver/MssqlParameter.d.ts:37
+
+#### 参数
+
+##### value
+
+`any`
+
+##### type
+
+`"binary"`
+
+#### 返回
+
+`MssqlParameter`
+
+### 构造函数
+
+> **new MssqlParameter**(`value`, `type`, `length?`): `MssqlParameter`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/sqlserver/MssqlParameter.d.ts:38
+
+#### 参数
+
+##### value
+
+`any`
+
+##### type
+
+`"varbinary"`
+
+##### length?
+
+`number`
+
+#### 返回
+
+`MssqlParameter`
+
+### 构造函数
+
+> **new MssqlParameter**(`value`, `type`): `MssqlParameter`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/sqlserver/MssqlParameter.d.ts:39
+
+#### 参数
+
+##### value
+
+`any`
+
+##### type
+
+`"image"`
+
+#### 返回
+
+`MssqlParameter`
+
+### 构造函数
+
+> **new MssqlParameter**(`value`, `type`): `MssqlParameter`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/sqlserver/MssqlParameter.d.ts:40
+
+#### 参数
+
+##### value
+
+`any`
+
+##### type
+
+`"udt"`
+
+#### 返回
+
+`MssqlParameter`
+
+### 构造函数
+
+> **new MssqlParameter**(`value`, `type`): `MssqlParameter`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/sqlserver/MssqlParameter.d.ts:41
+
+#### 参数
+
+##### value
+
+`any`
+
+##### type
+
+`"geography"`
+
+#### 返回
+
+`MssqlParameter`
+
+### 构造函数
+
+> **new MssqlParameter**(`value`, `type`): `MssqlParameter`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/sqlserver/MssqlParameter.d.ts:42
+
+#### 参数
+
+##### value
+
+`any`
+
+##### type
+
+`"geometry"`
+
+#### 返回
+
+`MssqlParameter`
+
+### 构造函数
+
+> **new MssqlParameter**(`value`, `type`): `MssqlParameter`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/sqlserver/MssqlParameter.d.ts:43
+
+#### 参数
+
+##### value
+
+`any`
+
+##### type
+
+`"rowversion"`
+
+#### 返回
+
+`MssqlParameter`
+
+### 构造函数
+
+> **new MssqlParameter**(`value`, `type`, `length`): `MssqlParameter`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/sqlserver/MssqlParameter.d.ts:44
+
+#### 参数
+
+##### value
+
+`any`
+
+##### type
+
+`"vector"`
+
+##### length
+
+`number`
+
+#### 返回
+
+`MssqlParameter`
+
+## 属性
+
+### @instanceof
+
+> `readonly` **@instanceof**: `symbol`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/sqlserver/MssqlParameter.d.ts:9
+
+***
+
+### params
+
+> **params**: `any`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/sqlserver/MssqlParameter.d.ts:10
+
+***
+
+### type
+
+> **type**: `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/sqlserver/MssqlParameter.d.ts:8
+
+***
+
+### value
+
+> **value**: `any`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/sqlserver/MssqlParameter.d.ts:7

@@ -1,0 +1,7 @@
+[API 参考](../../../../../index.md) / [@142vip/nest-typeorm](../../../index.md) / [BSON](../index.md) / BSONType
+
+# 变量: BSONType
+
+> `const` **BSONType**: `Readonly`\<\{ `array`: `4`; `binData`: `5`; `bool`: `8`; `date`: `9`; `dbPointer`: `12`; `decimal`: `19`; `double`: `1`; `int`: `16`; `javascript`: `13`; `javascriptWithScope`: `15`; `long`: `18`; `maxKey`: `127`; `minKey`: `-1`; `null`: `10`; `object`: `3`; `objectId`: `7`; `regex`: `11`; `string`: `2`; `symbol`: `14`; `timestamp`: `17`; `undefined`: `6`; \}\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/bson.typings.d.ts:181

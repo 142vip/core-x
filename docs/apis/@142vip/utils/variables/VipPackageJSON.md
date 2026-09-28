@@ -4,15 +4,15 @@
 
 > `const` **VipPackageJSON**: `object`
 
-定义于: [packages/utils/src/core/package-json.ts:214](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/utils/src/core/package-json.ts#L214)
+定义于: [packages/utils/src/core/package-json.ts:260](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/core/package-json.ts#L260)
 
 package.json处理
 
 ## 类型声明
 
-### getCurrentVersion()
+### getCurrentVersion
 
-> **getCurrentVersion**: (`cwd?`) => `null` \| `string`
+> **getCurrentVersion**: (`cwd?`) => `string` \| `null`
 
 读取package.json文件，获取version字段
 
@@ -24,9 +24,9 @@ package.json处理
 
 #### 返回
 
-`null` \| `string`
+`string` \| `null`
 
-### getPackageJSON()
+### getPackageJSON
 
 > **getPackageJSON**: \<`T`\>(`cwd?`) => `T` & [`PackageJSONMainFest`](../interfaces/PackageJSONMainFest.md)
 
@@ -48,11 +48,12 @@ package.json处理
 
 `T` & [`PackageJSONMainFest`](../interfaces/PackageJSONMainFest.md)
 
-### getPackagePath()
+### getPackagePath
 
 > **getPackagePath**: (`cwd?`) => `string`
 
-获取package.json的路径
+获取 package.json 路径。
+- 找不到文件时直接退出，保持现有行为不变。
 
 #### 参数
 
@@ -64,7 +65,7 @@ package.json处理
 
 `string`
 
-### getPkgGreenLabel()
+### getPkgGreenLabel
 
 > **getPkgGreenLabel**: (`pkgName`) => `string`
 
@@ -78,7 +79,7 @@ package.json处理
 
 `string`
 
-### getPkgRedLabel()
+### getPkgRedLabel
 
 > **getPkgRedLabel**: (`pkgName`) => `string`
 
@@ -92,9 +93,25 @@ package.json处理
 
 `string`
 
-### getReleaseVersion()
+### getPort
 
-> **getReleaseVersion**: (`currentVersion`, `releaseType`) => `null` \| `string`
+> **getPort**: (`cwd?`) => `number`
+
+获取port字段，默认3000
+
+#### 参数
+
+##### cwd?
+
+`string`
+
+#### 返回
+
+`number`
+
+### getReleaseVersion
+
+> **getReleaseVersion**: (`currentVersion`, `releaseType`) => `string` \| `null`
 
 基于当前版本，生成新的version
 
@@ -110,11 +127,11 @@ package.json处理
 
 #### 返回
 
-`null` \| `string`
+`string` \| `null`
 
-### getVersionGitTag()
+### getVersionGitTag
 
-> **getVersionGitTag**: () => `null` \| `string`
+> **getVersionGitTag**: () => `string` \| `null`
 
 获取仓库Version对应的tag
 - 优先从package.json中获取version
@@ -122,9 +139,9 @@ package.json处理
 
 #### 返回
 
-`null` \| `string`
+`string` \| `null`
 
-### hasScript()
+### hasScript
 
 > **hasScript**: (`packageJSON`, `script`) => `boolean`
 
@@ -144,7 +161,7 @@ package.json处理
 
 `boolean`
 
-### isExistPackageJSON()
+### isExistPackageJSON
 
 > **isExistPackageJSON**: (`cwd?`) => `boolean`
 
@@ -160,7 +177,7 @@ package.json处理
 
 `boolean`
 
-### isExistPackageLock()
+### isExistPackageLock
 
 > **isExistPackageLock**: (`cwd?`) => `boolean`
 
@@ -176,7 +193,7 @@ package.json处理
 
 `boolean`
 
-### isExistPnpmLock()
+### isExistPnpmLock
 
 > **isExistPnpmLock**: (`cwd?`) => `boolean`
 
@@ -192,7 +209,7 @@ package.json处理
 
 `boolean`
 
-### isPackageJSON()
+### isPackageJSON
 
 > **isPackageJSON**: (`packageJSON`) => `boolean`
 
@@ -209,7 +226,7 @@ package.json处理
 
 `boolean`
 
-### promptReleaseVersion()
+### promptReleaseVersion
 
 > **promptReleaseVersion**: (`currentVersion`, `preid?`) => `Promise`\<`string`\>
 
@@ -229,7 +246,7 @@ package.json处理
 
 `Promise`\<`string`\>
 
-### replaceOrAddToJSON()
+### replaceOrAddToJSON
 
 > **replaceOrAddToJSON**: (`json`, `cwd?`) => `void`
 
@@ -251,7 +268,7 @@ package.json处理
 
 `void`
 
-### runScript()
+### runScript
 
 > **runScript**: (`scriptName`, `cwd?`) => `Promise`\<`void`\>
 
@@ -271,7 +288,7 @@ package.json处理
 
 `Promise`\<`void`\>
 
-### updateVersion()
+### updateVersion
 
 > **updateVersion**: (`newVersion`, `cwd?`) => `void`
 

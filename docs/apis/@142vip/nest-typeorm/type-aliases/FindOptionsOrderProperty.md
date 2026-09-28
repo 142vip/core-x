@@ -1,0 +1,15 @@
+[API 参考](../../../index.md) / [@142vip/nest-typeorm](../index.md) / FindOptionsOrderProperty
+
+# 类型别名: FindOptionsOrderProperty\<Property\>
+
+> **FindOptionsOrderProperty**\<`Property`\> = `Property` *extends* `Promise`\<infer I\> ? `FindOptionsOrderProperty`\<`NonNullable`\<`I`\>\> : `Property` *extends* infer I[] ? `FindOptionsOrderProperty`\<`NonNullable`\<`I`\>\> : `Property` *extends* `Function` ? `never` : `Property` *extends* `string` ? [`FindOptionsOrderValue`](FindOptionsOrderValue.md) : `Property` *extends* `number` ? [`FindOptionsOrderValue`](FindOptionsOrderValue.md) : `Property` *extends* `boolean` ? [`FindOptionsOrderValue`](FindOptionsOrderValue.md) : `Property` *extends* `Buffer` ? [`FindOptionsOrderValue`](FindOptionsOrderValue.md) : `Property` *extends* `Date` ? [`FindOptionsOrderValue`](FindOptionsOrderValue.md) : `Property` *extends* [`ObjectId`](../namespaces/BSON/classes/ObjectId.md) ? [`FindOptionsOrderValue`](FindOptionsOrderValue.md) : `Property` *extends* `object` ? ... \| ... : [`FindOptionsOrderValue`](FindOptionsOrderValue.md)
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/find-options/FindOptionsOrder.d.ts:5
+
+A single property handler for FindOptionsOrder.
+
+## 类型参数
+
+### Property
+
+`Property`

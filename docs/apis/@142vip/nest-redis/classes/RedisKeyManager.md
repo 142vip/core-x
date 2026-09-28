@@ -2,7 +2,7 @@
 
 # 类: RedisKeyManager\<T\>
 
-定义于: [redis-key.manager.ts:4](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/nest-redis/src/redis-key.manager.ts#L4)
+定义于: [redis-key.manager.ts:4](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/nest-redis/src/redis-key.manager.ts#L4)
 
 redis key管理器
 
@@ -18,7 +18,7 @@ redis key管理器
 
 > **new RedisKeyManager**\<`T`\>(`clientKey`): `RedisKeyManager`\<`T`\>
 
-定义于: [redis-key.manager.ts:5](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/nest-redis/src/redis-key.manager.ts#L5)
+定义于: [redis-key.manager.ts:5](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/nest-redis/src/redis-key.manager.ts#L5)
 
 #### 参数
 
@@ -36,7 +36,7 @@ redis key管理器
 
 > **generateKey**(`key`): `string`
 
-定义于: [redis-key.manager.ts:12](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/nest-redis/src/redis-key.manager.ts#L12)
+定义于: [redis-key.manager.ts:12](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/nest-redis/src/redis-key.manager.ts#L12)
 
 创建缓存key
 

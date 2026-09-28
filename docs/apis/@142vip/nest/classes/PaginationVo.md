@@ -2,9 +2,9 @@
 
 # 类: PaginationVo\<T\>
 
-定义于: [dtos/pagination.vo.ts:8](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/nest/src/dtos/pagination.vo.ts#L8)
+定义于: [dtos/pagination.vo.ts:9](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/nest/src/dtos/pagination.vo.ts#L9)
 
-分页
+分页出参
 
 ## theme_extends
 
@@ -22,7 +22,7 @@
 
 > **new PaginationVo**\<`T`\>(`obj`): `PaginationVo`\<`T`\>
 
-定义于: [dtos/base.vo.ts:2](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/nest/src/dtos/base.vo.ts#L2)
+定义于: [dtos/base.vo.ts:2](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/nest/src/dtos/base.vo.ts#L2)
 
 #### 参数
 
@@ -40,13 +40,19 @@
 
 ## 属性
 
-### data
+### pageCount
 
-> **data**: `T`[]
+> **pageCount**: `number`
 
-定义于: [dtos/pagination.vo.ts:19](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/nest/src/dtos/pagination.vo.ts#L19)
+定义于: [dtos/pagination.vo.ts:55](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/nest/src/dtos/pagination.vo.ts#L55)
 
-分页数据
+总页数
+
+#### 示例
+
+```ts
+100
+```
 
 ***
 
@@ -54,9 +60,15 @@
 
 > **pageNum**: `number`
 
-定义于: [dtos/pagination.vo.ts:25](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/nest/src/dtos/pagination.vo.ts#L25)
+定义于: [dtos/pagination.vo.ts:31](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/nest/src/dtos/pagination.vo.ts#L31)
 
-页码
+当前页码
+
+#### 示例
+
+```ts
+1
+```
 
 ***
 
@@ -64,9 +76,25 @@
 
 > **pageSize**: `number`
 
-定义于: [dtos/pagination.vo.ts:31](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/nest/src/dtos/pagination.vo.ts#L31)
+定义于: [dtos/pagination.vo.ts:43](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/nest/src/dtos/pagination.vo.ts#L43)
 
 每页数量
+
+#### 示例
+
+```ts
+10
+```
+
+***
+
+### records
+
+> **records**: `T`[]
+
+定义于: [dtos/pagination.vo.ts:19](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/nest/src/dtos/pagination.vo.ts#L19)
+
+分页数据
 
 ***
 
@@ -74,6 +102,42 @@
 
 > **total**: `number`
 
-定义于: [dtos/pagination.vo.ts:13](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/nest/src/dtos/pagination.vo.ts#L13)
+定义于: [dtos/pagination.vo.ts:67](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/nest/src/dtos/pagination.vo.ts#L67)
 
-总数
+数据总数
+
+#### 示例
+
+```ts
+1000
+```
+
+## 方法
+
+### format()
+
+> `static` **format**\<`T`\>(`ItemVoCla`, `params`): `PaginationVo`\<`T`\>
+
+定义于: [dtos/pagination.vo.ts:72](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/nest/src/dtos/pagination.vo.ts#L72)
+
+格式化分页数据
+
+#### 类型参数
+
+##### T
+
+`T`
+
+#### 参数
+
+##### ItemVoCla
+
+`ClassConstructor`\<`T`\>
+
+##### params
+
+`PaginationVo`\<`T`\>
+
+#### 返回
+
+`PaginationVo`\<`T`\>

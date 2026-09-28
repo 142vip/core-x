@@ -4,15 +4,15 @@
 
 > `const` **VipSemver**: `object`
 
-定义于: [packages/utils/src/pkgs/semver.ts:101](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/utils/src/pkgs/semver.ts#L101)
+定义于: [packages/utils/src/pkgs/semver.ts:101](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/semver.ts#L101)
 
 参考：https://www.npmjs.com/package/semver
 
 ## 类型声明
 
-### clean()
+### clean
 
-> **clean**: (`version`, `optionsOrLoose?`) => `null` \| `string`
+> **clean**: (`version`, `optionsOrLoose?`) => `string` \| `null`
 
 Returns cleaned (removed leading/trailing whitespace, remove '=v' prefix) and parsed version, or null if version is invalid.
 
@@ -24,13 +24,13 @@ Returns cleaned (removed leading/trailing whitespace, remove '=v' prefix) and pa
 
 ##### optionsOrLoose?
 
-`boolean` | `Options`
+`boolean` \| `Options`
 
 #### 返回
 
-`null` \| `string`
+`string` \| `null`
 
-### compare()
+### compare
 
 > **compare**: (`v1`, `v2`, `optionsOrLoose?`) => `-1` \| `0` \| `1`
 
@@ -42,15 +42,15 @@ Sorts in ascending order when passed to `Array.sort()`.
 
 ##### v1
 
-`string` | `SemVer`
+`string` \| `SemVer`
 
 ##### v2
 
-`string` | `SemVer`
+`string` \| `SemVer`
 
 ##### optionsOrLoose?
 
-`boolean` | `Options`
+`boolean` \| `Options`
 
 #### 返回
 
@@ -60,7 +60,7 @@ Sorts in ascending order when passed to `Array.sort()`.
 - `1` if `v1` is greater
 - `-1` if `v2` is greater.
 
-### createSemver()
+### createSemver
 
 > **createSemver**: (`version`, `optionsOrLoose?`) => `SemVer`
 
@@ -70,17 +70,17 @@ Sorts in ascending order when passed to `Array.sort()`.
 
 ##### version
 
-`string` | `SemVer`
+`string` \| `SemVer`
 
 ##### optionsOrLoose?
 
-`boolean` | `RangeOptions`
+`boolean` \| `RangeOptions`
 
 #### 返回
 
 `SemVer`
 
-### eq()
+### eq
 
 > **eq**: (`v1`, `v2`, `optionsOrLoose?`) => `boolean`
 
@@ -90,23 +90,23 @@ v1 == v2 This is true if they're logically equivalent, even if they're not the e
 
 ##### v1
 
-`string` | `SemVer`
+`string` \| `SemVer`
 
 ##### v2
 
-`string` | `SemVer`
+`string` \| `SemVer`
 
 ##### optionsOrLoose?
 
-`boolean` | `Options`
+`boolean` \| `Options`
 
 #### 返回
 
 `boolean`
 
-### getNextVersions()
+### getNextVersions
 
-> **getNextVersions**: (`currentVersion`, `preid?`) => `null` \| [`NextVersion`](../interfaces/NextVersion.md)
+> **getNextVersions**: (`currentVersion`, `preid?`) => [`NextVersion`](../interfaces/NextVersion.md) \| `null`
 
 获取下一个版本
 
@@ -122,39 +122,39 @@ v1 == v2 This is true if they're logically equivalent, even if they're not the e
 
 #### 返回
 
-`null` \| [`NextVersion`](../interfaces/NextVersion.md)
+[`NextVersion`](../interfaces/NextVersion.md) \| `null`
 
-### gt()
+### gt
 
 > **gt**: (`v1`, `v2`, `optionsOrLoose?`) => `boolean`
 
-v1 > v2
+v1 \> v2
 
 #### 参数
 
 ##### v1
 
-`string` | `SemVer`
+`string` \| `SemVer`
 
 ##### v2
 
-`string` | `SemVer`
+`string` \| `SemVer`
 
 ##### optionsOrLoose?
 
-`boolean` | `Options`
+`boolean` \| `Options`
 
 #### 返回
 
 `boolean`
 
-### inc()
+### inc
 
-> **inc**: \{(`version`, `release`, `optionsOrLoose?`, `identifier?`): `null` \| `string`; (`version`, `release`, `identifier?`, `identifierBase?`): `null` \| `string`; \}
+> **inc**: \{(`version`, `release`, `optionsOrLoose?`, `identifier?`): `string` \| `null`; (`version`, `release`, `identifier?`, `identifierBase?`): `string` \| `null`; \}
 
 #### 调用签名
 
-> (`version`, `release`, `optionsOrLoose?`, `identifier?`): `null` \| `string`
+> (`version`, `release`, `optionsOrLoose?`, `identifier?`): `string` \| `null`
 
 Return the version incremented by the release type (major, premajor, minor, preminor, patch, prepatch, or prerelease), or null if it's not valid.
 
@@ -162,7 +162,7 @@ Return the version incremented by the release type (major, premajor, minor, prem
 
 ###### version
 
-`string` | `SemVer`
+`string` \| `SemVer`
 
 ###### release
 
@@ -170,7 +170,7 @@ Return the version incremented by the release type (major, premajor, minor, prem
 
 ###### optionsOrLoose?
 
-`boolean` | `Options`
+`boolean` \| `Options`
 
 ###### identifier?
 
@@ -178,11 +178,11 @@ Return the version incremented by the release type (major, premajor, minor, prem
 
 ##### 返回
 
-`null` \| `string`
+`string` \| `null`
 
 #### 调用签名
 
-> (`version`, `release`, `identifier?`, `identifierBase?`): `null` \| `string`
+> (`version`, `release`, `identifier?`, `identifierBase?`): `string` \| `null`
 
 Return the version incremented by the release type (major, premajor, minor, preminor, patch, prepatch, or prerelease), or null if it's not valid.
 
@@ -190,7 +190,7 @@ Return the version incremented by the release type (major, premajor, minor, prem
 
 ###### version
 
-`string` | `SemVer`
+`string` \| `SemVer`
 
 ###### release
 
@@ -202,13 +202,13 @@ Return the version incremented by the release type (major, premajor, minor, prem
 
 ###### identifierBase?
 
-`false` | `IdentifierBase`
+`false` \| `IdentifierBase`
 
 ##### 返回
 
-`null` \| `string`
+`string` \| `null`
 
-### isPrereleaseType()
+### isPrereleaseType
 
 > **isPrereleaseType**: (`value`) => `boolean`
 
@@ -224,7 +224,7 @@ Determines whether the specified value is a pre-release.
 
 `boolean`
 
-### isReleaseType()
+### isReleaseType
 
 > **isReleaseType**: (`value`) => `boolean`
 
@@ -240,25 +240,25 @@ Determines whether the specified value is a valid ReleaseType string.
 
 `boolean`
 
-### lt()
+### lt
 
 > **lt**: (`v1`, `v2`, `optionsOrLoose?`) => `boolean`
 
-v1 < v2
+v1 \< v2
 
 #### 参数
 
 ##### v1
 
-`string` | `SemVer`
+`string` \| `SemVer`
 
 ##### v2
 
-`string` | `SemVer`
+`string` \| `SemVer`
 
 ##### optionsOrLoose?
 
-`boolean` | `Options`
+`boolean` \| `Options`
 
 #### 返回
 
@@ -268,9 +268,9 @@ v1 < v2
 
 > **originImportSemVer**: `__module`
 
-### parse()
+### parse
 
-> **parse**: (`version`, `optionsOrLoose?`) => `null` \| `SemVer`
+> **parse**: (`version`, `optionsOrLoose?`) => `SemVer` \| `null`
 
 Return the parsed version as a SemVer object, or null if it's not valid.
 
@@ -278,19 +278,19 @@ Return the parsed version as a SemVer object, or null if it's not valid.
 
 ##### version
 
-`undefined` | `null` | `string` | `SemVer`
+`string` \| `SemVer` \| `null` \| `undefined`
 
 ##### optionsOrLoose?
 
-`boolean` | `Options`
+`boolean` \| `Options`
 
 #### 返回
 
-`null` \| `SemVer`
+`SemVer` \| `null`
 
-### prerelease()
+### prerelease
 
-> **prerelease**: (`version`, `optionsOrLoose?`) => `null` \| readonly (`string` \| `number`)[]
+> **prerelease**: (`version`, `optionsOrLoose?`) => readonly (`string` \| `number`)[] \| `null`
 
 Returns an array of prerelease components, or null if none exist.
 
@@ -298,17 +298,17 @@ Returns an array of prerelease components, or null if none exist.
 
 ##### version
 
-`string` | `SemVer`
+`string` \| `SemVer`
 
 ##### optionsOrLoose?
 
-`boolean` | `Options`
+`boolean` \| `Options`
 
 #### 返回
 
-`null` \| readonly (`string` \| `number`)[]
+readonly (`string` \| `number`)[] \| `null`
 
-### satisfies()
+### satisfies
 
 > **satisfies**: (`version`, `range`, `optionsOrLoose?`) => `boolean`
 
@@ -318,23 +318,23 @@ Return true if the version satisfies the range.
 
 ##### version
 
-`string` | `SemVer`
+`string` \| `SemVer`
 
 ##### range
 
-`string` | `Range`
+`string` \| `Range`
 
 ##### optionsOrLoose?
 
-`boolean` | `RangeOptions`
+`boolean` \| `RangeOptions`
 
 #### 返回
 
 `boolean`
 
-### valid()
+### valid
 
-> **valid**: (`version`, `optionsOrLoose?`) => `null` \| `string`
+> **valid**: (`version`, `optionsOrLoose?`) => `string` \| `null`
 
 Return the parsed version as a string, or null if it's not valid.
 
@@ -342,12 +342,12 @@ Return the parsed version as a string, or null if it's not valid.
 
 ##### version
 
-`undefined` | `null` | `string` | `SemVer`
+`string` \| `SemVer` \| `null` \| `undefined`
 
 ##### optionsOrLoose?
 
-`boolean` | `Options`
+`boolean` \| `Options`
 
 #### 返回
 
-`null` \| `string`
+`string` \| `null`

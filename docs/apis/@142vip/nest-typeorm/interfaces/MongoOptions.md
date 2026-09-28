@@ -1,0 +1,995 @@
+[API 参考](../../../index.md) / [@142vip/nest-typeorm](../index.md) / MongoOptions
+
+# 接口: MongoOptions
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:4057
+
+Mongo Client Options
+
+## theme_extends
+
+- `Required`\<`Pick`\<[`MongoClientOptions`](MongoClientOptions.md), `"autoEncryption"` \| `"connectTimeoutMS"` \| `"directConnection"` \| `"driverInfo"` \| `"forceServerObjectId"` \| `"minHeartbeatFrequencyMS"` \| `"heartbeatFrequencyMS"` \| `"keepAlive"` \| `"keepAliveInitialDelay"` \| `"localThresholdMS"` \| `"maxConnecting"` \| `"maxIdleTimeMS"` \| `"maxPoolSize"` \| `"minPoolSize"` \| `"monitorCommands"` \| `"noDelay"` \| `"pkFactory"` \| `"raw"` \| `"replicaSet"` \| `"retryReads"` \| `"retryWrites"` \| `"serverSelectionTimeoutMS"` \| `"socketTimeoutMS"` \| `"srvMaxHosts"` \| `"srvServiceName"` \| `"tlsAllowInvalidCertificates"` \| `"tlsAllowInvalidHostnames"` \| `"tlsInsecure"` \| `"waitQueueTimeoutMS"` \| `"zlibCompressionLevel"`\>\>.[`SupportedNodeConnectionOptions`](../type-aliases/SupportedNodeConnectionOptions.md)
+
+## 属性
+
+### ALPNProtocols?
+
+> `optional` **ALPNProtocols?**: `string`[] \| `Uint8Array`\<`ArrayBufferLike`\> \| `Uint8Array`\<`ArrayBufferLike`\>[]
+
+定义于: node\_modules/.pnpm/@types+node@22.10.7/node\_modules/@types/node/tls.d.ts:526
+
+An array of strings or a Buffer naming possible ALPN protocols.
+(Protocols should be ordered by their priority.)
+
+#### 继承自
+
+`SupportedNodeConnectionOptions.ALPNProtocols`
+
+***
+
+### appName?
+
+> `optional` **appName?**: `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:4058
+
+***
+
+### autoEncrypter?
+
+> `optional` **autoEncrypter?**: [`AutoEncrypter`](../classes/AutoEncrypter.md)
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:4070
+
+***
+
+### autoEncryption
+
+> **autoEncryption**: [`AutoEncryptionOptions`](AutoEncryptionOptions.md)
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:3778
+
+Optionally enable in-use auto encryption
+
+#### 备注
+
+Automatic encryption is an enterprise only feature that only applies to operations on a collection. Automatic encryption is not supported for operations on a database or view, and operations that are not bypassed will result in error
+ (see [libmongocrypt: Auto Encryption Allow-List](https://github.com/mongodb/specifications/blob/master/source/client-side-encryption/client-side-encryption.rst#libmongocrypt-auto-encryption-allow-list)). To bypass automatic encryption for all operations, set bypassAutoEncryption=true in AutoEncryptionOpts.
+
+ Automatic encryption requires the authenticated user to have the [listCollections privilege action](https://www.mongodb.com/docs/manual/reference/command/listCollections/#dbcmd.listCollections).
+
+ If a MongoClient with a limited connection pool size (i.e a non-zero maxPoolSize) is configured with AutoEncryptionOptions, a separate internal MongoClient is created if any of the following are true:
+ - AutoEncryptionOptions.keyVaultClient is not passed.
+ - AutoEncryptionOptions.bypassAutomaticEncryption is false.
+
+If an internal MongoClient is created, it is configured with the same options as the parent MongoClient except minPoolSize is set to 0 and AutoEncryptionOptions is omitted.
+
+#### 继承自
+
+[`MongoClientOptions`](MongoClientOptions.md).[`autoEncryption`](MongoClientOptions.md#autoencryption)
+
+***
+
+### ca?
+
+> `optional` **ca?**: `string` \| `Buffer`\<`ArrayBufferLike`\> \| (`string` \| `Buffer`\<`ArrayBufferLike`\>)[]
+
+定义于: node\_modules/.pnpm/@types+node@22.10.7/node\_modules/@types/node/tls.d.ts:823
+
+Optionally override the trusted CA certificates. Default is to trust
+the well-known CAs curated by Mozilla. Mozilla's CAs are completely
+replaced when CAs are explicitly specified using this option.
+
+#### 继承自
+
+`SupportedNodeConnectionOptions.ca`
+
+***
+
+### cert?
+
+> `optional` **cert?**: `string` \| `Buffer`\<`ArrayBufferLike`\> \| (`string` \| `Buffer`\<`ArrayBufferLike`\>)[]
+
+定义于: node\_modules/.pnpm/@types+node@22.10.7/node\_modules/@types/node/tls.d.ts:835
+
+Cert chains in PEM format. One cert chain should be provided per
+ private key. Each cert chain should consist of the PEM formatted
+ certificate for a provided private key, followed by the PEM
+ formatted intermediate certificates (if any), in order, and not
+ including the root CA (the root CA must be pre-known to the peer,
+ see ca). When providing multiple cert chains, they do not have to
+ be in the same order as their private keys in key. If the
+ intermediate certificates are not provided, the peer will not be
+ able to validate the certificate, and the handshake will fail.
+
+#### 继承自
+
+`SupportedNodeConnectionOptions.cert`
+
+***
+
+### checkServerIdentity?
+
+> `optional` **checkServerIdentity?**: (`hostname`, `cert`) => `Error` \| `undefined`
+
+定义于: node\_modules/.pnpm/@types+node@22.10.7/node\_modules/@types/node/tls.d.ts:599
+
+Verifies the certificate `cert` is issued to `hostname`.
+
+Returns [Error](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error) object, populating it with `reason`, `host`, and `cert` on
+failure. On success, returns [undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Undefined_type).
+
+This function is intended to be used in combination with the`checkServerIdentity` option that can be passed to connect and as
+such operates on a `certificate object`. For other purposes, consider using `x509.checkHost()` instead.
+
+This function can be overwritten by providing an alternative function as the `options.checkServerIdentity` option that is passed to `tls.connect()`. The
+overwriting function can call `tls.checkServerIdentity()` of course, to augment
+the checks done with additional verification.
+
+This function is only called if the certificate passed all other checks, such as
+being issued by trusted CA (`options.ca`).
+
+Earlier versions of Node.js incorrectly accepted certificates for a given`hostname` if a matching `uniformResourceIdentifier` subject alternative name
+was present (see [CVE-2021-44531](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-44531)). Applications that wish to accept`uniformResourceIdentifier` subject alternative names can use
+a custom `options.checkServerIdentity` function that implements the desired behavior.
+
+#### 参数
+
+##### hostname
+
+`string`
+
+The host name or IP address to verify the certificate against.
+
+##### cert
+
+`PeerCertificate`
+
+A `certificate object` representing the peer's certificate.
+
+#### 返回
+
+`Error` \| `undefined`
+
+#### 添加于
+
+v0.8.4
+
+#### 继承自
+
+`SupportedNodeConnectionOptions.checkServerIdentity`
+
+***
+
+### ciphers?
+
+> `optional` **ciphers?**: `string`
+
+定义于: node\_modules/.pnpm/@types+node@22.10.7/node\_modules/@types/node/tls.d.ts:849
+
+Cipher suite specification, replacing the default. For more
+information, see modifying the default cipher suite. Permitted
+ciphers can be obtained via tls.getCiphers(). Cipher names must be
+uppercased in order for OpenSSL to accept them.
+
+#### 继承自
+
+`SupportedNodeConnectionOptions.ciphers`
+
+***
+
+### compressors
+
+> **compressors**: (`"none"` \| `"snappy"` \| `"zlib"` \| `"zstd"`)[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:4066
+
+***
+
+### connectTimeoutMS
+
+> **connectTimeoutMS**: `number`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:3652
+
+The time in milliseconds to attempt a connection before timing out.
+
+#### 继承自
+
+[`MongoClientOptions`](MongoClientOptions.md).[`connectTimeoutMS`](MongoClientOptions.md#connecttimeoutms)
+
+***
+
+### credentials?
+
+> `optional` **credentials?**: [`MongoCredentials`](../classes/MongoCredentials.md)
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:4061
+
+***
+
+### crl?
+
+> `optional` **crl?**: `string` \| `Buffer`\<`ArrayBufferLike`\> \| (`string` \| `Buffer`\<`ArrayBufferLike`\>)[]
+
+定义于: node\_modules/.pnpm/@types+node@22.10.7/node\_modules/@types/node/tls.d.ts:858
+
+PEM formatted CRLs (Certificate Revocation Lists).
+
+#### 继承自
+
+`SupportedNodeConnectionOptions.crl`
+
+***
+
+### dbName
+
+> **dbName**: `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:4068
+
+***
+
+### directConnection
+
+> **directConnection**: `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:3712
+
+Allow a driver to force a Single topology type with a connection string containing one host
+
+#### 继承自
+
+[`MongoClientOptions`](MongoClientOptions.md).[`directConnection`](MongoClientOptions.md#directconnection)
+
+***
+
+### driverInfo
+
+> **driverInfo**: [`DriverInfo`](DriverInfo.md)
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:3780
+
+Allows a wrapping driver to amend the client metadata generated by the driver to include information about the wrapping driver
+
+#### 继承自
+
+[`MongoClientOptions`](MongoClientOptions.md).[`driverInfo`](MongoClientOptions.md#driverinfo)
+
+***
+
+### ecdhCurve?
+
+> `optional` **ecdhCurve?**: `string`
+
+定义于: node\_modules/.pnpm/@types+node@22.10.7/node\_modules/@types/node/tls.d.ts:874
+
+A string describing a named curve or a colon separated list of curve
+NIDs or names, for example P-521:P-384:P-256, to use for ECDH key
+agreement. Set to auto to select the curve automatically. Use
+crypto.getCurves() to obtain a list of available curve names. On
+recent releases, openssl ecparam -list_curves will also display the
+name and description of each available elliptic curve. Default:
+tls.DEFAULT_ECDH_CURVE.
+
+#### 继承自
+
+`SupportedNodeConnectionOptions.ecdhCurve`
+
+***
+
+### family?
+
+> `optional` **family?**: `number`
+
+定义于: node\_modules/.pnpm/@types+node@22.10.7/node\_modules/@types/node/net.d.ts:55
+
+#### 继承自
+
+`SupportedNodeConnectionOptions.family`
+
+***
+
+### forceServerObjectId
+
+> **forceServerObjectId**: `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:3756
+
+Force server to assign `_id` values instead of driver
+
+#### 继承自
+
+[`MongoClientOptions`](MongoClientOptions.md).[`forceServerObjectId`](MongoClientOptions.md#forceserverobjectid)
+
+***
+
+### heartbeatFrequencyMS
+
+> **heartbeatFrequencyMS**: `number`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:3702
+
+heartbeatFrequencyMS controls when the driver checks the state of the MongoDB deployment. Specify the interval (in milliseconds) between checks, counted from the end of the previous check until the beginning of the next one.
+
+#### 继承自
+
+[`MongoClientOptions`](MongoClientOptions.md).[`heartbeatFrequencyMS`](MongoClientOptions.md#heartbeatfrequencyms)
+
+***
+
+### hints?
+
+> `optional` **hints?**: `number`
+
+定义于: node\_modules/.pnpm/@types+node@22.10.7/node\_modules/@types/node/net.d.ts:54
+
+#### 继承自
+
+`SupportedNodeConnectionOptions.hints`
+
+***
+
+### hosts
+
+> **hosts**: [`HostAddress`](../classes/HostAddress.md)[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:4059
+
+***
+
+### keepAlive
+
+> **keepAlive**: `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:3752
+
+TCP Connection keep alive enabled
+
+#### 继承自
+
+[`MongoClientOptions`](MongoClientOptions.md).[`keepAlive`](MongoClientOptions.md#keepalive)
+
+***
+
+### keepAliveInitialDelay
+
+> **keepAliveInitialDelay**: `number`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:3754
+
+The number of milliseconds to wait before initiating keepAlive on the TCP socket
+
+#### 继承自
+
+[`MongoClientOptions`](MongoClientOptions.md).[`keepAliveInitialDelay`](MongoClientOptions.md#keepaliveinitialdelay)
+
+***
+
+### key?
+
+> `optional` **key?**: `string` \| `Buffer`\<`ArrayBufferLike`\> \| (`string` \| `Buffer`\<`ArrayBufferLike`\> \| `KeyObject`)[]
+
+定义于: node\_modules/.pnpm/@types+node@22.10.7/node\_modules/@types/node/tls.d.ts:891
+
+Private keys in PEM format. PEM allows the option of private keys
+being encrypted. Encrypted keys will be decrypted with
+options.passphrase. Multiple keys using different algorithms can be
+provided either as an array of unencrypted key strings or buffers,
+or an array of objects in the form \{pem: \<string|buffer\>[,
+passphrase: \<string\>]\}. The object form can only occur in an array.
+object.passphrase is optional. Encrypted keys will be decrypted with
+object.passphrase if provided, or options.passphrase if it is not.
+
+#### 继承自
+
+`SupportedNodeConnectionOptions.key`
+
+***
+
+### loadBalanced
+
+> **loadBalanced**: `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:4064
+
+***
+
+### localAddress?
+
+> `optional` **localAddress?**: `string`
+
+定义于: node\_modules/.pnpm/@types+node@22.10.7/node\_modules/@types/node/net.d.ts:52
+
+#### 继承自
+
+`SupportedNodeConnectionOptions.localAddress`
+
+***
+
+### localPort?
+
+> `optional` **localPort?**: `number`
+
+定义于: node\_modules/.pnpm/@types+node@22.10.7/node\_modules/@types/node/net.d.ts:53
+
+#### 继承自
+
+`SupportedNodeConnectionOptions.localPort`
+
+***
+
+### localThresholdMS
+
+> **localThresholdMS**: `number`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:3698
+
+The size (in milliseconds) of the latency window for selecting among multiple suitable MongoDB instances.
+
+#### 继承自
+
+[`MongoClientOptions`](MongoClientOptions.md).[`localThresholdMS`](MongoClientOptions.md#localthresholdms)
+
+***
+
+### lookup?
+
+> `optional` **lookup?**: `LookupFunction`
+
+定义于: node\_modules/.pnpm/@types+node@22.10.7/node\_modules/@types/node/net.d.ts:56
+
+#### 继承自
+
+`SupportedNodeConnectionOptions.lookup`
+
+***
+
+### maxConnecting
+
+> **maxConnecting**: `number`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:3674
+
+The maximum number of connections that may be in the process of being established concurrently by the connection pool.
+
+#### 继承自
+
+[`MongoClientOptions`](MongoClientOptions.md).[`maxConnecting`](MongoClientOptions.md#maxconnecting)
+
+***
+
+### maxIdleTimeMS
+
+> **maxIdleTimeMS**: `number`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:3676
+
+The maximum number of milliseconds that a connection can remain idle in the pool before being removed and closed.
+
+#### 继承自
+
+[`MongoClientOptions`](MongoClientOptions.md).[`maxIdleTimeMS`](MongoClientOptions.md#maxidletimems)
+
+***
+
+### maxPoolSize
+
+> **maxPoolSize**: `number`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:3670
+
+The maximum number of connections in the connection pool.
+
+#### 继承自
+
+[`MongoClientOptions`](MongoClientOptions.md).[`maxPoolSize`](MongoClientOptions.md#maxpoolsize)
+
+***
+
+### metadata
+
+> **metadata**: [`ClientMetadata`](ClientMetadata.md)
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:4069
+
+***
+
+### minDHSize?
+
+> `optional` **minDHSize?**: `number`
+
+定义于: node\_modules/.pnpm/@types+node@22.10.7/node\_modules/@types/node/tls.d.ts:602
+
+#### 继承自
+
+`SupportedNodeConnectionOptions.minDHSize`
+
+***
+
+### minHeartbeatFrequencyMS
+
+> **minHeartbeatFrequencyMS**: `number`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:3704
+
+Sets the minimum heartbeat frequency. In the event that the driver has to frequently re-check a server's availability, it will wait at least this long since the previous check to avoid wasted effort.
+
+#### 继承自
+
+[`MongoClientOptions`](MongoClientOptions.md).[`minHeartbeatFrequencyMS`](MongoClientOptions.md#minheartbeatfrequencyms)
+
+***
+
+### minPoolSize
+
+> **minPoolSize**: `number`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:3672
+
+The minimum number of connections in the connection pool.
+
+#### 继承自
+
+[`MongoClientOptions`](MongoClientOptions.md).[`minPoolSize`](MongoClientOptions.md#minpoolsize)
+
+***
+
+### monitorCommands
+
+> **monitorCommands**: `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:3760
+
+Enable command monitoring for this client
+
+#### 继承自
+
+[`MongoClientOptions`](MongoClientOptions.md).[`monitorCommands`](MongoClientOptions.md#monitorcommands)
+
+***
+
+### noDelay
+
+> **noDelay**: `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:3750
+
+TCP Connection no delay
+
+#### 继承自
+
+[`MongoClientOptions`](MongoClientOptions.md).[`noDelay`](MongoClientOptions.md#nodelay)
+
+***
+
+### passphrase?
+
+> `optional` **passphrase?**: `string`
+
+定义于: node\_modules/.pnpm/@types+node@22.10.7/node\_modules/@types/node/tls.d.ts:928
+
+Shared passphrase used for a single private key and/or a PFX.
+
+#### 继承自
+
+`SupportedNodeConnectionOptions.passphrase`
+
+***
+
+### pfx?
+
+> `optional` **pfx?**: `string` \| `Buffer`\<`ArrayBufferLike`\> \| (`string` \| `Buffer`\<`ArrayBufferLike`\> \| `PxfObject`)[]
+
+定义于: node\_modules/.pnpm/@types+node@22.10.7/node\_modules/@types/node/tls.d.ts:939
+
+PFX or PKCS12 encoded private key and certificate chain. pfx is an
+alternative to providing key and cert individually. PFX is usually
+encrypted, if it is, passphrase will be used to decrypt it. Multiple
+PFX can be provided either as an array of unencrypted PFX buffers,
+or an array of objects in the form \{buf: \<string|buffer\>[,
+passphrase: \<string\>]\}. The object form can only occur in an array.
+object.passphrase is optional. Encrypted PFX will be decrypted with
+object.passphrase if provided, or options.passphrase if it is not.
+
+#### 继承自
+
+`SupportedNodeConnectionOptions.pfx`
+
+***
+
+### pkFactory
+
+> **pkFactory**: [`PkFactory`](PkFactory.md)
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:3758
+
+A primary key factory function for generation of custom `_id` keys
+
+#### 继承自
+
+[`MongoClientOptions`](MongoClientOptions.md).[`pkFactory`](MongoClientOptions.md#pkfactory)
+
+***
+
+### proxyHost?
+
+> `optional` **proxyHost?**: `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:4071
+
+***
+
+### proxyPassword?
+
+> `optional` **proxyPassword?**: `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:4074
+
+***
+
+### proxyPort?
+
+> `optional` **proxyPort?**: `number`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:4072
+
+***
+
+### proxyUsername?
+
+> `optional` **proxyUsername?**: `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:4073
+
+***
+
+### raw
+
+> **raw**: `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:708
+
+Enabling the raw option will return a [Node.js Buffer](https://nodejs.org/api/buffer.html)
+which is allocated using [allocUnsafe API](https://nodejs.org/api/buffer.html#static-method-bufferallocunsafesize).
+See this section from the [Node.js Docs here](https://nodejs.org/api/buffer.html#what-makes-bufferallocunsafe-and-bufferallocunsafeslow-unsafe)
+for more detail about what "unsafe" refers to in this context.
+If you need to maintain your own editable clone of the bytes returned for an extended life time of the process, it is recommended you allocate
+your own buffer and clone the contents:
+
+#### 示例
+
+```ts
+const raw = await collection.findOne({}, { raw: true })
+const myBuffer = Buffer.alloc(raw.byteLength)
+myBuffer.set(raw, 0)
+// Only save and use `myBuffer` beyond this point
+```
+
+#### 备注
+
+Please note there is a known limitation where this option cannot be used at the MongoClient level (see [NODE-3946](https://jira.mongodb.org/browse/NODE-3946)).
+It does correctly work at `Db`, `Collection`, and per operation the same as other BSON options work.
+
+#### 继承自
+
+[`BSONSerializeOptions`](BSONSerializeOptions.md).[`raw`](BSONSerializeOptions.md#raw)
+
+***
+
+### readConcern
+
+> **readConcern**: [`ReadConcern`](../classes/ReadConcern.md)
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:4063
+
+***
+
+### readPreference
+
+> **readPreference**: [`ReadPreference`](../classes/ReadPreference.md)
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:4062
+
+***
+
+### rejectUnauthorized?
+
+> `optional` **rejectUnauthorized?**: `boolean`
+
+定义于: node\_modules/.pnpm/@types+node@22.10.7/node\_modules/@types/node/tls.d.ts:543
+
+If true the server will reject any connection which is not
+authorized with the list of supplied CAs. This option only has an
+effect if requestCert is true.
+
+#### 默认值
+
+```ts
+true
+```
+
+#### 继承自
+
+`SupportedNodeConnectionOptions.rejectUnauthorized`
+
+***
+
+### replicaSet
+
+> **replicaSet**: `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:3632
+
+Specifies the name of the replica set, if the mongod is a member of a replica set.
+
+#### 继承自
+
+[`MongoClientOptions`](MongoClientOptions.md).[`replicaSet`](MongoClientOptions.md#replicaset)
+
+***
+
+### retryReads
+
+> **retryReads**: `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:3708
+
+Enables retryable reads.
+
+#### 继承自
+
+[`MongoClientOptions`](MongoClientOptions.md).[`retryReads`](MongoClientOptions.md#retryreads)
+
+***
+
+### retryWrites
+
+> **retryWrites**: `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:3710
+
+Enable retryable writes.
+
+#### 继承自
+
+[`MongoClientOptions`](MongoClientOptions.md).[`retryWrites`](MongoClientOptions.md#retrywrites)
+
+***
+
+### secureContext?
+
+> `optional` **secureContext?**: `SecureContext`
+
+定义于: node\_modules/.pnpm/@types+node@22.10.7/node\_modules/@types/node/tls.d.ts:509
+
+An optional TLS context object from tls.createSecureContext()
+
+#### 继承自
+
+`SupportedNodeConnectionOptions.secureContext`
+
+***
+
+### secureProtocol?
+
+> `optional` **secureProtocol?**: `string`
+
+定义于: node\_modules/.pnpm/@types+node@22.10.7/node\_modules/@types/node/tls.d.ts:957
+
+Legacy mechanism to select the TLS protocol version to use, it does
+not support independent control of the minimum and maximum version,
+and does not support limiting the protocol to TLSv1.3. Use
+minVersion and maxVersion instead. The possible values are listed as
+SSL_METHODS, use the function names as strings. For example, use
+'TLSv1_1_method' to force TLS version 1.1, or 'TLS_method' to allow
+any TLS protocol version up to TLSv1.3. It is not recommended to use
+TLS versions less than 1.2, but it may be required for
+interoperability. Default: none, see minVersion.
+
+#### 继承自
+
+`SupportedNodeConnectionOptions.secureProtocol`
+
+***
+
+### serverApi
+
+> **serverApi**: [`ServerApi`](ServerApi.md)
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:4065
+
+***
+
+### servername?
+
+> `optional` **servername?**: `string`
+
+定义于: node\_modules/.pnpm/@types+node@22.10.7/node\_modules/@types/node/tls.d.ts:600
+
+#### 继承自
+
+`SupportedNodeConnectionOptions.servername`
+
+***
+
+### serverSelectionTimeoutMS
+
+> **serverSelectionTimeoutMS**: `number`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:3700
+
+Specifies how long (in milliseconds) to block for server selection before throwing an exception.
+
+#### 继承自
+
+[`MongoClientOptions`](MongoClientOptions.md).[`serverSelectionTimeoutMS`](MongoClientOptions.md#serverselectiontimeoutms)
+
+***
+
+### session?
+
+> `optional` **session?**: `Buffer`\<`ArrayBufferLike`\>
+
+定义于: node\_modules/.pnpm/@types+node@22.10.7/node\_modules/@types/node/tls.d.ts:601
+
+An optional Buffer instance containing a TLS session.
+
+#### 继承自
+
+`SupportedNodeConnectionOptions.session`
+
+***
+
+### socketTimeoutMS
+
+> **socketTimeoutMS**: `number`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:3654
+
+The time in milliseconds to attempt a send or receive on a socket before the attempt times out.
+
+#### 继承自
+
+[`MongoClientOptions`](MongoClientOptions.md).[`socketTimeoutMS`](MongoClientOptions.md#sockettimeoutms)
+
+***
+
+### srvHost?
+
+> `optional` **srvHost?**: `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:4060
+
+***
+
+### srvMaxHosts
+
+> **srvMaxHosts**: `number`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:3660
+
+The maximum number of hosts to connect to when using an srv connection string, a setting of `0` means unlimited hosts
+
+#### 继承自
+
+[`MongoClientOptions`](MongoClientOptions.md).[`srvMaxHosts`](MongoClientOptions.md#srvmaxhosts)
+
+***
+
+### srvServiceName
+
+> **srvServiceName**: `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:3668
+
+Modifies the srv URI to look like:
+
+`_{srvServiceName}._tcp.{hostname}.{domainname}`
+
+Querying this DNS URI is expected to respond with SRV records
+
+#### 继承自
+
+[`MongoClientOptions`](MongoClientOptions.md).[`srvServiceName`](MongoClientOptions.md#srvservicename)
+
+***
+
+### tls
+
+> **tls**: `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:4092
+
+# NOTE ABOUT TLS Options
+
+If set TLS enabled, equivalent to setting the ssl option.
+
+### Additional options:
+
+|    nodejs option     | MongoDB equivalent                                       | type                                   |
+|:---------------------|--------------------------------------------------------- |:---------------------------------------|
+| `ca`                 | `sslCA`, `tlsCAFile`                                     | `string \| Buffer \| Buffer[]`         |
+| `crl`                | `sslCRL`                                                 | `string \| Buffer \| Buffer[]`         |
+| `cert`               | `sslCert`, `tlsCertificateFile`, `tlsCertificateKeyFile` | `string \| Buffer \| Buffer[]`         |
+| `key`                | `sslKey`, `tlsCertificateKeyFile`                        | `string \| Buffer \| KeyObject[]`      |
+| `passphrase`         | `sslPass`, `tlsCertificateKeyFilePassword`               | `string`                               |
+| `rejectUnauthorized` | `sslValidate`                                            | `boolean`                              |
+
+***
+
+### tlsAllowInvalidCertificates
+
+> **tlsAllowInvalidCertificates**: `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:3646
+
+Bypasses validation of the certificates presented by the mongod/mongos instance
+
+#### 继承自
+
+[`MongoClientOptions`](MongoClientOptions.md).[`tlsAllowInvalidCertificates`](MongoClientOptions.md#tlsallowinvalidcertificates)
+
+***
+
+### tlsAllowInvalidHostnames
+
+> **tlsAllowInvalidHostnames**: `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:3648
+
+Disables hostname validation of the certificate presented by the mongod/mongos instance.
+
+#### 继承自
+
+[`MongoClientOptions`](MongoClientOptions.md).[`tlsAllowInvalidHostnames`](MongoClientOptions.md#tlsallowinvalidhostnames)
+
+***
+
+### tlsInsecure
+
+> **tlsInsecure**: `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:3650
+
+Disables various certificate validations.
+
+#### 继承自
+
+[`MongoClientOptions`](MongoClientOptions.md).[`tlsInsecure`](MongoClientOptions.md#tlsinsecure)
+
+***
+
+### waitQueueTimeoutMS
+
+> **waitQueueTimeoutMS**: `number`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:3678
+
+The maximum time in milliseconds that a thread can wait for a connection to become available.
+
+#### 继承自
+
+[`MongoClientOptions`](MongoClientOptions.md).[`waitQueueTimeoutMS`](MongoClientOptions.md#waitqueuetimeoutms)
+
+***
+
+### writeConcern
+
+> **writeConcern**: [`WriteConcern`](../classes/WriteConcern.md)
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:4067
+
+***
+
+### zlibCompressionLevel
+
+> **zlibCompressionLevel**: `0` \| `1` \| `2` \| `3` \| `4` \| `5` \| `6` \| `7` \| `8` \| `9`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:3658
+
+An integer that specifies the compression level if using zlib for network compression.
+
+#### 继承自
+
+`Required.zlibCompressionLevel`

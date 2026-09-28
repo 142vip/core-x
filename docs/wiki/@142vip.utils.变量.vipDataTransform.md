@@ -4,4 +4,4 @@
 
 > `const` **vipDataTransform**: `VipDataTransform`
 
-定义于: [packages/utils/src/pkgs/data-transform.ts:51](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/utils/src/pkgs/data-transform.ts#L51)
+定义于: [packages/utils/src/pkgs/data-transform.ts:51](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/data-transform.ts#L51)

@@ -2,9 +2,9 @@
 
 # 函数: grpcStreamHandler()
 
-> **grpcStreamHandler**(`methodType`, `methodFunc`): \<`RequestType`, `ResponseType`\>(`call`, `callback`) => `void` \| \<`RequestType`, `ResponseType`\>(`call`) => `Promise`\<`void`\> \| \<`RequestType`, `ResponseType`\>(`call`) => `void`
+> **grpcStreamHandler**(`methodType`, `methodFunc`): (\<`RequestType`, `ResponseType`\>(`call`, `callback`) => `void`) \| (\<`RequestType`, `ResponseType`\>(`call`) => `Promise`\<`void`\>) \| (\<`RequestType`, `ResponseType`\>(`call`) => `void`)
 
-定义于: [core/grpc.handler.ts:45](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/grpc/src/core/grpc.handler.ts#L45)
+定义于: [core/grpc.handler.ts:45](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/grpc/src/core/grpc.handler.ts#L45)
 
 处理GRPC流式调用，返回流对象
 
@@ -20,78 +20,88 @@
 
 ## 返回
 
+### 函数
+
 \<`RequestType`, `ResponseType`\>(`call`, `callback`) => `void`
 
 客户端流
 
-## 类型参数
+#### 类型参数
 
-### RequestType
+##### RequestType
 
 `RequestType` *extends* [`GrpcRequest`](../interfaces/GrpcRequest.md)
 
-### ResponseType
+##### ResponseType
 
 `ResponseType`
 
-## 参数
+#### 参数
 
-### call
+##### call
 
 `ServerReadableStream`\<`RequestType`, `ResponseType`\>
 
-### callback
+##### callback
 
 `sendUnaryData`\<[`GrpcResponse`](../interfaces/GrpcResponse.md)\<`ResponseType`\>\>
 
-## 返回
+#### 返回
 
 `void`
+
+***
+
+### 函数
 
 \<`RequestType`, `ResponseType`\>(`call`) => `Promise`\<`void`\>
 
 服务端流
 
-## 类型参数
+#### 类型参数
 
-### RequestType
+##### RequestType
 
 `RequestType` *extends* [`GrpcRequest`](../interfaces/GrpcRequest.md)
 
-### ResponseType
+##### ResponseType
 
 `ResponseType`
 
-## 参数
+#### 参数
 
-### call
+##### call
 
 `ServerWritableStream`\<`RequestType`, [`GrpcResponse`](../interfaces/GrpcResponse.md)\<`ResponseType`\>\>
 
-## 返回
+#### 返回
 
 `Promise`\<`void`\>
+
+***
+
+### 函数
 
 \<`RequestType`, `ResponseType`\>(`call`) => `void`
 
 客户端、服务端，流式
 
-## 类型参数
+#### 类型参数
 
-### RequestType
+##### RequestType
 
 `RequestType` *extends* [`GrpcRequest`](../interfaces/GrpcRequest.md)
 
-### ResponseType
+##### ResponseType
 
 `ResponseType`
 
-## 参数
+#### 参数
 
-### call
+##### call
 
 `ServerDuplexStream`\<`RequestType`, [`GrpcResponse`](../interfaces/GrpcResponse.md)\<`ResponseType`\>\>
 
-## 返回
+#### 返回
 
 `void`

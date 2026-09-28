@@ -1,0 +1,1691 @@
+[API 参考](../../../index.md) / [@142vip/nest-typeorm](../index.md) / QueryRunner
+
+# 接口: QueryRunner
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:21
+
+Runs queries on a single database connection.
+
+## 属性
+
+### broadcaster
+
+> `readonly` **broadcaster**: `Broadcaster`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:29
+
+Broadcaster used on this query runner to broadcast entity events.
+
+***
+
+### connection
+
+> `readonly` **connection**: [`DataSource`](../classes/DataSource.md)
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:25
+
+Connection used by this query runner.
+
+***
+
+### data
+
+> **data**: [`ObjectLiteral`](ObjectLiteral.md)
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:47
+
+Stores temporarily user data.
+Useful for sharing data with subscribers.
+
+***
+
+### isReleased
+
+> `readonly` **isReleased**: `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:38
+
+Indicates if connection for this query runner is released.
+Once its released, query runner cannot run queries anymore.
+
+***
+
+### isTransactionActive
+
+> `readonly` **isTransactionActive**: `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:42
+
+Indicates if transaction is in progress.
+
+***
+
+### ~~loadedTables~~
+
+> **loadedTables**: [`Table`](../classes/Table.md)[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:53
+
+All synchronized tables in the database.
+
+#### 已被弃用
+
+Call `getTables()`
+
+***
+
+### ~~loadedViews~~
+
+> **loadedViews**: [`View`](../classes/View.md)[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:59
+
+All synchronized views in the database.
+
+#### 已被弃用
+
+Call `getViews()`
+
+***
+
+### manager
+
+> `readonly` **manager**: [`EntityManager`](../classes/EntityManager.md)
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:33
+
+Entity manager working only with this query runner.
+
+## 方法
+
+### addColumn()
+
+> **addColumn**(`table`, `column`): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:217
+
+Adds a new column.
+
+#### 参数
+
+##### table
+
+`string` \| [`Table`](../classes/Table.md)
+
+##### column
+
+[`TableColumn`](../classes/TableColumn.md)
+
+#### 返回
+
+`Promise`\<`void`\>
+
+***
+
+### addColumns()
+
+> **addColumns**(`table`, `columns`): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:221
+
+Adds new columns.
+
+#### 参数
+
+##### table
+
+`string` \| [`Table`](../classes/Table.md)
+
+##### columns
+
+[`TableColumn`](../classes/TableColumn.md)[]
+
+#### 返回
+
+`Promise`\<`void`\>
+
+***
+
+### afterMigration()
+
+> **afterMigration**(): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:72
+
+Called after migrations are run.
+
+#### 返回
+
+`Promise`\<`void`\>
+
+***
+
+### beforeMigration()
+
+> **beforeMigration**(): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:68
+
+Called before migrations are run.
+
+#### 返回
+
+`Promise`\<`void`\>
+
+***
+
+### changeColumn()
+
+> **changeColumn**(`table`, `oldColumn`, `newColumn`): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:229
+
+Changes a column in the table.
+
+#### 参数
+
+##### table
+
+`string` \| [`Table`](../classes/Table.md)
+
+##### oldColumn
+
+`string` \| [`TableColumn`](../classes/TableColumn.md)
+
+##### newColumn
+
+[`TableColumn`](../classes/TableColumn.md)
+
+#### 返回
+
+`Promise`\<`void`\>
+
+***
+
+### changeColumns()
+
+> **changeColumns**(`table`, `changedColumns`): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:233
+
+Changes columns in the table.
+
+#### 参数
+
+##### table
+
+`string` \| [`Table`](../classes/Table.md)
+
+##### changedColumns
+
+`object`[]
+
+#### 返回
+
+`Promise`\<`void`\>
+
+***
+
+### changeTableComment()
+
+> **changeTableComment**(`tableOrName`, `comment?`): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:213
+
+Change table comment. Only supports MySQL and MariaDB
+
+#### 参数
+
+##### tableOrName
+
+`string` \| [`Table`](../classes/Table.md)
+
+##### comment?
+
+`string`
+
+#### 返回
+
+`Promise`\<`void`\>
+
+***
+
+### clearDatabase()
+
+> **clearDatabase**(`database?`): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:83
+
+Removes all tables from the currently connected database.
+Be careful with using this method and avoid using it in production or migrations
+(because it can clear all your database).
+
+#### 参数
+
+##### database?
+
+`string`
+
+#### 返回
+
+`Promise`\<`void`\>
+
+***
+
+### clearSqlMemory()
+
+> **clearSqlMemory**(): `void`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:358
+
+Flushes all memorized sqls.
+
+#### 返回
+
+`void`
+
+***
+
+### clearTable()
+
+> **clearTable**(`tableName`): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:341
+
+Clears all table contents.
+Note: this operation uses SQL's TRUNCATE query which cannot be reverted in transactions.
+
+#### 参数
+
+##### tableName
+
+`string`
+
+#### 返回
+
+`Promise`\<`void`\>
+
+***
+
+### commitTransaction()
+
+> **commitTransaction**(): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:92
+
+Commits transaction.
+Error will be thrown if transaction was not started.
+
+#### 返回
+
+`Promise`\<`void`\>
+
+***
+
+### connect()
+
+> **connect**(): `Promise`\<`any`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:64
+
+Creates/uses database connection from the connection pool to perform further operations.
+Returns obtained database connection.
+
+#### 返回
+
+`Promise`\<`any`\>
+
+***
+
+### createCheckConstraint()
+
+> **createCheckConstraint**(`table`, `checkConstraint`): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:276
+
+Creates a new check constraint.
+
+#### 参数
+
+##### table
+
+`string` \| [`Table`](../classes/Table.md)
+
+##### checkConstraint
+
+[`TableCheck`](../classes/TableCheck.md)
+
+#### 返回
+
+`Promise`\<`void`\>
+
+***
+
+### createCheckConstraints()
+
+> **createCheckConstraints**(`table`, `checkConstraints`): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:280
+
+Creates new check constraints.
+
+#### 参数
+
+##### table
+
+`string` \| [`Table`](../classes/Table.md)
+
+##### checkConstraints
+
+[`TableCheck`](../classes/TableCheck.md)[]
+
+#### 返回
+
+`Promise`\<`void`\>
+
+***
+
+### createDatabase()
+
+> **createDatabase**(`database`, `ifNotExist?`): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:175
+
+Creates a new database.
+
+#### 参数
+
+##### database
+
+`string`
+
+##### ifNotExist?
+
+`boolean`
+
+#### 返回
+
+`Promise`\<`void`\>
+
+***
+
+### createExclusionConstraint()
+
+> **createExclusionConstraint**(`table`, `exclusionConstraint`): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:292
+
+Creates a new exclusion constraint.
+
+#### 参数
+
+##### table
+
+`string` \| [`Table`](../classes/Table.md)
+
+##### exclusionConstraint
+
+[`TableExclusion`](../classes/TableExclusion.md)
+
+#### 返回
+
+`Promise`\<`void`\>
+
+***
+
+### createExclusionConstraints()
+
+> **createExclusionConstraints**(`table`, `exclusionConstraints`): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:296
+
+Creates new exclusion constraints.
+
+#### 参数
+
+##### table
+
+`string` \| [`Table`](../classes/Table.md)
+
+##### exclusionConstraints
+
+[`TableExclusion`](../classes/TableExclusion.md)[]
+
+#### 返回
+
+`Promise`\<`void`\>
+
+***
+
+### createForeignKey()
+
+> **createForeignKey**(`table`, `foreignKey`): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:308
+
+Creates a new foreign key.
+
+#### 参数
+
+##### table
+
+`string` \| [`Table`](../classes/Table.md)
+
+##### foreignKey
+
+[`TableForeignKey`](../classes/TableForeignKey.md)
+
+#### 返回
+
+`Promise`\<`void`\>
+
+***
+
+### createForeignKeys()
+
+> **createForeignKeys**(`table`, `foreignKeys`): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:312
+
+Creates new foreign keys.
+
+#### 参数
+
+##### table
+
+`string` \| [`Table`](../classes/Table.md)
+
+##### foreignKeys
+
+[`TableForeignKey`](../classes/TableForeignKey.md)[]
+
+#### 返回
+
+`Promise`\<`void`\>
+
+***
+
+### createIndex()
+
+> **createIndex**(`table`, `index`): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:324
+
+Creates a new index.
+
+#### 参数
+
+##### table
+
+`string` \| [`Table`](../classes/Table.md)
+
+##### index
+
+[`TableIndex`](../classes/TableIndex.md)
+
+#### 返回
+
+`Promise`\<`void`\>
+
+***
+
+### createIndices()
+
+> **createIndices**(`table`, `indices`): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:328
+
+Creates new indices.
+
+#### 参数
+
+##### table
+
+`string` \| [`Table`](../classes/Table.md)
+
+##### indices
+
+[`TableIndex`](../classes/TableIndex.md)[]
+
+#### 返回
+
+`Promise`\<`void`\>
+
+***
+
+### createPrimaryKey()
+
+> **createPrimaryKey**(`table`, `columnNames`, `constraintName?`): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:248
+
+Creates a new primary key.
+
+#### 参数
+
+##### table
+
+`string` \| [`Table`](../classes/Table.md)
+
+##### columnNames
+
+`string`[]
+
+##### constraintName?
+
+`string`
+
+#### 返回
+
+`Promise`\<`void`\>
+
+***
+
+### createSchema()
+
+> **createSchema**(`schemaPath`, `ifNotExist?`): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:183
+
+Creates a new table schema.
+
+#### 参数
+
+##### schemaPath
+
+`string`
+
+##### ifNotExist?
+
+`boolean`
+
+#### 返回
+
+`Promise`\<`void`\>
+
+***
+
+### createTable()
+
+> **createTable**(`table`, `ifNotExist?`, `createForeignKeys?`, `createIndices?`): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:193
+
+Creates a new table.
+
+#### 参数
+
+##### table
+
+[`Table`](../classes/Table.md)
+
+##### ifNotExist?
+
+`boolean`
+
+##### createForeignKeys?
+
+`boolean`
+
+##### createIndices?
+
+`boolean`
+
+#### 返回
+
+`Promise`\<`void`\>
+
+***
+
+### createUniqueConstraint()
+
+> **createUniqueConstraint**(`table`, `uniqueConstraint`): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:260
+
+Creates a new unique constraint.
+
+#### 参数
+
+##### table
+
+`string` \| [`Table`](../classes/Table.md)
+
+##### uniqueConstraint
+
+[`TableUnique`](../classes/TableUnique.md)
+
+#### 返回
+
+`Promise`\<`void`\>
+
+***
+
+### createUniqueConstraints()
+
+> **createUniqueConstraints**(`table`, `uniqueConstraints`): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:264
+
+Creates new unique constraints.
+
+#### 参数
+
+##### table
+
+`string` \| [`Table`](../classes/Table.md)
+
+##### uniqueConstraints
+
+[`TableUnique`](../classes/TableUnique.md)[]
+
+#### 返回
+
+`Promise`\<`void`\>
+
+***
+
+### createView()
+
+> **createView**(`view`, `syncWithMetadata?`, `oldView?`): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:201
+
+Creates a new view.
+
+#### 参数
+
+##### view
+
+[`View`](../classes/View.md)
+
+##### syncWithMetadata?
+
+`boolean`
+
+##### oldView?
+
+[`View`](../classes/View.md)
+
+#### 返回
+
+`Promise`\<`void`\>
+
+***
+
+### disableSqlMemory()
+
+> **disableSqlMemory**(): `void`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:354
+
+Disables special query runner mode in which sql queries won't be executed
+started by calling enableSqlMemory() method.
+
+Previously memorized sql will be flushed.
+
+#### 返回
+
+`void`
+
+***
+
+### dropCheckConstraint()
+
+> **dropCheckConstraint**(`table`, `checkOrName`): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:284
+
+Drops a check constraint.
+
+#### 参数
+
+##### table
+
+`string` \| [`Table`](../classes/Table.md)
+
+##### checkOrName
+
+`string` \| [`TableCheck`](../classes/TableCheck.md)
+
+#### 返回
+
+`Promise`\<`void`\>
+
+***
+
+### dropCheckConstraints()
+
+> **dropCheckConstraints**(`table`, `checkConstraints`): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:288
+
+Drops check constraints.
+
+#### 参数
+
+##### table
+
+`string` \| [`Table`](../classes/Table.md)
+
+##### checkConstraints
+
+[`TableCheck`](../classes/TableCheck.md)[]
+
+#### 返回
+
+`Promise`\<`void`\>
+
+***
+
+### dropColumn()
+
+> **dropColumn**(`table`, `column`): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:240
+
+Drops a column in the table.
+
+#### 参数
+
+##### table
+
+`string` \| [`Table`](../classes/Table.md)
+
+##### column
+
+`string` \| [`TableColumn`](../classes/TableColumn.md)
+
+#### 返回
+
+`Promise`\<`void`\>
+
+***
+
+### dropColumns()
+
+> **dropColumns**(`table`, `columns`): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:244
+
+Drops columns in the table.
+
+#### 参数
+
+##### table
+
+`string` \| [`Table`](../classes/Table.md)
+
+##### columns
+
+`string`[] \| [`TableColumn`](../classes/TableColumn.md)[]
+
+#### 返回
+
+`Promise`\<`void`\>
+
+***
+
+### dropDatabase()
+
+> **dropDatabase**(`database`, `ifExist?`): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:179
+
+Drops database.
+
+#### 参数
+
+##### database
+
+`string`
+
+##### ifExist?
+
+`boolean`
+
+#### 返回
+
+`Promise`\<`void`\>
+
+***
+
+### dropExclusionConstraint()
+
+> **dropExclusionConstraint**(`table`, `exclusionOrName`): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:300
+
+Drops a exclusion constraint.
+
+#### 参数
+
+##### table
+
+`string` \| [`Table`](../classes/Table.md)
+
+##### exclusionOrName
+
+`string` \| [`TableExclusion`](../classes/TableExclusion.md)
+
+#### 返回
+
+`Promise`\<`void`\>
+
+***
+
+### dropExclusionConstraints()
+
+> **dropExclusionConstraints**(`table`, `exclusionConstraints`): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:304
+
+Drops exclusion constraints.
+
+#### 参数
+
+##### table
+
+`string` \| [`Table`](../classes/Table.md)
+
+##### exclusionConstraints
+
+[`TableExclusion`](../classes/TableExclusion.md)[]
+
+#### 返回
+
+`Promise`\<`void`\>
+
+***
+
+### dropForeignKey()
+
+> **dropForeignKey**(`table`, `foreignKeyOrName`): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:316
+
+Drops a foreign key.
+
+#### 参数
+
+##### table
+
+`string` \| [`Table`](../classes/Table.md)
+
+##### foreignKeyOrName
+
+`string` \| [`TableForeignKey`](../classes/TableForeignKey.md)
+
+#### 返回
+
+`Promise`\<`void`\>
+
+***
+
+### dropForeignKeys()
+
+> **dropForeignKeys**(`table`, `foreignKeys`): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:320
+
+Drops foreign keys.
+
+#### 参数
+
+##### table
+
+`string` \| [`Table`](../classes/Table.md)
+
+##### foreignKeys
+
+[`TableForeignKey`](../classes/TableForeignKey.md)[]
+
+#### 返回
+
+`Promise`\<`void`\>
+
+***
+
+### dropIndex()
+
+> **dropIndex**(`table`, `index`): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:332
+
+Drops an index.
+
+#### 参数
+
+##### table
+
+`string` \| [`Table`](../classes/Table.md)
+
+##### index
+
+`string` \| [`TableIndex`](../classes/TableIndex.md)
+
+#### 返回
+
+`Promise`\<`void`\>
+
+***
+
+### dropIndices()
+
+> **dropIndices**(`table`, `indices`): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:336
+
+Drops indices.
+
+#### 参数
+
+##### table
+
+`string` \| [`Table`](../classes/Table.md)
+
+##### indices
+
+[`TableIndex`](../classes/TableIndex.md)[]
+
+#### 返回
+
+`Promise`\<`void`\>
+
+***
+
+### dropPrimaryKey()
+
+> **dropPrimaryKey**(`table`, `constraintName?`): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:256
+
+Drops a primary key.
+
+#### 参数
+
+##### table
+
+`string` \| [`Table`](../classes/Table.md)
+
+##### constraintName?
+
+`string`
+
+#### 返回
+
+`Promise`\<`void`\>
+
+***
+
+### dropSchema()
+
+> **dropSchema**(`schemaPath`, `ifExist?`, `isCascade?`): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:189
+
+Drops table schema.
+For SqlServer can accept schema path (e.g. 'dbName.schemaName') as parameter.
+If schema path passed, it will drop schema in specified database.
+
+#### 参数
+
+##### schemaPath
+
+`string`
+
+##### ifExist?
+
+`boolean`
+
+##### isCascade?
+
+`boolean`
+
+#### 返回
+
+`Promise`\<`void`\>
+
+***
+
+### dropTable()
+
+> **dropTable**(`table`, `ifExist?`, `dropForeignKeys?`, `dropIndices?`): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:197
+
+Drops a table.
+
+#### 参数
+
+##### table
+
+`string` \| [`Table`](../classes/Table.md)
+
+##### ifExist?
+
+`boolean`
+
+##### dropForeignKeys?
+
+`boolean`
+
+##### dropIndices?
+
+`boolean`
+
+#### 返回
+
+`Promise`\<`void`\>
+
+***
+
+### dropUniqueConstraint()
+
+> **dropUniqueConstraint**(`table`, `uniqueOrName`): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:268
+
+Drops a unique constraint.
+
+#### 参数
+
+##### table
+
+`string` \| [`Table`](../classes/Table.md)
+
+##### uniqueOrName
+
+`string` \| [`TableUnique`](../classes/TableUnique.md)
+
+#### 返回
+
+`Promise`\<`void`\>
+
+***
+
+### dropUniqueConstraints()
+
+> **dropUniqueConstraints**(`table`, `uniqueConstraints`): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:272
+
+Drops unique constraints.
+
+#### 参数
+
+##### table
+
+`string` \| [`Table`](../classes/Table.md)
+
+##### uniqueConstraints
+
+[`TableUnique`](../classes/TableUnique.md)[]
+
+#### 返回
+
+`Promise`\<`void`\>
+
+***
+
+### dropView()
+
+> **dropView**(`view`): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:205
+
+Drops a view.
+
+#### 参数
+
+##### view
+
+`string` \| [`View`](../classes/View.md)
+
+#### 返回
+
+`Promise`\<`void`\>
+
+***
+
+### enableSqlMemory()
+
+> **enableSqlMemory**(): `void`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:347
+
+Enables special query runner mode in which sql queries won't be executed,
+instead they will be memorized into a special variable inside query runner.
+You can get memorized sql using getMemorySql() method.
+
+#### 返回
+
+`void`
+
+***
+
+### executeMemoryDownSql()
+
+> **executeMemoryDownSql**(): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:370
+
+Executes down sql queries.
+
+#### 返回
+
+`Promise`\<`void`\>
+
+***
+
+### executeMemoryUpSql()
+
+> **executeMemoryUpSql**(): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:366
+
+Executes up sql queries.
+
+#### 返回
+
+`Promise`\<`void`\>
+
+***
+
+### getCurrentDatabase()
+
+> **getCurrentDatabase**(): `Promise`\<`string` \| `undefined`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:155
+
+Loads currently using database
+
+#### 返回
+
+`Promise`\<`string` \| `undefined`\>
+
+***
+
+### getCurrentSchema()
+
+> **getCurrentSchema**(): `Promise`\<`string` \| `undefined`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:163
+
+Loads currently using database schema
+
+#### 返回
+
+`Promise`\<`string` \| `undefined`\>
+
+***
+
+### getDatabases()
+
+> **getDatabases**(): `Promise`\<`string`[]\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:121
+
+Returns all available database names including system databases.
+
+#### 返回
+
+`Promise`\<`string`[]\>
+
+***
+
+### getMemorySql()
+
+> **getMemorySql**(): `SqlInMemory`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:362
+
+Gets sql stored in the memory. Parameters in the sql are already replaced.
+
+#### 返回
+
+`SqlInMemory`
+
+***
+
+### getReplicationMode()
+
+> **getReplicationMode**(): [`ReplicationMode`](../type-aliases/ReplicationMode.md)
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:147
+
+Returns replication mode (ex: `master` or `slave`).
+
+#### 返回
+
+[`ReplicationMode`](../type-aliases/ReplicationMode.md)
+
+***
+
+### getSchemas()
+
+> **getSchemas**(`database?`): `Promise`\<`string`[]\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:127
+
+Returns all available schema names including system schemas.
+If database parameter specified, returns schemas of that database.
+Useful for SQLServer and Postgres only.
+
+#### 参数
+
+##### database?
+
+`string`
+
+#### 返回
+
+`Promise`\<`string`[]\>
+
+***
+
+### getTable()
+
+> **getTable**(`tablePath`): `Promise`\<[`Table`](../classes/Table.md) \| `undefined`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:131
+
+Loads a table by a given name from the database.
+
+#### 参数
+
+##### tablePath
+
+`string`
+
+#### 返回
+
+`Promise`\<[`Table`](../classes/Table.md) \| `undefined`\>
+
+***
+
+### getTables()
+
+> **getTables**(`tablePaths?`): `Promise`\<[`Table`](../classes/Table.md)[]\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:135
+
+Loads all tables from the database and returns them.
+
+#### 参数
+
+##### tablePaths?
+
+`string`[]
+
+#### 返回
+
+`Promise`\<[`Table`](../classes/Table.md)[]\>
+
+***
+
+### getView()
+
+> **getView**(`viewPath`): `Promise`\<[`View`](../classes/View.md) \| `undefined`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:139
+
+Loads a view by a given name from the database.
+
+#### 参数
+
+##### viewPath
+
+`string`
+
+#### 返回
+
+`Promise`\<[`View`](../classes/View.md) \| `undefined`\>
+
+***
+
+### getViews()
+
+> **getViews**(`viewPaths?`): `Promise`\<[`View`](../classes/View.md)[]\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:143
+
+Loads all views from the database and returns them.
+
+#### 参数
+
+##### viewPaths?
+
+`string`[]
+
+#### 返回
+
+`Promise`\<[`View`](../classes/View.md)[]\>
+
+***
+
+### hasColumn()
+
+> **hasColumn**(`table`, `columnName`): `Promise`\<`boolean`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:171
+
+Checks if a column exist in the table.
+
+#### 参数
+
+##### table
+
+`string` \| [`Table`](../classes/Table.md)
+
+##### columnName
+
+`string`
+
+#### 返回
+
+`Promise`\<`boolean`\>
+
+***
+
+### hasDatabase()
+
+> **hasDatabase**(`database`): `Promise`\<`boolean`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:151
+
+Checks if a database with the given name exist.
+
+#### 参数
+
+##### database
+
+`string`
+
+#### 返回
+
+`Promise`\<`boolean`\>
+
+***
+
+### hasSchema()
+
+> **hasSchema**(`schema`): `Promise`\<`boolean`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:159
+
+Checks if a schema with the given name exist.
+
+#### 参数
+
+##### schema
+
+`string`
+
+#### 返回
+
+`Promise`\<`boolean`\>
+
+***
+
+### hasTable()
+
+> **hasTable**(`table`): `Promise`\<`boolean`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:167
+
+Checks if a table with the given name exist.
+
+#### 参数
+
+##### table
+
+`string` \| [`Table`](../classes/Table.md)
+
+#### 返回
+
+`Promise`\<`boolean`\>
+
+***
+
+### query()
+
+#### 调用签名
+
+> **query**(`query`, `parameters`, `useStructuredResult`): `Promise`\<[`QueryResult`](../classes/QueryResult.md)\<`any`\>\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:101
+
+Executes a given SQL query and returns raw database results.
+
+##### 参数
+
+###### query
+
+`string`
+
+###### parameters
+
+`any`[] \| `undefined`
+
+###### useStructuredResult
+
+`true`
+
+##### 返回
+
+`Promise`\<[`QueryResult`](../classes/QueryResult.md)\<`any`\>\>
+
+#### 调用签名
+
+> **query**(`query`, `parameters?`): `Promise`\<`any`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:105
+
+Executes a given SQL query and returns raw database results.
+
+##### 参数
+
+###### query
+
+`string`
+
+###### parameters?
+
+`any`[]
+
+##### 返回
+
+`Promise`\<`any`\>
+
+***
+
+### release()
+
+> **release**(): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:77
+
+Releases used database connection.
+You cannot use query runner methods after connection is released.
+
+#### 返回
+
+`Promise`\<`void`\>
+
+***
+
+### renameColumn()
+
+> **renameColumn**(`table`, `oldColumnOrName`, `newColumnOrName`): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:225
+
+Renames a column.
+
+#### 参数
+
+##### table
+
+`string` \| [`Table`](../classes/Table.md)
+
+##### oldColumnOrName
+
+`string` \| [`TableColumn`](../classes/TableColumn.md)
+
+##### newColumnOrName
+
+`string` \| [`TableColumn`](../classes/TableColumn.md)
+
+#### 返回
+
+`Promise`\<`void`\>
+
+***
+
+### renameTable()
+
+> **renameTable**(`oldTableOrName`, `newTableName`): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:209
+
+Renames a table.
+
+#### 参数
+
+##### oldTableOrName
+
+`string` \| [`Table`](../classes/Table.md)
+
+##### newTableName
+
+`string`
+
+#### 返回
+
+`Promise`\<`void`\>
+
+***
+
+### rollbackTransaction()
+
+> **rollbackTransaction**(): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:97
+
+Rollbacks transaction.
+Error will be thrown if transaction was not started.
+
+#### 返回
+
+`Promise`\<`void`\>
+
+***
+
+### sql()
+
+> **sql**\<`T`\>(`strings`, ...`values`): `Promise`\<`T`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:113
+
+Tagged template function that executes raw SQL query and returns raw database results.
+Template expressions are automatically transformed into database parameters.
+Raw query execution is supported only by relational databases (MongoDB is not supported).
+Note: Don't call this as a regular function, it is meant to be used with backticks to tag a template literal.
+Example: queryRunner.sql`SELECT * FROM table_name WHERE id = ${id}`
+
+#### 类型参数
+
+##### T
+
+`T` = `any`
+
+#### 参数
+
+##### strings
+
+`TemplateStringsArray`
+
+##### values
+
+...`unknown`[]
+
+#### 返回
+
+`Promise`\<`T`\>
+
+***
+
+### startTransaction()
+
+> **startTransaction**(`isolationLevel?`): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:87
+
+Starts transaction.
+
+#### 参数
+
+##### isolationLevel?
+
+`IsolationLevel`
+
+#### 返回
+
+`Promise`\<`void`\>
+
+***
+
+### stream()
+
+> **stream**(`query`, `parameters?`, `onEnd?`, `onError?`): `Promise`\<`ReadStream`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:117
+
+Returns raw data stream.
+
+#### 参数
+
+##### query
+
+`string`
+
+##### parameters?
+
+`any`[]
+
+##### onEnd?
+
+`Function`
+
+##### onError?
+
+`Function`
+
+#### 返回
+
+`Promise`\<`ReadStream`\>
+
+***
+
+### updatePrimaryKeys()
+
+> **updatePrimaryKeys**(`table`, `columns`): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-runner/QueryRunner.d.ts:252
+
+Updates composite primary keys.
+
+#### 参数
+
+##### table
+
+`string` \| [`Table`](../classes/Table.md)
+
+##### columns
+
+[`TableColumn`](../classes/TableColumn.md)[]
+
+#### 返回
+
+`Promise`\<`void`\>

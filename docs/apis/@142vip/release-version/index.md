@@ -4,26 +4,33 @@
 
 ## 枚举
 
-- [VersionHooksEnum](enumerations/VersionHooksEnum.md)
-- [VersionProgressEventEnum](enumerations/VersionProgressEventEnum.md)
+- [VersionHooks](enumerations/VersionHooks.md)
+- [VersionProgressEvent](enumerations/VersionProgressEvent.md)
+
+## 类
+
+- [ReleaseApi](classes/ReleaseApi.md)
+- [ReleaseVersionOperation](classes/ReleaseVersionOperation.md)
 
 ## 接口
 
-- [ReleaseOperationOptions](interfaces/ReleaseOperationOptions.md)
-- [VersionBumpOptions](interfaces/VersionBumpOptions.md)
-- [VersionBumpProgress](interfaces/VersionBumpProgress.md)
-- [VersionBumpResults](interfaces/VersionBumpResults.md)
+- [ReleaseVersionCliOptions](interfaces/ReleaseVersionCliOptions.md)
+- [ReleaseVersionOperationOptions](interfaces/ReleaseVersionOperationOptions.md)
+- [ReleaseVersionOperationState](interfaces/ReleaseVersionOperationState.md)
+- [ReleaseVersionOptions](interfaces/ReleaseVersionOptions.md)
+- [ReleaseVersionProgress](interfaces/ReleaseVersionProgress.md)
+- [ReleaseVersionResults](interfaces/ReleaseVersionResults.md)
+- [ReleaseVersionStatePatch](interfaces/ReleaseVersionStatePatch.md)
 
 ## 变量
 
-- [bumpConfigDefaults](variables/bumpConfigDefaults.md)
-- [bumpDefaultConfig](variables/bumpDefaultConfig.md)
 - [CONFIG\_DEFAULT\_NAME](variables/CONFIG_DEFAULT_NAME.md)
+- [releaseApi](variables/releaseApi.md)
+- [releaseVersionDefaultConfig](variables/releaseVersionDefaultConfig.md)
 
 ## 函数
 
-- [defineBumpXConfig](functions/defineBumpXConfig.md)
-- [getBumpDefaultConfig](functions/getBumpDefaultConfig.md)
-- [versionBump](functions/versionBump.md)
-- [versionBumpDryRun](functions/versionBumpDryRun.md)
-- [versionBumpInfo](functions/versionBumpInfo.md)
+- [defineReleaseXConfig](functions/defineReleaseXConfig.md)
+- [getReleaseVersionDefaultConfig](functions/getReleaseVersionDefaultConfig.md)
+- [loadReleaseVersionConfig](functions/loadReleaseVersionConfig.md)
+- [parseReleaseVersionCliOptions](functions/parseReleaseVersionCliOptions.md)
