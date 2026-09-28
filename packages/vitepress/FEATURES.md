@@ -42,9 +42,11 @@ VitePress 文档站工具包：默认主题配置、Mermaid 图表、Element Plu
 - `VIP_MERMAID_THEMES`：`default` | `dark` | `forest` | `neutral` | `base`
 - 类型：`VipMermaidOptions`、`VipMermaidTheme`
 
-### Vite 合并（`src/core/vite.ts`）
+### Vite 合并（`src/core/vite.ts` · `src/core/vite-build.ts`）
 
-- `mergeVipViteConfig(userVite?, options?)`
+- `mergeVipViteConfig(userVite?, options?)`：合并 `ssr.noExternal`、Sass modern API，并经由 `mergeVipBuildRollupOptions` 注入构建分包
+- `mergeVipBuildRollupOptions(vite?)`：`chunkSizeWarningLimit` 默认 4096（KB）、`manualChunks`（`vendor-element-plus` / `vendor-vue`）；与用户已有 `manualChunks` 函数链式合并
+- `resolveVipRollupManualChunk(id)`：分包规则（测试与高级定制可复用）；Mermaid 仍走运行时 `import('mermaid')`
 - `VipAppBuildLogOptions`、`MergeVipViteConfigOptions`（`sass`、`appBuildLog`）
 
 ### 页脚与首页数据（`src/core/vip.ts`）
@@ -126,6 +128,7 @@ VitePress 文档站工具包：默认主题配置、Mermaid 图表、Element Plu
 - Mermaid 主题在 fence info 或 `configureVipMermaid` 设置；全屏与视口逻辑在 `VipMermaid.vue`
 - 社交链接只补 `github` / `gitee` 时用 `resolveVipSocialLinks({ github: '...' })`
 - 修改公开 API 时同步 `apps/vitepress-demo` 与根 `.vitepress/`
+- 自定义 Markdown / 主题中直接使用 Element Plus 标签时须在组件或 `enhanceApp` 内自行 `import` 并注册（主题不再全局注册 `ElTable` 等）
 
 ## 构建
 

@@ -21,7 +21,7 @@ pnpm add @142vip/vitepress
 - ✅ `defineVipVitepressConfig`：合并默认主题、head、favicon、Vite SSR 配置
 - ✅ 可选 Mermaid 支持（`{ mermaid: true }`）
 - ✅ `getVipThemeConfig` / `enableVipFooter`：导航、社交链接、全局页脚
-- ✅ `defineVipExtendsTheme`：扩展默认主题 + Element Plus + `VipMermaid` + 首页区块
+- ✅ `defineVipExtendsTheme`：扩展默认主题；`VipMermaid` / 首页区块异步加载；EP 由内置组件按需引入
 - ✅ 文档组件：`VipMermaid`、`VipHomePage`、`VipProjectTable`
 - ✅ `@142vip/vitepress/workspace`：Monorepo `package.json` 索引工具
 - ✅ TypeDoc 默认配置 `getVipTypedocDefaultConfig`
