@@ -1,5 +1,5 @@
 import type { VipAgentSkillCliOptions } from '@142vip/agent-skills'
-import type { VipCommander } from '@142vip/utils'
+import type { VipPackageCliCommander } from '@142vip/utils'
 import {
   ProcessExitCodeEnum,
   VipColor,
@@ -7,7 +7,8 @@ import {
   vipLogger,
   VipNodeJS,
 } from '@142vip/utils'
-import { CLI_COMMAND_DETAIL, CommandEnum } from '../enums'
+import { CommandEnum } from '../fairy.interface'
+import { registerFairySubcommand } from '../utils'
 
 /**
  * ai 子命令可执行的操作
@@ -56,7 +57,7 @@ async function loadAgentSkills(): Promise<typeof import('@142vip/agent-skills')>
 /**
  * 解析并规范化 action；支持 `--check` 覆盖为 check。
  */
-function resolveAction(rawAction: string | undefined, options: AiCommandOptions): AiAction {
+export function resolveAiAction(rawAction: string | undefined, options: AiCommandOptions): AiAction {
   // 兼容：fa ai --check 未写 action；check 由 commander 默认 false
   const { check = false } = options
   if (check)
@@ -76,7 +77,8 @@ function resolveAction(rawAction: string | undefined, options: AiCommandOptions)
 /**
  * 解析目标目录：--target > AGENT_SKILLS_TARGET > cwd
  */
-function resolveTarget(options: AiCommandOptions): string {
+/** 解析 agent-skills 同步目标目录：--target > 环境变量 > cwd */
+export function resolveTarget(options: AiCommandOptions): string {
   if (options.target != null && options.target !== '')
     return VipNodeJS.pathResolve(options.target)
 
@@ -168,7 +170,7 @@ async function runSyncOrCheck(action: 'sync' | 'check', options: AiCommandOption
 
 /**
  * ai 命令入口
- * - `fa ai` / `fairy ai` / `fairy-cli` 同源 bin（cli.mjs）
+ * - `fa ai` / `fairy ai` 同源 bin（`bin/fa.cjs`）
  * - 能力复用 `@142vip/agent-skills` 的 `syncAgentSkills` API，不重复实现 IO
  * - 选项类型见 {@link AiCommandOptions}（extends VipAgentSkillCliOptions）
  *
@@ -182,26 +184,21 @@ async function runSyncOrCheck(action: 'sync' | 'check', options: AiCommandOption
  * fa a sync --force
  * ```
  */
-export async function aiMain(program: VipCommander): Promise<void> {
-  program
-    .initCommand(CLI_COMMAND_DETAIL[CommandEnum.AI], {
-      // 默认开启 --dry-run；info / check 场景自行忽略
-      dryRun: true,
-      // 日志由 agent-skills 侧输出，无需再挂 --trace
-      trace: false,
-    })
-    .argument('[action]', `操作：${AI_ACTIONS.join(' | ')}（默认 sync）`, 'sync')
-    .option('-t, --target <dir>', '下游项目根目录（默认 cwd；也可设 AGENT_SKILLS_TARGET）')
-    .option('--force', '目标无 package.json 时仍继续', false)
-    .option('--check', '校验模式（等价于 action=check）', false)
-    .action(async (action: string, options: AiCommandOptions): Promise<void> => {
-      const resolvedAction = resolveAction(action, options)
+export async function aiMain(program: VipPackageCliCommander): Promise<void> {
+  registerFairySubcommand(program, CommandEnum.AI, async (action: string, options: AiCommandOptions) => {
+    const resolvedAction = resolveAiAction(action, options)
 
-      if (resolvedAction === 'info') {
-        await printAgentSkillsInfo()
-        return
-      }
+    if (resolvedAction === 'info') {
+      await printAgentSkillsInfo()
+      return
+    }
 
-      await runSyncOrCheck(resolvedAction, options)
-    })
+    await runSyncOrCheck(resolvedAction, options)
+  }, (command) => {
+    command
+      .argument('[action]', `操作：${AI_ACTIONS.join(' | ')}（默认 sync）`, 'sync')
+      .option('-t, --target <dir>', '下游项目根目录（默认 cwd；也可设 AGENT_SKILLS_TARGET）')
+      .option('--force', '目标无 package.json 时仍继续', false)
+      .option('--check', '校验模式（等价于 action=check）', false)
+  })
 }

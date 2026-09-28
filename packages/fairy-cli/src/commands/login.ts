@@ -1,18 +1,14 @@
-import type { VipCommander } from '@142vip/utils'
+import type { VipPackageCliCommander } from '@142vip/utils'
+import type { FairyCommandOptions } from '../fairy.interface'
 import { VipColor, VipDocker, VipInquirer, vipLogger } from '@142vip/utils'
-import { CLI_COMMAND_DETAIL, CommandEnum } from '../enums'
+import { CommandEnum } from '../fairy.interface'
+import { registerFairySubcommand, runOrDryRun } from '../utils'
 
-/**
- * 支持的登录平台枚举
- */
 enum LoginPlatformEnum {
   DOCKER = 'DOCKER',
   NPM = 'NPM',
 }
 
-/**
- * 支持的注册地址枚举
- */
 enum RegistryURLEnum {
   DOCKER = 'https://registry.docker.io',
   NPM = 'https://registry.npmjs.org',
@@ -20,48 +16,43 @@ enum RegistryURLEnum {
   VIP_NPM = 'https://registry.142vip.com',
 }
 
-/**
- * docker 登录
- * - docker login --username=142vip --password="$password"  registry.cn-hangzhou.aliyuncs.com
- */
-async function loginDocker(): Promise<void> {
+async function loginDocker(dryRun?: boolean): Promise<void> {
   const username = await VipInquirer.promptInput('请输入用户名（默认：142vip）：', '142vip')
   const password = await VipInquirer.promptPassword('请输入密码：')
-  // 后续考虑用户自定义仓库地址
   const registry = await VipInquirer.promptSelect('请选择仓库地址：', [
     RegistryURLEnum.DOCKER,
     RegistryURLEnum.VIP_DOCKER,
   ])
-  vipLogger.println()
-  await VipDocker.userLogin({ username, password, registry })
+
+  await runOrDryRun(dryRun, 'login', [
+    `docker login --username=${username} --password=*** ${registry}`,
+  ], async () => {
+    vipLogger.println()
+    await VipDocker.userLogin({ username, password, registry })
+  })
 }
 
-/**
- * npm 登录
- * - npm login --registry  https://registry.npmjs.org
- */
-async function loginNpm(): Promise<void> {
+async function loginNpm(dryRun?: boolean): Promise<void> {
   const registry = await VipInquirer.promptInput(`请输入NPM地址：`, RegistryURLEnum.NPM)
   const command = `npm login --registry ${registry}`
-  vipLogger.logByBlank(`${VipColor.red('请粘贴到终端执行，NPM登录命令：')} ${VipColor.green(command)}`)
+
+  await runOrDryRun(dryRun, 'login', [
+    command,
+    '（NPM 登录需在终端手动完成）',
+  ], () => {
+    vipLogger.logByBlank(`${VipColor.red('请粘贴到终端执行，NPM登录命令：')} ${VipColor.green(command)}`)
+  })
 }
 
-/**
- * login命令入口
- * - fa login
- * - npx fa login
- */
-export async function loginMain(program: VipCommander): Promise<void> {
-  program
-    .initCommand(CLI_COMMAND_DETAIL[CommandEnum.LOGIN])
-    .action(async () => {
-      const loginType = await VipInquirer.promptSelect('选择需要登录的平台：', Object.values(LoginPlatformEnum))
-      if (loginType === LoginPlatformEnum.DOCKER) {
-        await loginDocker()
-      }
+export async function loginMain(program: VipPackageCliCommander): Promise<void> {
+  registerFairySubcommand(program, CommandEnum.LOGIN, async (options: FairyCommandOptions) => {
+    const loginType = await VipInquirer.promptSelect('选择需要登录的平台：', Object.values(LoginPlatformEnum))
+    if (loginType === LoginPlatformEnum.DOCKER) {
+      await loginDocker(options.dryRun)
+    }
 
-      if (loginType === LoginPlatformEnum.NPM) {
-        await loginNpm()
-      }
-    })
+    if (loginType === LoginPlatformEnum.NPM) {
+      await loginNpm(options.dryRun)
+    }
+  })
 }

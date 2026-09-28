@@ -1,29 +1,26 @@
-import type { VipCommander } from '@142vip/utils'
+import type { VipPackageCliCommander } from '@142vip/utils'
+import type { FairyCommandOptions } from '../fairy.interface'
 import { VipExecutor } from '@142vip/utils'
-import { CLI_COMMAND_DETAIL, CommandEnum } from '../enums'
+import { CommandEnum } from '../fairy.interface'
+import { registerFairySubcommand, runOrDryRun } from '../utils'
 
-interface LintOptions {
+interface LintOptions extends FairyCommandOptions {
   fix: boolean
 }
 
-/**
- * 执行eslint校验，格式化代码
- */
-async function execLint(args: LintOptions): Promise<void> {
-  const command = `npx eslint . ${args.fix ? '--fix' : ''}`
-  await VipExecutor.commandStandardExecutor(command)
+function buildLintCommand(fix: boolean): string {
+  return `npx eslint . ${fix ? '--fix' : ''}`.trim()
 }
 
-/**
- * 基于Eslint校验
- * - 参考：eslint-config模块
- */
-export async function lintMain(program: VipCommander): Promise<void> {
-  program
-    .initCommand(CLI_COMMAND_DETAIL[CommandEnum.LINT])
-    .option('-c,--config', 'Eslint配置文件路径', false)
-    .option('-f,--fix', '是否需要基于Eslint规则自动修复', false)
-    .action(async (args: LintOptions) => {
-      await execLint(args)
+export async function lintMain(program: VipPackageCliCommander): Promise<void> {
+  registerFairySubcommand(program, CommandEnum.LINT, async (args: LintOptions) => {
+    const command = buildLintCommand(args.fix)
+    await runOrDryRun(args.dryRun, 'lint', [command], async () => {
+      await VipExecutor.commandStandardExecutor(command)
     })
+  }, (command) => {
+    command
+      .option('-c,--config', 'Eslint配置文件路径', false)
+      .option('-f,--fix', '是否需要基于Eslint规则自动修复', false)
+  })
 }
