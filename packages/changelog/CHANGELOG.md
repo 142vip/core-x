@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.24 (2026-09-28)
+
+### 💅 Refactors
+
+- API 迁入 `core/apis` 并合并类型与配置 &nbsp;-&nbsp; by **chufan** [<samp>(7a8ff)</samp>](https://github.com/142vip/core-x/commit/7a8ff426)
+- `changelogCliMain` 与 `bin/changelog.cjs` 直连并补充 Jest &nbsp;-&nbsp; by **chufan** [<samp>(74f44)</samp>](https://github.com/142vip/core-x/commit/74f44507)
+
+**Release New Version v0.0.1-alpha.24 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/changelog)**
+
 ## v0.0.1-alpha.23 (2025-12-05)
 
 ### ✨ Features
