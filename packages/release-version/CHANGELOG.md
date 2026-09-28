@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.16 (2026-09-28)
+
+### 💅 Refactors
+
+- 引入 `releasex-cli` 与 `releaseApi` 并移除旧 CLI 入口 &nbsp;-&nbsp; by **chufan** [<samp>(8ba9e)</samp>](https://github.com/142vip/core-x/commit/8ba9e79c)
+- 删除旧 `core`/`enums` 实现并更新构建配置 &nbsp;-&nbsp; by **chufan** [<samp>(32969)</samp>](https://github.com/142vip/core-x/commit/32969e5b)
+
+**Release New Version v0.0.1-alpha.16 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/release-version)**
+
 ## v0.0.1-alpha.15 (2025-09-25)
 
 ### ✨ Features
