@@ -16,8 +16,8 @@ pnpm add @142vip/typeorm typeorm
 
 ## 功能
 
-- [x] `BaseEntity`：自增 `id`、`createTime`、`updateTime`
-- [x] `BaseEntityWithDeleted`：含 `deleted` 软删字段
+- ✅ `BaseEntity`：自增 `id`、`createTime`、`updateTime`
+- ✅ `BaseEntityWithDeleted`：含 `deleted` 软删字段
 
 ## 配置
 
