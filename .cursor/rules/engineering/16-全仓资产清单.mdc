@@ -14,7 +14,7 @@ alwaysApply: true
 | `package.json` | 根脚本、workspaces、`simple-git-hooks` |
 | `pnpm-workspace.yaml` | `apps/**`、`packages/**` |
 | `turbo.json` | `build`/`test`/`lint`/`dev` 任务图 |
-| `eslint.config.js` | 全仓 ESLint（`defineVipEslintConfig`） |
+| （无根 `eslint.config.js`） | 全仓 ESLint：`npx fa lint`（`@142vip/fairy-cli` 内置 `default-eslint.config`） |
 | `tsconfig.json` | 路径别名 `@142vip/*` → `packages/*/src` |
 | `tsconfig.package.json` / `tsconfig.nest-pkg.json` | 分包 TS 模板 |
 | `jest.config.ts` | 根 Jest |
@@ -31,7 +31,7 @@ alwaysApply: true
 | `.codegraph/` | CodeGraph 索引（任务前 `codegraph sync`） |
 | `AGENTS.md` | **L0 真源**：Agent 项目开发指南（边界 · 栈 · Git · 高效路径） |
 | `.agents/README.md` | Agent 治理入口（架构 · 层级 · 真源回写 · 维护） |
-| `.agents/skills/` | agent-skills 下游镜像（`fa ai sync` 生成；**随仓库提交**，供编辑器/Agent 读取） |
+| `.agents/skills/` | agent-skills 下游镜像（`fa ai --sync` 生成；**随仓库提交**，供编辑器/Agent 读取） |
 | `.codex/README.md` | Codex 薄入口 |
 | `.cursor/README.md` | Cursor 工作入口（rules 索引；规则本体在 `.cursor/rules/**`） |
 | `.workbuddy/README.md` | WorkBuddy 工作入口 |
@@ -87,7 +87,7 @@ alwaysApply: true
 | 项 | 说明 |
 |----|------|
 | 真源 | `packages/agent-skills/skills/<name>/SKILL.md`（`workflow` · `code-dev` · `self-check` · `commit`） |
-| 同步入口 | `fa ai sync` / `fa ai check`（fairy-cli）或 `pnpm exec vip-agent-skills --target .` |
+| 同步入口 | `fa ai --sync` / `fa ai --check`（fairy-cli）或 `pnpm exec vip-agent-skills --target .` |
 | 下游镜像 | `.agents/skills/`（**随仓库提交**，供编辑器/Agent 读取；勿手改镜像，改真源） |
 | 业务映射 | `business-map` 仅下游项目本地，永不进包 |
 | 维护规则 | 改 skills 真源 → 局部 build → 刷新镜像 → `--check` 防漂移（见 `self-check` skill §通用 skill 包维护） |

@@ -39,4 +39,4 @@ codegraph sync → 16 全仓清单 → 任务路由 → 读代码小改
 
 ## 通用 Skills（镜像）
 
-`.agents/skills/{workflow,code-dev,self-check,commit}/SKILL.md` 由 `fa ai sync` 从 `@142vip/agent-skills` 刷出；**写通用流程只改真源 `packages/agent-skills/skills/**`，禁止只改镜像**（见 `.agents/README.md`）。
+`.agents/skills/{workflow,code-dev,self-check,commit}/SKILL.md` 由 `fa ai --sync` 从 `@142vip/agent-skills` 刷出；**写通用流程只改真源 `packages/agent-skills/skills/**`，禁止只改镜像**（见 `.agents/README.md`）。

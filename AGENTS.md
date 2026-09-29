@@ -139,7 +139,7 @@ codegraph sync → 16 全仓清单 → 任务路由 → 读代码小改
 
 ```
 packages/agent-skills/skills/**   ← 唯一真源（发 npm）
-        │  fa ai sync / pnpm exec vip-agent-skills --target .
+        │  fa ai --sync / pnpm exec vip-agent-skills --target .
         ▼
 .agents/skills/{workflow,code-dev,self-check,commit}   ← 本仓镜像（供 Agent 加载）
         ✗ 禁止只改镜像却不改包
