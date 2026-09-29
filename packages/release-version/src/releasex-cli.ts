@@ -1,16 +1,28 @@
 import type { ReleaseVersionCliOptions } from './releasex.interface'
-import { isVipConsoleTraceEnabled, VipColor, VipCommander, VipConsole, VipNodeJS, VipPackageCliCommander } from '@142vip/utils'
+import {
+  formatVipCliHelpExample,
+  isVipConsoleTraceEnabled,
+  logVipCliBanner,
+  logVipCliTrace,
+  registerVipPackageCliErrorHandling,
+  VipCommander,
+  VipConsole,
+  VipNodeJS,
+  VipPackageCliCommander,
+} from '@142vip/utils'
 import { description, name, version } from '../package.json'
 import { parseReleaseVersionCliOptions, releaseVersionDefaultConfig } from './config'
 import { releaseApi } from './release.api'
 
+const RELEASE_VERSION_IDENTITY = { name, version }
+
 /** 根据 `--dry-run` 选择预览或正式发版 */
 async function runReleaseVersionCli(cliOptions: ReleaseVersionCliOptions): Promise<void> {
   if (isVipConsoleTraceEnabled() || cliOptions.trace) {
-    VipConsole.trace('releasex:', cliOptions)
+    logVipCliTrace(RELEASE_VERSION_IDENTITY, 'releasex: 解析', cliOptions as Record<string, unknown>)
   }
 
-  VipConsole.log(`${VipColor.dim(name)} ${VipColor.dim(`v${version}`)}`)
+  logVipCliBanner(RELEASE_VERSION_IDENTITY, { binAliases: 'releasex · release' })
 
   const releaseOptions = parseReleaseVersionCliOptions(cliOptions)
 
@@ -50,6 +62,12 @@ function registerReleaseVersionOptions(command: VipCommander): void {
 /** `releasex` / `release` bin 入口；与 `fa release` 共用 `releaseApi` */
 export async function releaseXCliMain(): Promise<void> {
   const program = new VipPackageCliCommander(name, version, description)
+  program.registerCliVersionBanner(RELEASE_VERSION_IDENTITY, { binAliases: 'releasex · release' })
+  registerVipPackageCliErrorHandling(program, {
+    identity: RELEASE_VERSION_IDENTITY,
+    binAliases: 'releasex · release',
+    renderHelpHintLine: () => `  查看帮助：${formatVipCliHelpExample('releasex -h', '（release 相同）')}`,
+  })
   program.registerStandalone({
     summary: '版本迭代与发版',
     description: '更新 package.json 版本，可选 CHANGELOG、git commit / tag / push',
