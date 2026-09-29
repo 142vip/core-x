@@ -1,14 +1,15 @@
-import type { ChangelogCliOptions } from './core/changelog.interface'
 import {
+  formatVipCliHelpExample,
   isVipConsoleTraceEnabled,
-  VipColor,
+  logVipCliBanner,
+  logVipCliTrace,
+  registerVipPackageCliErrorHandling,
   VipCommander,
-  VipConsole,
   VipNodeJS,
   VipPackageCliCommander,
 } from '@142vip/utils'
 import { description, name, version } from '../package.json'
-import { changelogApi } from './core/apis/changelog.api'
+import { changelogApi, ChangelogCliOptions } from './core'
 
 /** 与 `fa changelog` 子命令元数据对齐 */
 export const CHANGELOG_COMMAND_DETAIL = {
@@ -32,11 +33,13 @@ function registerChangelogOptions(command: VipCommander): void {
 }
 
 /** standalone bin 与 `fa changelog` 共用的 action */
+const CHANGELOG_IDENTITY = { name, version }
+
 export async function runChangelogCli(options: ChangelogCliOptions): Promise<void> {
   if (isVipConsoleTraceEnabled() || options.trace) {
-    VipConsole.trace('changelog:', options)
+    logVipCliTrace(CHANGELOG_IDENTITY, 'changelog: 解析', options as Record<string, unknown>)
   }
-  VipConsole.log(`${VipColor.dim(name)} ${VipColor.dim(`v${version}`)}`)
+  logVipCliBanner(CHANGELOG_IDENTITY, { binAliases: 'changelog · ch' })
   await changelogApi.changelogCoreHandler(options)
 }
 
@@ -49,6 +52,12 @@ export const changelogCommandRegistration = {
 /** `changelog` / `ch` bin 入口 */
 export async function changelogCliMain(): Promise<void> {
   const program = new VipPackageCliCommander(name, version, description)
+  program.registerCliVersionBanner(CHANGELOG_IDENTITY, { binAliases: 'changelog · ch' })
+  registerVipPackageCliErrorHandling(program, {
+    identity: CHANGELOG_IDENTITY,
+    binAliases: 'changelog · ch',
+    renderHelpHintLine: () => `  查看帮助：${formatVipCliHelpExample('changelog -h', '（ch 相同）')}`,
+  })
   program.registerStandalone(CHANGELOG_COMMAND_DETAIL, changelogCommandRegistration)
   await program.parseAsync(VipNodeJS.getProcessArgv())
 }
