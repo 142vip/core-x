@@ -1,4 +1,3 @@
-import type { CommitLinterOptions, GitCommitLinter } from './git-commit.interface'
 import {
   VipColor,
   VipConsole,
@@ -8,10 +7,12 @@ import {
 } from '@142vip/utils'
 import { name } from '../package.json'
 import {
+  CommitLinterOptions,
   GIT_COMMIT_DEFAULT_SCOPES,
   GIT_COMMIT_DEFAULT_TYPES,
+  GitCommitLinter,
   gitCommitTypes,
-} from './git-commit.interface'
+} from './commit.interface'
 
 const errorLabel = `${VipColor.white(VipColor.green(`【${name}】`))}`
 

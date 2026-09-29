@@ -1,4 +1,4 @@
-import type { CommitLinterOptions } from './git-commit.interface'
+import type { CommitLinterOptions } from './commit.interface'
 import { vipConfig } from '@142vip/utils'
 
 /** cosmiconfig 模块名（`commit-linter.config.ts` / `.commit-linterrc` 等） */

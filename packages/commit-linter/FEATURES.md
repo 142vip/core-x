@@ -16,7 +16,7 @@ Git Commit 规范校验（Conventional Commits），依赖 `@142vip/utils`（`Vi
 
 - `commit-linter.ts`：`commitLinter`、`printStandardCommitMessage`
 - `config.ts`：`CONFIG_DEFAULT_NAME`（`commit-linter`）、`defineVipCommitLinterConfig`、`loadCommitLinterConfig`
-- `git-commit.interface.ts`：`gitCommitTypes`、`GIT_COMMIT_DEFAULT_*`、`CommitLinterOptions`、`GitCommitLinter`
+- `commit.interface.ts`：`gitCommitTypes`、`GIT_COMMIT_DEFAULT_*`、`CommitLinterOptions`、`GitCommitLinter`
 
 ## 配置
 
