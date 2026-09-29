@@ -4,13 +4,18 @@
 
 ## 定位
 
-142vip 一站式 CLI（`fa` / `fairy`）：登录、安装依赖、发版、CHANGELOG、发布、同步镜像、清理、Lint、部署、软著、规范提交、Agent Skills 同步。编排包：`@142vip/release-version`、`@142vip/changelog`、`@142vip/commit-linter`、`@142vip/copyright`、`@142vip/agent-skills`。
+**开发依赖向** CLI（`fa` / `fairy` / `fan` / `ffr` / `ff`）：本地与 CI 工程化（安装、发版、CHANGELOG、lint、commit 钩子等），不作为业务运行时依赖。
+
+编排 `@142vip/release-version`、`@142vip/changelog`、`@142vip/commit-linter`、`@142vip/eslint-config`、`@142vip/copyright`、`@142vip/agent-skills`，并依赖 `@142vip/utils` 提供通用能力。
+
+`src/utils/commit.util.ts`、`eslint-config.util.ts` 对 `commit-linter` / `eslint-config` 做 **re-export** 并承载 CLI 配置解析；`commit-msg` 走 `fa commit --quiet -s './apps/*' -s './packages/*'`；配置经 cosmiconfig + 内置 `config/default-commit-linter.config.cjs`。
 
 ## 目录
 
 ```text
 src/
 ├── fairy.interface.ts         # CommandEnum、CLI_COMMAND_DETAIL、FairyCommandOptions
+├── fairy-cli.constants.ts     # fan / ffr / fa / fairy / ff
 ├── fairy-cli.ts               # fairyCliMain 入口
 ├── index.ts
 ├── utils/
@@ -18,24 +23,33 @@ src/
 │   ├── command.util.ts          # registerFairySubcommand
 │   ├── dry-run.util.ts          # logDryRunSteps / runOrDryRun
 │   ├── http.util.ts             # fetchJson / fetchText / FairyHttpError（Node fetch）
+│   ├── commit.util.ts           # fa commit 配置 / 校验 + commit-linter re-export
+│   ├── eslint-config.util.ts    # fa lint 配置路径 + eslint-config re-export
 │   ├── release-package.util.ts  # fa release 发版编排
-│   └── clean-path.util.ts       # fa clean 删除
+│   ├── clean-path.util.ts       # fa clean 路径删除
+│   ├── cli-error.util.ts        # 未知子命令 / 多余参数（统一格式，展示 bin 别名）
+│   └── trace-cli.util.ts        # --trace 日志
 └── commands/
+    ├── changelog.ts             # changelogMain → @142vip/changelog
     ├── release.ts
-    ├── changelog.ts
     └── …
 ```
 
 ## 功能
 
+### `utils/commit.util.ts` / `eslint-config.util.ts`（对外 re-export）
+
+- `commitLinter`、`defineVipCommitLinterConfig`、`loadCommitLinterConfig` ← `@142vip/commit-linter`
+- `defineVipEslintConfig` ← `@142vip/eslint-config`
+
 ### 子路径
 
 - `@142vip/fairy-cli`：主入口（`src/index.ts`）
-- bin：`fa`、`fairy`（`bin/fa.cjs` → `dist/fairy-cli.cjs` → `fairyCliMain`）
+- bin：`fa`、`fairy`、`fan`、`ffr`、`ff`（同一 `bin/fa.cjs` → `dist/fairy-cli.cjs` → `fairyCliMain`）
 
 ### 程序入口
 
-- `fairyCliMain(): Promise<void>`（`src/fairy-cli.ts`）：注册全部子命令后 `program.parseAsync`
+- `fairyCliMain(): Promise<void>`（`src/fairy-cli.ts`）：注册子命令 → `registerFairyCliErrorHandling` → `parseAsync`
 
 ### 导出类型与工具
 
@@ -44,7 +58,7 @@ src/
 - 根程序与子命令均基于 `VipPackageCliCommander`（`@142vip/utils`）
 - `registerFairySubcommand(program, CommandEnum, action, setup?)`：业务参数 → `--dry-run` / `--vip` → action
 - 根程序 `fa -h`：`program.registerRootOptions()` → `--version` / `--trace` / `--help`
-- 子命令 `fa <cmd> -h`：业务参数 → `--dry-run` / `--vip` → `--help`（`--trace` 仅在根程序 `fa --trace <cmd>`）
+- 子命令 `fa <cmd> -h`：业务参数 → `--dry-run` / `--vip` / `--trace` → `--help`（根与子命令均可传 `--trace`，`optsWithGlobals` 合并）
 - `registerFairySubcommand`、`buildReleaseVersionOptions`、`printPreCheckRelease`、`isPackagePendingRelease`、`releasePackage`（`utils/`）
 
 ### 子命令一览（`CommandEnum` / `CLI_COMMAND_DETAIL`）
@@ -83,7 +97,7 @@ src/
 
 **`changelog`**（aliases: `c`, `ch`, `cha`）
 
-- `program.registerSubcommand(CHANGELOG_COMMAND_DETAIL, changelogCommandRegistration)`（`@142vip/changelog`）
+- `changelogMain` → `program.registerSubcommand(CLI_COMMAND_DETAIL.changelog, changelogCommandRegistration)`（`@142vip/changelog`）
 
 **`publish`**（aliases: `p`, `pu`）
 
@@ -103,8 +117,9 @@ src/
 
 **`lint`**（aliases: `li`）
 
-- `-c, --config`：ESLint 配置文件路径（声明未接入执行逻辑）
-- `-f, --fix`：执行 `npx eslint . [--fix]`
+- `-f, --config <path>`：显式 ESLint 配置路径
+- 省略 `-f`：`vipConfig.searchConfigFilePath('eslint')` → 无则 `config/default-eslint.config.mjs`
+- `--fix`：执行 `npx eslint . --config … [--fix]`
 
 **`clean`**（aliases: `cl`, `clear`）
 
@@ -114,16 +129,31 @@ src/
 
 - 交互生成软著源代码文档；支持 `--dry-run`
 
-**`commit [vip]`**（aliases: `co`, `com`）
+**`commit`**（aliases: `co`, `com`）
 
-- `--push`：提交后推送远程
-- 仅 `vip` 子命令参数为真时执行规范提交流程
+- 默认：交互式规范提交（`loadCommitLinterConfigForCli()`：用户配置合并内置 `default-commit-linter.config.cjs`）
+- `-f, --config <path>`：`commit-linter` 配置文件路径（与 `fa lint -f` 一致；未传则 cosmiconfig 发现或内置默认）
+- `-q, --quiet`：仅校验 commit 首行（`commit-msg` / `pnpm check:commit`）
+- `-p, --push`：交互提交后推送远程
+- `-s, --scope <glob>`：Monorepo glob（可多次），扫描 npm 包名写入 scope 白名单；**优先于**配置 `scopeGlobs`
+- `-m, --message <msg>`：`--quiet` 时待校验首行；默认读 `.git/COMMIT_EDITMSG`
+- `--trace`：打印配置文件路径、`scopeGlobs`、`scopes` 数量、将执行的 `git` / `eslint` 步骤（见 `trace-cli.util.ts`）
 
-**`ai [action]`**（aliases: `a`）— 委托 `@142vip/agent-skills`
+| CLI `-s` | 配置 `scopeGlobs` | 行为 |
+|---|---|---|
+| 无 | 无 | 仅用配置 `scopes` + 校验器内置默认 scope |
+| 有 | 任意 | 按 `-s` glob 扫描，与配置 `scopes` 合并 |
+| 无 | 有（内置默认含 `./apps/*`、`./packages/*`） | 按配置 glob 扫描 |
 
-- 参数 `action`：`sync` | `check` | `info`（默认 `sync`）
+交互与 `--quiet` 共用 `buildCommitLinterOptions`；本仓钩子显式 `-s './apps/*' -s './packages/*'`。
+
+**`ai`**（aliases: `a`）— 委托 `@142vip/agent-skills`
+
+- `--sync`：同步到 `.agents/skills/`（与 `--check` 互斥；均未传时默认同步）
+- `--check`：只比对、不写盘
 - `-t, --target <dir>`：下游根目录（或 `AGENT_SKILLS_TARGET`）
-- `--force` / `--check` / `--dry-run` / `--trace`
+- `--force` / `--dry-run` / `--trace`
+- 不再支持 `fa ai sync` 等子命令写法；多余参数由 `cli-error.util` 提示
 
 ### `releasePackage` 行为摘要
 
@@ -136,7 +166,12 @@ src/
 
 ## 配置
 
-无独立配置文件。各子命令依赖：
+### `package.json` 依赖分工
+
+- `dependencies`：仅 `@142vip/utils`（含 `VipCommander` 与 `registerVipCommanderExitOverrideTree`）
+- `devDependencies`：`@142vip/agent-skills`、`@142vip/changelog`、`@142vip/commit-linter`、`@142vip/copyright`、`@142vip/eslint-config`、`@142vip/release-version`（本仓 workspace 编排；`unbuild` 构建为 external，不内联进 dist）
+
+### 运行环境
 
 - 环境变量：`AGENT_SKILLS_TARGET`（`fa ai`）
 - Monorepo：`pnpm-workspace.yaml` 与各包 `package.json`
@@ -146,7 +181,7 @@ src/
 
 - Monorepo 发版：`fa release --vip -F './packages/*'`
 - 试运行：`fa release --vip --dry-run`
-- Agent Skills：`fa ai sync -t .` / `fa ai check -t .`
+- Agent Skills：`fa ai --sync -t .` / `fa ai --check -t .`；未知子命令由 `registerFairyCliErrorHandling` 友好提示
 
 ## 构建
 
@@ -179,14 +214,17 @@ cd packages/fairy-cli && pnpm build && pnpm typecheck
 | `test/clean-path.util.spec.ts` | `utils/clean-path.util.ts` |
 | `test/copyright.spec.ts` | `commands/copyright.ts` |
 | `test/commit.spec.ts` | `commands/commit.ts` |
-| `test/ai.spec.ts` | `commands/ai.ts`（`resolveAiAction` / `resolveTarget`） |
+| `test/commit.util.spec.ts` | `utils/commit.util.ts` |
+| `test/eslint-config.util.spec.ts` | `utils/eslint-config.util.ts` |
+| `test/ai.spec.ts` | `commands/ai.ts`（`resolveAiRunMode` / `resolveTarget`） |
+| `test/cli-error.spec.ts` | `utils/cli-error.util.ts` |
 
 可测试导出（不进入包主入口，仅供单测与复用）：
 
 - `generateDirPatterns`（`clean.ts`）
 - `printSplitPkgCommitLogs`（`release.ts`）
-- `resolveTarget`（`ai.ts`）
+- `resolveAiRunMode` / `resolveTarget`（`ai.ts`）
 
 ## 演示
 
-无独立 demo；在 core-x 根目录使用 `pnpm release`（封装 `fa release`）联调。
+无独立 demo；在 Monorepo 根目录使用 `pnpm release`（封装 `fa release`）联调。

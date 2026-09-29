@@ -2,11 +2,13 @@
 
 [![NPM version](https://img.shields.io/npm/v/@142vip/fairy-cli?labelColor=0b3d52&color=1da469&label=version)](https://www.npmjs.com/package/@142vip/fairy-cli)
 
-通用型 CLI 助手、一站式工具，支持多种命令操作
+开发向 CLI 助手（`devDependencies`），用于多包仓库本地与 CI 工程化。
 
 ## 安装
 
-安装后可通过 `fa` 或 `fairy` 调用（`package.json` `bin` 字段）。
+安装后可用下列**等价**命令名（同一可执行文件）：
+
+`fan` · `ffr` · `fa` · `fairy` · `ff`
 
 ```shell
 # npm
@@ -16,12 +18,15 @@ npm install -D @142vip/fairy-cli
 pnpm add -D @142vip/fairy-cli
 ```
 
+下文示例以 `fa` 书写，其它入口相同。
+
 ## 功能
 
-- ✅ 子命令通用选项：`--dry-run`（打印将执行的命令/HTTP 步骤）、`--vip`（@142vip Monorepo 专用，见 `release` / `sync`）
+- ✅ 命令入口别名：`fan` / `ffr` / `fa` / `fairy` / `ff`；未知子命令时提示全部入口与子命令列表
+- ✅ 子命令通用选项：`--dry-run`（打印将执行的命令/HTTP 步骤）、`--trace`（调试日志）、`--vip`（@142vip 多包仓库专用，见 `release` / `sync`）
 - ✅ 登录 Docker / npm（`login`）
 - ✅ 依赖安装（`install`）
-- ✅ Monorepo 版本发布（`release`）
+- ✅ 多包版本发布（`release`）
 - ✅ CHANGELOG 生成（`changelog`）
 - ✅ npm 镜像推送（`publish`）
 - ✅ CNPM 包同步（`sync`）
@@ -30,12 +35,15 @@ pnpm add -D @142vip/fairy-cli
 - ✅ 清理构建产物（`clean`）
 - ✅ 软著源代码文档生成（`copyright`）
 - ✅ Git Commit 规范提交（`commit`）
-- ✅ Agent Skills 同步与校验（`ai`，集成 `@142vip/agent-skills`）
+- ✅ Agent Skills 同步与校验（`ai --sync` / `ai --check`，集成 `@142vip/agent-skills`）
 - ✅ 编程式 API：`fairyCliMain`、`releasePackage`、`buildReleaseVersionOptions`、`printPreCheckRelease`
+- ✅ `commit`：`-f` 指定 `commit-linter.config.*`，`-s` 扫描包路径 glob 作为 scope，`-q` 仅校验；内置 `config/default-commit-linter.config.cjs`
+- ✅ `lint`：自动发现 `eslint.config.*` 或内置 `config/default-eslint.config.mjs`，`-f` 指定配置
+- ✅ 与专用包同源的编程式导出：`commitLinter`、`defineVipCommitLinterConfig`、`defineVipEslintConfig`、`loadCommitLinterConfigForCli`
 
 ## 配置
 
-无
+无独立配置文件。运行时 `dependencies` 仅 `@142vip/utils`；编排用 `@142vip/*` 见 `package.json` `devDependencies`（说明见 FEATURES「配置」）。
 
 ## 使用
 
@@ -45,37 +53,26 @@ pnpm add -D @142vip/fairy-cli
 fa -h
 ```
 
-输出示例：
-
-```text
-Usage: @142vip/fairy-cli [options] [command]
-
-通用型Cli助手、一站式工具，支持多种命令操作
-
-Options:
-  -v,--version                    VipCommander Version By @142vip
-  -h, --help                      display help for command
-
-Commands:
-  login|l [options]               登录平台
-  install|i [options]             安装依赖
-  release|re [options]            发布新的版本
-  changelog|c [options]           生成 CHANGELOG 日志记录
-  publish|p [options]             远程镜像推送
-  sync|s [options] [packageName]  同步NPM包
-  deploy|de [options]             项目部署
-  lint|li [options]               根据Eslint检查、格式化代码风格
-  clean|cl [options]              快速清理项目
-  copyright|cr [options]          软件著作权登记的源代码文档生成
-  commit|co [options] [vip]       Git Commit 提交信息
-  ai|a [options] [action]         AI Agent Skills 管理
-  help [command]                  display help for command
-```
-
 常用示例：
 
 ```shell
-# Monorepo 交互发版（@142vip 组织）
+# 交互式规范提交（默认）
+fa commit
+fa commit -s './packages/*' -p
+
+# commit-msg 钩子 / 手动校验（仅校验，不交互）
+fa commit --quiet -s './apps/*' -s './packages/*'
+
+# 指定 commit-linter 配置文件（等同 lint 的 -f）
+fa commit -f ./commit-linter.config.cjs
+fa commit --quiet -f ./commit-linter.config.cjs -s './packages/*'
+
+# ESLint（自动读取 eslint.config.* 或内置配置）
+fa lint --trace --fix
+fa lint --fix
+fa lint -f custom-eslint.config.js --fix
+
+# 多包交互发版（@142vip 组织）
 fa release --vip -F './packages/*'
 
 # 试运行：打印将执行的命令/HTTP 步骤，不写盘、不提交
@@ -86,20 +83,22 @@ fa clean --deps --dry-run
 # 发布时标记 GitHub Release 为 Pre-release（默认 Latest）
 fa release --vip --prerelease
 
-# 同步 Agent Skills 到当前项目
-fa ai sync -t .
-
-# 校验下游 skills 是否与包内一致
-fa ai check -t .
-
-# 查看 agent-skills 包信息
-fa ai info
+# Agent Skills（未传 --sync/--check 时默认同步）
+fa ai --sync -t .
+fa ai --check -t .
 ```
 
 编程式调用：
 
 ```ts
-import { fairyCliMain, printPreCheckRelease, releasePackage } from '@142vip/fairy-cli'
+import {
+  commitLinter,
+  defineVipCommitLinterConfig,
+  defineVipEslintConfig,
+  fairyCliMain,
+  printPreCheckRelease,
+  releasePackage,
+} from '@142vip/fairy-cli'
 
 await fairyCliMain()
 ```

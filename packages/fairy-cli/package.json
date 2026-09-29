@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.3-alpha.34",
   "private": false,
-  "description": "通用型Cli助手，开发向 CLI（fa / fairy / fan / ffr / ff），Monorepo 架构与 CI 工程化",
+  "description": "通用型`Cli`助手，开发向工具（fa / fairy / fan / ffr / ff）， 代码架构 与 工程化",
   "author": {
     "name": "mmdapl",
     "email": "mmdapl@163.com"
