@@ -1,5 +1,4 @@
-import type { VipCommander } from '@142vip/utils'
-import { vipAxios } from '@142vip/axios'
+import type { VipCommanderOptions, VipPackageCliCommander } from '@142vip/utils'
 import {
   VipColor,
   VipConsole,
@@ -8,63 +7,27 @@ import {
   VipMonorepo,
   VipNodeJS,
 } from '@142vip/utils'
-import { CLI_COMMAND_DETAIL, CommandEnum } from '../enums'
+import { name as fairyCliPackageName } from '../../package.json'
+import { CommandEnum } from '../constant'
+import {
+  fetchJson,
+  fetchText,
+  logDryRunSteps,
+  registerFairySubcommand,
+  runOrDryRun,
+} from '../utils'
 
-/**
- * cnpm 同步状态
- */
 enum CNPMPackageState {
   Waiting = 'waiting',
   Processing = 'processing',
   Success = 'success',
 }
 
-/**
- * 同步包的响应
- */
 interface RequestSync {
   ok: boolean
-  // logId: string
   id: string
 }
 
-// https://registry-direct.npmmirror.com/-/package/@142vip/vitepress/syncs
-// {
-//   "ok": true,
-//   "id": "66e10e1be561c46e1becf19a",
-//   "type": "sync_package",
-//   "state": "waiting"
-// }
-
-/**
- * 发起同步请求，同步模块
- */
-async function requestSync(packageName: string): Promise<void> {
-  // https://registry-direct.npmmirror.com/-/package/@142vip/vitepress/syncs
-  // `https://registry.npmmirror.com/${packageName}/sync`
-  const syncUrl = `https://registry-direct.npmmirror.com/-/package/${packageName}/syncs`
-
-  const { data: responseJSON } = await vipAxios.put<RequestSync>(syncUrl)
-
-  // if (response.status === 404 || !response.ok) {
-  //
-  // }
-
-  if (!responseJSON.ok) {
-    VipConsole.log(`requestSync--json : ${responseJSON}`)
-    VipNodeJS.existErrorProcess()
-  }
-  setTimeout(async () => {
-    const logUrl = await getPackageSyncLogUrl(packageName, responseJSON.id)
-    if (logUrl != null) {
-      await getPackageSyncLog(logUrl)
-    }
-  }, 2000)
-}
-
-/**
- * 同步的状态
- */
 interface SyncState {
   ok: boolean
   id: string
@@ -73,56 +36,87 @@ interface SyncState {
   logUrl: string
 }
 
-/**
- * 获取包的同步状态
- */
-async function getPackageSyncLogUrl(packageName: string, logId: string): Promise<string | null> {
-  const stateUrl = `https://registry.npmmirror.com/-/package/${packageName}/syncs/${logId}`
-  const { data: stateRes } = await vipAxios.get<SyncState>(stateUrl)
+function NPMSYNC_PUT(packageName: string) {
+  return `https://registry-direct.npmmirror.com/-/package/${packageName}/syncs`
+}
 
-  // 正常的请求 && stateRes.state === CNPMPackageState.Success
+function NPMSYNC_STATE(packageName: string, logId: string) {
+  return `https://registry.npmmirror.com/-/package/${packageName}/syncs/${logId}`
+}
+
+function NPM_SEARCH(keyword: string) {
+  return `https://registry.npmjs.org/-/v1/search?text=${encodeURIComponent(keyword)}&size=20`
+}
+
+/** 发起 cnpm 同步 */
+async function requestSync(packageName: string, dryRun?: boolean): Promise<void> {
+  const syncUrl = NPMSYNC_PUT(packageName)
+
+  await runOrDryRun(dryRun, 'sync', [
+    `PUT ${syncUrl}`,
+    `GET ${NPMSYNC_STATE(packageName, '{id}')}（约 2s 后轮询）`,
+    `GET {logUrl}（拉取同步日志）`,
+  ], async () => {
+    const responseJSON = await fetchJson<RequestSync>(syncUrl, { method: 'PUT' })
+
+    if (!responseJSON.ok) {
+      VipConsole.log(`requestSync--json : ${JSON.stringify(responseJSON)}`)
+      VipNodeJS.existErrorProcess()
+    }
+
+    setTimeout(async () => {
+      const logUrl = await getPackageSyncLogUrl(packageName, responseJSON.id)
+      if (logUrl != null) {
+        await getPackageSyncLog(logUrl)
+      }
+    }, 2000)
+  })
+}
+
+async function getPackageSyncLogUrl(packageName: string, logId: string): Promise<string | null> {
+  const stateUrl = NPMSYNC_STATE(packageName, logId)
+  const stateRes = await fetchJson<SyncState>(stateUrl)
+
   if (stateRes.ok) {
     return stateRes.logUrl
   }
-  vipLogger.error(`getPackageSyncState-->err:${stateRes}`)
+  vipLogger.error(`getPackageSyncState-->err:${JSON.stringify(stateRes)}`)
   VipNodeJS.existErrorProcess()
   return null
 }
 
 async function getPackageSyncLog(logUrl: string): Promise<void> {
-  const { data: syncLog } = await vipAxios.get(logUrl)
-
-  VipConsole.log(`getPackageSyncLog: ${syncLog.toString()}`)
+  const syncLog = await fetchText(logUrl)
+  VipConsole.log(`getPackageSyncLog: ${syncLog}`)
 }
 
-/**
- * 同步到国内仓库
- * - cnpm
- */
-async function execSync(packageName: string): Promise<void> {
+async function execSync(packageName: string, dryRun?: boolean): Promise<void> {
+  if (dryRun) {
+    logDryRunSteps('sync', [`延迟 1s 后执行同步流程`, `包名: ${packageName}`])
+    await requestSync(packageName, true)
+    return
+  }
+
   setTimeout(async () => {
-    vipLogger.logByBlank(`---------【@142vip/fairy-cli】模块：${VipColor.green(packageName)}，开始同步 ------- `)
-    await requestSync(packageName)
+    vipLogger.logByBlank(`---------【${fairyCliPackageName}】模块：${VipColor.green(packageName)}，开始同步 ------- `)
+    await requestSync(packageName, false)
   }, 1000)
 }
 
-/**
- * 在线搜索npm包
- */
+/** npm 在线搜索（供 Inquirer promptSearch 使用） */
 async function searchNpmPkgOnline(input: string | undefined, options: { signal: AbortSignal }) {
   if (input == null) {
     return []
   }
-  const { data } = await vipAxios.get<{
+
+  const data = await fetchJson<{
     objects: ReadonlyArray<{
       package: {
         name: string
         description: string
       }
     }>
-  }>(`https://registry.npmjs.org/-/v1/search?text=${encodeURIComponent(input)}&size=20`, {
-    signal: options.signal,
-  })
+  }>(NPM_SEARCH(input), { signal: options.signal })
 
   return data.objects.map(pkg => ({
     name: pkg.package.name,
@@ -132,26 +126,25 @@ async function searchNpmPkgOnline(input: string | undefined, options: { signal: 
 }
 
 /**
- * sync命令入口
+ * `fa sync`：将指定 npm 包同步到 CNPM 镜像（npmmirror sync API）。
+ * - `--vip`：从 Monorepo `packages/*` 交互选包
+ * - `--dry-run`：只打印 HTTP 步骤
  */
-export async function syncMain(program: VipCommander): Promise<void> {
-  program
-    .initCommand(CLI_COMMAND_DETAIL[CommandEnum.SYNC], { vip: true })
-    .argument('[packageName]', '需要同步的模块包名称')
-    .action(async (packageName: string | undefined, options): Promise<void> => {
-      // 142vip本地业务
-      if (packageName == null && options.vip) {
-        const pkgJSON = VipMonorepo.getReleasePkgJSON('./packages/*')
-        const packageNames = pkgJSON.map(pkg => pkg.name)
-        packageName = await VipInquirer.promptSearch('请选择需要同步的模块包名称：', VipInquirer.handleSimpleSearchSource(packageNames))
-      }
-      // 在线查询，搜索npm包
-      else {
-        packageName = await VipInquirer.promptSearch('请输入需要同步的模块包名称：', searchNpmPkgOnline)
-      }
+export async function syncMain(program: VipPackageCliCommander): Promise<void> {
+  registerFairySubcommand<[string | undefined, VipCommanderOptions]>(program, CommandEnum.SYNC, async (packageName, options) => {
+    if (packageName == null && options.vip) {
+      const pkgJSON = VipMonorepo.getReleasePkgJSON('./packages/*')
+      const packageNames = pkgJSON.map(pkg => pkg.name)
+      packageName = await VipInquirer.promptSearch('请选择需要同步的模块包名称：', VipInquirer.handleSimpleSearchSource(packageNames))
+    }
+    else if (packageName == null) {
+      packageName = await VipInquirer.promptSearch('请输入需要同步的模块包名称：', searchNpmPkgOnline)
+    }
 
-      if (packageName != null) {
-        await execSync(packageName)
-      }
-    })
+    if (packageName != null) {
+      await execSync(packageName, options.dryRun)
+    }
+  }, (command) => {
+    command.argument('[packageName]', '需要同步的模块包名称')
+  })
 }

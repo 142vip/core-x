@@ -1,0 +1,177 @@
+[API 参考](../../../index.md) / [@142vip/nest-typeorm](../index.md) / Index
+
+# 函数: Index()
+
+## 调用签名
+
+> **Index**(`options?`): `ClassDecorator` & `PropertyDecorator`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/decorator/Index.d.ts:7
+
+Creates a database index.
+Can be used on entity property or on entity.
+Can create indices with composite columns when used on entity.
+
+### 参数
+
+#### options?
+
+[`IndexOptions`](../interfaces/IndexOptions.md)
+
+### 返回
+
+`ClassDecorator` & `PropertyDecorator`
+
+## 调用签名
+
+> **Index**(`name`, `options?`): `ClassDecorator` & `PropertyDecorator`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/decorator/Index.d.ts:13
+
+Creates a database index.
+Can be used on entity property or on entity.
+Can create indices with composite columns when used on entity.
+
+### 参数
+
+#### name
+
+`string`
+
+#### options?
+
+[`IndexOptions`](../interfaces/IndexOptions.md)
+
+### 返回
+
+`ClassDecorator` & `PropertyDecorator`
+
+## 调用签名
+
+> **Index**(`name`, `options`): `ClassDecorator` & `PropertyDecorator`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/decorator/Index.d.ts:19
+
+Creates a database index.
+Can be used on entity property or on entity.
+Can create indices with composite columns when used on entity.
+
+### 参数
+
+#### name
+
+`string`
+
+#### options
+
+##### synchronize
+
+`false`
+
+### 返回
+
+`ClassDecorator` & `PropertyDecorator`
+
+## 调用签名
+
+> **Index**(`name`, `fields`, `options?`): `ClassDecorator` & `PropertyDecorator`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/decorator/Index.d.ts:27
+
+Creates a database index.
+Can be used on entity property or on entity.
+Can create indices with composite columns when used on entity.
+
+### 参数
+
+#### name
+
+`string`
+
+#### fields
+
+`string`[]
+
+#### options?
+
+[`IndexOptions`](../interfaces/IndexOptions.md)
+
+### 返回
+
+`ClassDecorator` & `PropertyDecorator`
+
+## 调用签名
+
+> **Index**(`fields`, `options?`): `ClassDecorator` & `PropertyDecorator`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/decorator/Index.d.ts:33
+
+Creates a database index.
+Can be used on entity property or on entity.
+Can create indices with composite columns when used on entity.
+
+### 参数
+
+#### fields
+
+`string`[]
+
+#### options?
+
+[`IndexOptions`](../interfaces/IndexOptions.md)
+
+### 返回
+
+`ClassDecorator` & `PropertyDecorator`
+
+## 调用签名
+
+> **Index**(`fields`, `options?`): `ClassDecorator` & `PropertyDecorator`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/decorator/Index.d.ts:39
+
+Creates a database index.
+Can be used on entity property or on entity.
+Can create indices with composite columns when used on entity.
+
+### 参数
+
+#### fields
+
+(`object?`) => `any`[] \| \{\[`key`: `string`\]: `number`; \}
+
+#### options?
+
+[`IndexOptions`](../interfaces/IndexOptions.md)
+
+### 返回
+
+`ClassDecorator` & `PropertyDecorator`
+
+## 调用签名
+
+> **Index**(`name`, `fields`, `options?`): `ClassDecorator` & `PropertyDecorator`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/decorator/Index.d.ts:47
+
+Creates a database index.
+Can be used on entity property or on entity.
+Can create indices with composite columns when used on entity.
+
+### 参数
+
+#### name
+
+`string`
+
+#### fields
+
+(`object?`) => `any`[] \| \{\[`key`: `string`\]: `number`; \}
+
+#### options?
+
+[`IndexOptions`](../interfaces/IndexOptions.md)
+
+### 返回
+
+`ClassDecorator` & `PropertyDecorator`

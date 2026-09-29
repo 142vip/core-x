@@ -19,14 +19,21 @@
 
 ## 变量
 
+- [ACCEPT\_LANGUAGES](variables/ACCEPT_LANGUAGES.md)
+- [defaultAxiosConfig](variables/defaultAxiosConfig.md)
+- [USER\_AGENTS](variables/USER_AGENTS.md)
 - [vipAxios](variables/vipAxios.md)
 
 ## 函数
 
+- [createAxiosConfig](functions/createAxiosConfig.md)
 - [createVipAxios](functions/createVipAxios.md)
 - [defaultRequestInterceptor](functions/defaultRequestInterceptor.md)
 - [defaultResponseInterceptor](functions/defaultResponseInterceptor.md)
 - [defaultVipRequestInterceptor](functions/defaultVipRequestInterceptor.md)
 - [defaultVipResponseInterceptor](functions/defaultVipResponseInterceptor.md)
+- [getRandomAcceptLanguage](functions/getRandomAcceptLanguage.md)
+- [getRandomSpiderHeaders](functions/getRandomSpiderHeaders.md)
+- [getRandomUserAgent](functions/getRandomUserAgent.md)
 - [requestInterceptor](functions/requestInterceptor.md)
 - [responseInterceptor](functions/responseInterceptor.md)

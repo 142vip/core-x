@@ -1,50 +1,52 @@
-import type { VipCommander } from '@142vip/utils'
+import type { VipPackageCliCommander } from '@142vip/utils'
 import { CopyrightFileType, VipCopyright } from '@142vip/copyright'
-import { VipColor, VipConsole, VipInquirer, vipLogger, VipNodeJS } from '@142vip/utils'
-import { CLI_COMMAND_DETAIL, CommandEnum } from '../enums'
+import {
+  VipColor,
+  VipConsole,
+  VipInquirer,
+} from '@142vip/utils'
+import { CommandEnum, FairyCommandOptions } from '../constant'
+import { registerFairySubcommand, runOrDryRun } from '../utils'
 
-interface CopyrightOptions {
+interface CopyrightOptions extends FairyCommandOptions {
   maxLineCount: number
   maxSourceCount: number
-  dryRun: boolean
-  logger: boolean
 }
 
-/**
- * copyright命令
- * - 参考 @142vip/copyright模块
- */
-export async function copyrightMain(program: VipCommander): Promise<void> {
-  program
-    .initCommand(CLI_COMMAND_DETAIL[CommandEnum.COPYRIGHT])
-    .option('-l,--max-line-count', '每页最大行数', value => Number.parseInt(value), 50)
-    .option('-s,--max-source-count', '扫描的最大代码行数', value => Number.parseInt(value), 2000)
-    .action(async (args: CopyrightOptions): Promise<void> => {
-      const copyrightTitle = await VipInquirer.promptInputRequired('申请著作权登记的软件的全称：')
-      const copyrightVersion = await VipInquirer.promptInputRequired('申请著作权登记的软件的版本号：')
-      const sourceCodeDir = await VipInquirer.promptInputRequired('源代码扫描目录：')
-      const fileType = await VipInquirer.promptSelect<CopyrightFileType>('源代码编程语言类型：', Object.values(CopyrightFileType))
+/** `fa copyright`：交互生成软著登记用源代码文档（委托 `@142vip/copyright`）。 */
+export async function copyrightMain(program: VipPackageCliCommander): Promise<void> {
+  registerFairySubcommand(program, CommandEnum.COPYRIGHT, async (args: CopyrightOptions) => {
+    const copyrightTitle = await VipInquirer.promptInputRequired('申请著作权登记的软件的全称：')
+    const copyrightVersion = await VipInquirer.promptInputRequired('申请著作权登记的软件的版本号：')
+    const sourceCodeDir = await VipInquirer.promptInputRequired('源代码扫描目录：')
+    const fileType = await VipInquirer.promptSelect<CopyrightFileType>(
+      '源代码编程语言类型：',
+      Object.values(CopyrightFileType),
+    )
 
-      // 试运行
-      if (args.dryRun) {
-        vipLogger.println()
-        vipLogger.println()
-        VipConsole.log(VipColor.green('申请软件著作权登记的源代码文档生成，试运行：'))
-        VipConsole.log(VipColor.dim(`软件的全称：${copyrightTitle}`))
-        VipConsole.log(VipColor.dim(`软件的版本：${copyrightVersion}`))
-        VipConsole.log(VipColor.dim(`源代码扫描目录：${sourceCodeDir}`))
-        VipConsole.log(VipColor.dim(`源代码编程语言类型：${fileType}`))
-        vipLogger.println()
-        VipNodeJS.existErrorProcess()
-      }
+    const steps = [
+      `全称: ${copyrightTitle}`,
+      `版本: ${copyrightVersion}`,
+      `目录: ${sourceCodeDir}`,
+      `语言: ${fileType}`,
+      `每页行数: ${args.maxLineCount}`,
+      `最大扫描行数: ${args.maxSourceCount}`,
+      '生成软著源代码 DOCX',
+    ]
 
+    await runOrDryRun(args.dryRun, 'copyright', steps, async () => {
       const vipCopyright = new VipCopyright(copyrightTitle, copyrightVersion, {
-        logger: args.logger,
+        logger: args.trace === true,
         maxLineCountInPage: args.maxLineCount,
         maxScanSourceLineCount: args.maxSourceCount,
       })
 
-      // 生成源代码文档
       await vipCopyright.generateDocx(sourceCodeDir, fileType)
+      VipConsole.log(`${VipColor.greenBright('copyright:')} 源代码文档已生成`)
     })
+  }, (command) => {
+    command
+      .option('-l,--max-line-count <n>', '每页最大行数', (value: string) => Number.parseInt(value, 10), 50)
+      .option('-s,--max-source-count <n>', '扫描的最大代码行数', (value: string) => Number.parseInt(value, 10), 2000)
+  })
 }

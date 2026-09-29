@@ -19,7 +19,7 @@
 │ agent-skills │    │ 镜像（.agents/    │    │ .codex/ .work-  │
 │ （真源包）    │    │ skills/）         │    │ buddy/ .cursor/  │
 └──────┬───────┘    └──────────────────┘    └─────────────────┘
-       │ fa ai sync / vip-agent-skills（包 → 镜像）
+       │ fa ai / vip-agent-skills（包 → 镜像）
        ▼
 .agents/skills/{workflow,code-dev,self-check,commit}  ← 镜像，非真源
 .agents/skills/agent-skills.json                       ← 同步基线（check 比对）
@@ -29,7 +29,7 @@
 |------|------|--------|
 | **L0** | `AGENTS.md` | 边界、编码纪律、栈摘要、自检、Git |
 | **L1a 真源** | `packages/agent-skills/skills/**` | 跨项目：`workflow` / `code-dev` / `self-check` / `commit` |
-| **L1a 镜像** | `.agents/skills/{workflow,code-dev,self-check,commit}` | 由 `fa ai sync` 从包刷出，供加载 |
+| **L1a 镜像** | `.agents/skills/{workflow,code-dev,self-check,commit}` | 由 `fa ai` 从包刷出，供加载 |
 | **L2** | `.codex/README.md` · `.workbuddy/README.md` · `.cursor/README.md` | **仅**工具操作差异 |
 | **L3** | `.cursor/rules/**` | Cursor 触发层（内参，不对外） |
 
@@ -59,8 +59,8 @@
 ### 本仓命令
 
 ```bash
-fa ai sync          # 包 → .agents/skills（fairy-cli 集成）
-fa ai check         # 镜像是否与包一致（防漂移）
+fa ai        # 包 → .agents/skills（fairy-cli 集成）
+fa ai --check       # 镜像是否与包一致（防漂移）
 # 等价 CLI
 pnpm exec vip-agent-skills --target .         # 同步
 pnpm exec vip-agent-skills --target . --check # 校验
@@ -92,7 +92,7 @@ pnpm exec vip-agent-skills --target . --check # 校验
 
 ## 维护
 
-1. 跨项目通用流程 → **只改** `packages/agent-skills/skills/**` → `pnpm --filter @142vip/agent-skills build` → `fa ai sync` →（实质变更）发版
+1. 跨项目通用流程 → **只改** `packages/agent-skills/skills/**` → `pnpm --filter @142vip/agent-skills build` → `fa ai` →（实质变更）发版
 2. 本仓编码纪律 / 边界 → `AGENTS.md`
 3. 本仓命令 / 资产 → `.cursor/rules/engineering/*`（`16` 清单 · `08` 命令）
 4. 工具差异 → L2 薄入口；Cursor 慎增 always

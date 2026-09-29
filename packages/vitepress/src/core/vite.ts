@@ -1,5 +1,6 @@
 import type { UserConfig } from 'vitepress'
 import { createVipAppBuildTime } from '@142vip/vue/vite'
+import { mergeVipBuildRollupOptions } from './vite-build'
 
 type ViteConfig = NonNullable<UserConfig['vite']>
 type ViteSsrNoExternal = NonNullable<NonNullable<ViteConfig['ssr']>['noExternal']>
@@ -98,9 +99,11 @@ export function mergeVipViteConfig(
     }
   }
 
+  const withChunks = mergeVipBuildRollupOptions(merged)
+
   if (!options.sass) {
-    return merged
+    return withChunks
   }
 
-  return mergeSassModernApi(merged)
+  return mergeSassModernApi(withChunks)
 }

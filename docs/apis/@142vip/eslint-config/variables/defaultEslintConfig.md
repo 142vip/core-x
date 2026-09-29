@@ -4,6 +4,12 @@
 
 > `const` **defaultEslintConfig**: `EslintConfigOptions`
 
-定义于: [eslint.config.ts:7](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/eslint-config/src/eslint.config.ts#L7)
+定义于: [eslint.config.ts:47](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/eslint-config/src/eslint.config.ts#L47)
 
-默认的Eslint配置
+默认的 Eslint 配置。
+
+`markdown: true` 开启 antfu 的 markdown 处理器：markdown 自身格式/风格仍按 ESLint 校验
+（如格式化、一致性），但其内嵌的 ts/js 代码块通过 overrides 降级规则，避免 `ts/no-unused-vars`
+等在「教学示例」上误报。
+
+调用方仍可通过 `options.markdown = false` 显式关闭（向后兼容设计）。

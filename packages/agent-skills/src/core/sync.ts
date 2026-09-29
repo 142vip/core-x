@@ -5,6 +5,8 @@
  * 对外类型命名前缀 `VipAgentSkill*`，便于 core-x 等下游继承 / 扩展。
  */
 import {
+  logVipCliBanner,
+  logVipCliMetaLines,
   VipColor,
   VipConsole,
   VipJSON,
@@ -162,15 +164,13 @@ export function syncAgentSkills(options: VipAgentSkillSyncOptions): VipAgentSkil
   const skillsRoot = getSkillsRoot()
   const destSkillsDir = VipNodeJS.pathJoin(targetRoot, ...DOWNSTREAM_SKILLS_SEGMENTS)
 
-  // 日志格式：`${包名}:` 着色前缀 + 正文；二级明细缩进 dim
-  VipConsole.log(`${VipColor.cyanBright(`${packageName}:`)} ${packageName}@${version}`)
-  VipConsole.log(`  ${VipColor.dim(`package ${packageRoot}`)}`)
-  VipConsole.log(`  ${VipColor.dim(`target  ${targetRoot}`)}`)
-  VipConsole.log(`  ${VipColor.dim(`dest    ${destSkillsDir}`)}`)
-  if (check)
-    VipConsole.log(`${VipColor.cyanBright(`${packageName}:`)} mode: check`)
-  else if (dryRun)
-    VipConsole.log(`${VipColor.cyanBright(`${packageName}:`)} mode: dry-run`)
+  logVipCliBanner({ name: packageName, version }, { binAliases: 'vip-agent-skills' })
+  logVipCliMetaLines([
+    { label: 'package', value: packageRoot },
+    { label: 'target', value: targetRoot },
+    { label: 'dest', value: destSkillsDir },
+    { label: 'mode', value: check ? 'check' : dryRun ? 'dry-run' : 'sync' },
+  ])
 
   if (!VipPackageJSON.isExistPackageJSON(targetRoot) && !force) {
     VipConsole.log(

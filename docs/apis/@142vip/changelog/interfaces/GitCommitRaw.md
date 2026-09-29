@@ -2,7 +2,9 @@
 
 # 接口: GitCommitRaw
 
-定义于: [changelog/src/enums/git-commit.interface.ts:6](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/changelog/src/enums/git-commit.interface.ts#L6)
+定义于: [changelog/src/core/changelog.interface.ts:14](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L14)
+
+`git log` 解析后的原始提交记录
 
 ## theme_extended_by
 
@@ -14,7 +16,9 @@
 
 > **author**: [`GitCommitAuthor`](GitCommitAuthor.md)
 
-定义于: [changelog/src/enums/git-commit.interface.ts:10](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/changelog/src/enums/git-commit.interface.ts#L10)
+定义于: [changelog/src/core/changelog.interface.ts:22](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L22)
+
+主作者信息
 
 ***
 
@@ -22,7 +26,9 @@
 
 > **body**: `string`
 
-定义于: [changelog/src/enums/git-commit.interface.ts:8](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/changelog/src/enums/git-commit.interface.ts#L8)
+定义于: [changelog/src/core/changelog.interface.ts:18](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L18)
+
+提交正文（首行之后的 body）
 
 ***
 
@@ -30,7 +36,9 @@
 
 > **message**: `string`
 
-定义于: [changelog/src/enums/git-commit.interface.ts:7](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/changelog/src/enums/git-commit.interface.ts#L7)
+定义于: [changelog/src/core/changelog.interface.ts:16](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L16)
+
+提交标题（Conventional Commits 首行）
 
 ***
 
@@ -38,4 +46,6 @@
 
 > **shortHash**: `string`
 
-定义于: [changelog/src/enums/git-commit.interface.ts:9](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/changelog/src/enums/git-commit.interface.ts#L9)
+定义于: [changelog/src/core/changelog.interface.ts:20](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L20)
+
+短 hash（`%h`）

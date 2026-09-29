@@ -2,7 +2,7 @@
 
 # 类: VipNanoId
 
-定义于: [packages/utils/src/pkgs/nanoid.ts:19](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/utils/src/pkgs/nanoid.ts#L19)
+定义于: [packages/utils/src/pkgs/nanoid.ts:19](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/nanoid.ts#L19)
 
 ## 构造函数
 
@@ -20,7 +20,7 @@
 
 > **getNanoId**(`alphabet?`): (`size?`) => `string`
 
-定义于: [packages/utils/src/pkgs/nanoid.ts:24](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/utils/src/pkgs/nanoid.ts#L24)
+定义于: [packages/utils/src/pkgs/nanoid.ts:24](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/nanoid.ts#L24)
 
 获取NanoId对象，默认字符集为 Alphabet.DEFAULT，只有小写字母和数字
 
@@ -32,17 +32,7 @@
 
 #### 返回
 
-> (`size?`): `string`
-
-##### 参数
-
-###### size?
-
-`number`
-
-##### 返回
-
-`string`
+(`size?`) => `string`
 
 ***
 
@@ -50,7 +40,7 @@
 
 > **getRandomCharId**(`size?`): `string`
 
-定义于: [packages/utils/src/pkgs/nanoid.ts:48](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/utils/src/pkgs/nanoid.ts#L48)
+定义于: [packages/utils/src/pkgs/nanoid.ts:48](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/nanoid.ts#L48)
 
 获取纯字母的随机字符串，包含小写字母和大写字母
 
@@ -70,7 +60,7 @@
 
 > **getRandomComplexId**(`size?`): `string`
 
-定义于: [packages/utils/src/pkgs/nanoid.ts:72](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/utils/src/pkgs/nanoid.ts#L72)
+定义于: [packages/utils/src/pkgs/nanoid.ts:72](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/nanoid.ts#L72)
 
 获取复杂的随机字符串，包含数字、小写字母、大写字母和特殊字符
 
@@ -90,7 +80,7 @@
 
 > **getRandomId**(`size?`): `string`
 
-定义于: [packages/utils/src/pkgs/nanoid.ts:32](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/utils/src/pkgs/nanoid.ts#L32)
+定义于: [packages/utils/src/pkgs/nanoid.ts:32](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/nanoid.ts#L32)
 
 获取随机字符串，默认长度21
 - 按照制定规则生成默认字符串
@@ -111,7 +101,7 @@
 
 > **getRandomLowerCharId**(`size?`): `string`
 
-定义于: [packages/utils/src/pkgs/nanoid.ts:56](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/utils/src/pkgs/nanoid.ts#L56)
+定义于: [packages/utils/src/pkgs/nanoid.ts:56](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/nanoid.ts#L56)
 
 获取纯小写字母的随机字符串
 
@@ -131,7 +121,7 @@
 
 > **getRandomNumberId**(`size?`): `string`
 
-定义于: [packages/utils/src/pkgs/nanoid.ts:40](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/utils/src/pkgs/nanoid.ts#L40)
+定义于: [packages/utils/src/pkgs/nanoid.ts:40](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/nanoid.ts#L40)
 
 获取纯数字的随机字符串
 
@@ -151,7 +141,7 @@
 
 > **getRandomUpperCharId**(`size?`): `string`
 
-定义于: [packages/utils/src/pkgs/nanoid.ts:64](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/utils/src/pkgs/nanoid.ts#L64)
+定义于: [packages/utils/src/pkgs/nanoid.ts:64](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/nanoid.ts#L64)
 
 获取纯大写字母的随机字符串
 

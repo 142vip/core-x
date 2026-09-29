@@ -18,11 +18,11 @@ pnpm add @142vip/data-source
 
 ## 功能
 
-- [x] SQL / 文档库：`VipMysql`、`VipPostgreSql`、`VipOracle`、`VipSqlServer`、`VipMongo`、`VipClickhouse`
-- [x] API 类：`VipHttpApi` `VipAliGatewayApi` `VipDTableApi` `VipDtStackApi`
-- [x] `VipCsv` CSV 解析
-- [x] 统一 `DataSourceParseResponse` 返回结构
-- [x] `DataSourceManager` 接口（表/库元数据约定）
+- ✅ SQL / 文档库：`VipMysql`、`VipPostgreSql`、`VipOracle`、`VipSqlServer`、`VipMongo`、`VipClickhouse`
+- ✅ API 类：`VipHttpApi` `VipAliGatewayApi` `VipDTableApi` `VipDtStackApi`
+- ✅ `VipCsv` CSV 解析
+- ✅ 统一 `DataSourceParseResponse` 返回结构
+- ✅ `DataSourceManager` 接口（表/库元数据约定）
 
 ## 配置
 

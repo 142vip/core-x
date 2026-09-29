@@ -1,0 +1,98 @@
+[API 参考](../../../index.md) / [@142vip/nest-typeorm](../index.md) / TableUnique
+
+# 类: TableUnique
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/schema-builder/table/TableUnique.d.ts:6
+
+Database's table unique constraint stored in this class.
+
+## 构造函数
+
+### 构造函数
+
+> **new TableUnique**(`options`): `TableUnique`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/schema-builder/table/TableUnique.d.ts:21
+
+#### 参数
+
+##### options
+
+[`TableUniqueOptions`](../interfaces/TableUniqueOptions.md)
+
+#### 返回
+
+`TableUnique`
+
+## 属性
+
+### @instanceof
+
+> `readonly` **@instanceof**: `symbol`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/schema-builder/table/TableUnique.d.ts:7
+
+***
+
+### columnNames
+
+> **columnNames**: `string`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/schema-builder/table/TableUnique.d.ts:15
+
+Columns that contains this constraint.
+
+***
+
+### deferrable?
+
+> `optional` **deferrable?**: `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/schema-builder/table/TableUnique.d.ts:20
+
+Set this foreign key constraint as "DEFERRABLE" e.g. check constraints at start
+or at the end of a transaction
+
+***
+
+### name?
+
+> `optional` **name?**: `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/schema-builder/table/TableUnique.d.ts:11
+
+Constraint name.
+
+## 方法
+
+### clone()
+
+> **clone**(): `TableUnique`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/schema-builder/table/TableUnique.d.ts:25
+
+Creates a new copy of this constraint with exactly same properties.
+
+#### 返回
+
+`TableUnique`
+
+***
+
+### create()
+
+> `static` **create**(`uniqueMetadata`): `TableUnique`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/schema-builder/table/TableUnique.d.ts:29
+
+Creates unique from the unique metadata object.
+
+#### 参数
+
+##### uniqueMetadata
+
+`UniqueMetadata`
+
+#### 返回
+
+`TableUnique`

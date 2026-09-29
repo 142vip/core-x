@@ -10,4 +10,7 @@ export default defineBuildConfig({
     emitCJS: true,
     inlineDependencies: true,
   },
+  externals: [
+    '@142vip/utils',
+  ],
 })
