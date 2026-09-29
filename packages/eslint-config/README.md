@@ -16,27 +16,20 @@ pnpm add -D @142vip/eslint-config eslint
 
 ## 功能
 
-- [x] `defineVipEslintConfig` 基于 `@antfu/eslint-config` 的扁平配置
-- [x] 默认开启 TypeScript、Vue、JSONC、YAML、Markdown 处理
-- [x] Markdown 内嵌代码块规则降级（教学示例不误报）
-- [x] `baseEslintRules`：`no-console` warn 与受限 `console` 调用
+- ✅ `defineVipEslintConfig` 基于 `@antfu/eslint-config` 的扁平配置
+- ✅ 默认开启 TypeScript、Vue、JSONC、YAML、Markdown 处理
+- ✅ Markdown 内嵌代码块规则降级（教学示例不误报）
+- ✅ `baseEslintRules`：`no-console` warn 与受限 `console` 调用
+- ✅ 可从 `@142vip/fairy-cli` 同符号 re-export（`defineVipEslintConfig`）
 
 ## 配置
 
-根目录 `eslint.config.js`：
-
-```js
-import { defineVipEslintConfig } from '@142vip/eslint-config'
-
-export default defineVipEslintConfig({
-  // 可覆盖 defaultEslintConfig 字段，如 markdown: false
-})
-```
+未建 `eslint.config.*` 时，安装 `@142vip/fairy-cli` 后执行 `fa lint` 会使用包内 `config/default-eslint.config.mjs`。也可自建 `eslint.config.js` / `eslint.config.mjs`，或 `fa lint -f ./eslint.config.mjs`。
 
 ## 使用
 
 ```js
-// eslint.config.js
+// eslint.config.js（可选；未建文件时用 fa lint 内置配置）
 import { defineVipEslintConfig } from '@142vip/eslint-config'
 
 export default defineVipEslintConfig()

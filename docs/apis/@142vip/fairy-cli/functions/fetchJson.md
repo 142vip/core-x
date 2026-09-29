@@ -1,0 +1,29 @@
+[API 参考](../../../index.md) / [@142vip/fairy-cli](../index.md) / fetchJson
+
+# 函数: fetchJson()
+
+> **fetchJson**\<`T`\>(`url`, `init?`): `Promise`\<`T`\>
+
+定义于: [packages/fairy-cli/src/utils/http.util.ts:40](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/fairy-cli/src/utils/http.util.ts#L40)
+
+请求并解析 JSON（CNPM 同步等 API）
+
+## 类型参数
+
+### T
+
+`T`
+
+## 参数
+
+### url
+
+`string`
+
+### init?
+
+`RequestInit`
+
+## 返回
+
+`Promise`\<`T`\>

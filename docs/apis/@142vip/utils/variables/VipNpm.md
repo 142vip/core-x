@@ -4,11 +4,11 @@
 
 > `const` **VipNpm**: `object`
 
-定义于: [packages/utils/src/core/npm.ts:162](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/utils/src/core/npm.ts#L162)
+定义于: [packages/utils/src/core/npm.ts:162](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/core/npm.ts#L162)
 
 ## 类型声明
 
-### formatVersionStr()
+### formatVersionStr
 
 > **formatVersionStr**: (`template`, `newVersion`) => `string`
 
@@ -30,27 +30,27 @@
 
 `string`
 
-### getNodeVersion()
+### getNodeVersion
 
-> **getNodeVersion**: () => `Promise`\<`null` \| `string`\>
+> **getNodeVersion**: () => `Promise`\<`string` \| `null`\>
 
 获取node版本
 
 #### 返回
 
-`Promise`\<`null` \| `string`\>
+`Promise`\<`string` \| `null`\>
 
-### getNpmVersion()
+### getNpmVersion
 
-> **getNpmVersion**: () => `Promise`\<`null` \| `string`\>
+> **getNpmVersion**: () => `Promise`\<`string` \| `null`\>
 
 获取npm版本
 
 #### 返回
 
-`Promise`\<`null` \| `string`\>
+`Promise`\<`string` \| `null`\>
 
-### getPackageJSONByPnpm()
+### getPackageJSONByPnpm
 
 > **getPackageJSONByPnpm**: (`pnpmLsCommand`) => [`PackageJSONWithPath`](../interfaces/PackageJSONWithPath.md)[]
 
@@ -69,15 +69,15 @@
 
 [`PackageJSONWithPath`](../interfaces/PackageJSONWithPath.md)[]
 
-### getPnpmVersion()
+### getPnpmVersion
 
-> **getPnpmVersion**: () => `Promise`\<`null` \| `string`\>
+> **getPnpmVersion**: () => `Promise`\<`string` \| `null`\>
 
 #### 返回
 
-`Promise`\<`null` \| `string`\>
+`Promise`\<`string` \| `null`\>
 
-### getTurboPackApps()
+### getTurboPackApps
 
 > **getTurboPackApps**: () => `Promise`\<`string`[]\>
 
@@ -87,15 +87,15 @@
 
 `Promise`\<`string`[]\>
 
-### getTurboPackVersion()
+### getTurboPackVersion
 
-> **getTurboPackVersion**: () => `Promise`\<`null` \| `string`\>
+> **getTurboPackVersion**: () => `Promise`\<`string` \| `null`\>
 
 #### 返回
 
-`Promise`\<`null` \| `string`\>
+`Promise`\<`string` \| `null`\>
 
-### installByNpm()
+### installByNpm
 
 > **installByNpm**: (`args`) => `Promise`\<`void`\>
 
@@ -121,7 +121,7 @@
 
 `Promise`\<`void`\>
 
-### installByPnpm()
+### installByPnpm
 
 > **installByPnpm**: (`args`) => `Promise`\<`void`\>
 
@@ -147,7 +147,7 @@
 
 `Promise`\<`void`\>
 
-### isExistNodeJs()
+### isExistNodeJs
 
 > **isExistNodeJs**: () => `Promise`\<`boolean`\>
 
@@ -155,7 +155,7 @@
 
 `Promise`\<`boolean`\>
 
-### isExistNpm()
+### isExistNpm
 
 > **isExistNpm**: () => `Promise`\<`boolean`\>
 
@@ -163,7 +163,7 @@
 
 `Promise`\<`boolean`\>
 
-### isExistPnpm()
+### isExistPnpm
 
 > **isExistPnpm**: () => `Promise`\<`boolean`\>
 
@@ -171,7 +171,7 @@
 
 `Promise`\<`boolean`\>
 
-### isExistTurboPack()
+### isExistTurboPack
 
 > **isExistTurboPack**: () => `Promise`\<`boolean`\>
 
@@ -179,7 +179,7 @@
 
 `Promise`\<`boolean`\>
 
-### userLogin()
+### userLogin
 
 > **userLogin**: (`args`) => `Promise`\<`void`\>
 

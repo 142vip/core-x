@@ -1,0 +1,1589 @@
+[API 参考](../../../index.md) / [@142vip/nest-typeorm](../index.md) / EntityMetadata
+
+# 类: EntityMetadata
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:24
+
+Contains all entity metadata.
+
+## 构造函数
+
+### 构造函数
+
+> **new EntityMetadata**(`options`): `EntityMetadata`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:422
+
+#### 参数
+
+##### options
+
+###### args
+
+`TableMetadataArgs`
+
+###### connection
+
+[`DataSource`](DataSource.md)
+
+###### inheritancePattern?
+
+`"STI"`
+
+###### inheritanceTree?
+
+`Function`[]
+
+###### parentClosureEntityMetadata?
+
+`EntityMetadata`
+
+###### tableTree?
+
+`TreeMetadataArgs`
+
+#### 返回
+
+`EntityMetadata`
+
+## 属性
+
+### @instanceof
+
+> `readonly` **@instanceof**: `symbol`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:25
+
+***
+
+### afterInsertListeners
+
+> **afterInsertListeners**: `EntityListenerMetadata`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:377
+
+Listener metadatas with "AFTER INSERT" type.
+
+***
+
+### afterLoadListeners
+
+> **afterLoadListeners**: `EntityListenerMetadata`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:369
+
+Listener metadatas with "AFTER LOAD" type.
+
+***
+
+### afterRecoverListeners
+
+> **afterRecoverListeners**: `EntityListenerMetadata`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:409
+
+Listener metadatas with "AFTER RECOVER" type.
+
+***
+
+### afterRemoveListeners
+
+> **afterRemoveListeners**: `EntityListenerMetadata`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:401
+
+Listener metadatas with "AFTER REMOVE" type.
+
+***
+
+### afterSoftRemoveListeners
+
+> **afterSoftRemoveListeners**: `EntityListenerMetadata`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:405
+
+Listener metadatas with "AFTER SOFT REMOVE" type.
+
+***
+
+### afterUpdateListeners
+
+> **afterUpdateListeners**: `EntityListenerMetadata`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:385
+
+Listener metadatas with "AFTER UPDATE" type.
+
+***
+
+### allEmbeddeds
+
+> **allEmbeddeds**: `EmbeddedMetadata`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:333
+
+All embeddeds - embeddeds from this entity metadata and from all child embeddeds, etc.
+
+***
+
+### ancestorColumns
+
+> **ancestorColumns**: `ColumnMetadata`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:192
+
+Ancestor columns used only in closure junction tables.
+
+***
+
+### beforeInsertListeners
+
+> **beforeInsertListeners**: `EntityListenerMetadata`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:373
+
+Listener metadatas with "BEFORE INSERT" type.
+
+***
+
+### beforeRecoverListeners
+
+> **beforeRecoverListeners**: `EntityListenerMetadata`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:397
+
+Listener metadatas with "BEFORE RECOVER" type.
+
+***
+
+### beforeRemoveListeners
+
+> **beforeRemoveListeners**: `EntityListenerMetadata`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:389
+
+Listener metadatas with "BEFORE REMOVE" type.
+
+***
+
+### beforeSoftRemoveListeners
+
+> **beforeSoftRemoveListeners**: `EntityListenerMetadata`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:393
+
+Listener metadatas with "BEFORE SOFT REMOVE" type.
+
+***
+
+### beforeUpdateListeners
+
+> **beforeUpdateListeners**: `EntityListenerMetadata`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:381
+
+Listener metadatas with "BEFORE UPDATE" type.
+
+***
+
+### checks
+
+> **checks**: `CheckMetadata`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:353
+
+Entity's check metadatas.
+
+***
+
+### childEntityMetadatas
+
+> **childEntityMetadatas**: `EntityMetadata`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:49
+
+Children entity metadatas. Used in inheritance patterns.
+
+***
+
+### closureJunctionTable
+
+> **closureJunctionTable**: `EntityMetadata`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:37
+
+If entity's table is a closure-typed table, then this entity will have a closure junction table metadata.
+
+***
+
+### columns
+
+> **columns**: `ColumnMetadata`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:188
+
+Columns of the entity, including columns that are coming from the embeddeds of this entity.
+
+***
+
+### comment?
+
+> `optional` **comment?**: `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:421
+
+Table comment. Not supported by all database types.
+
+***
+
+### connection
+
+> **connection**: [`DataSource`](DataSource.md)
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:29
+
+Connection where this entity metadata is created.
+
+***
+
+### createDateColumn?
+
+> `optional` **createDateColumn?**: `ColumnMetadata`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:222
+
+Gets entity column which contains a create date value.
+
+***
+
+### database?
+
+> `optional` **database?**: `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:125
+
+Database name.
+
+***
+
+### deleteDateColumn?
+
+> `optional` **deleteDateColumn?**: `ColumnMetadata`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:230
+
+Gets entity column which contains a delete date value.
+
+***
+
+### dependsOn?
+
+> `optional` **dependsOn?**: `Set`\<`string` \| `Function`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:85
+
+View's dependencies.
+Used in views
+
+***
+
+### descendantColumns
+
+> **descendantColumns**: `ColumnMetadata`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:196
+
+Descendant columns used only in closure junction tables.
+
+***
+
+### discriminatorColumn?
+
+> `optional` **discriminatorColumn?**: `ColumnMetadata`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:238
+
+Gets the discriminator column used to store entity identificator in single-table inheritance tables.
+
+***
+
+### discriminatorValue?
+
+> `optional` **discriminatorValue?**: `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:180
+
+If this entity metadata is a child table of some table, it should have a discriminator value.
+Used to store a value in a discriminator column.
+
+***
+
+### eagerRelations
+
+> **eagerRelations**: `RelationMetadata`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:273
+
+List of eager relations this metadata has.
+
+***
+
+### embeddeds
+
+> **embeddeds**: `EmbeddedMetadata`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:329
+
+Entity's embedded metadatas.
+
+***
+
+### engine?
+
+> `optional` **engine?**: `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:121
+
+Table's database engine type (like "InnoDB", "MyISAM", etc).
+
+***
+
+### exclusions
+
+> **exclusions**: `ExclusionMetadata`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:357
+
+Entity's exclusion metadatas.
+
+***
+
+### expression?
+
+> `optional` **expression?**: `string` \| ((`connection`) => [`SelectQueryBuilder`](SelectQueryBuilder.md)\<`any`\>)
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:80
+
+View's expression.
+Used in views
+
+***
+
+### foreignKeys
+
+> **foreignKeys**: `ForeignKeyMetadata`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:325
+
+Entity's foreign key metadatas.
+
+***
+
+### generatedColumns
+
+> **generatedColumns**: `ColumnMetadata`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:214
+
+Gets the column with generated flag.
+
+***
+
+### givenTableName?
+
+> `optional` **givenTableName?**: `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:94
+
+Original user-given table name (taken from schema or @Entity(tableName) decorator).
+If user haven't specified a table name this property will be undefined.
+
+***
+
+### hasMultiplePrimaryKeys
+
+> **hasMultiplePrimaryKeys**: `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:171
+
+Checks if entity's table has multiple primary columns.
+
+***
+
+### hasNonNullableRelations
+
+> **hasNonNullableRelations**: `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:142
+
+Checks if there any non-nullable column exist in this entity.
+
+***
+
+### hasUUIDGeneratedColumns
+
+> **hasUUIDGeneratedColumns**: `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:175
+
+Indicates if this entity metadata has uuid generated columns.
+
+***
+
+### indices
+
+> **indices**: `IndexMetadata`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:341
+
+Entity's index metadatas.
+
+***
+
+### inheritancePattern?
+
+> `optional` **inheritancePattern?**: `"STI"`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:138
+
+If this entity metadata's table using one of the inheritance patterns,
+then this will contain what pattern it uses.
+
+***
+
+### inheritanceTree
+
+> **inheritanceTree**: `Function`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:55
+
+All "inheritance tree" from a target entity.
+For example for target Post \< ContentModel \< Unit it will be an array of [Post, ContentModel, Unit].
+It also contains child entities for single table inheritance.
+
+***
+
+### inverseColumns
+
+> **inverseColumns**: `ColumnMetadata`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:210
+
+In the case if this entity metadata is junction table's entity metadata,
+this will contain all referenced columns of inverse entity.
+
+***
+
+### isAlwaysUsingConstructor
+
+> **isAlwaysUsingConstructor**: `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:154
+
+Indicates if the entity should be instantiated using the constructor
+or via allocating a new object via `Object.create()`.
+
+***
+
+### isClosureJunction
+
+> **isClosureJunction**: `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:167
+
+Checks if this table is a junction table of the closure table.
+This type is for tables that contain junction metadata of the closure tables.
+
+***
+
+### isJunction
+
+> **isJunction**: `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:149
+
+Indicates if this entity metadata of a junction table, or not.
+Junction table is a table created by many-to-many relationship.
+
+Its also possible to understand if entity is junction via tableType.
+
+***
+
+### lazyRelations
+
+> **lazyRelations**: `RelationMetadata`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:277
+
+List of eager relations this metadata has.
+
+***
+
+### listeners
+
+> **listeners**: `EntityListenerMetadata`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:365
+
+Entity listener metadatas.
+
+***
+
+### manyToManyRelations
+
+> **manyToManyRelations**: `RelationMetadata`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:297
+
+Gets only many-to-many relations of the entity.
+
+***
+
+### manyToOneRelations
+
+> **manyToOneRelations**: `RelationMetadata`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:293
+
+Gets only many-to-one relations of the entity.
+
+***
+
+### materializedPathColumn?
+
+> `optional` **materializedPathColumn?**: `ColumnMetadata`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:257
+
+Materialized path column.
+Used only in tree entities with materialized path pattern applied.
+
+***
+
+### name
+
+> **name**: `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:75
+
+Entity's name.
+Equal to entity target class's name if target is set to table.
+If target class is not then then it equals to table name.
+
+***
+
+### nestedSetLeftColumn?
+
+> `optional` **nestedSetLeftColumn?**: `ColumnMetadata`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:247
+
+Nested set's left value column.
+Used only in tree entities with nested set pattern applied.
+
+***
+
+### nestedSetRightColumn?
+
+> `optional` **nestedSetRightColumn?**: `ColumnMetadata`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:252
+
+Nested set's right value column.
+Used only in tree entities with nested set pattern applied.
+
+***
+
+### nonVirtualColumns
+
+> **nonVirtualColumns**: `ColumnMetadata`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:200
+
+All columns except for virtual columns.
+
+***
+
+### objectIdColumn?
+
+> `optional` **objectIdColumn?**: `ColumnMetadata`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:218
+
+Gets the object id column used with mongodb database.
+
+***
+
+### oneToManyRelations
+
+> **oneToManyRelations**: `RelationMetadata`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:289
+
+Gets only one-to-many relations of the entity.
+
+***
+
+### oneToOneRelations
+
+> **oneToOneRelations**: `RelationMetadata`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:281
+
+Gets only one-to-one relations of the entity.
+
+***
+
+### orderBy?
+
+> `optional` **orderBy?**: [`OrderByCondition`](../type-aliases/OrderByCondition.md)
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:133
+
+Specifies a default order by used for queries from this table when no explicit order by is specified.
+
+***
+
+### ownColumns
+
+> **ownColumns**: `ColumnMetadata`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:184
+
+Entity's column metadatas defined by user.
+
+***
+
+### ownerColumns
+
+> **ownerColumns**: `ColumnMetadata`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:205
+
+In the case if this entity metadata is junction table's entity metadata,
+this will contain all referenced columns of owner entity.
+
+***
+
+### ownerManyToManyRelations
+
+> **ownerManyToManyRelations**: `RelationMetadata`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:301
+
+Gets only owner many-to-many relations of the entity.
+
+***
+
+### ownerOneToOneRelations
+
+> **ownerOneToOneRelations**: `RelationMetadata`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:285
+
+Gets only owner one-to-one relations of the entity.
+
+***
+
+### ownIndices
+
+> **ownIndices**: `IndexMetadata`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:337
+
+Entity's own indices.
+
+***
+
+### ownListeners
+
+> **ownListeners**: `EntityListenerMetadata`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:361
+
+Entity's own listener metadatas.
+
+***
+
+### ownRelations
+
+> **ownRelations**: `RelationMetadata`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:265
+
+Entity's relation metadatas.
+
+***
+
+### ownUniques
+
+> **ownUniques**: `UniqueMetadata`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:349
+
+Entity's own uniques.
+
+***
+
+### parentClosureEntityMetadata
+
+> **parentClosureEntityMetadata**: `EntityMetadata`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:41
+
+If this is entity metadata for a junction closure table then its owner closure table metadata will be set here.
+
+***
+
+### parentEntityMetadata
+
+> **parentEntityMetadata**: `EntityMetadata`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:45
+
+Parent's entity metadata. Used in inheritance patterns.
+
+***
+
+### primaryColumns
+
+> **primaryColumns**: `ColumnMetadata`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:261
+
+Gets the primary columns.
+
+***
+
+### propertiesMap
+
+> **propertiesMap**: [`ObjectLiteral`](../interfaces/ObjectLiteral.md)
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:417
+
+Map of columns and relations of the entity.
+
+example: Post\{ id: number, name: string, counterEmbed: \{ count: number \}, category: Category \}.
+This method will create following object:
+\{ id: "id", counterEmbed: \{ count: "counterEmbed.count" \}, category: "category" \}
+
+***
+
+### relationCounts
+
+> **relationCounts**: `RelationCountMetadata`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:321
+
+Entity's relation id metadatas.
+
+***
+
+### relationIds
+
+> **relationIds**: `RelationIdMetadata`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:317
+
+Entity's relation id metadatas.
+
+***
+
+### relations
+
+> **relations**: `RelationMetadata`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:269
+
+Relations of the entity, including relations that are coming from the embeddeds of this entity.
+
+***
+
+### relationsWithJoinColumns
+
+> **relationsWithJoinColumns**: `RelationMetadata`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:305
+
+Gets only owner one-to-one and many-to-one relations.
+
+***
+
+### schema?
+
+> `optional` **schema?**: `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:129
+
+Schema name. Used in Postgres and Sql Server.
+
+***
+
+### synchronize
+
+> **synchronize**: `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:117
+
+Indicates if schema will be synchronized for this entity or not.
+
+***
+
+### tableMetadataArgs
+
+> **tableMetadataArgs**: `TableMetadataArgs`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:33
+
+Metadata arguments used to build this entity metadata.
+
+***
+
+### tableName
+
+> **tableName**: `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:101
+
+Entity table name in the database.
+This is final table name of the entity.
+This name already passed naming strategy, and generated based on
+multiple criteria, including user table name and global table prefix.
+
+***
+
+### tableNameWithoutPrefix
+
+> **tableNameWithoutPrefix**: `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:113
+
+Gets the table name without global table prefix.
+When querying table you need a table name with prefix, but in some scenarios,
+for example when you want to name a junction table that contains names of two other tables,
+you may want a table name without prefix.
+
+***
+
+### tablePath
+
+> **tablePath**: `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:106
+
+Entity table path. Contains database name, schema name and table name.
+E.g. myDB.mySchema.myTable
+
+***
+
+### tableType
+
+> **tableType**: `TableType`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:59
+
+Table type. Tables can be closure, junction, etc.
+
+***
+
+### target
+
+> **target**: `string` \| `Function`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:65
+
+Target class to which this entity metadata is bind.
+Note, that when using table inheritance patterns target can be different rather then table's target.
+For virtual tables which lack of real entity (like junction tables) target is equal to their table name.
+
+***
+
+### targetName
+
+> **targetName**: `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:69
+
+Gets the name of the target.
+
+***
+
+### treeChildrenRelation?
+
+> `optional` **treeChildrenRelation?**: `RelationMetadata`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:313
+
+Tree children relation. Used only in tree-tables.
+
+***
+
+### treeLevelColumn?
+
+> `optional` **treeLevelColumn?**: `ColumnMetadata`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:242
+
+Special column that stores tree level in tree entities.
+
+***
+
+### treeOptions?
+
+> `optional` **treeOptions?**: `ClosureTreeOptions`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:162
+
+Indicates if this entity is a tree, what options of tree it has.
+
+***
+
+### treeParentRelation?
+
+> `optional` **treeParentRelation?**: `RelationMetadata`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:309
+
+Tree parent relation. Used only in tree-tables.
+
+***
+
+### treeType?
+
+> `optional` **treeType?**: `TreeType`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:158
+
+Indicates if this entity is a tree, what type of tree it is.
+
+***
+
+### uniques
+
+> **uniques**: `UniqueMetadata`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:345
+
+Entity's unique metadatas.
+
+***
+
+### updateDateColumn?
+
+> `optional` **updateDateColumn?**: `ColumnMetadata`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:226
+
+Gets entity column which contains an update date value.
+
+***
+
+### versionColumn?
+
+> `optional` **versionColumn?**: `ColumnMetadata`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:234
+
+Gets entity column which contains an entity version.
+
+***
+
+### withoutRowid?
+
+> `optional` **withoutRowid?**: `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:89
+
+Enables Sqlite "WITHOUT ROWID" modifier for the "CREATE TABLE" statement
+
+## 方法
+
+### build()
+
+> **build**(): `void`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:551
+
+#### 返回
+
+`void`
+
+***
+
+### compareEntities()
+
+> **compareEntities**(`firstEntity`, `secondEntity`): `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:471
+
+Compares two different entities by their ids.
+Returns true if they match, false otherwise.
+
+#### 参数
+
+##### firstEntity
+
+[`ObjectLiteral`](../interfaces/ObjectLiteral.md)
+
+##### secondEntity
+
+[`ObjectLiteral`](../interfaces/ObjectLiteral.md)
+
+#### 返回
+
+`boolean`
+
+***
+
+### create()
+
+> **create**(`queryRunner?`, `options?`): `any`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:433
+
+Creates a new entity.
+
+#### 参数
+
+##### queryRunner?
+
+[`QueryRunner`](../interfaces/QueryRunner.md)
+
+##### options?
+
+###### fromDeserializer?
+
+`boolean`
+
+###### pojo?
+
+`boolean`
+
+#### 返回
+
+`any`
+
+***
+
+### createPropertiesMap()
+
+> **createPropertiesMap**(): `object`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:564
+
+Creates a special object - all columns and relations of the object (plus columns and relations from embeds)
+in a special format - \{ propertyName: propertyName \}.
+
+example: Post\{ id: number, name: string, counterEmbed: \{ count: number \}, category: Category \}.
+This method will create following object:
+\{ id: "id", counterEmbed: \{ count: "counterEmbed.count" \}, category: "category" \}
+
+#### 返回
+
+`object`
+
+***
+
+### ensureEntityIdMap()
+
+> **ensureEntityIdMap**(`id`): [`ObjectLiteral`](../interfaces/ObjectLiteral.md)
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:452
+
+Ensures that given object is an entity id map.
+If given id is an object then it means its already id map.
+If given id isn't an object then it means its a value of the id column
+and it creates a new id map with this value and name of the primary column.
+
+#### 参数
+
+##### id
+
+`any`
+
+#### 返回
+
+[`ObjectLiteral`](../interfaces/ObjectLiteral.md)
+
+***
+
+### extractRelationValuesFromEntity()
+
+> **extractRelationValuesFromEntity**(`entity`, `relations`): \[`RelationMetadata`, `any`, `EntityMetadata`\][]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:522
+
+Iterates through entity and finds and extracts all values from relations in the entity.
+If relation value is an array its being flattened.
+
+#### 参数
+
+##### entity
+
+[`ObjectLiteral`](../interfaces/ObjectLiteral.md)
+
+##### relations
+
+`RelationMetadata`[]
+
+#### 返回
+
+\[`RelationMetadata`, `any`, `EntityMetadata`\][]
+
+***
+
+### findColumnsWithPropertyPath()
+
+> **findColumnsWithPropertyPath**(`propertyPath`): `ColumnMetadata`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:497
+
+Finds columns with a given property path.
+Property path can match a relation, and relations can contain multiple columns.
+
+#### 参数
+
+##### propertyPath
+
+`string`
+
+#### 返回
+
+`ColumnMetadata`[]
+
+***
+
+### findColumnWithDatabaseName()
+
+> **findColumnWithDatabaseName**(`databaseName`): `ColumnMetadata` \| `undefined`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:479
+
+Finds column with a given database name.
+
+#### 参数
+
+##### databaseName
+
+`string`
+
+#### 返回
+
+`ColumnMetadata` \| `undefined`
+
+***
+
+### findColumnWithPropertyName()
+
+> **findColumnWithPropertyName**(`propertyName`): `ColumnMetadata` \| `undefined`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:475
+
+Finds column with a given property name.
+
+#### 参数
+
+##### propertyName
+
+`string`
+
+#### 返回
+
+`ColumnMetadata` \| `undefined`
+
+***
+
+### findColumnWithPropertyPath()
+
+> **findColumnWithPropertyPath**(`propertyPath`): `ColumnMetadata` \| `undefined`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:487
+
+Finds column with a given property path.
+
+#### 参数
+
+##### propertyPath
+
+`string`
+
+#### 返回
+
+`ColumnMetadata` \| `undefined`
+
+***
+
+### findColumnWithPropertyPathStrict()
+
+> **findColumnWithPropertyPathStrict**(`propertyPath`): `ColumnMetadata` \| `undefined`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:492
+
+Finds column with a given property path.
+Does not search in relation unlike findColumnWithPropertyPath.
+
+#### 参数
+
+##### propertyPath
+
+`string`
+
+#### 返回
+
+`ColumnMetadata` \| `undefined`
+
+***
+
+### findEmbeddedWithPropertyPath()
+
+> **findEmbeddedWithPropertyPath**(`propertyPath`): `EmbeddedMetadata` \| `undefined`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:513
+
+Finds embedded with a given property path.
+
+#### 参数
+
+##### propertyPath
+
+`string`
+
+#### 返回
+
+`EmbeddedMetadata` \| `undefined`
+
+***
+
+### findInheritanceMetadata()
+
+> **findInheritanceMetadata**(`value`): `EntityMetadata`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:531
+
+In the case of SingleTableInheritance, find the correct metadata
+for a given value.
+
+#### 参数
+
+##### value
+
+`any`
+
+The value to find the metadata for.
+
+#### 返回
+
+`EntityMetadata`
+
+The found metadata for the entity or the base metadata if no matching metadata
+         was found in the whole inheritance tree.
+
+***
+
+### findRelationWithPropertyPath()
+
+> **findRelationWithPropertyPath**(`propertyPath`): `RelationMetadata` \| `undefined`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:505
+
+Finds relation with the given property path.
+
+#### 参数
+
+##### propertyPath
+
+`string`
+
+#### 返回
+
+`RelationMetadata` \| `undefined`
+
+***
+
+### getEntityIdMap()
+
+> **getEntityIdMap**(`entity`): [`ObjectLiteral`](../interfaces/ObjectLiteral.md) \| `undefined`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:459
+
+Gets primary keys of the entity and returns them in a literal object.
+For example, for Post\{ id: 1, title: "hello" \} where id is primary it will return \{ id: 1 \}
+For multiple primary keys it returns multiple keys in object.
+For primary keys inside embeds it returns complex object literal with keys in them.
+
+#### 参数
+
+##### entity
+
+[`ObjectLiteral`](../interfaces/ObjectLiteral.md) \| `undefined`
+
+#### 返回
+
+[`ObjectLiteral`](../interfaces/ObjectLiteral.md) \| `undefined`
+
+***
+
+### getEntityIdMixedMap()
+
+> **getEntityIdMixedMap**(`entity`): [`ObjectLiteral`](../interfaces/ObjectLiteral.md) \| `undefined`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:466
+
+Creates a "mixed id map".
+If entity has multiple primary keys (ids) then it will return just regular id map, like what getEntityIdMap returns.
+But if entity has a single primary key then it will return just value of the id column of the entity, just value.
+This is called mixed id map.
+
+#### 参数
+
+##### entity
+
+[`ObjectLiteral`](../interfaces/ObjectLiteral.md) \| `undefined`
+
+#### 返回
+
+[`ObjectLiteral`](../interfaces/ObjectLiteral.md) \| `undefined`
+
+***
+
+### getInsertionReturningColumns()
+
+> **getInsertionReturningColumns**(): `ColumnMetadata`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:573
+
+Checks if entity has any column which rely on returning data,
+e.g. columns with auto generated value, DEFAULT values considered as dependant of returning data.
+For example, if we need to have RETURNING after INSERT (or we need returned id for DBs not supporting RETURNING),
+it means we cannot execute bulk inserts in some cases.
+
+#### 返回
+
+`ColumnMetadata`[]
+
+***
+
+### hasAllPrimaryKeys()
+
+> **hasAllPrimaryKeys**(`entity`): `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:445
+
+Checks if given entity / object contains ALL primary keys entity must have.
+Returns true if it contains all of them, false if at least one of them is not defined.
+
+#### 参数
+
+##### entity
+
+[`ObjectLiteral`](../interfaces/ObjectLiteral.md)
+
+#### 返回
+
+`boolean`
+
+***
+
+### hasColumnWithPropertyPath()
+
+> **hasColumnWithPropertyPath**(`propertyPath`): `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:483
+
+Checks if there is a column or relationship with a given property path.
+
+#### 参数
+
+##### propertyPath
+
+`string`
+
+#### 返回
+
+`boolean`
+
+***
+
+### hasEmbeddedWithPropertyPath()
+
+> **hasEmbeddedWithPropertyPath**(`propertyPath`): `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:509
+
+Checks if there is an embedded with a given property path.
+
+#### 参数
+
+##### propertyPath
+
+`string`
+
+#### 返回
+
+`boolean`
+
+***
+
+### hasId()
+
+> **hasId**(`entity`): `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:440
+
+Checks if given entity has an id.
+
+#### 参数
+
+##### entity
+
+[`ObjectLiteral`](../interfaces/ObjectLiteral.md)
+
+#### 返回
+
+`boolean`
+
+***
+
+### hasRelationWithPropertyPath()
+
+> **hasRelationWithPropertyPath**(`propertyPath`): `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:501
+
+Checks if there is a relation with the given property path.
+
+#### 参数
+
+##### propertyPath
+
+`string`
+
+#### 返回
+
+`boolean`
+
+***
+
+### mapPropertyPathsToColumns()
+
+> **mapPropertyPathsToColumns**(`propertyPaths`): `ColumnMetadata`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:517
+
+Returns an array of databaseNames mapped from provided propertyPaths
+
+#### 参数
+
+##### propertyPaths
+
+`string`[]
+
+#### 返回
+
+`ColumnMetadata`[]
+
+***
+
+### registerColumn()
+
+> **registerColumn**(`column`): `void`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:555
+
+Registers a new column in the entity and recomputes all depend properties.
+
+#### 参数
+
+##### column
+
+`ColumnMetadata`
+
+#### 返回
+
+`void`
+
+***
+
+### ~~createPropertyPath()~~
+
+> `static` **createPropertyPath**(`metadata`, `entity`, `prefix?`): `string`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:538
+
+Creates a property paths for a given entity.
+
+#### 参数
+
+##### metadata
+
+`EntityMetadata`
+
+##### entity
+
+[`ObjectLiteral`](../interfaces/ObjectLiteral.md)
+
+##### prefix?
+
+`string`
+
+#### 返回
+
+`string`[]
+
+#### 已被弃用
+
+***
+
+### difference()
+
+> `static` **difference**(`firstIdMaps`, `secondIdMaps`): [`ObjectLiteral`](../interfaces/ObjectLiteral.md)[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:543
+
+Finds difference between two entity id maps.
+Returns items that exist in the first array and absent in the second array.
+
+#### 参数
+
+##### firstIdMaps
+
+[`ObjectLiteral`](../interfaces/ObjectLiteral.md)[]
+
+##### secondIdMaps
+
+[`ObjectLiteral`](../interfaces/ObjectLiteral.md)[]
+
+#### 返回
+
+[`ObjectLiteral`](../interfaces/ObjectLiteral.md)[]
+
+***
+
+### getValueMap()
+
+> `static` **getValueMap**(`entity`, `columns`, `options?`): [`ObjectLiteral`](../interfaces/ObjectLiteral.md) \| `undefined`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/metadata/EntityMetadata.d.ts:548
+
+Creates value map from the given values and columns.
+Examples of usages are primary columns map and join columns map.
+
+#### 参数
+
+##### entity
+
+[`ObjectLiteral`](../interfaces/ObjectLiteral.md)
+
+##### columns
+
+`ColumnMetadata`[]
+
+##### options?
+
+###### skipNulls?
+
+`boolean`
+
+#### 返回
+
+[`ObjectLiteral`](../interfaces/ObjectLiteral.md) \| `undefined`

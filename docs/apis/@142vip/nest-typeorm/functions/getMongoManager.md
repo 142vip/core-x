@@ -1,0 +1,22 @@
+[API 参考](../../../index.md) / [@142vip/nest-typeorm](../index.md) / getMongoManager
+
+# ~~函数: getMongoManager()~~
+
+> **getMongoManager**(`connectionName?`): [`MongoEntityManager`](../classes/MongoEntityManager.md)
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/globals.d.ts:80
+
+Gets MongoDB entity manager from the connection.
+If connection name wasn't specified, then "default" connection will be retrieved.
+
+## 参数
+
+### connectionName?
+
+`string`
+
+## 返回
+
+[`MongoEntityManager`](../classes/MongoEntityManager.md)
+
+## 已被弃用

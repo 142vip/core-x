@@ -16,12 +16,12 @@ pnpm add @142vip/nest-starter @142vip/nest @142vip/nest-logger @142vip/nest-redi
 
 ## 功能
 
-- [x] `NestStarter` 单例启动：解析配置、创建应用、注册全局模块、监听端口
-- [x] 多环境配置：`config/config.js`（生产）与 `config/*.config.js`（开发，如 `local.config.js`）
-- [x] 开发模式（`NODE_ENV=local`）交互选择配置文件，热重载复用缓存
-- [x] 聚合日志、Redis、TypeORM、Swagger（按配置开关）
-- [x] 全局拦截器/过滤器（来自 `@142vip/nest`）
-- [x] 配置访问：`nestStaterConfig`、`nestAppConfig`、`getConfig`
+- ✅ `NestStarter` 单例启动：解析配置、创建应用、注册全局模块、监听端口
+- ✅ 多环境配置：`config/config.js`（生产）与 `config/*.config.js`（开发，如 `local.config.js`）
+- ✅ 开发模式（`NODE_ENV=local`）交互选择配置文件，热重载复用缓存
+- ✅ 聚合日志、Redis、TypeORM、Swagger（按配置开关）
+- ✅ 全局拦截器/过滤器（来自 `@142vip/nest`）
+- ✅ 配置访问：`nestStaterConfig`、`nestAppConfig`、`getConfig`
 
 ## 配置
 

@@ -2,15 +2,15 @@
 
 # 接口: GrpcExampleServiceImpl
 
-定义于: [example.ts:16](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/grpc/src/example.ts#L16)
+定义于: [example.ts:16](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/grpc/src/example.ts#L16)
 
 ## 属性
 
-### clientStreamToServer()
+### clientStreamToServer
 
 > **clientStreamToServer**: (`requestData`) => `Promise`\<[`ExampleResponseDataType`](ExampleResponseDataType.md)\>
 
-定义于: [example.ts:18](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/grpc/src/example.ts#L18)
+定义于: [example.ts:18](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/grpc/src/example.ts#L18)
 
 #### 参数
 
@@ -24,11 +24,11 @@
 
 ***
 
-### clientStreamToServerStream()
+### clientStreamToServerStream
 
 > **clientStreamToServerStream**: (`requestData`) => `Promise`\<[`ExampleResponseDataType`](ExampleResponseDataType.md)\>
 
-定义于: [example.ts:20](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/grpc/src/example.ts#L20)
+定义于: [example.ts:20](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/grpc/src/example.ts#L20)
 
 #### 参数
 
@@ -42,11 +42,11 @@
 
 ***
 
-### clientToServer()
+### clientToServer
 
 > **clientToServer**: (`requestData`) => `Promise`\<[`ExampleResponseDataType`](ExampleResponseDataType.md)\>
 
-定义于: [example.ts:17](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/grpc/src/example.ts#L17)
+定义于: [example.ts:17](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/grpc/src/example.ts#L17)
 
 #### 参数
 
@@ -60,11 +60,11 @@
 
 ***
 
-### clientToServerStream()
+### clientToServerStream
 
 > **clientToServerStream**: (`requestData`) => `Promise`\<[`ExampleResponseDataType`](ExampleResponseDataType.md)\>
 
-定义于: [example.ts:19](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/grpc/src/example.ts#L19)
+定义于: [example.ts:19](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/grpc/src/example.ts#L19)
 
 #### 参数
 

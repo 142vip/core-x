@@ -1,40 +1,63 @@
-import type { ChangelogCliOptions } from './enums'
-import { VipColor, VipCommander, VipConsole, VipNodeJS } from '@142vip/utils'
-import { description as packageDescription, name as packageName, version as packageVersion } from '../package.json'
-import { ChangelogAPI } from './core'
+import {
+  formatVipCliHelpExample,
+  isVipConsoleTraceEnabled,
+  logVipCliBanner,
+  logVipCliTrace,
+  registerVipPackageCliErrorHandling,
+  VipCommander,
+  VipNodeJS,
+  VipPackageCliCommander,
+} from '@142vip/utils'
+import { description, name, version } from '../package.json'
+import { changelogApi, ChangelogCliOptions } from './core'
 
-/**
- * cli 入口
- * - https://www.npmjs.com/package/changelogen
- */
-function changelogMain(): void {
-  const program = new VipCommander(packageName, packageVersion, packageDescription)
-
-  program
-    .init({
-      summary: 'CHANGELOG日志快速生成工具',
-      description: packageDescription,
-    })
-    .option('--token <token>', 'GitHub的Token')
-    .option('--from <from>', 'Git Commit信息的开始的标签')
-    .option('--to <to>', 'Git Commit信息的结束标签')
-    .option('--name <name>', '发布的名称')
-    .option('--github <github>', 'Github仓库地址，例如：@142vip/core-x')
-    .option('--output <output>', '输出文档的文件名，建议用绝对路径，例如：CHANGELOG.md')
-    .option('--scopeName <scopeName>', 'Monorepo模式下的应用包名称')
-    .option('--prerelease', '将当前发布的版本标记为预发布状态', true)
-    .action(async (options: ChangelogCliOptions): Promise<void> => {
-      if (options.trace) {
-        VipConsole.trace('changelogMain:', options)
-      }
-
-      VipConsole.log(`${VipColor.dim(packageName)} ${VipColor.dim(`v${packageVersion}`)}`)
-
-      await ChangelogAPI.changelogCoreHandler(options)
-    })
-
-  // 解析参数
-  program.parse(VipNodeJS.getProcessArgv())
+/** 与 `fa changelog` 子命令元数据对齐 */
+export const CHANGELOG_COMMAND_DETAIL = {
+  command: 'changelog',
+  summary: '生成 CHANGELOG 文档',
+  description: '基于 Git 提交生成 CHANGELOG，可选写入文件并发布 GitHub Release',
+  aliases: ['c', 'ch', 'cha'],
 }
 
-changelogMain()
+/** 业务 CLI 参数：token / 标签区间 / 输出路径等 */
+function registerChangelogOptions(command: VipCommander): void {
+  command
+    .option('--token <token>', 'GitHub Token（亦可 GITHUB_TOKEN / TOKEN）')
+    .option('--from <from>', '起始 Git 标签')
+    .option('--to <to>', '结束 Git 标签')
+    .option('--name <name>', 'Release 名称')
+    .option('--github <github>', '仓库地址，如 142vip/core-x')
+    .option('--output <output>', 'CHANGELOG 输出路径（建议绝对路径）')
+    .option('--scopeName <scopeName>', 'Monorepo 子包名')
+    .option('--prerelease', '强制标记为 GitHub Pre-release（默认按目标 tag 推断）')
+}
+
+/** standalone bin 与 `fa changelog` 共用的 action */
+const CHANGELOG_IDENTITY = { name, version }
+
+export async function runChangelogCli(options: ChangelogCliOptions): Promise<void> {
+  if (isVipConsoleTraceEnabled() || options.trace) {
+    logVipCliTrace(CHANGELOG_IDENTITY, 'changelog: 解析', options as Record<string, unknown>)
+  }
+  logVipCliBanner(CHANGELOG_IDENTITY, { binAliases: 'changelog · ch' })
+  await changelogApi.changelogCoreHandler(options)
+}
+
+/** `registerSubcommand` / `registerStandalone` 共用载荷（业务参数 + action） */
+export const changelogCommandRegistration = {
+  registerBusinessOptions: registerChangelogOptions,
+  action: runChangelogCli,
+}
+
+/** `changelog` / `ch` bin 入口 */
+export async function changelogCliMain(): Promise<void> {
+  const program = new VipPackageCliCommander(name, version, description)
+  program.registerCliVersionBanner(CHANGELOG_IDENTITY, { binAliases: 'changelog · ch' })
+  registerVipPackageCliErrorHandling(program, {
+    identity: CHANGELOG_IDENTITY,
+    binAliases: 'changelog · ch',
+    renderHelpHintLine: () => `  查看帮助：${formatVipCliHelpExample('changelog -h', '（ch 相同）')}`,
+  })
+  program.registerStandalone(CHANGELOG_COMMAND_DETAIL, changelogCommandRegistration)
+  await program.parseAsync(VipNodeJS.getProcessArgv())
+}

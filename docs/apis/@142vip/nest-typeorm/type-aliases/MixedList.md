@@ -1,0 +1,17 @@
+[API 参考](../../../index.md) / [@142vip/nest-typeorm](../index.md) / MixedList
+
+# 类型别名: MixedList\<T\>
+
+> **MixedList**\<`T`\> = `T`[] \| \{\[`key`: `string`\]: `T`; \}
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/common/MixedList.d.ts:6
+
+List of T-s passed as an array or object map.
+
+Example usage: entities as an array of imported using import * as syntax.
+
+## 类型参数
+
+### T
+
+`T`

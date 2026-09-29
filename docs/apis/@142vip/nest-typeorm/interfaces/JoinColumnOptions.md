@@ -1,0 +1,37 @@
+[API 参考](../../../index.md) / [@142vip/nest-typeorm](../index.md) / JoinColumnOptions
+
+# 接口: JoinColumnOptions
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/decorator/options/JoinColumnOptions.d.ts:4
+
+Describes join column options.
+
+## 属性
+
+### foreignKeyConstraintName?
+
+> `optional` **foreignKeyConstraintName?**: `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/decorator/options/JoinColumnOptions.d.ts:16
+
+Name of the foreign key constraint.
+
+***
+
+### name?
+
+> `optional` **name?**: `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/decorator/options/JoinColumnOptions.d.ts:8
+
+Name of the column.
+
+***
+
+### referencedColumnName?
+
+> `optional` **referencedColumnName?**: `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/decorator/options/JoinColumnOptions.d.ts:12
+
+Name of the column in the entity to which this column is referenced.

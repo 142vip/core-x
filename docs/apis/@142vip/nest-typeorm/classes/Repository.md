@@ -1,0 +1,1457 @@
+[API 参考](../../../index.md) / [@142vip/nest-typeorm](../index.md) / Repository
+
+# 类: Repository\<Entity\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:23
+
+Repository is supposed to work with your entity objects. Find entities, insert, update, delete, etc.
+
+## theme_extended_by
+
+- [`TreeRepository`](TreeRepository.md)
+- [`MongoRepository`](MongoRepository.md)
+
+## 类型参数
+
+### Entity
+
+`Entity` *extends* [`ObjectLiteral`](../interfaces/ObjectLiteral.md)
+
+## 构造函数
+
+### 构造函数
+
+> **new Repository**\<`Entity`\>(`target`, `manager`, `queryRunner?`): `Repository`\<`Entity`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:42
+
+#### 参数
+
+##### target
+
+[`EntityTarget`](../type-aliases/EntityTarget.md)\<`Entity`\>
+
+##### manager
+
+[`EntityManager`](EntityManager.md)
+
+##### queryRunner?
+
+[`QueryRunner`](../interfaces/QueryRunner.md)
+
+#### 返回
+
+`Repository`\<`Entity`\>
+
+## 属性
+
+### manager
+
+> `readonly` **manager**: [`EntityManager`](EntityManager.md)
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:33
+
+Entity Manager used by this repository.
+
+***
+
+### queryRunner?
+
+> `readonly` `optional` **queryRunner?**: [`QueryRunner`](../interfaces/QueryRunner.md)
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:37
+
+Query runner provider used for this repository.
+
+***
+
+### target
+
+> `readonly` **target**: [`EntityTarget`](../type-aliases/EntityTarget.md)\<`Entity`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:29
+
+Entity target that is managed by this repository.
+If this repository manages entity from schema,
+then it returns a name of that schema instead.
+
+## 访问器
+
+### metadata
+
+#### Getter 签名
+
+> **get** **metadata**(): [`EntityMetadata`](EntityMetadata.md)
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:41
+
+Entity metadata of the entity current repository manages.
+
+##### 返回
+
+[`EntityMetadata`](EntityMetadata.md)
+
+## 方法
+
+### average()
+
+> **average**(`columnName`, `where?`): `Promise`\<`number` \| `null`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:246
+
+Return the AVG of a column
+
+#### 参数
+
+##### columnName
+
+`PickKeysByType`\<`Entity`, `number`\>
+
+##### where?
+
+[`FindOptionsWhere`](../type-aliases/FindOptionsWhere.md)\<`Entity`\> \| [`FindOptionsWhere`](../type-aliases/FindOptionsWhere.md)\<`Entity`\>[]
+
+#### 返回
+
+`Promise`\<`number` \| `null`\>
+
+***
+
+### clear()
+
+> **clear**(): `Promise`\<`void`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:338
+
+Clears all the data from the given table/collection (truncates/drops it).
+
+Note: this method uses TRUNCATE and may not work as you expect in transactions on some platforms.
+
+#### 返回
+
+`Promise`\<`void`\>
+
+#### 参阅
+
+https://stackoverflow.com/a/5972738/925151
+
+***
+
+### count()
+
+> **count**(`options?`): `Promise`\<`number`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:233
+
+Counts entities that match given options.
+Useful for pagination.
+
+#### 参数
+
+##### options?
+
+[`FindManyOptions`](../interfaces/FindManyOptions.md)\<`Entity`\>
+
+#### 返回
+
+`Promise`\<`number`\>
+
+***
+
+### countBy()
+
+> **countBy**(`where`): `Promise`\<`number`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:238
+
+Counts entities that match given conditions.
+Useful for pagination.
+
+#### 参数
+
+##### where
+
+[`FindOptionsWhere`](../type-aliases/FindOptionsWhere.md)\<`Entity`\> \| [`FindOptionsWhere`](../type-aliases/FindOptionsWhere.md)\<`Entity`\>[]
+
+#### 返回
+
+`Promise`\<`number`\>
+
+***
+
+### create()
+
+#### 调用签名
+
+> **create**(): `Entity`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:59
+
+Creates a new entity instance.
+
+##### 返回
+
+`Entity`
+
+#### 调用签名
+
+> **create**(`entityLikeArray`): `Entity`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:64
+
+Creates new entities and copies all entity properties from given objects into their new entities.
+Note that it copies only properties that are present in entity schema.
+
+##### 参数
+
+###### entityLikeArray
+
+[`DeepPartial`](../type-aliases/DeepPartial.md)\<`Entity`\>[]
+
+##### 返回
+
+`Entity`[]
+
+#### 调用签名
+
+> **create**(`entityLike`): `Entity`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:69
+
+Creates a new entity instance and copies all entity properties from this object into a new entity.
+Note that it copies only properties that are present in entity schema.
+
+##### 参数
+
+###### entityLike
+
+[`DeepPartial`](../type-aliases/DeepPartial.md)\<`Entity`\>
+
+##### 返回
+
+`Entity`
+
+***
+
+### createQueryBuilder()
+
+> **createQueryBuilder**(`alias?`, `queryRunner?`): [`SelectQueryBuilder`](SelectQueryBuilder.md)\<`Entity`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:46
+
+Creates a new query builder that can be used to build a SQL query.
+
+#### 参数
+
+##### alias?
+
+`string`
+
+##### queryRunner?
+
+[`QueryRunner`](../interfaces/QueryRunner.md)
+
+#### 返回
+
+[`SelectQueryBuilder`](SelectQueryBuilder.md)\<`Entity`\>
+
+***
+
+### decrement()
+
+> **decrement**(`conditions`, `propertyPath`, `value`): `Promise`\<[`UpdateResult`](UpdateResult.md)\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:346
+
+Decrements some column by provided value of the entities matched given conditions.
+
+#### 参数
+
+##### conditions
+
+[`FindOptionsWhere`](../type-aliases/FindOptionsWhere.md)\<`Entity`\>
+
+##### propertyPath
+
+`string`
+
+##### value
+
+`string` \| `number`
+
+#### 返回
+
+`Promise`\<[`UpdateResult`](UpdateResult.md)\>
+
+***
+
+### delete()
+
+> **delete**(`criteria`): `Promise`\<[`DeleteResult`](DeleteResult.md)\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:190
+
+Deletes entities by a given criteria.
+Unlike save method executes a primitive operation without cascades, relations and other operations included.
+Executes fast and efficient DELETE query.
+Does not check if entity exist in the database.
+
+#### 参数
+
+##### criteria
+
+`string` \| `number` \| `string`[] \| `Date` \| [`ObjectId`](../namespaces/BSON/classes/ObjectId.md) \| `number`[] \| `Date`[] \| [`ObjectId`](../namespaces/BSON/classes/ObjectId.md)[] \| [`FindOptionsWhere`](../type-aliases/FindOptionsWhere.md)\<`Entity`\> \| [`FindOptionsWhere`](../type-aliases/FindOptionsWhere.md)\<`Entity`\>[]
+
+#### 返回
+
+`Promise`\<[`DeleteResult`](DeleteResult.md)\>
+
+***
+
+### deleteAll()
+
+> **deleteAll**(): `Promise`\<[`DeleteResult`](DeleteResult.md)\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:198
+
+Deletes all entities of target type.
+This is a primitive operation without cascades, relations or other operations included.
+Executes fast and efficient DELETE query without WHERE clause.
+
+WARNING! This method deletes ALL rows in the target table.
+
+#### 返回
+
+`Promise`\<[`DeleteResult`](DeleteResult.md)\>
+
+***
+
+### ~~exist()~~
+
+> **exist**(`options?`): `Promise`\<`boolean`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:220
+
+Checks whether any entity exists that matches the given options.
+
+#### 参数
+
+##### options?
+
+[`FindManyOptions`](../interfaces/FindManyOptions.md)\<`Entity`\>
+
+#### 返回
+
+`Promise`\<`boolean`\>
+
+#### 已被弃用
+
+use `exists` method instead, for example:
+
+.exists()
+
+***
+
+### exists()
+
+> **exists**(`options?`): `Promise`\<`boolean`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:224
+
+Checks whether any entity exists that matches the given options.
+
+#### 参数
+
+##### options?
+
+[`FindManyOptions`](../interfaces/FindManyOptions.md)\<`Entity`\>
+
+#### 返回
+
+`Promise`\<`boolean`\>
+
+***
+
+### existsBy()
+
+> **existsBy**(`where`): `Promise`\<`boolean`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:228
+
+Checks whether any entity exists that matches the given conditions.
+
+#### 参数
+
+##### where
+
+[`FindOptionsWhere`](../type-aliases/FindOptionsWhere.md)\<`Entity`\> \| [`FindOptionsWhere`](../type-aliases/FindOptionsWhere.md)\<`Entity`\>[]
+
+#### 返回
+
+`Promise`\<`boolean`\>
+
+***
+
+### extend()
+
+> **extend**\<`CustomRepository`\>(`customs`): `Repository`\<`Entity`\> & `CustomRepository`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:350
+
+Extends repository with provided functions.
+
+#### 类型参数
+
+##### CustomRepository
+
+`CustomRepository`
+
+#### 参数
+
+##### customs
+
+`CustomRepository` & `ThisType`\<`Repository`\<`Entity`\> & `CustomRepository`\>
+
+#### 返回
+
+`Repository`\<`Entity`\> & `CustomRepository`
+
+***
+
+### find()
+
+> **find**(`options?`): `Promise`\<`Entity`[]\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:258
+
+Finds entities that match given find options.
+
+#### 参数
+
+##### options?
+
+[`FindManyOptions`](../interfaces/FindManyOptions.md)\<`Entity`\>
+
+#### 返回
+
+`Promise`\<`Entity`[]\>
+
+***
+
+### findAndCount()
+
+> **findAndCount**(`options?`): `Promise`\<\[`Entity`[], `number`\]\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:268
+
+Finds entities that match given find options.
+Also counts all entities that match given conditions,
+but ignores pagination settings (from and take options).
+
+#### 参数
+
+##### options?
+
+[`FindManyOptions`](../interfaces/FindManyOptions.md)\<`Entity`\>
+
+#### 返回
+
+`Promise`\<\[`Entity`[], `number`\]\>
+
+***
+
+### findAndCountBy()
+
+> **findAndCountBy**(`where`): `Promise`\<\[`Entity`[], `number`\]\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:274
+
+Finds entities that match given WHERE conditions.
+Also counts all entities that match given conditions,
+but ignores pagination settings (from and take options).
+
+#### 参数
+
+##### where
+
+[`FindOptionsWhere`](../type-aliases/FindOptionsWhere.md)\<`Entity`\> \| [`FindOptionsWhere`](../type-aliases/FindOptionsWhere.md)\<`Entity`\>[]
+
+#### 返回
+
+`Promise`\<\[`Entity`[], `number`\]\>
+
+***
+
+### findBy()
+
+> **findBy**(`where`): `Promise`\<`Entity`[]\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:262
+
+Finds entities that match given find options.
+
+#### 参数
+
+##### where
+
+[`FindOptionsWhere`](../type-aliases/FindOptionsWhere.md)\<`Entity`\> \| [`FindOptionsWhere`](../type-aliases/FindOptionsWhere.md)\<`Entity`\>[]
+
+#### 返回
+
+`Promise`\<`Entity`[]\>
+
+***
+
+### ~~findByIds()~~
+
+> **findByIds**(`ids`): `Promise`\<`Entity`[]\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:285
+
+Finds entities with ids.
+Optionally find options or conditions can be applied.
+
+#### 参数
+
+##### ids
+
+`any`[]
+
+#### 返回
+
+`Promise`\<`Entity`[]\>
+
+#### 已被弃用
+
+use `findBy` method instead in conjunction with `In` operator, for example:
+
+.findBy(\{
+    id: In([1, 2, 3])
+\})
+
+***
+
+### findOne()
+
+> **findOne**(`options`): `Promise`\<`Entity` \| `null`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:290
+
+Finds first entity by a given find options.
+If entity was not found in the database - returns null.
+
+#### 参数
+
+##### options
+
+[`FindOneOptions`](../interfaces/FindOneOptions.md)\<`Entity`\>
+
+#### 返回
+
+`Promise`\<`Entity` \| `null`\>
+
+***
+
+### findOneBy()
+
+> **findOneBy**(`where`): `Promise`\<`Entity` \| `null`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:295
+
+Finds first entity that matches given where condition.
+If entity was not found in the database - returns null.
+
+#### 参数
+
+##### where
+
+[`FindOptionsWhere`](../type-aliases/FindOptionsWhere.md)\<`Entity`\> \| [`FindOptionsWhere`](../type-aliases/FindOptionsWhere.md)\<`Entity`\>[]
+
+#### 返回
+
+`Promise`\<`Entity` \| `null`\>
+
+***
+
+### ~~findOneById()~~
+
+> **findOneById**(`id`): `Promise`\<`Entity` \| `null`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:306
+
+Finds first entity that matches given id.
+If entity was not found in the database - returns null.
+
+#### 参数
+
+##### id
+
+`string` \| `number` \| `Date` \| [`ObjectId`](../namespaces/BSON/classes/ObjectId.md)
+
+#### 返回
+
+`Promise`\<`Entity` \| `null`\>
+
+#### 已被弃用
+
+use `findOneBy` method instead in conjunction with `In` operator, for example:
+
+.findOneBy(\{
+    id: 1 // where "id" is your primary column name
+\})
+
+***
+
+### findOneByOrFail()
+
+> **findOneByOrFail**(`where`): `Promise`\<`Entity`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:316
+
+Finds first entity that matches given where condition.
+If entity was not found in the database - rejects with error.
+
+#### 参数
+
+##### where
+
+[`FindOptionsWhere`](../type-aliases/FindOptionsWhere.md)\<`Entity`\> \| [`FindOptionsWhere`](../type-aliases/FindOptionsWhere.md)\<`Entity`\>[]
+
+#### 返回
+
+`Promise`\<`Entity`\>
+
+***
+
+### findOneOrFail()
+
+> **findOneOrFail**(`options`): `Promise`\<`Entity`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:311
+
+Finds first entity by a given find options.
+If entity was not found in the database - rejects with error.
+
+#### 参数
+
+##### options
+
+[`FindOneOptions`](../interfaces/FindOneOptions.md)\<`Entity`\>
+
+#### 返回
+
+`Promise`\<`Entity`\>
+
+***
+
+### getId()
+
+> **getId**(`entity`): `any`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:55
+
+Gets entity mixed id.
+
+#### 参数
+
+##### entity
+
+`Entity`
+
+#### 返回
+
+`any`
+
+***
+
+### hasId()
+
+> **hasId**(`entity`): `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:51
+
+Checks if entity has an id.
+If entity composite compose ids, it will check them all.
+
+#### 参数
+
+##### entity
+
+`Entity`
+
+#### 返回
+
+`boolean`
+
+***
+
+### increment()
+
+> **increment**(`conditions`, `propertyPath`, `value`): `Promise`\<[`UpdateResult`](UpdateResult.md)\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:342
+
+Increments some column by provided value of the entities matched given conditions.
+
+#### 参数
+
+##### conditions
+
+[`FindOptionsWhere`](../type-aliases/FindOptionsWhere.md)\<`Entity`\>
+
+##### propertyPath
+
+`string`
+
+##### value
+
+`string` \| `number`
+
+#### 返回
+
+`Promise`\<[`UpdateResult`](UpdateResult.md)\>
+
+***
+
+### insert()
+
+> **insert**(`entity`): `Promise`\<[`InsertResult`](InsertResult.md)\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:162
+
+Inserts a given entity into the database.
+Unlike save method executes a primitive operation without cascades, relations and other operations included.
+Executes fast and efficient INSERT query.
+Does not check if entity exist in the database, so query will fail if duplicate entity is being inserted.
+
+#### 参数
+
+##### entity
+
+`_QueryDeepPartialEntity`\<[`ObjectLiteral`](../interfaces/ObjectLiteral.md) *extends* `Entity` ? `unknown` : `Entity`\> \| `_QueryDeepPartialEntity`\<[`ObjectLiteral`](../interfaces/ObjectLiteral.md) *extends* `Entity` ? `unknown` : `Entity`\>[]
+
+#### 返回
+
+`Promise`\<[`InsertResult`](InsertResult.md)\>
+
+***
+
+### maximum()
+
+> **maximum**(`columnName`, `where?`): `Promise`\<`number` \| `null`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:254
+
+Return the MAX of a column
+
+#### 参数
+
+##### columnName
+
+`PickKeysByType`\<`Entity`, `number`\>
+
+##### where?
+
+[`FindOptionsWhere`](../type-aliases/FindOptionsWhere.md)\<`Entity`\> \| [`FindOptionsWhere`](../type-aliases/FindOptionsWhere.md)\<`Entity`\>[]
+
+#### 返回
+
+`Promise`\<`number` \| `null`\>
+
+***
+
+### merge()
+
+> **merge**(`mergeIntoEntity`, ...`entityLikes`): `Entity`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:73
+
+Merges multiple entities (or entity-like objects) into a given entity.
+
+#### 参数
+
+##### mergeIntoEntity
+
+`Entity`
+
+##### entityLikes
+
+...[`DeepPartial`](../type-aliases/DeepPartial.md)\<`Entity`\>[]
+
+#### 返回
+
+`Entity`
+
+***
+
+### minimum()
+
+> **minimum**(`columnName`, `where?`): `Promise`\<`number` \| `null`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:250
+
+Return the MIN of a column
+
+#### 参数
+
+##### columnName
+
+`PickKeysByType`\<`Entity`, `number`\>
+
+##### where?
+
+[`FindOptionsWhere`](../type-aliases/FindOptionsWhere.md)\<`Entity`\> \| [`FindOptionsWhere`](../type-aliases/FindOptionsWhere.md)\<`Entity`\>[]
+
+#### 返回
+
+`Promise`\<`number` \| `null`\>
+
+***
+
+### preload()
+
+> **preload**(`entityLike`): `Promise`\<`Entity` \| `undefined`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:83
+
+Creates a new entity from the given plain javascript object. If entity already exist in the database, then
+it loads it (and everything related to it), replaces all values with the new ones from the given object
+and returns this new entity. This new entity is actually a loaded from the db entity with all properties
+replaced from the new object.
+
+Note that given entity-like object must have an entity id / primary key to find entity by.
+Returns undefined if entity with given id was not found.
+
+#### 参数
+
+##### entityLike
+
+[`DeepPartial`](../type-aliases/DeepPartial.md)\<`Entity`\>
+
+#### 返回
+
+`Promise`\<`Entity` \| `undefined`\>
+
+***
+
+### query()
+
+> **query**\<`T`\>(`query`, `parameters?`): `Promise`\<`T`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:323
+
+Executes a raw SQL query and returns a raw database results.
+Raw query execution is supported only by relational databases (MongoDB is not supported).
+
+#### 类型参数
+
+##### T
+
+`T` = `any`
+
+#### 参数
+
+##### query
+
+`string`
+
+##### parameters?
+
+`any`[]
+
+#### 返回
+
+`Promise`\<`T`\>
+
+#### 参阅
+
+[Official docs](https://typeorm.io/repository-api) for examples.
+
+***
+
+### recover()
+
+#### 调用签名
+
+> **recover**\<`T`\>(`entities`, `options`): `Promise`\<`T`[]\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:139
+
+Recovers all given entities in the database.
+
+##### 类型参数
+
+###### T
+
+`T` *extends* [`ObjectLiteral`](../interfaces/ObjectLiteral.md) \| `Map`\<`unknown`, `unknown`\> \| `Set`\<`unknown`\> \| `any`[] \| \{\[`key`: `string`\]: `any`; \}
+
+##### 参数
+
+###### entities
+
+`T`[]
+
+###### options
+
+[`SaveOptions`](../interfaces/SaveOptions.md) & `object`
+
+##### 返回
+
+`Promise`\<`T`[]\>
+
+#### 调用签名
+
+> **recover**\<`T`\>(`entities`, `options?`): `Promise`\<`T` & `Entity`[]\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:145
+
+Recovers all given entities in the database.
+
+##### 类型参数
+
+###### T
+
+`T` *extends* [`ObjectLiteral`](../interfaces/ObjectLiteral.md) \| `Map`\<`unknown`, `unknown`\> \| `Set`\<`unknown`\> \| `any`[] \| \{\[`key`: `string`\]: `any`; \}
+
+##### 参数
+
+###### entities
+
+`T`[]
+
+###### options?
+
+[`SaveOptions`](../interfaces/SaveOptions.md)
+
+##### 返回
+
+`Promise`\<`T` & `Entity`[]\>
+
+#### 调用签名
+
+> **recover**\<`T`\>(`entity`, `options`): `Promise`\<`T`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:149
+
+Recovers a given entity in the database.
+
+##### 类型参数
+
+###### T
+
+`T` *extends* [`ObjectLiteral`](../interfaces/ObjectLiteral.md) \| `Map`\<`unknown`, `unknown`\> \| `Set`\<`unknown`\> \| `any`[] \| \{\[`key`: `string`\]: `any`; \}
+
+##### 参数
+
+###### entity
+
+`T`
+
+###### options
+
+[`SaveOptions`](../interfaces/SaveOptions.md) & `object`
+
+##### 返回
+
+`Promise`\<`T`\>
+
+#### 调用签名
+
+> **recover**\<`T`\>(`entity`, `options?`): `Promise`\<`T` & `Entity`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:155
+
+Recovers a given entity in the database.
+
+##### 类型参数
+
+###### T
+
+`T` *extends* [`ObjectLiteral`](../interfaces/ObjectLiteral.md) \| `Map`\<`unknown`, `unknown`\> \| `Set`\<`unknown`\> \| `any`[] \| \{\[`key`: `string`\]: `any`; \}
+
+##### 参数
+
+###### entity
+
+`T`
+
+###### options?
+
+[`SaveOptions`](../interfaces/SaveOptions.md)
+
+##### 返回
+
+`Promise`\<`T` & `Entity`\>
+
+***
+
+### remove()
+
+#### 调用签名
+
+> **remove**(`entities`, `options?`): `Promise`\<`Entity`[]\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:111
+
+Removes a given entities from the database.
+
+##### 参数
+
+###### entities
+
+`Entity`[]
+
+###### options?
+
+[`RemoveOptions`](../interfaces/RemoveOptions.md)
+
+##### 返回
+
+`Promise`\<`Entity`[]\>
+
+#### 调用签名
+
+> **remove**(`entity`, `options?`): `Promise`\<`Entity`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:115
+
+Removes a given entity from the database.
+
+##### 参数
+
+###### entity
+
+`Entity`
+
+###### options?
+
+[`RemoveOptions`](../interfaces/RemoveOptions.md)
+
+##### 返回
+
+`Promise`\<`Entity`\>
+
+***
+
+### restore()
+
+> **restore**(`criteria`): `Promise`\<[`UpdateResult`](UpdateResult.md)\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:212
+
+Restores entities by a given criteria.
+Unlike save method executes a primitive operation without cascades, relations and other operations included.
+Executes fast and efficient UPDATE query.
+Does not check if entity exist in the database.
+
+#### 参数
+
+##### criteria
+
+`string` \| `number` \| `string`[] \| `Date` \| [`ObjectId`](../namespaces/BSON/classes/ObjectId.md) \| `number`[] \| `Date`[] \| [`ObjectId`](../namespaces/BSON/classes/ObjectId.md)[] \| [`FindOptionsWhere`](../type-aliases/FindOptionsWhere.md)\<`Entity`\> \| [`FindOptionsWhere`](../type-aliases/FindOptionsWhere.md)\<`Entity`\>[]
+
+#### 返回
+
+`Promise`\<[`UpdateResult`](UpdateResult.md)\>
+
+***
+
+### save()
+
+#### 调用签名
+
+> **save**\<`T`\>(`entities`, `options`): `Promise`\<`T`[]\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:88
+
+Saves all given entities in the database.
+If entities do not exist in the database then inserts, otherwise updates.
+
+##### 类型参数
+
+###### T
+
+`T` *extends* [`ObjectLiteral`](../interfaces/ObjectLiteral.md) \| `Map`\<`unknown`, `unknown`\> \| `Set`\<`unknown`\> \| `any`[] \| \{\[`key`: `string`\]: `any`; \}
+
+##### 参数
+
+###### entities
+
+`T`[]
+
+###### options
+
+[`SaveOptions`](../interfaces/SaveOptions.md) & `object`
+
+##### 返回
+
+`Promise`\<`T`[]\>
+
+#### 调用签名
+
+> **save**\<`T`\>(`entities`, `options?`): `Promise`\<`T` & `Entity`[]\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:95
+
+Saves all given entities in the database.
+If entities do not exist in the database then inserts, otherwise updates.
+
+##### 类型参数
+
+###### T
+
+`T` *extends* [`ObjectLiteral`](../interfaces/ObjectLiteral.md) \| `Map`\<`unknown`, `unknown`\> \| `Set`\<`unknown`\> \| `any`[] \| \{\[`key`: `string`\]: `any`; \}
+
+##### 参数
+
+###### entities
+
+`T`[]
+
+###### options?
+
+[`SaveOptions`](../interfaces/SaveOptions.md)
+
+##### 返回
+
+`Promise`\<`T` & `Entity`[]\>
+
+#### 调用签名
+
+> **save**\<`T`\>(`entity`, `options`): `Promise`\<`T`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:100
+
+Saves a given entity in the database.
+If entity does not exist in the database then inserts, otherwise updates.
+
+##### 类型参数
+
+###### T
+
+`T` *extends* [`ObjectLiteral`](../interfaces/ObjectLiteral.md) \| `Map`\<`unknown`, `unknown`\> \| `Set`\<`unknown`\> \| `any`[] \| \{\[`key`: `string`\]: `any`; \}
+
+##### 参数
+
+###### entity
+
+`T`
+
+###### options
+
+[`SaveOptions`](../interfaces/SaveOptions.md) & `object`
+
+##### 返回
+
+`Promise`\<`T`\>
+
+#### 调用签名
+
+> **save**\<`T`\>(`entity`, `options?`): `Promise`\<`T` & `Entity`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:107
+
+Saves a given entity in the database.
+If entity does not exist in the database then inserts, otherwise updates.
+
+##### 类型参数
+
+###### T
+
+`T` *extends* [`ObjectLiteral`](../interfaces/ObjectLiteral.md) \| `Map`\<`unknown`, `unknown`\> \| `Set`\<`unknown`\> \| `any`[] \| \{\[`key`: `string`\]: `any`; \}
+
+##### 参数
+
+###### entity
+
+`T`
+
+###### options?
+
+[`SaveOptions`](../interfaces/SaveOptions.md)
+
+##### 返回
+
+`Promise`\<`T` & `Entity`\>
+
+***
+
+### softDelete()
+
+> **softDelete**(`criteria`): `Promise`\<[`UpdateResult`](UpdateResult.md)\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:205
+
+Records the delete date of entities by a given criteria.
+Unlike save method executes a primitive operation without cascades, relations and other operations included.
+Executes fast and efficient UPDATE query.
+Does not check if entity exist in the database.
+
+#### 参数
+
+##### criteria
+
+`string` \| `number` \| `string`[] \| `Date` \| [`ObjectId`](../namespaces/BSON/classes/ObjectId.md) \| `number`[] \| `Date`[] \| [`ObjectId`](../namespaces/BSON/classes/ObjectId.md)[] \| [`FindOptionsWhere`](../type-aliases/FindOptionsWhere.md)\<`Entity`\> \| [`FindOptionsWhere`](../type-aliases/FindOptionsWhere.md)\<`Entity`\>[]
+
+#### 返回
+
+`Promise`\<[`UpdateResult`](UpdateResult.md)\>
+
+***
+
+### softRemove()
+
+#### 调用签名
+
+> **softRemove**\<`T`\>(`entities`, `options`): `Promise`\<`T`[]\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:119
+
+Records the delete date of all given entities.
+
+##### 类型参数
+
+###### T
+
+`T` *extends* [`ObjectLiteral`](../interfaces/ObjectLiteral.md) \| `Map`\<`unknown`, `unknown`\> \| `Set`\<`unknown`\> \| `any`[] \| \{\[`key`: `string`\]: `any`; \}
+
+##### 参数
+
+###### entities
+
+`T`[]
+
+###### options
+
+[`SaveOptions`](../interfaces/SaveOptions.md) & `object`
+
+##### 返回
+
+`Promise`\<`T`[]\>
+
+#### 调用签名
+
+> **softRemove**\<`T`\>(`entities`, `options?`): `Promise`\<`T` & `Entity`[]\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:125
+
+Records the delete date of all given entities.
+
+##### 类型参数
+
+###### T
+
+`T` *extends* [`ObjectLiteral`](../interfaces/ObjectLiteral.md) \| `Map`\<`unknown`, `unknown`\> \| `Set`\<`unknown`\> \| `any`[] \| \{\[`key`: `string`\]: `any`; \}
+
+##### 参数
+
+###### entities
+
+`T`[]
+
+###### options?
+
+[`SaveOptions`](../interfaces/SaveOptions.md)
+
+##### 返回
+
+`Promise`\<`T` & `Entity`[]\>
+
+#### 调用签名
+
+> **softRemove**\<`T`\>(`entity`, `options`): `Promise`\<`T`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:129
+
+Records the delete date of a given entity.
+
+##### 类型参数
+
+###### T
+
+`T` *extends* [`ObjectLiteral`](../interfaces/ObjectLiteral.md) \| `Map`\<`unknown`, `unknown`\> \| `Set`\<`unknown`\> \| `any`[] \| \{\[`key`: `string`\]: `any`; \}
+
+##### 参数
+
+###### entity
+
+`T`
+
+###### options
+
+[`SaveOptions`](../interfaces/SaveOptions.md) & `object`
+
+##### 返回
+
+`Promise`\<`T`\>
+
+#### 调用签名
+
+> **softRemove**\<`T`\>(`entity`, `options?`): `Promise`\<`T` & `Entity`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:135
+
+Records the delete date of a given entity.
+
+##### 类型参数
+
+###### T
+
+`T` *extends* [`ObjectLiteral`](../interfaces/ObjectLiteral.md) \| `Map`\<`unknown`, `unknown`\> \| `Set`\<`unknown`\> \| `any`[] \| \{\[`key`: `string`\]: `any`; \}
+
+##### 参数
+
+###### entity
+
+`T`
+
+###### options?
+
+[`SaveOptions`](../interfaces/SaveOptions.md)
+
+##### 返回
+
+`Promise`\<`T` & `Entity`\>
+
+***
+
+### sql()
+
+> **sql**\<`T`\>(`strings`, ...`values`): `Promise`\<`T`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:331
+
+Tagged template function that executes raw SQL query and returns raw database results.
+Template expressions are automatically transformed into database parameters.
+Raw query execution is supported only by relational databases (MongoDB is not supported).
+Note: Don't call this as a regular function, it is meant to be used with backticks to tag a template literal.
+Example: repository.sql`SELECT * FROM table_name WHERE id = ${id}`
+
+#### 类型参数
+
+##### T
+
+`T` = `any`
+
+#### 参数
+
+##### strings
+
+`TemplateStringsArray`
+
+##### values
+
+...`unknown`[]
+
+#### 返回
+
+`Promise`\<`T`\>
+
+***
+
+### sum()
+
+> **sum**(`columnName`, `where?`): `Promise`\<`number` \| `null`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:242
+
+Return the SUM of a column
+
+#### 参数
+
+##### columnName
+
+`PickKeysByType`\<`Entity`, `number`\>
+
+##### where?
+
+[`FindOptionsWhere`](../type-aliases/FindOptionsWhere.md)\<`Entity`\> \| [`FindOptionsWhere`](../type-aliases/FindOptionsWhere.md)\<`Entity`\>[]
+
+#### 返回
+
+`Promise`\<`number` \| `null`\>
+
+***
+
+### update()
+
+> **update**(`criteria`, `partialEntity`, `options?`): `Promise`\<[`UpdateResult`](UpdateResult.md)\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:169
+
+Updates entity partially. Entity can be found by a given conditions.
+Unlike save method executes a primitive operation without cascades, relations and other operations included.
+Executes fast and efficient UPDATE query.
+Does not check if entity exist in the database.
+
+#### 参数
+
+##### criteria
+
+`string` \| `number` \| `string`[] \| `Date` \| [`ObjectId`](../namespaces/BSON/classes/ObjectId.md) \| `number`[] \| `Date`[] \| [`ObjectId`](../namespaces/BSON/classes/ObjectId.md)[] \| [`FindOptionsWhere`](../type-aliases/FindOptionsWhere.md)\<`Entity`\> \| [`FindOptionsWhere`](../type-aliases/FindOptionsWhere.md)\<`Entity`\>[]
+
+##### partialEntity
+
+[`QueryDeepPartialEntity`](../type-aliases/QueryDeepPartialEntity.md)\<`Entity`\>
+
+##### options?
+
+[`RepositoryUpdateOptions`](../interfaces/RepositoryUpdateOptions.md)
+
+#### 返回
+
+`Promise`\<[`UpdateResult`](UpdateResult.md)\>
+
+***
+
+### updateAll()
+
+> **updateAll**(`partialEntity`, `options?`): `Promise`\<[`UpdateResult`](UpdateResult.md)\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:177
+
+Updates all entities of target type, setting fields from supplied partial entity.
+This is a primitive operation without cascades, relations or other operations included.
+Executes fast and efficient UPDATE query without WHERE clause.
+
+WARNING! This method updates ALL rows in the target table.
+
+#### 参数
+
+##### partialEntity
+
+[`QueryDeepPartialEntity`](../type-aliases/QueryDeepPartialEntity.md)\<`Entity`\>
+
+##### options?
+
+[`RepositoryUpdateOptions`](../interfaces/RepositoryUpdateOptions.md)
+
+#### 返回
+
+`Promise`\<[`UpdateResult`](UpdateResult.md)\>
+
+***
+
+### upsert()
+
+> **upsert**(`entityOrEntities`, `conflictPathsOrOptions`): `Promise`\<[`InsertResult`](InsertResult.md)\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/Repository.d.ts:183
+
+Inserts a given entity into the database, unless a unique constraint conflicts then updates the entity
+Unlike save method executes a primitive operation without cascades, relations and other operations included.
+Executes fast and efficient INSERT ... ON CONFLICT DO UPDATE/ON DUPLICATE KEY UPDATE query.
+
+#### 参数
+
+##### entityOrEntities
+
+`_QueryDeepPartialEntity`\<[`ObjectLiteral`](../interfaces/ObjectLiteral.md) *extends* `Entity` ? `unknown` : `Entity`\> \| `_QueryDeepPartialEntity`\<[`ObjectLiteral`](../interfaces/ObjectLiteral.md) *extends* `Entity` ? `unknown` : `Entity`\>[]
+
+##### conflictPathsOrOptions
+
+`string`[] \| [`UpsertOptions`](../interfaces/UpsertOptions.md)\<`Entity`\>
+
+#### 返回
+
+`Promise`\<[`InsertResult`](InsertResult.md)\>

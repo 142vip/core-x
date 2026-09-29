@@ -1,14 +1,17 @@
 /**
- * CLI 入口（VipCommander）。由 bin/vip-agent-skills.cjs 加载。
+ * CLI 入口（VipPackageCliCommander）。由 bin/vip-agent-skills.cjs 加载。
  *
  * 导出 {@link VipAgentSkillCliOptions}，供 core-x 等项目的 AiCommandOptions 继承扩展。
  */
+import type { VipCommanderOptions } from '@142vip/utils'
 import {
+  formatVipCliHelpExample,
   ProcessExitCodeEnum,
+  registerVipPackageCliErrorHandling,
   VipColor,
-  VipCommander,
   VipConsole,
   VipNodeJS,
+  VipPackageCliCommander,
 } from '@142vip/utils'
 import { ENV_AGENT_SKILLS_TARGET } from './core/constants'
 import { getPackageName, getVersion } from './core/paths'
@@ -20,29 +23,13 @@ import { syncAgentSkills } from './core/sync'
  * - 与 commander 默认值对齐：未传时为 `false` / `undefined`，勿再 `Boolean()` 包一层。
  * - 设计给 **core-x** 等仓库的 `AiCommandOptions`（或同级 CLI options）**extends** 使用，
  *   以便共享 `--target` / `--check` / `--force` / `--dry-run` 字段语义，再叠加本项目专有选项。
- *
- * @example
- * ```ts
- * // core-x 侧示意
- * import type { VipAgentSkillCliOptions } from '@142vip/agent-skills'
- *
- * export interface AiCommandOptions extends VipAgentSkillCliOptions {
- *   // 本命令额外字段
- *   model?: string
- * }
- * ```
  */
-export interface VipAgentSkillCliOptions {
+export interface VipAgentSkillCliOptions extends VipCommanderOptions {
   /**
    * 下游项目根目录（`--target` / `-t`）。
    * 省略时：先读 env `AGENT_SKILLS_TARGET`，再回落 process.cwd()。
    */
   target?: string
-  /**
-   * 试运行，不写盘（`--dry-run`，VipCommander.init 注入）。
-   * commander 默认 false。
-   */
-  dryRun?: boolean
   /**
    * 目标无 package.json 也继续（`--force`）。
    * commander 默认 false。
@@ -68,39 +55,42 @@ function resolveTargetRoot(targetArg?: string): string {
 
 /**
  * 注册并解析 CLI。
- * 选项：--target / --dry-run（VipCommander.init）/ --check / --force
+ * 选项：--target / --dry-run / --check / --force
  */
 export function runCli(argv: string[] = VipNodeJS.getProcessArgv().slice(2)): void {
   const packageName = getPackageName()
   const version = getVersion()
 
-  const program = new VipCommander(
+  const program = new VipPackageCliCommander(
     'vip-agent-skills',
     version,
     `将已安装的 ${packageName} 同步到下游项目 .agents/skills/。永不改动 business-map。`,
   )
 
-  program
-    .init(
-      {
-        summary: '同步 Agent Skills 到下游项目',
-        description: [
-          `将 ${packageName} 的通用 skills 写入下游项目 .agents/skills/。`,
-          '永不创建 / 覆盖 / 删除 business-map。',
-          `Env: ${ENV_AGENT_SKILLS_TARGET} 可在未传 --target 时指定下游根目录。`,
-        ].join('\n'),
-      },
-      {
-        dryRun: true,
-        trace: false,
-        help: true,
-      },
-    )
-    .option('-t, --target <path>', '下游项目根目录（默认 cwd）')
-    .option('--check', '比对包与下游镜像是否一致（不一致 exit 1）', false)
-    .option('--force', '目标无 package.json 也继续', false)
-    .action((cliOptions: VipAgentSkillCliOptions) => {
-      // commander option 默认值已是 boolean；解构默认再兜一层 undefined
+  const cliIdentity = { name: packageName, version }
+
+  program.registerCliVersionBanner(cliIdentity, { binAliases: 'vip-agent-skills' })
+  registerVipPackageCliErrorHandling(program, {
+    identity: cliIdentity,
+    binAliases: 'vip-agent-skills',
+    renderHelpHintLine: () => `  查看帮助：${formatVipCliHelpExample('vip-agent-skills -h')}`,
+  })
+
+  program.bootstrapStandalone({
+    summary: '同步 Agent Skills 到下游项目',
+    description: [
+      `将 ${packageName} 的通用 skills 写入下游项目 .agents/skills/。`,
+      '永不创建 / 覆盖 / 删除 business-map。',
+      `Env: ${ENV_AGENT_SKILLS_TARGET} 可在未传 --target 时指定下游根目录。`,
+    ].join('\n'),
+  }, {
+    registerBusinessOptions: (root) => {
+      root
+        .option('-t,--target <path>', '下游项目根目录（默认 cwd）')
+        .option('--check', '比对包与下游镜像是否一致（不一致 exit 1）', false)
+        .option('--force', '目标无 package.json 也继续', false)
+    },
+    action: (cliOptions: VipAgentSkillCliOptions) => {
       const {
         dryRun = false,
         check = false,
@@ -130,7 +120,6 @@ export function runCli(argv: string[] = VipNodeJS.getProcessArgv().slice(2)): vo
         VipConsole.error(`${VipColor.redBright(`${packageName}:`)} ${message}`)
         VipNodeJS.exitProcess(ProcessExitCodeEnum.FatalError)
       }
-    })
-
-  program.parse(argv, { from: 'user' })
+    },
+  }, argv)
 }

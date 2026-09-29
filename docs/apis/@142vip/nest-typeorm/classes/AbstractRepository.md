@@ -1,0 +1,176 @@
+[API 参考](../../../index.md) / [@142vip/nest-typeorm](../index.md) / AbstractRepository
+
+# ~~类: AbstractRepository\<Entity\>~~
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/AbstractRepository.d.ts:14
+
+Provides abstract class for custom repositories that do not inherit from original orm Repository.
+Contains all most-necessary methods to simplify code in the custom repository.
+All methods are protected thus not exposed and it allows to create encapsulated custom repository.
+
+## 已被弃用
+
+use Repository.extend function to create a custom repository
+
+## 类型参数
+
+### Entity
+
+`Entity` *extends* [`ObjectLiteral`](../interfaces/ObjectLiteral.md)
+
+## 构造函数
+
+### 构造函数
+
+> **new AbstractRepository**\<`Entity`\>(): `AbstractRepository`\<`Entity`\>
+
+#### 返回
+
+`AbstractRepository`\<`Entity`\>
+
+## 属性
+
+### ~~manager~~
+
+> `protected` **manager**: [`EntityManager`](EntityManager.md)
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/AbstractRepository.d.ts:18
+
+Gets entity manager that allows to perform repository operations with any entity.
+
+## 访问器
+
+### ~~repository~~
+
+#### Getter 签名
+
+> **get** `protected` **repository**(): [`Repository`](Repository.md)\<`Entity`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/AbstractRepository.d.ts:23
+
+Gets the original ORM repository for the entity that is managed by this repository.
+If current repository does not manage any entity, then exception will be thrown.
+
+##### 返回
+
+[`Repository`](Repository.md)\<`Entity`\>
+
+***
+
+### ~~treeRepository~~
+
+#### Getter 签名
+
+> **get** `protected` **treeRepository**(): [`TreeRepository`](TreeRepository.md)\<`Entity`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/AbstractRepository.d.ts:28
+
+Gets the original ORM tree repository for the entity that is managed by this repository.
+If current repository does not manage any entity, then exception will be thrown.
+
+##### 返回
+
+[`TreeRepository`](TreeRepository.md)\<`Entity`\>
+
+## 方法
+
+### ~~createQueryBuilder()~~
+
+> `protected` **createQueryBuilder**(`alias`): [`SelectQueryBuilder`](SelectQueryBuilder.md)\<`Entity`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/AbstractRepository.d.ts:33
+
+Creates a new query builder for the repository's entity that can be used to build a SQL query.
+If current repository does not manage any entity, then exception will be thrown.
+
+#### 参数
+
+##### alias
+
+`string`
+
+#### 返回
+
+[`SelectQueryBuilder`](SelectQueryBuilder.md)\<`Entity`\>
+
+***
+
+### ~~createQueryBuilderFor()~~
+
+> `protected` **createQueryBuilderFor**\<`T`\>(`entity`, `alias`): [`SelectQueryBuilder`](SelectQueryBuilder.md)\<`T`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/AbstractRepository.d.ts:37
+
+Creates a new query builder for the given entity that can be used to build a SQL query.
+
+#### 类型参数
+
+##### T
+
+`T` *extends* [`ObjectLiteral`](../interfaces/ObjectLiteral.md)
+
+#### 参数
+
+##### entity
+
+[`ObjectType`](../type-aliases/ObjectType.md)\<`T`\>
+
+##### alias
+
+`string`
+
+#### 返回
+
+[`SelectQueryBuilder`](SelectQueryBuilder.md)\<`T`\>
+
+***
+
+### ~~getRepositoryFor()~~
+
+> `protected` **getRepositoryFor**\<`T`\>(`entity`): [`Repository`](Repository.md)\<`T`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/AbstractRepository.d.ts:41
+
+Gets the original ORM repository for the given entity class.
+
+#### 类型参数
+
+##### T
+
+`T` *extends* [`ObjectLiteral`](../interfaces/ObjectLiteral.md)
+
+#### 参数
+
+##### entity
+
+[`ObjectType`](../type-aliases/ObjectType.md)\<`T`\>
+
+#### 返回
+
+[`Repository`](Repository.md)\<`T`\>
+
+***
+
+### ~~getTreeRepositoryFor()~~
+
+> `protected` **getTreeRepositoryFor**\<`T`\>(`entity`): [`TreeRepository`](TreeRepository.md)\<`T`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/repository/AbstractRepository.d.ts:45
+
+Gets the original ORM tree repository for the given entity class.
+
+#### 类型参数
+
+##### T
+
+`T` *extends* [`ObjectLiteral`](../interfaces/ObjectLiteral.md)
+
+#### 参数
+
+##### entity
+
+[`ObjectType`](../type-aliases/ObjectType.md)\<`T`\>
+
+#### 返回
+
+[`TreeRepository`](TreeRepository.md)\<`T`\>

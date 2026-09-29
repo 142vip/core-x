@@ -1,0 +1,353 @@
+[API 参考](../../../index.md) / [@142vip/nest-typeorm](../index.md) / BulkWriteResult
+
+# 类: BulkWriteResult
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:803
+
+The result of a bulk write.
+
+## 构造函数
+
+### 构造函数
+
+> **new BulkWriteResult**(): `BulkWriteResult`
+
+#### 返回
+
+`BulkWriteResult`
+
+## 属性
+
+### deletedCount
+
+> `readonly` **deletedCount**: `number`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:812
+
+Number of documents deleted.
+
+***
+
+### insertedCount
+
+> `readonly` **insertedCount**: `number`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:806
+
+Number of documents inserted.
+
+***
+
+### insertedIds
+
+> `readonly` **insertedIds**: `object`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:820
+
+Inserted document generated Id's, hash key is the index of the originating operation
+
+#### 索引签名
+
+\[`key`: `number`\]: `any`
+
+***
+
+### matchedCount
+
+> `readonly` **matchedCount**: `number`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:808
+
+Number of documents matched for update.
+
+***
+
+### modifiedCount
+
+> `readonly` **modifiedCount**: `number`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:810
+
+Number of documents modified.
+
+***
+
+### upsertedCount
+
+> `readonly` **upsertedCount**: `number`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:814
+
+Number of documents upserted.
+
+***
+
+### upsertedIds
+
+> `readonly` **upsertedIds**: `object`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:816
+
+Upserted document generated Id's, hash key is the index of the originating operation
+
+#### 索引签名
+
+\[`key`: `number`\]: `any`
+
+## 访问器
+
+### nInserted
+
+#### Getter 签名
+
+> **get** **nInserted**(): `number`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:827
+
+The number of inserted documents
+
+##### 返回
+
+`number`
+
+***
+
+### nMatched
+
+#### Getter 签名
+
+> **get** **nMatched**(): `number`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:831
+
+Number of matched documents
+
+##### 返回
+
+`number`
+
+***
+
+### nModified
+
+#### Getter 签名
+
+> **get** **nModified**(): `number`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:833
+
+Number of documents updated physically on disk
+
+##### 返回
+
+`number`
+
+***
+
+### nRemoved
+
+#### Getter 签名
+
+> **get** **nRemoved**(): `number`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:835
+
+Number of removed documents
+
+##### 返回
+
+`number`
+
+***
+
+### nUpserted
+
+#### Getter 签名
+
+> **get** **nUpserted**(): `number`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:829
+
+Number of upserted documents
+
+##### 返回
+
+`number`
+
+***
+
+### ok
+
+#### Getter 签名
+
+> **get** **ok**(): `number`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:825
+
+Evaluates to true if the bulk operation correctly executes
+
+##### 返回
+
+`number`
+
+## 方法
+
+### getInsertedIds()
+
+> **getInsertedIds**(): [`Document`](../namespaces/BSON/interfaces/Document.md)[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:837
+
+Returns an array of all inserted ids
+
+#### 返回
+
+[`Document`](../namespaces/BSON/interfaces/Document.md)[]
+
+***
+
+### getRawResponse()
+
+> **getRawResponse**(): [`Document`](../namespaces/BSON/interfaces/Document.md)
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:843
+
+Returns raw internal result
+
+#### 返回
+
+[`Document`](../namespaces/BSON/interfaces/Document.md)
+
+***
+
+### getUpsertedIdAt()
+
+> **getUpsertedIdAt**(`index`): [`Document`](../namespaces/BSON/interfaces/Document.md) \| `undefined`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:841
+
+Returns the upserted id at the given index
+
+#### 参数
+
+##### index
+
+`number`
+
+#### 返回
+
+[`Document`](../namespaces/BSON/interfaces/Document.md) \| `undefined`
+
+***
+
+### getUpsertedIds()
+
+> **getUpsertedIds**(): [`Document`](../namespaces/BSON/interfaces/Document.md)[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:839
+
+Returns an array of all upserted ids
+
+#### 返回
+
+[`Document`](../namespaces/BSON/interfaces/Document.md)[]
+
+***
+
+### getWriteConcernError()
+
+> **getWriteConcernError**(): [`WriteConcernError`](WriteConcernError.md) \| `undefined`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:853
+
+Retrieve the write concern error if one exists
+
+#### 返回
+
+[`WriteConcernError`](WriteConcernError.md) \| `undefined`
+
+***
+
+### getWriteErrorAt()
+
+> **getWriteErrorAt**(`index`): [`WriteError`](WriteError.md) \| `undefined`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:849
+
+Returns a specific write error object
+
+#### 参数
+
+##### index
+
+`number`
+
+#### 返回
+
+[`WriteError`](WriteError.md) \| `undefined`
+
+***
+
+### getWriteErrorCount()
+
+> **getWriteErrorCount**(): `number`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:847
+
+Returns the number of write errors off the bulk operation
+
+#### 返回
+
+`number`
+
+***
+
+### getWriteErrors()
+
+> **getWriteErrors**(): [`WriteError`](WriteError.md)[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:851
+
+Retrieve all write errors
+
+#### 返回
+
+[`WriteError`](WriteError.md)[]
+
+***
+
+### hasWriteErrors()
+
+> **hasWriteErrors**(): `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:845
+
+Returns true if the bulk operation contains a write error
+
+#### 返回
+
+`boolean`
+
+***
+
+### isOk()
+
+> **isOk**(): `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:855
+
+#### 返回
+
+`boolean`
+
+***
+
+### toString()
+
+> **toString**(): `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:854
+
+#### 返回
+
+`string`

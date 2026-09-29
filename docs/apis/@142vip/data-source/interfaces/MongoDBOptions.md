@@ -2,7 +2,7 @@
 
 # 接口: MongoDBOptions
 
-定义于: [packages/data-source/src/core/sql/vip-mongo.ts:7](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/data-source/src/core/sql/vip-mongo.ts#L7)
+定义于: [packages/data-source/src/core/sql/vip-mongo.ts:7](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/data-source/src/core/sql/vip-mongo.ts#L7)
 
 ## theme_extends
 
@@ -14,23 +14,23 @@
 
 > **database**: `string`
 
-定义于: [packages/data-source/src/core/sql/vip-mongo.ts:8](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/data-source/src/core/sql/vip-mongo.ts#L8)
+定义于: [packages/data-source/src/core/sql/vip-mongo.ts:8](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/data-source/src/core/sql/vip-mongo.ts#L8)
 
 ***
 
 ### findFilter?
 
-> `optional` **findFilter**: `Record`\<`string`, `any`\>
+> `optional` **findFilter?**: `Record`\<`string`, `any`\>
 
-定义于: [packages/data-source/src/core/sql/vip-mongo.ts:10](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/data-source/src/core/sql/vip-mongo.ts#L10)
+定义于: [packages/data-source/src/core/sql/vip-mongo.ts:10](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/data-source/src/core/sql/vip-mongo.ts#L10)
 
 ***
 
 ### findOptions?
 
-> `optional` **findOptions**: `Record`\<`string`, `any`\>
+> `optional` **findOptions?**: `Record`\<`string`, `any`\>
 
-定义于: [packages/data-source/src/core/sql/vip-mongo.ts:11](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/data-source/src/core/sql/vip-mongo.ts#L11)
+定义于: [packages/data-source/src/core/sql/vip-mongo.ts:11](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/data-source/src/core/sql/vip-mongo.ts#L11)
 
 ***
 
@@ -38,7 +38,7 @@
 
 > **host**: `string`
 
-定义于: [packages/data-source/src/data-source.interface.ts:57](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/data-source/src/data-source.interface.ts#L57)
+定义于: [packages/data-source/src/data-source.interface.ts:57](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/data-source/src/data-source.interface.ts#L57)
 
 #### 继承自
 
@@ -50,7 +50,7 @@
 
 > **password**: `string`
 
-定义于: [packages/data-source/src/data-source.interface.ts:60](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/data-source/src/data-source.interface.ts#L60)
+定义于: [packages/data-source/src/data-source.interface.ts:60](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/data-source/src/data-source.interface.ts#L60)
 
 #### 继承自
 
@@ -62,7 +62,7 @@
 
 > **port**: `number`
 
-定义于: [packages/data-source/src/data-source.interface.ts:58](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/data-source/src/data-source.interface.ts#L58)
+定义于: [packages/data-source/src/data-source.interface.ts:58](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/data-source/src/data-source.interface.ts#L58)
 
 #### 继承自
 
@@ -74,7 +74,7 @@
 
 > **table**: `string`
 
-定义于: [packages/data-source/src/core/sql/vip-mongo.ts:9](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/data-source/src/core/sql/vip-mongo.ts#L9)
+定义于: [packages/data-source/src/core/sql/vip-mongo.ts:9](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/data-source/src/core/sql/vip-mongo.ts#L9)
 
 ***
 
@@ -82,7 +82,7 @@
 
 > **username**: `string`
 
-定义于: [packages/data-source/src/data-source.interface.ts:59](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/data-source/src/data-source.interface.ts#L59)
+定义于: [packages/data-source/src/data-source.interface.ts:59](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/data-source/src/data-source.interface.ts#L59)
 
 #### 继承自
 

@@ -4,11 +4,11 @@
 
 > `const` **VipMonorepo**: `object`
 
-定义于: [packages/utils/src/core/monorepo.ts:79](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/utils/src/core/monorepo.ts#L79)
+定义于: [packages/utils/src/core/monorepo.ts:79](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/core/monorepo.ts#L79)
 
 ## 类型声明
 
-### getPackageJSONPathList()
+### getPackageJSONPathList
 
 > **getPackageJSONPathList**: () => `string`[]
 
@@ -18,9 +18,9 @@
 
 `string`[]
 
-### getPkgJSONPath()
+### getPkgJSONPath
 
-> **getPkgJSONPath**: (`pkgName`, `filter?`) => `undefined` \| [`PackageJSONWithPath`](../interfaces/PackageJSONWithPath.md)
+> **getPkgJSONPath**: (`pkgName`, `filter?`) => [`PackageJSONWithPath`](../interfaces/PackageJSONWithPath.md) \| `undefined`
 
 获取某个包的PkgJSON信息
 
@@ -32,13 +32,13 @@
 
 ##### filter?
 
-`string` | `string`[]
+`string` \| `string`[]
 
 #### 返回
 
-`undefined` \| [`PackageJSONWithPath`](../interfaces/PackageJSONWithPath.md)
+[`PackageJSONWithPath`](../interfaces/PackageJSONWithPath.md) \| `undefined`
 
-### getPkgNames()
+### getPkgNames
 
 > **getPkgNames**: (`filter?`) => `string`[]
 
@@ -50,13 +50,13 @@
 
 ##### filter?
 
-`string` | `string`[]
+`string` \| `string`[]
 
 #### 返回
 
 `string`[]
 
-### getReleasePkgJSON()
+### getReleasePkgJSON
 
 > **getReleasePkgJSON**: (`filter?`) => [`PackageJSONWithPath`](../interfaces/PackageJSONWithPath.md)[]
 
@@ -69,7 +69,7 @@
 
 ##### filter?
 
-`string` | `string`[]
+`string` \| `string`[]
 
 #### 返回
 

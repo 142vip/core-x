@@ -1,0 +1,123 @@
+[API 参考](../../../index.md) / [@142vip/nest-typeorm](../index.md) / RelationOptions
+
+# 接口: RelationOptions
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/decorator/options/RelationOptions.d.ts:7
+
+Describes all relation's options.
+
+## 属性
+
+### cascade?
+
+> `optional` **cascade?**: `boolean` \| (`"insert"` \| `"update"` \| `"remove"` \| `"soft-remove"` \| `"recover"`)[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/decorator/options/RelationOptions.d.ts:15
+
+Sets cascades options for the given relation.
+If set to true then it means that related object can be allowed to be inserted or updated in the database.
+You can separately restrict cascades to insertion or updation using following syntax:
+
+cascade: ["insert", "update", "remove", "soft-remove", "recover"] // include or exclude one of them
+
+***
+
+### createForeignKeyConstraints?
+
+> `optional` **createForeignKeyConstraints?**: `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/decorator/options/RelationOptions.d.ts:37
+
+Indicates whether foreign key constraints will be created for join columns.
+Can be used only for many-to-one and owner one-to-one relations.
+Defaults to true.
+
+***
+
+### deferrable?
+
+> `optional` **deferrable?**: `DeferrableType`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/decorator/options/RelationOptions.d.ts:31
+
+Indicate if foreign key constraints can be deferred.
+
+***
+
+### eager?
+
+> `optional` **eager?**: `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/decorator/options/RelationOptions.d.ts:49
+
+Set this relation to be eager.
+Eager relations are always loaded automatically when relation's owner entity is loaded using find* methods.
+Only using QueryBuilder prevents loading eager relations.
+Eager flag cannot be set from both sides of relation - you can eager load only one side of the relationship.
+
+***
+
+### lazy?
+
+> `optional` **lazy?**: `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/decorator/options/RelationOptions.d.ts:42
+
+Set this relation to be lazy. Note: lazy relations are promises. When you call them they return promise
+which resolve relation result then. If your property's type is Promise then this relation is set to lazy automatically.
+
+***
+
+### nullable?
+
+> `optional` **nullable?**: `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/decorator/options/RelationOptions.d.ts:19
+
+Indicates if relation column value can be nullable or not.
+
+***
+
+### onDelete?
+
+> `optional` **onDelete?**: `OnDeleteType`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/decorator/options/RelationOptions.d.ts:23
+
+Database cascade action on delete.
+
+***
+
+### onUpdate?
+
+> `optional` **onUpdate?**: `OnUpdateType`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/decorator/options/RelationOptions.d.ts:27
+
+Database cascade action on update.
+
+***
+
+### orphanedRowAction?
+
+> `optional` **orphanedRowAction?**: `"nullify"` \| `"delete"` \| `"soft-delete"` \| `"disable"`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/decorator/options/RelationOptions.d.ts:63
+
+When a parent is saved (with cascading but) without a child row that still exists in database, this will control what shall happen to them.
+delete will remove these rows from database.
+nullify will remove the relation key.
+disable will keep the relation intact. Removal of related item is only possible through its own repo.
+
+***
+
+### persistence?
+
+> `optional` **persistence?**: `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/decorator/options/RelationOptions.d.ts:56
+
+Indicates if persistence is enabled for the relation.
+By default its enabled, but if you want to avoid any changes in the relation to be reflected in the database you can disable it.
+If its disabled you can only change a relation from inverse side of a relation or using relation query builder functionality.
+This is useful for performance optimization since its disabling avoid multiple extra queries during entity save.

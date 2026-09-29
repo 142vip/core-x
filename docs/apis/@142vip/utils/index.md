@@ -6,12 +6,15 @@
 
 - [Alphabet](enumerations/Alphabet.md)
 - [CpuArchitectureEnum](enumerations/CpuArchitectureEnum.md)
+- [DateFormatTemplate](enumerations/DateFormatTemplate.md)
 - [GitGeneralBranch](enumerations/GitGeneralBranch.md)
 - [HttpMethod](enumerations/HttpMethod.md)
 - [HttpStatus](enumerations/HttpStatus.md)
 - [ProcessExitCodeEnum](enumerations/ProcessExitCodeEnum.md)
 - [RegistryAddressEnum](enumerations/RegistryAddressEnum.md)
 - [ReleaseVersionTypeEnum](enumerations/ReleaseVersionTypeEnum.md)
+- [TimeDurationMs](enumerations/TimeDurationMs.md)
+- [TimeDurationSec](enumerations/TimeDurationSec.md)
 - [VipConsoleLogLevel](enumerations/VipConsoleLogLevel.md)
 
 ## 类
@@ -24,10 +27,12 @@
 - [VipInquirerSeparator](classes/VipInquirerSeparator.md)
 - [VipLogger](classes/VipLogger.md)
 - [VipNanoId](classes/VipNanoId.md)
+- [VipPackageCliCommander](classes/VipPackageCliCommander.md)
 - [VipQs](classes/VipQs.md)
 
 ## 接口
 
+- [Address](interfaces/Address.md)
 - [CliCommandBaseOptions](interfaces/CliCommandBaseOptions.md)
 - [CommandResponse](interfaces/CommandResponse.md)
 - [GitCommit](interfaces/GitCommit.md)
@@ -37,6 +42,7 @@
 - [PackageJSON](interfaces/PackageJSON.md)
 - [PackageJSONMainFest](interfaces/PackageJSONMainFest.md)
 - [PackageJSONWithPath](interfaces/PackageJSONWithPath.md)
+- [RegisterVipCommanderCommandOptions](interfaces/RegisterVipCommanderCommandOptions.md)
 - [ShellCommand](interfaces/ShellCommand.md)
 - [StandardExecutorResponse](interfaces/StandardExecutorResponse.md)
 - [VipCommanderDetailOptions](interfaces/VipCommanderDetailOptions.md)
@@ -46,7 +52,9 @@
 ## 类型别名
 
 - [Command](type-aliases/Command.md)
+- [JsonRecord](type-aliases/JsonRecord.md)
 - [VipCommanderDetailRecord](type-aliases/VipCommanderDetailRecord.md)
+- [VipLodash](type-aliases/VipLodash.md)
 - [VipReleaseType](type-aliases/VipReleaseType.md)
 - [VipSemverReleaseType](type-aliases/VipSemverReleaseType.md)
 
@@ -55,6 +63,8 @@
 - [prereleaseTypes](variables/prereleaseTypes.md)
 - [releaseTypes](variables/releaseTypes.md)
 - [VipColor](variables/VipColor.md)
+- [vipCommanderDefaultOptions](variables/vipCommanderDefaultOptions.md)
+- [vipCommanderSubcommandOptions](variables/vipCommanderSubcommandOptions.md)
 - [vipConfig](variables/vipConfig.md)
 - [VipConsole](variables/VipConsole.md)
 - [vipDataTransform](variables/vipDataTransform.md)
@@ -81,4 +91,6 @@
 ## 函数
 
 - [getLastMatchingTag](functions/getLastMatchingTag.md)
+- [isVipConsoleTraceEnabled](functions/isVipConsoleTraceEnabled.md)
+- [setVipConsoleTraceEnabled](functions/setVipConsoleTraceEnabled.md)
 - [VipInquirerDefaultArrayParser](functions/VipInquirerDefaultArrayParser.md)

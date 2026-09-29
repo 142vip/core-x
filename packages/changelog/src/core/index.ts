@@ -1,4 +1,3 @@
-export * from './changelog.api'
-export * from './git-commit.api'
-export * from './github.api'
-export * from './markdown.api'
+export * from './apis'
+export * from './changelog.interface'
+export * from './config'

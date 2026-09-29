@@ -33,7 +33,7 @@ alwaysApply: true
 
 **`chore` 仅用于与业务功能无关的维护**（如 release 元数据、无关脚本整理、**`.cursor` 目录**）。凡影响包 API、站点行为、依赖运行时、demo 功能验证的提交，不得使用 `chore`。
 
-校验：`commit-msg` → `pnpm check:commit` → `scripts/core/verify-commit.ts`
+校验：`commit-msg` → `pnpm check:commit` → `npx fa commit`
 
 ### Commit 文案真实性（强制）
 
@@ -231,7 +231,7 @@ pnpm check:release   # 期望全 ✔
 | Hook | 行为 |
 |------|------|
 | `pre-commit` | `pnpm lint:fix` |
-| `commit-msg` | `pnpm check:commit` → `scripts/core/verify-commit.ts` |
+| `commit-msg` | `pnpm check:commit` → `npx fa commit` |
 
 ## Agent 约束
 

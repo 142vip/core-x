@@ -18,14 +18,14 @@ pnpm add -D @142vip/vuepress
 
 ## 功能
 
-- [x] `defineVipVuepressConfig`：默认 `locales['/'].lang` / `lang` 为 `zh-CN`，补全 `bundler`、favicon、`shouldPrefetch`
-- [x] 可选 `appBuildLog`：构建时间 meta + 控制台版本日志（`@142vip/vue/utils`）
-- [x] `getVipHopeTheme`：基于 theme-hope 的默认插件与 Markdown 能力；未写时默认 `author` / `docsDir` / `docsBranch` / `contributors`
-- [x] `defineVipNavbarConfig` / `defineVipSidebarConfig`：导航与侧栏
-- [x] `createVipViteBuildPlugin`：合并 Vite 构建参数（chunk 告警阈值）
-- [x] `DocsSidebarLink` / `DocsSidebarGroup` 等侧栏配置类型
-- [x] 内置 Mermaid、代码高亮语言、slimsearch 中文、复制代码
-- [x] bin：`vuepress`（转发至 bundled CLI）
+- ✅ `defineVipVuepressConfig`：默认 `locales['/'].lang` / `lang` 为 `zh-CN`，补全 `bundler`、favicon、`shouldPrefetch`
+- ✅ 可选 `appBuildLog`：构建时间 meta + 控制台版本日志（`@142vip/vue/utils`）
+- ✅ `getVipHopeTheme`：基于 theme-hope 的默认插件与 Markdown 能力；未写时默认 `author` / `docsDir` / `docsBranch` / `contributors`
+- ✅ `defineVipNavbarConfig` / `defineVipSidebarConfig`：导航与侧栏
+- ✅ `createVipViteBuildPlugin`：合并 Vite 构建参数（chunk 告警阈值）
+- ✅ `DocsSidebarLink` / `DocsSidebarGroup` 等侧栏配置类型
+- ✅ 内置 Mermaid、代码高亮语言、slimsearch 中文、复制代码
+- ✅ bin：`vuepress`（转发至 bundled CLI）
 
 ## 配置
 

@@ -14,10 +14,10 @@ cd packages/_example && pnpm build && pnpm typecheck
 
 ## 功能
 
-- [x] `unbuild` 双格式（`.mjs` + `.cjs`）骨架
-- [x] `exports` 与 `src/core` 目录约定
-- [x] 示例导出 `createExampleMessage`
-- [x] 由 `./scripts/npm-pkg` 复制创建新包
+- ✅ `unbuild` 双格式（`.mjs` + `.cjs`）骨架
+- ✅ `exports` 与 `src/core` 目录约定
+- ✅ 示例导出 `createExampleMessage`
+- ✅ 由 `./scripts/npm-pkg` 复制创建新包
 
 ## 配置
 
@@ -43,7 +43,7 @@ createExampleMessage('world') // => 'Hello from @142vip/_example: world'
 
 ## 参考
 
-- [core-x 仓库](https://github.com/142vip/core-x)
+- [142vip Monorepo](https://github.com/142vip/core-x)
 - [unbuild](https://github.com/unjs/unbuild)
 
 ## 证书

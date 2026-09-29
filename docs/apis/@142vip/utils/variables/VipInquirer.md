@@ -4,13 +4,13 @@
 
 > `const` **VipInquirer**: `object`
 
-定义于: [packages/utils/src/pkgs/inquirer.ts:179](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/utils/src/pkgs/inquirer.ts#L179)
+定义于: [packages/utils/src/pkgs/inquirer.ts:179](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/inquirer.ts#L179)
 
 终端交互
 
 ## 类型声明
 
-### handleSimpleSearchSource()
+### handleSimpleSearchSource
 
 > **handleSimpleSearchSource**: (`sources`) => `SimpleSearchSource`\<`string`\>
 
@@ -26,7 +26,7 @@
 
 `SimpleSearchSource`\<`string`\>
 
-### promptCheckBox()
+### promptCheckBox
 
 > **promptCheckBox**: \<`T`\>(`message`, `choices`, `options?`) => `Promise`\<`T`[]\>
 
@@ -47,7 +47,7 @@
 
 ##### choices
 
-`string`[] | `VipInquirerChoiceList`\<`T`\>
+`string`[] \| `VipInquirerChoiceList`\<`T`\>
 
 ##### options?
 
@@ -57,7 +57,7 @@
 
 `Promise`\<`T`[]\>
 
-### promptConfirm()
+### promptConfirm
 
 > **promptConfirm**: (`message`, `defaultValue?`) => `Promise`\<`boolean`\>
 
@@ -77,7 +77,7 @@
 
 `Promise`\<`boolean`\>
 
-### promptConfirmWithSuccessExit()
+### promptConfirmWithSuccessExit
 
 > **promptConfirmWithSuccessExit**: (`message`, `__namedParameters`) => `Promise`\<`void`\>
 
@@ -103,7 +103,7 @@
 
 `Promise`\<`void`\>
 
-### promptInput()
+### promptInput
 
 > **promptInput**: (`message`, `defaultValue?`) => `Promise`\<`string`\>
 
@@ -124,7 +124,7 @@
 
 `Promise`\<`string`\>
 
-### promptInputRequired()
+### promptInputRequired
 
 > **promptInputRequired**: (`message`) => `Promise`\<`string`\>
 
@@ -141,7 +141,7 @@
 
 `Promise`\<`string`\>
 
-### promptList()
+### promptList
 
 > **promptList**: \<`T`\>(`message`, `choices`) => `Promise`\<`T`\>
 
@@ -167,9 +167,9 @@
 
 `Promise`\<`T`\>
 
-### promptNumber()
+### promptNumber
 
-> **promptNumber**: (`message`, `defaultValue?`) => `Promise`\<`undefined` \| `number`\>
+> **promptNumber**: (`message`, `defaultValue?`) => `Promise`\<`number` \| `undefined`\>
 
 输入框，只输入数字
 - https://github.com/SBoudrias/Inquirer.js/tree/main/packages/number
@@ -186,9 +186,9 @@
 
 #### 返回
 
-`Promise`\<`undefined` \| `number`\>
+`Promise`\<`number` \| `undefined`\>
 
-### promptPassword()
+### promptPassword
 
 > **promptPassword**: (`message`) => `Promise`\<`string`\>
 
@@ -205,7 +205,7 @@
 
 `Promise`\<`string`\>
 
-### promptSearch()
+### promptSearch
 
 > **promptSearch**: \<`T`\>(`message`, `source`, `pageSize?`) => `Promise`\<`T`\>
 
@@ -236,7 +236,7 @@
 
 `Promise`\<`T`\>
 
-### promptSelect()
+### promptSelect
 
 > **promptSelect**: \<`T`\>(`message`, `choices`, `options?`) => `Promise`\<`T`\>
 
@@ -257,7 +257,7 @@
 
 ##### choices
 
-`string`[] | `VipInquirerChoiceList`\<`T`\>
+`string`[] \| `VipInquirerChoiceList`\<`T`\>
 
 ##### options?
 

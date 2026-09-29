@@ -1,0 +1,9 @@
+[API 参考](../../../index.md) / [@142vip/axios](../index.md) / ACCEPT\_LANGUAGES
+
+# 变量: ACCEPT\_LANGUAGES
+
+> `const` **ACCEPT\_LANGUAGES**: readonly \[`"en-US,en;q=0.9"`, `"en-US,en;q=0.9,zh-CN;q=0.8"`, `"en-GB,en;q=0.9"`, `"en-GB,en;q=0.9,en-US;q=0.8"`, `"zh-CN,zh;q=0.9,en;q=0.8"`, `"zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7"`, `"zh-TW,zh;q=0.9,en;q=0.8"`, `"ja-JP,ja;q=0.9,en;q=0.8"`, `"ko-KR,ko;q=0.9,en;q=0.8"`, `"de-DE,de;q=0.9,en;q=0.8"`, `"fr-FR,fr;q=0.9,en;q=0.8"`, `"es-ES,es;q=0.9,en;q=0.8"`, `"pt-BR,pt;q=0.9,en;q=0.8"`, `"it-IT,it;q=0.9,en;q=0.8"`, `"ru-RU,ru;q=0.9,en;q=0.8"`, `"nl-NL,nl;q=0.9,en;q=0.8"`, `"pl-PL,pl;q=0.9,en;q=0.8"`, `"vi-VN,vi;q=0.9,en;q=0.8"`\]
+
+定义于: [packages/axios/src/spider.utils.ts:40](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/axios/src/spider.utils.ts#L40)
+
+常见浏览器 Accept-Language，轮换以降低固定爬虫指纹被限流概率
