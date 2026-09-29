@@ -1,22 +1,33 @@
 import { VipNodeJS, VipPackageCliCommander } from '@142vip/utils'
-import { beforeEach, describe, expect, it, jest } from '@jest/globals'
+import { afterEach, beforeEach, describe, expect, it, jest } from '@jest/globals'
 
-import { aiMain, resolveAiAction, resolveTarget } from '../src/commands/ai'
+import { aiMain, resolveAiRunMode, resolveTarget } from '../src/commands/ai'
 import { findCommand } from './helpers/command-runner'
 
-describe('resolveAiAction', () => {
-  it('默认 action 为 sync', () => {
-    expect(resolveAiAction(undefined, {})).toBe('sync')
+describe('resolveAiRunMode', () => {
+  const exitSpy = jest.spyOn(VipNodeJS, 'exitProcess').mockImplementation(() => {
+    throw new Error('exit')
   })
 
-  it('--check 优先于 action', () => {
-    expect(resolveAiAction('sync', { check: true })).toBe('check')
+  afterEach(() => {
+    exitSpy.mockClear()
   })
 
-  it('支持 info / check / sync', () => {
-    expect(resolveAiAction('info', {})).toBe('info')
-    expect(resolveAiAction('check', {})).toBe('check')
-    expect(resolveAiAction('sync', {})).toBe('sync')
+  it('默认 sync', () => {
+    expect(resolveAiRunMode({})).toBe('sync')
+  })
+
+  it('--check 为 check', () => {
+    expect(resolveAiRunMode({ check: true })).toBe('check')
+  })
+
+  it('--sync 为 sync', () => {
+    expect(resolveAiRunMode({ sync: true })).toBe('sync')
+  })
+
+  it('--sync 与 --check 互斥', () => {
+    expect(() => resolveAiRunMode({ sync: true, check: true })).toThrow('exit')
+    expect(exitSpy).toHaveBeenCalled()
   })
 })
 

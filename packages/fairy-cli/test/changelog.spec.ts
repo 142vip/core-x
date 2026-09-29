@@ -1,14 +1,19 @@
-import { CHANGELOG_COMMAND_DETAIL, changelogCommandRegistration, runChangelogCli } from '@142vip/changelog'
+import { changelogCommandRegistration } from '@142vip/changelog'
+import { VipPackageCliCommander } from '@142vip/utils'
 import { describe, expect, it } from '@jest/globals'
 
-describe('@142vip/changelog 子命令注册载荷', () => {
-  it('CHANGELOG_COMMAND_DETAIL 对齐 fa changelog 命令名与别名', () => {
-    expect(CHANGELOG_COMMAND_DETAIL.command).toBe('changelog')
-    expect(CHANGELOG_COMMAND_DETAIL.aliases).toEqual(['c', 'ch', 'cha'])
-  })
+import { changelogMain } from '../src/commands/changelog'
+import { CLI_COMMAND_DETAIL, CommandEnum } from '../src/fairy.interface'
+import { findCommand } from './helpers/command-runner'
 
-  it('changelogCommandRegistration 共用 runChangelogCli action', () => {
-    expect(changelogCommandRegistration.action).toBe(runChangelogCli)
-    expect(typeof changelogCommandRegistration.registerBusinessOptions).toBe('function')
+describe('changelogMain', () => {
+  it('注册 changelog 子命令并与 @142vip/changelog 载荷一致', async () => {
+    const program = new VipPackageCliCommander('fa', '1.0.0')
+    await changelogMain(program)
+
+    const command = findCommand(program, CommandEnum.CHANGELOG)
+    expect(command.name()).toBe('changelog')
+    expect(command.aliases()).toEqual(CLI_COMMAND_DETAIL[CommandEnum.CHANGELOG].aliases)
+    expect(changelogCommandRegistration.action).toBeDefined()
   })
 })
