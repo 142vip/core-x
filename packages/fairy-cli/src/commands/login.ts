@@ -1,7 +1,6 @@
 import type { VipPackageCliCommander } from '@142vip/utils'
-import type { FairyCommandOptions } from '../fairy.interface'
-import { VipColor, VipDocker, VipInquirer, vipLogger } from '@142vip/utils'
-import { CommandEnum } from '../fairy.interface'
+import { VipColor, VipConsole, VipDocker, VipInquirer, vipLogger } from '@142vip/utils'
+import { CommandEnum, FairyCommandOptions } from '../constant'
 import { registerFairySubcommand, runOrDryRun } from '../utils'
 
 enum LoginPlatformEnum {
@@ -40,7 +39,7 @@ async function loginNpm(dryRun?: boolean): Promise<void> {
     command,
     '（NPM 登录需在终端手动完成）',
   ], () => {
-    vipLogger.logByBlank(`${VipColor.red('请粘贴到终端执行，NPM登录命令：')} ${VipColor.green(command)}`)
+    VipConsole.log(`${VipColor.greenBright('login:')} 请在终端执行 ${VipColor.green(command)}`)
   })
 }
 

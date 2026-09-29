@@ -6,14 +6,11 @@ import {
   VipConsole,
   VipNodeJS,
 } from '@142vip/utils'
-import { CommandEnum } from '../fairy.interface'
+import { CommandEnum } from '../constant'
 import { registerFairySubcommand } from '../utils'
 
-/** `fa ai` 专有选项（在 agent-skills 共享字段之上增加 `--sync`） */
-export interface AiCommandOptions extends VipAgentSkillCliOptions {
-  /** 同步到下游 `.agents/skills/`（与 `--check` 互斥；均未传时默认同步） */
-  sync?: boolean
-}
+/** `fa ai` 选项（与 `@142vip/agent-skills` CLI 对齐） */
+export type AiCommandOptions = VipAgentSkillCliOptions
 
 const ENV_AGENT_SKILLS_TARGET = 'AGENT_SKILLS_TARGET'
 
@@ -31,26 +28,8 @@ async function loadAgentSkills(): Promise<typeof import('@142vip/agent-skills')>
   }
 }
 
-/**
- * 解析运行模式：`--check` 与 `--sync` 互斥；均未指定时默认同步。
- */
-export function resolveAiRunMode(options: AiCommandOptions): 'sync' | 'check' {
-  const { check = false, sync = false } = options
-
-  if (check && sync) {
-    VipConsole.error(`${VipColor.redBright('ai:')} --sync 与 --check 互斥，请只选其一`)
-    VipNodeJS.exitProcess(ProcessExitCodeEnum.UsageError)
-    throw new Error('unreachable')
-  }
-
-  if (check)
-    return 'check'
-
-  return 'sync'
-}
-
-/** 解析目标目录：--target > AGENT_SKILLS_TARGET > cwd */
-export function resolveTarget(options: AiCommandOptions): string {
+/** 目标根目录：`--target` → `AGENT_SKILLS_TARGET` → `cwd` */
+export function resolveAiTarget(options: AiCommandOptions): string {
   if (options.target != null && options.target !== '')
     return VipNodeJS.pathResolve(options.target)
 
@@ -61,12 +40,14 @@ export function resolveTarget(options: AiCommandOptions): string {
   return VipNodeJS.getProcessCwd()
 }
 
-async function runSyncOrCheck(mode: 'sync' | 'check', options: AiCommandOptions): Promise<void> {
-  const check = mode === 'check'
-  const {
-    dryRun = false,
-    force = false,
-  } = options
+/**
+ * `fa ai`：默认把包内 skills 同步到下游 `.agents/skills/`。
+ * `fa ai --check`：只比对漂移，不写盘；漂移时 exit 非 0 并提示执行 `fa ai` 修复。
+ */
+async function runAiCommand(options: AiCommandOptions): Promise<void> {
+  const check = options.check === true
+  const dryRun = options.dryRun ?? false
+  const force = options.force ?? false
 
   if (check && dryRun) {
     VipConsole.error(`${VipColor.redBright('ai:')} --check 与 --dry-run 互斥，请只选其一`)
@@ -75,7 +56,7 @@ async function runSyncOrCheck(mode: 'sync' | 'check', options: AiCommandOptions)
   }
 
   const agentSkills = await loadAgentSkills()
-  const targetRoot = resolveTarget(options)
+  const targetRoot = resolveAiTarget(options)
 
   try {
     const syncOutcome = agentSkills.syncAgentSkills({
@@ -85,24 +66,22 @@ async function runSyncOrCheck(mode: 'sync' | 'check', options: AiCommandOptions)
       check,
     })
 
-    if (check && !syncOutcome.ok) {
-      VipConsole.log(VipColor.dim(`漂移文件数：${syncOutcome.drifts.length}`))
-      if (syncOutcome.drifts.length > 0) {
+    if (check) {
+      if (!syncOutcome.ok) {
+        VipConsole.log(VipColor.dim(`漂移文件数：${syncOutcome.drifts.length}`))
         for (const driftPath of syncOutcome.drifts.slice(0, 20))
           VipConsole.log(`  ${VipColor.yellow(driftPath)}`)
         if (syncOutcome.drifts.length > 20)
           VipConsole.log(VipColor.dim(`  … 其余 ${syncOutcome.drifts.length - 20} 项省略`))
+        VipConsole.log(VipColor.dim(`修复：${VipColor.green('fa ai')} -t <repoRoot>`))
+        VipNodeJS.exitProcess(ProcessExitCodeEnum.FatalError)
       }
-      VipConsole.log(VipColor.dim(`修复：${VipColor.green('fa ai --sync')} -t <repoRoot>`))
-      VipNodeJS.exitProcess(ProcessExitCodeEnum.FatalError)
       return
     }
 
-    if (!check) {
-      VipConsole.log(
-        `${VipColor.greenBright('ai:')} ${dryRun ? 'dry-run 完成' : '同步完成'} → ${VipColor.cyan(syncOutcome.dest)}`,
-      )
-    }
+    VipConsole.log(
+      `${VipColor.greenBright('ai:')} ${dryRun ? 'dry-run 完成' : '同步完成'} → ${VipColor.cyan(syncOutcome.dest)}`,
+    )
   }
   catch (error) {
     const message = error instanceof Error ? error.message : String(error)
@@ -111,19 +90,12 @@ async function runSyncOrCheck(mode: 'sync' | 'check', options: AiCommandOptions)
   }
 }
 
-/**
- * Agent Skills：`fa ai --sync` / `fa ai --check`，能力委托 `@142vip/agent-skills`。
- */
 export async function aiMain(program: VipPackageCliCommander): Promise<void> {
-  registerFairySubcommand(program, CommandEnum.AI, async (options: AiCommandOptions) => {
-    const mode = resolveAiRunMode(options)
-    await runSyncOrCheck(mode, options)
-  }, (command) => {
+  registerFairySubcommand(program, CommandEnum.AI, runAiCommand, (command) => {
     command.allowExcessArguments(false)
     command
-      .option('-t, --target <dir>', '下游项目根目录（默认 cwd；也可设 AGENT_SKILLS_TARGET）')
-      .option('--sync', '同步通用 Skills 到 .agents/skills/', false)
-      .option('--check', '校验下游镜像是否与包内一致', false)
+      .option('-t,--target <dir>', '下游项目根目录（默认 cwd；也可设 AGENT_SKILLS_TARGET）')
+      .option('--check', '校验下游镜像是否与包内一致（不写入）', false)
       .option('--force', '目标无 package.json 时仍继续', false)
   })
 }

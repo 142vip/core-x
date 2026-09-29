@@ -15,15 +15,15 @@ import {
   vipLogger,
   VipNodeJS,
 } from '@142vip/utils'
-import { CommandEnum, FairyCommandOptions } from '../fairy.interface'
-import { registerFairySubcommand, runOrDryRun, traceFaCli } from '../utils'
+import { CommandEnum, FairyCommandOptions } from '../constant'
 import {
   buildCommitLinterOptions,
   loadCommitLinterConfigForCli,
   printCommitVerifyResult,
-  resolveCommitLinterConfigPath,
+  registerFairySubcommand,
   runCommitMessageVerify,
-} from '../utils/commit.util'
+  runOrDryRun,
+} from '../utils'
 
 const GIT_NULL_SCOPE = '没有范围，那就选这个！！！'
 
@@ -47,19 +47,6 @@ export async function commitMain(program: VipPackageCliCommander): Promise<void>
     const linterOptions = buildCommitLinterOptions(fileConfig, {
       scopeGlobs: args.scope,
     })
-    const effectiveGlobs = args.scope.length > 0 ? args.scope : (fileConfig.scopeGlobs ?? [])
-    const monorepoScan = effectiveGlobs.length > 0
-
-    traceFaCli('commit: 解析', {
-      mode: args.quiet ? 'quiet' : 'interactive',
-      configFile: resolveCommitLinterConfigPath(args.config),
-      scopeGlobs: effectiveGlobs,
-      monorepoScan,
-      scopesCount: linterOptions.scopes?.length ?? 0,
-      dryRun: args.dryRun === true,
-      push: args.push === true,
-    })
-
     if (args.quiet) {
       const verifiedCommit = runCommitMessageVerify({
         linterOptions,
@@ -72,11 +59,11 @@ export async function commitMain(program: VipPackageCliCommander): Promise<void>
     await execInteractiveCommit(args, linterOptions)
   }, (command) => {
     command
-      .option('-f, --config <path>', 'commit-linter 配置文件路径（默认 `commit-linter.config.*` 或内置配置）')
-      .option('-q, --quiet', '仅校验 commit 信息（commit-msg 钩子）', false)
-      .option('-p, --push', '交互提交后推送到远程', false)
-      .option('-m, --message <msg>', '待校验 commit 首行；默认读取 .git/COMMIT_EDITMSG')
-      .option('-s, --scope <glob>', 'Monorepo 包路径 glob，扫描 npm 包名作为 scope 白名单（可多次）', VipInquirerDefaultArrayParser, [])
+      .option('-f,--config <path>', 'commit-linter 配置文件路径（默认 `commit-linter.config.*` 或内置配置）')
+      .option('-q,--quiet', '仅校验 commit 信息（commit-msg 钩子）', false)
+      .option('-p,--push', '交互提交后推送到远程', false)
+      .option('-m,--message <msg>', '待校验 commit 首行；默认读取 .git/COMMIT_EDITMSG')
+      .option('-s,--scope <glob>', 'Monorepo 包路径 glob，扫描 npm 包名作为 scope 白名单（可多次）', VipInquirerDefaultArrayParser, [])
   })
 }
 

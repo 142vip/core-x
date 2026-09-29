@@ -1,6 +1,5 @@
 import type { ReleaseVersionOptions } from '@142vip/release-version'
 import type { VipCommanderOptions, VipPackageCliCommander } from '@142vip/utils'
-import type { ReleasePackageOptions } from '../utils/release-package.util'
 import { releaseApi } from '@142vip/release-version'
 import {
   GitGeneralBranch,
@@ -15,8 +14,13 @@ import {
   VipPackageJSON,
 } from '@142vip/utils'
 import { name } from '../../package.json'
-import { CommandEnum } from '../fairy.interface'
-import { printPreCheckRelease, registerFairySubcommand, releasePackage } from '../utils'
+import { CommandEnum } from '../constant'
+import {
+  printPreCheckRelease,
+  registerFairySubcommand,
+  releasePackage,
+  ReleasePackageOptions,
+} from '../utils'
 
 interface ReleaseOptions extends Pick<ReleaseVersionOptions, 'preid' | 'tag' | 'commit' | 'push' | 'all' | 'execute'> {
   package?: string

@@ -4,7 +4,7 @@ import {
   VipExecutor,
   VipInquirer,
 } from '@142vip/utils'
-import { CommandEnum } from '../fairy.interface'
+import { CommandEnum } from '../constant'
 import { registerFairySubcommand, runOrDryRun } from '../utils'
 
 interface PublishOptions {

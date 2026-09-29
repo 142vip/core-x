@@ -1,7 +1,6 @@
 import type { VipPackageCliCommander } from '@142vip/utils'
-import type { FairyCommandOptions } from '../fairy.interface'
 import { VipConsole } from '@142vip/utils'
-import { CommandEnum } from '../fairy.interface'
+import { CommandEnum, FairyCommandOptions } from '../constant'
 import { registerFairySubcommand, runOrDryRun } from '../utils'
 
 interface DeployOptions extends FairyCommandOptions {

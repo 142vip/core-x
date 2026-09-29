@@ -8,8 +8,14 @@ import {
   VipNodeJS,
 } from '@142vip/utils'
 import { name as fairyCliPackageName } from '../../package.json'
-import { CommandEnum } from '../fairy.interface'
-import { fetchJson, fetchText, logDryRunSteps, registerFairySubcommand, runOrDryRun } from '../utils'
+import { CommandEnum } from '../constant'
+import {
+  fetchJson,
+  fetchText,
+  logDryRunSteps,
+  registerFairySubcommand,
+  runOrDryRun,
+} from '../utils'
 
 enum CNPMPackageState {
   Waiting = 'waiting',

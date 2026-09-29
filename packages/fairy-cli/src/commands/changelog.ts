@@ -1,6 +1,6 @@
 import type { VipPackageCliCommander } from '@142vip/utils'
 import { changelogCommandRegistration } from '@142vip/changelog'
-import { CLI_COMMAND_DETAIL, CommandEnum } from '../fairy.interface'
+import { CLI_COMMAND_DETAIL, CommandEnum } from '../constant'
 
 /**
  * `fa changelog`：基于 Git 提交生成 CHANGELOG，可选写文件并创建 GitHub Release。
