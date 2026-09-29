@@ -14,21 +14,18 @@
 
 ```text
 src/
-├── fairy.interface.ts         # CommandEnum、CLI_COMMAND_DETAIL、FairyCommandOptions
-├── fairy-cli.constants.ts     # fan / ffr / fa / fairy / ff
+├── constant.ts                # CommandEnum、CLI_COMMAND_DETAIL、bin 别名格式化
 ├── fairy-cli.ts               # fairyCliMain 入口
 ├── index.ts
 ├── utils/
 │   ├── index.ts                 # 统一导出 utils
-│   ├── command.util.ts          # registerFairySubcommand
+│   ├── command.util.ts          # registerFairySubcommand、根 -v/-h 辅助、解析错误展示
 │   ├── dry-run.util.ts          # logDryRunSteps / runOrDryRun
 │   ├── http.util.ts             # fetchJson / fetchText / FairyHttpError（Node fetch）
 │   ├── commit.util.ts           # fa commit 配置 / 校验 + commit-linter re-export
 │   ├── eslint-config.util.ts    # fa lint 配置路径 + eslint-config re-export
-│   ├── release-package.util.ts  # fa release 发版编排
+│   ├── pkg.util.ts  # 包路径解析与 fa release 发版编排
 │   ├── clean-path.util.ts       # fa clean 路径删除
-│   ├── cli-error.util.ts        # 未知子命令 / 多余参数（统一格式，展示 bin 别名）
-│   └── trace-cli.util.ts        # --trace 日志
 └── commands/
     ├── changelog.ts             # changelogMain → @142vip/changelog
     ├── release.ts
@@ -45,19 +42,20 @@ src/
 ### 子路径
 
 - `@142vip/fairy-cli`：主入口（`src/index.ts`）
-- bin：`fa`、`fairy`、`fan`、`ffr`、`ff`（同一 `bin/fa.cjs` → `dist/fairy-cli.cjs` → `fairyCliMain`）
+- bin：`fa`、`fairy`、`fan`、`ffr`、`ff`（`package.json` 别名均指向 `bin/fa.cjs` → `dist/fairy-cli.cjs` → `fairyCliMain`）
 
 ### 程序入口
 
-- `fairyCliMain(): Promise<void>`（`src/fairy-cli.ts`）：注册子命令 → `registerFairyCliErrorHandling` → `parseAsync`
+- `fairyCliMain(): Promise<void>`（`src/fairy-cli.ts`）：注册子命令 → `registerFairyCliVersionBanner` / `registerFairyCliErrorHandling` → `parseAsync`
 
 ### 导出类型与工具
 
 - `AiCommandOptions`（extends `VipAgentSkillCliOptions`）
-- `CommandEnum`、`CLI_COMMAND_DETAIL`、`FairyCommandOptions`
+- `CommandEnum`、`CLI_COMMAND_DETAIL`（字面量 key + `satisfies`）、`FairyCommandOptions`
 - 根程序与子命令均基于 `VipPackageCliCommander`（`@142vip/utils`）
 - `registerFairySubcommand(program, CommandEnum, action, setup?)`：业务参数 → `--dry-run` / `--vip` → action
-- 根程序 `fa -h`：`program.registerRootOptions()` → `--version` / `--trace` / `--help`
+- 根程序 `fa -h`：Commander 默认 `formatHelp`（`registerRootOptions` → `--version` / `--trace` / `--help`）；`-v` 为横幅
+- 解析异常（未知子命令等）：`registerFairyCliErrorHandling` → `@142vip/utils` `registerVipPackageCliErrorHandling`
 - 子命令 `fa <cmd> -h`：业务参数 → `--dry-run` / `--vip` / `--trace` → `--help`（根与子命令均可传 `--trace`，`optsWithGlobals` 合并）
 - `registerFairySubcommand`、`buildReleaseVersionOptions`、`printPreCheckRelease`、`isPackagePendingRelease`、`releasePackage`（`utils/`）
 
@@ -137,7 +135,7 @@ src/
 - `-p, --push`：交互提交后推送远程
 - `-s, --scope <glob>`：Monorepo glob（可多次），扫描 npm 包名写入 scope 白名单；**优先于**配置 `scopeGlobs`
 - `-m, --message <msg>`：`--quiet` 时待校验首行；默认读 `.git/COMMIT_EDITMSG`
-- `--trace`：打印配置文件路径、`scopeGlobs`、`scopes` 数量、将执行的 `git` / `eslint` 步骤（见 `trace-cli.util.ts`）
+- `--trace`：各子命令 action 入口输出 `<command>: 解析` 与业务选项；`runOrDryRun` / `clean` 等追加执行步骤（见 `registerFairySubcommand`、`logVipCliTrace`）
 
 | CLI `-s` | 配置 `scopeGlobs` | 行为 |
 |---|---|---|
@@ -149,11 +147,11 @@ src/
 
 **`ai`**（aliases: `a`）— 委托 `@142vip/agent-skills`
 
-- `--sync`：同步到 `.agents/skills/`（与 `--check` 互斥；均未传时默认同步）
-- `--check`：只比对、不写盘
+- 默认：同步到 `.agents/skills/`（无子命令、无 `--sync` 参数）
+- `--check`：只比对、不写盘（与同步互斥）
 - `-t, --target <dir>`：下游根目录（或 `AGENT_SKILLS_TARGET`）
 - `--force` / `--dry-run` / `--trace`
-- 不再支持 `fa ai sync` 等子命令写法；多余参数由 `cli-error.util` 提示
+- 不再支持 `fa ai sync` 等子命令写法；多余参数由 `command.util` `registerFairyCliErrorHandling` 提示
 
 ### `releasePackage` 行为摘要
 
@@ -181,7 +179,7 @@ src/
 
 - Monorepo 发版：`fa release --vip -F './packages/*'`
 - 试运行：`fa release --vip --dry-run`
-- Agent Skills：`fa ai --sync -t .` / `fa ai --check -t .`；未知子命令由 `registerFairyCliErrorHandling` 友好提示
+- Agent Skills：`fa ai -t .` / `fa ai --check -t .`；未知子命令由 `registerVipPackageCliErrorHandling` 友好提示
 
 ## 构建
 
@@ -204,7 +202,7 @@ cd packages/fairy-cli && pnpm build && pnpm typecheck
 | `test/login.spec.ts` | `commands/login.ts` |
 | `test/install.spec.ts` | `commands/install.ts` |
 | `test/release.spec.ts` | `commands/release.ts`（含 `printSplitPkgCommitLogs`） |
-| `test/release-package.spec.ts` | `utils/release-package.util.ts` |
+| `test/release-package.spec.ts` | `utils/pkg.util.ts` |
 | `test/changelog.spec.ts` | `commands/changelog.ts` |
 | `test/publish.spec.ts` | `commands/publish.ts` |
 | `test/sync.spec.ts` | `commands/sync.ts` |
@@ -216,14 +214,14 @@ cd packages/fairy-cli && pnpm build && pnpm typecheck
 | `test/commit.spec.ts` | `commands/commit.ts` |
 | `test/commit.util.spec.ts` | `utils/commit.util.ts` |
 | `test/eslint-config.util.spec.ts` | `utils/eslint-config.util.ts` |
-| `test/ai.spec.ts` | `commands/ai.ts`（`resolveAiRunMode` / `resolveTarget`） |
-| `test/cli-error.spec.ts` | `utils/cli-error.util.ts` |
+| `test/ai.spec.ts` | `commands/ai.ts`（`resolveAiTarget`） |
+| `test/cli-error.spec.ts` | `utils/command.util.ts`（`registerFairyCliErrorHandling`） |
 
 可测试导出（不进入包主入口，仅供单测与复用）：
 
 - `generateDirPatterns`（`clean.ts`）
 - `printSplitPkgCommitLogs`（`release.ts`）
-- `resolveAiRunMode` / `resolveTarget`（`ai.ts`）
+- `resolveAiTarget`（`ai.ts`）
 
 ## 演示
 

@@ -35,7 +35,7 @@ pnpm add -D @142vip/fairy-cli
 - ✅ 清理构建产物（`clean`）
 - ✅ 软著源代码文档生成（`copyright`）
 - ✅ Git Commit 规范提交（`commit`）
-- ✅ Agent Skills 同步与校验（`ai --sync` / `ai --check`，集成 `@142vip/agent-skills`）
+- ✅ Agent Skills 同步与校验（`fa ai` 同步 / `fa ai --check` 校验，集成 `@142vip/agent-skills`）
 - ✅ 编程式 API：`fairyCliMain`、`releasePackage`、`buildReleaseVersionOptions`、`printPreCheckRelease`
 - ✅ `commit`：`-f` 指定 `commit-linter.config.*`，`-s` 扫描包路径 glob 作为 scope，`-q` 仅校验；内置 `config/default-commit-linter.config.cjs`
 - ✅ `lint`：自动发现 `eslint.config.*` 或内置 `config/default-eslint.config.mjs`，`-f` 指定配置
@@ -83,8 +83,8 @@ fa clean --deps --dry-run
 # 发布时标记 GitHub Release 为 Pre-release（默认 Latest）
 fa release --vip --prerelease
 
-# Agent Skills（未传 --sync/--check 时默认同步）
-fa ai --sync -t .
+# Agent Skills（默认同步到 .agents/skills/）
+fa ai -t .
 fa ai --check -t .
 ```
 
