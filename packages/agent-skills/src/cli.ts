@@ -5,7 +5,9 @@
  */
 import type { VipCommanderOptions } from '@142vip/utils'
 import {
+  formatVipCliHelpExample,
   ProcessExitCodeEnum,
+  registerVipPackageCliErrorHandling,
   VipColor,
   VipConsole,
   VipNodeJS,
@@ -65,6 +67,15 @@ export function runCli(argv: string[] = VipNodeJS.getProcessArgv().slice(2)): vo
     `将已安装的 ${packageName} 同步到下游项目 .agents/skills/。永不改动 business-map。`,
   )
 
+  const cliIdentity = { name: packageName, version }
+
+  program.registerCliVersionBanner(cliIdentity, { binAliases: 'vip-agent-skills' })
+  registerVipPackageCliErrorHandling(program, {
+    identity: cliIdentity,
+    binAliases: 'vip-agent-skills',
+    renderHelpHintLine: () => `  查看帮助：${formatVipCliHelpExample('vip-agent-skills -h')}`,
+  })
+
   program.bootstrapStandalone({
     summary: '同步 Agent Skills 到下游项目',
     description: [
@@ -75,7 +86,7 @@ export function runCli(argv: string[] = VipNodeJS.getProcessArgv().slice(2)): vo
   }, {
     registerBusinessOptions: (root) => {
       root
-        .option('-t, --target <path>', '下游项目根目录（默认 cwd）')
+        .option('-t,--target <path>', '下游项目根目录（默认 cwd）')
         .option('--check', '比对包与下游镜像是否一致（不一致 exit 1）', false)
         .option('--force', '目标无 package.json 也继续', false)
     },
