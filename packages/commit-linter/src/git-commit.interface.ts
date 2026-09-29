@@ -1,7 +1,16 @@
+import type { GitCommit } from '@142vip/utils'
+
+/** 单个 Conventional Commit `type` 的展示元数据 */
+export interface GitCommitTypeMeta {
+  description: string
+  title: string
+  emoji: string
+}
+
 /**
- * git commit type
+ * 内置 Git Commit `type` 词典（用于交互选择与错误提示模板）
  */
-export const gitCommitTypes = {
+export const gitCommitTypes: Record<string, GitCommitTypeMeta> = {
   feat: {
     description: 'A new feature',
     title: 'Features',
@@ -67,21 +76,41 @@ export const gitCommitTypes = {
     title: 'Releases',
     emoji: '🎉',
   },
-
 }
 
-/**
- * 默认支持的git commit type
- */
+/** 默认允许的 commit `type` 列表 */
 export const GIT_COMMIT_DEFAULT_TYPES = Object.keys(gitCommitTypes)
 
-/**
- * 默认支持的git commit scope
- */
+/** 默认允许的 commit `scope`（与 monorepo 元数据 scope 叠加） */
 export const GIT_COMMIT_DEFAULT_SCOPES = [
-  // 发布
   'release',
-  // 日志
   'CHANGELOG',
   'README',
 ]
+
+/**
+ * `commitLinter` 入参：白名单、待校验首行与自定义 `verify`。
+ */
+export interface CommitLinterOptions {
+  /** 允许的 type；与内置默认 type 合并去重 */
+  types?: string[]
+  /** 允许的 scope；与内置默认 scope 合并去重 */
+  scopes?: string[]
+  /**
+   * 待校验 commit 首行。
+   * 省略时读取当前仓库 `.git/COMMIT_EDITMSG` 首行（commit-msg 钩子场景）。
+   */
+  commit?: string
+  /**
+   * 额外校验（在格式与白名单通过后执行）。
+   * 返回 `false` 或抛错视为不通过（进程 exit 1）。
+   */
+  verify?: (gitCommit: GitCommitLinter) => boolean | void
+}
+
+/**
+ * Git Commit 信息校验结果
+ */
+export interface GitCommitLinter extends GitCommit {
+  commit: string
+}
