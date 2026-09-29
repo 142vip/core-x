@@ -62,7 +62,7 @@ await changelogApi.changelogCoreHandler({ to: 'v1.0.0', dryRun: true })
 | `--token` | GitHub Token |
 | `--from` / `--to` | 提交范围起止标签 |
 | `--name` | Release 名称 |
-| `--github` | 仓库，如 `142vip/core-x` |
+| `--github` | GitHub 仓库 `owner/repo` |
 | `--output` | CHANGELOG 输出路径 |
 | `--scopeName` | Monorepo 包名 |
 | `--prerelease` | 标记为 GitHub Pre-release（默认 false，即 Latest） |

@@ -43,7 +43,7 @@ createExampleMessage('world') // => 'Hello from @142vip/_example: world'
 
 ## 参考
 
-- [core-x 仓库](https://github.com/142vip/core-x)
+- [142vip Monorepo](https://github.com/142vip/core-x)
 - [unbuild](https://github.com/unjs/unbuild)
 
 ## 证书
