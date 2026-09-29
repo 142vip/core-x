@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.60 (2026-09-29)
+
+### ✨ Features
+
+- `VipCommander` 统一退出处理与 `loadConfigAtPath` &nbsp;-&nbsp; by **chufan** [<samp>(cc675)</samp>](https://github.com/142vip/core-x/commit/cc675ed7)
+
+### 💅 Refactors
+
+- 合并 CLI 展示与 Commander 退出处理 &nbsp;-&nbsp; by **chufan** [<samp>(6fe3d)</samp>](https://github.com/142vip/core-x/commit/6fe3d63b)
+
+**Release New Version v0.0.1-alpha.60 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/utils)**
+
 ## v0.0.1-alpha.59 (2026-09-28)
 
 ### 💅 Refactors
