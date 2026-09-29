@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## v0.0.1-alpha.8 (2026-09-29)
+
+### 💅 Refactors
+
+- CLI 对齐 `registerVipPackageCliErrorHandling` &nbsp;-&nbsp; by **chufan** [<samp>(7cef0)</samp>](https://github.com/142vip/core-x/commit/7cef04fe)
+
+### 📖 Documentation
+
+- `fa ai --sync`/`--check` 与 skills 镜像说明 &nbsp;-&nbsp; by **chufan** [<samp>(8a431)</samp>](https://github.com/142vip/core-x/commit/8a431424)
+- `fa ai` 默认同步，去掉 `--sync` 表述 &nbsp;-&nbsp; by **chufan** [<samp>(74afe)</samp>](https://github.com/142vip/core-x/commit/74afe84a)
+
+**Release New Version v0.0.1-alpha.8 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/agent-skills)**
+
+## v0.0.1-alpha.7 (2026-09-28)
+
+### 💅 Refactors
+
+- CLI 对齐 `VipPackageCliCommander` 注册方式 &nbsp;-&nbsp; by **chufan** [<samp>(ea1dd)</samp>](https://github.com/142vip/core-x/commit/ea1dd623)
+
+**Release New Version v0.0.1-alpha.7 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/agent-skills)**
+
 ## v0.0.1-alpha.6 (2026-09-10)
 
 ### 🐛 Bug Fixes

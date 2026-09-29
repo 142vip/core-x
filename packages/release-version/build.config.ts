@@ -3,9 +3,7 @@ import { defineBuildConfig } from 'unbuild'
 export default defineBuildConfig({
   entries: [
     'src/index',
-    'src/enums/index',
-    'src/utils/index',
-    'src/release-version-cli.ts',
+    'src/releasex-cli',
   ],
   declaration: true,
   clean: true,

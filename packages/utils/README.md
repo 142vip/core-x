@@ -16,15 +16,15 @@ pnpm add @142vip/utils
 
 ## 功能
 
-- [x] Node：`VipNodeJS`、`VipGit`、`VipDocker`、`VipExecutor`、`VipMonorepo`、`VipNpm`、`VipPackageJSON`
-- [x] 封装：`vipDayjs`、`vipLodash`、`VipSemver`、`VipCommander`、`vipConfig`、`VipInquirer`
-- [x] `@142vip/utils/enums`：`HttpStatus`、`TimeDurationMs`、`HttpMethod`、`ProcessExitCodeEnum`
-- [x] `@142vip/utils/browser`：浏览器安全子集（无 Node API）
-- [x] `@142vip/utils/node`：Node 专用入口
+- ✅ Node：`VipNodeJS`、`VipGit`、`VipDocker`、`VipExecutor`、`VipMonorepo`、`VipNpm`、`VipPackageJSON`
+- ✅ 封装：`vipDayjs`、`vipLodash`、`VipSemver`、`VipCommander`、`vipConfig`、`VipInquirer`
+- ✅ `@142vip/utils/enums`：`HttpStatus`、`TimeDurationMs`、`HttpMethod`、`ProcessExitCodeEnum`
+- ✅ `@142vip/utils/browser`：浏览器安全子集（无 Node API）
+- ✅ `@142vip/utils/node`：Node 专用入口
 
 ## 配置
 
-`vipConfig.loadCliConfig(name, defaults)` 按模块名走 cosmiconfig（如 `changelog`、`bumpx`）。
+`vipConfig.loadCliConfig(name, defaults)` 按模块名走 cosmiconfig（如 `changelog`、`commit-linter`、`releasex`）。`vipConfig.loadConfigAtPath(name, filepath)` 供 `fa lint -f` / `fa commit -f` 等显式路径加载。
 
 ## 使用
 

@@ -4,7 +4,7 @@
 
 > **Trim**(): `PropertyDecorator`
 
-定义于: [decorators/transform.decorator.ts:75](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/nest/src/decorators/transform.decorator.ts#L75)
+定义于: [decorators/transform.decorator.ts:83](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/nest/src/decorators/transform.decorator.ts#L83)
 
 自动转化开启使用
 

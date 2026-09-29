@@ -1,0 +1,39 @@
+[API 参考](../../../index.md) / [@142vip/release-version](../index.md) / VersionProgressEvent
+
+# 枚举: VersionProgressEvent
+
+定义于: [release-version/src/releasex.interface.ts:4](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/release-version/src/releasex.interface.ts#L4)
+
+`releaseVersion()` 进度事件
+
+## 枚举成员
+
+### GitCommit
+
+> **GitCommit**: `"git commit"`
+
+定义于: [release-version/src/releasex.interface.ts:5](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/release-version/src/releasex.interface.ts#L5)
+
+***
+
+### GitPush
+
+> **GitPush**: `"git push"`
+
+定义于: [release-version/src/releasex.interface.ts:7](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/release-version/src/releasex.interface.ts#L7)
+
+***
+
+### GitTag
+
+> **GitTag**: `"git tag"`
+
+定义于: [release-version/src/releasex.interface.ts:6](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/release-version/src/releasex.interface.ts#L6)
+
+***
+
+### NpmScript
+
+> **NpmScript**: `"npm script"`
+
+定义于: [release-version/src/releasex.interface.ts:8](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/release-version/src/releasex.interface.ts#L8)

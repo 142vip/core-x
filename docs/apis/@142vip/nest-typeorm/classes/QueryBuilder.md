@@ -1,0 +1,1279 @@
+[API 参考](../../../index.md) / [@142vip/nest-typeorm](../index.md) / QueryBuilder
+
+# 抽象 类: QueryBuilder\<Entity\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:25
+
+Allows to build complex sql queries in a fashion way and execute those queries.
+
+## theme_extended_by
+
+- [`SelectQueryBuilder`](SelectQueryBuilder.md)
+- [`DeleteQueryBuilder`](DeleteQueryBuilder.md)
+- [`InsertQueryBuilder`](InsertQueryBuilder.md)
+- [`UpdateQueryBuilder`](UpdateQueryBuilder.md)
+- [`RelationQueryBuilder`](RelationQueryBuilder.md)
+
+## 类型参数
+
+### Entity
+
+`Entity` *extends* [`ObjectLiteral`](../interfaces/ObjectLiteral.md)
+
+## 构造函数
+
+### 构造函数
+
+> **new QueryBuilder**\<`Entity`\>(`queryBuilder`): `QueryBuilder`\<`Entity`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:54
+
+QueryBuilder can be initialized from given Connection and QueryRunner objects or from given other QueryBuilder.
+
+#### 参数
+
+##### queryBuilder
+
+`QueryBuilder`\<`any`\>
+
+#### 返回
+
+`QueryBuilder`\<`Entity`\>
+
+### 构造函数
+
+> **new QueryBuilder**\<`Entity`\>(`connection`, `queryRunner?`): `QueryBuilder`\<`Entity`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:58
+
+QueryBuilder can be initialized from given Connection and QueryRunner objects or from given other QueryBuilder.
+
+#### 参数
+
+##### connection
+
+[`DataSource`](DataSource.md)
+
+##### queryRunner?
+
+[`QueryRunner`](../interfaces/QueryRunner.md)
+
+#### 返回
+
+`QueryBuilder`\<`Entity`\>
+
+## 属性
+
+### @instanceof
+
+> `readonly` **@instanceof**: `symbol`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:26
+
+***
+
+### connection
+
+> `readonly` **connection**: [`DataSource`](DataSource.md)
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:30
+
+Connection on which QueryBuilder was created.
+
+***
+
+### expressionMap
+
+> `readonly` **expressionMap**: `QueryExpressionMap`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:34
+
+Contains all properties of the QueryBuilder that needs to be build a final query.
+
+***
+
+### parentQueryBuilder
+
+> `protected` **parentQueryBuilder**: `QueryBuilder`\<`any`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:42
+
+If QueryBuilder was created in a subquery mode then its parent QueryBuilder (who created subquery) will be stored here.
+
+***
+
+### queryRunner?
+
+> `protected` `optional` **queryRunner?**: [`QueryRunner`](../interfaces/QueryRunner.md)
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:38
+
+Query runner used to execute query builder query.
+
+## 访问器
+
+### alias
+
+#### Getter 签名
+
+> **get** **alias**(): `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:67
+
+Gets the main alias string used in this query builder.
+
+##### 返回
+
+`string`
+
+## 方法
+
+### addCommonTableExpression()
+
+> **addCommonTableExpression**(`queryBuilder`, `alias`, `options?`): `this`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:215
+
+Adds CTE to query
+
+#### 参数
+
+##### queryBuilder
+
+`string` \| `QueryBuilder`\<`any`\>
+
+##### alias
+
+`string`
+
+##### options?
+
+`QueryBuilderCteOptions`
+
+#### 返回
+
+`this`
+
+***
+
+### callListeners()
+
+> **callListeners**(`enabled`): `this`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:207
+
+Indicates if listeners and subscribers must be called before and after query execution.
+Enabled by default.
+
+#### 参数
+
+##### enabled
+
+`boolean`
+
+#### 返回
+
+`this`
+
+***
+
+### clone()
+
+> **clone**(): `this`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:184
+
+Clones query builder as it is.
+Note: it uses new query runner, if you want query builder that uses exactly same query runner,
+you can create query builder using its constructor, for example new SelectQueryBuilder(queryBuilder)
+where queryBuilder is cloned QueryBuilder.
+
+#### 返回
+
+`this`
+
+***
+
+### comment()
+
+> **comment**(`comment`): `this`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:190
+
+Includes a Query comment in the query builder.  This is helpful for debugging purposes,
+such as finding a specific query in the database server's logs, or for categorization using
+an APM product.
+
+#### 参数
+
+##### comment
+
+`string`
+
+#### 返回
+
+`this`
+
+***
+
+### createComment()
+
+> `protected` **createComment**(): `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:239
+
+#### 返回
+
+`string`
+
+***
+
+### createCteExpression()
+
+> `protected` **createCteExpression**(): `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:262
+
+#### 返回
+
+`string`
+
+***
+
+### createFromAlias()
+
+> `protected` **createFromAlias**(`entityTarget`, `aliasName?`): `Alias`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:229
+
+Specifies FROM which entity's table select/update/delete will be executed.
+Also sets a main string alias of the selection data.
+
+#### 参数
+
+##### entityTarget
+
+[`EntityTarget`](../type-aliases/EntityTarget.md)\<`any`\> \| ((`qb`) => [`SelectQueryBuilder`](SelectQueryBuilder.md)\<`any`\>)
+
+##### aliasName?
+
+`string`
+
+#### 返回
+
+`Alias`
+
+***
+
+### createParameter()
+
+> `protected` **createParameter**(`value`): `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:145
+
+#### 参数
+
+##### value
+
+`any`
+
+#### 返回
+
+`string`
+
+***
+
+### createPropertyPath()
+
+> `protected` **createPropertyPath**(`metadata`, `entity`, `prefix?`): `string`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:272
+
+Creates a property paths for a given ObjectLiteral.
+
+#### 参数
+
+##### metadata
+
+[`EntityMetadata`](EntityMetadata.md)
+
+##### entity
+
+[`ObjectLiteral`](../interfaces/ObjectLiteral.md)
+
+##### prefix?
+
+`string`
+
+#### 返回
+
+`string`[]
+
+***
+
+### createQueryBuilder()
+
+> **createQueryBuilder**(`queryRunner?`): `this`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:177
+
+Creates a completely new query builder.
+Uses same query runner as current QueryBuilder.
+
+#### 参数
+
+##### queryRunner?
+
+[`QueryRunner`](../interfaces/QueryRunner.md)
+
+#### 返回
+
+`this`
+
+***
+
+### createReturningExpression()
+
+> `protected` **createReturningExpression**(`returningType`): `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:251
+
+Creates "RETURNING" / "OUTPUT" expression.
+
+#### 参数
+
+##### returningType
+
+`ReturningType`
+
+#### 返回
+
+`string`
+
+***
+
+### createTimeTravelQuery()
+
+> `protected` **createTimeTravelQuery**(): `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:243
+
+Time travel queries for CockroachDB
+
+#### 返回
+
+`string`
+
+***
+
+### createWhereClausesExpression()
+
+> `protected` **createWhereClausesExpression**(`clauses`): `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:257
+
+#### 参数
+
+##### clauses
+
+`WhereClause`[]
+
+#### 返回
+
+`string`
+
+***
+
+### createWhereConditionExpression()
+
+> `protected` **createWhereConditionExpression**(`condition`, `alwaysWrap?`): `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:261
+
+Computes given where argument - transforms to a where string all forms it can take.
+
+#### 参数
+
+##### condition
+
+`WhereClauseCondition`
+
+##### alwaysWrap?
+
+`boolean`
+
+#### 返回
+
+`string`
+
+***
+
+### createWhereExpression()
+
+> `protected` **createWhereExpression**(): `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:247
+
+Creates "WHERE" expression.
+
+#### 返回
+
+`string`
+
+***
+
+### delete()
+
+> **delete**(): [`DeleteQueryBuilder`](DeleteQueryBuilder.md)\<`Entity`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:106
+
+Creates DELETE query.
+
+#### 返回
+
+[`DeleteQueryBuilder`](DeleteQueryBuilder.md)\<`Entity`\>
+
+***
+
+### disableEscaping()
+
+> **disableEscaping**(): `this`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:194
+
+Disables escaping.
+
+#### 返回
+
+`this`
+
+***
+
+### escape()
+
+> **escape**(`name`): `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:198
+
+Escapes table name, column name or alias name using current database's escaping character.
+
+#### 参数
+
+##### name
+
+`string`
+
+#### 返回
+
+`string`
+
+***
+
+### execute()
+
+> **execute**(): `Promise`\<`any`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:172
+
+Executes sql generated by query builder and returns raw database results.
+
+#### 返回
+
+`Promise`\<`any`\>
+
+***
+
+### getExistsCondition()
+
+> `protected` **getExistsCondition**(`subQuery`): \[`string`, `any`[]\]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:267
+
+#### 参数
+
+##### subQuery
+
+`any`
+
+#### 返回
+
+\[`string`, `any`[]\]
+
+***
+
+### getMainTableName()
+
+> `protected` **getMainTableName**(): `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:224
+
+Gets name of the table where insert should be performed.
+
+#### 返回
+
+`string`
+
+***
+
+### getParameters()
+
+> **getParameters**(): [`ObjectLiteral`](../interfaces/ObjectLiteral.md)
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:155
+
+Gets all parameters.
+
+#### 返回
+
+[`ObjectLiteral`](../interfaces/ObjectLiteral.md)
+
+***
+
+### getPredicates()
+
+> `protected` **getPredicates**(`where`): `Generator`\<`any`[], `void`, `unknown`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:273
+
+#### 参数
+
+##### where
+
+[`ObjectLiteral`](../interfaces/ObjectLiteral.md)
+
+#### 返回
+
+`Generator`\<`any`[], `void`, `unknown`\>
+
+***
+
+### getQuery()
+
+> `abstract` **getQuery**(): `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:63
+
+Gets generated SQL query without parameters being replaced.
+
+#### 返回
+
+`string`
+
+***
+
+### getQueryAndParameters()
+
+> **getQueryAndParameters**(): \[`string`, `any`[]\]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:168
+
+Gets query to be executed with all parameters used in it.
+
+#### 返回
+
+\[`string`, `any`[]\]
+
+***
+
+### getReturningColumns()
+
+> `protected` **getReturningColumns**(): `ColumnMetadata`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:256
+
+If returning / output cause is set to array of column names,
+then this method will return all column metadatas of those column names.
+
+#### 返回
+
+`ColumnMetadata`[]
+
+***
+
+### getSql()
+
+> **getSql**(): `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:164
+
+Gets generated sql that will be executed.
+Parameters in the query are escaped for the currently used driver.
+
+#### 返回
+
+`string`
+
+***
+
+### getTableName()
+
+> `protected` **getTableName**(`tablePath`): `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:220
+
+Gets escaped table name with schema name if SqlServer driver used with custom
+schema name, otherwise returns escaped table name.
+
+#### 参数
+
+##### tablePath
+
+`string`
+
+#### 返回
+
+`string`
+
+***
+
+### getWhereCondition()
+
+> `protected` **getWhereCondition**(`where`): `WhereClauseCondition`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:275
+
+#### 参数
+
+##### where
+
+`string` \| [`ObjectLiteral`](../interfaces/ObjectLiteral.md) \| [`ObjectLiteral`](../interfaces/ObjectLiteral.md)[] \| [`Brackets`](Brackets.md) \| [`NotBrackets`](NotBrackets.md) \| ((`qb`) => `string`)
+
+#### 返回
+
+`WhereClauseCondition`
+
+***
+
+### getWhereInIdsCondition()
+
+> `protected` **getWhereInIdsCondition**(`ids`): [`ObjectLiteral`](../interfaces/ObjectLiteral.md) \| [`Brackets`](Brackets.md)
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:266
+
+Creates "WHERE" condition for an in-ids condition.
+
+#### 参数
+
+##### ids
+
+`any`
+
+#### 返回
+
+[`ObjectLiteral`](../interfaces/ObjectLiteral.md) \| [`Brackets`](Brackets.md)
+
+***
+
+### getWherePredicateCondition()
+
+> `protected` **getWherePredicateCondition**(`aliasPath`, `parameterValue`): `WhereClauseCondition`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:274
+
+#### 参数
+
+##### aliasPath
+
+`string`
+
+##### parameterValue
+
+`any`
+
+#### 返回
+
+`WhereClauseCondition`
+
+***
+
+### hasCommonTableExpressions()
+
+> `protected` **hasCommonTableExpressions**(): `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:280
+
+#### 返回
+
+`boolean`
+
+***
+
+### hasParameter()
+
+> **hasParameter**(`key`): `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:134
+
+Check the existence of a parameter for this query builder.
+
+#### 参数
+
+##### key
+
+`string`
+
+#### 返回
+
+`boolean`
+
+***
+
+### hasRelation()
+
+#### 调用签名
+
+> **hasRelation**\<`T`\>(`target`, `relation`): `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:123
+
+Checks if given relation exists in the entity.
+Returns true if relation exists, false otherwise.
+
+todo: move this method to manager? or create a shortcut?
+
+##### 类型参数
+
+###### T
+
+`T`
+
+##### 参数
+
+###### target
+
+[`EntityTarget`](../type-aliases/EntityTarget.md)\<`T`\>
+
+###### relation
+
+`string`
+
+##### 返回
+
+`boolean`
+
+#### 调用签名
+
+> **hasRelation**\<`T`\>(`target`, `relation`): `boolean`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:130
+
+Checks if given relations exist in the entity.
+Returns true if relation exists, false otherwise.
+
+todo: move this method to manager? or create a shortcut?
+
+##### 类型参数
+
+###### T
+
+`T`
+
+##### 参数
+
+###### target
+
+[`EntityTarget`](../type-aliases/EntityTarget.md)\<`T`\>
+
+###### relation
+
+`string`[]
+
+##### 返回
+
+`boolean`
+
+***
+
+### insert()
+
+> **insert**(): [`InsertQueryBuilder`](InsertQueryBuilder.md)\<`Entity`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:86
+
+Creates INSERT query.
+
+#### 返回
+
+[`InsertQueryBuilder`](InsertQueryBuilder.md)\<`Entity`\>
+
+***
+
+### normalizeNumber()
+
+> `protected` **normalizeNumber**(`num`): `any`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:282
+
+#### 参数
+
+##### num
+
+`any`
+
+#### 返回
+
+`any`
+
+***
+
+### obtainQueryRunner()
+
+> `protected` **obtainQueryRunner**(): [`QueryRunner`](../interfaces/QueryRunner.md)
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:279
+
+Creates a query builder used to execute sql queries inside this query builder.
+
+#### 返回
+
+[`QueryRunner`](../interfaces/QueryRunner.md)
+
+***
+
+### printSql()
+
+> **printSql**(): `this`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:159
+
+Prints sql to stdout using console.log.
+
+#### 返回
+
+`this`
+
+***
+
+### relation()
+
+#### 调用签名
+
+> **relation**(`propertyPath`): [`RelationQueryBuilder`](RelationQueryBuilder.md)\<`Entity`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:112
+
+Sets entity's relation with which this query builder gonna work.
+
+##### 参数
+
+###### propertyPath
+
+`string`
+
+##### 返回
+
+[`RelationQueryBuilder`](RelationQueryBuilder.md)\<`Entity`\>
+
+#### 调用签名
+
+> **relation**\<`T`\>(`entityTarget`, `propertyPath`): [`RelationQueryBuilder`](RelationQueryBuilder.md)\<`T`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:116
+
+Sets entity's relation with which this query builder gonna work.
+
+##### 类型参数
+
+###### T
+
+`T` *extends* [`ObjectLiteral`](../interfaces/ObjectLiteral.md)
+
+##### 参数
+
+###### entityTarget
+
+[`EntityTarget`](../type-aliases/EntityTarget.md)\<`T`\>
+
+###### propertyPath
+
+`string`
+
+##### 返回
+
+[`RelationQueryBuilder`](RelationQueryBuilder.md)\<`T`\>
+
+***
+
+### ~~replacePropertyNames()~~
+
+> `protected` **replacePropertyNames**(`statement`): `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:234
+
+#### 参数
+
+##### statement
+
+`string`
+
+#### 返回
+
+`string`
+
+#### 已被弃用
+
+this way of replace property names is too slow.
+ Instead, we'll replace property names at the end - once query is build.
+
+***
+
+### replacePropertyNamesForTheWholeQuery()
+
+> `protected` **replacePropertyNamesForTheWholeQuery**(`statement`): `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:238
+
+Replaces all entity's propertyName to name in the given SQL string.
+
+#### 参数
+
+##### statement
+
+`string`
+
+#### 返回
+
+`string`
+
+***
+
+### restore()
+
+> **restore**(): `SoftDeleteQueryBuilder`\<`any`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:108
+
+#### 返回
+
+`SoftDeleteQueryBuilder`\<`any`\>
+
+***
+
+### select()
+
+#### 调用签名
+
+> **select**(): [`SelectQueryBuilder`](SelectQueryBuilder.md)\<`Entity`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:72
+
+Creates SELECT query.
+Replaces all previous selections if they exist.
+
+##### 返回
+
+[`SelectQueryBuilder`](SelectQueryBuilder.md)\<`Entity`\>
+
+#### 调用签名
+
+> **select**(`selection`, `selectionAliasName?`): [`SelectQueryBuilder`](SelectQueryBuilder.md)\<`Entity`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:77
+
+Creates SELECT query and selects given data.
+Replaces all previous selections if they exist.
+
+##### 参数
+
+###### selection
+
+`string`
+
+###### selectionAliasName?
+
+`string`
+
+##### 返回
+
+[`SelectQueryBuilder`](SelectQueryBuilder.md)\<`Entity`\>
+
+#### 调用签名
+
+> **select**(`selection`): [`SelectQueryBuilder`](SelectQueryBuilder.md)\<`Entity`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:82
+
+Creates SELECT query and selects given data.
+Replaces all previous selections if they exist.
+
+##### 参数
+
+###### selection
+
+`string`[]
+
+##### 返回
+
+[`SelectQueryBuilder`](SelectQueryBuilder.md)\<`Entity`\>
+
+***
+
+### ~~setNativeParameters()~~
+
+> **setNativeParameters**(`parameters`): `this`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:151
+
+Adds native parameters from the given object.
+
+#### 参数
+
+##### parameters
+
+[`ObjectLiteral`](../interfaces/ObjectLiteral.md)
+
+#### 返回
+
+`this`
+
+#### 已被弃用
+
+Use `setParameters` instead
+
+***
+
+### setParameter()
+
+> **setParameter**(`key`, `value`): `this`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:140
+
+Sets parameter name and its value.
+
+The key for this parameter may contain numbers, letters, underscores, or periods.
+
+#### 参数
+
+##### key
+
+`string`
+
+##### value
+
+`any`
+
+#### 返回
+
+`this`
+
+***
+
+### setParameters()
+
+> **setParameters**(`parameters`): `this`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:144
+
+Adds all parameters from the given object.
+
+#### 参数
+
+##### parameters
+
+[`ObjectLiteral`](../interfaces/ObjectLiteral.md)
+
+#### 返回
+
+`this`
+
+***
+
+### setQueryRunner()
+
+> **setQueryRunner**(`queryRunner`): `this`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:202
+
+Sets or overrides query builder's QueryRunner.
+
+#### 参数
+
+##### queryRunner
+
+[`QueryRunner`](../interfaces/QueryRunner.md)
+
+#### 返回
+
+`this`
+
+***
+
+### softDelete()
+
+> **softDelete**(): `SoftDeleteQueryBuilder`\<`any`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:107
+
+#### 返回
+
+`SoftDeleteQueryBuilder`\<`any`\>
+
+***
+
+### update()
+
+#### 调用签名
+
+> **update**(): [`UpdateQueryBuilder`](UpdateQueryBuilder.md)\<`Entity`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:90
+
+Creates UPDATE query and applies given update values.
+
+##### 返回
+
+[`UpdateQueryBuilder`](UpdateQueryBuilder.md)\<`Entity`\>
+
+#### 调用签名
+
+> **update**(`updateSet`): [`UpdateQueryBuilder`](UpdateQueryBuilder.md)\<`Entity`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:94
+
+Creates UPDATE query and applies given update values.
+
+##### 参数
+
+###### updateSet
+
+[`QueryDeepPartialEntity`](../type-aliases/QueryDeepPartialEntity.md)\<`Entity`\>
+
+##### 返回
+
+[`UpdateQueryBuilder`](UpdateQueryBuilder.md)\<`Entity`\>
+
+#### 调用签名
+
+> **update**\<`Entity`\>(`entity`, `updateSet?`): [`UpdateQueryBuilder`](UpdateQueryBuilder.md)\<`Entity`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:98
+
+Creates UPDATE query for the given entity and applies given update values.
+
+##### 类型参数
+
+###### Entity
+
+`Entity` *extends* [`ObjectLiteral`](../interfaces/ObjectLiteral.md)
+
+##### 参数
+
+###### entity
+
+[`EntityTarget`](../type-aliases/EntityTarget.md)\<`Entity`\>
+
+###### updateSet?
+
+`_QueryDeepPartialEntity`\<[`ObjectLiteral`](../interfaces/ObjectLiteral.md) *extends* `Entity` ? `unknown` : `Entity`\>
+
+##### 返回
+
+[`UpdateQueryBuilder`](UpdateQueryBuilder.md)\<`Entity`\>
+
+#### 调用签名
+
+> **update**(`tableName`, `updateSet?`): [`UpdateQueryBuilder`](UpdateQueryBuilder.md)\<`Entity`\>
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:102
+
+Creates UPDATE query for the given table name and applies given update values.
+
+##### 参数
+
+###### tableName
+
+`string`
+
+###### updateSet?
+
+`_QueryDeepPartialEntity`\<[`ObjectLiteral`](../interfaces/ObjectLiteral.md) *extends* `Entity` ? `unknown` : `Entity`\>
+
+##### 返回
+
+[`UpdateQueryBuilder`](UpdateQueryBuilder.md)\<`Entity`\>
+
+***
+
+### useTransaction()
+
+> **useTransaction**(`enabled`): `this`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:211
+
+If set to true the query will be wrapped into a transaction.
+
+#### 参数
+
+##### enabled
+
+`boolean`
+
+#### 返回
+
+`this`
+
+***
+
+### validateNumericInput()
+
+> `protected` **validateNumericInput**(`label`, `num`): `number` \| `undefined`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:287
+
+Normalizes and validates a numeric query parameter,
+throwing if the result is NaN.
+
+#### 参数
+
+##### label
+
+`string`
+
+##### num
+
+`number` \| `undefined`
+
+#### 返回
+
+`number` \| `undefined`
+
+***
+
+### validateOrderByCondition()
+
+> `protected` **validateOrderByCondition**(`sort`): `void`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:281
+
+#### 参数
+
+##### sort
+
+[`OrderByCondition`](../type-aliases/OrderByCondition.md)
+
+#### 返回
+
+`void`
+
+***
+
+### registerQueryBuilderClass()
+
+> `static` **registerQueryBuilderClass**(`name`, `factory`): `void`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/query-builder/QueryBuilder.d.ts:59
+
+#### 参数
+
+##### name
+
+`string`
+
+##### factory
+
+`any`
+
+#### 返回
+
+`void`

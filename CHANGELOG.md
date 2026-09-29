@@ -2,6 +2,80 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.44 (2026-09-28)
+
+### ✨ Features
+
+- **@142vip/vuepress**:
+  - 新增 `createVipViteBuildPlugin` 与 `getVipHopeTheme` 默认项 &nbsp;-&nbsp; by **chufan** [<samp>(634d1)</samp>](https://github.com/142vip/core-x/commit/634d1637)
+- **vuepress-demo**:
+  - 依赖默认 `locales`，保留 `appBuildLog` 与主题注释 &nbsp;-&nbsp; by **chufan** [<samp>(84deb)</samp>](https://github.com/142vip/core-x/commit/84deb8e0)
+
+### 🐛 Bug Fixes
+
+- **@142vip/vitepress**:
+  - `setupVipAppBuildLog` 改从 `@142vip/vue/utils` 导入 &nbsp;-&nbsp; by **chufan** [<samp>(8a78a)</samp>](https://github.com/142vip/core-x/commit/8a78a09a)
+- **@142vip/vuepress**:
+  - `appBuildLog` 改用 `@142vip/vue/utils` 并默认 `locales` &nbsp;-&nbsp; by **chufan** [<samp>(d0ae1)</samp>](https://github.com/142vip/core-x/commit/d0ae1cd7)
+  - SSR 内联 `@142vip/vue` / `@142vip/cdn` 修复 demo 构建 &nbsp;-&nbsp; by **chufan** [<samp>(a4bbd)</samp>](https://github.com/142vip/core-x/commit/a4bbdc8e)
+
+### 💅 Refactors
+
+- **@142vip/agent-skills**:
+  - CLI 对齐 `VipPackageCliCommander` 注册方式 &nbsp;-&nbsp; by **chufan** [<samp>(ea1dd)</samp>](https://github.com/142vip/core-x/commit/ea1dd623)
+- **@142vip/changelog**:
+  - API 迁入 `core/apis` 并合并类型与配置 &nbsp;-&nbsp; by **chufan** [<samp>(7a8ff)</samp>](https://github.com/142vip/core-x/commit/7a8ff426)
+  - `changelogCliMain` 与 `bin/changelog.cjs` 直连并补充 Jest &nbsp;-&nbsp; by **chufan** [<samp>(74f44)</samp>](https://github.com/142vip/core-x/commit/74f44507)
+- **@142vip/fairy-cli**:
+  - 抽取 `http`/`command` 工具并收敛 `CLI_COMMAND_DETAIL` &nbsp;-&nbsp; by **chufan** [<samp>(b3cdb)</samp>](https://github.com/142vip/core-x/commit/b3cdbd3c)
+  - `fairyCliMain` 直连 `bin/fa.cjs` 并内联 `changelog` 子命令 &nbsp;-&nbsp; by **chufan** [<samp>(ecb51)</samp>](https://github.com/142vip/core-x/commit/ecb515c2)
+- **@142vip/release-version**:
+  - 引入 `releasex-cli` 与 `releaseApi` 并移除旧 CLI 入口 &nbsp;-&nbsp; by **chufan** [<samp>(8ba9e)</samp>](https://github.com/142vip/core-x/commit/8ba9e79c)
+  - 删除旧 `core`/`enums` 实现并更新构建配置 &nbsp;-&nbsp; by **chufan** [<samp>(32969)</samp>](https://github.com/142vip/core-x/commit/32969e5b)
+- **@142vip/utils**:
+  - `VipPackageCliCommander` 统一 `registerSubcommand`/`registerStandalone` &nbsp;-&nbsp; by **chufan** [<samp>(57d5f)</samp>](https://github.com/142vip/core-x/commit/57d5f13a)
+- **@142vip/vuepress**:
+  - `plugins/index.ts` 统一插件导出入口 &nbsp;-&nbsp; by **chufan** [<samp>(00988)</samp>](https://github.com/142vip/core-x/commit/00988d27)
+
+### 📖 Documentation
+
+- 同步各包 README 安装与升级章节（Egg/工具） &nbsp;-&nbsp; by **chufan** [<samp>(5edf9)</samp>](https://github.com/142vip/core-x/commit/5edf90d1)
+- 同步各包 README 安装与升级章节（Nest/数据/文档） &nbsp;-&nbsp; by **chufan** [<samp>(49557)</samp>](https://github.com/142vip/core-x/commit/4955780f)
+- **@142vip/vuepress**:
+  - 默认 `locales` 示例改用 `text` 围栏 &nbsp;-&nbsp; by **chufan** [<samp>(e1e22)</samp>](https://github.com/142vip/core-x/commit/e1e22062)
+
+### 📦 Build
+
+- **@142vip/fairy-cli**:
+  - 更新 `package.json` 入口与 Jest/unbuild 配置 &nbsp;-&nbsp; by **chufan** [<samp>(70a37)</samp>](https://github.com/142vip/core-x/commit/70a376b5)
+- **@142vip/vuepress**:
+  - Update dependencies &nbsp;-&nbsp; by **chufan** [<samp>(25722)</samp>](https://github.com/142vip/core-x/commit/2572203b)
+
+### 😏 Release Packages
+
+- **@142vip/agent-skills**:
+  - Publish `v0.0.1-alpha.7` &nbsp;-&nbsp; by **chufan** [<samp>(16d4c)</samp>](https://github.com/142vip/core-x/commit/16d4ce4f)
+- **@142vip/changelog**:
+  - Publish `v0.0.1-alpha.24` &nbsp;-&nbsp; by **chufan** [<samp>(341be)</samp>](https://github.com/142vip/core-x/commit/341beaf0)
+- **@142vip/fairy-cli**:
+  - Publish `v0.0.3-alpha.34` &nbsp;-&nbsp; by **chufan** [<samp>(3ae83)</samp>](https://github.com/142vip/core-x/commit/3ae83db3)
+- **@142vip/release-version**:
+  - Publish `v0.0.1-alpha.16` &nbsp;-&nbsp; by **chufan** [<samp>(6b69f)</samp>](https://github.com/142vip/core-x/commit/6b69f488)
+- **@142vip/utils**:
+  - Publish `v0.0.1-alpha.59` &nbsp;-&nbsp; by **chufan** [<samp>(5f09d)</samp>](https://github.com/142vip/core-x/commit/5f09d6b2)
+- **@142vip/vitepress**:
+  - Publish `v0.0.1-alpha.34` &nbsp;-&nbsp; by **chufan** [<samp>(a7c73)</samp>](https://github.com/142vip/core-x/commit/a7c73d1f)
+- **@142vip/vuepress**:
+  - Publish `v0.0.1-alpha.21` &nbsp;-&nbsp; by **chufan** [<samp>(8f193)</samp>](https://github.com/142vip/core-x/commit/8f1934da)
+  - Publish `v0.0.1-alpha.22` &nbsp;-&nbsp; by **chufan** [<samp>(02e09)</samp>](https://github.com/142vip/core-x/commit/02e09697)
+  - Publish `v0.0.1-alpha.23` &nbsp;-&nbsp; by **chufan** [<samp>(d8af9)</samp>](https://github.com/142vip/core-x/commit/d8af9860)
+  - Publish `v0.0.1-alpha.24` &nbsp;-&nbsp; by **chufan** [<samp>(be813)</samp>](https://github.com/142vip/core-x/commit/be81369f)
+  - Publish `v0.0.1-alpha.25` &nbsp;-&nbsp; by **chufan** [<samp>(101b3)</samp>](https://github.com/142vip/core-x/commit/101b3b42)
+- **vuepress-demo**:
+  - Publish `v0.0.1-alpha.8` &nbsp;-&nbsp; by **chufan** [<samp>(46cc6)</samp>](https://github.com/142vip/core-x/commit/46cc6b13)
+
+**Release New Version v0.0.1-alpha.44 [👉 View Changes On GitHub](https://github.com/142vip/core-x/compare/v0.0.1-alpha.43...v0.0.1-alpha.44)**
+
 ## v0.0.1-alpha.43 (2026-09-20)
 
 ### ✨ Features

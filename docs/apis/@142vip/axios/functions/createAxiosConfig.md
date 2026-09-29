@@ -1,0 +1,17 @@
+[API 参考](../../../index.md) / [@142vip/axios](../index.md) / createAxiosConfig
+
+# 函数: createAxiosConfig()
+
+> **createAxiosConfig**(`userAxiosConfig?`): `CreateAxiosDefaults`
+
+定义于: [packages/axios/src/core/axios.config.ts:10](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/axios/src/core/axios.config.ts#L10)
+
+## 参数
+
+### userAxiosConfig?
+
+`Partial`\<`CreateAxiosDefaults`\<`any`\>\>
+
+## 返回
+
+`CreateAxiosDefaults`

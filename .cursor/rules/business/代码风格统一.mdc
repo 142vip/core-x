@@ -9,7 +9,7 @@ alwaysApply: true
 
 ## 1. 全仓通用（ESLint）
 
-- 配置：根 `eslint.config.js` → `defineVipEslintConfig`（`@142vip/eslint-config`）
+- 配置：全仓 `fa lint` 内置 `defineVipEslintConfig`（`@142vip/fairy-cli` → `@142vip/eslint-config`）；自定义路径用 `fa lint -f`
 - **Nest 特例**：`ts/consistent-type-imports` 关闭，Injectable 类用值导入
 - 任务结束：`pnpm lint:fix`，**零 error**（warning 允许）
 - 随后对牵连模块执行局部 `build`（见 `01`、`02`）；范围不明则 `pnpm build`

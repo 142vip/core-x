@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file. See [Conven
 
 <!-- #region recent-alpha -->
 
+## v0.0.1-alpha.8 (2026-09-28)
+
+### ✨ Features
+
+- 依赖默认 `locales`，保留 `appBuildLog` 与主题注释 &nbsp;-&nbsp; by **chufan** [<samp>(84deb)</samp>](https://github.com/142vip/core-x/commit/84deb8e0)
+
+**Release New Version v0.0.1-alpha.8 [👉 View New Package On NPM](https://www.npmjs.com/package/vuepress-demo)**
+
 ## v0.0.1-alpha.7 (2026-09-01)
 
 ### ✨ Features

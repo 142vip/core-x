@@ -2,7 +2,12 @@
 
 # 枚举: GitCommitMessageType
 
-定义于: [changelog/src/enums/git-commit.interface.ts:13](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/changelog/src/enums/git-commit.interface.ts#L13)
+定义于: [changelog/src/core/changelog.interface.ts:31](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L31)
+
+提交描述中解析出的引用类型
+- `pull-request`：PR 编号（如 `(#123)`）
+- `issue`：Issue 编号（如 `#456`）
+- `hash`：当前提交的 short hash
 
 ## 枚举成员
 
@@ -10,7 +15,7 @@
 
 > **HASH**: `"hash"`
 
-定义于: [changelog/src/enums/git-commit.interface.ts:16](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/changelog/src/enums/git-commit.interface.ts#L16)
+定义于: [changelog/src/core/changelog.interface.ts:34](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L34)
 
 ***
 
@@ -18,7 +23,7 @@
 
 > **ISSUE**: `"issue"`
 
-定义于: [changelog/src/enums/git-commit.interface.ts:15](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/changelog/src/enums/git-commit.interface.ts#L15)
+定义于: [changelog/src/core/changelog.interface.ts:33](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L33)
 
 ***
 
@@ -26,4 +31,4 @@
 
 > **PULL\_REQUEST**: `"pull-request"`
 
-定义于: [changelog/src/enums/git-commit.interface.ts:14](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/changelog/src/enums/git-commit.interface.ts#L14)
+定义于: [changelog/src/core/changelog.interface.ts:32](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L32)

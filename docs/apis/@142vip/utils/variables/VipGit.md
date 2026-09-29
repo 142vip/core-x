@@ -4,13 +4,13 @@
 
 > `const` **VipGit**: `object`
 
-定义于: [packages/utils/src/core/git.ts:252](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/utils/src/core/git.ts#L252)
+定义于: [packages/utils/src/core/git.ts:252](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/core/git.ts#L252)
 
 Git业务相关
 
 ## 类型声明
 
-### convertEmoji()
+### convertEmoji
 
 > **convertEmoji**: (`content`, `withSpace?`) => `string`
 
@@ -25,13 +25,13 @@ git emoji表情转换
 
 ##### withSpace?
 
-`boolean` | `"leading"` | `"trailing"` | `"both"`
+`boolean` \| `"leading"` \| `"trailing"` \| `"both"`
 
 #### 返回
 
 `string`
 
-### execCommit()
+### execCommit
 
 > **execCommit**: (`args`) => `void`
 
@@ -47,7 +47,7 @@ git emoji表情转换
 
 `void`
 
-### execPush()
+### execPush
 
 > **execPush**: (`args`) => `void`
 
@@ -65,7 +65,7 @@ git emoji表情转换
 
 `void`
 
-### execTag()
+### execTag
 
 > **execTag**: (`args`) => `void`
 
@@ -81,7 +81,7 @@ git emoji表情转换
 
 `void`
 
-### getCommitFirstLineMsg()
+### getCommitFirstLineMsg
 
 > **getCommitFirstLineMsg**: () => `string`
 
@@ -93,7 +93,7 @@ git emoji表情转换
 
 `string`
 
-### getCommitLogs()
+### getCommitLogs
 
 > **getCommitLogs**: (`latestTag`, `branch?`) => `string`[]
 
@@ -113,7 +113,7 @@ git emoji表情转换
 
 `string`[]
 
-### getCommitTrimMsg()
+### getCommitTrimMsg
 
 > **getCommitTrimMsg**: () => `string`
 
@@ -124,7 +124,7 @@ git emoji表情转换
 
 `string`
 
-### getCurrentBranch()
+### getCurrentBranch
 
 > **getCurrentBranch**: () => `string`
 
@@ -134,7 +134,7 @@ git emoji表情转换
 
 `string`
 
-### getGitHubRepo()
+### getGitHubRepo
 
 > **getGitHubRepo**: (`baseUrl`) => `string`
 
@@ -150,9 +150,9 @@ git emoji表情转换
 
 `string`
 
-### getLastMatchingTag()
+### getLastMatchingTag
 
-> **getLastMatchingTag**: (`inputTag`) => `undefined` \| `string`
+> **getLastMatchingTag**: (`inputTag`) => `string` \| `undefined`
 
 获取最近一次tag标签
 
@@ -164,9 +164,9 @@ git emoji表情转换
 
 #### 返回
 
-`undefined` \| `string`
+`string` \| `undefined`
 
-### getRecentCommit()
+### getRecentCommit
 
 > **getRecentCommit**: () => [`GitInfo`](../interfaces/GitInfo.md)
 
@@ -178,7 +178,7 @@ git emoji表情转换
 
 [`GitInfo`](../interfaces/GitInfo.md)
 
-### getRecentCommitHash()
+### getRecentCommitHash
 
 > **getRecentCommitHash**: () => `string`
 
@@ -188,7 +188,7 @@ git emoji表情转换
 
 `string`
 
-### getRecentCommitsByScope()
+### getRecentCommitsByScope
 
 > **getRecentCommitsByScope**: (`gitScope`) => `string`[]
 
@@ -204,7 +204,7 @@ git emoji表情转换
 
 `string`[]
 
-### getRecentCommitShortHash()
+### getRecentCommitShortHash
 
 > **getRecentCommitShortHash**: () => `string`
 
@@ -214,7 +214,7 @@ git emoji表情转换
 
 `string`
 
-### getRemoteNames()
+### getRemoteNames
 
 > **getRemoteNames**: () => `string`[]
 
@@ -224,17 +224,17 @@ git emoji表情转换
 
 `string`[]
 
-### getTagInHead()
+### getTagInHead
 
-> **getTagInHead**: () => `null` \| `string`
+> **getTagInHead**: () => `string` \| `null`
 
 获取指向当前提交（HEAD）的所有标签
 
 #### 返回
 
-`null` \| `string`
+`string` \| `null`
 
-### getTags()
+### getTags
 
 > **getTags**: () => `string`[]
 
@@ -244,7 +244,7 @@ git emoji表情转换
 
 `string`[]
 
-### isPrerelease()
+### isPrerelease
 
 > **isPrerelease**: (`version`) => `boolean`
 
@@ -260,7 +260,7 @@ git emoji表情转换
 
 `boolean`
 
-### isRepoShallow()
+### isRepoShallow
 
 > **isRepoShallow**: () => `boolean`
 
@@ -270,9 +270,9 @@ git emoji表情转换
 
 `boolean`
 
-### parseCommitMsg()
+### parseCommitMsg
 
-> **parseCommitMsg**: (`message`) => `null` \| [`GitCommit`](../interfaces/GitCommit.md)
+> **parseCommitMsg**: (`message`) => [`GitCommit`](../interfaces/GitCommit.md) \| `null`
 
 解析Git提交信息
 
@@ -284,9 +284,9 @@ git emoji表情转换
 
 #### 返回
 
-`null` \| [`GitCommit`](../interfaces/GitCommit.md)
+[`GitCommit`](../interfaces/GitCommit.md) \| `null`
 
-### validateBranch()
+### validateBranch
 
 > **validateBranch**: (`allowBranch?`) => `void`
 
@@ -296,7 +296,7 @@ git emoji表情转换
 
 ##### allowBranch?
 
-`string` | `string`[]
+`string` \| `string`[]
 
 #### 返回
 

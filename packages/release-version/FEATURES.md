@@ -4,146 +4,145 @@
 
 ## 定位
 
-Monorepo 版本 bump 与发版编排：读取/更新 `package.json` version、可选生成 CHANGELOG、git commit / tag / push、执行 `execute` 钩子命令。底层由 `fa release` / `releasePackage` 与 bin `bumpx` 调用。
+Monorepo 版本迭代与发版编排：读取/更新 `package.json` version、可选生成 CHANGELOG、git commit / tag / push、执行 `execute` 钩子命令。底层由 `fa release` / `releasePackage` 与 bin `releasex` / `release` 调用。
+
+## 目录
+
+```text
+src/
+├── releasex.interface.ts      # 类型与枚举（与 CLI 同级）
+├── releasex-cli.ts            # standalone bin 入口
+├── release.api.ts             # ReleaseApi 对外聚合
+├── config.ts
+├── core/
+│   ├── releasex-operation.ts  # ReleaseVersionOperation 分步发版编排
+│   └── index.ts
+└── index.ts
+```
 
 ## 功能
 
 ### 子路径
 
-- `@142vip/release-version`：主入口（`src/index.ts`）
-- bin：由 `release-version-cli.ts` 自启动（包名 `bumpx` 配置，见 `package.json` bin 字段）
+- `@142vip/release-version`：主入口（API + 配置 + 类型）
+- bin：`releasex`、`release`（`bin/releasex.cjs` → `dist/releasex-cli.cjs` → `releaseXCliMain`）
 
-### 核心 API（`src/core/version-bump.ts`）
+### 类型（`releasex.interface.ts`）
 
-- `versionBump(options: VersionBumpOptions): Promise<VersionBumpResults | undefined>`
-  - 流程：`versionBumpDryRun` → `gitCommit` → `gitTag` → `runPostVersionScript` → `gitPush`
-- `versionBumpDryRun(options): Promise<ReleaseOperation>`
-  - `versionBumpInfo` → 可选 `confirm` 确认 → `runPreVersionScript` → `updateVersion` → `updateChangelogDoc` → `doExecute` → `runVersionScript`
-- `versionBumpInfo(arg): Promise<ReleaseOperation>`
+- `ReleaseVersionOptions`、`ReleaseVersionResults`、`ReleaseVersionProgress`
+- `ReleaseVersionOperationOptions`、`ReleaseVersionCliOptions`
+- `VersionProgressEvent`、`VersionHooks`
 
-### Git 与 package.json（`src/core/`）
+### `ReleaseVersionOperation`（`core/releasex-operation.ts`）
 
-- `git.ts`：`gitCommit`、`gitTag`、`gitPush`
-- `package-json.ts`：`getCurrentVersion`、`getNewVersion`、`updateVersion`、`runScript`、`runPreVersionScript`、`runVersionScript`、`runPostVersionScript`
-- `changelog.ts`：`updateChangelogDoc(operation)`
-- `version-operation.ts`：`ReleaseOperation` 类（`ReleaseOperation.start(arg)`）
+- `static create(input)`：归一化 `ReleaseVersionOptions` → `ReleaseVersionOperationOptions`
+- `resolveVersions()`：读取当前版本、交互选择新版本（不写盘）
+- `prepareRelease()`：确认 → preversion → 写版本 → CHANGELOG → execute → version 脚本
+- `finalizeRelease()`：git commit → tag → postversion → push
 
-### 配置工具（`src/utils/config.ts`）
+### 对外 API（`release.api.ts` · `releaseApi`）
 
-- `bumpConfigDefaults` / `bumpDefaultConfig`
-- `CONFIG_DEFAULT_NAME`：`'bumpx'`
-- `getBumpDefaultConfig()`
-- `defineBumpXConfig(config): Partial<VersionBumpOptions>`
+- `releaseApi.releaseVersion(options)`：完整发版（含 git 与 push）
+- `releaseApi.releaseVersionDryRun(options)`：准备阶段（写版本、CHANGELOG、脚本；不含 git push）
+- `releaseApi.releaseVersionInfo(options)`：仅解析当前/目标版本
 
-### `VersionBumpOptions` 字段（`src/enums/version-bump.interface.ts`）
+### 配置（`src/config.ts`）
 
-- `preid?`：预发布标识，默认 CLI `'alpha'`
-- `changelog?`：是否生成 CHANGELOG.md
-- `currentVersion?`：当前版本
-- `commit?`：`boolean | string`（`%s` 替换为新版本）
-- `tag?`：`boolean | string`
-- `push?`：是否推送（默认 `true`）
-- `all?`：`git commit --all`
-- `confirm?`：交互确认（默认 `true`）
-- `skipGitVerify?`：`--no-verify`
-- `cwd?`：工作目录
-- `ignoreScripts?`：忽略 version 生命周期脚本
-- `execute?`：bump 后、commit 前执行的 shell 命令
-- `scopeName?`：Monorepo 子包 npm 名
-- `recursive?`：递归 bump 子 package.json
+- `CONFIG_DEFAULT_NAME`：`'releasex'`
+- `releaseVersionDefaultConfig`、`getReleaseVersionDefaultConfig`（返回副本，供调用方安全修改）
+- `loadReleaseVersionConfig`：`loadCliConfig` 合并用户配置与默认项（与 changelog 同构）
+- `parseReleaseVersionCliOptions`：`mergeCommanderConfig` 以空对象为 merge 目标，不污染默认常量
+- `defineReleaseXConfig`
 
-### `VersionBumpResults`
+### CLI 通用选项（与 `fa` / `changelog` 一致）
 
-- `release?`、`currentVersion`、`newVersion`、`commit`、`tag`
+- `fa release -h`：fairy-cli `registerFairySubcommand` → 业务参数 → `--dry-run` / `--vip` → `--help`
+- `releasex -h`：`registerStandalone` + `parseAsync` → 业务参数 → `--dry-run` / `--vip` / `--trace` → `--help`（+ `--version`）
 
-### `VersionHooksEnum`
-
-- `PreVersion` → `'preversion'`
-- `Version` → `'version'`
-- `PostVersion` → `'postversion'`
-
-### `VersionProgressEventEnum`
-
-- `GitCommit`、`GitTag`、`GitPush`、`NpmScript`
-
-### CLI（`release-version-cli.ts`）
+### CLI（`releasex-cli.ts`）
 
 ```text
-bumpx [...files] [options]
+releasex [options]   # 别名 release
 
 选项：
-  --preid <preid>              预发布标记（默认 alpha）
-  --all                        Include all files（默认 bumpConfigDefaults.all）
-  -c, --commit                 提交信息，可跳过 commit（默认 true）
-  -t, --tag                    标签名，可跳过 tag（默认 false）
-  -p, --push                   推送到远程（默认 bumpConfigDefaults.push）
-  -y, --confirm                跳过确认（默认 bumpConfigDefaults.confirm）
-  -r, --recursive              递归 bump package.json（默认 false）
-  --skip-git-verify            跳过 git 钩子
-  --ignore-scripts             忽略 scripts（默认 false）
-  --changelog                  生成 CHANGELOG.md（默认 false）
+  --preid <preid>              预发布标识（默认 alpha）
+  --all                        git commit --all
+  -c, --commit [message]       创建 commit（默认开启）
+  -t, --tag [name]             创建 tag（默认开启）
+  -p, --push                   推送远程（默认 true）
+  -y, --yes                    跳过发版前确认
+  -r, --recursive              递归更新子 package.json
+  --skip-git-verify            git commit --no-verify
+  --ignore-scripts             忽略 lifecycle 脚本
+  --changelog                  生成 CHANGELOG.md
   --current-version <version>  指定当前版本
-  -x, --execute <command>      bump 后执行的命令
-  --scopeName <scopeName>      Monorepo 包名
+  -x, --execute <command>      升版本后执行命令
+  --scopeName <scopeName>      Monorepo 子包名
   --dry-run                    试运行
-  --vip                        @142vip 组织专用（声明项）
-  --logger                     日志追踪
+  --vip                        @142vip 专用声明
+  --trace                      日志追踪（VipCommander）
 ```
 
-配置合并：`vipConfig.loadCliConfig('bumpx', bumpConfigDefaults)` + `mergeCommanderConfig`。
+### `releaseVersionDefaultConfig`
 
-### `bumpConfigDefaults`
-
-- `commit: true`
-- `push: true`
-- `tag: true`
-- `recursive: false`
-- `skipGitVerify: false`
-- `confirm: true`
-- `ignoreScripts: false`
-- `all: false`
+- `commit: true`、`push: true`、`tag: true`、`confirm: true`
+- `recursive: false`、`skipGitVerify: false`、`ignoreScripts: false`、`all: false`
 
 ## 配置
 
 ### 用户配置文件
 
-- 文件名：`bumpx`（`CONFIG_DEFAULT_NAME`）
-- 自定义：`defineBumpXConfig(partial)`
+- 文件名：`releasex`（`CONFIG_DEFAULT_NAME`）
+- 自定义：`defineReleaseXConfig(partial)`
 
 ### 与 fairy-cli 集成
 
-`releasePackage` 典型参数：
+`releasePackage` 典型参数（`buildReleaseVersionOptions`）：
 
-- `preid: 'alpha'`
-- `changelog: true`
+- `preid: 'alpha'`、`changelog: true`、`confirm: false`
 - `commit: 'release(@pkg): publish \`v%s\`' | 'chore(release): publish v%s'`
-- `execute: 'git add CHANGELOG.md'`
-- `push: true`、`all: true`、`skipGitVerify: true`
+- `execute: 'git add CHANGELOG.md'`、`push: true`、`all: true`、`skipGitVerify: true`
 - 子包：`scopeName`、`tag: false`、`cwd`
+
+## 升级（自旧版）
+
+| 旧 | 新 |
+|----|-----|
+| `versionBump` | `releaseVersion` |
+| `versionRelease` | `releaseVersion` |
+| `ReleaseOperation` | `ReleaseVersionOperation` |
+| `VersionReleaseOptions` | `ReleaseVersionOptions` |
+| `buildVersionReleaseOptions` | `buildReleaseVersionOptions` |
 
 ## 最佳实践
 
-- 日常发版用 `pnpm release` / `fa release`，由工具生成 commit message（`release(@142vip/xxx): publish \`vX.Y.Z\``）以触发 CD
-- 子包与根版本分开发：`tag: false` 打包子包，`tag: true` 打根 `chore(release)`
-- `confirm: true` 时发版前会交互确认 bump 摘要
-- `execute` 常用于 `git add CHANGELOG.md`，与 `changelog: true` 联用
-- 试运行：`versionBumpDryRun` 或 CLI `--dry-run`
+- 日常发版用 `pnpm release` / `fa release`
+- 子包与根版本分开发：`tag: false` 打包子包，`tag: true` 打根仓库
+- `confirm: false` 或 CLI `-y` 用于 CI / `fa release` 无交互场景
+- `execute` 常与 `changelog: true` 联用：`git add CHANGELOG.md`
+- 试运行：`--dry-run` 或 `releasePackage({ dryRun: true })`
+- 需要细粒度控制时直接 `ReleaseVersionOperation.create()` 分步调用
 
 ## 构建
-
-`unbuild` 双格式
 
 ```shell
 cd packages/release-version && pnpm build
 ```
 
+unbuild 双入口：`src/index`、`src/releasex-cli`。
+
 ## 验证
 
 ```shell
-cd packages/release-version && pnpm build && pnpm typecheck
 cd packages/release-version && pnpm test
-pnpm check:release    # 根目录
+cd packages/release-version && pnpm build && pnpm typecheck
 ```
+
+测试与源码对应：
+
+- `test/release-version-operation.spec.ts` → `core/releasex-operation.ts`
+- `test/release-version.api.spec.ts` → `core/releasex.api.ts`
+- `test/config.spec.ts` → `config.ts`
 
 ## 演示
 

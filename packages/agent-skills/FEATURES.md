@@ -86,7 +86,7 @@ vip-agent-skills [options]
 
 ## 最佳实践
 
-- 改 Skill 内容只改 `packages/agent-skills/skills/**`，再 `fa ai sync` 或 `vip-agent-skills --target .` 刷新下游 `.agents/skills/`
+- 改 Skill 内容只改 `packages/agent-skills/skills/**`，再 `fa ai` 或 `vip-agent-skills --target .` 刷新下游 `.agents/skills/`
 - CI 防漂移：`vip-agent-skills --check --target .`，不一致 exit 1
 - 下游业务 skill 放 `business-map/`，同步逻辑永不触碰
 - 程序化集成优先 `syncAgentSkills`，CLI 与 `fa ai` 共用同一实现
@@ -115,4 +115,4 @@ pnpm exec vip-agent-skills --target . --check
 
 ## 演示
 
-core-x 本仓：`.agents/skills/` 为 `fa ai sync` 生成的下游镜像；真源在 `packages/agent-skills/skills/`。
+本 monorepo：`.agents/skills/` 为 `fa ai` 生成的下游镜像；真源在 `packages/agent-skills/skills/`。

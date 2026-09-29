@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.26 (2026-09-29)
+
+### 💅 Refactors
+
+- 接入统一 CLI 错误展示与版本横幅 &nbsp;-&nbsp; by **chufan** [<samp>(403fd)</samp>](https://github.com/142vip/core-x/commit/403fd6fb)
+
+**Release New Version v0.0.1-alpha.26 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/changelog)**
+
+## v0.0.1-alpha.25 (2026-09-28)
+
+### 🐛 Bug Fixes
+
+- 修复 GitHub Release 422（预发布推断与 PATCH `make_latest`） &nbsp;-&nbsp; by **chufan** [<samp>(6d384)</samp>](https://github.com/142vip/core-x/commit/6d38402f)
+
+**Release New Version v0.0.1-alpha.25 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/changelog)**
+
+## v0.0.1-alpha.24 (2026-09-28)
+
+### 💅 Refactors
+
+- API 迁入 `core/apis` 并合并类型与配置 &nbsp;-&nbsp; by **chufan** [<samp>(7a8ff)</samp>](https://github.com/142vip/core-x/commit/7a8ff426)
+- `changelogCliMain` 与 `bin/changelog.cjs` 直连并补充 Jest &nbsp;-&nbsp; by **chufan** [<samp>(74f44)</samp>](https://github.com/142vip/core-x/commit/74f44507)
+
+**Release New Version v0.0.1-alpha.24 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/changelog)**
+
 ## v0.0.1-alpha.23 (2025-12-05)
 
 ### ✨ Features

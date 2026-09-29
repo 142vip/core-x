@@ -4,16 +4,16 @@ import type { Component, VNode } from 'vue'
 import type { VipHomeTableConfig } from '../core'
 import { VipBackTop, VipFooter } from '@142vip/vue/components'
 import { setupVipAppBuildLog } from '@142vip/vue/utils'
-import { ElIcon, ElImage, ElLink, ElSpace, ElTable, ElTableColumn, ElTag } from 'element-plus'
 import { useData } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
-import { defineComponent, h } from 'vue'
-import { VipMermaid } from '../components'
-import VipHomePage from '../components/VipHomePage.vue'
+import { defineAsyncComponent, defineComponent, h } from 'vue'
 import { useVipFooter } from './composables/use-vip-footer'
 // VitePress 在 html 上切换 .dark；需一并加载 EP 暗黑变量，表格/链接等才会跟随主题
 import 'element-plus/theme-chalk/dark/css-vars.css'
 import '../vip-theme.css'
+
+const VipHomePage = defineAsyncComponent(() => import('../components/VipHomePage.vue'))
+const VipMermaid = defineAsyncComponent(() => import('../components/VipMermaid.vue'))
 
 /**
  * vitepress默认主题
@@ -86,8 +86,9 @@ function flattenSlotNodes(nodes: VNode | VNode[] | null | undefined): VNode[] {
 }
 
 /**
- * 集成vitepress的默认主题，自定义拓展
- * - Element Plus 基础组件 + 暗黑变量
+ * 集成 vitepress 的默认主题，自定义拓展
+ * - Element Plus：内置 Vue 组件内按需 import；主题仅全局引入 EP 暗黑 CSS 变量
+ * - `VipHomePage` / `VipMermaid` 异步加载，减轻普通文档页首包
  * - 全局页脚（`enableVipFooter` + `@142vip/vue` `VipFooter`；`showBackTop` 挂载 `VipBackTop`）
  * - Mermaid（需在 defineVipVitepressConfig 第二参数启用）
  * - 参考：https://vitepress.dev/guide/extending-default-theme#layout-slots
@@ -166,14 +167,6 @@ export default function defineVipExtendsTheme(
     enhanceApp: ({ app }: EnhanceAppContext) => {
       setupVipAppBuildLog()
 
-      // element-plus 2.13+ 的 component() 重载需显式传入组件名
-      app.component('ElIcon', ElIcon)
-      app.component('ElImage', ElImage)
-      app.component('ElLink', ElLink)
-      app.component('ElSpace', ElSpace)
-      app.component('ElTable', ElTable)
-      app.component('ElTableColumn', ElTableColumn)
-      app.component('ElTag', ElTag)
       // Mermaid 组件（配合 defineVipVitepressConfig(..., { mermaid: true })）
       app.component('VipMermaid', VipMermaid)
     },

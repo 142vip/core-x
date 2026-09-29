@@ -4,7 +4,15 @@
 
 ## 枚举
 
+- [ChangelogReferenceDisplay](enumerations/ChangelogReferenceDisplay.md)
 - [GitCommitMessageType](enumerations/GitCommitMessageType.md)
+
+## 类
+
+- [ChangelogApi](classes/ChangelogApi.md)
+- [GitCommitAPI](classes/GitCommitAPI.md)
+- [GithubAPI](classes/GithubAPI.md)
+- [MarkdownAPI](classes/MarkdownAPI.md)
 
 ## 接口
 
@@ -21,16 +29,20 @@
 
 ## 变量
 
-- [ChangelogAPI](variables/ChangelogAPI.md)
+- [CHANGELOG\_COMMAND\_DETAIL](variables/CHANGELOG_COMMAND_DETAIL.md)
+- [changelogApi](variables/changelogApi.md)
+- [changelogCommandRegistration](variables/changelogCommandRegistration.md)
 - [ChangelogDefaultConfig](variables/ChangelogDefaultConfig.md)
 - [CONFIG\_DEFAULT\_HEADER](variables/CONFIG_DEFAULT_HEADER.md)
 - [CONFIG\_DEFAULT\_NAME](variables/CONFIG_DEFAULT_NAME.md)
-- [GitCommitAPI](variables/GitCommitAPI.md)
-- [GithubAPI](variables/GithubAPI.md)
-- [MarkdownAPI](variables/MarkdownAPI.md)
+- [gitCommitAPI](variables/gitCommitAPI.md)
+- [githubAPI](variables/githubAPI.md)
+- [markdownAPI](variables/markdownAPI.md)
 
 ## 函数
 
+- [changelogCliMain](functions/changelogCliMain.md)
 - [defineChangelogConfig](functions/defineChangelogConfig.md)
 - [loadChangelogConfig](functions/loadChangelogConfig.md)
 - [parseCliOptions](functions/parseCliOptions.md)
+- [runChangelogCli](functions/runChangelogCli.md)

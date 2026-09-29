@@ -1,0 +1,47 @@
+[API 参考](../../../index.md) / [@142vip/nest-typeorm](../index.md) / TopologyDescriptionChangedEvent
+
+# 类: TopologyDescriptionChangedEvent
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:4991
+
+Emitted when topology description changes.
+
+## 构造函数
+
+### 构造函数
+
+> **new TopologyDescriptionChangedEvent**(): `TopologyDescriptionChangedEvent`
+
+#### 返回
+
+`TopologyDescriptionChangedEvent`
+
+## 属性
+
+### newDescription
+
+> **newDescription**: [`TopologyDescription`](TopologyDescription.md)
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:4997
+
+The new topology description
+
+***
+
+### previousDescription
+
+> **previousDescription**: [`TopologyDescription`](TopologyDescription.md)
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:4995
+
+The old topology description
+
+***
+
+### topologyId
+
+> **topologyId**: `number`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/driver/mongodb/typings.d.ts:4993
+
+A unique identifier for the topology

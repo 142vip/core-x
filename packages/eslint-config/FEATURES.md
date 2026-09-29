@@ -4,7 +4,7 @@
 
 ## 定位
 
-基于 [@antfu/eslint-config](https://github.com/antfu/eslint-config) 的仓库统一 ESLint Flat Config 封装。根 `eslint.config.js` 通过 `defineVipEslintConfig` 加载；对 Markdown 内嵌代码块单独降级规则，避免教学示例误报。
+基于 [@antfu/eslint-config](https://github.com/antfu/eslint-config) 的仓库统一 ESLint Flat Config 封装。core-x 经 `fa lint` 加载 `@142vip/fairy-cli` 内置配置；对 Markdown 内嵌代码块单独降级规则，避免教学示例误报。
 
 ## 功能
 
@@ -57,17 +57,17 @@
 
 ## 配置
 
-### 根仓库用法
+### core-x 根仓库用法
+
+全仓 `fa lint` / `pnpm lint:fix` 使用 `@142vip/fairy-cli` 的 `config/default-eslint.config.mjs`（本包 `defineVipEslintConfig`）。无根目录 `eslint.config.js`。
+
+其它项目仍可自建配置文件：
 
 ```js
-// eslint.config.js
 import { defineVipEslintConfig } from '@142vip/eslint-config'
 
 export default defineVipEslintConfig({
-  // 可覆盖 defaultEslintConfig，例如 markdown: false
-  rules: {
-    // 追加或覆盖规则
-  },
+  rules: { /* … */ },
 })
 ```
 
@@ -82,8 +82,8 @@ export default defineVipEslintConfig({
 
 - 业务 `.ts` / `.vue` 保持严格规则；仅 Markdown 内嵌示例享受 overrides
 - 需要关闭 markdown 处理：`defineVipEslintConfig({ markdown: false })`
-- Nest 包 DI：根 `eslint.config.js` 已关闭 `ts/consistent-type-imports`（Injectable 须值导入）
-- 修改默认规则时同步检查根 `pre-commit` 钩子 `pnpm lint:fix` 影响面
+- Nest 包 DI：`fairy-cli` 默认配置已关闭 `ts/consistent-type-imports`（Injectable 须值导入）
+- 修改默认规则时同步检查根 `pre-commit` 钩子 `npx fa lint --fix` 影响面
 - 勿在 overrides 中扩大 `files` 到业务源码，避免全局降级
 
 ## 构建
@@ -104,4 +104,4 @@ pnpm lint:fix      # pre-commit 钩子
 
 ## 演示
 
-无独立 demo；全仓 `eslint.config.js` 为本包唯一消费方。
+无独立 demo；core-x 通过 `fa lint` 内置配置消费本包。

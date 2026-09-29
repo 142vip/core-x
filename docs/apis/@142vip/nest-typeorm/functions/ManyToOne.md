@@ -1,0 +1,67 @@
+[API 参考](../../../index.md) / [@142vip/nest-typeorm](../index.md) / ManyToOne
+
+# 函数: ManyToOne()
+
+## 调用签名
+
+> **ManyToOne**\<`T`\>(`typeFunctionOrTarget`, `options?`): `PropertyDecorator`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/decorator/relations/ManyToOne.d.ts:8
+
+A many-to-one relation allows creating the type of relation where Entity1 can have a single instance of Entity2, but
+Entity2 can have multiple instances of Entity1. Entity1 is the owner of the relationship, and stores the id of
+Entity2 on its side of the relation.
+
+### 类型参数
+
+#### T
+
+`T`
+
+### 参数
+
+#### typeFunctionOrTarget
+
+`string` \| ((`type?`) => [`ObjectType`](../type-aliases/ObjectType.md)\<`T`\>)
+
+#### options?
+
+[`RelationOptions`](../interfaces/RelationOptions.md)
+
+### 返回
+
+`PropertyDecorator`
+
+## 调用签名
+
+> **ManyToOne**\<`T`\>(`typeFunctionOrTarget`, `inverseSide?`, `options?`): `PropertyDecorator`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/decorator/relations/ManyToOne.d.ts:14
+
+A many-to-one relation allows creating the type of relation where Entity1 can have a single instance of Entity2, but
+Entity2 can have multiple instances of Entity1. Entity1 is the owner of the relationship, and stores the id of
+Entity2 on its side of the relation.
+
+### 类型参数
+
+#### T
+
+`T`
+
+### 参数
+
+#### typeFunctionOrTarget
+
+`string` \| ((`type?`) => [`ObjectType`](../type-aliases/ObjectType.md)\<`T`\>)
+
+#### inverseSide?
+
+`string` \| ((`object`) => `any`)
+
+#### options?
+
+[`RelationOptions`](../interfaces/RelationOptions.md)
+
+### 返回
+
+`PropertyDecorator`

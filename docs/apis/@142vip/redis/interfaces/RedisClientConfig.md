@@ -2,7 +2,7 @@
 
 # 接口: RedisClientConfig
 
-定义于: [packages/redis/src/core/redis.interface.ts:18](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/redis/src/core/redis.interface.ts#L18)
+定义于: [packages/redis/src/core/redis.interface.ts:18](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/redis/src/core/redis.interface.ts#L18)
 
 单机、哨兵配置
 
@@ -18,7 +18,7 @@
 
 ### autoPipeliningIgnoredCommands?
 
-> `optional` **autoPipeliningIgnoredCommands**: `string`[]
+> `optional` **autoPipeliningIgnoredCommands?**: `string`[]
 
 定义于: node\_modules/.pnpm/ioredis@5.6.0/node\_modules/ioredis/built/redis/RedisOptions.d.ts:132
 
@@ -36,7 +36,7 @@
 
 ### autoResendUnfulfilledCommands?
 
-> `optional` **autoResendUnfulfilledCommands**: `boolean`
+> `optional` **autoResendUnfulfilledCommands?**: `boolean`
 
 定义于: node\_modules/.pnpm/ioredis@5.6.0/node\_modules/ioredis/built/redis/RedisOptions.d.ts:65
 
@@ -57,7 +57,7 @@ true
 
 ### autoResubscribe?
 
-> `optional` **autoResubscribe**: `boolean`
+> `optional` **autoResubscribe?**: `boolean`
 
 定义于: node\_modules/.pnpm/ioredis@5.6.0/node\_modules/ioredis/built/redis/RedisOptions.d.ts:59
 
@@ -78,7 +78,7 @@ true
 
 ### commandQueue?
 
-> `optional` **commandQueue**: `boolean`
+> `optional` **commandQueue?**: `boolean`
 
 定义于: node\_modules/.pnpm/ioredis@5.6.0/node\_modules/ioredis/built/redis/RedisOptions.d.ts:134
 
@@ -90,7 +90,7 @@ true
 
 ### commandTimeout?
 
-> `optional` **commandTimeout**: `number`
+> `optional` **commandTimeout?**: `number`
 
 定义于: node\_modules/.pnpm/ioredis@5.6.0/node\_modules/ioredis/built/redis/RedisOptions.d.ts:13
 
@@ -105,7 +105,7 @@ a "Command timed out" error will be thrown.
 
 ### connectionName?
 
-> `optional` **connectionName**: `string`
+> `optional` **connectionName?**: `string`
 
 定义于: node\_modules/.pnpm/ioredis@5.6.0/node\_modules/ioredis/built/redis/RedisOptions.d.ts:38
 
@@ -124,7 +124,7 @@ https://redis.io/commands/client-setname
 
 ### Connector?
 
-> `optional` **Connector**: `ConnectorConstructor`
+> `optional` **Connector?**: `ConnectorConstructor`
 
 定义于: node\_modules/.pnpm/ioredis@5.6.0/node\_modules/ioredis/built/redis/RedisOptions.d.ts:7
 
@@ -136,7 +136,7 @@ https://redis.io/commands/client-setname
 
 ### connectTimeout?
 
-> `optional` **connectTimeout**: `number`
+> `optional` **connectTimeout?**: `number`
 
 定义于: node\_modules/.pnpm/ioredis@5.6.0/node\_modules/ioredis/built/redis/RedisOptions.d.ts:102
 
@@ -156,7 +156,7 @@ How long the client will wait before killing a socket due to inactivity during i
 
 ### db?
 
-> `optional` **db**: `number`
+> `optional` **db?**: `number`
 
 定义于: node\_modules/.pnpm/ioredis@5.6.0/node\_modules/ioredis/built/redis/RedisOptions.d.ts:53
 
@@ -176,7 +176,7 @@ Database index to use.
 
 ### disconnectTimeout?
 
-> `optional` **disconnectTimeout**: `number`
+> `optional` **disconnectTimeout?**: `number`
 
 定义于: node\_modules/.pnpm/ioredis@5.6.0/node\_modules/ioredis/built/connectors/SentinelConnector/index.d.ts:41
 
@@ -188,7 +188,7 @@ Database index to use.
 
 ### enableAutoPipelining?
 
-> `optional` **enableAutoPipelining**: `boolean`
+> `optional` **enableAutoPipelining?**: `boolean`
 
 定义于: node\_modules/.pnpm/ioredis@5.6.0/node\_modules/ioredis/built/redis/RedisOptions.d.ts:128
 
@@ -206,7 +206,7 @@ false
 
 ### enableOfflineQueue?
 
-> `optional` **enableOfflineQueue**: `boolean`
+> `optional` **enableOfflineQueue?**: `boolean`
 
 定义于: node\_modules/.pnpm/ioredis@5.6.0/node\_modules/ioredis/built/redis/RedisOptions.d.ts:145
 
@@ -230,7 +230,7 @@ true
 
 ### enableReadyCheck?
 
-> `optional` **enableReadyCheck**: `boolean`
+> `optional` **enableReadyCheck?**: `boolean`
 
 定义于: node\_modules/.pnpm/ioredis@5.6.0/node\_modules/ioredis/built/redis/RedisOptions.d.ts:153
 
@@ -252,7 +252,7 @@ true
 
 ### enableTLSForSentinelMode?
 
-> `optional` **enableTLSForSentinelMode**: `boolean`
+> `optional` **enableTLSForSentinelMode?**: `boolean`
 
 定义于: node\_modules/.pnpm/ioredis@5.6.0/node\_modules/ioredis/built/connectors/SentinelConnector/index.d.ts:43
 
@@ -264,7 +264,7 @@ true
 
 ### failoverDetector?
 
-> `optional` **failoverDetector**: `boolean`
+> `optional` **failoverDetector?**: `boolean`
 
 定义于: node\_modules/.pnpm/ioredis@5.6.0/node\_modules/ioredis/built/connectors/SentinelConnector/index.d.ts:51
 
@@ -276,7 +276,7 @@ true
 
 ### family?
 
-> `optional` **family**: `number`
+> `optional` **family?**: `number`
 
 定义于: node\_modules/.pnpm/@types+node@22.10.7/node\_modules/@types/node/net.d.ts:55
 
@@ -288,7 +288,7 @@ true
 
 ### host?
 
-> `optional` **host**: `string`
+> `optional` **host?**: `string`
 
 定义于: node\_modules/.pnpm/@types+node@22.10.7/node\_modules/@types/node/net.d.ts:51
 
@@ -300,7 +300,7 @@ true
 
 ### keepAlive?
 
-> `optional` **keepAlive**: `number`
+> `optional` **keepAlive?**: `number`
 
 定义于: node\_modules/.pnpm/ioredis@5.6.0/node\_modules/ioredis/built/redis/RedisOptions.d.ts:26
 
@@ -324,7 +324,7 @@ https://nodejs.org/api/net.html#socketsetkeepaliveenable-initialdelay
 
 ### keyPrefix?
 
-> `optional` **keyPrefix**: `string`
+> `optional` **keyPrefix?**: `string`
 
 定义于: node\_modules/.pnpm/ioredis@5.6.0/node\_modules/ioredis/built/utils/Commander.d.ts:5
 
@@ -336,7 +336,7 @@ https://nodejs.org/api/net.html#socketsetkeepaliveenable-initialdelay
 
 ### lazyConnect?
 
-> `optional` **lazyConnect**: `boolean`
+> `optional` **lazyConnect?**: `boolean`
 
 定义于: node\_modules/.pnpm/ioredis@5.6.0/node\_modules/ioredis/built/redis/RedisOptions.d.ts:161
 
@@ -358,7 +358,7 @@ false
 
 ### maxLoadingRetryTime?
 
-> `optional` **maxLoadingRetryTime**: `number`
+> `optional` **maxLoadingRetryTime?**: `number`
 
 定义于: node\_modules/.pnpm/ioredis@5.6.0/node\_modules/ioredis/built/redis/RedisOptions.d.ts:124
 
@@ -376,7 +376,7 @@ false
 
 ### maxRetriesPerRequest?
 
-> `optional` **maxRetriesPerRequest**: `null` \| `number`
+> `optional` **maxRetriesPerRequest?**: `number` \| `null`
 
 定义于: node\_modules/.pnpm/ioredis@5.6.0/node\_modules/ioredis/built/redis/RedisOptions.d.ts:120
 
@@ -401,7 +401,7 @@ until the connection is alive again.
 
 ### monitor?
 
-> `optional` **monitor**: `boolean`
+> `optional` **monitor?**: `boolean`
 
 定义于: node\_modules/.pnpm/ioredis@5.6.0/node\_modules/ioredis/built/redis/RedisOptions.d.ts:109
 
@@ -422,7 +422,7 @@ false
 
 ### name?
 
-> `optional` **name**: `string`
+> `optional` **name?**: `string`
 
 定义于: node\_modules/.pnpm/ioredis@5.6.0/node\_modules/ioredis/built/connectors/SentinelConnector/index.d.ts:28
 
@@ -436,7 +436,7 @@ Master group name of the Sentinel
 
 ### natMap?
 
-> `optional` **natMap**: `NatMap`
+> `optional` **natMap?**: `NatMap`
 
 定义于: node\_modules/.pnpm/ioredis@5.6.0/node\_modules/ioredis/built/connectors/SentinelConnector/index.d.ts:45
 
@@ -448,7 +448,7 @@ Master group name of the Sentinel
 
 ### noDelay?
 
-> `optional` **noDelay**: `boolean`
+> `optional` **noDelay?**: `boolean`
 
 定义于: node\_modules/.pnpm/ioredis@5.6.0/node\_modules/ioredis/built/redis/RedisOptions.d.ts:32
 
@@ -472,7 +472,7 @@ true
 
 ### offlineQueue?
 
-> `optional` **offlineQueue**: `boolean`
+> `optional` **offlineQueue?**: `boolean`
 
 定义于: node\_modules/.pnpm/ioredis@5.6.0/node\_modules/ioredis/built/redis/RedisOptions.d.ts:133
 
@@ -484,7 +484,7 @@ true
 
 ### password?
 
-> `optional` **password**: `string`
+> `optional` **password?**: `string`
 
 定义于: node\_modules/.pnpm/ioredis@5.6.0/node\_modules/ioredis/built/redis/RedisOptions.d.ts:47
 
@@ -498,7 +498,7 @@ If set, client will send AUTH command with the value of this option when connect
 
 ### path?
 
-> `optional` **path**: `string`
+> `optional` **path?**: `string`
 
 定义于: node\_modules/.pnpm/@types+node@22.10.7/node\_modules/@types/node/net.d.ts:70
 
@@ -510,7 +510,7 @@ If set, client will send AUTH command with the value of this option when connect
 
 ### port?
 
-> `optional` **port**: `number`
+> `optional` **port?**: `number`
 
 定义于: node\_modules/.pnpm/@types+node@22.10.7/node\_modules/@types/node/net.d.ts:50
 
@@ -522,7 +522,7 @@ If set, client will send AUTH command with the value of this option when connect
 
 ### preferredSlaves?
 
-> `optional` **preferredSlaves**: `PreferredSlaves`
+> `optional` **preferredSlaves?**: `PreferredSlaves`
 
 定义于: node\_modules/.pnpm/ioredis@5.6.0/node\_modules/ioredis/built/connectors/SentinelConnector/index.d.ts:39
 
@@ -534,7 +534,7 @@ If set, client will send AUTH command with the value of this option when connect
 
 ### readOnly?
 
-> `optional` **readOnly**: `boolean`
+> `optional` **readOnly?**: `boolean`
 
 定义于: node\_modules/.pnpm/ioredis@5.6.0/node\_modules/ioredis/built/redis/RedisOptions.d.ts:91
 
@@ -552,7 +552,7 @@ false
 
 ### reconnectOnError?
 
-> `optional` **reconnectOnError**: `null` \| `ReconnectOnError`
+> `optional` **reconnectOnError?**: `ReconnectOnError` \| `null`
 
 定义于: node\_modules/.pnpm/ioredis@5.6.0/node\_modules/ioredis/built/redis/RedisOptions.d.ts:87
 
@@ -589,9 +589,9 @@ null
 
 ***
 
-### retryStrategy()?
+### retryStrategy?
 
-> `optional` **retryStrategy**: (`times`) => `null` \| `number` \| `void`
+> `optional` **retryStrategy?**: (`times`) => `number` \| `void` \| `null`
 
 定义于: node\_modules/.pnpm/ioredis@5.6.0/node\_modules/ioredis/built/redis/RedisOptions.d.ts:8
 
@@ -603,7 +603,7 @@ null
 
 #### 返回
 
-`null` \| `number` \| `void`
+`number` \| `void` \| `null`
 
 #### 继承自
 
@@ -613,7 +613,7 @@ null
 
 ### role?
 
-> `optional` **role**: `"master"` \| `"slave"`
+> `optional` **role?**: `"master"` \| `"slave"`
 
 定义于: node\_modules/.pnpm/ioredis@5.6.0/node\_modules/ioredis/built/connectors/SentinelConnector/index.d.ts:32
 
@@ -631,7 +631,7 @@ null
 
 ### scripts?
 
-> `optional` **scripts**: `Record`\<`string`, \{ `lua`: `string`; `numberOfKeys?`: `number`; `readOnly?`: `boolean`; \}\>
+> `optional` **scripts?**: `Record`\<`string`, \{ `lua`: `string`; `numberOfKeys?`: `number`; `readOnly?`: `boolean`; \}\>
 
 定义于: node\_modules/.pnpm/ioredis@5.6.0/node\_modules/ioredis/built/redis/RedisOptions.d.ts:165
 
@@ -649,7 +649,7 @@ undefined
 
 ### sentinelCommandTimeout?
 
-> `optional` **sentinelCommandTimeout**: `number`
+> `optional` **sentinelCommandTimeout?**: `number`
 
 定义于: node\_modules/.pnpm/ioredis@5.6.0/node\_modules/ioredis/built/connectors/SentinelConnector/index.d.ts:42
 
@@ -661,7 +661,7 @@ undefined
 
 ### sentinelMaxConnections?
 
-> `optional` **sentinelMaxConnections**: `number`
+> `optional` **sentinelMaxConnections?**: `number`
 
 定义于: node\_modules/.pnpm/ioredis@5.6.0/node\_modules/ioredis/built/connectors/SentinelConnector/index.d.ts:50
 
@@ -679,7 +679,7 @@ undefined
 
 ### sentinelPassword?
 
-> `optional` **sentinelPassword**: `string`
+> `optional` **sentinelPassword?**: `string`
 
 定义于: node\_modules/.pnpm/ioredis@5.6.0/node\_modules/ioredis/built/connectors/SentinelConnector/index.d.ts:35
 
@@ -689,9 +689,9 @@ undefined
 
 ***
 
-### sentinelReconnectStrategy()?
+### sentinelReconnectStrategy?
 
-> `optional` **sentinelReconnectStrategy**: (`retryAttempts`) => `null` \| `number` \| `void`
+> `optional` **sentinelReconnectStrategy?**: (`retryAttempts`) => `number` \| `void` \| `null`
 
 定义于: node\_modules/.pnpm/ioredis@5.6.0/node\_modules/ioredis/built/connectors/SentinelConnector/index.d.ts:38
 
@@ -703,7 +703,7 @@ undefined
 
 #### 返回
 
-`null` \| `number` \| `void`
+`number` \| `void` \| `null`
 
 #### 继承自
 
@@ -711,9 +711,9 @@ undefined
 
 ***
 
-### sentinelRetryStrategy()?
+### sentinelRetryStrategy?
 
-> `optional` **sentinelRetryStrategy**: (`retryAttempts`) => `null` \| `number` \| `void`
+> `optional` **sentinelRetryStrategy?**: (`retryAttempts`) => `number` \| `void` \| `null`
 
 定义于: node\_modules/.pnpm/ioredis@5.6.0/node\_modules/ioredis/built/connectors/SentinelConnector/index.d.ts:37
 
@@ -725,7 +725,7 @@ undefined
 
 #### 返回
 
-`null` \| `number` \| `void`
+`number` \| `void` \| `null`
 
 #### 继承自
 
@@ -735,7 +735,7 @@ undefined
 
 ### sentinels?
 
-> `optional` **sentinels**: `Partial`\<`SentinelAddress`\>[]
+> `optional` **sentinels?**: `Partial`\<`SentinelAddress`\>[]
 
 定义于: node\_modules/.pnpm/ioredis@5.6.0/node\_modules/ioredis/built/connectors/SentinelConnector/index.d.ts:36
 
@@ -747,7 +747,7 @@ undefined
 
 ### sentinelTLS?
 
-> `optional` **sentinelTLS**: `ConnectionOptions`
+> `optional` **sentinelTLS?**: `ConnectionOptions`
 
 定义于: node\_modules/.pnpm/ioredis@5.6.0/node\_modules/ioredis/built/connectors/SentinelConnector/index.d.ts:44
 
@@ -759,7 +759,7 @@ undefined
 
 ### sentinelUsername?
 
-> `optional` **sentinelUsername**: `string`
+> `optional` **sentinelUsername?**: `string`
 
 定义于: node\_modules/.pnpm/ioredis@5.6.0/node\_modules/ioredis/built/connectors/SentinelConnector/index.d.ts:34
 
@@ -771,7 +771,7 @@ undefined
 
 ### showFriendlyErrorStack?
 
-> `optional` **showFriendlyErrorStack**: `boolean`
+> `optional` **showFriendlyErrorStack?**: `boolean`
 
 定义于: node\_modules/.pnpm/ioredis@5.6.0/node\_modules/ioredis/built/utils/Commander.d.ts:6
 
@@ -783,7 +783,7 @@ undefined
 
 ### socketTimeout?
 
-> `optional` **socketTimeout**: `number`
+> `optional` **socketTimeout?**: `number`
 
 定义于: node\_modules/.pnpm/ioredis@5.6.0/node\_modules/ioredis/built/redis/RedisOptions.d.ts:20
 
@@ -800,7 +800,7 @@ If the socket does not receive data within a set number of milliseconds:
 
 ### stringNumbers?
 
-> `optional` **stringNumbers**: `boolean`
+> `optional` **stringNumbers?**: `boolean`
 
 定义于: node\_modules/.pnpm/ioredis@5.6.0/node\_modules/ioredis/built/redis/RedisOptions.d.ts:97
 
@@ -821,7 +821,7 @@ false
 
 ### tls?
 
-> `optional` **tls**: `ConnectionOptions`
+> `optional` **tls?**: `ConnectionOptions`
 
 定义于: node\_modules/.pnpm/ioredis@5.6.0/node\_modules/ioredis/built/connectors/SentinelConnector/index.d.ts:33
 
@@ -833,7 +833,7 @@ false
 
 ### updateSentinels?
 
-> `optional` **updateSentinels**: `boolean`
+> `optional` **updateSentinels?**: `boolean`
 
 定义于: node\_modules/.pnpm/ioredis@5.6.0/node\_modules/ioredis/built/connectors/SentinelConnector/index.d.ts:46
 
@@ -845,15 +845,15 @@ false
 
 ### url?
 
-> `optional` **url**: `string`
+> `optional` **url?**: `string`
 
-定义于: [packages/redis/src/core/redis.interface.ts:19](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/redis/src/core/redis.interface.ts#L19)
+定义于: [packages/redis/src/core/redis.interface.ts:19](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/redis/src/core/redis.interface.ts#L19)
 
 ***
 
 ### username?
 
-> `optional` **username**: `string`
+> `optional` **username?**: `string`
 
 定义于: node\_modules/.pnpm/ioredis@5.6.0/node\_modules/ioredis/built/redis/RedisOptions.d.ts:43
 

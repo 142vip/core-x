@@ -2,7 +2,9 @@
 
 # 接口: GenerateChangelogResult
 
-定义于: [changelog/src/enums/changelog.interface.ts:67](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/changelog/src/enums/changelog.interface.ts#L67)
+定义于: [changelog/src/core/changelog.interface.ts:162](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L162)
+
+`generateChangelogInfo` / `writeChangelogFile` 返回值
 
 ## 属性
 
@@ -10,7 +12,9 @@
 
 > **commits**: [`Commit`](Commit.md)[]
 
-定义于: [changelog/src/enums/changelog.interface.ts:69](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/changelog/src/enums/changelog.interface.ts#L69)
+定义于: [changelog/src/core/changelog.interface.ts:166](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L166)
+
+解析后的提交列表
 
 ***
 
@@ -18,7 +22,9 @@
 
 > **config**: [`ChangelogGenerateOptions`](ChangelogGenerateOptions.md)
 
-定义于: [changelog/src/enums/changelog.interface.ts:68](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/changelog/src/enums/changelog.interface.ts#L68)
+定义于: [changelog/src/core/changelog.interface.ts:164](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L164)
+
+实际使用的生成配置
 
 ***
 
@@ -26,7 +32,9 @@
 
 > **markdown**: `string`
 
-定义于: [changelog/src/enums/changelog.interface.ts:70](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/changelog/src/enums/changelog.interface.ts#L70)
+定义于: [changelog/src/core/changelog.interface.ts:168](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L168)
+
+本次 Release 的 Markdown 正文
 
 ***
 
@@ -34,4 +42,6 @@
 
 > **releaseUrl**: `string`
 
-定义于: [changelog/src/enums/changelog.interface.ts:71](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/changelog/src/enums/changelog.interface.ts#L71)
+定义于: [changelog/src/core/changelog.interface.ts:170](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L170)
+
+手动创建 Release 的 GitHub Web URL
