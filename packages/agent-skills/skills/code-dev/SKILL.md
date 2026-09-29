@@ -444,7 +444,7 @@ pnpm install
 
 ### 下游镜像（强制 · 消费方必守）
 
-已由 `vip-agent-skills` / `fa ai --sync` 写入下游的通用 skill（`workflow` · `code-dev` · `self-check` · `commit`）：
+已由 `vip-agent-skills` / `fa ai` 写入下游的通用 skill（`workflow` · `code-dev` · `self-check` · `commit`）：
 
 | 禁止 | 应做 |
 |------|------|
