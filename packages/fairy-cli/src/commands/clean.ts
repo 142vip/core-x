@@ -1,25 +1,22 @@
-import type { VipCommander } from '@142vip/utils'
+import type { VipPackageCliCommander } from '@142vip/utils'
 import {
+  logVipCliTrace,
   VipColor,
   VipConsole,
   VipInquirer,
-  vipLogger,
   VipNodeJS,
 } from '@142vip/utils'
-import { deleteAsync } from 'del'
-import { CLI_COMMAND_DETAIL, CommandEnum } from '../enums'
+import { name, version } from '../../package.json'
+import { CommandEnum, FairyCommandOptions } from '../constant'
+import {
+  deleteByPatterns,
+  logDryRunSteps,
+  registerFairySubcommand,
+} from '../utils'
 
-/**
- * 删除配置
- */
-interface DelOptions {
-  dryRun?: boolean
-  force?: boolean
-  all?: boolean
-  logger?: boolean
-}
+const FAIRY_CLI_IDENTITY = { name, version }
 
-interface CleanUpOptions extends DelOptions {
+interface CleanOptions extends FairyCommandOptions {
   dist?: boolean
   nuxt?: boolean
   midway?: boolean
@@ -29,131 +26,108 @@ interface CleanUpOptions extends DelOptions {
   deps?: boolean
   coverage?: boolean
   gitHooks?: boolean
+  force?: boolean
+  all?: boolean
 }
 
-/**
- * 生成删除目录匹配规则
- * @param dirName 目录名
- * @param delAll 是否深度删除，子目录中的文件也会被删除
- */
-function generateDirPatterns(dirName: string | string[], delAll?: boolean): string[] {
-  let delDirs: string[] = []
+type CleanTargetKey = Exclude<keyof CleanOptions, keyof FairyCommandOptions | 'ignoreTips' | 'force' | 'all'>
 
-  if (typeof dirName === 'string') {
-    delDirs.push(dirName)
-  }
-  else {
-    delDirs.push(...dirName)
-  }
+const CLEAN_TARGET_RULES: ReadonlyArray<{
+  key: CleanTargetKey
+  dirs: string | string[]
+}> = [
+  { key: 'deps', dirs: 'node_modules' },
+  { key: 'dist', dirs: ['dist', '!node_modules/**/dist'] },
+  { key: 'nuxt', dirs: ['.nuxt', '.output'] },
+  { key: 'midway', dirs: ['run', 'logs', 'typings'] },
+  { key: 'turbo', dirs: '.turbo' },
+  { key: 'vite', dirs: '.vite' },
+  { key: 'coverage', dirs: 'coverage' },
+  { key: 'gitHooks', dirs: '.git/hooks' },
+]
+
+/**
+ * 生成删除 glob 规则（供 `fa clean` 与单测复用）
+ */
+export function generateDirPatterns(dirName: string | string[], delAll?: boolean): string[] {
+  const dirs = typeof dirName === 'string' ? [dirName] : [...dirName]
 
   if (delAll) {
-    // 删除程序上下文中所有的该目录，注意路径取反规则
-    delDirs = delDirs.map(dir => dir.startsWith('!') ? `!**/${dir.substring(1)}` : `**/${dir}`)
-  }
-  else {
-    // 只删除该目录
-    delDirs = delDirs.map(dir => `${dir}`)
+    return dirs.map(dir => (dir.startsWith('!') ? `!**/${dir.slice(1)}` : `**/${dir}`))
   }
 
-  return delDirs
+  return dirs
 }
 
-/**
- * 删除文件或文件夹
- * - 恢复项目初始状态
- */
-async function execCleanUp(args: CleanUpOptions): Promise<void> {
-  const dirPatterns: string[] = []
+function collectCleanPatterns(options: CleanOptions): string[] {
+  const patterns: string[] = []
 
-  // 删除node_modules
-  if (args.deps) {
-    dirPatterns.push(...generateDirPatterns('node_modules', args.all))
+  for (const { key, dirs } of CLEAN_TARGET_RULES) {
+    if (options[key] !== true) {
+      continue
+    }
+    patterns.push(...generateDirPatterns(dirs, options.all))
   }
 
-  // 删除各层级dist目录，注意忽略node_modules下的dist目录
-  if (args.dist) {
-    dirPatterns.push(...generateDirPatterns(['dist', '!node_modules/**/dist'], args.all))
-  }
+  return patterns
+}
 
-  // 删除nuxt构建目录，.nuxt .output
-  if (args.nuxt) {
-    dirPatterns.push(...generateDirPatterns(['.nuxt', '.output'], args.all))
-  }
-
-  // 删除midway构建目录，run logs typings
-  if (args.midway) {
-    dirPatterns.push(...generateDirPatterns(['run', 'logs', 'typings'], args.all))
-  }
-
-  // 删除turbo缓存目录
-  if (args.turbo) {
-    dirPatterns.push(...generateDirPatterns('.turbo', args.all))
-  }
-
-  // 删除vite缓存目录
-  if (args.vite) {
-    dirPatterns.push(...generateDirPatterns('.vite', args.all))
-  }
-
-  // 删除单元测试目录
-  if (args.coverage) {
-    dirPatterns.push(...generateDirPatterns('coverage', args.all))
-  }
-
-  // 删除.git/hooks目录
-  if (args.gitHooks) {
-    dirPatterns.push(...generateDirPatterns('.git/hooks', args.all))
-  }
+/** 按选项收集 glob → 确认 → 删除（或 dry-run 预览） */
+async function runClean(options: CleanOptions): Promise<void> {
+  const dirPatterns = collectCleanPatterns(options)
 
   if (dirPatterns.length === 0) {
-    vipLogger.log(VipColor.red('删除规则为空，不做删除操作处理，请传入有效参数！！'))
-    return VipNodeJS.existErrorProcess()
+    VipConsole.error(
+      `${VipColor.redBright('clean:')} 未指定删除目标，请传入 ${VipColor.cyan('--dist')}、${VipColor.cyan('--deps')} 等选项`,
+    )
+    VipNodeJS.existErrorProcess()
+    return
   }
 
-  // 删除前，对话框确认
-  if (!args.ignoreTips) {
-    const deleted = await VipInquirer.promptConfirm('是否需要删除?', true)
+  logVipCliTrace(FAIRY_CLI_IDENTITY, 'clean: 规则', { patterns: dirPatterns, all: options.all === true })
 
-    // 不删除，非0退出
-    if (!deleted) {
-      return VipNodeJS.existErrorProcess()
+  if (!options.ignoreTips && !options.dryRun) {
+    const confirmed = await VipInquirer.promptConfirm('是否删除匹配的构建产物与缓存？', true)
+    if (!confirmed) {
+      VipConsole.log(`${VipColor.yellow('clean:')} 已取消`)
+      VipNodeJS.existErrorProcess()
+      return
     }
   }
 
-  // 删除
-  const deletedDirs = await deleteAsync(dirPatterns, {
-    dryRun: args.dryRun,
-    force: args.force,
-    dot: true,
+  const deletedDirs = await deleteByPatterns(dirPatterns, {
+    dryRun: options.dryRun,
+    force: options.force,
   })
 
-  // 日志追踪
-  if (args.logger) {
-    // 需要删除的目录
-    VipConsole.trace('删除规则：', dirPatterns)
-    vipLogger.println()
-    VipConsole.trace('删除的文件和目录：', deletedDirs)
+  if (options.dryRun) {
+    logDryRunSteps('clean', [
+      `匹配规则: ${dirPatterns.join(', ')}`,
+      ...deletedDirs.map(target => `rm -rf ${target}`),
+    ])
+    return
   }
+
+  logVipCliTrace(FAIRY_CLI_IDENTITY, 'clean: 完成', { deletedCount: deletedDirs.length, deletedDirs })
+  VipConsole.log(`${VipColor.greenBright('clean:')} 已删除 ${deletedDirs.length} 项`)
 }
 
-/**
- * fairy-cli clean 项目清理
- */
-export async function cleanUpMain(program: VipCommander): Promise<void> {
-  program
-    .initCommand(CLI_COMMAND_DETAIL[CommandEnum.CLEAN])
-    .option('-n,--nuxt', '删除nuxt构建目录，包括.nuxt、.output目录', false)
-    .option('-d,--dist', '删除dist目录', false)
-    .option('-m,--midway', '删除midway构建目录', false)
-    .option('-t,--turbo', '删除turbo缓存目录', false)
-    .option('--vite', '删除vite缓存目录', false)
-    .option('--deps', '删除node_modules目录', false)
-    .option('-c,--coverage', '删除coverage目录', false)
-    .option('--git-hooks', '删除.git/hooks目录', false)
-    .option('-f,--force', '强制删除，默认值：false', false)
-    .option('-a,--all', '深度删除所有', false)
-    .option('--ignore-tips', '忽略提示，直接删除', false)
-    .action(async (args: CleanUpOptions): Promise<void> => {
-      await execCleanUp(args)
-    })
+/** `fa clean`：按 glob 删除 dist、缓存、node_modules 等构建产物。 */
+export async function cleanMain(program: VipPackageCliCommander): Promise<void> {
+  registerFairySubcommand(program, CommandEnum.CLEAN, async (args: CleanOptions) => {
+    await runClean(args)
+  }, (command) => {
+    command
+      .option('-n,--nuxt', '删除 Nuxt 构建目录（.nuxt、.output）', false)
+      .option('-d,--dist', '删除 dist 目录', false)
+      .option('-m,--midway', '删除 Midway 构建目录', false)
+      .option('-t,--turbo', '删除 Turbo 缓存目录', false)
+      .option('--vite', '删除 Vite 缓存目录', false)
+      .option('--deps', '删除 node_modules 目录', false)
+      .option('-c,--coverage', '删除 coverage 目录', false)
+      .option('--git-hooks', '删除 .git/hooks 目录', false)
+      .option('-f,--force', '强制删除', false)
+      .option('-a,--all', '递归匹配子目录', false)
+      .option('--ignore-tips', '跳过确认，直接删除', false)
+  })
 }

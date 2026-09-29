@@ -2,20 +2,26 @@
 
 # 接口: GitCommitDiffOptions
 
-定义于: [changelog/src/enums/git-commit.interface.ts:33](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/changelog/src/enums/git-commit.interface.ts#L33)
+定义于: [changelog/src/core/changelog.interface.ts:72](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L72)
+
+`git log` 范围查询参数
 
 ## 属性
 
 ### from?
 
-> `optional` **from**: `string`
+> `optional` **from?**: `string`
 
-定义于: [changelog/src/enums/git-commit.interface.ts:34](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/changelog/src/enums/git-commit.interface.ts#L34)
+定义于: [changelog/src/core/changelog.interface.ts:74](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L74)
+
+起始 tag / commit；省略时从仓库最早记录开始
 
 ***
 
 ### to?
 
-> `optional` **to**: `string`
+> `optional` **to?**: `string`
 
-定义于: [changelog/src/enums/git-commit.interface.ts:35](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/changelog/src/enums/git-commit.interface.ts#L35)
+定义于: [changelog/src/core/changelog.interface.ts:76](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L76)
+
+结束 tag / commit；默认 `HEAD`

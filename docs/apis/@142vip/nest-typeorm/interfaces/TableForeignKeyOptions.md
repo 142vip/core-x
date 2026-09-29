@@ -1,0 +1,100 @@
+[API 参考](../../../index.md) / [@142vip/nest-typeorm](../index.md) / TableForeignKeyOptions
+
+# 接口: TableForeignKeyOptions
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/schema-builder/options/TableForeignKeyOptions.d.ts:4
+
+Foreign key options.
+
+## 属性
+
+### columnNames
+
+> **columnNames**: `string`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/schema-builder/options/TableForeignKeyOptions.d.ts:12
+
+Column names which included by this foreign key.
+
+***
+
+### deferrable?
+
+> `optional` **deferrable?**: `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/schema-builder/options/TableForeignKeyOptions.d.ts:43
+
+Set this foreign key constraint as "DEFERRABLE" e.g. check constraints at start
+or at the end of a transaction
+
+***
+
+### name?
+
+> `optional` **name?**: `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/schema-builder/options/TableForeignKeyOptions.d.ts:8
+
+Name of the foreign key.
+
+***
+
+### onDelete?
+
+> `optional` **onDelete?**: `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/schema-builder/options/TableForeignKeyOptions.d.ts:33
+
+"ON DELETE" of this foreign key, e.g. what action database should perform when
+referenced stuff is being deleted.
+
+***
+
+### onUpdate?
+
+> `optional` **onUpdate?**: `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/schema-builder/options/TableForeignKeyOptions.d.ts:38
+
+"ON UPDATE" of this foreign key, e.g. what action database should perform when
+referenced stuff is being updated.
+
+***
+
+### referencedColumnNames
+
+> **referencedColumnNames**: `string`[]
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/schema-builder/options/TableForeignKeyOptions.d.ts:28
+
+Column names which included by this foreign key.
+
+***
+
+### referencedDatabase?
+
+> `optional` **referencedDatabase?**: `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/schema-builder/options/TableForeignKeyOptions.d.ts:16
+
+Database of the Table referenced in the foreign key.
+
+***
+
+### referencedSchema?
+
+> `optional` **referencedSchema?**: `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/schema-builder/options/TableForeignKeyOptions.d.ts:20
+
+Schema of the Table referenced in the foreign key.
+
+***
+
+### referencedTableName
+
+> **referencedTableName**: `string`
+
+定义于: node\_modules/.pnpm/typeorm@0.3.30\_ioredis@5.6.0\_mongodb@6.19.0\_mssql@11.0.1\_mysql2@3.15.1\_pg@8.11.3\_ts-node@10.9\_6zvdq3z7xgsf663jy3j6oymho4/node\_modules/typeorm/schema-builder/options/TableForeignKeyOptions.d.ts:24
+
+Table referenced in the foreign key.

@@ -1,27 +1,14 @@
-import type { VipCommander } from '@142vip/utils'
-import { VipExecutor } from '@142vip/utils'
-import { CLI_COMMAND_DETAIL, CommandEnum } from '../enums'
-
-interface ChangelogOptions {
-  dryRun?: boolean
-}
+import type { VipPackageCliCommander } from '@142vip/utils'
+import { changelogCommandRegistration } from '@142vip/changelog'
+import { CLI_COMMAND_DETAIL, CommandEnum } from '../constant'
 
 /**
- * 生成CHANGELOG文档
- * - 参考 @142vip/changelog模块
+ * `fa changelog`：基于 Git 提交生成 CHANGELOG，可选写文件并创建 GitHub Release。
+ * 业务实现与 standalone `changelog` bin 共用 `@142vip/changelog` 的注册载荷。
  */
-async function generateChangelog(args: ChangelogOptions): Promise<void> {
-  await VipExecutor.commandStandardExecutor(`npx changelog ${args.dryRun ? '--dry-run' : ''}`)
-}
-
-/**
- * changelog命令
- * - 生成CHANGELOG文档
- */
-export async function changelogMain(program: VipCommander): Promise<void> {
-  program
-    .initCommand(CLI_COMMAND_DETAIL[CommandEnum.CHANGELOG])
-    .action(async (args: ChangelogOptions): Promise<void> => {
-      await generateChangelog(args)
-    })
+export async function changelogMain(program: VipPackageCliCommander): Promise<void> {
+  program.registerSubcommand(
+    CLI_COMMAND_DETAIL[CommandEnum.CHANGELOG],
+    changelogCommandRegistration,
+  )
 }

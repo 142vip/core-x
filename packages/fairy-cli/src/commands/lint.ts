@@ -1,29 +1,37 @@
-import type { VipCommander } from '@142vip/utils'
+import type { VipPackageCliCommander } from '@142vip/utils'
 import { VipExecutor } from '@142vip/utils'
-import { CLI_COMMAND_DETAIL, CommandEnum } from '../enums'
+import { CommandEnum, FairyCommandOptions } from '../constant'
+import {
+  registerFairySubcommand,
+  resolveEslintConfigPath,
+  runOrDryRun,
+} from '../utils'
 
-interface LintOptions {
+interface LintOptions extends FairyCommandOptions {
   fix: boolean
+  config?: string
 }
 
-/**
- * 执行eslint校验，格式化代码
- */
-async function execLint(args: LintOptions): Promise<void> {
-  const command = `npx eslint . ${args.fix ? '--fix' : ''}`
-  await VipExecutor.commandStandardExecutor(command)
+/** 组装 ESLint CLI（配置见 `eslint.config.*` 或内置默认） */
+function buildLintCommand(fix: boolean, configPath?: string): string {
+  const eslintConfig = resolveEslintConfigPath(configPath)
+  const parts = ['npx', 'eslint', '.', '--config', eslintConfig]
+  if (fix) {
+    parts.push('--fix')
+  }
+  return parts.join(' ')
 }
 
-/**
- * 基于Eslint校验
- * - 参考：eslint-config模块
- */
-export async function lintMain(program: VipCommander): Promise<void> {
-  program
-    .initCommand(CLI_COMMAND_DETAIL[CommandEnum.LINT])
-    .option('-c,--config', 'Eslint配置文件路径', false)
-    .option('-f,--fix', '是否需要基于Eslint规则自动修复', false)
-    .action(async (args: LintOptions) => {
-      await execLint(args)
+/** `fa lint`：按仓库或内置 ESLint 配置检查 / `--fix` 修复。 */
+export async function lintMain(program: VipPackageCliCommander): Promise<void> {
+  registerFairySubcommand(program, CommandEnum.LINT, async (args: LintOptions) => {
+    const command = buildLintCommand(args.fix, args.config)
+    await runOrDryRun(args.dryRun, 'lint', [command], async () => {
+      await VipExecutor.commandStandardExecutor(command)
     })
+  }, (command) => {
+    command
+      .option('-f,--config <path>', 'ESLint 配置文件路径（默认 `eslint.config.*` 或内置配置）')
+      .option('--fix', '按 ESLint 规则自动修复', false)
+  })
 }

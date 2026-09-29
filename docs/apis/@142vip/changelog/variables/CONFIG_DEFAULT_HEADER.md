@@ -2,8 +2,8 @@
 
 # 变量: CONFIG\_DEFAULT\_HEADER
 
-> `const` **CONFIG\_DEFAULT\_HEADER**: `string`
+> `const` **CONFIG\_DEFAULT\_HEADER**: "# Changelog\n\nAll notable changes to this project will be documented in this file. See \[Conventional Commits\](https://conventionalcommits.org) for commit guidelines.\n\n"
 
-定义于: [changelog/src/shared/config.ts:12](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/changelog/src/shared/config.ts#L12)
+定义于: [changelog/src/core/config.ts:8](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/config.ts#L8)
 
-changelog默认的header配置
+新建 CHANGELOG.md 时的文件头

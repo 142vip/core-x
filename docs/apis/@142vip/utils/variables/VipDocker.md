@@ -4,13 +4,13 @@
 
 > `const` **VipDocker**: `object`
 
-定义于: [packages/utils/src/core/docker.ts:402](https://github.com/142vip/core-x/blob/5d0d35d3e5446f66a5cf8e331168b57c03ee1203/packages/utils/src/core/docker.ts#L402)
+定义于: [packages/utils/src/core/docker.ts:397](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/core/docker.ts#L397)
 
 docker工具
 
 ## 类型声明
 
-### buildImage()
+### buildImage
 
 > **buildImage**: (`args`) => `Promise`\<`void`\>
 
@@ -28,7 +28,7 @@ docker工具
 
 `Promise`\<`void`\>
 
-### createContainer()
+### createContainer
 
 > **createContainer**: (`args`) => `Promise`\<`void`\>
 
@@ -44,7 +44,7 @@ docker工具
 
 `Promise`\<`void`\>
 
-### createNetwork()
+### createNetwork
 
 > **createNetwork**: (`options`) => `Promise`\<`boolean`\>
 
@@ -60,7 +60,7 @@ docker工具
 
 `Promise`\<`boolean`\>
 
-### deleteContainer()
+### deleteContainer
 
 > **deleteContainer**: (`containerName`) => `Promise`\<`boolean`\>
 
@@ -76,7 +76,7 @@ docker工具
 
 `Promise`\<`boolean`\>
 
-### deleteForceContainer()
+### deleteForceContainer
 
 > **deleteForceContainer**: (`containerName`) => `Promise`\<`boolean`\>
 
@@ -92,7 +92,7 @@ docker工具
 
 `Promise`\<`boolean`\>
 
-### deleteImage()
+### deleteImage
 
 > **deleteImage**: (`imageName`) => `Promise`\<[`CommandResponse`](../interfaces/CommandResponse.md)\>
 
@@ -108,7 +108,7 @@ docker工具
 
 `Promise`\<[`CommandResponse`](../interfaces/CommandResponse.md)\>
 
-### deletePruneImages()
+### deletePruneImages
 
 > **deletePruneImages**: () => `Promise`\<[`CommandResponse`](../interfaces/CommandResponse.md)\>
 
@@ -118,9 +118,9 @@ docker工具
 
 `Promise`\<[`CommandResponse`](../interfaces/CommandResponse.md)\>
 
-### getImageAddress()
+### getImageAddress
 
-> **getImageAddress**: (`containerName`) => `Promise`\<`null` \| `string`\>
+> **getImageAddress**: (`containerName`) => `Promise`\<`string` \| `null`\>
 
 基于容器名获取镜像地址
 
@@ -132,9 +132,9 @@ docker工具
 
 #### 返回
 
-`Promise`\<`null` \| `string`\>
+`Promise`\<`string` \| `null`\>
 
-### isExistContainer()
+### isExistContainer
 
 > **isExistContainer**: (`containerName`) => `Promise`\<`boolean`\>
 
@@ -150,7 +150,7 @@ docker工具
 
 `Promise`\<`boolean`\>
 
-### isExistDocker()
+### isExistDocker
 
 > **isExistDocker**: (`args?`) => `Promise`\<`boolean`\>
 
@@ -166,7 +166,7 @@ docker工具
 
 `Promise`\<`boolean`\>
 
-### isExistDockerCompose()
+### isExistDockerCompose
 
 > **isExistDockerCompose**: (`args?`) => `Promise`\<`boolean`\>
 
@@ -182,7 +182,7 @@ docker工具
 
 `Promise`\<`boolean`\>
 
-### isExistImage()
+### isExistImage
 
 > **isExistImage**: (`imageName`) => `Promise`\<`boolean`\>
 
@@ -198,7 +198,7 @@ docker工具
 
 `Promise`\<`boolean`\>
 
-### isExistNetwork()
+### isExistNetwork
 
 > **isExistNetwork**: (`networkName`) => `Promise`\<`boolean`\>
 
@@ -214,7 +214,7 @@ docker工具
 
 `Promise`\<`boolean`\>
 
-### listContainer()
+### listContainer
 
 > **listContainer**: () => `Promise`\<`void`\>
 
@@ -224,7 +224,7 @@ docker工具
 
 `Promise`\<`void`\>
 
-### listContainerNames()
+### listContainerNames
 
 > **listContainerNames**: () => `Promise`\<`string`[]\>
 
@@ -234,7 +234,7 @@ docker工具
 
 `Promise`\<`string`[]\>
 
-### listContainerStatus()
+### listContainerStatus
 
 > **listContainerStatus**: () => `Promise`\<`object`[]\>
 
@@ -244,7 +244,7 @@ docker工具
 
 `Promise`\<`object`[]\>
 
-### listNetworkNames()
+### listNetworkNames
 
 > **listNetworkNames**: () => `Promise`\<`string`[]\>
 
@@ -254,7 +254,7 @@ docker工具
 
 `Promise`\<`string`[]\>
 
-### listNoRunningContainerNames()
+### listNoRunningContainerNames
 
 > **listNoRunningContainerNames**: () => `Promise`\<`string`[]\>
 
@@ -264,7 +264,7 @@ docker工具
 
 `Promise`\<`string`[]\>
 
-### listPruneImages()
+### listPruneImages
 
 > **listPruneImages**: () => `Promise`\<`void`\>
 
@@ -274,7 +274,7 @@ docker工具
 
 `Promise`\<`void`\>
 
-### listRunningContainer()
+### listRunningContainer
 
 > **listRunningContainer**: () => `Promise`\<`void`\>
 
@@ -284,7 +284,7 @@ docker工具
 
 `Promise`\<`void`\>
 
-### listRunningContainerNames()
+### listRunningContainerNames
 
 > **listRunningContainerNames**: () => `Promise`\<`string`[]\>
 
@@ -294,7 +294,7 @@ docker工具
 
 `Promise`\<`string`[]\>
 
-### pullImage()
+### pullImage
 
 > **pullImage**: (`imageAddress`) => `Promise`\<`void`\>
 
@@ -308,7 +308,7 @@ docker工具
 
 `Promise`\<`void`\>
 
-### pushImage()
+### pushImage
 
 > **pushImage**: (`imageName`) => `Promise`\<`void`\>
 
@@ -324,7 +324,7 @@ docker工具
 
 `Promise`\<`void`\>
 
-### scriptExecutor()
+### scriptExecutor
 
 > **scriptExecutor**: (`command`) => `Promise`\<`void`\>
 
@@ -340,7 +340,7 @@ docker命令的通用执行器
 
 `Promise`\<`void`\>
 
-### userLogin()
+### userLogin
 
 > **userLogin**: (`args`) => `Promise`\<`void`\>
 

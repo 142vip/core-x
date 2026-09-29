@@ -21,14 +21,13 @@ scripts/
     ├── build.ts           # build 脚本实现
     ├── build-image.ts     # build-image 实现
     ├── npm-pkg.ts         # npm-pkg 实现
-    └── verify-commit.ts   # commit-msg 校验实现
 ```
 
 ## 与 package.json 的关系
 
 | 根脚本 | 实际入口 |
 |--------|----------|
-| `pnpm check:commit` | `scripts/core/verify-commit.ts`（`commit-msg` 钩子） |
+| `pnpm check:commit` | `npx fa commit --quiet -s './apps/*' -s './packages/*'`（`commit-msg` 钩子） |
 | `pnpm build:docs` | `vitepress build` + `typedoc:api`（非 scripts/build） |
 | `pnpm release` | `npx fa release`（fairy-cli，非 scripts/npm-release） |
 
@@ -142,19 +141,13 @@ NPM_REGISTRY=https://registry.npmmirror.com ./scripts/ci
 
 **模型**：仅维护者配置 CI 发布权限；改业务代码不涉及此脚本。
 
-## scripts/core/verify-commit.ts
-
-**用途**：校验 commit message 符合 Conventional Commits + 仓库 scope 列表。
+## commit-msg 校验
 
 ```bash
-pnpm check:commit   # 通常由 commit-msg 钩子自动调用
+pnpm check:commit   # → npx fa commit --quiet -s './apps/*' -s './packages/*'（`@142vip/fairy-cli`）
 ```
 
-**行为**（`@142vip/commit-linter`）：
-- scope 来自 `VipMonorepo.getPkgNames(['./apps/*', './packages/*'])`
-- 格式：`type(scope): subject`（详见 `05-Git与发布`）
-
-**模型**：提交前确保 message 合法；勿跳过 `commit-msg` 钩子。
+配置：`commit-linter.config.*`（cosmiconfig）；`fa commit` 默认交互，`--quiet --vip` 校验 Monorepo scope；`-s` 覆盖 glob。
 
 ## 模型选用原则
 

@@ -1,4 +1,5 @@
 import { VipSymbols } from './color'
+import { isVipConsoleTraceEnabled } from './commander'
 
 export enum VipConsoleLogLevel {
   ERROR = 'ERROR',
@@ -29,10 +30,13 @@ function log(message?: string, level?: VipConsoleLogLevel): void {
 }
 
 /**
- * 追踪日志，按照标准日志输出
+ * CLI `--trace` 追踪日志；未开启时不输出
  */
-function trace(...data: any): void {
-  console.log(data)
+function trace(...data: unknown[]): void {
+  if (!isVipConsoleTraceEnabled()) {
+    return
+  }
+  console.log(...data)
 }
 
 /**

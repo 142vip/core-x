@@ -6,7 +6,7 @@
 
 ## 安装
 
-CLI 全局命令：`bumpx` / `bump`。
+CLI 全局命令：`releasex` / `release`。
 
 ```shell
 # npm
@@ -18,15 +18,17 @@ pnpm add @142vip/release-version
 
 ## 功能
 
-- [x] 交互式或编程式 bump `package.json` 版本
-- [x] 可选生成 CHANGELOG、git commit / tag / push
-- [x] `versionBump` `versionBumpDryRun` `versionBumpInfo` API
-- [x] cosmiconfig 配置名 `bumpx`
-- [x] Monorepo `--scopeName` 与 `--vip` 专用能力
+- ✅ 交互式或编程式更新 `package.json` 版本
+- ✅ 可选生成 CHANGELOG、git commit / tag / push
+- ✅ `releaseApi`（`releaseVersion` / `releaseVersionDryRun` / `releaseVersionInfo`）
+- ✅ `ReleaseVersionOperation` 发版流程状态机（OOP 编排 commit / tag / CHANGELOG）
+- ✅ cosmiconfig 配置名 `releasex`
+- ✅ Monorepo `--scopeName` 与 `--vip` 专用能力
+- ✅ 基于 `VipCommander`，与 `fa` / `changelog` CLI 体验一致
 
 ## 配置
 
-配置文件名默认 `bumpx`（`defineBumpXConfig` / `bumpConfigDefaults`）。
+配置文件名：`releasex`（`defineReleaseXConfig` / `releaseVersionDefaultConfig`）。
 
 默认：`commit: true` `push: true` `tag: true` `confirm: true` `preid: alpha`（CLI）。
 
@@ -35,30 +37,30 @@ pnpm add @142vip/release-version
 CLI（仓库根 `pnpm release` 封装 `fa release`，底层能力同源）：
 
 ```shell
-npx bumpx -h
-npx bumpx --dry-run --vip
+npx releasex -h
+npx releasex --dry-run --yes
 ```
 
 API：
 
 ```ts
-import { versionBump, versionBumpDryRun } from '@142vip/release-version'
+import { defineReleaseXConfig, releaseApi } from '@142vip/release-version'
 
-await versionBumpDryRun({ confirm: false, changelog: true })
+await releaseApi.releaseVersionDryRun({ confirm: false, changelog: true })
 ```
 
-### CLI 主要参数（`bumpx -h`）
+### CLI 主要参数（`releasex -h`）
 
 | 参数 | 说明 |
 |------|------|
 | `--preid` | 预发布标识（默认 `alpha`） |
 | `-c, --commit` | 是否提交（默认 true） |
-| `-t, --tag` | 是否打 tag（默认 false） |
+| `-t, --tag` | 是否打 tag（默认 true） |
 | `-p, --push` | 是否推送（默认 true） |
-| `-y, --confirm` | 跳过确认（默认 true） |
-| `-r, --recursive` | 递归 bump package.json |
+| `-y, --yes` | 跳过发版前确认 |
+| `-r, --recursive` | 递归更新子 package.json 版本 |
 | `--changelog` | 生成 CHANGELOG.md |
-| `-x, --execute` | bump 后执行命令 |
+| `-x, --execute` | 升版本后执行命令 |
 | `--scopeName` | Monorepo 包名 |
 | `--dry-run` | 试运行 |
 | `--vip` | @142vip 组织专用功能 |
@@ -66,6 +68,30 @@ await versionBumpDryRun({ confirm: false, changelog: true })
 | `--ignore-scripts` | 忽略 version 脚本 |
 
 ## 升级
+
+自旧版迁移时请对照下表：
+
+| 旧项 | 新项 |
+|------|------|
+| CLI `bumpx` / `bump` | `releasex` / `release` |
+| 配置文件 `bumpx.config.*` | `releasex.config.*` |
+| `defineBumpXConfig` | `defineReleaseXConfig` |
+| `bumpConfigDefaults` | `releaseVersionDefaultConfig` |
+| `getBumpDefaultConfig` | `getReleaseVersionDefaultConfig` |
+| `releaseVersionDefaults` | `releaseVersionDefaultConfig` |
+| `getReleaseVersionDefaults` | `getReleaseVersionDefaultConfig` |
+| `VersionProgressEventEnum` | `VersionProgressEvent` |
+| `VersionHooksEnum` | `VersionHooks` |
+| `versionBump` | `releaseVersion` |
+| `versionBumpDryRun` | `releaseVersionDryRun` |
+| `versionBumpInfo` | `releaseVersionInfo` |
+| `versionRelease` | `releaseVersion` |
+| `versionReleaseDryRun` | `releaseVersionDryRun` |
+| `versionReleaseInfo` | `releaseVersionInfo` |
+| `VersionBumpOptions` | `ReleaseVersionOptions` |
+| `VersionReleaseOptions` | `ReleaseVersionOptions` |
+| `ReleaseOperation` | `ReleaseVersionOperation` |
+| `buildVersionReleaseOptions`（fairy-cli） | `buildReleaseVersionOptions` |
 
 ```shell
 # 依赖更新

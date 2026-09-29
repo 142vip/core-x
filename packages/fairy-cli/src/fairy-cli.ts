@@ -1,9 +1,9 @@
-import { VipCommander, VipNodeJS } from '@142vip/utils'
+import { VipNodeJS, VipPackageCliCommander } from '@142vip/utils'
 import { description, name, version } from '../package.json'
 import {
   aiMain,
   changelogMain,
-  cleanUpMain,
+  cleanMain,
   commitMain,
   copyrightMain,
   deployMain,
@@ -14,48 +14,41 @@ import {
   releaseMain,
   syncMain,
 } from './commands'
+import { registerFairyCliErrorHandling, registerFairyCliVersionBanner } from './utils/command.util'
 
+/** `fa` / `fairy` bin 入口：注册全部子命令并解析 `process.argv` */
 export async function fairyCliMain(): Promise<void> {
-  const program = new VipCommander(name, version, description)
+  const program = new VipPackageCliCommander(name, version, description)
 
-  // fairy-cli create 创建 TODO
+  program.init({ summary: description, description })
+  program.registerRootOptions()
 
-  // fairy-cli login 登录 docker npm
+  // login：Docker / npm 登录
   await loginMain(program)
-
-  // install 安装依赖
+  // install：安装项目依赖
   await installMain(program)
-
-  // fairy-cli release
+  // release：版本迭代与发版
   await releaseMain(program)
-
-  // fairy-cli changelog
+  // changelog：生成 CHANGELOG
   await changelogMain(program)
-
-  // fairy-cli publish 推送
+  // publish：推送 npm 包到远程仓库
   await publishMain(program)
-
-  // fairy-cli sync 推送
+  // sync：同步 npm 包到 CNPM 镜像
   await syncMain(program)
-
-  // fairy-cli deploy 部署
+  // deploy：项目部署（如 GitHub Pages）
   await deployMain(program)
-
-  // fairy-cli lint
+  // lint：ESLint 检查与格式化
   await lintMain(program)
-
-  // fairy-cli clean
-  await cleanUpMain(program)
-
-  // fairy-cli copyright
+  // clean：清理构建产物与缓存
+  await cleanMain(program)
+  // copyright：软著登记源代码文档
   await copyrightMain(program)
-
-  // fairy-cli commit
+  // commit：交互式规范 Git 提交
   await commitMain(program)
-
-  // fairy-cli ai / fa ai —— 集成 @142vip/agent-skills
+  // ai：Agent Skills 同步与校验
   await aiMain(program)
 
-  // 参数解析
+  registerFairyCliVersionBanner(program)
+  registerFairyCliErrorHandling(program)
   await program.parseAsync(VipNodeJS.getProcessArgv())
 }

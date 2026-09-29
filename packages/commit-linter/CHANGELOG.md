@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.3 (2026-09-29)
+
+### ✨ Features
+
+- 扁平化导出与 `commitLinter` 单参校验 &nbsp;-&nbsp; by **chufan** [<samp>(20068)</samp>](https://github.com/142vip/core-x/commit/20068579)
+
+### 💅 Refactors
+
+- `git-commit.interface` 更名为 `commit.interface` &nbsp;-&nbsp; by **chufan** [<samp>(4245d)</samp>](https://github.com/142vip/core-x/commit/4245dcfd)
+
+**Release New Version v0.0.1-alpha.3 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/commit-linter)**
+
 ## v0.0.1-alpha.2 (2025-05-12)
 
 ### 💅 Refactors

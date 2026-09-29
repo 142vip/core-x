@@ -1,0 +1,37 @@
+[API 参考](../../../index.md) / [@142vip/fairy-cli](../index.md) / DeleteByPatternsOptions
+
+# 接口: DeleteByPatternsOptions
+
+定义于: [packages/fairy-cli/src/utils/clean-path.util.ts:6](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/fairy-cli/src/utils/clean-path.util.ts#L6)
+
+`fa clean` 删除选项，对应原 `del` 包的 `dryRun` / `force`
+
+## 属性
+
+### cwd?
+
+> `optional` **cwd?**: `string`
+
+定义于: [packages/fairy-cli/src/utils/clean-path.util.ts:12](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/fairy-cli/src/utils/clean-path.util.ts#L12)
+
+解析 glob 与删除的基准目录，默认 `process.cwd()`
+
+***
+
+### dryRun?
+
+> `optional` **dryRun?**: `boolean`
+
+定义于: [packages/fairy-cli/src/utils/clean-path.util.ts:8](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/fairy-cli/src/utils/clean-path.util.ts#L8)
+
+试运行：仅返回将删除的路径，不执行 `fs.rm`
+
+***
+
+### force?
+
+> `optional` **force?**: `boolean`
+
+定义于: [packages/fairy-cli/src/utils/clean-path.util.ts:10](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/fairy-cli/src/utils/clean-path.util.ts#L10)
+
+等同 Node `fs.rm({ force })`，忽略不存在路径

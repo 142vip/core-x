@@ -32,4 +32,4 @@ cd packages/<pkg> && pnpm test
 pnpm test                 # 全量（根目录）
 ```
 
-Jest 全局变量已在 `eslint.config.js` 声明。
+Jest 全局变量已在 `fa lint` 内置 ESLint 配置的 `languageOptions.globals` 声明。

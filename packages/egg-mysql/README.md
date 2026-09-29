@@ -16,11 +16,11 @@ pnpm add @142vip/egg-mysql @142vip/egg
 
 ## 功能
 
-- [x] mysql2 连接池创建与挂载
-- [x] 可选自动 `CREATE DATABASE`（`database` 非空时）
-- [x] 单实例（`client`）与多实例（`clients`）
-- [x] `app.mysql.getInstance()` 返回 mysql2 `Pool`
-- [x] `app.js` / `agent.js` 双 Boot（`EggMysqlAppBoot` / `EggMysqlAgentBoot`）
+- ✅ mysql2 连接池创建与挂载
+- ✅ 可选自动 `CREATE DATABASE`（`database` 非空时）
+- ✅ 单实例（`client`）与多实例（`clients`）
+- ✅ `app.mysql.getInstance()` 返回 mysql2 `Pool`
+- ✅ `app.js` / `agent.js` 双 Boot（`EggMysqlAppBoot` / `EggMysqlAgentBoot`）
 
 ## 配置
 
