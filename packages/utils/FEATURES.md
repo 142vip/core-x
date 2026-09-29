@@ -122,8 +122,12 @@ new VipCommander(name, version, description?)  // 构造函数 helpCommand(false
 // packages CLI 统一基类（fairy-cli / changelog / releasex / agent-skills）
 new VipPackageCliCommander(name, version, description?)
   .registerRootOptions()                    // fa 根：--trace / --help
+  .registerCliVersionBanner(identity, { binAliases }) // -v 横幅
   .registerSubcommand(detail, { registerBusinessOptions, action })
   .bootstrapStandalone(detail, options, argv) // standalone bin
+
+registerVipPackageCliErrorHandling(root, presentation)
+// 未知子命令 / 多余参数等与 fa 同构；help / version 静默 exit 0；-h 仍 Commander 默认 help
 
 // 选项默认：vipCommanderDefaultOptions（= vipCommanderSubcommandOptions）
 // 根程序 registerRootOptions 仅 trace + help；子命令 / standalone 走 appendCommonOptions
@@ -145,6 +149,8 @@ vipConfig.mergeCommanderConfig(cliConfig, commanderConfig) // 后者覆盖前者
 - `vipQs`（`qs.ts`）：`stringify` / `parse`
 - `vipNanoId`（`nanoid.ts`）：按 `Alphabet` 生成 id
 - `vipDetect`（`detect.ts`）：端口 / 缩进 / 换行 / 本机地址
+- `cli-presentation.ts`：横幅 / trace / dry-run、`registerVipPackageCliErrorHandling`、`formatVipCliHelpExample`
+- `commander.ts`：`VipCommander` / `VipPackageCliCommander`、`registerVipCommanderExitOverrideTree`、`VIP_COMMANDER_EXIT_*`
 - `vipDataTransform`（`data-transform.ts`）：脱敏串 / 手机号
 
 签名与默认值以对应源文件为准。

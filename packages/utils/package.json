@@ -63,6 +63,9 @@
     "url": "https://github.com/142vip",
     "homePage": "https://142vip.cn"
   },
+  "peerDependencies": {
+    "@142vip/open-source": "workspace:*"
+  },
   "dependencies": {
     "@142vip/open-source": "workspace:*",
     "@inquirer/prompts": "7.4.0",

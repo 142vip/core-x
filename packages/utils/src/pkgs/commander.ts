@@ -1,4 +1,8 @@
+import type { VipCliIdentity } from './cli-presentation'
+import { EventEmitter } from 'node:events'
 import { Command as CommanderRoot } from 'commander'
+import { formatVipCliBanner } from './cli-presentation'
+import { VipConsole } from './console'
 
 export interface VipCommanderDetailOptions {
   command: string
@@ -91,10 +95,13 @@ export interface RegisterVipCommanderCommandOptions<TArgs extends unknown[] = un
  * 参考：https://www.npmjs.com/package/commander
  */
 export class VipCommander extends CommanderRoot {
+  /** 构造时传入的 npm 版本，由 `registerCliVersionBanner` 注册 `-v` */
+  protected readonly vipCliVersion: string
+
   constructor(name: string, version: string, description?: string) {
     super(name)
+    this.vipCliVersion = version
     this.helpCommand(false)
-    this.version(version, '-v, --version', '查看 CLI 版本信息')
 
     if (description != null) {
       this.description(description)
@@ -142,6 +149,28 @@ export class VipPackageCliCommander extends VipCommander {
   /** 根程序 `fa -h`：trace + help + version */
   public registerRootOptions(): this {
     this.appendCommonOptions(this, vipCommanderRootOptions)
+    return this
+  }
+
+  /**
+   * 根 `-v` / `--version`：横幅输出（含首尾空行），不打印裸版本号。
+   * 须在 `registerRootOptions` / `appendStandaloneOptions` 之后、解析前调用。
+   */
+  public registerCliVersionBanner(
+    identity: VipCliIdentity,
+    options?: { binAliases?: string },
+  ): this {
+    this.version(this.vipCliVersion, '-v, --version', '查看 CLI 版本信息')
+    const root = this as CommanderRoot
+    const emitter = root as unknown as EventEmitter
+    emitter.removeAllListeners('option:version')
+    emitter.on('option:version', () => {
+      VipConsole.log(formatVipCliBanner(identity, options))
+      const exitPrivate = (root as unknown as {
+        _exit: (exitCode: number, code: string, message: string) => void
+      })._exit
+      exitPrivate.call(root, 0, 'commander.version', identity.version)
+    })
     return this
   }
 
@@ -196,4 +225,53 @@ export class VipPackageCliCommander extends VipCommander {
     this.registerStandalone(detail, options)
     this.parse(argv)
   }
+}
+
+/** commander `exitOverride` 回调中的错误码（与底层 commander 一致） */
+export const VIP_COMMANDER_EXIT_UNKNOWN_COMMAND = 'commander.unknownCommand'
+export const VIP_COMMANDER_EXIT_EXCESS_ARGUMENTS = 'commander.excessArguments'
+/** `program.help()` / 根 `-h` 展示帮助后的正常退出 */
+export const VIP_COMMANDER_EXIT_HELP = 'commander.help'
+export const VIP_COMMANDER_EXIT_HELP_DISPLAYED = 'commander.helpDisplayed'
+/** 根 `-v` / `--version` 展示版本后的正常退出 */
+export const VIP_COMMANDER_EXIT_VERSION = 'commander.version'
+
+export interface VipCommanderExitError {
+  code: string
+  message: string
+  exitCode: number
+}
+
+/** 判断是否为 VipCommander / commander 解析阶段抛出的可处理错误 */
+export function isVipCommanderExitError(error: unknown): error is VipCommanderExitError {
+  if (error == null || typeof error !== 'object') {
+    return false
+  }
+  const record = error as Record<string, unknown>
+  return typeof record.code === 'string' && typeof record.message === 'string'
+}
+
+/**
+ * 为命令树注册 `exitOverride`，并屏蔽默认 `error:` stderr（由 `onError` 统一输出）。
+ */
+export function registerVipCommanderExitOverrideTree(
+  root: VipCommander,
+  onError: (error: VipCommanderExitError) => void,
+): void {
+  const attach = (command: VipCommander): void => {
+    command.configureOutput({
+      writeErr: () => {},
+    })
+    command.exitOverride((error) => {
+      if (isVipCommanderExitError(error)) {
+        onError(error)
+        return
+      }
+      throw error
+    })
+    for (const sub of command.commands) {
+      attach(sub as VipCommander)
+    }
+  }
+  attach(root)
 }
