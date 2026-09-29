@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 
+## v0.0.3-alpha.36 (2026-09-29)
+
+### 📦 Build
+
+- 编排包迁入 `dependencies` 随 `fa` 安装 &nbsp;-&nbsp; by **chufan** [<samp>(86ff4)</samp>](https://github.com/142vip/core-x/commit/86ff40e8)
+
+**Release New Version v0.0.3-alpha.36 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/fairy-cli)**
+
 ## v0.0.3-alpha.35 (2026-09-29)
 
 ### ✨ Features

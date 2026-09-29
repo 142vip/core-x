@@ -1,7 +1,7 @@
 {
   "name": "@142vip/fairy-cli",
   "type": "module",
-  "version": "0.0.3-alpha.35",
+  "version": "0.0.3-alpha.36",
   "private": false,
   "description": "通用型`Cli`助手，开发向工具（fa / fairy / fan / ffr / ff）， 代码架构 与 工程化",
   "author": {
@@ -75,9 +75,7 @@
     "@142vip/utils": "workspace:*"
   },
   "dependencies": {
-    "@142vip/utils": "workspace:*"
-  },
-  "devDependencies": {
+    "@142vip/utils": "workspace:*",
     "@142vip/agent-skills": "workspace:*",
     "@142vip/changelog": "workspace:*",
     "@142vip/commit-linter": "workspace:*",
