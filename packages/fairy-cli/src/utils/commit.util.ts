@@ -2,7 +2,8 @@ import type { CommitLinterOptions, GitCommitLinter, VipCommitLinterConfig } from
 import { createRequire } from 'node:module'
 import { commitLinter, CONFIG_DEFAULT_NAME } from '@142vip/commit-linter'
 import { VipColor, vipConfig, VipConsole, vipLogger, VipMonorepo, VipNodeJS } from '@142vip/utils'
-import { resolveFairyCliBundledConfig } from './fairy-package-path.util'
+import { name, version } from '../../package.json'
+import { resolveFairyCliBundledConfig } from './pkg.util'
 
 /** 与 `@142vip/commit-linter` 同源，便于从 `fa` 包引用 */
 export {
@@ -140,6 +141,8 @@ export function runCommitMessageVerify(options: {
 export function printCommitVerifyResult(verifiedCommit: GitCommitLinter): void {
   const { type, scope, subject, commit } = verifiedCommit
   const rule = VipColor.dim('─'.repeat(40))
+  vipLogger.println()
+  VipConsole.log(`  ${VipColor.cyan(name)}  ${VipColor.dim(`v${version}`)}`)
   vipLogger.println()
   VipConsole.log(rule)
   VipConsole.log(`  ${VipColor.greenBright('✓')} ${VipColor.bold('Commit 校验通过')}`)

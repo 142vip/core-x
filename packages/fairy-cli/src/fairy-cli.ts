@@ -3,7 +3,7 @@ import { description, name, version } from '../package.json'
 import {
   aiMain,
   changelogMain,
-  cleanUpMain,
+  cleanMain,
   commitMain,
   copyrightMain,
   deployMain,
@@ -14,7 +14,7 @@ import {
   releaseMain,
   syncMain,
 } from './commands'
-import { registerFairyCliErrorHandling } from './utils/cli-error.util'
+import { registerFairyCliErrorHandling, registerFairyCliVersionBanner } from './utils/command.util'
 
 /** `fa` / `fairy` bin 入口：注册全部子命令并解析 `process.argv` */
 export async function fairyCliMain(): Promise<void> {
@@ -40,7 +40,7 @@ export async function fairyCliMain(): Promise<void> {
   // lint：ESLint 检查与格式化
   await lintMain(program)
   // clean：清理构建产物与缓存
-  await cleanUpMain(program)
+  await cleanMain(program)
   // copyright：软著登记源代码文档
   await copyrightMain(program)
   // commit：交互式规范 Git 提交
@@ -48,6 +48,7 @@ export async function fairyCliMain(): Promise<void> {
   // ai：Agent Skills 同步与校验
   await aiMain(program)
 
+  registerFairyCliVersionBanner(program)
   registerFairyCliErrorHandling(program)
   await program.parseAsync(VipNodeJS.getProcessArgv())
 }

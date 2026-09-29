@@ -1,5 +1,5 @@
 import { vipConfig } from '@142vip/utils'
-import { resolveFairyCliBundledConfig } from './fairy-package-path.util'
+import { resolveFairyCliBundledConfig } from './pkg.util'
 
 /** 与 `@142vip/eslint-config` 同源，便于从 `fa` 包引用 */
 export { defineVipEslintConfig } from '@142vip/eslint-config'

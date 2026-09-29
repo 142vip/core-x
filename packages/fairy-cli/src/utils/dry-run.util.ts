@@ -1,16 +1,13 @@
-import { VipColor, vipLogger } from '@142vip/utils'
-import { traceFaCli } from './trace-cli.util'
+import { logVipCliDryRun, logVipCliTrace } from '@142vip/utils'
+import { name, version } from '../../package.json'
+
+const FAIRY_CLI_IDENTITY = { name, version }
 
 /**
  * 试运行：逐条打印将要执行的操作，不触发副作用。
- * 各子命令在 `--dry-run` 时调用，日志格式统一便于对照真实执行。
  */
 export function logDryRunSteps(command: string, steps: string[]): void {
-  vipLogger.logByBlank(`${VipColor.yellow('[dry-run]')} ${VipColor.cyan(command)}`)
-  for (const step of steps) {
-    vipLogger.log(`  ${VipColor.dim('→')} ${step}`)
-  }
-  vipLogger.println()
+  logVipCliDryRun(FAIRY_CLI_IDENTITY, command, steps)
 }
 
 /**
@@ -26,6 +23,6 @@ export async function runOrDryRun(
     logDryRunSteps(command, steps)
     return
   }
-  traceFaCli(`${command}: 执行`, { steps })
+  logVipCliTrace(FAIRY_CLI_IDENTITY, `${command}: 执行`, { steps })
   await run()
 }
