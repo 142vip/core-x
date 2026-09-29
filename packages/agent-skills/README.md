@@ -63,9 +63,8 @@ console.log(result.synced, result.dest, result.ok)
 通过 `@142vip/fairy-cli`：
 
 ```shell
-fa ai sync -t .
-fa ai check -t .
-fa ai info
+fa ai --sync -t .
+fa ai --check -t .
 ```
 
 ## 升级

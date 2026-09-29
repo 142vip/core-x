@@ -94,7 +94,7 @@ description: 跨项目高效执行管线与知识沉淀规范。当开始一个�
 ### 铁律
 
 - **单一真源**：通用流程只维护在 `@142vip/agent-skills` 包内 `skills/<name>/SKILL.md`
-- **下游禁止手改镜像**：`vip-agent-skills` / `fa ai sync` 已覆盖的 `workflow` / `code-dev` / `self-check` / `commit` **不得**在下游仓本地改完就提交；改进必须回写真源 skill → 发版 → 下游 upgrade + sync
+- **下游禁止手改镜像**：`vip-agent-skills` / `fa ai --sync` 已覆盖的 `workflow` / `code-dev` / `self-check` / `commit` **不得**在下游仓本地改完就提交；改进必须回写真源 skill → 发版 → 下游 upgrade + sync
 - **禁止只改镜像不改包**（真源仓内误改镜像 → 同一任务回写包内文件）
 - `business-map` 等业务落点 skill **永不**进 npm 包、永不被同步工具覆盖
 - 工具薄入口**禁止**复制编码纪律全文（只补「怎么搜 / 怎么改 / 怎么批」差异）
