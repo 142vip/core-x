@@ -8,8 +8,7 @@ import type { VipCommanderDetailRecord, VipCommanderOptions } from '@142vip/util
 export interface FairyCommandOptions extends Omit<VipCommanderOptions, 'help'> {}
 
 /**
- * `--vip` 已接入专用逻辑：`RELEASE`（Monorepo 交互发版）、`SYNC`（从 packages 选包）。
- * `COMMIT` 使用 positional `[vip]`，不走 `--vip`。
+ * `--vip` 已接入专用逻辑：`RELEASE`（Monorepo 交互发版）、`SYNC`（从 packages 选包）；`COMMIT` 用 `-s` / 配置 `scopeGlobs` 扫描 scope，`--quiet` 为 commit-msg 校验。
  */
 export enum CommandEnum {
   LOGIN = 'login',
@@ -22,8 +21,7 @@ export enum CommandEnum {
   INSTALL = 'install',
   SYNC = 'sync',
   COPYRIGHT = 'copyright',
-  /** commander 注册名含可选 positional：`commit [vip]` */
-  COMMIT = 'commit [vip]',
+  COMMIT = 'commit',
   /** Agent Skills 集成（`@142vip/agent-skills`） */
   AI = 'ai',
 }
@@ -92,14 +90,14 @@ export const CLI_COMMAND_DETAIL: VipCommanderDetailRecord<CommandEnum> = {
   },
   [CommandEnum.COMMIT]: {
     command: CommandEnum.COMMIT,
-    summary: 'Git 提交',
-    description: '交互式生成符合 Conventional Commits 的提交信息',
+    summary: 'Git 提交与校验',
+    description: '默认交互式规范提交；--quiet 校验 commit 信息（commit-msg）',
     aliases: ['co', 'com'],
   },
   [CommandEnum.AI]: {
     command: CommandEnum.AI,
     summary: 'Agent Skills 管理',
-    description: '同步或校验通用 Skills 到 .agents/skills/',
+    description: 'fa ai --sync / --check，同步或校验 .agents/skills/',
     aliases: ['a'],
   },
 }

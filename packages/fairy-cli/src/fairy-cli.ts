@@ -1,8 +1,8 @@
-import { CHANGELOG_COMMAND_DETAIL, changelogCommandRegistration } from '@142vip/changelog'
 import { VipNodeJS, VipPackageCliCommander } from '@142vip/utils'
 import { description, name, version } from '../package.json'
 import {
   aiMain,
+  changelogMain,
   cleanUpMain,
   commitMain,
   copyrightMain,
@@ -14,6 +14,7 @@ import {
   releaseMain,
   syncMain,
 } from './commands'
+import { registerFairyCliErrorHandling } from './utils/cli-error.util'
 
 /** `fa` / `fairy` bin 入口：注册全部子命令并解析 `process.argv` */
 export async function fairyCliMain(): Promise<void> {
@@ -28,8 +29,8 @@ export async function fairyCliMain(): Promise<void> {
   await installMain(program)
   // release：版本迭代与发版
   await releaseMain(program)
-  // changelog：生成 CHANGELOG（直接注册 @142vip/changelog 子命令）
-  program.registerSubcommand(CHANGELOG_COMMAND_DETAIL, changelogCommandRegistration)
+  // changelog：生成 CHANGELOG
+  await changelogMain(program)
   // publish：推送 npm 包到远程仓库
   await publishMain(program)
   // sync：同步 npm 包到 CNPM 镜像
@@ -47,5 +48,6 @@ export async function fairyCliMain(): Promise<void> {
   // ai：Agent Skills 同步与校验
   await aiMain(program)
 
+  registerFairyCliErrorHandling(program)
   await program.parseAsync(VipNodeJS.getProcessArgv())
 }

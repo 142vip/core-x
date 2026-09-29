@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.3-alpha.34",
   "private": false,
-  "description": "通用型Cli助手、一站式工具，支持多种命令操作",
+  "description": "通用型Cli助手，开发向 CLI（fa / fairy / fan / ffr / ff），Monorepo 架构与 CI 工程化",
   "author": {
     "name": "mmdapl",
     "email": "mmdapl@163.com"
@@ -22,7 +22,6 @@
     "公众号搜：储凡",
     "142vip",
     "@142vip",
-    "@142vip/fairy-cli",
     "@142vip/release-version",
     "@142vip/utils",
     "@142vip/agent-skills",
@@ -35,17 +34,23 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
       "require": "./dist/index.cjs"
-    }
+    },
+    "./config/default-eslint.config.mjs": "./config/default-eslint.config.mjs",
+    "./config/default-commit-linter.config.cjs": "./config/default-commit-linter.config.cjs"
   },
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "bin": {
     "fa": "./bin/fa.cjs",
-    "fairy": "./bin/fa.cjs"
+    "fairy": "./bin/fa.cjs",
+    "fan": "./bin/fa.cjs",
+    "ffr": "./bin/fa.cjs",
+    "ff": "./bin/fa.cjs"
   },
   "files": [
     "bin",
+    "config",
     "dist"
   ],
   "engines": {
@@ -63,12 +68,19 @@
     "url": "https://github.com/142vip",
     "homePage": "https://142vip.cn"
   },
+  "peerDependencies": {
+    "@142vip/utils": "workspace:*"
+  },
   "dependencies": {
+    "@142vip/utils": "workspace:*"
+  },
+  "devDependencies": {
     "@142vip/agent-skills": "workspace:*",
     "@142vip/changelog": "workspace:*",
     "@142vip/commit-linter": "workspace:*",
-    "@142vip/release-version": "workspace:*",
-    "@142vip/utils": "workspace:*"
+    "@142vip/copyright": "workspace:*",
+    "@142vip/eslint-config": "workspace:*",
+    "@142vip/release-version": "workspace:*"
   },
   "publishConfig": {
     "access": "public",
