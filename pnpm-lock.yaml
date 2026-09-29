@@ -314,10 +314,6 @@ importers:
 
   packages/fairy-cli:
     dependencies:
-      '@142vip/utils':
-        specifier: workspace:*
-        version: link:../utils
-    devDependencies:
       '@142vip/agent-skills':
         specifier: workspace:*
         version: link:../agent-skills
@@ -336,6 +332,9 @@ importers:
       '@142vip/release-version':
         specifier: workspace:*
         version: link:../release-version
+      '@142vip/utils':
+        specifier: workspace:*
+        version: link:../utils
 
   packages/grpc:
     dependencies:

@@ -75,9 +75,7 @@
     "@142vip/utils": "workspace:*"
   },
   "dependencies": {
-    "@142vip/utils": "workspace:*"
-  },
-  "devDependencies": {
+    "@142vip/utils": "workspace:*",
     "@142vip/agent-skills": "workspace:*",
     "@142vip/changelog": "workspace:*",
     "@142vip/commit-linter": "workspace:*",

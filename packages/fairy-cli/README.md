@@ -43,7 +43,7 @@ pnpm add -D @142vip/fairy-cli
 
 ## 配置
 
-无独立配置文件。运行时 `dependencies` 仅 `@142vip/utils`；编排用 `@142vip/*` 见 `package.json` `devDependencies`（说明见 FEATURES「配置」）。
+无独立配置文件。`peerDependencies` 为 `@142vip/utils`（与消费方对齐版本）；`dependencies` 含 `utils` 及 `changelog` / `release-version` 等编排包，安装 `fairy-cli` 时会一并安装（说明见 FEATURES「配置」）。
 
 ## 使用
 

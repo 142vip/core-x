@@ -166,8 +166,8 @@ src/
 
 ### `package.json` 依赖分工
 
-- `dependencies`：仅 `@142vip/utils`（含 `VipCommander` 与 `registerVipCommanderExitOverrideTree`）
-- `devDependencies`：`@142vip/agent-skills`、`@142vip/changelog`、`@142vip/commit-linter`、`@142vip/copyright`、`@142vip/eslint-config`、`@142vip/release-version`（本仓 workspace 编排；`unbuild` 构建为 external，不内联进 dist）
+- `peerDependencies`：`@142vip/utils`（消费方须能解析同版本 `utils`）
+- `dependencies`：`@142vip/utils` + `@142vip/agent-skills`、`@142vip/changelog`、`@142vip/commit-linter`、`@142vip/copyright`、`@142vip/eslint-config`、`@142vip/release-version`（随 npm 安装带入下游，避免仅装 `fa` 时缺模块；`unbuild` 构建为 external）
 
 ### 运行环境
 
