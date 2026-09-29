@@ -1,19 +1,16 @@
-import { vipLogger } from '@142vip/utils'
+import { VipConsole } from '@142vip/utils'
 import { beforeEach, describe, expect, it, jest } from '@jest/globals'
 
 import { logDryRunSteps, runOrDryRun } from '../src/utils/dry-run.util'
 
 describe('dry-run.util', () => {
   beforeEach(() => {
-    jest.spyOn(vipLogger, 'log').mockImplementation(() => {})
-    jest.spyOn(vipLogger, 'logByBlank').mockImplementation(() => {})
-    jest.spyOn(vipLogger, 'println').mockImplementation(() => {})
+    jest.spyOn(VipConsole, 'log').mockImplementation(() => {})
   })
 
   it('logDryRunSteps 输出步骤列表', () => {
     logDryRunSteps('lint', ['npx eslint .'])
-    expect(vipLogger.log).toHaveBeenCalled()
-    expect(vipLogger.logByBlank).toHaveBeenCalled()
+    expect(VipConsole.log).toHaveBeenCalled()
   })
 
   it('runOrDryRun dryRun 时不执行 run', async () => {

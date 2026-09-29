@@ -1,7 +1,7 @@
-import { VipInquirer, vipLogger, VipNodeJS, VipPackageCliCommander } from '@142vip/utils'
+import { VipConsole, VipInquirer, VipNodeJS, VipPackageCliCommander } from '@142vip/utils'
 import { beforeEach, describe, expect, it, jest } from '@jest/globals'
 
-import { cleanUpMain, generateDirPatterns } from '../src/commands/clean'
+import { cleanMain, generateDirPatterns } from '../src/commands/clean'
 import { findCommand, runCliArgv } from './helpers/command-runner'
 
 jest.mock('../src/utils/clean-path.util', () => ({
@@ -18,10 +18,10 @@ jest.mock('@142vip/utils', () => {
       ...actual.VipInquirer,
       promptConfirm: jest.fn(),
     },
-    vipLogger: {
-      ...actual.vipLogger,
+    VipConsole: {
+      ...actual.VipConsole,
+      error: jest.fn(),
       log: jest.fn(),
-      println: jest.fn(),
     },
     VipNodeJS: {
       ...actual.VipNodeJS,
@@ -49,36 +49,36 @@ describe('generateDirPatterns', () => {
   })
 })
 
-describe('cleanUpMain', () => {
+describe('cleanMain', () => {
   const promptConfirm = jest.mocked(VipInquirer.promptConfirm)
   const existErrorProcess = jest.mocked(VipNodeJS.existErrorProcess)
-  const log = jest.mocked(vipLogger.log)
+  const consoleError = jest.mocked(VipConsole.error)
 
   beforeEach(() => {
     promptConfirm.mockReset()
     existErrorProcess.mockClear()
-    log.mockClear()
+    consoleError.mockClear()
   })
 
   it('注册 clean 子命令', async () => {
     const program = new VipPackageCliCommander('fa', '1.0.0')
-    await cleanUpMain(program)
+    await cleanMain(program)
     expect(findCommand(program, 'clean').name()).toBe('clean')
   })
 
   it('未指定删除规则时退出', async () => {
     const program = new VipPackageCliCommander('fa', '1.0.0')
-    await cleanUpMain(program)
+    await cleanMain(program)
     await expect(runCliArgv(program, ['clean'])).rejects.toThrow('exit')
 
-    expect(log).toHaveBeenCalled()
+    expect(consoleError).toHaveBeenCalled()
     expect(existErrorProcess).toHaveBeenCalled()
   })
 
   it('用户取消删除时退出', async () => {
     promptConfirm.mockResolvedValueOnce(false)
     const program = new VipPackageCliCommander('fa', '1.0.0')
-    await cleanUpMain(program)
+    await cleanMain(program)
     await expect(runCliArgv(program, ['clean', '--dist'])).rejects.toThrow('exit')
 
     expect(existErrorProcess).toHaveBeenCalled()

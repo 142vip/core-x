@@ -12,7 +12,7 @@ import {
 import { beforeEach, describe, expect, it, jest } from '@jest/globals'
 
 import { printSplitPkgCommitLogs, releaseMain } from '../src/commands/release'
-import { releasePackage } from '../src/utils/release-package.util'
+import { releasePackage } from '../src/utils/pkg.util'
 import { findCommand, runCliArgv } from './helpers/command-runner'
 
 jest.mock('@142vip/release-version', () => ({
@@ -21,7 +21,7 @@ jest.mock('@142vip/release-version', () => ({
   },
 }))
 
-jest.mock('../src/utils/release-package.util', () => ({
+jest.mock('../src/utils/pkg.util', () => ({
   printPreCheckRelease: jest.fn(() => Promise.resolve()),
   releasePackage: jest.fn(() => Promise.resolve()),
 }))

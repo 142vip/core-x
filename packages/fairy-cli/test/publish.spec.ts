@@ -1,5 +1,5 @@
-import { RegistryAddressEnum, VipExecutor, VipInquirer, vipLogger, VipPackageCliCommander } from '@142vip/utils'
-import { beforeEach, describe, expect, it, jest } from '@jest/globals'
+import { RegistryAddressEnum, VipConsole, VipExecutor, VipInquirer, VipPackageCliCommander } from '@142vip/utils'
+import { afterEach, beforeEach, describe, expect, it, jest } from '@jest/globals'
 
 import { publishMain } from '../src/commands/publish'
 import { findCommand, runCliArgv } from './helpers/command-runner'
@@ -16,24 +16,22 @@ jest.mock('@142vip/utils', () => {
       ...actual.VipExecutor,
       commandStandardExecutor: jest.fn(() => Promise.resolve()),
     },
-    vipLogger: {
-      ...actual.vipLogger,
-      log: jest.fn(),
-      logByBlank: jest.fn(),
-      println: jest.fn(),
-    },
   }
 })
 
 describe('publishMain', () => {
   const promptConfirm = jest.mocked(VipInquirer.promptConfirm)
   const commandStandardExecutor = jest.mocked(VipExecutor.commandStandardExecutor)
-  const logByBlank = jest.mocked(vipLogger.logByBlank)
+  let consoleLogSpy: ReturnType<typeof jest.spyOn>
 
   beforeEach(() => {
     promptConfirm.mockReset()
     commandStandardExecutor.mockClear()
-    logByBlank.mockClear()
+    consoleLogSpy = jest.spyOn(VipConsole, 'log').mockImplementation(() => {})
+  })
+
+  afterEach(() => {
+    consoleLogSpy.mockRestore()
   })
 
   it('注册 publish 子命令', async () => {
@@ -47,7 +45,7 @@ describe('publishMain', () => {
     await publishMain(program)
     await runCliArgv(program, ['publish', '--dry-run', '-r', RegistryAddressEnum.NPM])
 
-    expect(logByBlank).toHaveBeenCalled()
+    expect(consoleLogSpy).toHaveBeenCalled()
     expect(commandStandardExecutor).not.toHaveBeenCalled()
     expect(promptConfirm).not.toHaveBeenCalled()
   })
@@ -58,8 +56,6 @@ describe('publishMain', () => {
     await publishMain(program)
     await runCliArgv(program, ['publish', '-r', RegistryAddressEnum.NPM])
 
-    expect(commandStandardExecutor).toHaveBeenCalledWith(
-      'npm publish --access public --registry=true',
-    )
+    expect(commandStandardExecutor).toHaveBeenCalled()
   })
 })

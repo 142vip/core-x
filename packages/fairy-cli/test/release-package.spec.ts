@@ -7,7 +7,7 @@ import {
   isPackagePendingRelease,
   printPreCheckRelease,
   releasePackage,
-} from '../src/utils/release-package.util'
+} from '../src/utils/pkg.util'
 
 interface GenerateChangelogInfoResult {
   config: {

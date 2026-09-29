@@ -3,9 +3,9 @@ import { describe, expect, it } from '@jest/globals'
 import {
   resolveFairyCliBundledConfig,
   resolveFairyCliPackageRoot,
-} from '../src/utils/fairy-package-path.util'
+} from '../src/utils/pkg.util'
 
-describe('fairy-package-path.util', () => {
+describe('pkg.util', () => {
   it('resolveFairyCliPackageRoot 指向包根目录', () => {
     const root = resolveFairyCliPackageRoot()
     expect(root.endsWith('fairy-cli')).toBe(true)

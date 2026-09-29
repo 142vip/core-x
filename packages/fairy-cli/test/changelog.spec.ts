@@ -2,8 +2,8 @@ import { changelogCommandRegistration } from '@142vip/changelog'
 import { VipPackageCliCommander } from '@142vip/utils'
 import { describe, expect, it } from '@jest/globals'
 
-import { changelogMain } from '../src/commands/changelog'
-import { CLI_COMMAND_DETAIL, CommandEnum } from '../src/fairy.interface'
+import { changelogMain } from '../src/commands'
+import { CLI_COMMAND_DETAIL, CommandEnum } from '../src/constant'
 import { findCommand } from './helpers/command-runner'
 
 describe('changelogMain', () => {

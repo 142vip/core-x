@@ -1,4 +1,4 @@
-import { VipColor, VipDocker, VipInquirer, vipLogger, VipPackageCliCommander } from '@142vip/utils'
+import { VipColor, VipConsole, VipDocker, VipInquirer, VipPackageCliCommander } from '@142vip/utils'
 import { beforeEach, describe, expect, it, jest } from '@jest/globals'
 
 import { loginMain } from '../src/commands/login'
@@ -23,6 +23,10 @@ jest.mock('@142vip/utils', () => {
       println: jest.fn(),
       logByBlank: jest.fn(),
     },
+    VipConsole: {
+      ...actual.VipConsole,
+      log: jest.fn(),
+    },
   }
 })
 
@@ -31,14 +35,14 @@ describe('loginMain', () => {
   const promptInput = jest.mocked(VipInquirer.promptInput)
   const promptPassword = jest.mocked(VipInquirer.promptPassword)
   const userLogin = jest.mocked(VipDocker.userLogin)
-  const logByBlank = jest.mocked(vipLogger.logByBlank)
+  const consoleLog = jest.mocked(VipConsole.log)
 
   beforeEach(() => {
     promptSelect.mockReset()
     promptInput.mockReset()
     promptPassword.mockReset()
     userLogin.mockClear()
-    logByBlank.mockClear()
+    consoleLog.mockClear()
   })
 
   it('注册 login 子命令', async () => {
@@ -73,8 +77,8 @@ describe('loginMain', () => {
     await loginMain(program)
     await runCliArgv(program, ['login'])
 
-    expect(logByBlank).toHaveBeenCalledWith(
-      `${VipColor.red('请粘贴到终端执行，NPM登录命令：')} ${VipColor.green('npm login --registry https://registry.npmjs.org')}`,
+    expect(consoleLog).toHaveBeenCalledWith(
+      `${VipColor.greenBright('login:')} 请在终端执行 ${VipColor.green('npm login --registry https://registry.npmjs.org')}`,
     )
     expect(userLogin).not.toHaveBeenCalled()
   })

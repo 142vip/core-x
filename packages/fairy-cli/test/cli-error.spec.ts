@@ -1,9 +1,8 @@
 import { ProcessExitCodeEnum, VipConsole, VipNodeJS, VipPackageCliCommander } from '@142vip/utils'
 import { afterEach, describe, expect, it, jest } from '@jest/globals'
 
-import { FAIRY_CLI_BIN_ALIASES } from '../src/fairy-cli.constants'
-import { CLI_COMMAND_DETAIL, CommandEnum } from '../src/fairy.interface'
-import { formatFairySupportedCommands, registerFairyCliErrorHandling } from '../src/utils/cli-error.util'
+import { CLI_COMMAND_DETAIL, CommandEnum, FAIRY_CLI_BIN_ALIASES } from '../src/constant'
+import { formatFairySupportedCommands, registerFairyCliErrorHandling } from '../src/utils/command.util'
 
 describe('formatFairySupportedCommands', () => {
   it('包含全部 CommandEnum 子命令', () => {
