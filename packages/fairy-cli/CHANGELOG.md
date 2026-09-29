@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 
+## v0.0.3-alpha.35 (2026-09-29)
+
+### ✨ Features
+
+- `fa commit`/`lint` 内置配置与 util 合并 &nbsp;-&nbsp; by **chufan** [<samp>(6873c)</samp>](https://github.com/142vip/core-x/commit/6873c3f4)
+- `fa ai --sync`/`--check` 与 `changelogMain` 统一注入 &nbsp;-&nbsp; by **chufan** [<samp>(4aec9)</samp>](https://github.com/142vip/core-x/commit/4aec9fae)
+- `fa ai` 默认同步并移除 `--sync` &nbsp;-&nbsp; by **chufan** [<samp>(2ecbc)</samp>](https://github.com/142vip/core-x/commit/2ecbc3cf)
+
+### 💅 Refactors
+
+- 收敛 utils 与常量到 `command.util` / `pkg.util` &nbsp;-&nbsp; by **chufan** [<samp>(70faa)</samp>](https://github.com/142vip/core-x/commit/70faa975)
+
+### 📖 Documentation
+
+- README/FEATURES 对齐内置配置与 `fa ai` 旗标 &nbsp;-&nbsp; by **chufan** [<samp>(f4526)</samp>](https://github.com/142vip/core-x/commit/f452693c)
+- README/FEATURES 对齐 CLI 结构与 `fa ai` 用法 &nbsp;-&nbsp; by **chufan** [<samp>(fb70f)</samp>](https://github.com/142vip/core-x/commit/fb70f0db)
+
+**Release New Version v0.0.3-alpha.35 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/fairy-cli)**
+
 ## v0.0.3-alpha.34 (2026-09-28)
 
 ### 💅 Refactors
