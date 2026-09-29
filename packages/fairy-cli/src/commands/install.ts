@@ -35,6 +35,7 @@ async function execInstall(installType: InstallTypeEnum, args: InstallOptions): 
   })
 }
 
+/** `fa install`：交互选择 npm / pnpm 安装依赖。 */
 export async function installMain(program: VipPackageCliCommander): Promise<void> {
   registerFairySubcommand(program, CommandEnum.INSTALL, async (args: InstallOptions) => {
     const installType = await VipInquirer.promptSelect<InstallTypeEnum>('选择安装方式：', Object.values(InstallTypeEnum))

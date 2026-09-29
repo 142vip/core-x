@@ -11,10 +11,7 @@ interface CopyrightOptions {
   logger: boolean
 }
 
-/**
- * copyright命令
- * - 参考 @142vip/copyright模块
- */
+/** `fa copyright`：交互生成软著登记用源代码文档（委托 `@142vip/copyright`）。 */
 export async function copyrightMain(program: VipPackageCliCommander): Promise<void> {
   registerFairySubcommand(program, CommandEnum.COPYRIGHT, async (args: CopyrightOptions) => {
     const copyrightTitle = await VipInquirer.promptInputRequired('申请著作权登记的软件的全称：')

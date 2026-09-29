@@ -44,6 +44,7 @@ async function loginNpm(dryRun?: boolean): Promise<void> {
   })
 }
 
+/** `fa login`：交互选择 Docker 或 npm 登录（npm 仅打印待执行命令）。 */
 export async function loginMain(program: VipPackageCliCommander): Promise<void> {
   registerFairySubcommand(program, CommandEnum.LOGIN, async (options: FairyCommandOptions) => {
     const loginType = await VipInquirer.promptSelect('选择需要登录的平台：', Object.values(LoginPlatformEnum))

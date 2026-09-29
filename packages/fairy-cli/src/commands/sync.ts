@@ -7,6 +7,7 @@ import {
   VipMonorepo,
   VipNodeJS,
 } from '@142vip/utils'
+import { name as fairyCliPackageName } from '../../package.json'
 import { CommandEnum } from '../fairy.interface'
 import { fetchJson, fetchText, logDryRunSteps, registerFairySubcommand, runOrDryRun } from '../utils'
 
@@ -91,7 +92,7 @@ async function execSync(packageName: string, dryRun?: boolean): Promise<void> {
   }
 
   setTimeout(async () => {
-    vipLogger.logByBlank(`---------【@142vip/fairy-cli】模块：${VipColor.green(packageName)}，开始同步 ------- `)
+    vipLogger.logByBlank(`---------【${fairyCliPackageName}】模块：${VipColor.green(packageName)}，开始同步 ------- `)
     await requestSync(packageName, false)
   }, 1000)
 }
@@ -118,15 +119,13 @@ async function searchNpmPkgOnline(input: string | undefined, options: { signal: 
   }))
 }
 
-interface SyncCommandOptions extends VipCommanderOptions {}
-
 /**
- * sync 命令入口
- * - `--vip`：从 Monorepo `packages/*` 选包（@142vip 专用）
- * - `--dry-run`：打印 HTTP 步骤，不请求镜像站
+ * `fa sync`：将指定 npm 包同步到 CNPM 镜像（npmmirror sync API）。
+ * - `--vip`：从 Monorepo `packages/*` 交互选包
+ * - `--dry-run`：只打印 HTTP 步骤
  */
 export async function syncMain(program: VipPackageCliCommander): Promise<void> {
-  registerFairySubcommand<[string | undefined, SyncCommandOptions]>(program, CommandEnum.SYNC, async (packageName, options) => {
+  registerFairySubcommand<[string | undefined, VipCommanderOptions]>(program, CommandEnum.SYNC, async (packageName, options) => {
     if (packageName == null && options.vip) {
       const pkgJSON = VipMonorepo.getReleasePkgJSON('./packages/*')
       const packageNames = pkgJSON.map(pkg => pkg.name)

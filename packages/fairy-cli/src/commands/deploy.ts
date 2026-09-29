@@ -14,6 +14,7 @@ function execDeploy(args: DeployOptions): void {
 
 function DeployGithubPage(): void {}
 
+/** `fa deploy`：项目部署占位（GitHub Pages 等，待扩展）。 */
 export async function deployMain(program: VipPackageCliCommander): Promise<void> {
   registerFairySubcommand(program, CommandEnum.DEPLOY, async (args: DeployOptions) => {
     const steps = [

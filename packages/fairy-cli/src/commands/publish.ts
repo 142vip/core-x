@@ -31,6 +31,7 @@ async function publishNpm(args: PublishOptions): Promise<void> {
   })
 }
 
+/** `fa publish`：向 npm registry 发布当前包（可 `--dry-run`）。 */
 export async function publishMain(program: VipPackageCliCommander): Promise<void> {
   registerFairySubcommand(program, CommandEnum.PUBLISH, async (args: PublishOptions) => {
     await publishNpm(args)

@@ -126,9 +126,7 @@ async function execCleanUp(args: CleanUpOptions): Promise<void> {
   }
 }
 
-/**
- * fairy-cli clean 项目清理
- */
+/** `fa clean`：按 glob 删除 dist、缓存、node_modules 等构建产物。 */
 export async function cleanUpMain(program: VipPackageCliCommander): Promise<void> {
   registerFairySubcommand(program, CommandEnum.CLEAN, async (args: CleanUpOptions) => {
     await execCleanUp(args)

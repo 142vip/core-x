@@ -1,4 +1,5 @@
 import { VipColor, vipLogger } from '@142vip/utils'
+import { traceFaCli } from './trace-cli.util'
 
 /**
  * 试运行：逐条打印将要执行的操作，不触发副作用。
@@ -25,5 +26,6 @@ export async function runOrDryRun(
     logDryRunSteps(command, steps)
     return
   }
+  traceFaCli(`${command}: 执行`, { steps })
   await run()
 }
