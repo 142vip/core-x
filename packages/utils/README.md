@@ -24,7 +24,7 @@ pnpm add @142vip/utils
 
 ## 配置
 
-`vipConfig.loadCliConfig(name, defaults)` 按模块名走 cosmiconfig（如 `changelog`、`releasex`）。
+`vipConfig.loadCliConfig(name, defaults)` 按模块名走 cosmiconfig（如 `changelog`、`commit-linter`、`releasex`）。`vipConfig.loadConfigAtPath(name, filepath)` 供 `fa lint -f` / `fa commit -f` 等显式路径加载。
 
 ## 使用
 

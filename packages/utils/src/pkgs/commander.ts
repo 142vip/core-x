@@ -120,9 +120,12 @@ export class VipCommander extends CommanderRoot {
       .description(options.description) as VipCommander
   }
 
-  public override async parseAsync(argv?: readonly string[]): Promise<this> {
+  public override async parseAsync(
+    argv?: readonly string[],
+    parseOptions?: { from: 'node' | 'user' },
+  ): Promise<this> {
     setVipConsoleTraceEnabled(false)
-    return super.parseAsync(argv)
+    return super.parseAsync(argv, parseOptions)
   }
 }
 
