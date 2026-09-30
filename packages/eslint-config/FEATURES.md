@@ -4,7 +4,7 @@
 
 ## 定位
 
-基于 [@antfu/eslint-config](https://github.com/antfu/eslint-config) 的仓库统一 ESLint Flat Config 封装。core-x 经 `fa lint` 加载 `@142vip/fairy-cli` 内置配置；对 Markdown 内嵌代码块单独降级规则，避免教学示例误报。
+基于 [@antfu/eslint-config](https://www.npmjs.com/package/@antfu/eslint-config)（当前 `9.5.1`）的仓库统一 ESLint Flat Config 封装。core-x 经 `fa lint` 加载 `@142vip/fairy-cli` 内置配置；对 Markdown 内嵌代码块单独降级规则，避免教学示例误报。本包**仅 ESM 发布**（`emitCJS: false`），因上游与 `@antfu/eslint-config` 不可被 CJS `require`。
 
 ## 功能
 
@@ -28,6 +28,7 @@
 - `typescript: true`
 - `vue: true`
 - `jsonc: true`
+- `e18e: false`、`pnpm: false`：对齐 v4 时代全仓 lint 语义，不随 antfu v9 默认启用新插件
 - `yaml: true`
 - `markdown: true`（antfu markdown 处理器；内嵌 ts/js 块由 overrides 降级）
 
@@ -88,7 +89,7 @@ export default defineVipEslintConfig({
 
 ## 构建
 
-`unbuild` 双格式
+`unbuild` 仅 ESM（`emitCJS: false`；依赖 `@antfu/eslint-config` 不可被 CJS `require`）
 
 ```shell
 cd packages/eslint-config && pnpm build

@@ -1,5 +1,6 @@
 {
   "name": "@142vip/eslint-config",
+  "type": "module",
   "version": "0.0.1-alpha.6",
   "private": false,
   "description": "通用的Eslint配置规则和规范，简化Eslint配置",
@@ -23,8 +24,7 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
+      "import": "./dist/index.mjs"
     }
   },
   "main": "./dist/index.mjs",
@@ -44,8 +44,8 @@
     "homePage": "https://142vip.cn"
   },
   "dependencies": {
-    "@antfu/eslint-config": "4.19.0",
-    "eslint": "9.35.0"
+    "@antfu/eslint-config": "9.5.1",
+    "eslint": "9.39.5"
   },
   "publishConfig": {
     "access": "public",

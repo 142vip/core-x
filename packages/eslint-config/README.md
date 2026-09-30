@@ -20,7 +20,7 @@ pnpm add -D @142vip/eslint-config eslint
 - ✅ 默认开启 TypeScript、Vue、JSONC、YAML、Markdown 处理
 - ✅ Markdown 内嵌代码块规则降级（教学示例不误报）
 - ✅ `baseEslintRules`：`no-console` warn 与受限 `console` 调用
-- ✅ 可从 `@142vip/fairy-cli` 同符号 re-export（`defineVipEslintConfig`）
+- ✅ 依赖 `@antfu/eslint-config` 9.x（ESM）；本包仅 `import` 导出，供 `fa lint` 与自建 `eslint.config.*` 使用
 
 ## 配置
 
