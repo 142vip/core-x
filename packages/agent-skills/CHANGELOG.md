@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## v0.0.1-alpha.9 (2026-09-30)
+
+### 📖 Documentation
+
+- 修正 SKILL 表格列数以通过 Markdown lint &nbsp;-&nbsp; by **chufan** [<samp>(11b63)</samp>](https://github.com/142vip/core-x/commit/11b634d1)
+
+**Release New Version v0.0.1-alpha.9 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/agent-skills)**
+
 ## v0.0.1-alpha.8 (2026-09-29)
 
 ### 💅 Refactors
