@@ -184,8 +184,8 @@ npx eslint --fix --max-warnings 0 path/to/a.ts path/to/b.vue
 | Build | 交付脚本 exit 0 |
 | 注释 | 模块职责与复杂分支可读 |
 | TODO | 存在则已更新；无则跳过 |
-| 收尾 | 临时进程/文件清理 | 临时后台进程已 `TaskStop` / `pkill`；端口偏移后已同步 README |
-| 端口 | 是否复用已声明端口 | 未擅自偏移到 `+1` 端口（vite / nest 等） |
+| 收尾 | 临时进程/文件清理；后台进程已 `TaskStop` / `pkill`；端口偏移后已同步 README |
+| 端口 | 复用已声明端口，未擅自偏移到 `+1`（vite / nest 等） |
 
 具体命令组写在 build-map 或 `AGENTS.md`，本 skill 只定义流程。
 

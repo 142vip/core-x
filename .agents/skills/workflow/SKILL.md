@@ -84,7 +84,8 @@ description: 跨项目高效执行管线与知识沉淀规范。当开始一个�
 
 | 发现 | 写回目标 |
 |------|----------|
-| 跨项目通用编码 / 自检 / Git 提交流程 | **必须**写回 `@142vip/agent-skills` 真源 `skills/<name>/SKILL.md` → 发版 → 下游 upgrade；**禁止**只改下游镜像 || 本仓编码纪律 / 边界 | 根 `AGENTS.md` |
+| 跨项目通用编码 / 自检 / Git 提交流程 | **必须**写回 `@142vip/agent-skills` 真源 `skills/<name>/SKILL.md` → 发版 → 下游 upgrade；**禁止**只改下游镜像 |
+| 本仓编码纪律 / 边界 | 根 `AGENTS.md` |
 | 本仓业务落点 / 近期模式 | `.agents/skills/business-map` |
 | 本仓构建命令映射 | `.agents/project/build-map.md` |
 | 某工具命令习惯 | L2 工具薄入口 |
