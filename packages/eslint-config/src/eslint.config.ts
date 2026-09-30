@@ -71,8 +71,8 @@ export const baseEslintRules = {
     selector: 'CallExpression[callee.object.name=\'console\'][callee.property.name!=/^(log|warn|error|info|trace)$/]',
     message: 'Unexpected property on console object was called',
   }],
-  // SKILL.md 等文档表格列数 intentionally 与 antfu 默认表头规则不一致
-  // 'markdown/table-column-count': 'off',
+  // SKILL.md 等自检表 intentionally 多列，关闭 antfu v9 markdown 表格列数强校验
+  'markdown/table-column-count': 'off',
 }
 
 type EslintConfigOptions = OptionsConfig & TypedFlatConfigItem
