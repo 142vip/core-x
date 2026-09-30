@@ -4,7 +4,7 @@
 
 ## 定位
 
-基于 [@antfu/eslint-config](https://github.com/antfu/eslint-config) 的仓库统一 ESLint Flat Config 封装。core-x 经 `fa lint` 加载 `@142vip/fairy-cli` 内置配置；对 Markdown 内嵌代码块单独降级规则，避免教学示例误报。
+基于 [@antfu/eslint-config](https://www.npmjs.com/package/@antfu/eslint-config)（当前 `9.5.1`）的仓库统一 ESLint Flat Config 封装。core-x 经 `fa lint` 加载 `@142vip/fairy-cli` 内置配置；对 Markdown 内嵌代码块单独降级规则，避免教学示例误报。本包**仅 ESM 发布**（`emitCJS: false`），因上游与 `@antfu/eslint-config` 不可被 CJS `require`。
 
 ## 功能
 
@@ -28,6 +28,8 @@
 - `typescript: true`
 - `vue: true`
 - `jsonc: true`
+- `e18e: false`、`pnpm: false`：见下文「antfu v9 可选集成」
+- Markdown 表格列数：沿用 antfu v9 默认 `markdown/table-column-count`（不在 `baseEslintRules` 关闭）
 - `yaml: true`
 - `markdown: true`（antfu markdown 处理器；内嵌 ts/js 块由 overrides 降级）
 
@@ -78,9 +80,15 @@ export default defineVipEslintConfig({
 
 无独立 `changelog.config` 类文件；配置即 `defineVipEslintConfig` 入参。
 
+### antfu v9 可选集成（本包默认）
+
+- **`e18e: false`** — [@e18e/eslint-plugin](https://github.com/e18e/eslint-plugin)（「高效现代 JS」规则集，如推荐 `??`/`??=`、`Object.hasOwn`、`Date.now()` 等）。antfu v9 默认开启；本仓为控制升级面先关闭，全仓采纳时可改为 `true` 并分批修 lint。
+- **`pnpm: false`** — 校验 `pnpm-workspace.yaml` 推荐设置；本仓 workspace 未对齐其 opinion 时保持关闭。
+
 ## 最佳实践
 
 - 业务 `.ts` / `.vue` 保持严格规则；仅 Markdown 内嵌示例享受 overrides
+- Markdown 正文表格须符合 `markdown/table-column-count`（列数与分隔行一致）
 - 需要关闭 markdown 处理：`defineVipEslintConfig({ markdown: false })`
 - Nest 包 DI：`fairy-cli` 默认配置已关闭 `ts/consistent-type-imports`（Injectable 须值导入）
 - 修改默认规则时同步检查根 `pre-commit` 钩子 `npx fa lint --fix` 影响面
@@ -88,7 +96,7 @@ export default defineVipEslintConfig({
 
 ## 构建
 
-`unbuild` 双格式
+`unbuild` 仅 ESM（`emitCJS: false`；依赖 `@antfu/eslint-config` 不可被 CJS `require`）
 
 ```shell
 cd packages/eslint-config && pnpm build

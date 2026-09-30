@@ -43,6 +43,10 @@ const markdownCodeBlockOverrides: TypedFlatConfigItem[] = [
  * 等在「教学示例」上误报。
  *
  * 调用方仍可通过 `options.markdown = false` 显式关闭（向后兼容设计）。
+ *
+ * @antfu/eslint-config v9 新增 `@e18e/eslint-plugin`、`eslint-plugin-pnpm` 等集成；此处显式关闭，
+ * 避免升级依赖后全仓突然出现大量与 v4 时代不一致的 error（非本次升级的语义变更范围）。
+ * 参考：https://www.npmjs.com/package/@antfu/eslint-config
  */
 export const defaultEslintConfig: EslintConfigOptions = {
   gitignore: true,
@@ -52,6 +56,10 @@ export const defaultEslintConfig: EslintConfigOptions = {
   yaml: true,
   // markdown 处理器默认开启：markdown 自身 ESLint 校验 + 内嵌代码块通过 overrides 降级
   markdown: true,
+  // @e18e/eslint-plugin：现代 JS 写法建议（??、Object.hasOwn 等）；默认关，避免升级 antfu 时全仓批量改码
+  e18e: false,
+  // monorepo 存在 `pnpm-workspace.yaml` 时 v9 可能启用 pnpm 规则；关闭以免强制改 workspace 设置
+  pnpm: false,
 }
 
 /**
