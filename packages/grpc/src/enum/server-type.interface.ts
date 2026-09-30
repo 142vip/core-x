@@ -64,29 +64,29 @@ export type sendUnaryData<ResponseType> = (
   error: ServerErrorResponse | ServerStatusResponse | null,
   value?: ResponseType | null,
   trailer?: Metadata,
-  flags?: number
+  flags?: number,
 ) => void
 
 // User provided handler for unary calls.
 type handleUnaryCall<RequestType, ResponseType> = (
   call: ServerUnaryCall<RequestType, ResponseType>,
-  callback: sendUnaryData<ResponseType>
+  callback: sendUnaryData<ResponseType>,
 ) => void
 
 // User provided handler for client streaming calls.
 type handleClientStreamingCall<RequestType, ResponseType> = (
   call: ServerReadableStream<RequestType, ResponseType>,
-  callback: sendUnaryData<ResponseType>
+  callback: sendUnaryData<ResponseType>,
 ) => void
 
 // User provided handler for server streaming calls.
 type handleServerStreamingCall<RequestType, ResponseType> = (
-  call: ServerWritableStream<RequestType, ResponseType>
+  call: ServerWritableStream<RequestType, ResponseType>,
 ) => void
 
 // User provided handler for bidirectional streaming calls.
 type handleBidiStreamingCall<RequestType, ResponseType> = (
-  call: ServerDuplexStream<RequestType, ResponseType>
+  call: ServerDuplexStream<RequestType, ResponseType>,
 ) => void
 
 export type HandleCall<RequestType, ResponseType>
