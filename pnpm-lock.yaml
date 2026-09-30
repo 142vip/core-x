@@ -580,7 +580,7 @@ importers:
     devDependencies:
       mkdist:
         specifier: 2.4.1
-        version: 2.4.1(sass@1.102.0)(typescript@5.9.3)(vue-sfc-transformer@0.2.5(@vue/compiler-core@3.5.40)(esbuild@0.28.2)(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(vue@3.5.40(typescript@5.9.3))
+        version: 2.4.1(sass@1.102.0)(typescript@5.9.3)(vue-sfc-transformer@0.3.0(@vue/compiler-core@3.5.40)(esbuild@0.28.2)(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(vue@3.5.40(typescript@5.9.3))
       sass:
         specifier: 1.102.0
         version: 1.102.0
@@ -606,8 +606,8 @@ importers:
         specifier: 0.11.2
         version: 0.11.2(magic-string@0.30.21)
       vue-sfc-transformer:
-        specifier: 0.2.5
-        version: 0.2.5(@vue/compiler-core@3.5.40)(esbuild@0.28.2)(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3))
+        specifier: 0.3.0
+        version: 0.3.0(@vue/compiler-core@3.5.40)(esbuild@0.28.2)(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3))
 
   packages/vuepress:
     dependencies:
@@ -11278,8 +11278,8 @@ packages:
       esbuild: '*'
       vue: ^3.5.13
 
-  vue-sfc-transformer@0.2.5:
-    resolution: {integrity: sha512-e+yWjXmWH/088bFrgpvVZ4x/4TkgRKM3L9yreSVlzphEy03auX7zgycyHFLEyCizMDmUh+Q2aXYRb3tjETtCyQ==}
+  vue-sfc-transformer@0.3.0:
+    resolution: {integrity: sha512-WdpctRqmwbePyfHFK/vZgyiUWkDDdN/0V7s5KFCX8DAEwCQI+XKudNgoJbGfDvVxLrWtvV9D6H7kvMkZeYGAhg==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       '@volar/typescript': ^2.4.0
@@ -11293,6 +11293,8 @@ packages:
       '@volar/typescript':
         optional: true
       '@vue/language-core':
+        optional: true
+      esbuild:
         optional: true
       rolldown:
         optional: true
@@ -15305,7 +15307,7 @@ snapshots:
 
   '@unocss/eslint-plugin@0.65.4(eslint@9.39.5(jiti@2.7.0))(typescript@5.9.3)':
     dependencies:
-      '@typescript-eslint/utils': 8.70.1(eslint@9.39.5(jiti@2.7.0))(typescript@5.9.3)
+      '@typescript-eslint/utils': 8.71.0(eslint@9.39.5(jiti@2.7.0))(typescript@5.9.3)
       '@unocss/config': 0.65.4
       '@unocss/core': 0.65.4
       magic-string: 0.30.21
@@ -18156,6 +18158,7 @@ snapshots:
       '@esbuild/win32-arm64': 0.28.2
       '@esbuild/win32-ia32': 0.28.2
       '@esbuild/win32-x64': 0.28.2
+    optional: true
 
   escalade@3.1.2: {}
 
@@ -20905,7 +20908,7 @@ snapshots:
       vue: 3.5.40(typescript@5.9.2)
       vue-sfc-transformer: 0.1.14(vue@3.5.40(typescript@5.9.2))
 
-  mkdist@2.4.1(sass@1.102.0)(typescript@5.9.3)(vue-sfc-transformer@0.2.5(@vue/compiler-core@3.5.40)(esbuild@0.28.2)(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(vue@3.5.40(typescript@5.9.3)):
+  mkdist@2.4.1(sass@1.102.0)(typescript@5.9.3)(vue-sfc-transformer@0.3.0(@vue/compiler-core@3.5.40)(esbuild@0.28.2)(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(vue@3.5.40(typescript@5.9.3)):
     dependencies:
       autoprefixer: 10.4.21(postcss@8.5.6)
       citty: 0.1.6
@@ -20924,7 +20927,7 @@ snapshots:
       sass: 1.102.0
       typescript: 5.9.3
       vue: 3.5.40(typescript@5.9.3)
-      vue-sfc-transformer: 0.2.5(@vue/compiler-core@3.5.40)(esbuild@0.28.2)(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3))
+      vue-sfc-transformer: 0.3.0(@vue/compiler-core@3.5.40)(esbuild@0.28.2)(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3))
 
   mlly@1.7.4:
     dependencies:
@@ -23798,15 +23801,13 @@ snapshots:
       vue: 3.5.40(typescript@5.9.2)
     optional: true
 
-  vue-sfc-transformer@0.2.5(@vue/compiler-core@3.5.40)(esbuild@0.28.2)(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)):
+  vue-sfc-transformer@0.3.0(@vue/compiler-core@3.5.40)(esbuild@0.28.2)(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)):
     dependencies:
-      '@babel/parser': 7.29.7
       '@vue/compiler-core': 3.5.40
-      esbuild: 0.28.2
-      pathe: 2.0.3
       tinyglobby: 0.2.17
       vue: 3.5.40(typescript@5.9.3)
     optionalDependencies:
+      esbuild: 0.28.2
       typescript: 5.9.3
 
   vue@3.5.40(typescript@5.9.2):
