@@ -43,12 +43,12 @@ export interface IntermediateObjectWritable<T> extends Writable {
   end: (() => ReturnType<Writable['end']> extends Writable ? this : void) & ((
     chunk: any & T,
     // eslint-disable-next-line ts/no-unsafe-function-type
-    cb?: Function
+    cb?: Function,
   ) => ReturnType<Writable['end']> extends Writable ? this : void) & ((
     chunk: any & T,
     encoding?: any,
     // eslint-disable-next-line ts/no-unsafe-function-type
-    cb?: Function
+    cb?: Function,
   ) => ReturnType<Writable['end']> extends Writable ? this : void)
 }
 
@@ -61,11 +61,11 @@ export interface ObjectWritable<T> extends IntermediateObjectWritable<T> {
   end: (() => ReturnType<Writable['end']> extends Writable ? this : void) & ((
     chunk: T,
     // eslint-disable-next-line ts/no-unsafe-function-type
-    cb?: Function
+    cb?: Function,
   ) => ReturnType<Writable['end']> extends Writable ? this : void) & ((
     chunk: T,
     encoding?: any,
     // eslint-disable-next-line ts/no-unsafe-function-type
-    cb?: Function
+    cb?: Function,
   ) => ReturnType<Writable['end']> extends Writable ? this : void)
 }
