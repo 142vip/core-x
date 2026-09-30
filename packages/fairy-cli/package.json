@@ -75,13 +75,13 @@
     "@142vip/utils": "workspace:*"
   },
   "dependencies": {
-    "@142vip/utils": "workspace:*",
     "@142vip/agent-skills": "workspace:*",
     "@142vip/changelog": "workspace:*",
     "@142vip/commit-linter": "workspace:*",
     "@142vip/copyright": "workspace:*",
     "@142vip/eslint-config": "workspace:*",
-    "@142vip/release-version": "workspace:*"
+    "@142vip/release-version": "workspace:*",
+    "@142vip/utils": "workspace:*"
   },
   "publishConfig": {
     "access": "public",

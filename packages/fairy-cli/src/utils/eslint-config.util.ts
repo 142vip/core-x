@@ -1,8 +1,13 @@
 import { vipConfig } from '@142vip/utils'
 import { resolveFairyCliBundledConfig } from './pkg.util'
 
-/** 与 `@142vip/eslint-config` 同源，便于从 `fa` 包引用 */
-export { defineVipEslintConfig } from '@142vip/eslint-config'
+/**
+ * 不在此 re-export `defineVipEslintConfig`（`@142vip/eslint-config`）。
+ * `fa` 的 bin 走 CJS（`dist/fairy-cli.cjs`），顶层 re-export 会让 shared chunk 在启动时
+ * `require('@142vip/eslint-config')` → 再拉取仅 ESM 的 `@antfu/eslint-config` 而失败。
+ * 编程式配置请 `import { defineVipEslintConfig } from '@142vip/eslint-config'`；
+ * CLI 使用随包的 `config/default-eslint.config.mjs`（ESM dynamic import）。
+ */
 
 /** cosmiconfig 模块名：`eslint.config.js` / `eslint.config.mjs` 等 */
 export const ESLINT_CONFIG_MODULE_NAME = 'eslint'

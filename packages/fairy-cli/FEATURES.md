@@ -34,10 +34,10 @@ src/
 
 ## 功能
 
-### `utils/commit.util.ts` / `eslint-config.util.ts`（对外 re-export）
+### `utils/commit.util.ts` / `eslint-config.util.ts`
 
-- `commitLinter`、`defineVipCommitLinterConfig`、`loadCommitLinterConfig` ← `@142vip/commit-linter`
-- `defineVipEslintConfig` ← `@142vip/eslint-config`
+- `commitLinter`、`defineVipCommitLinterConfig`、`loadCommitLinterConfig` ← `@142vip/commit-linter`（re-export）
+- `resolveEslintConfigPath` / `resolveBundledDefaultEslintConfigPath`（`fa lint -f` 与内置 `config/default-eslint.config.mjs`）；`defineVipEslintConfig` 请直接从 `@142vip/eslint-config` 引入（避免 CJS `fa` 启动时 `require` ESM 编排包）
 
 ### 子路径
 

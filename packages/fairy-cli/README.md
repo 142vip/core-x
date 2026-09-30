@@ -39,7 +39,7 @@ pnpm add -D @142vip/fairy-cli
 - ✅ 编程式 API：`fairyCliMain`、`releasePackage`、`buildReleaseVersionOptions`、`printPreCheckRelease`
 - ✅ `commit`：`-f` 指定 `commit-linter.config.*`，`-s` 扫描包路径 glob 作为 scope，`-q` 仅校验；内置 `config/default-commit-linter.config.cjs`
 - ✅ `lint`：自动发现 `eslint.config.*` 或内置 `config/default-eslint.config.mjs`，`-f` 指定配置
-- ✅ 与专用包同源的编程式导出：`commitLinter`、`defineVipCommitLinterConfig`、`defineVipEslintConfig`、`loadCommitLinterConfigForCli`
+- ✅ 与专用包同源的编程式导出：`commitLinter`、`defineVipCommitLinterConfig`、`loadCommitLinterConfigForCli`（ESLint 配置请从 `@142vip/eslint-config` 引入 `defineVipEslintConfig`）
 
 ## 配置
 
@@ -94,7 +94,6 @@ fa ai --check -t .
 import {
   commitLinter,
   defineVipCommitLinterConfig,
-  defineVipEslintConfig,
   fairyCliMain,
   printPreCheckRelease,
   releasePackage,
