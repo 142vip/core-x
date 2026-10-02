@@ -49,11 +49,11 @@
   "peerDependencies": {
     "@142vip/nest": "workspace:*",
     "@nestjs/typeorm": "11.0.0",
-    "typeorm": "0.3.30"
+    "typeorm": "0.3.31"
   },
   "devDependencies": {
     "@nestjs/typeorm": "11.0.0",
-    "typeorm": "0.3.30"
+    "typeorm": "0.3.31"
   },
   "publishConfig": {
     "access": "public",
