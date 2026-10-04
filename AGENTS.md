@@ -9,7 +9,7 @@
 ## 项目信息
 
 - **类型**：pnpm 9 + Turbo Monorepo（`packages/**` 可发布 + `apps/**` 私有 demo）
-- **包管理器**：pnpm `9.6`（安装首选 `./scripts/ci`，失败再 `pnpm install`）
+- **包管理器**：pnpm `9.6`（安装首选 `npx fa ci`，失败再 `pnpm install`）
 - **Node 版本**：`>=22`
 - **构建编排**：Turbo（`build` / `test` / `lint` / `dev` 任务图）
 - **版本**：根 `0.0.1-alpha.x`；npm 发版分支 `next`（`.npmrc` → `publish-branch=next`）

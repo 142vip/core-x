@@ -10,8 +10,8 @@ npm install
 # 项目根目录使用pnpm
 pnpm install
 
-# 基于ci脚本
-./scripts/ci
+# 仓库根目录
+npx fa ci
 ```
 
 ## 项目启动

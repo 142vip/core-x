@@ -12,6 +12,6 @@
 ## Codex 专有约定
 
 - Codex 默认自动读取根 `AGENTS.md`，无需额外配置
-- 仓库命令统一用 `pnpm` / `./scripts/ci`；构建须 `cd` 到目标包目录执行
+- 仓库命令统一用 `pnpm` / `npx fa ci`；构建须 `cd` 到目标包目录执行
 - 改完自检：局部 lint（零 error 零 warning）→ 受影响包 build → 文档同步（`AGENTS.md`「改完自检」）
 - 提交：只 commit 不 push；分类提交规范见 `commit` skill
