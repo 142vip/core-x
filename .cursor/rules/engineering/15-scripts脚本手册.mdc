@@ -5,13 +5,12 @@ alwaysApply: true
 
 # scripts 脚本手册
 
-> `preinstall` 会对 `scripts/*` 执行 `chmod +x`。日常开发优先用根 `package.json` 的 `pnpm` 命令；本节说明 `scripts/` 各脚本的职责，便于模型理解 CI、发布与维护流程。
+> `npx fa ci` 的默认 `preinstall` 在存在 `scripts/` 时对其下文件执行 `chmod +x`，目录不存在或为空则跳过。日常开发优先用根 `package.json` 的 `pnpm` 命令；本节说明 `scripts/` 各脚本的职责，便于模型理解 CI、发布与维护流程。
 
 ## 目录结构
 
 ```
 scripts/
-├── ci                 # CI 环境安装依赖
 ├── build              # 交互式选择包/docs 构建
 ├── build-image        # 构建并推送文档站 Docker 镜像
 ├── npm-pkg            # 从 _example 脚手架创建新 npm 包并同步文档
@@ -33,25 +32,17 @@ scripts/
 
 `scripts/build` 是**维护者可选**的交互式构建，不等同于 `pnpm build`。
 
-## scripts/ci
+## 安装依赖
 
-**用途**：**仓库首选**的依赖安装方式（CI 与本地均适用）。
+安装不在 `scripts/` 里。入口是 `npx fa ci`（流水线为 `pnpm exec fa ci`）。
 
-```bash
-./scripts/ci
-# 或指定 registry
-NPM_REGISTRY=https://registry.npmmirror.com ./scripts/ci
-```
-
-**行为**：
 - 确保 `corepack` 与 `pnpm` 可用（`COREPACK_NPM_REGISTRY` 默认 npm 官方源）
-- 执行 `pnpm i --frozen-lockfile --force`
+- 执行 `pnpm i --registry <url> --frozen-lockfile --force`，`fa ci` 之后的参数对应 `"$@"`
 - 默认 registry：`https://registry.npmmirror.com`
-
-**模型**：
-- **首选** `./scripts/ci`（首次克隆、清环境、与 CI 对齐）
-- **回退** `pnpm install`：当 `./scripts/ci` 失败（网络、corepack、registry 等）或仅需本地增量时
-- 两者 `postinstall` 均会触发 `build:packages`
+- 执行 `fairy.config` 的 `preinstall` / `postinstall`（core-x 的 `postinstall` 为 `pnpm build:packages`）
+- `CI=true` 时不写 git hooks；本地安装仍写入 `.git/hooks`
+- 根 `package.json` 不再写 `preinstall` / `postinstall` / `clean*`
+- 回退：`pnpm install`（网络、corepack、镜像失败，或只需增量安装时）
 
 ## scripts/build
 
@@ -152,8 +143,8 @@ pnpm check:commit   # → npx fa commit --quiet -s './apps/*' -s './packages/*'�
 ## 模型选用原则
 
 ```
-日常开发 / 改代码     →  cd 模块目录 build；安装 ./scripts/ci，失败则 pnpm install
-CI 安装               →  scripts/ci（与 CI.yml 一致）
+日常开发 / 改代码     →  cd 模块目录 build；安装 npx fa ci，失败则 pnpm install
+CI 安装               →  pnpm exec fa ci（与 CI.yml 一致）
 单包本地发版（维护者） →  scripts/npm-release
 CI 发布权限（维护者） →  scripts/npm-trust
 文档 Docker 镜像      →  scripts/build-image

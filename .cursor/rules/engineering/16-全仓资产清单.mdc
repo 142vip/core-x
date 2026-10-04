@@ -117,7 +117,7 @@ alwaysApply: true
 
 | 工作流 | 触发 | 主要步骤 |
 |--------|------|----------|
-| `CI.yml` | PR → `next` | `./scripts/ci` → `pnpm lint` → `build:docs` → `build:docs-proxy` |
+| `CI.yml` | PR → `next` | `pnpm exec fa ci` → `pnpm lint` → `build:docs` → `build:docs-proxy` |
 | `CD.yaml` | push `next` | GitHub Release、npm 发布（`workflow_dispatch` 选手动包）、GitHub Pages |
 
 发布分支：`next`（`.npmrc` → `publish-branch=next`）。CD 可选包列表与上表 31 包一致。
@@ -126,7 +126,7 @@ alwaysApply: true
 
 ```
 1. codegraph sync
-2. 依赖未装 → `./scripts/ci`；失败 → `pnpm install`
+2. 依赖未装 → `npx fa ci`；失败 → `pnpm install`
 3. 本文件 + business/任务路由索引 + business/包职责地图
 4. 目标路径 Read/Grep（不臆测未读文件）
 5. 08 命令 · 09 文档同步 · 对应 business 专项

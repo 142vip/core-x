@@ -5,33 +5,35 @@ alwaysApply: true
 
 # 常用命令手册
 
-> 模型须按本手册执行命令。**安装优先 `./scripts/ci`**；**单包 build/test 优先进入模块目录**；全量与根级脚本在仓库根执行。
+> 模型须按本手册执行命令。**安装优先 `npx fa ci`**；**单包 build/test 优先进入模块目录**；全量与根级脚本在仓库根执行。
 
 ## 环境要求
 
 - Node `>=18`
 - pnpm `9.6.0`（`packageManager` 锁定，勿用 npm/yarn）
 
-## 安装依赖（首选 scripts/ci，异常可回退）
+## 安装依赖（首选 `npx fa ci`，异常可回退）
 
 ```bash
-# 首选：与 GitHub CI 一致（corepack + frozen-lockfile + 镜像源）
-./scripts/ci
+# 首选：与 GitHub CI 一致（corepack + frozen-lockfile + 镜像源 + hooks）
+npx fa ci
 
-# 回退：./scripts/ci 失败或环境受限时
+# 回退：fa ci 失败或环境受限时
 pnpm install
 ```
 
 | 场景 | 命令 |
 |------|------|
-| 首次克隆 / 换机 / 与 CI 对齐 | `./scripts/ci` |
+| 首次克隆 / 换机 / 与 CI 对齐 | `npx fa ci`（仓库内需先 `pnpm i` 并 `pnpm --filter @142vip/fairy-cli... build`，流水线已包含这两步） |
 | **ci 报错**（网络、corepack、镜像等） | `pnpm install` |
 | 日常增量、依赖已装全 | `pnpm install` |
-| CI 定义 | `.github/workflows/CI.yml` → `./scripts/ci` |
+| CI 定义 | `.github/workflows/CI.yml` → `pnpm exec fa ci` |
 
-**原则**：先试 `./scripts/ci`；有问题再 `pnpm install`，勿跳过安装直接 build。
+**原则**：先试 `npx fa ci`；有问题再 `pnpm install`，勿跳过安装直接 build。
 
-详见 `15-scripts脚本手册` § scripts/ci。
+`fa ci` 固定 `pnpm i --registry <url> --frozen-lockfile --force`，并执行 `fairy.config` 的 `preinstall` / `postinstall`。默认源 npmmirror。后面的参数原样交给 pnpm。
+
+详见 `15-scripts脚本手册`（`scripts/` 不再包含安装脚本）。
 
 ## 单包命令（优先进入目录）
 
@@ -48,7 +50,7 @@ pnpm install
 
 **仅在仓库根执行**（无模块目录等价）：`pnpm dev` / `pnpm build:docs` / `pnpm build:packages` / `pnpm lint:fix` / `pnpm test`（turbo 全量）/ `pnpm build`。
 
-选用原则：**改哪进哪** → `cd` 到目标目录执行；安装先试 `./scripts/ci`，失败再 `pnpm install`。
+选用原则：**改哪进哪** → `cd` 到目标目录执行；安装先试 `npx fa ci`，失败再 `pnpm install`。
 
 ## CodeGraph（任务开始前必做）
 
@@ -137,7 +139,7 @@ pnpm build:docs
 ## 模型选用原则
 
 ```
-安装      →  ./scripts/ci；失败则 pnpm install
+安装      →  npx fa ci；失败则 pnpm install
 改单包    →  cd packages/<pkg> && pnpm build [test] [typecheck]
 改 demo   →  cd apps/<demo> && pnpm dev/build
 根级任务  →  pnpm lint:fix / build:docs / pnpm build（根目录）
