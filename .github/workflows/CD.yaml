@@ -87,15 +87,13 @@ jobs:
           cache: pnpm
           package-manager-cache: false
 
-      # 基于国内镜像源下载依赖，并执行初始化脚本：钩子函数、思维导图构建
+      # 编译本地 fa 后执行 fa ci（postinstall 会 pnpm build:packages；CI 不写 git hooks）
       - name: Install Dependencies
         run: |
-          ./scripts/ci
-
-      # ci的hooks已经执行
-      #      - name: Build All Packages
-      #        run: |
-      #          pnpm build:packages
+          NPM_REGISTRY="${NPM_REGISTRY:-https://registry.npmmirror.com}"
+          pnpm i --registry "$NPM_REGISTRY" --frozen-lockfile --force
+          pnpm --filter @142vip/fairy-cli... build
+          pnpm exec fa ci
 
       # Github发布版本，并更新Release信息
       - name: Release New Version
@@ -135,14 +133,13 @@ jobs:
           cache: pnpm
           package-manager-cache: false
 
-      # 下载依赖，并执行初始化脚本：钩子函数、思维导图构建
+      # 编译本地 fa 后执行 fa ci（postinstall 会 pnpm build:packages；CI 不写 git hooks）
       - name: Install Dependencies
         run: |
-          ./scripts/ci
-      # ci的hooks已经执行
-      #      - name: Build All Packages
-      #        run: |
-      #          pnpm build:packages
+          NPM_REGISTRY="${NPM_REGISTRY:-https://registry.npmmirror.com}"
+          pnpm i --registry "$NPM_REGISTRY" --frozen-lockfile --force
+          pnpm --filter @142vip/fairy-cli... build
+          pnpm exec fa ci
 
       - name: Resolve Package Name
         id: getPkgName
@@ -200,12 +197,10 @@ jobs:
 
       - name: Install dependencies
         run: |
-          ./scripts/ci
-
-      # ci的hooks已经执行
-      #      - name: Build All Packages
-      #        run: |
-      #          pnpm build:packages
+          NPM_REGISTRY="${NPM_REGISTRY:-https://registry.npmmirror.com}"
+          pnpm i --registry "$NPM_REGISTRY" --frozen-lockfile --force
+          pnpm --filter @142vip/fairy-cli... build
+          pnpm exec fa ci
 
       # 编译 打包成dist，支持代理
       - name: Build with VitePress

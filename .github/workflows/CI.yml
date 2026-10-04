@@ -46,20 +46,18 @@ jobs:
           cache: pnpm
           package-manager-cache: false
 
-      # 下载依赖，并执行初始化脚本：钩子函数、思维导图构建
+      # 编译本地 fa 后执行 fa ci（postinstall 会 pnpm build:packages；CI 不写 git hooks）
       - name: Install Dependencies
         run: |
-          ./scripts/ci
+          NPM_REGISTRY="${NPM_REGISTRY:-https://registry.npmmirror.com}"
+          pnpm i --registry "$NPM_REGISTRY" --frozen-lockfile --force
+          pnpm --filter @142vip/fairy-cli... build
+          pnpm exec fa ci
 
       # Eslint 检测
       - name: Code LintFix By ESLint
         run: |
           pnpm lint
-
-      # 编辑模块代码，ci的hooks已经执行
-      #      - name: Build Package Code
-      #        run: |
-      #          pnpm build:packages
 
       # 编译静态网站
       - name: Build Core-X Docs
