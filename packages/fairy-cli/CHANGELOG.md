@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 
+## v0.0.3-alpha.38 (2026-10-05)
+
+### ✨ Features
+
+- 默认配置提供安装、钩子与 `fa run` &nbsp;-&nbsp; by **chufan** [<samp>(d7def)</samp>](https://github.com/142vip/core-x/commit/d7def5c7)
+
+**Release New Version v0.0.3-alpha.38 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/fairy-cli)**
+
 ## v0.0.3-alpha.37 (2026-09-30)
 
 ### 🐛 Bug Fixes
