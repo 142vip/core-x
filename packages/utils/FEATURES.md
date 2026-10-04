@@ -6,7 +6,7 @@
 
 core-x 通用工具层：Node 文件/进程/Git/Docker/执行器、CLI（Commander/Inquirer）、日期/semver/lodash 扩展、Monorepo 包发现、cosmiconfig 配置、终端颜色与日志。
 
-浏览器场景用 `@142vip/utils/browser`，避免把 Node API 打进前端包。
+浏览器项目与 Node 一样写 `import … from '@142vip/utils'`。`exports` 的 `browser` 条件指向 `src/browser.ts` 的构建，把 Node API 留在 Node 入口。
 
 ## 功能
 
@@ -23,6 +23,8 @@ core-x 通用工具层：Node 文件/进程/Git/Docker/执行器、CLI（Command
 
 - 含：`vipDocSite`、`vipLogger`、`VipColor`、`VipConsole`、`vipDayjs`、`vipLodash`、`vipNanoId`、`vipQs`、`VipSemver`、`VipYaml`、`vipDataTransform`、全量 enums
 - **不含**：`VipNodeJS`、`VipGit`、`VipDocker`、`VipExecutor`、`VipMonorepo`、`VipNpm`、`VipPackageJSON`、`VipCommander`、`vipConfig`、`VipInquirer`、`VipJSON`、`vipDetect`
+
+浏览器图只能引用具体文件（如 `../pkgs/color`、`../core/logger`）。从 `../pkgs` 或 `../core` 桶文件引入会把 `commander`、`cosmiconfig`、`node:fs` 打进 `browser.mjs`。`--trace` 状态在 `pkgs/console-trace.ts`，避免 `console.ts` 反向依赖 `commander.ts`。
 
 ### `core/`（Node）
 
@@ -182,7 +184,7 @@ CliCommandBaseOptions // dryRun? / vip? / logger?
 - JSON 边界：`isJsonRecord` / `toJsonRecord`；数组去 falsy：`compactMap`
 - 日期：`vipDayjs` + `DateFormatTemplate`
 - HTTP 状态比较：`HttpStatus`（`@142vip/utils/enums`）
-- 前端只引 `@142vip/utils/browser`
+- 前端直接 `import { vipDayjs, vipLodash, vipNanoId, DateFormatTemplate, TimeDurationMs } from '@142vip/utils'`。打包器读取 `exports.browser`，业务仓不维护平行实现，也不要 alias 到本地文件
 - packages 下 CLI：优先 `VipPackageCliCommander` + `registerSubcommand` / `bootstrapStandalone`
 - 其它 CLI：继承 `VipCommander`，保持 `-v` / `--trace` / `--dry-run` 一致
 

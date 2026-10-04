@@ -3,6 +3,9 @@ import { EventEmitter } from 'node:events'
 import { Command as CommanderRoot } from 'commander'
 import { formatVipCliBanner } from './cli-presentation'
 import { VipConsole } from './console'
+import { setVipConsoleTraceEnabled } from './console-trace'
+
+export { isVipConsoleTraceEnabled, setVipConsoleTraceEnabled } from './console-trace'
 
 export interface VipCommanderDetailOptions {
   command: string
@@ -39,18 +42,6 @@ const vipCommanderRootOptions: VipCommanderOptions = {
   vip: false,
   trace: true,
   help: true,
-}
-
-let vipConsoleTraceEnabled = false
-
-/** 由 `VipCommander` 在解析 `--trace` 后调用 */
-export function setVipConsoleTraceEnabled(enabled: boolean): void {
-  vipConsoleTraceEnabled = enabled
-}
-
-/** 当前是否处于 CLI 追踪模式（`--trace`） */
-export function isVipConsoleTraceEnabled(): boolean {
-  return vipConsoleTraceEnabled
 }
 
 /** 从当前命令及其父级读取 `--trace`，同步追踪开关 */

@@ -12,7 +12,7 @@ import originImportSemVer, {
   SemVer,
   valid,
 } from 'semver'
-import { vipLogger } from '../core'
+import { vipLogger } from '../core/logger'
 import { VipColor } from './color'
 
 export type VipSemverReleaseType = ReleaseType

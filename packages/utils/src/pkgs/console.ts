@@ -1,5 +1,5 @@
 import { VipSymbols } from './color'
-import { isVipConsoleTraceEnabled } from './commander'
+import { isVipConsoleTraceEnabled } from './console-trace'
 
 export enum VipConsoleLogLevel {
   ERROR = 'ERROR',
