@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.62 (2026-10-05)
+
+### 🐛 Bug Fixes
+
+- 浏览器构建不再打入 Node 依赖 &nbsp;-&nbsp; by **chufan** [<samp>(ce484)</samp>](https://github.com/142vip/core-x/commit/ce484af6)
+
+**Release New Version v0.0.1-alpha.62 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/utils)**
+
 ## v0.0.1-alpha.61 (2026-10-04)
 
 ### ✨ Features
