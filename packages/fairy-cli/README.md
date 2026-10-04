@@ -25,7 +25,10 @@ pnpm add -D @142vip/fairy-cli
 - ✅ 命令入口别名：`fan` / `ffr` / `fa` / `fairy` / `ff`；未知子命令时提示全部入口与子命令列表
 - ✅ 子命令通用选项：`--dry-run`（打印将执行的命令/HTTP 步骤）、`--trace`（调试日志）、`--vip`（@142vip 多包仓库专用，见 `release` / `sync`）
 - ✅ 登录 Docker / npm（`login`）
-- ✅ 依赖安装（`install`）
+- ✅ 依赖安装（`install` / `i`，默认 pnpm，`--ignore-scripts`）；`fa ci` 执行 `pnpm i --frozen-lockfile --force`
+- ✅ `fairy.config.*`：`hooks`、`scripts`（`fa run`）、`install`。默认含 `precommit`、`commitmsg`、`preinstall`（有 `scripts/` 时 `chmod +x`）以及 `lint` / `clean*` / `sync`
+- ✅ `fa run <name>`：内置 → `fairy.config` → `scripts` → `package.json` → `scripts`（后者优先）；`fa -h` / `fa run -h` 列出
+- ✅ `fa i` / `fa ci` 执行 `preinstall` 与 `postinstall`；`postinstall` 末尾安装 git 钩子。`fa install --hook-only <name>` 只跑指定钩子
 - ✅ 多包版本发布（`release`）
 - ✅ CHANGELOG 生成（`changelog`）
 - ✅ npm 镜像推送（`publish`）
@@ -43,7 +46,9 @@ pnpm add -D @142vip/fairy-cli
 
 ## 配置
 
-无独立配置文件。`peerDependencies` 为 `@142vip/utils`（与消费方对齐版本）；`dependencies` 含 `utils` 及 `changelog` / `release-version` 等编排包，安装 `fairy-cli` 时会一并安装（说明见 FEATURES「配置」）。
+仓库根目录可增加 `fairy.config.ts`（cosmiconfig 模块名 `fairy`），通过 `defineFairyConfig` 声明 `hooks`、`scripts`、`install` 等（见 FEATURES）。`commit-linter` / ESLint 仍使用各自配置文件。
+
+`peerDependencies` 为 `@142vip/utils`；`dependencies` 含 `simple-git-hooks` 及编排包。
 
 ## 使用
 
@@ -66,6 +71,30 @@ fa commit --quiet -s './apps/*' -s './packages/*'
 # 指定 commit-linter 配置文件（等同 lint 的 -f）
 fa commit -f ./commit-linter.config.cjs
 fa commit --quiet -f ./commit-linter.config.cjs -s './packages/*'
+
+# 克隆后安装（corepack + pnpm i --frozen-lockfile --force，并跑 hooks）
+npx fa ci
+npx fa ci --npm-ali-registry
+npx fa ci --prefer-offline --filter @142vip/utils
+
+# 本地安装（默认 pnpm；有 lock 按 lock，无 lock 生成 lock；-f 强制更新 lock）
+fa i
+fa i --npm-registry
+fa i --npm-ali-registry
+fa i -f --npm-tencent-registry
+fa i --npm
+fa i --ignore-scripts
+
+# 清理产物（默认脚本，fa run clean）
+npx fa run clean
+
+# 执行 fairy.config → hooks（如 preinstall / postinstall）
+fa install --hook-only postinstall
+
+# fa run（npx fa run <name>；fa -h 底部 Run scripts；package.json scripts 优先于 fairy.config）
+npx fa run lint:fix
+npx fa run build:docs-proxy
+npx fa run --list
 
 # ESLint（自动读取 eslint.config.* 或内置配置）
 fa lint --trace --fix

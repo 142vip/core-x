@@ -81,7 +81,8 @@
     "@142vip/copyright": "workspace:*",
     "@142vip/eslint-config": "workspace:*",
     "@142vip/release-version": "workspace:*",
-    "@142vip/utils": "workspace:*"
+    "@142vip/utils": "workspace:*",
+    "simple-git-hooks": "2.13.1"
   },
   "publishConfig": {
     "access": "public",

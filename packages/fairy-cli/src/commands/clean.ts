@@ -20,7 +20,7 @@ interface CleanOptions extends FairyCommandOptions {
   dist?: boolean
   nuxt?: boolean
   midway?: boolean
-  ignoreTips?: boolean
+  quiet?: boolean
   turbo?: boolean
   vite?: boolean
   deps?: boolean
@@ -30,7 +30,7 @@ interface CleanOptions extends FairyCommandOptions {
   all?: boolean
 }
 
-type CleanTargetKey = Exclude<keyof CleanOptions, keyof FairyCommandOptions | 'ignoreTips' | 'force' | 'all'>
+type CleanTargetKey = Exclude<keyof CleanOptions, keyof FairyCommandOptions | 'quiet' | 'force' | 'all'>
 
 const CLEAN_TARGET_RULES: ReadonlyArray<{
   key: CleanTargetKey
@@ -86,7 +86,7 @@ async function runClean(options: CleanOptions): Promise<void> {
 
   logVipCliTrace(FAIRY_CLI_IDENTITY, 'clean: 规则', { patterns: dirPatterns, all: options.all === true })
 
-  if (!options.ignoreTips && !options.dryRun) {
+  if (options.quiet !== true && !options.dryRun) {
     const confirmed = await VipInquirer.promptConfirm('是否删除匹配的构建产物与缓存？', true)
     if (!confirmed) {
       VipConsole.log(`${VipColor.yellow('clean:')} 已取消`)
@@ -128,6 +128,6 @@ export async function cleanMain(program: VipPackageCliCommander): Promise<void> 
       .option('--git-hooks', '删除 .git/hooks 目录', false)
       .option('-f,--force', '强制删除', false)
       .option('-a,--all', '递归匹配子目录', false)
-      .option('--ignore-tips', '跳过确认，直接删除', false)
+      .option('-q, --quiet', '跳过确认，直接删除', false)
   })
 }

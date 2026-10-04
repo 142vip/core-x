@@ -59,6 +59,19 @@ src/
 - 子命令 `fa <cmd> -h`：业务参数 → `--dry-run` / `--vip` / `--trace` → `--help`（根与子命令均可传 `--trace`，`optsWithGlobals` 合并）
 - `registerFairySubcommand`、`buildReleaseVersionOptions`、`printPreCheckRelease`、`isPackagePendingRelease`、`releasePackage`（`utils/`）
 
+### `fairy.config.*`（`defineFairyConfig` / `loadFairyConfig`）
+
+- cosmiconfig 模块名：`fairy`（与 `releasex.config` / `commit-linter.config` 同级）
+- **`hooks`**：统一钩子表；每项为 `string` 或 `string[]`。`loadFairyConfig` 按键合并，同名键整段覆盖
+  - 默认：`precommit` = `npx fa lint --fix`；`commitmsg` = `npx fa commit --quiet -s './apps/*' -s './packages/*'`；`preinstall` 在存在 `scripts/` 且其中有文件时 `chmod +x`，目录缺失或为空则跳过
+  - 本地 `fa i` / `fa ci` 在 `postinstall` 末尾经 `simple-git-hooks` 写入 `.git/hooks`（`precommit` → `pre-commit`，`commitmsg` → `commit-msg`）。`CI=true` 时跳过
+  - `fa i` / `fa ci` 本身调用 pnpm（`fa i --npm` 才改用 npm）。不要在 `preinstall` 里跑 `only-allow`：`npx fa` 会把 `npm_config_user_agent` 标成 npm，`only-allow` 会误判并退出
+  - `postinstall` 无默认命令，项目在 `fairy.config` 里写
+  - 其它 git 文件名（如 `pre-push`）可直接作为键
+- **`scripts`**：`string` / `string[]`，由 `fa run <name>` 执行。默认含 `lint`、`lint:fix`、`clean`、`clean:cache`、`clean:dist`、`clean:hooks`、`sync`。与用户 `scripts`、`package.json` → `scripts` 聚合（**package.json 优先**）
+- `install.ignoreScripts`：默认是否为 `fa i` / `fa ci` 追加 `--ignore-scripts`
+- 编程式 API：`runFairyHook`、`resolveHookCommands`、`runFairyCommand`、`installFairyGitHooks`（包入口导出）
+
 ### 子命令一览（`CommandEnum` / `CLI_COMMAND_DETAIL`）
 
 **`login`**（aliases: `l`, `lo`）
@@ -67,11 +80,24 @@ src/
 - DOCKER：`VipDocker.userLogin`，仓库可选 `registry.docker.io` / `registry.cn-hangzhou.aliyuncs.com`
 - NPM：打印 `npm login --registry <url>` 供手动执行
 
-**`install`**（aliases: `i`, `add`, `in`）
+**`install`**（aliases: `i`, `add`, `in`, **`ci`**）
 
-- `-f, --force`：强制更新 lock
-- `--registry`：默认 `RegistryAddressEnum.VIP_NPM_ALIBABA`
-- 交互选择 `npm` 或 `pnpm` 安装
+- 实现：`commands/install.ts`、`utils/install.util.ts`（源解析统一走 `RegistryAddressEnum`：`NPM` / `NPM_ALIBABA` / `NPM_TENCENT`）
+- **`fa i` lock**：有 lock → pnpm `--frozen-lockfile` / `npm ci`；无 lock → `pnpm i` / `npm i` 生成 lock；`-f` → `--force`
+- **`fa i`**：默认 pnpm；执行前 `VipNpm.logInstallToolchain`；安装前后跑 `preinstall` / `postinstall`
+- **`fa ci`**：打印 `运行命令` 与 `COREPACK_REGISTRY`，确保 corepack（没有 pnpm 时 `corepack enable pnpm`），再执行 `pnpm i --registry <url> --frozen-lockfile --force`。`fa ci` 之后的参数原样追加，对应 `"$@"`（例如 `npx fa ci --prefer-offline --filter @142vip/utils`）。安装前跑 `preinstall`，安装后跑 `postinstall`。本地会写 git 钩子，`CI=true` 不写。默认源 npmmirror，corepack 默认 npm 官方
+- npm 源：`--npm-registry [url]`（仅开关 → npm 官方）、`--npm-ali-registry`、`--npm-tencent-registry`、环境变量 `NPM_REGISTRY`；`fa i` 默认官方，`fa ci` 默认阿里镜像
+- corepack 源：`--corepack-registry [url]`、`--corepack-ali-registry`、`--corepack-tencent-registry`、`COREPACK_REGISTRY`；默认 npm 官方
+- `--npm`：本地改用 npm（`npm i`，更新 lock）
+- `--ignore-scripts`：跳过 install scripts；可与 `fairy.config` → `install.ignoreScripts` 叠加
+- `--hook-only <name>`：只跑合并后的 `hooks.<name>`，不安装依赖。`postinstall` 即使命令为空也会写 git 钩子
+
+**`run`**（aliases: `r`, `exec`）
+
+- `fa run <name>`：执行聚合脚本（内置 → `fairy.config` → `scripts` → `package.json` → `scripts`）
+- 根 `fa -h` / `fa run -h` 追加 **Run scripts** 表（脚本名 + shell 摘要）
+- `-l, --list`：列出可用脚本名
+- 透传参数：`fa run build -- --filter pkg`
 
 **`release`**（aliases: `re`, `rel`）— 默认 `vip: true`
 
@@ -121,7 +147,7 @@ src/
 
 **`clean`**（aliases: `cl`, `clear`）
 
-- 多目录清理选项 + `--dry-run`（内置 `fs.rm`，见 `utils/clean-path.util.ts`）
+- 多目录清理选项 + `--dry-run`；`-q, --quiet` 跳过删除确认（内置 `fs.rm`，见 `utils/clean-path.util.ts`）
 
 **`copyright`**（aliases: `cr`, `cop`, `cri`）
 
@@ -200,7 +226,10 @@ cd packages/fairy-cli && pnpm build && pnpm typecheck
 | 测试文件 | 覆盖模块 |
 |---|---|
 | `test/login.spec.ts` | `commands/login.ts` |
-| `test/install.spec.ts` | `commands/install.ts` |
+| `test/install.spec.ts` | `commands/install.ts` + `utils/install.util.ts` |
+| `test/fairy.config.spec.ts` | `src/config.ts` |
+| `test/hooks.util.spec.ts` | `utils/hooks.util.ts` |
+| `test/scripts.util.spec.ts` | `utils/scripts.util.ts` + `commands/run.ts` |
 | `test/release.spec.ts` | `commands/release.ts`（含 `printSplitPkgCommitLogs`） |
 | `test/release-package.spec.ts` | `utils/pkg.util.ts` |
 | `test/changelog.spec.ts` | `commands/changelog.ts` |
