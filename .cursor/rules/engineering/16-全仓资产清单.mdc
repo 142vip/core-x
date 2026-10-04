@@ -122,6 +122,8 @@ alwaysApply: true
 
 发布分支：`next`（`.npmrc` → `publish-branch=next`）。CD 可选包列表与上表 31 包一致。
 
+`deploy-dist` 使用 job 级 `concurrency.group: pages`（`cancel-in-progress: false`），产物名为 `github-pages-${{ github.run_attempt }}`。固定名 `github-pages` 在重跑同一 run 时会留下多份产物，`deploy-pages` 会因此失败。
+
 ## 模型扫描顺序（新任务）
 
 ```
