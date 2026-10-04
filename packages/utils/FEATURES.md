@@ -163,7 +163,7 @@ HttpMethod // GET | POST | PUT | DELETE | PATCH | …
 TimeDurationMs // ONE_SECOND … ONE_MONTH …
 TimeDurationSec // 同名成员，单位秒
 ProcessExitCodeEnum // SUCCESS=0 … TimeoutError=10
-RegistryAddressEnum // DOCKER / NPM / VIP_* 镜像与 registry
+RegistryAddressEnum // DOCKER / NPM / NPM_ALIBABA / NPM_TENCENT 等
 ReleaseVersionTypeEnum
 CpuArchitectureEnum // linux/arm64 | linux/amd64
 GitCommit / GitInfo / GitGeneralBranch
