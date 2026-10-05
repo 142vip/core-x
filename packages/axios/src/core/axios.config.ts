@@ -8,10 +8,12 @@ export const defaultAxiosConfig: CreateAxiosDefaults = {
 }
 
 export function createAxiosConfig(userAxiosConfig?: Partial<CreateAxiosDefaults>): CreateAxiosDefaults {
-  const axiosConfig = defaultAxiosConfig
-
-  // 深拷贝
-  Object.assign(axiosConfig, userAxiosConfig)
-
-  return axiosConfig
+  return {
+    ...defaultAxiosConfig,
+    ...userAxiosConfig,
+    headers: {
+      ...defaultAxiosConfig.headers,
+      ...userAxiosConfig?.headers,
+    },
+  }
 }
