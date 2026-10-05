@@ -35,12 +35,31 @@ import { defineVipEslintConfig } from '@142vip/eslint-config'
 export default defineVipEslintConfig()
 ```
 
-自定义规则：
+自定义规则写在参数里即可，不必再 `.then()` 把配置拼到末尾。同名规则以后出现的整段替换。
+
+不带 `files` 的 `rules` 全局生效：
 
 ```js
 export default defineVipEslintConfig({
   rules: {
     'no-console': 'off',
+  },
+})
+```
+
+只作用于部分文件时带上 `files`，或从第二个参数传入。这样不会和 antfu 第一参冲突，也不会让 Vue 规则套到其它文件上：
+
+```js
+export default defineVipEslintConfig({
+  files: ['**/*.vue'],
+  rules: {
+    'vue/multi-word-component-names': ['warn', {
+      ignores: ['index', 'App', 'Register', '[id]', '[url]'],
+    }],
+    'vue/component-name-in-template-casing': ['warn', 'PascalCase', {
+      registeredComponentsOnly: false,
+      ignores: ['/^icon-/'],
+    }],
   },
 })
 ```

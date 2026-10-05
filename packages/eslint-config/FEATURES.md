@@ -14,11 +14,13 @@
 
 ### 导出符号
 
-- `defineVipEslintConfig(options?: EslintConfigOptions): Promise<TypedFlatConfigItem[]>`
-  - 合并 `defaultEslintConfig` 与调用方 `options` 作为 antfu 第一参
-  - 追加 `baseEslintRules` 与 `options.rules`
+- `defineVipEslintConfig(options?: EslintConfigOptions, ...userConfigs): Promise<TypedFlatConfigItem[]>`
+  - 合并 `defaultEslintConfig` 与调用方 `options` 作为 antfu 第一参；`files` 不进入第一参
+  - 无 `files` 时，`baseEslintRules` 与 `options.rules` 组成 `vip/rules`，位于 antfu 之后
+  - 有 `files` 时，`options.rules` 只挂在该 `files` 上，排在整份配置最后
+  - 第二参起的 flat config 同样排在最后，同名规则整段替换
   - 合并 `settings.node.exitFunctions`：`['process.exit', 'VipNodeJS.exitProcess']`
-  - 末尾追加 `markdownCodeBlockOverrides`（匹配 `**/*.md/**` 虚拟文件）
+  - `markdownCodeBlockOverrides`（匹配 `**/*.md/**`）位于全局规则之后、用户 `files` 配置之前
 - `defaultEslintConfig: EslintConfigOptions`
 - `baseEslintRules`
 
@@ -68,15 +70,27 @@
 ```js
 import { defineVipEslintConfig } from '@142vip/eslint-config'
 
+// 无 files：全局覆盖
 export default defineVipEslintConfig({
-  rules: { /* … */ },
+  rules: {},
+})
+```
+
+```js
+import { defineVipEslintConfig } from '@142vip/eslint-config'
+
+// 只覆盖这些文件，且位于配置数组末尾
+export default defineVipEslintConfig({
+  files: ['**/*.vue'],
+  rules: {},
 })
 ```
 
 ### 可覆盖项
 
 - antfu 全局 options 任意字段（本包透传，不额外枚举；文档常见键：`typescript`、`vue`、`markdown`、`react`、`stylistic`、`formatters`、`ignores`）
-- `rules`、`settings`（与 `baseEslintRules` 浅合并）
+- `rules`、`settings`（与 `baseEslintRules` 浅合并；有 `files` 时 `rules` 不并进全局）
+- 第二参起的 `TypedFlatConfigItem`（可带 `files`），排在 markdown 代码块降级之后
 
 无独立 `changelog.config` 类文件；配置即 `defineVipEslintConfig` 入参。
 
@@ -92,6 +106,8 @@ export default defineVipEslintConfig({
 - 需要关闭 markdown 处理：`defineVipEslintConfig({ markdown: false })`
 - Nest 包 DI：`fairy-cli` 默认配置已关闭 `ts/consistent-type-imports`（Injectable 须值导入）
 - 修改默认规则时同步检查根 `pre-commit` 钩子 `npx fa lint --fix` 影响面
+- Vue 插件规则写在带 `files: ['**/*.vue']` 的配置里。无 `files` 时这些规则会套到全部文件，出现规则未定义
+- 同名规则以后出现的配置整段替换，不与前面的选项做深度合并；`ignores` 需要写全
 - 勿在 overrides 中扩大 `files` 到业务源码，避免全局降级
 
 ## 构建
