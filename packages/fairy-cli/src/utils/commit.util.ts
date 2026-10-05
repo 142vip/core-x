@@ -1,8 +1,10 @@
 import type { CommitLinterOptions, GitCommitLinter, VipCommitLinterConfig } from '@142vip/commit-linter'
+import type { VipCliDryRunParam } from '@142vip/utils'
 import { createRequire } from 'node:module'
 import { commitLinter, CONFIG_DEFAULT_NAME } from '@142vip/commit-linter'
 import { VipColor, vipConfig, VipConsole, vipLogger, VipMonorepo, VipNodeJS } from '@142vip/utils'
 import { name, version } from '../../package.json'
+import { loadFairyConfig } from '../config'
 import { resolveFairyCliBundledConfig } from './pkg.util'
 
 /** 与 `@142vip/commit-linter` 同源，便于从 `fa` 包引用 */
@@ -37,7 +39,28 @@ function loadBundledCommitLinterConfig(): VipCommitLinterConfig {
 }
 
 /**
- * 加载 commit-linter 配置：内置默认为底，`-f` 或 cosmiconfig 发现项覆盖（与 `fa lint -f` 语义一致）。
+ * 已写出的键整段替换，数组不按索引与内置默认拼接。
+ * 未写出的键保留内置 `default-commit-linter.config.cjs`。
+ */
+function mergeCommitLinterOverride(
+  bundled: VipCommitLinterConfig,
+  override: VipCommitLinterConfig,
+): VipCommitLinterConfig {
+  const merged: VipCommitLinterConfig = { ...bundled }
+  const keys = Object.keys(override) as Array<keyof VipCommitLinterConfig>
+  for (const key of keys) {
+    const value = override[key]
+    if (value !== undefined) {
+      Object.assign(merged, { [key]: value })
+    }
+  }
+  return merged
+}
+
+/**
+ * 加载 commit-linter 配置。优先级：
+ * `fa commit -f` > `fairy.config` → `commitLinter` > `commit-linter.config` > 内置默认。
+ * `commitLinter` 存在时不再读取 `commit-linter.config`。
  */
 export function loadCommitLinterConfigForCli(cliConfigPath?: string): VipCommitLinterConfig {
   const bundled = loadBundledCommitLinterConfig()
@@ -55,7 +78,30 @@ export function loadCommitLinterConfigForCli(cliConfigPath?: string): VipCommitL
     return vipConfig.mergeCommanderConfig(bundled, fileConfig)
   }
 
+  const fairyCommitLinter = loadFairyConfig().commitLinter
+  if (fairyCommitLinter != null) {
+    return mergeCommitLinterOverride(bundled, fairyCommitLinter)
+  }
+
   return vipConfig.loadCliConfig<VipCommitLinterConfig>(CONFIG_DEFAULT_NAME, bundled)
+}
+
+/**
+ * dry-run / `--trace` 展示用：说明本次配置从哪来。
+ * 与 `loadCommitLinterConfigForCli` 的优先级一致。
+ */
+export function resolveCommitLinterConfigSource(cliConfigPath?: string): string {
+  if (cliConfigPath != null && cliConfigPath !== '') {
+    return `-f ${cliConfigPath}`
+  }
+  if (loadFairyConfig().commitLinter != null) {
+    return 'fairy.config → commitLinter'
+  }
+  const discovered = vipConfig.searchConfigFilePath(CONFIG_DEFAULT_NAME)
+  if (discovered != null && discovered !== '') {
+    return discovered
+  }
+  return '内置 default-commit-linter.config.cjs'
 }
 
 /** 配置文件路径：CLI `-f` → cosmiconfig 发现项 → 内置默认 */
@@ -123,6 +169,58 @@ export function buildCommitLinterOptions(
 
   const pkgScopes = VipMonorepo.getPkgNames(globs)
   return withMergedScopes(base, pkgScopes)
+}
+
+const COMMIT_PARAM_EMPTY = '（未写）'
+
+function formatCommitParamList(values: string[] | undefined): string {
+  if (values == null || values.length === 0) {
+    return COMMIT_PARAM_EMPTY
+  }
+  return values.join(', ')
+}
+
+/**
+ * `fa commit --dry-run` 要打印的生效参数。
+ * `scopeGlobs` 来自配置原文；`effectiveScopes` 是 `-s` 或 glob 扫描并上配置 `scopes` 之后的白名单。
+ * `verify` 只标明是否配置，不打印函数体。
+ */
+export function formatCommitRuntimeParams(input: {
+  source: string
+  fileConfig: VipCommitLinterConfig
+  linterOptions: CommitLinterOptions
+  cliScopeGlobs: string[]
+  quiet?: boolean
+  push?: boolean
+  message?: string
+}): VipCliDryRunParam[] {
+  const params: VipCliDryRunParam[] = [
+    { label: 'source', value: input.source },
+    { label: 'scopeGlobs', value: formatCommitParamList(input.fileConfig.scopeGlobs) },
+    { label: 'scopes', value: formatCommitParamList(input.fileConfig.scopes) },
+    { label: 'types', value: formatCommitParamList(input.fileConfig.types) },
+    { label: 'verify', value: input.fileConfig.verify != null ? '已配置' : '未配置' },
+  ]
+  if (input.cliScopeGlobs.length > 0) {
+    params.push({ label: '-s', value: input.cliScopeGlobs.join(', ') })
+  }
+  params.push({
+    label: 'effectiveScopes',
+    value: formatCommitParamList(input.linterOptions.scopes),
+  })
+  if (input.fileConfig.commit != null && input.fileConfig.commit !== '') {
+    params.push({ label: 'commit', value: input.fileConfig.commit })
+  }
+  if (input.quiet === true) {
+    const message = input.message != null && input.message !== ''
+      ? input.message
+      : '（.git/COMMIT_EDITMSG）'
+    params.push({ label: 'quiet', value: 'true' }, { label: 'message', value: message })
+  }
+  if (input.push === true) {
+    params.push({ label: 'push', value: 'true' })
+  }
+  return params
 }
 
 /** `--quiet`：校验 commit 首行（commit-msg 钩子） */

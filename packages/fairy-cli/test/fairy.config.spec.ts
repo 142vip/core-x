@@ -44,6 +44,22 @@ describe('fairy.config', () => {
     expect(config.hooks?.postinstall).toEqual(['pnpm build:packages'])
     expect(config.hooks?.precommit).toBe('npx fa lint --fix')
     expect(config.scripts?.lint).toBe('npx fa lint')
+    expect(config.commitLinter).toBeUndefined()
+  })
+
+  it('commitLinter 原样保留，不与默认配置拼接', () => {
+    jest.spyOn(vipConfig, 'loadConfig').mockReturnValue({
+      commitLinter: {
+        scopes: ['README'],
+        scopeGlobs: ['./packages/*'],
+      },
+    })
+    const config = loadFairyConfig()
+    expect(config.commitLinter).toEqual({
+      scopes: ['README'],
+      scopeGlobs: ['./packages/*'],
+    })
+    expect(config.hooks?.precommit).toBe('npx fa lint --fix')
   })
 
   it('默认 preinstall 在 scripts 缺失或为空时仍成功', () => {

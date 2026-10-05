@@ -1,3 +1,4 @@
+import type { VipCommitLinterConfig } from '@142vip/commit-linter'
 import { vipConfig } from '@142vip/utils'
 
 export interface FairyInstallConfig {
@@ -29,6 +30,12 @@ export interface FairyConfig {
   /** 项目脚本；与 `fairyDefaultConfig.scripts` 合并，且低于 `package.json` → `scripts` */
   scripts?: FairyScriptsConfig
   install?: FairyInstallConfig
+  /**
+   * 可选。提供后整段覆盖 `commit-linter.config`（不再读取该文件）。
+   * 未写出的字段仍用内置 `default-commit-linter.config.cjs`。
+   * `fa commit -f` 优先于本字段。
+   */
+  commitLinter?: VipCommitLinterConfig
 }
 
 /** cosmiconfig 模块名（`fairy.config.ts` / `.fairrc` 等） */
@@ -101,6 +108,8 @@ function mergeFairyConfig(user?: FairyConfig): FairyConfig {
       ...fairyDefaultConfig.scripts,
       ...user.scripts,
     },
+    // 不与默认值按字段拼接；有无该键由用户决定
+    commitLinter: user.commitLinter,
   }
 }
 

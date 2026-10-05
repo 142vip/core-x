@@ -5,10 +5,12 @@ import { afterEach, beforeEach, describe, expect, it, jest } from '@jest/globals
 import {
   buildCommitLinterOptions,
   DEFAULT_COMMIT_SCOPE_GLOBS,
+  formatCommitRuntimeParams,
   loadCommitLinterConfigForCli,
   printCommitVerifyResult,
   resolveBundledDefaultCommitLinterConfigPath,
   resolveCommitLinterConfigPath,
+  resolveCommitLinterConfigSource,
   resolveCommitScopeGlobs,
   resolveCommitScopes,
   runCommitMessageVerify,
@@ -75,6 +77,66 @@ describe('commit.util 配置路径', () => {
     const fileConfig = loadCommitLinterConfigForCli(fixturePath)
     expect(fileConfig.scopes).toContain('custom-scope')
     expect(fileConfig.scopeGlobs).toEqual(['./apps/*', './packages/*'])
+  })
+
+  it('fairy.config.commitLinter 覆盖 commit-linter.config，并整段替换 scopeGlobs', () => {
+    jest.spyOn(vipConfig, 'loadConfig').mockImplementation((configName) => {
+      if (configName === 'fairy') {
+        return {
+          commitLinter: {
+            scopes: ['from-fairy'],
+            scopeGlobs: ['./packages/*'],
+          },
+        }
+      }
+      return { scopes: ['from-file'] }
+    })
+    const fileConfig = loadCommitLinterConfigForCli()
+    expect(vipConfig.loadCliConfig).not.toHaveBeenCalled()
+    expect(fileConfig.scopes).toEqual(['from-fairy'])
+    expect(fileConfig.scopeGlobs).toEqual(['./packages/*'])
+  })
+
+  it('resolveCommitLinterConfigSource 在 fairy.config.commitLinter 存在时标明来源', () => {
+    jest.spyOn(vipConfig, 'loadConfig').mockReturnValue({
+      commitLinter: { scopeGlobs: ['./packages/*'] },
+    })
+    expect(resolveCommitLinterConfigSource()).toBe('fairy.config → commitLinter')
+    expect(resolveCommitLinterConfigSource('./commit-linter.config.cjs')).toBe('-f ./commit-linter.config.cjs')
+  })
+
+  it('formatCommitRuntimeParams 同时给出配置原文与生效 scopes', () => {
+    const params = formatCommitRuntimeParams({
+      source: 'fairy.config → commitLinter',
+      fileConfig: {
+        scopeGlobs: ['./packages/*'],
+        scopes: ['README'],
+        verify: () => true,
+      },
+      linterOptions: { scopes: ['@142vip/utils', 'README'] },
+      cliScopeGlobs: [],
+      quiet: true,
+    })
+    expect(params).toEqual(expect.arrayContaining([
+      { label: 'source', value: 'fairy.config → commitLinter' },
+      { label: 'scopeGlobs', value: './packages/*' },
+      { label: 'scopes', value: 'README' },
+      { label: 'types', value: '（未写）' },
+      { label: 'verify', value: '已配置' },
+      { label: 'effectiveScopes', value: '@142vip/utils, README' },
+      { label: 'quiet', value: 'true' },
+      { label: 'message', value: '（.git/COMMIT_EDITMSG）' },
+    ]))
+  })
+
+  it('fa commit -f 优先于 fairy.config.commitLinter', () => {
+    jest.spyOn(vipConfig, 'loadConfig').mockReturnValue({
+      commitLinter: { scopes: ['from-fairy'] },
+    })
+    const fixturePath = path.join(__dirname, 'fixtures/commit-linter.fixture.cjs')
+    const fileConfig = loadCommitLinterConfigForCli(fixturePath)
+    expect(fileConfig.scopes).toContain('custom-scope')
+    expect(fileConfig.scopes).not.toContain('from-fairy')
   })
 })
 

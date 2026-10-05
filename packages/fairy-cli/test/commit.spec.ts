@@ -5,6 +5,7 @@ import {
 } from '@142vip/commit-linter'
 import {
   VipColor,
+  VipConsole,
   VipExecutor,
   VipGit,
   VipInquirer,
@@ -112,6 +113,26 @@ describe('commitMain', () => {
     await commitMain(program)
     await runCliArgv(program, ['commit', '--quiet', '-f', './commit-linter.config.js', '-s', './packages/*'])
     expect(loadCommitLinterConfigForCli).toHaveBeenCalledWith('./commit-linter.config.js')
+  })
+
+  it('--quiet --dry-run 打印生效 commitLinter，不执行校验', async () => {
+    loadCommitLinterConfigForCli.mockReturnValueOnce({
+      scopeGlobs: ['./packages/*'],
+      scopes: ['README'],
+    })
+    const log = jest.spyOn(VipConsole, 'log').mockImplementation(() => {})
+
+    const program = new VipPackageCliCommander('fa', '1.0.0')
+    await commitMain(program)
+    await runCliArgv(program, ['commit', '--quiet', '--dry-run'])
+
+    expect(commitLinterMock).not.toHaveBeenCalled()
+    const printed = log.mock.calls.map(call => String(call[0])).join('\n')
+    expect(printed).toContain('参数')
+    expect(printed).toContain('scopeGlobs')
+    expect(printed).toContain('./packages/*')
+    expect(printed).toContain('README')
+    expect(printed).toContain('校验 commit 首行')
   })
 
   it('--quiet -s 校验当前提交信息（commit-msg）', async () => {

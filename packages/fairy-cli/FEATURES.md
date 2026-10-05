@@ -8,7 +8,7 @@
 
 编排 `@142vip/release-version`、`@142vip/changelog`、`@142vip/commit-linter`、`@142vip/eslint-config`、`@142vip/copyright`、`@142vip/agent-skills`，并依赖 `@142vip/utils` 提供通用能力。
 
-`src/utils/commit.util.ts`、`eslint-config.util.ts` 对 `commit-linter` / `eslint-config` 做 **re-export** 并承载 CLI 配置解析；`commit-msg` 走 `fa commit --quiet -s './apps/*' -s './packages/*'`；配置经 cosmiconfig + 内置 `config/default-commit-linter.config.cjs`。
+`src/utils/commit.util.ts`、`eslint-config.util.ts` 对 `commit-linter` / `eslint-config` 做 **re-export** 并承载 CLI 配置解析；`commit-msg` 走 `fa commit --quiet -s './apps/*' -s './packages/*'`。commit 配置优先级：`fa commit -f` > `fairy.config` → `commitLinter` > `commit-linter.config` > 内置 `config/default-commit-linter.config.cjs`。
 
 ## 目录
 
@@ -70,6 +70,7 @@ src/
   - 其它 git 文件名（如 `pre-push`）可直接作为键
 - **`scripts`**：`string` / `string[]`，由 `fa run <name>` 执行。默认含 `lint`、`lint:fix`、`clean`、`clean:cache`、`clean:dist`、`clean:hooks`、`sync`。与用户 `scripts`、`package.json` → `scripts` 聚合（**package.json 优先**）
 - `install.ignoreScripts`：默认是否为 `fa i` / `fa ci` 追加 `--ignore-scripts`
+- **`commitLinter`**（可选）：`VipCommitLinterConfig`，字段为 `types`、`scopes`、`scopeGlobs`、`commit`、`verify`。提供后不再读取 `commit-linter.config`；每个已写字段整段替换，未写字段保留内置 `default-commit-linter.config.cjs`。`fa commit -f` 优先于本字段
 - 编程式 API：`runFairyHook`、`resolveHookCommands`、`runFairyCommand`、`installFairyGitHooks`（包入口导出）
 
 ### 子命令一览（`CommandEnum` / `CLI_COMMAND_DETAIL`）
@@ -114,7 +115,7 @@ src/
 - `--check-branch [checkBranch]`：发布前校验分支（数组解析器，默认 `[]`）
 - `-F, --filter <filter>`：模块路径过滤（默认 `[]`）
 - `--prerelease`：GitHub Release 标记为 Pre-release（默认 Latest）
-- `--dry-run`：打印将执行的命令/HTTP 步骤（`runOrDryRun`）
+- `--dry-run`：打印生效参数，以及将执行的命令/HTTP 步骤（`runOrDryRun` / `logVipCliDryRun` 的 `params`）
 - `--vip`：Monorepo 交互发版（`release` / `sync`）
 - `vip` 模式：`execVipRelease` 交互选包 → `releasePackage`
 - 非 `vip` + `--package`：`releaseVersion`（普通 release，部分路径待完善）
@@ -155,13 +156,14 @@ src/
 
 **`commit`**（aliases: `co`, `com`）
 
-- 默认：交互式规范提交（`loadCommitLinterConfigForCli()`：用户配置合并内置 `default-commit-linter.config.cjs`）
-- `-f, --config <path>`：`commit-linter` 配置文件路径（与 `fa lint -f` 一致；未传则 cosmiconfig 发现或内置默认）
-- `-q, --quiet`：仅校验 commit 首行（`commit-msg` / `pnpm check:commit`）
+- 默认：交互式规范提交（`loadCommitLinterConfigForCli()`：内置 `default-commit-linter.config.cjs` 为底）
+- 配置优先级：`fa commit -f` > `fairy.config` → `commitLinter` > `commit-linter.config` > 内置默认
+- `-f, --config <path>`：`commit-linter` 配置文件路径（与 `fa lint -f` 一致）
+- `-q, --quiet`：仅校验 commit 首行（`commit-msg` / `pnpm check:commit`）。与 `--dry-run` 同用时不校验，只打印生效的 `commitLinter`（`source`、`scopeGlobs`、`scopes`、`types`、`verify`、`effectiveScopes`）
 - `-p, --push`：交互提交后推送远程
 - `-s, --scope <glob>`：Monorepo glob（可多次），扫描 npm 包名写入 scope 白名单；**优先于**配置 `scopeGlobs`
 - `-m, --message <msg>`：`--quiet` 时待校验首行；默认读 `.git/COMMIT_EDITMSG`
-- `--trace`：各子命令 action 入口输出 `<command>: 解析` 与业务选项；`runOrDryRun` / `clean` 等追加执行步骤（见 `registerFairySubcommand`、`logVipCliTrace`）
+- `--trace`：action 入口输出 `commit: 解析` 与业务选项，并再打 `commit: 配置`（与 dry-run 参数相同）
 
 | CLI `-s` | 配置 `scopeGlobs` | 行为 |
 |---|---|---|
@@ -203,6 +205,7 @@ src/
 
 ## 最佳实践
 
+- 提交规范：把 `types`、`scopes`、`scopeGlobs`、`verify` 写进 `fairy.config` 的 `commitLinter`，不必再单独维护 `commit-linter.config`。`fa commit -f` 仍指向独立文件
 - Monorepo 发版：`fa release --vip -F './packages/*'`
 - 试运行：`fa release --vip --dry-run`
 - Agent Skills：`fa ai -t .` / `fa ai --check -t .`；未知子命令由 `registerVipPackageCliErrorHandling` 友好提示

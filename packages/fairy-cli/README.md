@@ -23,7 +23,7 @@ pnpm add -D @142vip/fairy-cli
 ## 功能
 
 - ✅ 命令入口别名：`fan` / `ffr` / `fa` / `fairy` / `ff`；未知子命令时提示全部入口与子命令列表
-- ✅ 子命令通用选项：`--dry-run`（打印将执行的命令/HTTP 步骤）、`--trace`（调试日志）、`--vip`（@142vip 多包仓库专用，见 `release` / `sync`）
+- ✅ 子命令通用选项：`--dry-run`（打印生效参数，以及将执行的命令/HTTP 步骤）、`--trace`（调试日志）、`--vip`（@142vip 多包仓库专用，见 `release` / `sync`）
 - ✅ 登录 Docker / npm（`login`）
 - ✅ 依赖安装（`install` / `i`，默认 pnpm，`--ignore-scripts`）；`fa ci` 执行 `pnpm i --frozen-lockfile --force`
 - ✅ `fairy.config.*`：`hooks`、`scripts`（`fa run`）、`install`。默认含 `precommit`、`commitmsg`、`preinstall`（有 `scripts/` 时 `chmod +x`）以及 `lint` / `clean*` / `sync`
@@ -40,13 +40,24 @@ pnpm add -D @142vip/fairy-cli
 - ✅ Git Commit 规范提交（`commit`）
 - ✅ Agent Skills 同步与校验（`fa ai` 同步 / `fa ai --check` 校验，集成 `@142vip/agent-skills`）
 - ✅ 编程式 API：`fairyCliMain`、`releasePackage`、`buildReleaseVersionOptions`、`printPreCheckRelease`
-- ✅ `commit`：`-f` 指定 `commit-linter.config.*`，`-s` 扫描包路径 glob 作为 scope，`-q` 仅校验；内置 `config/default-commit-linter.config.cjs`
+- ✅ `commit`：`-f` 指定 `commit-linter.config.*`，也可在 `fairy.config` 写 `commitLinter` 覆盖该文件；`-s` 扫描包路径 glob 作为 scope，`-q` 仅校验；内置 `config/default-commit-linter.config.cjs`
 - ✅ `lint`：自动发现 `eslint.config.*` 或内置 `config/default-eslint.config.mjs`，`-f` 指定配置
 - ✅ 与专用包同源的编程式导出：`commitLinter`、`defineVipCommitLinterConfig`、`loadCommitLinterConfigForCli`（ESLint 配置请从 `@142vip/eslint-config` 引入 `defineVipEslintConfig`）
 
 ## 配置
 
-仓库根目录可增加 `fairy.config.ts`（cosmiconfig 模块名 `fairy`），通过 `defineFairyConfig` 声明 `hooks`、`scripts`、`install` 等（见 FEATURES）。`commit-linter` / ESLint 仍使用各自配置文件。
+仓库根目录可增加 `fairy.config.ts`（cosmiconfig 模块名 `fairy`），通过 `defineFairyConfig` 声明 `hooks`、`scripts`、`install`、`commitLinter`。`commitLinter` 可选：写了就覆盖 `commit-linter.config`，没写的字段仍用内置默认。`fa commit -f` 优先于 `commitLinter`。ESLint 仍使用自己的配置文件。
+
+```ts
+import { defineFairyConfig } from '@142vip/fairy-cli'
+
+export default defineFairyConfig({
+  commitLinter: {
+    scopeGlobs: ['./packages/*'],
+    scopes: ['README'],
+  },
+})
+```
 
 `peerDependencies` 为 `@142vip/utils`；`dependencies` 含 `simple-git-hooks` 及编排包。
 
