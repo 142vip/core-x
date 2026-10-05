@@ -138,7 +138,7 @@ scripts/
 pnpm check:commit   # → npx fa commit --quiet -s './apps/*' -s './packages/*'（`@142vip/fairy-cli`）
 ```
 
-配置：`commit-linter.config.*`（cosmiconfig）；`fa commit` 默认交互，`--quiet --vip` 校验 Monorepo scope；`-s` 覆盖 glob。
+配置：`fairy.config` 的可选 `commitLinter` 覆盖 `commit-linter.config.*`（未写则仍走 cosmiconfig）；`fa commit -f` 优先。`fa commit` 默认交互，`--quiet --vip` 校验 Monorepo scope；`-s` 覆盖 glob。
 
 ## 模型选用原则
 
