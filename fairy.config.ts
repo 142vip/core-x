@@ -12,6 +12,12 @@ export default defineFairyConfig({
       'pnpm build:packages',
     ],
   },
+  commitLinter: {
+    scopeGlobs: [
+      './apps/*',
+      './packages/*',
+    ],
+  },
   scripts: {
     'build:docs-proxy': 'NEED_PROXY=true npx vitepress build && pnpm typedoc:api',
     'build': 'pnpm build:packages && pnpm build:apps && pnpm build:docs && pnpm build:docs-proxy',
