@@ -29,6 +29,18 @@
 - `defaultAxiosConfig: CreateAxiosDefaults`
 - `createAxiosConfig(userAxiosConfig?: Partial<CreateAxiosDefaults>): CreateAxiosDefaults`
 
+### 响应体转换（`core/axios-response.transform.ts`）
+
+- `AxiosResponseTransform`：非 JSON `responseType` 且 `Content-Type` 含 `application/json` 时，把 blob / arraybuffer 解析为 JSON
+- `axiosResponse`：上述类的默认实例
+
+### 重试（`core/axios-retry.ts`）
+
+- `createAxiosRetry(instance, config?)`：为已有实例挂载 `axios-retry`；未传 `retries` 时默认为 `0`
+- `IAxiosRetryConfig`：从 `axios-retry` 再导出（`types/axios-exports.ts`）
+
+业务侧 `VipAxios` 类与 `VipResponseData` 信封不在本包，由 `@142vip/vue` 定义。
+
 ### 拦截器（`core/interceptors.ts`）
 
 - `InterceptorType` 枚举
