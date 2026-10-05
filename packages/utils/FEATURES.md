@@ -151,7 +151,7 @@ vipConfig.mergeCommanderConfig(cliConfig, commanderConfig) // 后者覆盖前者
 - `vipQs`（`qs.ts`）：`stringify` / `parse`
 - `vipNanoId`（`nanoid.ts`）：按 `Alphabet` 生成 id
 - `vipDetect`（`detect.ts`）：端口 / 缩进 / 换行 / 本机地址
-- `cli-presentation.ts`：横幅 / trace / dry-run、`registerVipPackageCliErrorHandling`、`formatVipCliHelpExample`
+- `cli-presentation.ts`：横幅 / trace / dry-run（可选 `params` 打印生效参数）、`registerVipPackageCliErrorHandling`、`formatVipCliHelpExample`
 - `commander.ts`：`VipCommander` / `VipPackageCliCommander`、`registerVipCommanderExitOverrideTree`、`VIP_COMMANDER_EXIT_*`
 - `vipDataTransform`（`data-transform.ts`）：脱敏串 / 手机号
 
