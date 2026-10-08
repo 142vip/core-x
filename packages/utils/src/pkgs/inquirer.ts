@@ -14,6 +14,24 @@ import { vipLogger, VipNodeJS, VipPackageJSON } from '../core'
 import { VipColor } from './color'
 
 /**
+ * `@inquirer/prompts` 在 Ctrl+C 时抛出名为 `ExitPromptError` 的错误。
+ * 调用方必须结束进程：库自己注册了 SIGINT 监听，进程不会跟着信号退出，
+ * 吞掉错误会让下一个 prompt 继续出现。
+ */
+function settlePromptForceClose(
+  error: unknown,
+  exit: () => void,
+  log: (message: string) => void,
+): boolean {
+  if (!(error instanceof Error) || error.name !== 'ExitPromptError') {
+    return false
+  }
+  log('用户安全退出，欢迎下次使用👏🏻👏🏻👏🏻')
+  exit()
+  return true
+}
+
+/**
  * 参考：
  * - https://www.npmjs.com/package/inquirer#answers
  * - https://github.com/SBoudrias/Inquirer.js
@@ -153,22 +171,21 @@ function handleSimpleSearchSource(sources: string[]): SimpleSearchSource<string>
   }
 }
 
-/**
- * 使用try catch 处理Prompt退出时报错
- * - ctrl+c 优雅地处理
- */
 function withTryCatch<F extends (...args: any[]) => any>(fn: F): F {
   return (async (...args: Parameters<F>) => {
     try {
       return await fn(...args)
     }
     catch (error) {
-      if (error instanceof Error && error.name === 'ExitPromptError') {
-        vipLogger.logByBlank(`${VipPackageJSON.getPkgGreenLabel(name)} 用户安全退出，欢迎下次使用👏🏻👏🏻👏🏻`)
+      const closed = settlePromptForceClose(
+        error,
+        () => VipNodeJS.existSuccessProcess(),
+        message => vipLogger.logByBlank(`${VipPackageJSON.getPkgGreenLabel(name)} ${message}`),
+      )
+      if (closed) {
+        return
       }
-      else {
-        throw error
-      }
+      throw error
     }
   }) as F
 }

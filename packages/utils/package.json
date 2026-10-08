@@ -55,6 +55,8 @@
   ],
   "scripts": {
     "build": "unbuild",
+    "test": "npx jest",
+    "test:coverage": "npx jest --coverage",
     "typecheck": "tsc --noEmit"
   },
   "authorInfo": {

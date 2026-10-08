@@ -17,7 +17,7 @@ pnpm add @142vip/utils
 ## 功能
 
 - ✅ Node：`VipNodeJS`、`VipGit`、`VipDocker`、`VipExecutor`、`VipMonorepo`、`VipNpm`、`VipPackageJSON`
-- ✅ 封装：`vipDayjs`、`vipLodash`、`VipSemver`、`VipCommander`、`vipConfig`、`VipInquirer`
+- ✅ 封装：`vipDayjs`、`vipLodash`、`VipSemver`、`VipCommander`、`vipConfig`、`VipInquirer`（Ctrl+C 一次即结束整段交互）
 - ✅ `@142vip/utils/enums`：`HttpStatus`、`TimeDurationMs`、`HttpMethod`、`ProcessExitCodeEnum`
 - ✅ 浏览器与 Node 使用同一句 `import … from '@142vip/utils'`；打包器命中 `exports.browser` 时加载不含 Node API 的构建
 - ✅ `@142vip/utils/node`：Node 专用入口
