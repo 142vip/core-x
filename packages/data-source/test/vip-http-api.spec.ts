@@ -1,68 +1,60 @@
 import type { HttpApiOptions } from '@142vip/data-source'
+import type { Server } from 'node:http'
+import { createServer } from 'node:http'
 import { VipHttpApi } from '@142vip/data-source'
-import { describe, expect, it } from '@jest/globals'
+import { afterAll, beforeAll, describe, expect, it } from '@jest/globals'
 
-/**
- * 测试用例
- * - http://172.16.202.252:8100/api/easyv-ds/v1/example
- *  - 测试GET请求
- *  - 测试POST请求
- *  - 测试PUT请求
- *  - 测试DELETE请求
- */
 describe('vip-http-api', () => {
   const vipHttpApi = new VipHttpApi()
+  let server: Server
+  let baseUrl = ''
 
-  /**
-   * 测试连接
-   * @param options
-   */
+  beforeAll(async () => {
+    server = createServer((request, response) => {
+      const status = request.url === '/fail' ? 500 : 200
+      response.writeHead(status, { 'content-type': 'application/json' })
+      response.end(JSON.stringify({
+        success: status === 200,
+        data: {
+          method: request.method,
+          params: {},
+        },
+      }))
+    })
+    await new Promise<void>((resolve) => {
+      server.listen(0, '127.0.0.1', () => resolve())
+    })
+    const address = server.address()
+    if (address == null || typeof address === 'string')
+      throw new Error('测试 HTTP 服务没有端口')
+    baseUrl = `http://127.0.0.1:${address.port}`
+  })
+
+  afterAll(async () => {
+    await new Promise<void>((resolve, reject) => {
+      server.close(error => error != null ? reject(error) : resolve())
+    })
+  })
+
   async function testConnect(options: HttpApiOptions): Promise<void> {
     const response = await vipHttpApi.getConnectionData<HttpApiOptions>(options)
-
-    console.log(`测试${options.method}请求：`, JSON.stringify(response))
     expect(response.success).toBe(true)
     expect(response.data?.method).toEqual(options.method)
     expect(response.data?.params).toEqual({})
   }
 
-  it('测试GET请求', async () => {
-    const options: HttpApiOptions = {
-      url: 'http://172.16.202.252:8100/api/easyv-ds/v1/example',
+  it('GET / POST / PUT / DELETE 原样带回方法', async () => {
+    await testConnect({ url: `${baseUrl}/example`, method: 'GET' })
+    await testConnect({ url: `${baseUrl}/example`, method: 'POST', data: {} })
+    await testConnect({ url: `${baseUrl}/example`, method: 'PUT', data: {} })
+    await testConnect({ url: `${baseUrl}/example`, method: 'DELETE' })
+  })
+
+  it('非 200 时返回失败', async () => {
+    const response = await vipHttpApi.getConnectionData({
+      url: `${baseUrl}/fail`,
       method: 'GET',
-      data: {},
-    }
-
-    await testConnect(options)
-  })
-
-  it('测试POST请求', async () => {
-    const options: HttpApiOptions = {
-      url: 'http://172.16.202.252:8100/api/easyv-ds/v1/example',
-      method: 'POST',
-      data: {},
-    }
-
-    await testConnect(options)
-  })
-
-  it('测试PUT请求', async () => {
-    const options: HttpApiOptions = {
-      url: 'http://172.16.202.252:8100/api/easyv-ds/v1/example',
-      method: 'PUT',
-      data: {},
-    }
-
-    await testConnect(options)
-  })
-
-  it('测试DELETE请求', async () => {
-    const options: HttpApiOptions = {
-      url: 'http://172.16.202.252:8100/api/easyv-ds/v1/example',
-      method: 'DELETE',
-      data: {},
-    }
-
-    await testConnect(options)
+    })
+    expect(response.success).toBe(false)
   })
 })

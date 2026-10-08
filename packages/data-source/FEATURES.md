@@ -76,6 +76,7 @@
   - 额外字段：`sid?: string`、`serviceName?: string`
 - `VipSqlServer` + `SqlServerOptions extends DataSourceConnectionOptions`
   - 额外字段：`database: string`
+  - 连接 `options.encrypt` 固定 `false`（按 IP 连接时避免 TLS ServerName 校验）
 - `VipMongo` + `MongoDBOptions extends Omit<DataSourceConnectionOptions, 'querySql'>`
   - 额外字段：`database: string`、`table: string`、`findFilter?: Record<string, any>`、`findOptions?: Record<string, any>`
 - `VipClickhouse` + `ClickHouseOptions extends DataSourceConnectionOptions`
@@ -89,7 +90,7 @@
 ### API 连接器（`core/apis/`）
 
 - `VipHttpApi` + `HttpApiOptions extends AxiosRequestConfig`
-  - `getConnectionData<T>(options): Promise<DataSourceParseResponse<T>>`：`status === 200` 时直接返回 axios `data`，否则 `{ success: false }`
+  - `getConnectionData<T>(options): Promise<DataSourceParseResponse<T>>`：未传 `validateStatus` 时 axios 不把非 2xx 抛出；`status === 200` 返回响应 `data`，否则 `{ success: false }`
 - `VipAliGatewayApi` + `AliGatewayApiOptions extends AliGatewayAPIAuth`
   - `AliGatewayAPIAuth`：`appKey: string`、`appSecret: string`
   - 额外字段：`method: 'post' | 'get' | 'put' | 'delete'`（须全小写）、`url: string`、`bodyParams?: Record<string, unknown>`、`headerParams?: Record<string, unknown>`
@@ -147,7 +148,7 @@
 - 仅安装实际用到的驱动，避免全量 peer 依赖
 - 用 `result.success` 分支处理，`message` 含失败原因
 - 密码日志用 `checkPasswordIsNil` 脱敏
-- MySQL 连接已设 `flags: ['-CONNECT_ATTRS']` 兼容 Doris，勿随意移除
+- SQL Server 连接固定 `encrypt: false`。tedious 默认加密，Node 不允许把 IP 当作 TLS ServerName；Azure 需要加密时在业务侧另建连接，不要改回默认 `true`
 - 元数据能力按 `DataSourceManager` 接口在业务层封装，当前包以 `getConnectionData` 为主
 
 ## 构建
@@ -159,6 +160,8 @@
 ```shell
 cd packages/data-source && pnpm build && pnpm test && pnpm typecheck
 ```
+
+HTTP 用例在本机临时端口上校验 `VipHttpApi`。SQL Server 按 IP 连接（`encrypt: false`）。Oracle 用例只在 `x64` 且本机有 Instant Client 时执行。达梦实验室当前握手返回 `ECONNRESET`，默认跳过；需要时 `DATA_SOURCE_LIVE=1 pnpm test`。
 
 ## 演示
 

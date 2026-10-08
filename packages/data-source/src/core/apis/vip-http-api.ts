@@ -14,12 +14,13 @@ export class VipHttpApi implements DataSourceConnector<HttpApiOptions> {
    * 获取连接数据
    */
   public async getConnectionData<T>(options: HttpApiOptions): Promise<DataSourceParseResponse<T>> {
-    // 这里DTable返回类似DataSourceParseResponse
-    const { data, status } = await axios(options)
-    // 状态码为200，请求成功
-    if (status === 200) {
+    // axios 默认把非 2xx 抛掉；未自定义 validateStatus 时按状态码收成失败结果
+    const { data, status } = await axios({
+      ...options,
+      validateStatus: options.validateStatus ?? (() => true),
+    })
+    if (status === 200)
       return data
-    }
     return { success: false }
   }
 }
