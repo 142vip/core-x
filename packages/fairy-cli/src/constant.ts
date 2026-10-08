@@ -39,6 +39,7 @@ export enum CommandEnum {
   LINT = 'lint',
   DEPLOY = 'deploy',
   INSTALL = 'install',
+  RUN = 'run',
   SYNC = 'sync',
   COPYRIGHT = 'copyright',
   COMMIT = 'commit',
@@ -57,8 +58,14 @@ export const CLI_COMMAND_DETAIL = {
   install: {
     command: CommandEnum.INSTALL,
     summary: '安装依赖',
-    description: 'pnpm / npm 安装与升级依赖',
-    aliases: ['i', 'add', 'in'],
+    description: '默认 pnpm 更新 lock；`fa ci` 别名按 lock 安装；源开关见 `--npm-registry` / `--npm-ali-registry`',
+    aliases: ['i', 'add', 'in', 'ci'],
+  },
+  run: {
+    command: CommandEnum.RUN,
+    summary: '执行自定义命令',
+    description: '运行内置 / fairy.config / package.json 聚合脚本（package.json 优先）',
+    aliases: ['r', 'exec'],
   },
   release: {
     command: CommandEnum.RELEASE,

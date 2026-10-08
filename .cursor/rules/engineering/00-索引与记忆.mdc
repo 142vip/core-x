@@ -11,7 +11,7 @@ alwaysApply: true
 
 | 项 | 值 |
 |----|-----|
-| 安装 | `./scripts/ci` 首选；失败 → `pnpm install` |
+| 安装 | `npx fa ci` 首选；失败 → `pnpm install` |
 | build | `cd packages/<dir>` 或 `cd apps/<demo>` 后 `pnpm build` |
 | 结束 | `lint:fix`（0 error）→ 牵连 build → **`09` 文档自检** |
 | 文档 | 根 README + `docs/` + `.vitepress/` + 包 README，与代码同步 |

@@ -1,5 +1,5 @@
 import type { CommitLinterOptions } from '@142vip/commit-linter'
-import type { VipPackageCliCommander } from '@142vip/utils'
+import type { VipCliDryRunParam, VipPackageCliCommander } from '@142vip/utils'
 import {
   commitLinter,
   GIT_COMMIT_DEFAULT_SCOPES,
@@ -18,9 +18,13 @@ import {
 import { CommandEnum, FairyCommandOptions } from '../constant'
 import {
   buildCommitLinterOptions,
+  formatCommitRuntimeParams,
   loadCommitLinterConfigForCli,
+  logDryRunSteps,
+  logFairyCliTrace,
   printCommitVerifyResult,
   registerFairySubcommand,
+  resolveCommitLinterConfigSource,
   runCommitMessageVerify,
   runOrDryRun,
 } from '../utils'
@@ -39,7 +43,7 @@ interface CommitOptions extends FairyCommandOptions {
  * `fa commit`：默认交互式规范提交；
  * `--quiet` 仅校验（commit-msg / `check:commit`）；
  * `-s` 指定 Monorepo glob 扫描包名 scope（可多次）；
- * `-f` 指定 `commit-linter.config.*` 路径（默认自动发现或内置默认）。
+ * `-f` 指定 `commit-linter.config.*` 路径（优先于 `fairy.config` → `commitLinter` 与自动发现）。
  */
 export async function commitMain(program: VipPackageCliCommander): Promise<void> {
   registerFairySubcommand(program, CommandEnum.COMMIT, async (args: CommitOptions) => {
@@ -47,7 +51,25 @@ export async function commitMain(program: VipPackageCliCommander): Promise<void>
     const linterOptions = buildCommitLinterOptions(fileConfig, {
       scopeGlobs: args.scope,
     })
+    const runtimeParams = formatCommitRuntimeParams({
+      source: resolveCommitLinterConfigSource(args.config),
+      fileConfig,
+      linterOptions,
+      cliScopeGlobs: args.scope,
+      quiet: args.quiet,
+      push: args.push,
+      message: args.message,
+    })
+    // 根程序上的 `--trace` 不会写进子命令 `args.trace`，以全局开关为准
+    logFairyCliTrace('commit: 配置', Object.fromEntries(
+      runtimeParams.map(param => [param.label, param.value]),
+    ))
     if (args.quiet) {
+      // dry-run 只展示参数，不读 COMMIT_EDITMSG、不因校验失败挡住调试
+      if (args.dryRun) {
+        logDryRunSteps('commit', ['校验 commit 首行（--quiet，不写 git）'], runtimeParams)
+        return
+      }
       const verifiedCommit = runCommitMessageVerify({
         linterOptions,
         message: args.message,
@@ -56,7 +78,7 @@ export async function commitMain(program: VipPackageCliCommander): Promise<void>
       return
     }
 
-    await execInteractiveCommit(args, linterOptions)
+    await execInteractiveCommit(args, linterOptions, runtimeParams)
   }, (command) => {
     command
       .option('-f,--config <path>', 'commit-linter 配置文件路径（默认 `commit-linter.config.*` 或内置配置）')
@@ -70,6 +92,7 @@ export async function commitMain(program: VipPackageCliCommander): Promise<void>
 async function execInteractiveCommit(
   args: CommitOptions,
   linterOptions: CommitLinterOptions,
+  runtimeParams: readonly VipCliDryRunParam[],
 ): Promise<void> {
   const scopeChoices = linterOptions?.scopes ?? []
   const gitType = await VipInquirer.promptSelect('提交类型：', GIT_COMMIT_DEFAULT_TYPES)
@@ -123,5 +146,5 @@ async function execInteractiveCommit(
       const remote = await VipInquirer.promptSelect('选择远程仓库：', remoteNames)
       VipGit.execPush(['-u', remote, 'HEAD'])
     }
-  })
+  }, runtimeParams)
 }

@@ -1,4 +1,4 @@
-import type { OptionsConfig, TypedFlatConfigItem } from '@antfu/eslint-config'
+import type { Awaitable, OptionsConfig, TypedFlatConfigItem } from '@antfu/eslint-config'
 import { antfu } from '@antfu/eslint-config'
 
 /**
@@ -65,7 +65,7 @@ export const defaultEslintConfig: EslintConfigOptions = {
 /**
  * 基础的 Eslint 校验规则
  */
-export const baseEslintRules = {
+export const baseEslintRules: NonNullable<TypedFlatConfigItem['rules']> = {
   'no-console': 'warn',
   'no-restricted-syntax': ['warn', {
     selector: 'CallExpression[callee.object.name=\'console\'][callee.property.name!=/^(log|warn|error|info|trace)$/]',
@@ -76,33 +76,116 @@ export const baseEslintRules = {
 type EslintConfigOptions = OptionsConfig & TypedFlatConfigItem
 
 /**
+ * 把调用方额外的 flat config 展平。
+ * 这些项会排在 antfu 与 markdown 降级之后，同名规则整段替换，不再和默认规则叠在一起。
+ */
+async function resolveUserConfigs(
+  userConfigs: Array<Awaitable<TypedFlatConfigItem | TypedFlatConfigItem[]>>,
+): Promise<TypedFlatConfigItem[]> {
+  const resolved: TypedFlatConfigItem[] = []
+  for (const item of userConfigs) {
+    const config = await item
+    if (Array.isArray(config)) {
+      resolved.push(...config)
+    }
+    else {
+      resolved.push(config)
+    }
+  }
+  return resolved
+}
+
+/**
  * 定义 Eslint 配置
  *
  * 参考：https://github.com/antfu/eslint-config
  *
- * 实现要点：
- * - `antfu(options, ...userConfigs)` 第一参是 antfu 全局 options；第二参起是 userConfigs（flat config 数组项）
- * - 旧实现把 `defaultEslintConfig` 写死作为第一参，导致 `options.markdown` 等覆盖不生效
- * - 新实现 `antfu({ ...defaultEslintConfig, ...options }, ...)` —— 调用方可通过 options 覆盖 default 字段（向后兼容）
- * - 末尾追加 `markdownCodeBlockOverrides`：针对 markdown 内 ts/js 代码块的规则降级
+ * 第一参只传 antfu 全局选项。`files` 不能放进 antfu 第一参，否则会直接抛错。
+ * 无 `files` 的 `rules` 作为全局覆盖，插在 antfu 之后、markdown 代码块降级之前。
+ * 带 `files` 的规则，以及第二参起的配置，排在整份配置最后，避免 Vue 等插件规则把用户配置盖回去。
  */
-export function defineVipEslintConfig(
+export async function defineVipEslintConfig(
   options: EslintConfigOptions = {},
+  ...userConfigs: Array<Awaitable<TypedFlatConfigItem | TypedFlatConfigItem[]>>
 ): Promise<TypedFlatConfigItem[]> {
-  // 合并 antfu options：允许调用方通过 options 显式覆盖 default（如 markdown）
-  const antfuOptions: EslintConfigOptions = { ...defaultEslintConfig, ...options }
-  return antfu(antfuOptions, {
-    ...options,
+  const {
+    name,
+    files,
+    languageOptions,
+    linterOptions,
+    processor,
+    plugins,
+    rules: userRules,
+    settings: userSettings,
+    ...antfuRest
+  } = options
+
+  const antfuOptions: OptionsConfig = {
+    ...defaultEslintConfig,
+    ...antfuRest,
+  }
+
+  const globalConfig: TypedFlatConfigItem = {
+    name: 'vip/rules',
     rules: {
       ...baseEslintRules,
-      ...(options.rules ?? {}),
-    } as any,
+      ...(files == null ? userRules : {}),
+    },
     settings: {
-      ...(options.settings ?? {}),
+      ...(userSettings ?? {}),
       node: {
-        ...(options.settings?.node ?? {}),
+        ...(userSettings?.node ?? {}),
         exitFunctions: ['process.exit', 'VipNodeJS.exitProcess'],
       },
     },
-  }).then(configs => [...configs, ...markdownCodeBlockOverrides])
+  }
+  if (files == null) {
+    if (name != null) {
+      globalConfig.name = name
+    }
+    if (languageOptions != null) {
+      globalConfig.languageOptions = languageOptions
+    }
+    if (linterOptions != null) {
+      globalConfig.linterOptions = linterOptions
+    }
+    if (processor != null) {
+      globalConfig.processor = processor
+    }
+    if (plugins != null) {
+      globalConfig.plugins = plugins
+    }
+  }
+
+  const scopedFromOptions: TypedFlatConfigItem[] = []
+  if (files != null) {
+    const scoped: TypedFlatConfigItem = {
+      name: name ?? 'vip/files',
+      files,
+      rules: userRules,
+    }
+    if (languageOptions != null) {
+      scoped.languageOptions = languageOptions
+    }
+    if (linterOptions != null) {
+      scoped.linterOptions = linterOptions
+    }
+    if (processor != null) {
+      scoped.processor = processor
+    }
+    if (plugins != null) {
+      scoped.plugins = plugins
+    }
+    scopedFromOptions.push(scoped)
+  }
+
+  return antfu(antfuOptions, globalConfig).then(async (configs) => {
+    const overrides = await resolveUserConfigs(userConfigs)
+    return [
+      ...configs,
+      ...markdownCodeBlockOverrides,
+      ...scopedFromOptions,
+      ...overrides,
+    ]
+  })
 }

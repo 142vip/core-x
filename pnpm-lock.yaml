@@ -32,9 +32,6 @@ importers:
       jest:
         specifier: 29.7.0
         version: 29.7.0(@types/node@22.10.7)(ts-node@10.9.2(@types/node@22.10.7)(typescript@5.9.2))
-      only-allow:
-        specifier: 1.2.1
-        version: 1.2.1
       simple-git-hooks:
         specifier: 2.13.1
         version: 2.13.1
@@ -113,6 +110,9 @@ importers:
       axios:
         specifier: 1.17.0
         version: 1.17.0
+      axios-retry:
+        specifier: 4.5.0
+        version: 4.5.0(axios@1.17.0)
 
   packages/changelog:
     dependencies:
@@ -335,6 +335,9 @@ importers:
       '@142vip/utils':
         specifier: workspace:*
         version: link:../utils
+      simple-git-hooks:
+        specifier: 2.13.1
+        version: 2.13.1
 
   packages/grpc:
     dependencies:
@@ -8881,10 +8884,6 @@ packages:
   oniguruma-to-es@4.3.6:
     resolution: {integrity: sha512-csuQ9x3Yr0cEIs/Zgx/OEt9iBw9vqIunAPQkx19R/fiMq2oGVTgcMqO/V3Ybqefr1TBvosI6jU539ksaBULJyA==}
 
-  only-allow@1.2.1:
-    resolution: {integrity: sha512-M7CJbmv7UCopc0neRKdzfoGWaVZC+xC1925GitKH9EAqYFzX9//25Q7oX4+jw0tiCCj+t5l6VZh8UPH23NZkMA==}
-    hasBin: true
-
   only@0.0.2:
     resolution: {integrity: sha512-Fvw+Jemq5fjjyWz6CpKx6w9s7xxqo3+JCyM0WXWeCSOboZ8ABkyvP8ID4CZuChA/wxSx+XSJmdOm8rGVyJ1hdQ==}
 
@@ -11492,10 +11491,6 @@ packages:
 
   which-module@2.0.1:
     resolution: {integrity: sha512-iBdZ57RDvnOR9AGBhML2vFZf7h8vmBjhoaZqODJBFWHVtKkDmKuHai3cx5PgVMrX5YDNp27AofYbAwctSS+vhQ==}
-
-  which-pm-runs@1.1.0:
-    resolution: {integrity: sha512-n1brCuqClxfFfq/Rb0ICg9giSZqCS+pLtccdag6C2HyufBrh3fBOiy9nb6ggRMvWOVH5GrdJskj5iGTZNxd7SA==}
-    engines: {node: '>=4'}
 
   which-typed-array@1.1.19:
     resolution: {integrity: sha512-rEvr90Bck4WZt9HHFC4DJMsjvu7x+r6bImz0/BrbWb7A2djJ8hnZMrWnHo9F8ssv0OMErasDhftrfROTyqSDrw==}
@@ -21251,10 +21246,6 @@ snapshots:
       regex: 6.1.0
       regex-recursion: 6.0.2
 
-  only-allow@1.2.1:
-    dependencies:
-      which-pm-runs: 1.1.0
-
   only@0.0.2: {}
 
   open@10.2.0:
@@ -24047,8 +24038,6 @@ snapshots:
       webidl-conversions: 7.0.0
 
   which-module@2.0.1: {}
-
-  which-pm-runs@1.1.0: {}
 
   which-typed-array@1.1.19:
     dependencies:

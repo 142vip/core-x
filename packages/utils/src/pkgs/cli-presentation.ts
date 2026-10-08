@@ -128,20 +128,33 @@ export function logVipCliTrace(
 
 const DRY_RUN_RULE = VipColor.dim('─'.repeat(52))
 
+/** dry-run 预览里的一条运行参数（label 为配置键或 CLI 语义） */
+export interface VipCliDryRunParam {
+  label: string
+  value: string
+}
+
 /**
- * 统一 dry-run 预览：横幅 + 编号步骤 + 脚注。
+ * 统一 dry-run 预览：横幅 + 运行参数 + 编号步骤 + 脚注。
+ * `params` 打印本次实际生效的配置与 CLI 参数，而不只看将执行的命令。
  */
 export function logVipCliDryRun(
   identity: VipCliIdentity,
   subcommand: string,
   steps: string[],
-  options?: { note?: string },
+  options?: { note?: string, params?: readonly VipCliDryRunParam[] },
 ): void {
   VipConsole.log('')
   VipConsole.log(`  ${VipColor.cyan(identity.name)}  ${VipColor.dim(`v${identity.version}`)}`)
   VipConsole.log('')
   VipConsole.log(`  ${VipSymbols.warning} ${VipColor.yellow('dry-run')}  ${VipColor.cyan(subcommand)}`)
   VipConsole.log(`  ${DRY_RUN_RULE}`)
+
+  const params = options?.params ?? []
+  if (params.length > 0) {
+    VipConsole.log(`  ${VipColor.dim('参数')}`)
+    logVipCliMetaLines(params, { indent: 4 })
+  }
 
   steps.forEach((step, index) => {
     const no = VipColor.dim(String(index + 1).padStart(2, ' '))

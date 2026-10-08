@@ -1,7 +1,11 @@
 import type { VipCommander, VipPackageCliCommander } from '@142vip/utils'
+import process from 'node:process'
 
 export function findCommand(program: VipPackageCliCommander, name: string): VipCommander {
-  const command = program.commands.find(item => item.name() === name.split(' ')[0]) as VipCommander | undefined
+  const key = name.split(' ')[0]
+  const command = program.commands.find((item) => {
+    return item.name() === key || item.aliases().includes(key)
+  }) as VipCommander | undefined
   if (command == null) {
     throw new Error(`未注册子命令：${name}`)
   }
@@ -15,7 +19,15 @@ export async function runCliArgv(program: VipPackageCliCommander, argv: string[]
     throw new Error('argv 须包含子命令名')
   }
   const command = findCommand(program, commandName)
-  // 子命令 parse 时不应再带命令名，否则会被当成 positional 参数
-  // commander 子命令解析须 `from: 'user'`，否则首参会被当成 node 可执行路径
-  await command.parseAsync(argv.slice(1), { from: 'user' })
+  const passthrough = argv.slice(1)
+  const previousArgv = process.argv
+  if (commandName === 'ci') {
+    process.argv = ['node', 'fa', 'ci', ...passthrough]
+  }
+  try {
+    await command.parseAsync(passthrough, { from: 'user' })
+  }
+  finally {
+    process.argv = previousArgv
+  }
 }

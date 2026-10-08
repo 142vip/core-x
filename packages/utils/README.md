@@ -19,7 +19,7 @@ pnpm add @142vip/utils
 - ✅ Node：`VipNodeJS`、`VipGit`、`VipDocker`、`VipExecutor`、`VipMonorepo`、`VipNpm`、`VipPackageJSON`
 - ✅ 封装：`vipDayjs`、`vipLodash`、`VipSemver`、`VipCommander`、`vipConfig`、`VipInquirer`
 - ✅ `@142vip/utils/enums`：`HttpStatus`、`TimeDurationMs`、`HttpMethod`、`ProcessExitCodeEnum`
-- ✅ `@142vip/utils/browser`：浏览器安全子集（无 Node API）
+- ✅ 浏览器与 Node 使用同一句 `import … from '@142vip/utils'`；打包器命中 `exports.browser` 时加载不含 Node API 的构建
 - ✅ `@142vip/utils/node`：Node 专用入口
 
 ## 配置
@@ -42,11 +42,7 @@ if (code === HttpStatus.OK) {
 }
 ```
 
-浏览器只引子集：
-
-```ts
-import { vipDayjs, vipLodash } from '@142vip/utils/browser'
-```
+浏览器项目同样写 `@142vip/utils`。Vite 等打包器会按 `exports.browser` 解析到不含 Node API 的构建，`vipDayjs`、`vipLodash`、`vipNanoId`、`DateFormatTemplate`、`TimeDurationMs` 都从这里导出。
 
 CLI：
 

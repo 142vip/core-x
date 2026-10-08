@@ -54,9 +54,9 @@
 ## 使用
 
 ```shell
-# 安装依赖（首选 ./scripts/ci，与 CI 一致；有问题再用 pnpm install）
-./scripts/ci
-# 若 ci 失败：pnpm install
+# 安装依赖（首选 npx fa ci，与 CI 一致；有问题再用 pnpm install）
+npx fa ci
+# 若 fa ci 失败：pnpm install
 
 # 文档站开发（根目录）
 pnpm dev                    # 根站 :8080
@@ -151,7 +151,7 @@ sequenceDiagram
   Dev->>Hook: git commit
   Hook->>Hook: lint:fix · check:commit
   Dev->>CI: PR → next
-  CI->>CI: scripts/ci · lint · build:docs
+  CI->>CI: fa ci · lint · build:docs
   CI->>CD: merge next
   CD->>NPM: release @142vip/*
   CD->>CD: GitHub Pages
@@ -161,7 +161,7 @@ sequenceDiagram
 
 ```mermaid
 flowchart TD
-  A["./scripts/ci<br/>失败则 pnpm install"] --> B["改 packages / apps"]
+  A["npx fa ci<br/>失败则 pnpm install"] --> B["改 packages / apps"]
   B --> C["cd 模块目录 && pnpm build"]
   C --> D["pnpm lint:fix · 0 error"]
   D --> E["同步文档 · README · sidebar"]

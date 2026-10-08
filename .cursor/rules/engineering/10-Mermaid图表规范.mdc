@@ -37,11 +37,11 @@ CI/CD/钩子/分支变    →  图4 开发与发布 · 07§5 分支流
 
 ### 图4 · 开发与发布 `sequenceDiagram`
 
-本地：`cd build · lint:fix · 文档同步` → commit → hooks → PR next → CI(`scripts/ci·lint·build:docs`) → CD → npm + Pages。
+本地：`cd build · lint:fix · 文档同步` → commit → hooks → PR next → CI(`fa ci·lint·build:docs`) → CD → npm + Pages。
 
 ### 图5 · 本地开发 `flowchart TD`
 
-`scripts/ci（失败pnpm install）` → 改代码 → `cd build` → `lint:fix` → 同步文档 → 预览 dev → `build:docs`。
+`npx fa ci（失败pnpm install）` → 改代码 → `cd build` → `lint:fix` → 同步文档 → 预览 dev → `build:docs`。
 
 `07` 另含 **§5 分支流**（仅 rules，不在根 README）。
 

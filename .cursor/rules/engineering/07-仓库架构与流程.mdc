@@ -73,7 +73,7 @@ sequenceDiagram
   Dev->>Hook: git commit
   Hook->>Hook: lint:fix · check:commit
   Dev->>CI: PR → next
-  CI->>CI: scripts/ci · lint · build:docs
+  CI->>CI: fa ci · lint · build:docs
   CI->>CD: merge next
   CD->>NPM: release @142vip/*
   CD->>CD: GitHub Pages
@@ -97,7 +97,7 @@ flowchart LR
 
 ```mermaid
 flowchart TD
-  A["./scripts/ci<br/>失败则 pnpm install"] --> B["改 packages / apps"]
+  A["npx fa ci<br/>失败则 pnpm install"] --> B["改 packages / apps"]
   B --> C["cd 模块目录 && pnpm build"]
   C --> D["pnpm lint:fix · 0 error"]
   D --> E["同步文档 · README · sidebar"]

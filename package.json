@@ -25,12 +25,6 @@
     "homePage": "https://142vip.cn"
   },
   "scripts": {
-    "preinstall": "npx only-allow pnpm && chmod +x ./scripts/*",
-    "postinstall": "simple-git-hooks && pnpm build:packages",
-    "clean": "npx fa clean --dist --vite --turbo --coverage --deps --all --ignore-tips",
-    "clean:cache": "npx fa clean --vite --dist --turbo --coverage --all --ignore-tips",
-    "clean:dist": "npx fa clean --dist --ignore-tips --all",
-    "clean:hooks": "npx fa clean --git-hooks --all --ignore-tips",
     "dev": "npx vitepress dev --port 8080 --host --force --strictPort --open",
     "dev:proxy": "NEED_PROXY=true npx vitepress dev --port 8080 --host --force --strictPort --open",
     "build:apps": "npx turbo run build --filter '*-demo' --color --only",
@@ -54,7 +48,7 @@
     "typedoc:api": "npx typedoc --options .typedoc/api.config.js",
     "typedoc:md": "npx typedoc --options .typedoc/md.config.js",
     "typedoc:wiki": "npx typedoc --options .typedoc/wiki.config.js",
-    "sync:pkg": "npx fa sync --vip"
+    "sync:pkg": "npx fa run sync"
   },
   "devDependencies": {
     "@142vip/fairy-cli": "workspace:*",
@@ -65,14 +59,9 @@
     "@types/node": "22.10.7",
     "baseline-browser-mapping": "2.11.1",
     "jest": "29.7.0",
-    "only-allow": "1.2.1",
     "simple-git-hooks": "2.13.1",
     "ts-jest": "29.4.4",
     "typescript": "5.9.2",
     "unbuild": "3.5.0"
-  },
-  "simple-git-hooks": {
-    "pre-commit": "pnpm lint:fix",
-    "commit-msg": "pnpm check:commit"
   }
 }

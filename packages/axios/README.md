@@ -19,6 +19,7 @@ pnpm add @142vip/axios
 - ✅ `createVipAxios` / `vipAxios` 创建带扩展方法的 Axios 实例
 - ✅ `AxiosFactory` 工厂与 `clearInterceptor` / `getConfig`
 - ✅ 默认请求/响应拦截器与 VIP 响应解包（`HttpStatus.OK` 时返回 `data`）
+- ✅ `createAxiosRetry` 挂载 `axios-retry`；`AxiosResponseTransform` 处理 blob / arraybuffer 中的 JSON
 - ✅ `HttpStatus`、`HttpMethod` 枚举
 - ✅ 爬虫场景随机 `User-Agent` / `Accept-Language` 请求头
 

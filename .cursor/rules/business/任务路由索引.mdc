@@ -5,7 +5,7 @@ alwaysApply: true
 
 # 任务路由索引
 
-> 收到任务后，用本表定位「改哪里、读什么规则、跑什么命令」。验证**首选** `cd` 模块目录；安装**首选** `./scripts/ci`。
+> 收到任务后，用本表定位「改哪里、读什么规则、跑什么命令」。验证**首选** `cd` 模块目录；安装**首选** `npx fa ci`。
 
 ## 意图 → 包 → 路径 → 验证
 
@@ -53,7 +53,7 @@ alwaysApply: true
 
 ## 命令写法
 
-- **安装**：`./scripts/ci`（首选）；失败或受限时用 `pnpm install`
+- **安装**：`npx fa ci`（首选）；失败或受限时用 `pnpm install`
 - **build / test / dev**：`cd packages/<dir>` 或 `cd apps/<demo>` 后 `pnpm <script>`（首选）
 - **根目录**：`pnpm dev`、`build:docs`、`lint:fix`、`pnpm build`
 

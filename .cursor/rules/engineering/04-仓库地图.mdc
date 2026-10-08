@@ -20,7 +20,7 @@ core-x/
 ├── .workbuddy/        # WorkBuddy 入口（README.md）+ memory/（不入库）
 ├── .vitepress/        # 根文档站
 ├── docs/              # index.md + TypeDoc（apis/、wiki/）
-├── scripts/           # CI、commit 校验、发布（见 15）
+├── scripts/           # 构建、发布（见 15）
 ├── .github/workflows/ # CI.yml · CD.yaml
 ├── spider/            # 非 workspace 离线脚本
 └── turbo.json
@@ -28,11 +28,11 @@ core-x/
 
 ## 包管理
 
-- **pnpm 9.6**（`preinstall` → `only-allow pnpm`）
+- **pnpm 9.6**（`packageManager` 锁定；安装入口 `npx fa ci`）
 - workspace：`apps/**`、`packages/**`（`pnpm-workspace.yaml`）
 - paths：`@142vip/*` → `packages/*/src`（根 `tsconfig.json`）
 - workspace：`apps/**`、`packages/**`
-- 安装：**首选** `./scripts/ci`（与 CI 一致）；`pnpm install` 作本地快速方式
+- 安装：**首选** `npx fa ci`（与 CI 一致）；`pnpm install` 作本地快速方式
 - 单包脚本：**首选** `cd packages/<dir> && pnpm <script>`；`pnpm --filter` 为备选
 
 ## 构建分工
@@ -49,7 +49,7 @@ core-x/
 ## 常用命令
 
 ```bash
-./scripts/ci                             # 安装依赖（首选）
+npx fa ci                              # 安装依赖（首选）
 
 cd packages/<pkg> && pnpm build
 cd packages/<pkg> && pnpm test

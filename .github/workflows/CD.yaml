@@ -87,15 +87,13 @@ jobs:
           cache: pnpm
           package-manager-cache: false
 
-      # 基于国内镜像源下载依赖，并执行初始化脚本：钩子函数、思维导图构建
+      # 编译本地 fa 后执行 fa ci（postinstall 会 pnpm build:packages；CI 不写 git hooks）
       - name: Install Dependencies
         run: |
-          ./scripts/ci
-
-      # ci的hooks已经执行
-      #      - name: Build All Packages
-      #        run: |
-      #          pnpm build:packages
+          NPM_REGISTRY="${NPM_REGISTRY:-https://registry.npmmirror.com}"
+          pnpm i --registry "$NPM_REGISTRY" --frozen-lockfile --force
+          pnpm --filter @142vip/fairy-cli... build
+          pnpm exec fa ci
 
       # Github发布版本，并更新Release信息
       - name: Release New Version
@@ -135,14 +133,13 @@ jobs:
           cache: pnpm
           package-manager-cache: false
 
-      # 下载依赖，并执行初始化脚本：钩子函数、思维导图构建
+      # 编译本地 fa 后执行 fa ci（postinstall 会 pnpm build:packages；CI 不写 git hooks）
       - name: Install Dependencies
         run: |
-          ./scripts/ci
-      # ci的hooks已经执行
-      #      - name: Build All Packages
-      #        run: |
-      #          pnpm build:packages
+          NPM_REGISTRY="${NPM_REGISTRY:-https://registry.npmmirror.com}"
+          pnpm i --registry "$NPM_REGISTRY" --frozen-lockfile --force
+          pnpm --filter @142vip/fairy-cli... build
+          pnpm exec fa ci
 
       - name: Resolve Package Name
         id: getPkgName
@@ -169,6 +166,10 @@ jobs:
   deploy-dist:
     name: 部署到Github Pages
     runs-on: ubuntu-26.04
+    # 同一环境只允许一次 Pages 部署。后来的 push 排队，避免 400「in progress deployment」
+    concurrency:
+      group: pages
+      cancel-in-progress: false
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -200,12 +201,10 @@ jobs:
 
       - name: Install dependencies
         run: |
-          ./scripts/ci
-
-      # ci的hooks已经执行
-      #      - name: Build All Packages
-      #        run: |
-      #          pnpm build:packages
+          NPM_REGISTRY="${NPM_REGISTRY:-https://registry.npmmirror.com}"
+          pnpm i --registry "$NPM_REGISTRY" --frozen-lockfile --force
+          pnpm --filter @142vip/fairy-cli... build
+          pnpm exec fa ci
 
       # 编译 打包成dist，支持代理
       - name: Build with VitePress
@@ -217,16 +216,20 @@ jobs:
       #        run: |
       #          pnpm typedoc:api
 
-      # 上传dist文件
+      # 产物名带上 run_attempt：重跑 job 会在同一次 run 里再上传一份。
+      # deploy-pages 按名称精确匹配，固定名 github-pages 重名会直接失败
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:
+          name: github-pages-${{ github.run_attempt }}
           path: dist
 
       # 部署
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
+        with:
+          artifact_name: github-pages-${{ github.run_attempt }}
 
   # 部署Wiki
   deploy-wiki:

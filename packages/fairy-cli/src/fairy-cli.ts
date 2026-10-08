@@ -12,9 +12,14 @@ import {
   loginMain,
   publishMain,
   releaseMain,
+  runMain,
   syncMain,
 } from './commands'
-import { registerFairyCliErrorHandling, registerFairyCliVersionBanner } from './utils/command.util'
+import {
+  formatFairyRunScriptsHelpSection,
+  registerFairyCliErrorHandling,
+  registerFairyCliVersionBanner,
+} from './utils'
 
 /** `fa` / `fairy` bin 入口：注册全部子命令并解析 `process.argv` */
 export async function fairyCliMain(): Promise<void> {
@@ -25,8 +30,10 @@ export async function fairyCliMain(): Promise<void> {
 
   // login：Docker / npm 登录
   await loginMain(program)
-  // install：安装项目依赖
+  // install（含 fa ci 别名）：本地 pnpm / CI 安装
   await installMain(program)
+  // run：内置 + fairy.config scripts + package.json scripts
+  await runMain(program)
   // release：版本迭代与发版
   await releaseMain(program)
   // changelog：生成 CHANGELOG
@@ -47,6 +54,8 @@ export async function fairyCliMain(): Promise<void> {
   await commitMain(program)
   // ai：Agent Skills 同步与校验
   await aiMain(program)
+
+  program.addHelpText('after', () => formatFairyRunScriptsHelpSection())
 
   registerFairyCliVersionBanner(program)
   registerFairyCliErrorHandling(program)

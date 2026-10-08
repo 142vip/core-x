@@ -13,7 +13,7 @@
 
 ```bash
 # 在 monorepo 根目录
-./scripts/ci
+npx fa ci
 # 或：pnpm install
 
 # 构建包（改了 packages/vitepress 后需要）
