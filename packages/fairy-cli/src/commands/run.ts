@@ -32,7 +32,7 @@ export async function runMain(program: VipPackageCliCommander): Promise<void> {
 
       const commandName = scriptName?.trim()
       if (commandName == null || commandName === '') {
-        VipConsole.error(`${VipColor.redBright('run:')} 请指定脚本名，例如 ${VipColor.cyan('fa run lint:fix')}`)
+        VipConsole.error(`${VipColor.redBright('run:')} 请指定脚本名，例如 ${VipColor.cyan('fa run clean')}`)
         VipNodeJS.existErrorProcess()
         return
       }

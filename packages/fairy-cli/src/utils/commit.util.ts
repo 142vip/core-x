@@ -58,9 +58,27 @@ function mergeCommitLinterOverride(
 }
 
 /**
+ * `commit` 上的校验字段。只写了 `-q` / `-s` 这类命令参数时返回 `undefined`，
+ * 这样仍会读取 `commit-linter.config`。
+ */
+function fairyCommitLinterOverride(): VipCommitLinterConfig | undefined {
+  const commit = loadFairyConfig().commit
+  if (commit == null) {
+    return undefined
+  }
+  const { types, scopes, scopeGlobs, verify } = commit
+  if (types === undefined && scopes === undefined && scopeGlobs === undefined && verify === undefined) {
+    return undefined
+  }
+  return { types, scopes, scopeGlobs, verify }
+}
+
+/**
  * 加载 commit-linter 配置。优先级：
- * `fa commit -f` > `fairy.config` → `commitLinter` > `commit-linter.config` > 内置默认。
- * `commitLinter` 存在时不再读取 `commit-linter.config`。
+ * `fa commit -f`（含 `fairy.config` → `commit.config`）>
+ * `fairy.config` → `commit` 的校验字段 >
+ * `commit-linter.config` > 内置默认。
+ * 校验字段存在时不再读取 `commit-linter.config`。
  */
 export function loadCommitLinterConfigForCli(cliConfigPath?: string): VipCommitLinterConfig {
   const bundled = loadBundledCommitLinterConfig()
@@ -78,7 +96,7 @@ export function loadCommitLinterConfigForCli(cliConfigPath?: string): VipCommitL
     return vipConfig.mergeCommanderConfig(bundled, fileConfig)
   }
 
-  const fairyCommitLinter = loadFairyConfig().commitLinter
+  const fairyCommitLinter = fairyCommitLinterOverride()
   if (fairyCommitLinter != null) {
     return mergeCommitLinterOverride(bundled, fairyCommitLinter)
   }
@@ -94,8 +112,8 @@ export function resolveCommitLinterConfigSource(cliConfigPath?: string): string 
   if (cliConfigPath != null && cliConfigPath !== '') {
     return `-f ${cliConfigPath}`
   }
-  if (loadFairyConfig().commitLinter != null) {
-    return 'fairy.config → commitLinter'
+  if (fairyCommitLinterOverride() != null) {
+    return 'fairy.config → commit'
   }
   const discovered = vipConfig.searchConfigFilePath(CONFIG_DEFAULT_NAME)
   if (discovered != null && discovered !== '') {

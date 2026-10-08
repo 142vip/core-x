@@ -2,9 +2,9 @@ import { spawnSync } from 'node:child_process'
 import { mkdirSync, mkdtempSync, rmSync, statSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
-import { vipConfig } from '@142vip/utils'
+import { VipCommander, vipConfig } from '@142vip/utils'
 import { afterEach, describe, expect, it, jest } from '@jest/globals'
-import { defineFairyConfig, getFairyDefaultConfig, loadFairyConfig } from '../src/config'
+import { applyFairyCommandDefaults, defineFairyConfig, getFairyDefaultConfig, loadFairyConfig } from '../src/config'
 
 describe('fairy.config', () => {
   afterEach(() => {
@@ -44,22 +44,77 @@ describe('fairy.config', () => {
     expect(config.hooks?.postinstall).toEqual(['pnpm build:packages'])
     expect(config.hooks?.precommit).toBe('npx fa lint --fix')
     expect(config.scripts?.lint).toBe('npx fa lint')
-    expect(config.commitLinter).toBeUndefined()
+    expect(config.commit).toBeUndefined()
+    expect(config.release).toBeUndefined()
+    expect(config.ai).toBeUndefined()
   })
 
-  it('commitLinter 原样保留，不与默认配置拼接', () => {
+  it('commit / release / ai 原样保留，不与默认配置拼接', () => {
     jest.spyOn(vipConfig, 'loadConfig').mockReturnValue({
-      commitLinter: {
+      commit: {
         scopes: ['README'],
         scopeGlobs: ['./packages/*'],
+        quiet: true,
+      },
+      release: {
+        vip: true,
+        filter: ['./packages/*'],
+      },
+      ai: {
+        target: '.',
       },
     })
     const config = loadFairyConfig()
-    expect(config.commitLinter).toEqual({
+    expect(config.commit).toEqual({
       scopes: ['README'],
       scopeGlobs: ['./packages/*'],
+      quiet: true,
     })
+    expect(config.release).toEqual({
+      vip: true,
+      filter: ['./packages/*'],
+    })
+    expect(config.ai).toEqual({ target: '.' })
     expect(config.hooks?.precommit).toBe('npx fa lint --fix')
+  })
+
+  it('未传入的参数采用配置，命令行显式值优先', async () => {
+    const program = new VipCommander('fa', '0.0.0')
+    const command = program.command('commit')
+    command
+      .option('-q,--quiet', 'quiet', false)
+      .option('--push', 'push', true)
+      .option('-s,--scope <glob>', 'scope', (value: string, previous: string[]) => {
+        previous.push(value)
+        return previous
+      }, [] as string[])
+    await program.parseAsync(['commit', '-s', './apps/*'], { from: 'user' })
+
+    const merged = applyFairyCommandDefaults(
+      command,
+      command.opts<{ quiet: boolean, push: boolean, scope: string[] }>(),
+      { quiet: true, push: false, scope: ['./packages/*'] },
+      ['quiet', 'push', 'scope'],
+    )
+    expect(merged.quiet).toBe(true)
+    expect(merged.push).toBe(false)
+    expect(merged.scope).toEqual(['./apps/*'])
+  })
+
+  it('--no-quiet 覆盖配置里的 quiet', async () => {
+    const program = new VipCommander('fa', '0.0.0')
+    const command = program.command('commit')
+    command.option('-q,--quiet', 'quiet', false)
+    command.option('--no-quiet', 'disable quiet')
+    await program.parseAsync(['commit', '--no-quiet'], { from: 'user' })
+
+    const merged = applyFairyCommandDefaults(
+      command,
+      command.opts<{ quiet: boolean }>(),
+      { quiet: true },
+      ['quiet'],
+    )
+    expect(merged.quiet).toBe(false)
   })
 
   it('默认 preinstall 在 scripts 缺失或为空时仍成功', () => {
