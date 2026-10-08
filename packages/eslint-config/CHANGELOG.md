@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.8 (2026-10-08)
+
+### ✨ Features
+
+- 自定义 `rules` 排在配置末尾覆盖 &nbsp;-&nbsp; by **chufan** [<samp>(316f2)</samp>](https://github.com/142vip/core-x/commit/316f2695)
+
+**Release New Version v0.0.1-alpha.8 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/eslint-config)**
+
 ## v0.0.1-alpha.7 (2026-09-30)
 
 ### 🐛 Bug Fixes
