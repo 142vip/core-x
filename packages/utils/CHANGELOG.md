@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.63 (2026-10-08)
+
+### ✨ Features
+
+- `logVipCliDryRun` 支持打印生效参数 &nbsp;-&nbsp; by **chufan** [<samp>(8be66)</samp>](https://github.com/142vip/core-x/commit/8be66c2d)
+
+**Release New Version v0.0.1-alpha.63 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/utils)**
+
 ## v0.0.1-alpha.62 (2026-10-05)
 
 ### 🐛 Bug Fixes
