@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.27 (2026-10-08)
+
+### 📖 Documentation
+
+- 补充 `test:coverage` 验证命令 &nbsp;-&nbsp; by **chufan** [<samp>(bc956)</samp>](https://github.com/142vip/core-x/commit/bc956ba0)
+
+**Release New Version v0.0.1-alpha.27 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/changelog)**
+
 ## v0.0.1-alpha.26 (2026-09-29)
 
 ### 💅 Refactors
