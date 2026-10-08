@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.9 (2026-10-08)
+
+### 📖 Documentation
+
+- 检查命令改为 `npx fa lint` &nbsp;-&nbsp; by **chufan** [<samp>(1f1f5)</samp>](https://github.com/142vip/core-x/commit/1f1f5f62)
+
+**Release New Version v0.0.1-alpha.9 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/eslint-config)**
+
 ## v0.0.1-alpha.8 (2026-10-08)
 
 ### ✨ Features
