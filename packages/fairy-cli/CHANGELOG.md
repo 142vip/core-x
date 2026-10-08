@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 
+## v0.0.3-alpha.40 (2026-10-08)
+
+### ✨ Features
+
+- `postinstall` 在源码仓编译 `fa` 并执行 `hooks.postinstall` &nbsp;-&nbsp; by **chufan** [<samp>(fe040)</samp>](https://github.com/142vip/core-x/commit/fe0409ff)
+- `fairy.config` 可写 `commit` / `release` / `ai` 默认参数 &nbsp;-&nbsp; by **chufan** [<samp>(04083)</samp>](https://github.com/142vip/core-x/commit/04083e00)
+
+**Release New Version v0.0.3-alpha.40 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/fairy-cli)**
+
 ## v0.0.3-alpha.39 (2026-10-08)
 
 ### ✨ Features
