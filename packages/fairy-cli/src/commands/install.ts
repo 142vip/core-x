@@ -26,13 +26,15 @@ async function runInstallWithFairyLifecycle(
   const previewSteps = [
     ...resolveHookCommands('preinstall'),
     ...(Array.isArray(installPreview) ? installPreview : [installPreview]),
-    ...resolveHookCommands('postinstall'),
+    ...(installArgs.ignoreScripts ? resolveHookCommands('postinstall') : []),
   ]
 
   await runOrDryRun(installArgs.dryRun, actionLabel, previewSteps, async () => {
     await runFairyHook('preinstall')
     await installExec()
-    await runFairyHook('postinstall')
+    // 未禁 scripts 时，pnpm 已执行 @142vip/fairy-cli postinstall（含 fairy.config → hooks.postinstall）
+    if (installArgs.ignoreScripts)
+      await runFairyHook('postinstall')
   })
 }
 
