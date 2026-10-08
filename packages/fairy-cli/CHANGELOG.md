@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 
+## v0.0.3-alpha.39 (2026-10-08)
+
+### ✨ Features
+
+- `fairy.config` 支持 `commitLinter`，`dry-run` 打印生效参数 &nbsp;-&nbsp; by **chufan** [<samp>(d0f3c)</samp>](https://github.com/142vip/core-x/commit/d0f3c988)
+
+**Release New Version v0.0.3-alpha.39 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/fairy-cli)**
+
 ## v0.0.3-alpha.38 (2026-10-05)
 
 ### ✨ Features
