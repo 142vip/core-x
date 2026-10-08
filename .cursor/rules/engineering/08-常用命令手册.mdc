@@ -24,7 +24,7 @@ pnpm install
 
 | 场景 | 命令 |
 |------|------|
-| 首次克隆 / 换机 / 与 CI 对齐 | `npx fa ci`（仓库内需先 `pnpm i` 并 `pnpm --filter @142vip/fairy-cli... build`，流水线已包含这两步） |
+| 克隆后 / 与 CI 对齐 | `pnpm i`、`npx fa ci`、`npx fa i -f`（CI：`pnpm i --frozen-lockfile --force`） |
 | **ci 报错**（网络、corepack、镜像等） | `pnpm install` |
 | 日常增量、依赖已装全 | `pnpm install` |
 | CI 定义 | `.github/workflows/CI.yml` → `pnpm exec fa ci` |
@@ -48,7 +48,7 @@ pnpm install
 | nest-demo | `cd apps/nest-demo && pnpm start` | `pnpm --filter nest-demo start` |
 | egg-demo | `cd apps/egg-demo && pnpm dev` | `pnpm --filter egg-demo dev` |
 
-**仅在仓库根执行**（无模块目录等价）：`pnpm dev` / `pnpm build:docs` / `pnpm build:packages` / `pnpm lint:fix` / `pnpm test`（turbo 全量）/ `pnpm build`。
+**仅在仓库根执行**（无模块目录等价）：`pnpm dev` / `pnpm build:docs` / `pnpm build:packages` / `npx fa lint --fix` / `pnpm test` / `pnpm verify` / `pnpm build`。
 
 选用原则：**改哪进哪** → `cd` 到目标目录执行；安装先试 `npx fa ci`，失败再 `pnpm install`。
 
@@ -88,14 +88,17 @@ pnpm build                               # 完整构建
 
 ```bash
 cd packages/<pkg> && pnpm test
-pnpm test                                # turbo 全量（根目录）
+cd packages/<pkg> && pnpm test:coverage  # 报告写入该包 coverage/
+pnpm test                                # turbo 全量（根目录；先 ^build）
+pnpm test:coverage                       # turbo 全量覆盖率（根目录）
+pnpm verify                              # 根脚本：npx fa lint + pnpm test + pnpm build:docs
 ```
 
 ## 代码质量（提交前 / 任务结束）
 
 ```bash
-pnpm lint                                # 0 error，warning 允许
-pnpm lint:fix                            # 必须执行
+npx fa lint                          # 0 error，warning 允许
+npx fa lint --fix
 ```
 
 ## 构建验证（lint:fix 之后）
@@ -112,9 +115,9 @@ pnpm build
 ## 清理
 
 ```bash
-pnpm clean:cache
-pnpm clean:dist
-pnpm clean                               # 慎用
+npx fa run clean:cache
+npx fa run clean
+npx fa run clean:dist
 ```
 
 ## 发布与检查
@@ -139,10 +142,11 @@ pnpm build:docs
 ## 模型选用原则
 
 ```
-安装      →  npx fa ci；失败则 pnpm install
+安装      →  pnpm i / npx fa ci / npx fa i -f
 改单包    →  cd packages/<pkg> && pnpm build [test] [typecheck]
 改 demo   →  cd apps/<demo> && pnpm dev/build
-根级任务  →  pnpm lint:fix / build:docs / pnpm build（根目录）
-任务结束  →  lint:fix（0 error）→ 牵连目录 build → 不明则 pnpm build
+根级任务  →  npx fa lint --fix / pnpm build:docs / pnpm build
+任务结束  →  npx fa lint -f 改动路径 → 牵连 build → 逻辑变更跑牵连 test
+交付/PR   →  pnpm verify（CI：fa lint · test · build:docs；coverage 仅本地）
 文档      →  与代码一致，31 包 + 4 demo 不遗漏（09）
 ```

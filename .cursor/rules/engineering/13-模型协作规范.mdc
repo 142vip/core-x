@@ -73,7 +73,7 @@ cd packages/<pkg> && pnpm build
 
 ### 强约束（禁止）
 
-- **禁止**任务结束时默认跑 `pnpm lint:fix`（全仓扫描耗时长）
+- **禁止**任务结束时默认跑 `npx fa lint --fix`（全仓扫描耗时长）
 - **禁止**任务结束时默认跑 `pnpm build`（含 docs 全量构建耗时长）
 - **禁止**对未改动的包 / demo 做 build「图安心」
 - **Git**：单条 commit 默认超 **15** 个 staged 文件、跨包拼盘、标题与 staged 不符、**擅自 `git push`**

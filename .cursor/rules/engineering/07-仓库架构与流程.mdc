@@ -69,11 +69,11 @@ sequenceDiagram
   participant CD as GitHub CD
   participant NPM as npm
 
-  Dev->>Dev: cd build · lint:fix · 文档同步
+  Dev->>Dev: cd build · fa lint --fix · 文档同步
   Dev->>Hook: git commit
-  Hook->>Hook: lint:fix · check:commit
+  Hook->>Hook: fa lint --fix · check:commit
   Dev->>CI: PR → next
-  CI->>CI: fa ci · lint · build:docs
+  CI->>CI: pnpm i · fa lint · test · build:docs
   CI->>CD: merge next
   CD->>NPM: release @142vip/*
   CD->>CD: GitHub Pages
@@ -97,10 +97,11 @@ flowchart LR
 
 ```mermaid
 flowchart TD
-  A["npx fa ci<br/>失败则 pnpm install"] --> B["改 packages / apps"]
+  A["pnpm i / npx fa ci / npx fa i -f"] --> B["改 packages / apps"]
   B --> C["cd 模块目录 && pnpm build"]
-  C --> D["pnpm lint:fix · 0 error"]
-  D --> E["同步文档 · README · sidebar"]
+  C --> D["npx fa lint --fix · 0 error"]
+  D --> T["pnpm test · 或 pnpm verify"]
+  T --> E["同步文档 · README · sidebar"]
   E --> F{"预览?"}
   F -->|根站 :8080| G["pnpm dev"]
   F -->|demo :3080| H["cd apps/vitepress-demo && pnpm dev"]

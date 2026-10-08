@@ -23,7 +23,7 @@ alwaysApply: true
 | 数据源 | `@142vip/data-source` | `packages/data-source/src/` | `cd packages/data-source && pnpm test build` |
 | CLI 工具 | `@142vip/fairy-cli` | `packages/fairy-cli/src/` | `cd packages/fairy-cli && pnpm test build` |
 | 版本发布 | `@142vip/release-version` | `packages/release-version/` | `cd packages/release-version && pnpm test` |
-| ESLint 规则 | `@142vip/eslint-config` | `packages/eslint-config/` | 根 `pnpm lint:fix` |
+| ESLint 规则 | `@142vip/eslint-config` | `packages/eslint-config/` | 根 `npx fa lint --fix` |
 | 开源链接/常量 | `@142vip/open-source` | `packages/open-source/src/constants/` | `cd packages/open-source && pnpm build` |
 | VuePress | `@142vip/vuepress` | `packages/vuepress/` | `cd apps/vuepress-demo && pnpm build` |
 

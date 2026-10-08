@@ -230,7 +230,7 @@ pnpm check:release   # 期望全 ✔
 
 | Hook | 行为 |
 |------|------|
-| `pre-commit` | `pnpm lint:fix` |
+| `pre-commit` | `npx fa lint --fix`（fairy 默认 `precommit`） |
 | `commit-msg` | `pnpm check:commit` → `npx fa commit` |
 
 ## Agent 约束
