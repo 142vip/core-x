@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## v0.0.1-alpha.11 (2026-10-08)
+
+### ✨ Features
+
+- 主入口不再导出 `runCli`，`@142vip/utils` 改为 peer &nbsp;-&nbsp; by **chufan** [<samp>(e9558)</samp>](https://github.com/142vip/core-x/commit/e955873a)
+
+### 📖 Documentation
+
+- Skill 改为读取 `.agents/README.md`，检查命令改为 `npx fa lint` &nbsp;-&nbsp; by **chufan** [<samp>(4a73f)</samp>](https://github.com/142vip/core-x/commit/4a73fe7d)
+
+**Release New Version v0.0.1-alpha.11 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/agent-skills)**
+
 ## v0.0.1-alpha.10 (2026-10-08)
 
 **No Significant Changes**
