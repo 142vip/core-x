@@ -9,7 +9,7 @@ description: 跨项目高质量代码生成规范（code-dev）。当用户要�
 
 生成正确、简洁、风格一致的高质量代码。类型准确、注释清晰，改完可通过局部 lint 与受影响 build。
 
-**本 skill 不绑定任何业务仓库路径或私有 npm 包名。** 日期库、HTTP 工具、状态码枚举、应用目录等以下游项目根目录 `AGENTS.md`（及可选 `.agents/project/stack.md`）为准。若本仓依赖 `@142vip/utils` 等共享工具，**优先复用**，禁止重复造轮子。
+**本 skill 不绑定任何业务仓库路径或私有 npm 包名。** 日期库、HTTP 工具、状态码枚举、应用目录等以下游项目根目录 `AGENTS.md`（及 `.agents/README.md`）为准。若本仓依赖 `@142vip/utils` 等共享工具，**优先复用**，禁止重复造轮子。
 
 ## 触发场景
 
@@ -362,7 +362,7 @@ npx eslint --fix --max-warnings 0 <改动路径...>
 
 ### 2. 交付收口（用户要交付 / 提交 / 全量验收）：全量 lint
 
-必须在仓库根跑本仓全量 lint 命令（常见 `pnpm lint` ≡ `npx eslint .`）并确认 **0 errors**（warning 归零与否以本仓策略为准）。存量错误当场修掉，或确认为历史债务后登记 `TODO.md`，**不允许**以「本次改动未引入」为由跳过。
+必须在仓库根跑本仓全量 lint 命令（以 `AGENTS.md` 为准；本仓为 `npx fa lint`）并确认 **0 errors**（warning 归零与否以本仓策略为准）。存量错误当场修掉，或确认为历史债务后登记 `TODO.md`，**不允许**以「本次改动未引入」为由跳过。
 
 ### 3. 读配置，不猜
 
@@ -450,7 +450,7 @@ pnpm install
 |------|------|
 | 在下游仓手改这些镜像「本地定制」通用流程 | 改通用约束 → 改 **`@142vip/agent-skills` 真源**对应 `skills/<name>/SKILL.md` |
 | 只把通用 skill 改动 commit 在下游镜像 | 真源改完 → 发版 → 下游 upgrade → `pnpm exec vip-agent-skills --target .` |
-| 用下游 PR 覆盖包已同步内容 | 下游只维护不被覆盖的：`AGENTS.md` · `business-map` · `.agents/project/*` · 工具薄入口 |
+| 用下游 PR 覆盖包已同步内容 | 下游只维护不被覆盖的：`AGENTS.md` · `.agents/README.md` · `business-map` · 工具薄入口 |
 
 漂移检测：`pnpm exec vip-agent-skills --target . --check`（不一致 exit 1）。
 
@@ -481,7 +481,7 @@ pnpm install
 3. **写代码**：遵守上文纪律，注释与常量同步
 4. **清理死代码**：未使用 import / 变量 / 函数
 5. **局部 Lint**：本仓约定命令（常见 `eslint --fix --max-warnings 0 <paths>`）
-6. **受影响 Build**：见 `self-check` 与 `.agents/project/build-map.md`（若有）
+6. **受影响 Build**：见 `self-check` 与 `.agents/README.md` / `AGENTS.md`
 7. **TODO 维护**（若根目录存在 `TODO.md`）：见 `self-check`
 8. **回复用户**：结论 + 验证 + 变更清单（**不主动 commit；push 由用户手动操作**；提交仅用户指令触发，见 `commit`）
 

@@ -28,7 +28,7 @@
 
 ## 验证与构建
 
-详见 `.agents/project/build-map.md`（推荐）或下文命令表。
+详见 `.agents/README.md` 或下文命令表。
 
 ## Git 与提交
 
@@ -45,4 +45,4 @@ pnpm exec vip-agent-skills --target . --check # 比对是否与已安装包一�
 
 可选：根目录 `TODO.md`（仅未完成项）。`self-check` 在任务结束后会清理已完成项，并按优先级推荐后续可执行待办。
 
-冲突优先级：`AGENTS.md`（本文件）> `.agents/project/*` > 已同步的 core skills。
+冲突优先级：`AGENTS.md`（本文件）> `.agents/README.md` > 已同步的 core skills。

@@ -21,12 +21,21 @@ description: 跨项目高效执行管线与知识沉淀规范。当开始一个�
 ## 默认读取顺序（全工具）
 
 1. 下游仓库根 `AGENTS.md`（L0 真源）
-2. 按意图加载对应 skill（`workflow` / `code-dev` / `self-check` / `commit` / 本地 `business-map`）
-3. 目标应用 / 包 `README` + 同模块 3～5 个现有文件（对齐风格）
-4. 若存在根 `TODO.md`：任务结束按 `self-check` 维护
-5. （可选）工具专属薄入口（`.codex/` / `.workbuddy/` / `.cursor/rules` 等）
+2. 若存在 `.agents/README.md`：本仓命令、CI、基座与验证（入库上下文；不使用 `.agents/project/`）
+3. 按意图加载对应 skill（`workflow` / `code-dev` / `self-check` / `commit` / 本地 `business-map`）
+4. 目标应用 / 包 `README` + 同模块 3～5 个现有文件（对齐风格）
+5. 若存在根 `TODO.md`：任务结束按 `self-check` 维护
+6. （可选）工具专属薄入口（`.codex/` / `.workbuddy/` / `.cursor/rules` 等）
 
-冲突优先级：`AGENTS.md` > `.agents/project/*` > 通用 skill 正文 > 工具薄入口。
+冲突优先级：`AGENTS.md` > `.agents/README.md` > 通用 skill 正文 > 工具薄入口。
+
+## 上下文与记忆（勿混用）
+
+| 类型 | 位置 | 规则 |
+|------|------|------|
+| **入库记忆** | `AGENTS.md`、`.agents/README.md`、通用 skill 真源 | 可提交；改流程/命令须同步 |
+| **镜像** | `.agents/skills/*` | 由 `fa ai` 生成；禁止只改镜像 |
+| **会话记忆** | WorkBuddy `.workbuddy/memory/` 等 | **禁止提交**；稳定结论回写 L0/L1 |
 
 ## 工具习惯（通用）
 
@@ -76,7 +85,7 @@ description: 跨项目高效执行管线与知识沉淀规范。当开始一个�
 | **L0** | 根 `AGENTS.md` | 本仓边界、编码纪律、栈摘要、Git |
 | **L1a** | 通用 skills（`@142vip/agent-skills` 真源 → `.agents/skills/` 镜像） | 跨项目流程：`workflow` / `code-dev` / `self-check` / `commit` |
 | **L1b** | `.agents/skills/business-map`（仅本仓） | 本仓业务落点 |
-| **L1c** | `.agents/project/*` | 本仓 build 映射、栈摘要 |
+| **L1c** | `.agents/README.md` | 本仓命令、CI、基座（不另建 `.agents/project/`） |
 | **L2** | 工具薄入口（`.codex/` / `.workbuddy/README.md` / `CLAUDE.md` 等） | **仅**工具操作差异 |
 | **L3** | 编辑器 rules（`.cursor/rules` 等） | 编辑器触发层（内参，不对外） |
 
@@ -87,7 +96,7 @@ description: 跨项目高效执行管线与知识沉淀规范。当开始一个�
 | 跨项目通用编码 / 自检 / Git 提交流程 | **必须**写回 `@142vip/agent-skills` 真源 `skills/<name>/SKILL.md` → 发版 → 下游 upgrade；**禁止**只改下游镜像 |
 | 本仓编码纪律 / 边界 | 根 `AGENTS.md` |
 | 本仓业务落点 / 近期模式 | `.agents/skills/business-map` |
-| 本仓构建命令映射 | `.agents/project/build-map.md` |
+| 本仓构建命令 | `.agents/README.md` 或根 `AGENTS.md` |
 | 某工具命令习惯 | L2 工具薄入口 |
 | 人类也要看的命令 / 架构 | 根 README / `docs/` |
 | 待办 | 根 `TODO.md`（存在才写） |
@@ -141,4 +150,4 @@ description: 跨项目高效执行管线与知识沉淀规范。当开始一个�
 
 - 项目 L0：`AGENTS.md`
 - 开发：`code-dev` · 自检：`self-check` · 提交：`commit`
-- 可选：`.agents/project/build-map.md` · 根 `TODO.md`
+- 可选：`.agents/README.md` · 根 `TODO.md`

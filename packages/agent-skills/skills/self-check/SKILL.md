@@ -1,6 +1,6 @@
 ---
 name: agent-self-check
-description: 代码修改后的质量验证与 TODO 迭代流程（跨项目）。当用户完成代码编写、修改功能后、修复 Bug 后、准备提交前时使用。覆盖规范抽查、死代码清理、局部 Lint、受影响 Build、文档同步，以及根目录 TODO.md 的完成项清理与按优先级推荐后续任务。具体 build 命令读本仓 AGENTS.md 或 .agents/project/build-map.md。按意图触发。
+description: 代码修改后的质量验证与 TODO 迭代流程（跨项目）。当用户完成代码编写、修改功能后、修复 Bug 后、准备提交前时使用。覆盖规范抽查、死代码清理、局部 Lint、受影响 Build、文档同步，以及根目录 TODO.md 的完成项清理与按优先级推荐后续任务。具体 build 命令读本仓 AGENTS.md 或 .agents/README.md。按意图触发。
 ---
 
 # 改完自检规范（通用核心）
@@ -48,7 +48,7 @@ description: 代码修改后的质量验证与 TODO 迭代流程（跨项目）�
 | 手改已同步的 `workflow` / `code-dev` / `self-check` / `commit` 镜像并提交 | 通用约束变更 → 提 PR / 改动到 **真源仓**对应 skill 文档 |
 | 用下游 commit「覆盖」包内容 | 下游 upgrade 包版本后执行 `pnpm exec vip-agent-skills --target .` |
 
-下游**仅可本地维护**：`AGENTS.md` · `business-map` · `.agents/project/*` · 工具薄入口（不被 sync 覆盖）。
+下游**仅可本地维护**：`AGENTS.md` · `.agents/README.md` · `business-map` · 工具薄入口（不被 sync 覆盖）。
 
 `business-map` 仅下游项目本地 skill，不进入上述流程。
 
@@ -79,7 +79,7 @@ npx eslint --fix --max-warnings 0 path/to/a.ts path/to/b.vue
 
 **不要写死应用名。** 按优先级读取：
 
-1. `.agents/project/build-map.md`（若存在）
+1. `.agents/README.md` 或根 `AGENTS.md` 的构建说明
 2. 本仓 `AGENTS.md`「常用命令 / 构建」一节
 3. 根 `package.json` scripts / turbo filter 约定
 
@@ -173,14 +173,16 @@ npx eslint --fix --max-warnings 0 path/to/a.ts path/to/b.vue
 在日常自检基础上追加：
 
 1. 对改动路径再跑一遍局部 lint
-2. 按本仓约定跑 packages / 各 app / docs 的**交付级**构建
-3. 再扫一遍 `TODO.md`：完成项已清、规划与代码一致
-4. 检查清单：
+2. 根目录 `pnpm test`；本仓 PR 用 `pnpm verify`（`npx fa lint` + `pnpm test` + `pnpm build:docs`）。覆盖率仅本地 `pnpm test:coverage`
+3. 按本仓约定跑 packages / 各 app / docs 的**交付级**构建（`verify` 已含 `build:docs` 时可合并）
+4. 再扫一遍 `TODO.md`：完成项已清、规划与代码一致
+5. 检查清单：
 
 | 项 | 要求 |
 |----|------|
 | 规范合规 | 对照 `AGENTS.md` 关键纪律 |
 | Lint | 改动路径达标 |
+| Test | 牵连包或根 `pnpm test` exit 0 |
 | Build | 交付脚本 exit 0 |
 | 注释 | 模块职责与复杂分支可读 |
 | TODO | 存在则已更新；无则跳过 |
@@ -255,4 +257,4 @@ npx eslint --fix --max-warnings 0 path/to/a.ts path/to/b.vue
 
 - 项目 L0：`AGENTS.md`
 - 执行管线：`workflow` · 开发：`code-dev` · 提交：`commit`
-- 可选：`.agents/project/build-map.md` · 根目录 `TODO.md`
+- 可选：`.agents/README.md` · 根目录 `TODO.md`
