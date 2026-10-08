@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.7 (2026-10-08)
+
+### ✨ Features
+
+- HTTP 请求改用 `@142vip/axios` &nbsp;-&nbsp; by **chufan** [<samp>(e0c4a)</samp>](https://github.com/142vip/core-x/commit/e0c4ab8e)
+
+**Release New Version v0.0.1-alpha.7 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/data-source)**
+
 ## v0.0.1-alpha.6 (2026-10-08)
 
 ### 🐛 Bug Fixes
