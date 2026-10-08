@@ -2,6 +2,138 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.45 (2026-10-08)
+
+### ✨ Features
+
+- 根仓库安装钩子改由 `fairy.config` 接管 &nbsp;-&nbsp; by **chufan** [<samp>(079a0)</samp>](https://github.com/142vip/core-x/commit/079a000a)
+- **@142vip/agent-skills**:
+  - 主入口不再导出 `runCli`，`@142vip/utils` 改为 peer &nbsp;-&nbsp; by **chufan** [<samp>(e9558)</samp>](https://github.com/142vip/core-x/commit/e955873a)
+- **@142vip/axios**:
+  - 导出响应体转换与 `axios-retry` 挂载 &nbsp;-&nbsp; by **chufan** [<samp>(687e2)</samp>](https://github.com/142vip/core-x/commit/687e2e4f)
+- **@142vip/commit-linter**:
+  - 扁平化导出与 `commitLinter` 单参校验 &nbsp;-&nbsp; by **chufan** [<samp>(20068)</samp>](https://github.com/142vip/core-x/commit/20068579)
+- **@142vip/eslint-config**:
+  - 自定义 `rules` 排在配置末尾覆盖 &nbsp;-&nbsp; by **chufan** [<samp>(316f2)</samp>](https://github.com/142vip/core-x/commit/316f2695)
+- **@142vip/fairy-cli**:
+  - `fa commit`/`lint` 内置配置与 util 合并 &nbsp;-&nbsp; by **chufan** [<samp>(6873c)</samp>](https://github.com/142vip/core-x/commit/6873c3f4)
+  - `fa ai --sync`/`--check` 与 `changelogMain` 统一注入 &nbsp;-&nbsp; by **chufan** [<samp>(4aec9)</samp>](https://github.com/142vip/core-x/commit/4aec9fae)
+  - `fa ai` 默认同步并移除 `--sync` &nbsp;-&nbsp; by **chufan** [<samp>(2ecbc)</samp>](https://github.com/142vip/core-x/commit/2ecbc3cf)
+  - 默认配置提供安装、钩子与 `fa run` &nbsp;-&nbsp; by **chufan** [<samp>(d7def)</samp>](https://github.com/142vip/core-x/commit/d7def5c7)
+  - `fairy.config` 支持 `commitLinter`，`dry-run` 打印生效参数 &nbsp;-&nbsp; by **chufan** [<samp>(d0f3c)</samp>](https://github.com/142vip/core-x/commit/d0f3c988)
+  - `postinstall` 在源码仓编译 `fa` 并执行 `hooks.postinstall` &nbsp;-&nbsp; by **chufan** [<samp>(fe040)</samp>](https://github.com/142vip/core-x/commit/fe0409ff)
+  - `fairy.config` 可写 `commit` / `release` / `ai` 默认参数 &nbsp;-&nbsp; by **chufan** [<samp>(04083)</samp>](https://github.com/142vip/core-x/commit/04083e00)
+- **@142vip/utils**:
+  - `VipCommander` 统一退出处理与 `loadConfigAtPath` &nbsp;-&nbsp; by **chufan** [<samp>(cc675)</samp>](https://github.com/142vip/core-x/commit/cc675ed7)
+  - `fa ci` 使用固定的 pnpm 安装参数 &nbsp;-&nbsp; by **chufan** [<samp>(c1f35)</samp>](https://github.com/142vip/core-x/commit/c1f35781)
+  - `logVipCliDryRun` 支持打印生效参数 &nbsp;-&nbsp; by **chufan** [<samp>(8be66)</samp>](https://github.com/142vip/core-x/commit/8be66c2d)
+
+### 🔥 Performance
+
+- **@142vip/vitepress**:
+  - 文档站构建分包与主题异步加载 &nbsp;-&nbsp; by **chufan** [<samp>(9b3ba)</samp>](https://github.com/142vip/core-x/commit/9b3ba318)
+
+### 🐛 Bug Fixes
+
+- **@142vip/axios**:
+  - `createAxiosConfig` 不再改写默认配置 &nbsp;-&nbsp; by **chufan** [<samp>(7635f)</samp>](https://github.com/142vip/core-x/commit/7635f639)
+- **@142vip/changelog**:
+  - 修复 GitHub Release 422（预发布推断与 PATCH `make_latest`） &nbsp;-&nbsp; by **chufan** [<samp>(6d384)</samp>](https://github.com/142vip/core-x/commit/6d38402f)
+- **@142vip/data-source**:
+  - `VipHttpApi` 按状态码返回失败，SQL Server 关闭 `encrypt` &nbsp;-&nbsp; by **chufan** [<samp>(951c7)</samp>](https://github.com/142vip/core-x/commit/951c7e10)
+- **@142vip/eslint-config**:
+  - 升级 `@antfu/eslint-config` 9.5.1 并仅 ESM 发布 &nbsp;-&nbsp; by **chufan** [<samp>(584e9)</samp>](https://github.com/142vip/core-x/commit/584e9dc5)
+- **@142vip/fairy-cli**:
+  - 避免 CJS `fa` 启动时 `require` ESM 版 `eslint-config` &nbsp;-&nbsp; by **chufan** [<samp>(459ad)</samp>](https://github.com/142vip/core-x/commit/459ad6bd)
+- **@142vip/nest-redis**:
+  - 复用已创建的 Redis 客户端，不可达时跳过集成测试 &nbsp;-&nbsp; by **chufan** [<samp>(44d47)</samp>](https://github.com/142vip/core-x/commit/44d47245)
+- **@142vip/utils**:
+  - 浏览器构建不再打入 Node 依赖 &nbsp;-&nbsp; by **chufan** [<samp>(ce484)</samp>](https://github.com/142vip/core-x/commit/ce484af6)
+
+### 💅 Refactors
+
+- **@142vip/agent-skills**:
+  - CLI 对齐 `registerVipPackageCliErrorHandling` &nbsp;-&nbsp; by **chufan** [<samp>(7cef0)</samp>](https://github.com/142vip/core-x/commit/7cef04fe)
+- **@142vip/changelog**:
+  - 接入统一 CLI 错误展示与版本横幅 &nbsp;-&nbsp; by **chufan** [<samp>(403fd)</samp>](https://github.com/142vip/core-x/commit/403fd6fb)
+- **@142vip/commit-linter**:
+  - `git-commit.interface` 更名为 `commit.interface` &nbsp;-&nbsp; by **chufan** [<samp>(4245d)</samp>](https://github.com/142vip/core-x/commit/4245dcfd)
+- **@142vip/fairy-cli**:
+  - 收敛 utils 与常量到 `command.util` / `pkg.util` &nbsp;-&nbsp; by **chufan** [<samp>(70faa)</samp>](https://github.com/142vip/core-x/commit/70faa975)
+- **@142vip/release-version**:
+  - `releasex` 对齐 utils CLI 展示能力 &nbsp;-&nbsp; by **chufan** [<samp>(b42ac)</samp>](https://github.com/142vip/core-x/commit/b42ac77b)
+- **@142vip/utils**:
+  - 合并 CLI 展示与 Commander 退出处理 &nbsp;-&nbsp; by **chufan** [<samp>(6fe3d)</samp>](https://github.com/142vip/core-x/commit/6fe3d63b)
+
+### 📖 Documentation
+
+- 重命名 `@142vip/changelog` TypeDoc 变量页修复 Linux 死链 &nbsp;-&nbsp; by **chufan** [<samp>(f187c)</samp>](https://github.com/142vip/core-x/commit/f187c66b)
+- 工程化包 README 对齐 `fa lint`/`fa commit` 与内置配置 &nbsp;-&nbsp; by **chufan** [<samp>(dca91)</samp>](https://github.com/142vip/core-x/commit/dca91e23)
+- 安装说明改为 `npx fa ci` &nbsp;-&nbsp; by **chufan** [<samp>(17168)</samp>](https://github.com/142vip/core-x/commit/171683f3)
+- 对齐安装入口、`npx fa lint` 与 `pnpm verify` &nbsp;-&nbsp; by **chufan** [<samp>(a1c5c)</samp>](https://github.com/142vip/core-x/commit/a1c5ce63)
+- **@142vip/agent-skills**:
+  - `fa ai --sync`/`--check` 与 skills 镜像说明 &nbsp;-&nbsp; by **chufan** [<samp>(8a431)</samp>](https://github.com/142vip/core-x/commit/8a431424)
+  - `fa ai` 默认同步，去掉 `--sync` 表述 &nbsp;-&nbsp; by **chufan** [<samp>(74afe)</samp>](https://github.com/142vip/core-x/commit/74afe84a)
+  - 修正 SKILL 表格列数以通过 Markdown lint &nbsp;-&nbsp; by **chufan** [<samp>(11b63)</samp>](https://github.com/142vip/core-x/commit/11b634d1)
+  - Skill 改为读取 `.agents/README.md`，检查命令改为 `npx fa lint` &nbsp;-&nbsp; by **chufan** [<samp>(4a73f)</samp>](https://github.com/142vip/core-x/commit/4a73fe7d)
+- **@142vip/changelog**:
+  - 补充 `test:coverage` 验证命令 &nbsp;-&nbsp; by **chufan** [<samp>(bc956)</samp>](https://github.com/142vip/core-x/commit/bc956ba0)
+- **@142vip/eslint-config**:
+  - 检查命令改为 `npx fa lint` &nbsp;-&nbsp; by **chufan** [<samp>(1f1f5)</samp>](https://github.com/142vip/core-x/commit/1f1f5f62)
+- **@142vip/fairy-cli**:
+  - README/FEATURES 对齐内置配置与 `fa ai` 旗标 &nbsp;-&nbsp; by **chufan** [<samp>(f4526)</samp>](https://github.com/142vip/core-x/commit/f452693c)
+  - README/FEATURES 对齐 CLI 结构与 `fa ai` 用法 &nbsp;-&nbsp; by **chufan** [<samp>(fb70f)</samp>](https://github.com/142vip/core-x/commit/fb70f0db)
+
+### 📦 Build
+
+- **@142vip/fairy-cli**:
+  - 编排包迁入 `dependencies` 随 `fa` 安装 &nbsp;-&nbsp; by **chufan** [<samp>(86ff4)</samp>](https://github.com/142vip/core-x/commit/86ff40e8)
+
+### 😏 Release Packages
+
+- **@142vip/agent-skills**:
+  - Publish `v0.0.1-alpha.8` &nbsp;-&nbsp; by **chufan** [<samp>(c1550)</samp>](https://github.com/142vip/core-x/commit/c155078c)
+  - Publish `v0.0.1-alpha.9` &nbsp;-&nbsp; by **chufan** [<samp>(a6288)</samp>](https://github.com/142vip/core-x/commit/a62883fa)
+  - Publish `v0.0.1-alpha.10` &nbsp;-&nbsp; by **chufan** [<samp>(9e9f4)</samp>](https://github.com/142vip/core-x/commit/9e9f4124)
+  - Publish `v0.0.1-alpha.11` &nbsp;-&nbsp; by **chufan** [<samp>(32852)</samp>](https://github.com/142vip/core-x/commit/32852f9d)
+- **@142vip/axios**:
+  - Publish `v0.0.1-alpha.11` &nbsp;-&nbsp; by **chufan** [<samp>(ff8af)</samp>](https://github.com/142vip/core-x/commit/ff8af27f)
+- **@142vip/changelog**:
+  - Publish `v0.0.1-alpha.25` &nbsp;-&nbsp; by **chufan** [<samp>(62c7d)</samp>](https://github.com/142vip/core-x/commit/62c7d1d9)
+  - Publish `v0.0.1-alpha.26` &nbsp;-&nbsp; by **chufan** [<samp>(6ecbe)</samp>](https://github.com/142vip/core-x/commit/6ecbe479)
+  - Publish `v0.0.1-alpha.27` &nbsp;-&nbsp; by **chufan** [<samp>(64348)</samp>](https://github.com/142vip/core-x/commit/6434810f)
+- **@142vip/commit-linter**:
+  - Publish `v0.0.1-alpha.3` &nbsp;-&nbsp; by **chufan** [<samp>(53234)</samp>](https://github.com/142vip/core-x/commit/53234de0)
+- **@142vip/data-source**:
+  - Publish `v0.0.1-alpha.6` &nbsp;-&nbsp; by **chufan** [<samp>(eb4c4)</samp>](https://github.com/142vip/core-x/commit/eb4c43a5)
+- **@142vip/eslint-config**:
+  - Publish `v0.0.1-alpha.7` &nbsp;-&nbsp; by **chufan** [<samp>(077d9)</samp>](https://github.com/142vip/core-x/commit/077d9a86)
+  - Publish `v0.0.1-alpha.8` &nbsp;-&nbsp; by **chufan** [<samp>(98923)</samp>](https://github.com/142vip/core-x/commit/989239a7)
+  - Publish `v0.0.1-alpha.9` &nbsp;-&nbsp; by **chufan** [<samp>(e1734)</samp>](https://github.com/142vip/core-x/commit/e1734b79)
+- **@142vip/fairy-cli**:
+  - Publish `v0.0.3-alpha.35` &nbsp;-&nbsp; by **chufan** [<samp>(2a467)</samp>](https://github.com/142vip/core-x/commit/2a467111)
+  - Publish `v0.0.3-alpha.36` &nbsp;-&nbsp; by **chufan** [<samp>(7fa38)</samp>](https://github.com/142vip/core-x/commit/7fa38e87)
+  - Publish `v0.0.3-alpha.37` &nbsp;-&nbsp; by **chufan** [<samp>(abc09)</samp>](https://github.com/142vip/core-x/commit/abc09a50)
+  - Publish `v0.0.3-alpha.38` &nbsp;-&nbsp; by **chufan** [<samp>(ddaa3)</samp>](https://github.com/142vip/core-x/commit/ddaa32ef)
+  - Publish `v0.0.3-alpha.39` &nbsp;-&nbsp; by **chufan** [<samp>(bd5d5)</samp>](https://github.com/142vip/core-x/commit/bd5d5ff3)
+  - Publish `v0.0.3-alpha.40` &nbsp;-&nbsp; by **chufan** [<samp>(68f5a)</samp>](https://github.com/142vip/core-x/commit/68f5ae3a)
+- **@142vip/grpc**:
+  - Publish `v0.0.1-alpha.5` &nbsp;-&nbsp; by **chufan** [<samp>(00877)</samp>](https://github.com/142vip/core-x/commit/00877bd5)
+- **@142vip/nest-redis**:
+  - Publish `v0.0.1-alpha.6` &nbsp;-&nbsp; by **chufan** [<samp>(806ce)</samp>](https://github.com/142vip/core-x/commit/806ce5a0)
+- **@142vip/release-version**:
+  - Publish `v0.0.1-alpha.17` &nbsp;-&nbsp; by **chufan** [<samp>(843f6)</samp>](https://github.com/142vip/core-x/commit/843f6dd8)
+- **@142vip/utils**:
+  - Publish `v0.0.1-alpha.60` &nbsp;-&nbsp; by **chufan** [<samp>(ed5bb)</samp>](https://github.com/142vip/core-x/commit/ed5bbeca)
+  - Publish `v0.0.1-alpha.61` &nbsp;-&nbsp; by **chufan** [<samp>(038d9)</samp>](https://github.com/142vip/core-x/commit/038d94d7)
+  - Publish `v0.0.1-alpha.62` &nbsp;-&nbsp; by **chufan** [<samp>(805f5)</samp>](https://github.com/142vip/core-x/commit/805f5a4e)
+  - Publish `v0.0.1-alpha.63` &nbsp;-&nbsp; by **chufan** [<samp>(95e9e)</samp>](https://github.com/142vip/core-x/commit/95e9ea8d)
+  - Publish `v0.0.1-alpha.64` &nbsp;-&nbsp; by **chufan** [<samp>(c80d8)</samp>](https://github.com/142vip/core-x/commit/c80d89d7)
+- **@142vip/vitepress**:
+  - Publish `v0.0.1-alpha.35` &nbsp;-&nbsp; by **chufan** [<samp>(4620d)</samp>](https://github.com/142vip/core-x/commit/4620d8f2)
+
+**Release New Version v0.0.1-alpha.45 [👉 View Changes On GitHub](https://github.com/142vip/core-x/compare/v0.0.1-alpha.44...v0.0.1-alpha.45)**
+
 ## v0.0.1-alpha.44 (2026-09-28)
 
 ### ✨ Features
