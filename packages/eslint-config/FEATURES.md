@@ -63,7 +63,7 @@
 
 ### core-x 根仓库用法
 
-全仓 `fa lint` / `pnpm lint:fix` 使用 `@142vip/fairy-cli` 的 `config/default-eslint.config.mjs`（本包 `defineVipEslintConfig`）。无根目录 `eslint.config.js`。
+全仓 `npx fa lint` / `npx fa lint --fix` 使用 `@142vip/fairy-cli` 的 `config/default-eslint.config.mjs`（本包 `defineVipEslintConfig`）。无根目录 `eslint.config.js`。
 
 其它项目仍可自建配置文件：
 
@@ -122,8 +122,9 @@ cd packages/eslint-config && pnpm build
 
 ```shell
 cd packages/eslint-config && pnpm build && pnpm typecheck
-pnpm lint          # 根目录，消费本包配置
-pnpm lint:fix      # pre-commit 钩子
+npx fa lint
+npx fa lint --fix
+# pre-commit 钩子是 npx fa lint --fix（fairy 默认 precommit）
 ```
 
 ## 演示
