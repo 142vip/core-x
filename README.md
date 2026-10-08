@@ -54,9 +54,10 @@
 ## 使用
 
 ```shell
-# 安装依赖（首选 npx fa ci，与 CI 一致；有问题再用 pnpm install）
+# 克隆后安装（任选其一；都会装依赖，并经 @142vip/fairy-cli postinstall 编译包）
+pnpm i
 npx fa ci
-# 若 fa ci 失败：pnpm install
+npx fa i -f
 
 # 文档站开发（根目录）
 pnpm dev                    # 根站 :8080
@@ -71,16 +72,20 @@ pnpm build:apps             # 所有 *-demo
 pnpm build:docs             # 文档站 + TypeDoc API
 pnpm build                  # 全量
 
-# 代码质量（根目录，提交前必跑）
-pnpm lint
-pnpm lint:fix
+# 代码质量（fa 子命令，不写进根 package.json）
+npx fa lint
+npx fa lint --fix
 
-# 测试
+# 测试（根目录 Turbo；各包先 ^build 再 jest，包间并行）
 pnpm test
-cd packages/utils && pnpm test
+pnpm test:coverage          # 报告在各包 coverage/（lcov + HTML）
 
-# 清理缓存
-pnpm clean:cache
+# PR 级验证（根 package.json：npx fa lint + pnpm test + pnpm build:docs）
+pnpm verify
+
+# 清理（fairy 默认脚本）
+npx fa run clean:cache
+npx fa run clean
 ```
 
 ## 仓库架构
@@ -147,11 +152,11 @@ sequenceDiagram
   participant CD as GitHub CD
   participant NPM as npm
 
-  Dev->>Dev: cd build · lint:fix · 文档同步
+  Dev->>Dev: cd build · fa lint --fix · 文档同步
   Dev->>Hook: git commit
-  Hook->>Hook: lint:fix · check:commit
+  Hook->>Hook: fa lint --fix · check:commit
   Dev->>CI: PR → next
-  CI->>CI: fa ci · lint · build:docs
+  CI->>CI: pnpm i · fa lint · test · build:docs
   CI->>CD: merge next
   CD->>NPM: release @142vip/*
   CD->>CD: GitHub Pages
@@ -161,10 +166,11 @@ sequenceDiagram
 
 ```mermaid
 flowchart TD
-  A["npx fa ci<br/>失败则 pnpm install"] --> B["改 packages / apps"]
+  A["pnpm i / npx fa ci / npx fa i -f"] --> B["改 packages / apps"]
   B --> C["cd 模块目录 && pnpm build"]
-  C --> D["pnpm lint:fix · 0 error"]
-  D --> E["同步文档 · README · sidebar"]
+  C --> D["npx fa lint --fix · 0 error"]
+  D --> T["pnpm test · 或 pnpm verify"]
+  T --> E["同步文档 · README · sidebar"]
   E --> F{"预览?"}
   F -->|根站 :8080| G["pnpm dev"]
   F -->|demo :3080| H["cd apps/vitepress-demo && pnpm dev"]
