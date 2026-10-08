@@ -62,8 +62,11 @@
     "url": "https://github.com/142vip",
     "homePage": "https://142vip.cn"
   },
-  "dependencies": {
-    "@142vip/utils": "0.0.1-alpha.56"
+  "peerDependencies": {
+    "@142vip/utils": "workspace:*"
+  },
+  "devDependencies": {
+    "@142vip/utils": "workspace:*"
   },
   "publishConfig": {
     "access": "public",

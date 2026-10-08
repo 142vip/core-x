@@ -10,7 +10,7 @@
 
 ### 子路径
 
-- `@142vip/agent-skills`：主入口（`src/index.ts`）
+- `@142vip/agent-skills`：主入口（`src/index.ts`，含 `syncAgentSkills`；不 re-export `runCli`，CLI 走 `dist/cli` / bin）
 - bin：`vip-agent-skills`（`bin/vip-agent-skills.cjs` → `runCli`）
 
 ### 包内 skills 目录（`skills/`）
@@ -84,6 +84,10 @@ vip-agent-skills [options]
 
 - `node`: `>=16.0.0`
 
+### peerDependencies
+
+- `@142vip/utils`: `>=0.0.1-alpha.59`（CLI 与 `VipPackageCliCommander` / `logVipCliBanner` 等；monorepo 内由 workspace 解析）
+
 ## 最佳实践
 
 - 改 Skill 内容只改 `packages/agent-skills/skills/**`，再 `fa ai` 或 `vip-agent-skills --target .` 刷新下游 `.agents/skills/`
@@ -105,7 +109,10 @@ cd packages/agent-skills && pnpm build
 ```shell
 cd packages/agent-skills && pnpm build && pnpm typecheck
 cd packages/agent-skills && pnpm test
+cd packages/agent-skills && pnpm test:coverage
 ```
+
+覆盖率报告写在包目录 `coverage/`（`lcov.info` 与 `lcov-report/index.html`）。`src/index.ts` 只做 re-export，`src/core/paths.ts` 使用 `import.meta`，这两处不纳入 CommonJS Jest 插桩。`runCli` 用 commander 替身覆盖参数优先级与退出码；`syncAgentSkills` 用路径替身覆盖同步与漂移。
 
 同步自检（在 core-x 根目录）：
 
