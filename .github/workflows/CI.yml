@@ -25,6 +25,17 @@ jobs:
       actions: read
       pull-requests: read
 
+    services:
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v5
@@ -46,18 +57,21 @@ jobs:
           cache: pnpm
           package-manager-cache: false
 
-      # 编译本地 fa 后执行 fa ci（postinstall 会 pnpm build:packages；CI 不写 git hooks）
       - name: Install Dependencies
-        run: |
-          NPM_REGISTRY="${NPM_REGISTRY:-https://registry.npmmirror.com}"
-          pnpm i --registry "$NPM_REGISTRY" --frozen-lockfile --force
-          pnpm --filter @142vip/fairy-cli... build
-          pnpm exec fa ci
+        run: pnpm i --frozen-lockfile --force
 
-      # Eslint 检测
+      # Eslint（fairy 默认脚本，不写进根 package.json）
       - name: Code LintFix By ESLint
+        run: npx fa lint
+
+      # 单测（Turbo：先 ^build 再各包 jest，包间并行、互不写盘冲突）
+      - name: Unit Tests
         run: |
-          pnpm lint
+          pnpm test
+
+      #      - name: Unit Tests Coverage
+      #        run: |
+      #          pnpm test:coverage
 
       # 编译静态网站
       - name: Build Core-X Docs
