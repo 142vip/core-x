@@ -2,7 +2,7 @@
 
 # 接口: ReleaseVersionProgress
 
-定义于: [release-version/src/releasex.interface.ts:72](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/release-version/src/releasex.interface.ts#L72)
+定义于: [release-version/src/releasex.interface.ts:72](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/release-version/src/releasex.interface.ts#L72)
 
 进度回调结构
 
@@ -16,7 +16,7 @@
 
 > **commit**: `string` \| `false`
 
-定义于: [release-version/src/releasex.interface.ts:66](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/release-version/src/releasex.interface.ts#L66)
+定义于: [release-version/src/releasex.interface.ts:66](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/release-version/src/releasex.interface.ts#L66)
 
 git commit message；未提交时为 `false`
 
@@ -30,7 +30,7 @@ git commit message；未提交时为 `false`
 
 > **currentVersion**: `string`
 
-定义于: [release-version/src/releasex.interface.ts:62](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/release-version/src/releasex.interface.ts#L62)
+定义于: [release-version/src/releasex.interface.ts:62](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/release-version/src/releasex.interface.ts#L62)
 
 发版前版本号
 
@@ -44,7 +44,7 @@ git commit message；未提交时为 `false`
 
 > **event**: [`VersionProgressEvent`](../enumerations/VersionProgressEvent.md)
 
-定义于: [release-version/src/releasex.interface.ts:73](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/release-version/src/releasex.interface.ts#L73)
+定义于: [release-version/src/releasex.interface.ts:73](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/release-version/src/releasex.interface.ts#L73)
 
 ***
 
@@ -52,7 +52,7 @@ git commit message；未提交时为 `false`
 
 > **newVersion**: `string`
 
-定义于: [release-version/src/releasex.interface.ts:64](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/release-version/src/releasex.interface.ts#L64)
+定义于: [release-version/src/releasex.interface.ts:64](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/release-version/src/releasex.interface.ts#L64)
 
 发版后版本号
 
@@ -66,7 +66,7 @@ git commit message；未提交时为 `false`
 
 > `optional` **release?**: [`VipReleaseType`](../../utils/type-aliases/VipReleaseType.md)
 
-定义于: [release-version/src/releasex.interface.ts:60](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/release-version/src/releasex.interface.ts#L60)
+定义于: [release-version/src/releasex.interface.ts:60](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/release-version/src/releasex.interface.ts#L60)
 
 选用的 release 类型；自定义版本时为 `undefined`
 
@@ -80,7 +80,7 @@ git commit message；未提交时为 `false`
 
 > `optional` **script?**: [`VersionHooks`](../enumerations/VersionHooks.md)
 
-定义于: [release-version/src/releasex.interface.ts:74](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/release-version/src/releasex.interface.ts#L74)
+定义于: [release-version/src/releasex.interface.ts:74](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/release-version/src/releasex.interface.ts#L74)
 
 ***
 
@@ -88,7 +88,7 @@ git commit message；未提交时为 `false`
 
 > **tag**: `string` \| `false`
 
-定义于: [release-version/src/releasex.interface.ts:68](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/release-version/src/releasex.interface.ts#L68)
+定义于: [release-version/src/releasex.interface.ts:68](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/release-version/src/releasex.interface.ts#L68)
 
 git tag 名；未打 tag 时为 `false`
 

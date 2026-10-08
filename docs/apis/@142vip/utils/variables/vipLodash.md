@@ -4,7 +4,7 @@
 
 > `const` **vipLodash**: [`VipLodash`](../type-aliases/VipLodash.md)
 
-定义于: [packages/utils/src/pkgs/lodash.ts:94](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/lodash.ts#L94)
+定义于: [packages/utils/src/pkgs/lodash.ts:94](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/lodash.ts#L94)
 
 lodash 二次封装：先展开 lodash 原生能力，再挂载扩展。
 扩展键与 lodash 原生方法互斥；新增扩展前须确认 lodash 无同名导出。

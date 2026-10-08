@@ -1,0 +1,23 @@
+[API 参考](../../../index.md) / [@142vip/utils](../index.md) / VipCliDryRunParam
+
+# 接口: VipCliDryRunParam
+
+定义于: [packages/utils/src/pkgs/cli-presentation.ts:132](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/cli-presentation.ts#L132)
+
+dry-run 预览里的一条运行参数（label 为配置键或 CLI 语义）
+
+## 属性
+
+### label
+
+> **label**: `string`
+
+定义于: [packages/utils/src/pkgs/cli-presentation.ts:133](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/cli-presentation.ts#L133)
+
+***
+
+### value
+
+> **value**: `string`
+
+定义于: [packages/utils/src/pkgs/cli-presentation.ts:134](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/cli-presentation.ts#L134)

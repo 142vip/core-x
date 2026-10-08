@@ -1,0 +1,13 @@
+[API 参考](../../../index.md) / [@142vip/fairy-cli](../index.md) / resolveBundledDefaultCommitLinterConfigPath
+
+# 函数: resolveBundledDefaultCommitLinterConfigPath()
+
+> **resolveBundledDefaultCommitLinterConfigPath**(): `string`
+
+定义于: [packages/fairy-cli/src/utils/commit.util.ts:32](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/fairy-cli/src/utils/commit.util.ts#L32)
+
+随包发布的内置默认 commit-linter 配置路径
+
+## 返回
+
+`string`

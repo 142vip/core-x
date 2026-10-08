@@ -2,7 +2,7 @@
 
 # 枚举: GitCommitMessageType
 
-定义于: [changelog/src/core/changelog.interface.ts:31](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L31)
+定义于: [changelog/src/core/changelog.interface.ts:31](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/changelog.interface.ts#L31)
 
 提交描述中解析出的引用类型
 - `pull-request`：PR 编号（如 `(#123)`）
@@ -15,7 +15,7 @@
 
 > **HASH**: `"hash"`
 
-定义于: [changelog/src/core/changelog.interface.ts:34](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L34)
+定义于: [changelog/src/core/changelog.interface.ts:34](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/changelog.interface.ts#L34)
 
 ***
 
@@ -23,7 +23,7 @@
 
 > **ISSUE**: `"issue"`
 
-定义于: [changelog/src/core/changelog.interface.ts:33](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L33)
+定义于: [changelog/src/core/changelog.interface.ts:33](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/changelog.interface.ts#L33)
 
 ***
 
@@ -31,4 +31,4 @@
 
 > **PULL\_REQUEST**: `"pull-request"`
 
-定义于: [changelog/src/core/changelog.interface.ts:32](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L32)
+定义于: [changelog/src/core/changelog.interface.ts:32](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/changelog.interface.ts#L32)

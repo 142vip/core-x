@@ -2,11 +2,11 @@
 
 # 接口: HttpApiOptions
 
-定义于: [packages/data-source/src/core/apis/vip-http-api.ts:6](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/data-source/src/core/apis/vip-http-api.ts#L6)
+定义于: [packages/data-source/src/core/apis/vip-http-api.ts:6](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/data-source/src/core/apis/vip-http-api.ts#L6)
 
 ## theme_extends
 
-- `AxiosRequestConfig`
+- [`AxiosRequestConfig`](../../axios/interfaces/AxiosRequestConfig.md)
 
 ## 属性
 
@@ -18,7 +18,7 @@
 
 #### 继承自
 
-`AxiosRequestConfig.adapter`
+[`AxiosRequestConfig`](../../axios/interfaces/AxiosRequestConfig.md).[`adapter`](../../axios/interfaces/AxiosRequestConfig.md#adapter)
 
 ***
 
@@ -30,7 +30,7 @@
 
 #### 继承自
 
-`AxiosRequestConfig.allowAbsoluteUrls`
+[`AxiosRequestConfig`](../../axios/interfaces/AxiosRequestConfig.md).[`allowAbsoluteUrls`](../../axios/interfaces/AxiosRequestConfig.md#allowabsoluteurls)
 
 ***
 
@@ -42,7 +42,7 @@
 
 #### 继承自
 
-`AxiosRequestConfig.auth`
+[`AxiosRequestConfig`](../../axios/interfaces/AxiosRequestConfig.md).[`auth`](../../axios/interfaces/AxiosRequestConfig.md#auth)
 
 ***
 
@@ -54,7 +54,7 @@
 
 #### 继承自
 
-`AxiosRequestConfig.baseURL`
+[`AxiosRequestConfig`](../../axios/interfaces/AxiosRequestConfig.md).[`baseURL`](../../axios/interfaces/AxiosRequestConfig.md#baseurl)
 
 ***
 
@@ -86,7 +86,7 @@
 
 #### 继承自
 
-`AxiosRequestConfig.beforeRedirect`
+[`AxiosRequestConfig`](../../axios/interfaces/AxiosRequestConfig.md).[`beforeRedirect`](../../axios/interfaces/AxiosRequestConfig.md#beforeredirect)
 
 ***
 
@@ -98,7 +98,7 @@
 
 #### 继承自
 
-`AxiosRequestConfig.cancelToken`
+[`AxiosRequestConfig`](../../axios/interfaces/AxiosRequestConfig.md).[`cancelToken`](../../axios/interfaces/AxiosRequestConfig.md#canceltoken)
 
 ***
 
@@ -110,7 +110,7 @@
 
 #### 继承自
 
-`AxiosRequestConfig.data`
+[`AxiosRequestConfig`](../../axios/interfaces/AxiosRequestConfig.md).[`data`](../../axios/interfaces/AxiosRequestConfig.md#data)
 
 ***
 
@@ -122,7 +122,7 @@
 
 #### 继承自
 
-`AxiosRequestConfig.decompress`
+[`AxiosRequestConfig`](../../axios/interfaces/AxiosRequestConfig.md).[`decompress`](../../axios/interfaces/AxiosRequestConfig.md#decompress)
 
 ***
 
@@ -148,7 +148,7 @@
 
 #### 继承自
 
-`AxiosRequestConfig.env`
+[`AxiosRequestConfig`](../../axios/interfaces/AxiosRequestConfig.md).[`env`](../../axios/interfaces/AxiosRequestConfig.md#env)
 
 ***
 
@@ -160,7 +160,7 @@
 
 #### 继承自
 
-`AxiosRequestConfig.family`
+[`AxiosRequestConfig`](../../axios/interfaces/AxiosRequestConfig.md).[`family`](../../axios/interfaces/AxiosRequestConfig.md#family)
 
 ***
 
@@ -172,7 +172,7 @@
 
 #### 继承自
 
-`AxiosRequestConfig.fetchOptions`
+[`AxiosRequestConfig`](../../axios/interfaces/AxiosRequestConfig.md).[`fetchOptions`](../../axios/interfaces/AxiosRequestConfig.md#fetchoptions)
 
 ***
 
@@ -184,19 +184,19 @@
 
 #### 继承自
 
-`AxiosRequestConfig.formSerializer`
+[`AxiosRequestConfig`](../../axios/interfaces/AxiosRequestConfig.md).[`formSerializer`](../../axios/interfaces/AxiosRequestConfig.md#formserializer)
 
 ***
 
 ### headers?
 
-> `optional` **headers?**: `AxiosHeaders` \| `Partial`\<`RawAxiosHeaders` & `object` & `object`\> & `Partial`\<`object` & `object`\>
+> `optional` **headers?**: [`AxiosHeaders`](../../axios/interfaces/AxiosHeaders.md) \| `Partial`\<`RawAxiosHeaders` & `object` & `object`\> & `Partial`\<`object` & `object`\>
 
 定义于: node\_modules/.pnpm/axios@1.11.0/node\_modules/axios/index.d.ts:325
 
 #### 继承自
 
-`AxiosRequestConfig.headers`
+[`AxiosRequestConfig`](../../axios/interfaces/AxiosRequestConfig.md).[`headers`](../../axios/interfaces/AxiosRequestConfig.md#headers)
 
 ***
 
@@ -208,7 +208,7 @@
 
 #### 继承自
 
-`AxiosRequestConfig.httpAgent`
+[`AxiosRequestConfig`](../../axios/interfaces/AxiosRequestConfig.md).[`httpAgent`](../../axios/interfaces/AxiosRequestConfig.md#httpagent)
 
 ***
 
@@ -220,7 +220,7 @@
 
 #### 继承自
 
-`AxiosRequestConfig.httpsAgent`
+[`AxiosRequestConfig`](../../axios/interfaces/AxiosRequestConfig.md).[`httpsAgent`](../../axios/interfaces/AxiosRequestConfig.md#httpsagent)
 
 ***
 
@@ -232,7 +232,7 @@
 
 #### 继承自
 
-`AxiosRequestConfig.insecureHTTPParser`
+[`AxiosRequestConfig`](../../axios/interfaces/AxiosRequestConfig.md).[`insecureHTTPParser`](../../axios/interfaces/AxiosRequestConfig.md#insecurehttpparser)
 
 ***
 
@@ -244,7 +244,7 @@
 
 #### 继承自
 
-`AxiosRequestConfig.lookup`
+[`AxiosRequestConfig`](../../axios/interfaces/AxiosRequestConfig.md).[`lookup`](../../axios/interfaces/AxiosRequestConfig.md#lookup)
 
 ***
 
@@ -256,7 +256,7 @@
 
 #### 继承自
 
-`AxiosRequestConfig.maxBodyLength`
+[`AxiosRequestConfig`](../../axios/interfaces/AxiosRequestConfig.md).[`maxBodyLength`](../../axios/interfaces/AxiosRequestConfig.md#maxbodylength)
 
 ***
 
@@ -268,7 +268,7 @@
 
 #### 继承自
 
-`AxiosRequestConfig.maxContentLength`
+[`AxiosRequestConfig`](../../axios/interfaces/AxiosRequestConfig.md).[`maxContentLength`](../../axios/interfaces/AxiosRequestConfig.md#maxcontentlength)
 
 ***
 
@@ -280,7 +280,7 @@
 
 #### 继承自
 
-`AxiosRequestConfig.maxRate`
+[`AxiosRequestConfig`](../../axios/interfaces/AxiosRequestConfig.md).[`maxRate`](../../axios/interfaces/AxiosRequestConfig.md#maxrate)
 
 ***
 
@@ -292,7 +292,7 @@
 
 #### 继承自
 
-`AxiosRequestConfig.maxRedirects`
+[`AxiosRequestConfig`](../../axios/interfaces/AxiosRequestConfig.md).[`maxRedirects`](../../axios/interfaces/AxiosRequestConfig.md#maxredirects)
 
 ***
 
@@ -304,7 +304,7 @@
 
 #### 继承自
 
-`AxiosRequestConfig.method`
+[`AxiosRequestConfig`](../../axios/interfaces/AxiosRequestConfig.md).[`method`](../../axios/interfaces/AxiosRequestConfig.md#method)
 
 ***
 
@@ -326,7 +326,7 @@
 
 #### 继承自
 
-`AxiosRequestConfig.onDownloadProgress`
+[`AxiosRequestConfig`](../../axios/interfaces/AxiosRequestConfig.md).[`onDownloadProgress`](../../axios/interfaces/AxiosRequestConfig.md#ondownloadprogress)
 
 ***
 
@@ -348,7 +348,7 @@
 
 #### 继承自
 
-`AxiosRequestConfig.onUploadProgress`
+[`AxiosRequestConfig`](../../axios/interfaces/AxiosRequestConfig.md).[`onUploadProgress`](../../axios/interfaces/AxiosRequestConfig.md#onuploadprogress)
 
 ***
 
@@ -360,7 +360,7 @@
 
 #### 继承自
 
-`AxiosRequestConfig.params`
+[`AxiosRequestConfig`](../../axios/interfaces/AxiosRequestConfig.md).[`params`](../../axios/interfaces/AxiosRequestConfig.md#params)
 
 ***
 
@@ -372,7 +372,7 @@
 
 #### 继承自
 
-`AxiosRequestConfig.paramsSerializer`
+[`AxiosRequestConfig`](../../axios/interfaces/AxiosRequestConfig.md).[`paramsSerializer`](../../axios/interfaces/AxiosRequestConfig.md#paramsserializer)
 
 ***
 
@@ -384,7 +384,7 @@
 
 #### 继承自
 
-`AxiosRequestConfig.proxy`
+[`AxiosRequestConfig`](../../axios/interfaces/AxiosRequestConfig.md).[`proxy`](../../axios/interfaces/AxiosRequestConfig.md#proxy)
 
 ***
 
@@ -396,7 +396,7 @@
 
 #### 继承自
 
-`AxiosRequestConfig.responseEncoding`
+[`AxiosRequestConfig`](../../axios/interfaces/AxiosRequestConfig.md).[`responseEncoding`](../../axios/interfaces/AxiosRequestConfig.md#responseencoding)
 
 ***
 
@@ -408,7 +408,7 @@
 
 #### 继承自
 
-`AxiosRequestConfig.responseType`
+[`AxiosRequestConfig`](../../axios/interfaces/AxiosRequestConfig.md).[`responseType`](../../axios/interfaces/AxiosRequestConfig.md#responsetype)
 
 ***
 
@@ -420,7 +420,7 @@
 
 #### 继承自
 
-`AxiosRequestConfig.signal`
+[`AxiosRequestConfig`](../../axios/interfaces/AxiosRequestConfig.md).[`signal`](../../axios/interfaces/AxiosRequestConfig.md#signal)
 
 ***
 
@@ -432,7 +432,7 @@
 
 #### 继承自
 
-`AxiosRequestConfig.socketPath`
+[`AxiosRequestConfig`](../../axios/interfaces/AxiosRequestConfig.md).[`socketPath`](../../axios/interfaces/AxiosRequestConfig.md#socketpath)
 
 ***
 
@@ -444,7 +444,7 @@
 
 #### 继承自
 
-`AxiosRequestConfig.timeout`
+[`AxiosRequestConfig`](../../axios/interfaces/AxiosRequestConfig.md).[`timeout`](../../axios/interfaces/AxiosRequestConfig.md#timeout)
 
 ***
 
@@ -456,7 +456,7 @@
 
 #### 继承自
 
-`AxiosRequestConfig.timeoutErrorMessage`
+[`AxiosRequestConfig`](../../axios/interfaces/AxiosRequestConfig.md).[`timeoutErrorMessage`](../../axios/interfaces/AxiosRequestConfig.md#timeouterrormessage)
 
 ***
 
@@ -468,7 +468,7 @@
 
 #### 继承自
 
-`AxiosRequestConfig.transformRequest`
+[`AxiosRequestConfig`](../../axios/interfaces/AxiosRequestConfig.md).[`transformRequest`](../../axios/interfaces/AxiosRequestConfig.md#transformrequest)
 
 ***
 
@@ -480,7 +480,7 @@
 
 #### 继承自
 
-`AxiosRequestConfig.transformResponse`
+[`AxiosRequestConfig`](../../axios/interfaces/AxiosRequestConfig.md).[`transformResponse`](../../axios/interfaces/AxiosRequestConfig.md#transformresponse)
 
 ***
 
@@ -492,7 +492,7 @@
 
 #### 继承自
 
-`AxiosRequestConfig.transitional`
+[`AxiosRequestConfig`](../../axios/interfaces/AxiosRequestConfig.md).[`transitional`](../../axios/interfaces/AxiosRequestConfig.md#transitional)
 
 ***
 
@@ -504,7 +504,7 @@
 
 #### 继承自
 
-`AxiosRequestConfig.transport`
+[`AxiosRequestConfig`](../../axios/interfaces/AxiosRequestConfig.md).[`transport`](../../axios/interfaces/AxiosRequestConfig.md#transport)
 
 ***
 
@@ -516,7 +516,7 @@
 
 #### 继承自
 
-`AxiosRequestConfig.url`
+[`AxiosRequestConfig`](../../axios/interfaces/AxiosRequestConfig.md).[`url`](../../axios/interfaces/AxiosRequestConfig.md#url)
 
 ***
 
@@ -528,7 +528,7 @@
 
 #### 继承自
 
-`AxiosRequestConfig.validateStatus`
+[`AxiosRequestConfig`](../../axios/interfaces/AxiosRequestConfig.md).[`validateStatus`](../../axios/interfaces/AxiosRequestConfig.md#validatestatus)
 
 ***
 
@@ -540,7 +540,7 @@
 
 #### 继承自
 
-`AxiosRequestConfig.withCredentials`
+[`AxiosRequestConfig`](../../axios/interfaces/AxiosRequestConfig.md).[`withCredentials`](../../axios/interfaces/AxiosRequestConfig.md#withcredentials)
 
 ***
 
@@ -552,7 +552,7 @@
 
 #### 继承自
 
-`AxiosRequestConfig.withXSRFToken`
+[`AxiosRequestConfig`](../../axios/interfaces/AxiosRequestConfig.md).[`withXSRFToken`](../../axios/interfaces/AxiosRequestConfig.md#withxsrftoken)
 
 ***
 
@@ -564,7 +564,7 @@
 
 #### 继承自
 
-`AxiosRequestConfig.xsrfCookieName`
+[`AxiosRequestConfig`](../../axios/interfaces/AxiosRequestConfig.md).[`xsrfCookieName`](../../axios/interfaces/AxiosRequestConfig.md#xsrfcookiename)
 
 ***
 
@@ -576,4 +576,4 @@
 
 #### 继承自
 
-`AxiosRequestConfig.xsrfHeaderName`
+[`AxiosRequestConfig`](../../axios/interfaces/AxiosRequestConfig.md).[`xsrfHeaderName`](../../axios/interfaces/AxiosRequestConfig.md#xsrfheadername)

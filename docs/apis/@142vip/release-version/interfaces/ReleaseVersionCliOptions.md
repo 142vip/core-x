@@ -2,7 +2,7 @@
 
 # 接口: ReleaseVersionCliOptions
 
-定义于: [release-version/src/releasex.interface.ts:98](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/release-version/src/releasex.interface.ts#L98)
+定义于: [release-version/src/releasex.interface.ts:98](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/release-version/src/releasex.interface.ts#L98)
 
 standalone CLI / `parseReleaseVersionCliOptions` 入参
 
@@ -16,7 +16,7 @@ standalone CLI / `parseReleaseVersionCliOptions` 入参
 
 > `optional` **all?**: `boolean`
 
-定义于: [release-version/src/releasex.interface.ts:99](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/release-version/src/releasex.interface.ts#L99)
+定义于: [release-version/src/releasex.interface.ts:99](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/release-version/src/releasex.interface.ts#L99)
 
 ***
 
@@ -24,7 +24,7 @@ standalone CLI / `parseReleaseVersionCliOptions` 入参
 
 > `optional` **changelog?**: `boolean`
 
-定义于: [release-version/src/releasex.interface.ts:107](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/release-version/src/releasex.interface.ts#L107)
+定义于: [release-version/src/releasex.interface.ts:107](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/release-version/src/releasex.interface.ts#L107)
 
 ***
 
@@ -32,7 +32,7 @@ standalone CLI / `parseReleaseVersionCliOptions` 入参
 
 > `optional` **commit?**: `string` \| `boolean`
 
-定义于: [release-version/src/releasex.interface.ts:101](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/release-version/src/releasex.interface.ts#L101)
+定义于: [release-version/src/releasex.interface.ts:101](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/release-version/src/releasex.interface.ts#L101)
 
 ***
 
@@ -40,7 +40,7 @@ standalone CLI / `parseReleaseVersionCliOptions` 入参
 
 > `optional` **currentVersion?**: `string`
 
-定义于: [release-version/src/releasex.interface.ts:110](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/release-version/src/releasex.interface.ts#L110)
+定义于: [release-version/src/releasex.interface.ts:110](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/release-version/src/releasex.interface.ts#L110)
 
 ***
 
@@ -48,7 +48,7 @@ standalone CLI / `parseReleaseVersionCliOptions` 入参
 
 > `optional` **dryRun?**: `boolean`
 
-定义于: [utils/src/pkgs/commander.ts:12](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/commander.ts#L12)
+定义于: [utils/src/pkgs/commander.ts:19](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/commander.ts#L19)
 
 注册 `--dry-run`（子命令 `-h` 展示，紧挨 `--help` 上方）
 
@@ -62,7 +62,7 @@ standalone CLI / `parseReleaseVersionCliOptions` 入参
 
 > `optional` **execute?**: `string`
 
-定义于: [release-version/src/releasex.interface.ts:111](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/release-version/src/releasex.interface.ts#L111)
+定义于: [release-version/src/releasex.interface.ts:111](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/release-version/src/releasex.interface.ts#L111)
 
 ***
 
@@ -70,7 +70,7 @@ standalone CLI / `parseReleaseVersionCliOptions` 入参
 
 > `optional` **help?**: `boolean`
 
-定义于: [utils/src/pkgs/commander.ts:18](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/commander.ts#L18)
+定义于: [utils/src/pkgs/commander.ts:25](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/commander.ts#L25)
 
 注册 `-h, --help`（置于 Options 末尾）
 
@@ -84,7 +84,7 @@ standalone CLI / `parseReleaseVersionCliOptions` 入参
 
 > `optional` **ignoreScripts?**: `boolean`
 
-定义于: [release-version/src/releasex.interface.ts:109](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/release-version/src/releasex.interface.ts#L109)
+定义于: [release-version/src/releasex.interface.ts:109](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/release-version/src/releasex.interface.ts#L109)
 
 ***
 
@@ -92,7 +92,7 @@ standalone CLI / `parseReleaseVersionCliOptions` 入参
 
 > `optional` **preid?**: `string`
 
-定义于: [release-version/src/releasex.interface.ts:100](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/release-version/src/releasex.interface.ts#L100)
+定义于: [release-version/src/releasex.interface.ts:100](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/release-version/src/releasex.interface.ts#L100)
 
 ***
 
@@ -100,7 +100,7 @@ standalone CLI / `parseReleaseVersionCliOptions` 入参
 
 > `optional` **push?**: `boolean`
 
-定义于: [release-version/src/releasex.interface.ts:103](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/release-version/src/releasex.interface.ts#L103)
+定义于: [release-version/src/releasex.interface.ts:103](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/release-version/src/releasex.interface.ts#L103)
 
 ***
 
@@ -108,7 +108,7 @@ standalone CLI / `parseReleaseVersionCliOptions` 入参
 
 > `optional` **recursive?**: `boolean`
 
-定义于: [release-version/src/releasex.interface.ts:106](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/release-version/src/releasex.interface.ts#L106)
+定义于: [release-version/src/releasex.interface.ts:106](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/release-version/src/releasex.interface.ts#L106)
 
 ***
 
@@ -116,7 +116,7 @@ standalone CLI / `parseReleaseVersionCliOptions` 入参
 
 > `optional` **scopeName?**: `string`
 
-定义于: [release-version/src/releasex.interface.ts:112](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/release-version/src/releasex.interface.ts#L112)
+定义于: [release-version/src/releasex.interface.ts:112](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/release-version/src/releasex.interface.ts#L112)
 
 ***
 
@@ -124,7 +124,7 @@ standalone CLI / `parseReleaseVersionCliOptions` 入参
 
 > `optional` **skipGitVerify?**: `boolean`
 
-定义于: [release-version/src/releasex.interface.ts:108](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/release-version/src/releasex.interface.ts#L108)
+定义于: [release-version/src/releasex.interface.ts:108](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/release-version/src/releasex.interface.ts#L108)
 
 ***
 
@@ -132,7 +132,7 @@ standalone CLI / `parseReleaseVersionCliOptions` 入参
 
 > `optional` **tag?**: `string` \| `boolean`
 
-定义于: [release-version/src/releasex.interface.ts:102](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/release-version/src/releasex.interface.ts#L102)
+定义于: [release-version/src/releasex.interface.ts:102](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/release-version/src/releasex.interface.ts#L102)
 
 ***
 
@@ -140,7 +140,7 @@ standalone CLI / `parseReleaseVersionCliOptions` 入参
 
 > `optional` **trace?**: `boolean`
 
-定义于: [utils/src/pkgs/commander.ts:16](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/commander.ts#L16)
+定义于: [utils/src/pkgs/commander.ts:23](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/commander.ts#L23)
 
 注册 `--trace`（根程序 `-h` 展示；开启后 `VipConsole.trace` 输出执行日志）
 
@@ -154,7 +154,7 @@ standalone CLI / `parseReleaseVersionCliOptions` 入参
 
 > `optional` **vip?**: `boolean`
 
-定义于: [utils/src/pkgs/commander.ts:14](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/commander.ts#L14)
+定义于: [utils/src/pkgs/commander.ts:21](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/commander.ts#L21)
 
 注册 `--vip`（子命令 `-h` 展示，紧挨 `--help` 上方）
 
@@ -168,6 +168,6 @@ standalone CLI / `parseReleaseVersionCliOptions` 入参
 
 > `optional` **yes?**: `boolean`
 
-定义于: [release-version/src/releasex.interface.ts:105](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/release-version/src/releasex.interface.ts#L105)
+定义于: [release-version/src/releasex.interface.ts:105](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/release-version/src/releasex.interface.ts#L105)
 
 跳过发版前确认（`-y` / `--yes`）

@@ -2,10 +2,9 @@
 
 # 枚举: CommandEnum
 
-定义于: [packages/fairy-cli/src/fairy.interface.ts:14](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/fairy-cli/src/fairy.interface.ts#L14)
+定义于: [packages/fairy-cli/src/constant.ts:33](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/fairy-cli/src/constant.ts#L33)
 
-`--vip` 已接入专用逻辑：`RELEASE`（Monorepo 交互发版）、`SYNC`（从 packages 选包）。
-`COMMIT` 使用 positional `[vip]`，不走 `--vip`。
+`--vip` 已接入专用逻辑：`RELEASE`（Monorepo 交互发版）、`SYNC`（从 packages 选包）；`COMMIT` 用 `-s` / 配置 `scopeGlobs` 扫描 scope，`--quiet` 为 commit-msg 校验。
 
 ## 枚举成员
 
@@ -13,7 +12,7 @@
 
 > **AI**: `"ai"`
 
-定义于: [packages/fairy-cli/src/fairy.interface.ts:28](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/fairy-cli/src/fairy.interface.ts#L28)
+定义于: [packages/fairy-cli/src/constant.ts:47](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/fairy-cli/src/constant.ts#L47)
 
 Agent Skills 集成（`@142vip/agent-skills`）
 
@@ -23,7 +22,7 @@ Agent Skills 集成（`@142vip/agent-skills`）
 
 > **CHANGELOG**: `"changelog"`
 
-定义于: [packages/fairy-cli/src/fairy.interface.ts:17](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/fairy-cli/src/fairy.interface.ts#L17)
+定义于: [packages/fairy-cli/src/constant.ts:36](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/fairy-cli/src/constant.ts#L36)
 
 ***
 
@@ -31,17 +30,15 @@ Agent Skills 集成（`@142vip/agent-skills`）
 
 > **CLEAN**: `"clean"`
 
-定义于: [packages/fairy-cli/src/fairy.interface.ts:19](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/fairy-cli/src/fairy.interface.ts#L19)
+定义于: [packages/fairy-cli/src/constant.ts:38](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/fairy-cli/src/constant.ts#L38)
 
 ***
 
 ### COMMIT
 
-> **COMMIT**: `"commit [vip]"`
+> **COMMIT**: `"commit"`
 
-定义于: [packages/fairy-cli/src/fairy.interface.ts:26](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/fairy-cli/src/fairy.interface.ts#L26)
-
-commander 注册名含可选 positional：`commit [vip]`
+定义于: [packages/fairy-cli/src/constant.ts:45](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/fairy-cli/src/constant.ts#L45)
 
 ***
 
@@ -49,7 +46,7 @@ commander 注册名含可选 positional：`commit [vip]`
 
 > **COPYRIGHT**: `"copyright"`
 
-定义于: [packages/fairy-cli/src/fairy.interface.ts:24](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/fairy-cli/src/fairy.interface.ts#L24)
+定义于: [packages/fairy-cli/src/constant.ts:44](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/fairy-cli/src/constant.ts#L44)
 
 ***
 
@@ -57,7 +54,7 @@ commander 注册名含可选 positional：`commit [vip]`
 
 > **DEPLOY**: `"deploy"`
 
-定义于: [packages/fairy-cli/src/fairy.interface.ts:21](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/fairy-cli/src/fairy.interface.ts#L21)
+定义于: [packages/fairy-cli/src/constant.ts:40](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/fairy-cli/src/constant.ts#L40)
 
 ***
 
@@ -65,7 +62,7 @@ commander 注册名含可选 positional：`commit [vip]`
 
 > **INSTALL**: `"install"`
 
-定义于: [packages/fairy-cli/src/fairy.interface.ts:22](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/fairy-cli/src/fairy.interface.ts#L22)
+定义于: [packages/fairy-cli/src/constant.ts:41](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/fairy-cli/src/constant.ts#L41)
 
 ***
 
@@ -73,7 +70,7 @@ commander 注册名含可选 positional：`commit [vip]`
 
 > **LINT**: `"lint"`
 
-定义于: [packages/fairy-cli/src/fairy.interface.ts:20](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/fairy-cli/src/fairy.interface.ts#L20)
+定义于: [packages/fairy-cli/src/constant.ts:39](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/fairy-cli/src/constant.ts#L39)
 
 ***
 
@@ -81,7 +78,7 @@ commander 注册名含可选 positional：`commit [vip]`
 
 > **LOGIN**: `"login"`
 
-定义于: [packages/fairy-cli/src/fairy.interface.ts:15](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/fairy-cli/src/fairy.interface.ts#L15)
+定义于: [packages/fairy-cli/src/constant.ts:34](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/fairy-cli/src/constant.ts#L34)
 
 ***
 
@@ -89,7 +86,7 @@ commander 注册名含可选 positional：`commit [vip]`
 
 > **PUBLISH**: `"publish"`
 
-定义于: [packages/fairy-cli/src/fairy.interface.ts:18](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/fairy-cli/src/fairy.interface.ts#L18)
+定义于: [packages/fairy-cli/src/constant.ts:37](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/fairy-cli/src/constant.ts#L37)
 
 ***
 
@@ -97,7 +94,15 @@ commander 注册名含可选 positional：`commit [vip]`
 
 > **RELEASE**: `"release"`
 
-定义于: [packages/fairy-cli/src/fairy.interface.ts:16](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/fairy-cli/src/fairy.interface.ts#L16)
+定义于: [packages/fairy-cli/src/constant.ts:35](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/fairy-cli/src/constant.ts#L35)
+
+***
+
+### RUN
+
+> **RUN**: `"run"`
+
+定义于: [packages/fairy-cli/src/constant.ts:42](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/fairy-cli/src/constant.ts#L42)
 
 ***
 
@@ -105,4 +110,4 @@ commander 注册名含可选 positional：`commit [vip]`
 
 > **SYNC**: `"sync"`
 
-定义于: [packages/fairy-cli/src/fairy.interface.ts:23](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/fairy-cli/src/fairy.interface.ts#L23)
+定义于: [packages/fairy-cli/src/constant.ts:43](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/fairy-cli/src/constant.ts#L43)

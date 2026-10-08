@@ -1,0 +1,139 @@
+[API 参考](../../../index.md) / [@142vip/fairy-cli](../index.md) / InstallCliOptions
+
+# 接口: InstallCliOptions
+
+定义于: [packages/fairy-cli/src/utils/install.util.ts:80](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/fairy-cli/src/utils/install.util.ts#L80)
+
+`fa install` / `fa ci` 共用 CLI 参数
+
+## theme_extends
+
+- [`FairyCommandOptions`](FairyCommandOptions.md)
+
+## 属性
+
+### corepackAliRegistry?
+
+> `optional` **corepackAliRegistry?**: `boolean`
+
+定义于: [packages/fairy-cli/src/utils/install.util.ts:85](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/fairy-cli/src/utils/install.util.ts#L85)
+
+***
+
+### corepackRegistry?
+
+> `optional` **corepackRegistry?**: `string` \| `boolean`
+
+定义于: [packages/fairy-cli/src/utils/install.util.ts:84](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/fairy-cli/src/utils/install.util.ts#L84)
+
+***
+
+### corepackTencentRegistry?
+
+> `optional` **corepackTencentRegistry?**: `boolean`
+
+定义于: [packages/fairy-cli/src/utils/install.util.ts:86](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/fairy-cli/src/utils/install.util.ts#L86)
+
+***
+
+### dryRun?
+
+> `optional` **dryRun?**: `boolean`
+
+定义于: [packages/utils/src/pkgs/commander.ts:19](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/commander.ts#L19)
+
+注册 `--dry-run`（子命令 `-h` 展示，紧挨 `--help` 上方）
+
+#### 继承自
+
+[`FairyCommandOptions`](FairyCommandOptions.md).[`dryRun`](FairyCommandOptions.md#dryrun)
+
+***
+
+### force?
+
+> `optional` **force?**: `boolean`
+
+定义于: [packages/fairy-cli/src/utils/install.util.ts:88](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/fairy-cli/src/utils/install.util.ts#L88)
+
+`-f`：强制更新 lock（`pnpm i --force` / `npm i --force`）
+
+***
+
+### hookOnly?
+
+> `optional` **hookOnly?**: `string`
+
+定义于: [packages/fairy-cli/src/utils/install.util.ts:92](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/fairy-cli/src/utils/install.util.ts#L92)
+
+仅执行 `fairy.config` → `hooks.<name>`，不安装依赖
+
+***
+
+### ignoreScripts?
+
+> `optional` **ignoreScripts?**: `boolean`
+
+定义于: [packages/fairy-cli/src/utils/install.util.ts:90](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/fairy-cli/src/utils/install.util.ts#L90)
+
+CLI `--ignore-scripts` 或 `fairy.config` → `install.ignoreScripts`
+
+***
+
+### npm?
+
+> `optional` **npm?**: `boolean`
+
+定义于: [packages/fairy-cli/src/utils/install.util.ts:93](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/fairy-cli/src/utils/install.util.ts#L93)
+
+***
+
+### npmAliRegistry?
+
+> `optional` **npmAliRegistry?**: `boolean`
+
+定义于: [packages/fairy-cli/src/utils/install.util.ts:82](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/fairy-cli/src/utils/install.util.ts#L82)
+
+***
+
+### npmRegistry?
+
+> `optional` **npmRegistry?**: `string` \| `boolean`
+
+定义于: [packages/fairy-cli/src/utils/install.util.ts:81](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/fairy-cli/src/utils/install.util.ts#L81)
+
+***
+
+### npmTencentRegistry?
+
+> `optional` **npmTencentRegistry?**: `boolean`
+
+定义于: [packages/fairy-cli/src/utils/install.util.ts:83](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/fairy-cli/src/utils/install.util.ts#L83)
+
+***
+
+### trace?
+
+> `optional` **trace?**: `boolean`
+
+定义于: [packages/utils/src/pkgs/commander.ts:23](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/commander.ts#L23)
+
+注册 `--trace`（根程序 `-h` 展示；开启后 `VipConsole.trace` 输出执行日志）
+
+#### 继承自
+
+[`FairyCommandOptions`](FairyCommandOptions.md).[`trace`](FairyCommandOptions.md#trace)
+
+***
+
+### vip?
+
+> `optional` **vip?**: `boolean`
+
+定义于: [packages/utils/src/pkgs/commander.ts:21](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/commander.ts#L21)
+
+注册 `--vip`（子命令 `-h` 展示，紧挨 `--help` 上方）
+
+#### 继承自
+
+[`FairyCommandOptions`](FairyCommandOptions.md).[`vip`](FairyCommandOptions.md#vip)

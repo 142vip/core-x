@@ -2,7 +2,7 @@
 
 # 接口: RedisConfig
 
-定义于: [packages/redis/src/core/redis.interface.ts:33](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/redis/src/core/redis.interface.ts#L33)
+定义于: [packages/redis/src/core/redis.interface.ts:33](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/redis/src/core/redis.interface.ts#L33)
 
 Redis 建立连接配置
 
@@ -76,7 +76,7 @@ true
 
 > `optional` **clusterNodes?**: `ClusterNode`[]
 
-定义于: [packages/redis/src/core/redis.interface.ts:26](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/redis/src/core/redis.interface.ts#L26)
+定义于: [packages/redis/src/core/redis.interface.ts:26](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/redis/src/core/redis.interface.ts#L26)
 
 #### 继承自
 
@@ -88,7 +88,7 @@ true
 
 > `optional` **clusterOptions?**: `ClusterOptions`
 
-定义于: [packages/redis/src/core/redis.interface.ts:27](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/redis/src/core/redis.interface.ts#L27)
+定义于: [packages/redis/src/core/redis.interface.ts:27](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/redis/src/core/redis.interface.ts#L27)
 
 #### 继承自
 
@@ -588,13 +588,13 @@ You can pass a function that accepts an Redis error, and returns:
 ```js
 const redis = new Redis({
   reconnectOnError(err) {
-    const targetError = 'READONLY'
+    const targetError = "READONLY";
     if (err.message.includes(targetError)) {
       // Only reconnect when the error contains "READONLY"
-      return true // or `return 1;`
+      return true; // or `return 1;`
     }
   },
-})
+});
 ```
 
 #### 默认值
@@ -640,7 +640,7 @@ null
 #### 默认值
 
 ```ts
-'master'
+"master"
 ```
 
 #### 继承自
@@ -867,7 +867,7 @@ false
 
 > `optional` **url?**: `string`
 
-定义于: [packages/redis/src/core/redis.interface.ts:19](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/redis/src/core/redis.interface.ts#L19)
+定义于: [packages/redis/src/core/redis.interface.ts:19](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/redis/src/core/redis.interface.ts#L19)
 
 #### 继承自
 

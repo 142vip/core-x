@@ -4,6 +4,6 @@
 
 > `const` **GIT\_COMMIT\_DEFAULT\_SCOPES**: `string`[]
 
-定义于: [commit-linter/src/core/git-commit-type.ts:81](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/commit-linter/src/core/git-commit-type.ts#L81)
+定义于: [commit-linter/src/commit.interface.ts:85](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/commit-linter/src/commit.interface.ts#L85)
 
-默认支持的git commit scope
+默认允许的 commit `scope`（与 monorepo 元数据 scope 叠加）

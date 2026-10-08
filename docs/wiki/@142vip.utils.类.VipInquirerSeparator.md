@@ -2,7 +2,7 @@
 
 # 类: VipInquirerSeparator
 
-定义于: [packages/utils/src/pkgs/inquirer.ts:196](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/inquirer.ts#L196)
+定义于: [packages/utils/src/pkgs/inquirer.ts:213](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/inquirer.ts#L213)
 
 分隔符
 
@@ -16,7 +16,7 @@
 
 > **new VipInquirerSeparator**(`separator?`): `VipInquirerSeparator`
 
-定义于: node\_modules/.pnpm/@inquirer+core@10.1.9\_@types+node@24.13.3/node\_modules/@inquirer/core/dist/commonjs/lib/Separator.d.ts:8
+定义于: node\_modules/.pnpm/@inquirer+core@10.1.9\_@types+node@26.6.3/node\_modules/@inquirer/core/dist/commonjs/lib/Separator.d.ts:8
 
 #### 参数
 
@@ -38,7 +38,7 @@
 
 > `readonly` **separator**: `string`
 
-定义于: node\_modules/.pnpm/@inquirer+core@10.1.9\_@types+node@24.13.3/node\_modules/@inquirer/core/dist/commonjs/lib/Separator.d.ts:6
+定义于: node\_modules/.pnpm/@inquirer+core@10.1.9\_@types+node@26.6.3/node\_modules/@inquirer/core/dist/commonjs/lib/Separator.d.ts:6
 
 #### 继承自
 
@@ -50,7 +50,7 @@
 
 > `readonly` **type**: `"separator"` = `"separator"`
 
-定义于: node\_modules/.pnpm/@inquirer+core@10.1.9\_@types+node@24.13.3/node\_modules/@inquirer/core/dist/commonjs/lib/Separator.d.ts:7
+定义于: node\_modules/.pnpm/@inquirer+core@10.1.9\_@types+node@26.6.3/node\_modules/@inquirer/core/dist/commonjs/lib/Separator.d.ts:7
 
 #### 继承自
 
@@ -62,7 +62,7 @@
 
 > `static` **isSeparator**(`choice`): `choice is Separator`
 
-定义于: node\_modules/.pnpm/@inquirer+core@10.1.9\_@types+node@24.13.3/node\_modules/@inquirer/core/dist/commonjs/lib/Separator.d.ts:9
+定义于: node\_modules/.pnpm/@inquirer+core@10.1.9\_@types+node@26.6.3/node\_modules/@inquirer/core/dist/commonjs/lib/Separator.d.ts:9
 
 #### 参数
 

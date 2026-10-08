@@ -4,7 +4,7 @@
 
 > **parseReleaseVersionCliOptions**(`cliOptions`): [`ReleaseVersionOptions`](../interfaces/ReleaseVersionOptions.md)
 
-定义于: [release-version/src/config.ts:50](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/release-version/src/config.ts#L50)
+定义于: [release-version/src/config.ts:50](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/release-version/src/config.ts#L50)
 
 合并默认配置、用户配置文件与 CLI 参数，得到完整的 `ReleaseVersionOptions`
 

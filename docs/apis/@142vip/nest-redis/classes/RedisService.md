@@ -2,7 +2,7 @@
 
 # 类: RedisService
 
-定义于: [core/redis.service.ts:6](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/nest-redis/src/core/redis.service.ts#L6)
+定义于: [core/redis.service.ts:6](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/nest-redis/src/core/redis.service.ts#L6)
 
 ## 构造函数
 
@@ -10,7 +10,7 @@
 
 > **new RedisService**(`config`): `RedisService`
 
-定义于: [core/redis.service.ts:18](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/nest-redis/src/core/redis.service.ts#L18)
+定义于: [core/redis.service.ts:18](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/nest-redis/src/core/redis.service.ts#L18)
 
 #### 参数
 
@@ -28,7 +28,7 @@
 
 > **del**(`key`): `Promise`\<`void`\>
 
-定义于: [core/redis.service.ts:63](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/nest-redis/src/core/redis.service.ts#L63)
+定义于: [core/redis.service.ts:64](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/nest-redis/src/core/redis.service.ts#L64)
 
 删除
 - 支持延迟双删
@@ -49,9 +49,10 @@
 
 > **getClient**(): [`RedisClient`](../../redis/type-aliases/RedisClient.md)
 
-定义于: [core/redis.service.ts:26](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/nest-redis/src/core/redis.service.ts#L26)
+定义于: [core/redis.service.ts:27](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/nest-redis/src/core/redis.service.ts#L27)
 
-获取客户端
+返回构造时缓存的客户端。
+重复 new 会留下未关闭的连接，Jest 与进程退出都会被占住。
 
 #### 返回
 
@@ -63,7 +64,7 @@
 
 > **getEx**\<`T`\>(`key`): `Promise`\<`T` \| `null`\>
 
-定义于: [core/redis.service.ts:45](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/nest-redis/src/core/redis.service.ts#L45)
+定义于: [core/redis.service.ts:46](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/nest-redis/src/core/redis.service.ts#L46)
 
 获取
 
@@ -89,7 +90,7 @@
 
 > **setEx**\<`T`\>(`key`, `data`, `expiredTime`): `Promise`\<`void`\>
 
-定义于: [core/redis.service.ts:37](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/nest-redis/src/core/redis.service.ts#L37)
+定义于: [core/redis.service.ts:38](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/nest-redis/src/core/redis.service.ts#L38)
 
 存储
 - 单位：分钟

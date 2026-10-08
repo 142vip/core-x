@@ -1,0 +1,19 @@
+[API 参考](../../../index.md) / [@142vip/fairy-cli](../index.md) / resolveCommitLinterConfigPath
+
+# 函数: resolveCommitLinterConfigPath()
+
+> **resolveCommitLinterConfigPath**(`cliConfigPath?`): `string`
+
+定义于: [packages/fairy-cli/src/utils/commit.util.ts:126](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/fairy-cli/src/utils/commit.util.ts#L126)
+
+配置文件路径：CLI `-f` → cosmiconfig 发现项 → 内置默认
+
+## 参数
+
+### cliConfigPath?
+
+`string`
+
+## 返回
+
+`string`

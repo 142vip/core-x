@@ -2,7 +2,7 @@
 
 # 类: FairyHttpError
 
-定义于: [packages/fairy-cli/src/utils/http.util.ts:6](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/fairy-cli/src/utils/http.util.ts#L6)
+定义于: [packages/fairy-cli/src/utils/http.util.ts:6](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/fairy-cli/src/utils/http.util.ts#L6)
 
 非 2xx 响应时抛出，携带 status / url / 响应体摘要
 
@@ -16,7 +16,7 @@
 
 > **new FairyHttpError**(`status`, `url`, `body?`): `FairyHttpError`
 
-定义于: [packages/fairy-cli/src/utils/http.util.ts:10](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/fairy-cli/src/utils/http.util.ts#L10)
+定义于: [packages/fairy-cli/src/utils/http.util.ts:10](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/fairy-cli/src/utils/http.util.ts#L10)
 
 #### 参数
 
@@ -94,7 +94,7 @@
 
 > `readonly` **status**: `number`
 
-定义于: [packages/fairy-cli/src/utils/http.util.ts:7](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/fairy-cli/src/utils/http.util.ts#L7)
+定义于: [packages/fairy-cli/src/utils/http.util.ts:7](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/fairy-cli/src/utils/http.util.ts#L7)
 
 ***
 
@@ -102,7 +102,7 @@
 
 > `readonly` **url**: `string`
 
-定义于: [packages/fairy-cli/src/utils/http.util.ts:8](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/fairy-cli/src/utils/http.util.ts#L8)
+定义于: [packages/fairy-cli/src/utils/http.util.ts:8](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/fairy-cli/src/utils/http.util.ts#L8)
 
 ***
 

@@ -2,7 +2,7 @@
 
 # 类: VipCommander
 
-定义于: [packages/utils/src/pkgs/commander.ts:93](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/commander.ts#L93)
+定义于: [packages/utils/src/pkgs/commander.ts:88](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/commander.ts#L88)
 
 终端交互（基础类）
 参考：https://www.npmjs.com/package/commander
@@ -21,7 +21,7 @@
 
 > **new VipCommander**(`name`, `version`, `description?`): `VipCommander`
 
-定义于: [packages/utils/src/pkgs/commander.ts:94](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/commander.ts#L94)
+定义于: [packages/utils/src/pkgs/commander.ts:92](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/commander.ts#L92)
 
 #### 参数
 
@@ -116,6 +116,16 @@
 #### 继承自
 
 `CommanderRoot.registeredArguments`
+
+***
+
+### vipCliVersion
+
+> `protected` `readonly` **vipCliVersion**: `string`
+
+定义于: [packages/utils/src/pkgs/commander.ts:90](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/commander.ts#L90)
+
+构造时传入的 npm 版本，由 `registerCliVersionBanner` 注册 `-v`
 
 ## 方法
 
@@ -756,8 +766,8 @@ program
   .command('clone <source> [destination]')
   .description('clone a repository into a newly created directory')
   .action((source, destination) => {
-    console.log('clone command called')
-  })
+    console.log('clone command called');
+  });
 ```
 
 ##### 继承自
@@ -805,9 +815,9 @@ The command description is supplied as the second parameter to `.command`.
 ##### 示例
 
 ```ts
-program
-  .command('start <service>', 'start named service')
-  .command('stop [service]', 'stop named service, or all if no name supplied')
+ program
+   .command('start <service>', 'start named service')
+   .command('stop [service]', 'stop named service, or all if no name supplied');
 ```
 
 ##### 继承自
@@ -1202,9 +1212,9 @@ Set the directory for searching for executable subcommands of this command.
 ##### 示例
 
 ```ts
-program.executableDir(__dirname)
+program.executableDir(__dirname);
 // or
-program.executableDir('subcommands')
+program.executableDir('subcommands');
 ```
 
 ##### 继承自
@@ -1404,10 +1414,10 @@ Customise or override default help command. By default a help command is automat
 ##### 示例
 
 ```ts
-program.helpCommand('help [cmd]')
-program.helpCommand('help [cmd]', 'show help')
-program.helpCommand(false) // suppress default help command
-program.helpCommand(true) // add help command even if no subcommands
+program.helpCommand('help [cmd]');
+program.helpCommand('help [cmd]', 'show help');
+program.helpCommand(false); // suppress default help command
+program.helpCommand(true); // add help command even if no subcommands
 ```
 
 ##### 继承自
@@ -1435,10 +1445,10 @@ Customise or override default help command. By default a help command is automat
 ##### 示例
 
 ```ts
-program.helpCommand('help [cmd]')
-program.helpCommand('help [cmd]', 'show help')
-program.helpCommand(false) // suppress default help command
-program.helpCommand(true) // add help command even if no subcommands
+program.helpCommand('help [cmd]');
+program.helpCommand('help [cmd]', 'show help');
+program.helpCommand(false); // suppress default help command
+program.helpCommand(true); // add help command even if no subcommands
 ```
 
 ##### 继承自
@@ -1533,7 +1543,7 @@ Add hook for life cycle event.
 
 > **init**(`options`): `VipCommander`
 
-定义于: [packages/utils/src/pkgs/commander.ts:109](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/commander.ts#L109)
+定义于: [packages/utils/src/pkgs/commander.ts:107](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/commander.ts#L107)
 
 #### 参数
 
@@ -1551,7 +1561,7 @@ Add hook for life cycle event.
 
 > **initCommand**(`options`): `VipCommander`
 
-定义于: [packages/utils/src/pkgs/commander.ts:116](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/commander.ts#L116)
+定义于: [packages/utils/src/pkgs/commander.ts:114](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/commander.ts#L114)
 
 #### 参数
 
@@ -1635,7 +1645,7 @@ or require.main.filename, or __filename.
 #### 示例
 
 ```ts
-program.nameFromFilename(require.main.filename)
+program.nameFromFilename(require.main.filename);
 ```
 
 #### 继承自
@@ -1711,10 +1721,10 @@ See the README for more details, and see also addOption() and requiredOption().
 
 ```js
 program
-  .option('-p, --pepper', 'add pepper')
-  .option('-p, --pizza-type <TYPE>', 'type of pizza') // required option-argument
-  .option('-c, --cheese [CHEESE]', 'add extra cheese', 'mozzarella') // optional option-argument with default
-  .option('-t, --tip <VALUE>', 'add tip to purchase cost', Number.parseFloat) // custom parse function
+    .option('-p, --pepper', 'add pepper')
+    .option('-p, --pizza-type <TYPE>', 'type of pizza') // required option-argument
+    .option('-c, --cheese [CHEESE]', 'add extra cheese', 'mozzarella') // optional option-argument with default
+    .option('-t, --tip <VALUE>', 'add tip to purchase cost', parseFloat) // custom parse function
 ```
 
 ##### 继承自
@@ -1768,10 +1778,10 @@ See the README for more details, and see also addOption() and requiredOption().
 
 ```js
 program
-  .option('-p, --pepper', 'add pepper')
-  .option('-p, --pizza-type <TYPE>', 'type of pizza') // required option-argument
-  .option('-c, --cheese [CHEESE]', 'add extra cheese', 'mozzarella') // optional option-argument with default
-  .option('-t, --tip <VALUE>', 'add tip to purchase cost', Number.parseFloat) // custom parse function
+    .option('-p, --pepper', 'add pepper')
+    .option('-p, --pizza-type <TYPE>', 'type of pizza') // required option-argument
+    .option('-c, --cheese [CHEESE]', 'add extra cheese', 'mozzarella') // optional option-argument with default
+    .option('-t, --tip <VALUE>', 'add tip to purchase cost', parseFloat) // custom parse function
 ```
 
 ##### 继承自
@@ -1965,9 +1975,9 @@ program.parse(my-args, { from: 'user' }); // just user supplied arguments, nothi
 
 ### parseAsync()
 
-> **parseAsync**(`argv?`): `Promise`\<`VipCommander`\>
+> **parseAsync**(`argv?`, `parseOptions?`): `Promise`\<`VipCommander`\>
 
-定义于: [packages/utils/src/pkgs/commander.ts:123](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/commander.ts#L123)
+定义于: [packages/utils/src/pkgs/commander.ts:121](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/commander.ts#L121)
 
 Parse `argv`, setting options and invoking commands when defined.
 
@@ -1983,6 +1993,12 @@ Or call with an array of strings to parse, and optionally where the user argumen
 ##### argv?
 
 readonly `string`[]
+
+##### parseOptions?
+
+###### from
+
+`"node"` \| `"user"`
 
 #### 返回
 

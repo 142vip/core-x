@@ -2,7 +2,7 @@
 
 # 接口: ReleasePackageOptions
 
-定义于: [packages/fairy-cli/src/utils/release-package.util.ts:18](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/fairy-cli/src/utils/release-package.util.ts#L18)
+定义于: [packages/fairy-cli/src/utils/pkg.util.ts:35](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/fairy-cli/src/utils/pkg.util.ts#L35)
 
 `fa release` / `releasePackage` 运行时选项。
 编排层策略（commit 文案、tag、cwd）在本模块维护，底层发版委托 `@142vip/release-version`。
@@ -13,7 +13,7 @@
 
 > `optional` **changelogPrerelease?**: `boolean`
 
-定义于: [packages/fairy-cli/src/utils/release-package.util.ts:20](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/fairy-cli/src/utils/release-package.util.ts#L20)
+定义于: [packages/fairy-cli/src/utils/pkg.util.ts:37](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/fairy-cli/src/utils/pkg.util.ts#L37)
 
 覆盖 changelog 默认的 GitHub Release 标记：`true` = Pre-release，`false` = Latest
 
@@ -23,6 +23,6 @@
 
 > `optional` **dryRun?**: `boolean`
 
-定义于: [packages/fairy-cli/src/utils/release-package.util.ts:22](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/fairy-cli/src/utils/release-package.util.ts#L22)
+定义于: [packages/fairy-cli/src/utils/pkg.util.ts:39](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/fairy-cli/src/utils/pkg.util.ts#L39)
 
 试运行：预览版本与 CHANGELOG，不写文件、不提交、不推送

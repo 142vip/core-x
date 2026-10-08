@@ -4,7 +4,7 @@
 
 > **isVipConsoleTraceEnabled**(): `boolean`
 
-定义于: [packages/utils/src/pkgs/commander.ts:48](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/commander.ts#L48)
+定义于: [packages/utils/src/pkgs/console-trace.ts:13](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/console-trace.ts#L13)
 
 当前是否处于 CLI 追踪模式（`--trace`）
 

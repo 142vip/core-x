@@ -1,0 +1,39 @@
+[API 参考](../../../index.md) / [@142vip/fairy-cli](../index.md) / applyFairyCommandDefaults
+
+# 函数: applyFairyCommandDefaults()
+
+> **applyFairyCommandDefaults**\<`T`\>(`command`, `args`, `config`, `keys`): `T`
+
+定义于: [packages/fairy-cli/src/config.ts:221](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/fairy-cli/src/config.ts#L221)
+
+[resolveFairyCommandDefaults](resolveFairyCommandDefaults.md) 的参数结果
+
+## 类型参数
+
+### T
+
+`T` *extends* `object`
+
+## 参数
+
+### command
+
+#### getOptionValueSource
+
+(`key`) => `string` \| `undefined`
+
+### args
+
+`T`
+
+### config
+
+`Partial`\<`T`\> \| `undefined`
+
+### keys
+
+readonly keyof `T` & `string`[]
+
+## 返回
+
+`T`

@@ -4,7 +4,7 @@
 
 > **VipInquirerDefaultArrayParser**(`value`, `previous`): `string`[]
 
-定义于: [packages/utils/src/pkgs/inquirer.ts:201](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/inquirer.ts#L201)
+定义于: [packages/utils/src/pkgs/inquirer.ts:218](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/inquirer.ts#L218)
 
 option数组参数解析器，支持传多个
 

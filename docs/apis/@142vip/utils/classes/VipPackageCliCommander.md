@@ -2,7 +2,7 @@
 
 # 类: VipPackageCliCommander
 
-定义于: [packages/utils/src/pkgs/commander.ts:133](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/commander.ts#L133)
+定义于: [packages/utils/src/pkgs/commander.ts:134](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/commander.ts#L134)
 
 packages 目录 CLI 统一基类（fairy-cli / changelog / releasex / agent-skills）
 继承 `VipCommander`，封装子命令与 standalone 的标准注册顺序。
@@ -17,7 +17,7 @@ packages 目录 CLI 统一基类（fairy-cli / changelog / releasex / agent-skil
 
 > **new VipPackageCliCommander**(`name`, `version`, `description?`): `VipPackageCliCommander`
 
-定义于: [packages/utils/src/pkgs/commander.ts:94](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/commander.ts#L94)
+定义于: [packages/utils/src/pkgs/commander.ts:92](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/commander.ts#L92)
 
 #### 参数
 
@@ -112,6 +112,20 @@ packages 目录 CLI 统一基类（fairy-cli / changelog / releasex / agent-skil
 #### 继承自
 
 [`VipCommander`](VipCommander.md).[`registeredArguments`](VipCommander.md#registeredarguments)
+
+***
+
+### vipCliVersion
+
+> `protected` `readonly` **vipCliVersion**: `string`
+
+定义于: [packages/utils/src/pkgs/commander.ts:90](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/commander.ts#L90)
+
+构造时传入的 npm 版本，由 `registerCliVersionBanner` 注册 `-v`
+
+#### 继承自
+
+[`VipCommander`](VipCommander.md).[`vipCliVersion`](VipCommander.md#vipcliversion)
 
 ## 方法
 
@@ -549,7 +563,7 @@ Allow unknown options on the command line.
 
 > **appendStandaloneOptions**(`command`): [`VipCommander`](VipCommander.md)
 
-定义于: [packages/utils/src/pkgs/commander.ts:154](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/commander.ts#L154)
+定义于: [packages/utils/src/pkgs/commander.ts:177](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/commander.ts#L177)
 
 standalone bin 通用 Options（与默认项一致）
 
@@ -569,7 +583,7 @@ standalone bin 通用 Options（与默认项一致）
 
 > **appendSubcommandOptions**(`command`, `options?`): [`VipCommander`](VipCommander.md)
 
-定义于: [packages/utils/src/pkgs/commander.ts:146](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/commander.ts#L146)
+定义于: [packages/utils/src/pkgs/commander.ts:169](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/commander.ts#L169)
 
 子命令通用 Options（dry-run / vip / trace / help）
 
@@ -725,7 +739,7 @@ program.arguments('<cmd> [env]');
 
 > **bootstrapStandalone**\<`TArgs`\>(`detail`, `options`, `argv`): `void`
 
-定义于: [packages/utils/src/pkgs/commander.ts:188](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/commander.ts#L188)
+定义于: [packages/utils/src/pkgs/commander.ts:211](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/commander.ts#L211)
 
 独立 bin 入口：注册后 `parse`
 
@@ -830,8 +844,8 @@ program
   .command('clone <source> [destination]')
   .description('clone a repository into a newly created directory')
   .action((source, destination) => {
-    console.log('clone command called')
-  })
+    console.log('clone command called');
+  });
 ```
 
 ##### 继承自
@@ -879,9 +893,9 @@ The command description is supplied as the second parameter to `.command`.
 ##### 示例
 
 ```ts
-program
-  .command('start <service>', 'start named service')
-  .command('stop [service]', 'stop named service, or all if no name supplied')
+ program
+   .command('start <service>', 'start named service')
+   .command('stop [service]', 'stop named service, or all if no name supplied');
 ```
 
 ##### 继承自
@@ -1276,9 +1290,9 @@ Set the directory for searching for executable subcommands of this command.
 ##### 示例
 
 ```ts
-program.executableDir(__dirname)
+program.executableDir(__dirname);
 // or
-program.executableDir('subcommands')
+program.executableDir('subcommands');
 ```
 
 ##### 继承自
@@ -1478,10 +1492,10 @@ Customise or override default help command. By default a help command is automat
 ##### 示例
 
 ```ts
-program.helpCommand('help [cmd]')
-program.helpCommand('help [cmd]', 'show help')
-program.helpCommand(false) // suppress default help command
-program.helpCommand(true) // add help command even if no subcommands
+program.helpCommand('help [cmd]');
+program.helpCommand('help [cmd]', 'show help');
+program.helpCommand(false); // suppress default help command
+program.helpCommand(true); // add help command even if no subcommands
 ```
 
 ##### 继承自
@@ -1509,10 +1523,10 @@ Customise or override default help command. By default a help command is automat
 ##### 示例
 
 ```ts
-program.helpCommand('help [cmd]')
-program.helpCommand('help [cmd]', 'show help')
-program.helpCommand(false) // suppress default help command
-program.helpCommand(true) // add help command even if no subcommands
+program.helpCommand('help [cmd]');
+program.helpCommand('help [cmd]', 'show help');
+program.helpCommand(false); // suppress default help command
+program.helpCommand(true); // add help command even if no subcommands
 ```
 
 ##### 继承自
@@ -1607,7 +1621,7 @@ Add hook for life cycle event.
 
 > **init**(`options`): [`VipCommander`](VipCommander.md)
 
-定义于: [packages/utils/src/pkgs/commander.ts:109](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/commander.ts#L109)
+定义于: [packages/utils/src/pkgs/commander.ts:107](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/commander.ts#L107)
 
 #### 参数
 
@@ -1629,7 +1643,7 @@ Add hook for life cycle event.
 
 > **initCommand**(`options`): [`VipCommander`](VipCommander.md)
 
-定义于: [packages/utils/src/pkgs/commander.ts:116](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/commander.ts#L116)
+定义于: [packages/utils/src/pkgs/commander.ts:114](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/commander.ts#L114)
 
 #### 参数
 
@@ -1717,7 +1731,7 @@ or require.main.filename, or __filename.
 #### 示例
 
 ```ts
-program.nameFromFilename(require.main.filename)
+program.nameFromFilename(require.main.filename);
 ```
 
 #### 继承自
@@ -1793,10 +1807,10 @@ See the README for more details, and see also addOption() and requiredOption().
 
 ```js
 program
-  .option('-p, --pepper', 'add pepper')
-  .option('-p, --pizza-type <TYPE>', 'type of pizza') // required option-argument
-  .option('-c, --cheese [CHEESE]', 'add extra cheese', 'mozzarella') // optional option-argument with default
-  .option('-t, --tip <VALUE>', 'add tip to purchase cost', Number.parseFloat) // custom parse function
+    .option('-p, --pepper', 'add pepper')
+    .option('-p, --pizza-type <TYPE>', 'type of pizza') // required option-argument
+    .option('-c, --cheese [CHEESE]', 'add extra cheese', 'mozzarella') // optional option-argument with default
+    .option('-t, --tip <VALUE>', 'add tip to purchase cost', parseFloat) // custom parse function
 ```
 
 ##### 继承自
@@ -1850,10 +1864,10 @@ See the README for more details, and see also addOption() and requiredOption().
 
 ```js
 program
-  .option('-p, --pepper', 'add pepper')
-  .option('-p, --pizza-type <TYPE>', 'type of pizza') // required option-argument
-  .option('-c, --cheese [CHEESE]', 'add extra cheese', 'mozzarella') // optional option-argument with default
-  .option('-t, --tip <VALUE>', 'add tip to purchase cost', Number.parseFloat) // custom parse function
+    .option('-p, --pepper', 'add pepper')
+    .option('-p, --pizza-type <TYPE>', 'type of pizza') // required option-argument
+    .option('-c, --cheese [CHEESE]', 'add extra cheese', 'mozzarella') // optional option-argument with default
+    .option('-t, --tip <VALUE>', 'add tip to purchase cost', parseFloat) // custom parse function
 ```
 
 ##### 继承自
@@ -2047,9 +2061,9 @@ program.parse(my-args, { from: 'user' }); // just user supplied arguments, nothi
 
 ### parseAsync()
 
-> **parseAsync**(`argv?`): `Promise`\<`VipPackageCliCommander`\>
+> **parseAsync**(`argv?`, `parseOptions?`): `Promise`\<`VipPackageCliCommander`\>
 
-定义于: [packages/utils/src/pkgs/commander.ts:123](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/commander.ts#L123)
+定义于: [packages/utils/src/pkgs/commander.ts:121](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/commander.ts#L121)
 
 Parse `argv`, setting options and invoking commands when defined.
 
@@ -2065,6 +2079,12 @@ Or call with an array of strings to parse, and optionally where the user argumen
 ##### argv?
 
 readonly `string`[]
+
+##### parseOptions?
+
+###### from
+
+`"node"` \| `"user"`
 
 #### 返回
 
@@ -2147,11 +2167,38 @@ The default behaviour is non-positional and options may appear before or after c
 
 ***
 
+### registerCliVersionBanner()
+
+> **registerCliVersionBanner**(`identity`, `options?`): `this`
+
+定义于: [packages/utils/src/pkgs/commander.ts:150](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/commander.ts#L150)
+
+根 `-v` / `--version`：横幅输出（含首尾空行），不打印裸版本号。
+须在 `registerRootOptions` / `appendStandaloneOptions` 之后、解析前调用。
+
+#### 参数
+
+##### identity
+
+[`VipCliIdentity`](../interfaces/VipCliIdentity.md)
+
+##### options?
+
+###### binAliases?
+
+`string`
+
+#### 返回
+
+`this`
+
+***
+
 ### registerRootOptions()
 
 > **registerRootOptions**(): `this`
 
-定义于: [packages/utils/src/pkgs/commander.ts:140](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/commander.ts#L140)
+定义于: [packages/utils/src/pkgs/commander.ts:141](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/commander.ts#L141)
 
 根程序 `fa -h`：trace + help + version
 
@@ -2165,7 +2212,7 @@ The default behaviour is non-positional and options may appear before or after c
 
 > **registerStandalone**\<`TArgs`\>(`detail`, `options`): [`VipCommander`](VipCommander.md)
 
-定义于: [packages/utils/src/pkgs/commander.ts:176](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/commander.ts#L176)
+定义于: [packages/utils/src/pkgs/commander.ts:199](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/commander.ts#L199)
 
 独立 bin：init → 业务参数 → dry-run / vip / trace → action
 
@@ -2195,7 +2242,7 @@ The default behaviour is non-positional and options may appear before or after c
 
 > **registerSubcommand**\<`TArgs`\>(`detail`, `options`, `commanderOptions?`): [`VipCommander`](VipCommander.md)
 
-定义于: [packages/utils/src/pkgs/commander.ts:161](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/commander.ts#L161)
+定义于: [packages/utils/src/pkgs/commander.ts:184](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/commander.ts#L184)
 
 fairy-cli 子命令：initCommand → 业务参数 → dry-run / vip / trace → action
 

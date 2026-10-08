@@ -12,13 +12,13 @@ the admin functionality and commands for MongoDB.
 ## 示例
 
 ```ts
-import { MongoClient } from 'mongodb'
+import { MongoClient } from 'mongodb';
 
-const client = new MongoClient('mongodb://localhost:27017')
-const admin = client.db().admin()
-const dbInfo = await admin.listDatabases()
+const client = new MongoClient('mongodb://localhost:27017');
+const admin = client.db().admin();
+const dbInfo = await admin.listDatabases();
 for (const db of dbInfo.databases) {
-  console.log(db.name)
+  console.log(db.name);
 }
 ```
 

@@ -2,7 +2,7 @@
 
 # 接口: ChangelogGenerateOptions
 
-定义于: [changelog/src/core/changelog.interface.ts:116](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L116)
+定义于: [changelog/src/core/changelog.interface.ts:116](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/changelog.interface.ts#L116)
 
 合并配置后的完整生成选项
 
@@ -12,7 +12,7 @@
 
 > **baseUrl**: `string`
 
-定义于: [changelog/src/core/changelog.interface.ts:150](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L150)
+定义于: [changelog/src/core/changelog.interface.ts:150](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/changelog.interface.ts#L150)
 
 GitHub Web 主机（默认 `github.com`）
 
@@ -22,7 +22,7 @@ GitHub Web 主机（默认 `github.com`）
 
 > **baseUrlApi**: `string`
 
-定义于: [changelog/src/core/changelog.interface.ts:148](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L148)
+定义于: [changelog/src/core/changelog.interface.ts:148](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/changelog.interface.ts#L148)
 
 GitHub API 主机（默认 `api.github.com`）
 
@@ -32,7 +32,7 @@ GitHub API 主机（默认 `api.github.com`）
 
 > **capitalize**: `boolean`
 
-定义于: [changelog/src/core/changelog.interface.ts:140](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L140)
+定义于: [changelog/src/core/changelog.interface.ts:140](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/changelog.interface.ts#L140)
 
 描述首字母大写
 
@@ -42,7 +42,7 @@ GitHub API 主机（默认 `api.github.com`）
 
 > **contributors**: `boolean`
 
-定义于: [changelog/src/core/changelog.interface.ts:138](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L138)
+定义于: [changelog/src/core/changelog.interface.ts:138](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/changelog.interface.ts#L138)
 
 是否解析 GitHub 贡献者
 
@@ -52,7 +52,7 @@ GitHub API 主机（默认 `api.github.com`）
 
 > `optional` **dryRun?**: `boolean`
 
-定义于: [changelog/src/core/changelog.interface.ts:134](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L134)
+定义于: [changelog/src/core/changelog.interface.ts:134](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/changelog.interface.ts#L134)
 
 试运行：不写文件、不创建 Release
 
@@ -62,7 +62,7 @@ GitHub API 主机（默认 `api.github.com`）
 
 > **emoji**: `boolean`
 
-定义于: [changelog/src/core/changelog.interface.ts:144](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L144)
+定义于: [changelog/src/core/changelog.interface.ts:144](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/changelog.interface.ts#L144)
 
 章节标题是否保留 emoji
 
@@ -72,7 +72,7 @@ GitHub API 主机（默认 `api.github.com`）
 
 > **from**: `string`
 
-定义于: [changelog/src/core/changelog.interface.ts:152](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L152)
+定义于: [changelog/src/core/changelog.interface.ts:152](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/changelog.interface.ts#L152)
 
 提交范围起点
 
@@ -82,7 +82,7 @@ GitHub API 主机（默认 `api.github.com`）
 
 > **group**: `boolean` \| `"multiple"`
 
-定义于: [changelog/src/core/changelog.interface.ts:142](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L142)
+定义于: [changelog/src/core/changelog.interface.ts:142](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/changelog.interface.ts#L142)
 
 是否按 scope 分组；`multiple` 表示仅多 commit 的 scope 分组
 
@@ -92,7 +92,7 @@ GitHub API 主机（默认 `api.github.com`）
 
 > `optional` **header?**: `string`
 
-定义于: [changelog/src/core/changelog.interface.ts:130](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L130)
+定义于: [changelog/src/core/changelog.interface.ts:130](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/changelog.interface.ts#L130)
 
 新建 CHANGELOG.md 时的文件头
 
@@ -102,7 +102,7 @@ GitHub API 主机（默认 `api.github.com`）
 
 > **name**: `string`
 
-定义于: [changelog/src/core/changelog.interface.ts:146](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L146)
+定义于: [changelog/src/core/changelog.interface.ts:146](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/changelog.interface.ts#L146)
 
 Release 名称
 
@@ -112,7 +112,7 @@ Release 名称
 
 > `optional` **output?**: `string`
 
-定义于: [changelog/src/core/changelog.interface.ts:136](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L136)
+定义于: [changelog/src/core/changelog.interface.ts:136](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/changelog.interface.ts#L136)
 
 CHANGELOG.md 输出路径
 
@@ -122,7 +122,7 @@ CHANGELOG.md 输出路径
 
 > **prerelease**: `boolean`
 
-定义于: [changelog/src/core/changelog.interface.ts:156](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L156)
+定义于: [changelog/src/core/changelog.interface.ts:156](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/changelog.interface.ts#L156)
 
 GitHub Pre-release 标记
 
@@ -132,7 +132,7 @@ GitHub Pre-release 标记
 
 > **repo**: `string`
 
-定义于: [changelog/src/core/changelog.interface.ts:158](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L158)
+定义于: [changelog/src/core/changelog.interface.ts:158](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/changelog.interface.ts#L158)
 
 远程仓库 `owner/repo`
 
@@ -142,7 +142,7 @@ GitHub Pre-release 标记
 
 > **scopeMap**: `Record`\<`string`, `string`\>
 
-定义于: [changelog/src/core/changelog.interface.ts:123](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L123)
+定义于: [changelog/src/core/changelog.interface.ts:123](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/changelog.interface.ts#L123)
 
 scope 显示名映射（如 `utils` → `@142vip/utils`）
 
@@ -152,7 +152,7 @@ scope 显示名映射（如 `utils` → `@142vip/utils`）
 
 > `optional` **scopeName?**: `string`
 
-定义于: [changelog/src/core/changelog.interface.ts:132](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L132)
+定义于: [changelog/src/core/changelog.interface.ts:132](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/changelog.interface.ts#L132)
 
 Monorepo 子包 scope 名
 
@@ -162,7 +162,7 @@ Monorepo 子包 scope 名
 
 > **titles**: `object`
 
-定义于: [changelog/src/core/changelog.interface.ts:125](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L125)
+定义于: [changelog/src/core/changelog.interface.ts:125](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/changelog.interface.ts#L125)
 
 额外章节标题
 
@@ -178,7 +178,7 @@ Breaking Changes 章节标题
 
 > **to**: `string`
 
-定义于: [changelog/src/core/changelog.interface.ts:154](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L154)
+定义于: [changelog/src/core/changelog.interface.ts:154](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/changelog.interface.ts#L154)
 
 提交范围终点 / Release tag
 
@@ -188,6 +188,6 @@ Breaking Changes 章节标题
 
 > **types**: `Record`\<`string`, \{ `semver?`: [`VipSemverReleaseType`](../../utils/type-aliases/VipSemverReleaseType.md); `title`: `string`; \}\>
 
-定义于: [changelog/src/core/changelog.interface.ts:118](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L118)
+定义于: [changelog/src/core/changelog.interface.ts:118](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/changelog.interface.ts#L118)
 
 Conventional Commits type → 章节标题与 semver 提示
