@@ -26,8 +26,11 @@ npm run start
 
 ## 单元测试
 
+gRPC 用例共用 `50003`，脚本使用 `--runInBand` 串行，避免端口占用。
+
 ```bash
-npm run test
+pnpm test
+pnpm test:coverage
 ```
 
 ## 证书
