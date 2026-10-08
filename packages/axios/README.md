@@ -21,6 +21,7 @@ pnpm add @142vip/axios
 - ✅ 默认请求/响应拦截器与 VIP 响应解包（`HttpStatus.OK` 时返回 `data`）
 - ✅ `createAxiosRetry` 挂载 `axios-retry`；`AxiosResponseTransform` 处理 blob / arraybuffer 中的 JSON
 - ✅ `HttpStatus`、`HttpMethod` 枚举
+- ✅ 再导出 `axios`、`axios-retry` 的具名符号（`AxiosHeaders`、`AxiosError`、`isAxiosError`、`IAxiosRetryConfig`）
 - ✅ 爬虫场景随机 `User-Agent` / `Accept-Language` 请求头
 
 ## 配置
@@ -44,6 +45,17 @@ const { data } = await client.get('/users')
 ```
 
 需要 VIP 解包拦截器时，自行挂载 `defaultVipRequestInterceptor` / `defaultVipResponseInterceptor`（见源码 `interceptors.ts`）。
+
+`axios` 与 `axios-retry` 的具名导出从本包引入。请求头、错误判断不要再写 `from 'axios'`：
+
+```ts
+import type { AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from '@142vip/axios'
+import { AxiosError, AxiosHeaders, HttpStatus, isAxiosError } from '@142vip/axios'
+
+const headers = AxiosHeaders.from({ Accept: 'application/json' })
+```
+
+发请求用 `vipAxios` / `createVipAxios`。`export *` 不会带上这两个依赖的默认导出。
 
 ## 升级
 

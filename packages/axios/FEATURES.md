@@ -4,7 +4,7 @@
 
 ## 定位
 
-在 `axios@1.17.0` 之上封装工厂、拦截器模板与 HTTP 枚举，供 Node 爬虫与业务 HTTP 客户端复用。
+在 `axios@1.20.0` 之上封装工厂、拦截器模板与 HTTP 枚举，供 Node 爬虫与业务 HTTP 客户端复用。
 
 ## 功能
 
@@ -37,9 +37,22 @@
 ### 重试（`core/axios-retry.ts`）
 
 - `createAxiosRetry(instance, config?)`：为已有实例挂载 `axios-retry`；未传 `retries` 时默认为 `0`
-- `IAxiosRetryConfig`：从 `axios-retry` 再导出（`types/axios-exports.ts`）
+- `IAxiosRetryConfig`：随 `export * from 'axios-retry'` 导出
 
 业务侧 `VipAxios` 类与 `VipResponseData` 信封不在本包，由 `@142vip/vue` 定义。
+
+### 依赖再导出（`src/index.ts`）
+
+```ts
+export * from 'axios'
+export * from 'axios-retry'
+```
+
+只转发具名导出，不含二者的默认导出。因此没有 `import axios from '@142vip/axios'`，也没有 `import axiosRetry from '@142vip/axios'`。发请求用 `vipAxios` / `createVipAxios`；挂重试用 `createAxiosRetry`。
+
+与本包自有符号没有重名（本包状态码是 `HttpStatus`，axios 的是 `HttpStatusCode`）。构建能通过，说明 star export 没有重名冲突。已有导入名保持不变，这次只是多导出依赖里的具名符号。
+
+下游不要再 `import ... from 'axios'` / `from 'axios-retry'`。类和函数以值导出，例如 `AxiosHeaders`、`AxiosError`、`isAxiosError`；类型随 `export *` 一并给出，例如 `AxiosRequestConfig`、`AxiosResponse`、`InternalAxiosRequestConfig`、`IAxiosRetryConfig`。完整具名清单与上游 `axios@1.20.0`、`axios-retry@4.5.0` 的声明文件一致，不在这里抄一份。
 
 ### 拦截器（`core/interceptors.ts`）
 

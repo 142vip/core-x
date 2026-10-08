@@ -4,7 +4,7 @@ import axiosRetry from 'axios-retry'
 
 /**
  * 为已有 Axios 实例挂载 axios-retry。
- * 类型 `IAxiosRetryConfig` 从 `types/axios-exports.ts` 再导出，避免与运行时入口缠在一起。
+ * 类型 `IAxiosRetryConfig` 随入口 `export * from 'axios-retry'` 一起给出。
  * @see https://www.npmjs.com/package/axios-retry
  */
 export function createAxiosRetry(instance: AxiosInstance, config?: IAxiosRetryConfig): void {
