@@ -119,6 +119,7 @@ unbuild 双入口：`src/index`、`src/changelog-cli`。
 
 ```shell
 cd packages/changelog && pnpm test
+cd packages/changelog && pnpm test:coverage
 cd packages/changelog && pnpm build && pnpm typecheck
 ```
 
