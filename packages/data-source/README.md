@@ -19,7 +19,7 @@ pnpm add @142vip/data-source
 ## 功能
 
 - ✅ SQL / 文档库：`VipMysql`、`VipPostgreSql`、`VipOracle`、`VipSqlServer`、`VipMongo`、`VipClickhouse`
-- ✅ API 类：`VipHttpApi` `VipAliGatewayApi` `VipDTableApi` `VipDtStackApi`
+- ✅ API 类：`VipHttpApi`（经 `@142vip/axios`）、`VipAliGatewayApi`、`VipDTableApi`、`VipDtStackApi`
 - ✅ `VipCsv` CSV 解析
 - ✅ 统一 `DataSourceParseResponse` 返回结构
 - ✅ `DataSourceManager` 接口（表/库元数据约定）
@@ -57,6 +57,7 @@ pnpm upgrade @142vip/data-source
 
 ## 参考
 
+- [@142vip/axios](https://www.npmjs.com/package/@142vip/axios)
 - [@142vip/data-source](https://www.npmjs.com/package/@142vip/data-source)
 
 ## 证书

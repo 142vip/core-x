@@ -11,6 +11,8 @@ pnpm i @142vip/data-source
 
 ## 使用
 
+请求经 `@142vip/axios` 的 `createVipAxios()` 发出。未传 `validateStatus` 时非 2xx 不抛错，`HttpStatus.OK` 返回响应体，否则 `{ success: false }`。
+
 ```ts
 import type { HttpApiOptions } from '@142vip/data-source'
 import { VipHttpApi } from '@142vip/data-source'

@@ -89,8 +89,8 @@
 
 ### API 连接器（`core/apis/`）
 
-- `VipHttpApi` + `HttpApiOptions extends AxiosRequestConfig`
-  - `getConnectionData<T>(options): Promise<DataSourceParseResponse<T>>`：未传 `validateStatus` 时 axios 不把非 2xx 抛出；`status === 200` 返回响应 `data`，否则 `{ success: false }`
+- `VipHttpApi` + `HttpApiOptions extends AxiosRequestConfig`（类型来自 `@142vip/axios`）
+  - `getConnectionData<T>(options): Promise<DataSourceParseResponse<T>>`：用 `createVipAxios()` 发请求。未传 `validateStatus` 时不把非 2xx 抛出；`status === HttpStatus.OK` 返回响应 `data`，否则 `{ success: false }`
 - `VipAliGatewayApi` + `AliGatewayApiOptions extends AliGatewayAPIAuth`
   - `AliGatewayAPIAuth`：`appKey: string`、`appSecret: string`
   - 额外字段：`method: 'post' | 'get' | 'put' | 'delete'`（须全小写）、`url: string`、`bodyParams?: Record<string, unknown>`、`headerParams?: Record<string, unknown>`
@@ -115,9 +115,9 @@
 
 ### `package.json` 运行时依赖（与 peer 对齐）
 
+- `@142vip/axios`（`workspace:*`，发布时解析为当前版本）
 - `@clickhouse/client@1.18.5`
 - `aliyun-api-gateway@1.1.6`
-- `axios@1.11.0`
 - `csv-parse@5.5.0`
 - `dmdb@1.0.18856`
 - `ibm_db@3.3.2`
