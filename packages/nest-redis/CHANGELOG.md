@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.6 (2026-10-08)
+
+### 🐛 Bug Fixes
+
+- 复用已创建的 Redis 客户端，不可达时跳过集成测试 &nbsp;-&nbsp; by **chufan** [<samp>(44d47)</samp>](https://github.com/142vip/core-x/commit/44d47245)
+
+**Release New Version v0.0.1-alpha.6 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/nest-redis)**
+
 ## v0.0.1-alpha.5 (2026-01-06)
 
 ### 🐛 Bug Fixes
