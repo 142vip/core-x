@@ -508,8 +508,8 @@ importers:
         specifier: ^9.0.0
         version: 9.0.0(typescript@5.9.3)
       dayjs:
-        specifier: 1.11.13
-        version: 1.11.13
+        specifier: 1.11.23
+        version: 1.11.23
       detect-port:
         specifier: ^2.1.0
         version: 2.1.0
@@ -6012,6 +6012,9 @@ packages:
 
   dayjs@1.11.21:
     resolution: {integrity: sha512-98IT+HOahAisibz/yjKbzuOBwYcjJ7BCLPzARyHiyEBmRz4fatF+KPJszEHXsGYjUG234aH/cOjW1wwTbKUZlA==}
+
+  dayjs@1.11.23:
+    resolution: {integrity: sha512-QDTCU0M0MxR3hQfnlDJfwekQiaanm1ubOD231u73WBckQ/fsamwRLiE2GBz6D3a/xF1NgfiDLJjXBa1hYOYTtQ==}
 
   debounce@1.2.1:
     resolution: {integrity: sha512-XRRe6Glud4rd/ZGQfiV1ruXSfbvfJedlV9Y6zOlP+2K04vBYiJEte6stfFkCP03aMnY5tsipamumUjL14fofug==}
@@ -17369,6 +17372,8 @@ snapshots:
 
   dayjs@1.11.21: {}
 
+  dayjs@1.11.23: {}
+
   debounce@1.2.1: {}
 
   debug@2.6.9:
@@ -17712,7 +17717,7 @@ snapshots:
   egg-multipart@3.5.0:
     dependencies:
       co-busboy: 2.0.1
-      dayjs: 1.11.13
+      dayjs: 1.11.23
       egg-path-matching: 1.2.0
       humanize-bytes: 1.0.1
 
@@ -17882,7 +17887,7 @@ snapshots:
       '@types/lodash-es': 4.17.12
       '@vueuse/core': 12.0.0(typescript@5.9.3)
       async-validator: 4.2.5
-      dayjs: 1.11.21
+      dayjs: 1.11.23
       lodash: 4.18.1
       lodash-es: 4.18.1
       lodash-unified: 1.0.3(@types/lodash-es@4.17.12)(lodash-es@4.18.1)(lodash@4.18.1)
@@ -20554,7 +20559,7 @@ snapshots:
       d3: 7.9.0
       d3-sankey: 0.12.3
       dagre-d3-es: 7.0.14
-      dayjs: 1.11.21
+      dayjs: 1.11.23
       dompurify: 3.4.12
       es-toolkit: 1.50.0
       katex: 0.16.47
