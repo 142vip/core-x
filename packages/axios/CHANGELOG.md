@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 
+## v0.0.1-alpha.13 (2026-10-09)
+
+### 🐛 Bug Fixes
+
+- 显式 `type: module`，保证 CJS 下游能解析具名再导出 &nbsp;-&nbsp; by **chufan** [<samp>(ef796)</samp>](https://github.com/142vip/core-x/commit/ef796d8d)
+
+**Release New Version v0.0.1-alpha.13 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/axios)**
+
 ## v0.0.1-alpha.12 (2026-10-08)
 
 ### ✨ Features
