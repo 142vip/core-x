@@ -557,8 +557,8 @@ importers:
         specifier: workspace:*
         version: link:../open-source
       '@142vip/vue':
-        specifier: 0.1.6-alpha.32
-        version: 0.1.6-alpha.32(@element-plus/icons-vue@2.3.2(vue@3.5.40(typescript@5.9.3)))(element-plus@2.13.7(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(pinia@3.0.4(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(vue@3.5.40(typescript@5.9.3))
+        specifier: 0.1.6-alpha.36
+        version: 0.1.6-alpha.36(@142vip/axios@0.0.1-alpha.11)(@element-plus/icons-vue@2.3.2(vue@3.5.40(typescript@5.9.3)))(element-plus@2.13.7(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(pinia@3.0.4(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(vue@3.5.40(typescript@5.9.3))
       '@element-plus/icons-vue':
         specifier: 2.3.2
         version: 2.3.2(vue@3.5.40(typescript@5.9.3))
@@ -656,23 +656,27 @@ importers:
 
 packages:
 
+  '@142vip/axios@0.0.1-alpha.11':
+    resolution: {integrity: sha512-rvbUT/NUpB/Crj5iLI4iuAVVZ7g6+q0FhmP/OWhStnKRtF/wW/gvvwzlRFK80te1LIRukBk8uiYAZG4KVlFvvg==}
+
   '@142vip/cdn@0.0.1-alpha.3':
     resolution: {integrity: sha512-Mt5lRYcAh+33QXSBmMKO5c2ccim3VsXk0tWadJInGClx6QoicvGqigOe0mcULBRhh3n4j4IayW2tFMevwKndKA==}
 
   '@142vip/open-source@0.0.1-alpha.4':
     resolution: {integrity: sha512-8SS1ftuyi/07Sv6TXU9PDQMwjL+G12u+iF7IGpByUIjg1i+5YW1j5XIowQxkw5WwLtwHvvk+1A76neaLRN6heQ==}
 
-  '@142vip/vue@0.1.6-alpha.32':
-    resolution: {integrity: sha512-yyiYZpq87SpW0gl4rzHITDfwPk4TOHXjTe9YqjF07WkOeiaL/yg050wIORbMlbgdvyDOPsgL6Gk5MN3twYYEEA==}
+  '@142vip/vue@0.1.6-alpha.35':
+    resolution: {integrity: sha512-KCi3ixxa/mvIKNJ5HnNiWSDeC+p4u6u01aSLhuaaQTN8mgHs/v08ZRhmlyY8JwIRD2mEKu8CnB5yUIYYz2KODQ==}
     peerDependencies:
       '@element-plus/icons-vue': 2.3.2
       element-plus: 2.13.6
       pinia: 3.0.4
       vue: 3.5.31
 
-  '@142vip/vue@0.1.6-alpha.35':
-    resolution: {integrity: sha512-KCi3ixxa/mvIKNJ5HnNiWSDeC+p4u6u01aSLhuaaQTN8mgHs/v08ZRhmlyY8JwIRD2mEKu8CnB5yUIYYz2KODQ==}
+  '@142vip/vue@0.1.6-alpha.36':
+    resolution: {integrity: sha512-drsjDIO3R7+APPQih2cHlabS+Y97IOehyuxKu5DxGAu5ntMJFn2m9WKA6b1JnArmMJvzlzPAiw0Knxn7XM7S8A==}
     peerDependencies:
+      '@142vip/axios': 0.0.1-alpha.11
       '@element-plus/icons-vue': 2.3.2
       element-plus: 2.13.6
       pinia: 3.0.4
@@ -9518,10 +9522,6 @@ packages:
     resolution: {integrity: sha512-YWWTjgABSKcvs/nWBi9PycY/JiPJqOD4JA6o9Sej2AtvSGarXxKC3OQSk4pAarbdQlKAh5D4FCQkJNkW+GAn3w==}
     engines: {node: '>=0.6'}
 
-  qs@6.15.0:
-    resolution: {integrity: sha512-mAZTtNCeetKMH+pSjrb76NAM8V9a05I9aBZOHztWy/UqcJdQYNsf59vrRKWnojAT9Y+GbIvoTBC++CPHqpDBhQ==}
-    engines: {node: '>=0.6'}
-
   qs@6.15.3:
     resolution: {integrity: sha512-O9gl3zCl5h5blw1KGUzQKhA5oUXSl8rwUIM5o0S3nCXMliSvy5Dzx7/DJcI+SwgICv+IneSZwhBh1oSyEHA71A==}
     engines: {node: '>=0.6'}
@@ -11150,6 +11150,7 @@ packages:
   vidstack@1.12.13:
     resolution: {integrity: sha512-vuNeyRmWoH/7EoFVDYjp9nkgcqtCMmal518LDeb78dYKgWb+p6+vtY0AzDhrkBv5q1UiCn+xwmjMmwvSlPLuhQ==}
     engines: {node: '>=18'}
+    deprecated: 'Vidstack is deprecated and gets security fixes only until January 2028. Use Video.js 10: https://videojs.org/docs/framework/html/guides/migrate-from-vidstack?utm_source=vidstack (coding agents: run npx @videojs/cli agents skills, then follow the guide''s AI Quickstart)'
 
   vite@5.4.21:
     resolution: {integrity: sha512-o5a9xKjbtuhY6Bi5S3+HvbRERmouabWbyUcpXXUA1u+GNUKoROi9byOJ8M0nHbHYHkYICiMlqxkg1KkYmm25Sw==}
@@ -11655,27 +11656,17 @@ packages:
 
 snapshots:
 
-  '@142vip/cdn@0.0.1-alpha.3': {}
-
-  '@142vip/open-source@0.0.1-alpha.4': {}
-
-  '@142vip/vue@0.1.6-alpha.32(@element-plus/icons-vue@2.3.2(vue@3.5.40(typescript@5.9.3)))(element-plus@2.13.7(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(pinia@3.0.4(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(vue@3.5.40(typescript@5.9.3))':
+  '@142vip/axios@0.0.1-alpha.11':
     dependencies:
-      '@142vip/cdn': 0.0.1-alpha.3
-      '@142vip/open-source': 0.0.1-alpha.4
-      '@element-plus/icons-vue': 2.3.2(vue@3.5.40(typescript@5.9.3))
       axios: 1.17.0
       axios-retry: 4.5.0(axios@1.17.0)
-      copy-to-clipboard: 4.0.2
-      defu: 6.1.7
-      element-plus: 2.13.7(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3))
-      localforage: 1.10.0
-      pinia: 3.0.4(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3))
-      qs: 6.15.0
-      vue: 3.5.40(typescript@5.9.3)
     transitivePeerDependencies:
       - debug
       - supports-color
+
+  '@142vip/cdn@0.0.1-alpha.3': {}
+
+  '@142vip/open-source@0.0.1-alpha.4': {}
 
   '@142vip/vue@0.1.6-alpha.35(@element-plus/icons-vue@2.3.2(vue@3.5.40(typescript@5.9.3)))(element-plus@2.13.7(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(pinia@3.0.4(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(vue@3.5.40(typescript@5.9.3))':
     dependencies:
@@ -11693,6 +11684,19 @@ snapshots:
     transitivePeerDependencies:
       - debug
       - supports-color
+
+  '@142vip/vue@0.1.6-alpha.36(@142vip/axios@0.0.1-alpha.11)(@element-plus/icons-vue@2.3.2(vue@3.5.40(typescript@5.9.3)))(element-plus@2.13.7(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(pinia@3.0.4(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3)))(vue@3.5.40(typescript@5.9.3))':
+    dependencies:
+      '@142vip/axios': 0.0.1-alpha.11
+      '@142vip/cdn': 0.0.1-alpha.3
+      '@142vip/open-source': 0.0.1-alpha.4
+      '@element-plus/icons-vue': 2.3.2(vue@3.5.40(typescript@5.9.3))
+      copy-to-clipboard: 4.0.2
+      defu: 6.1.7
+      element-plus: 2.13.7(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3))
+      localforage: 1.10.0
+      pinia: 3.0.4(typescript@5.9.3)(vue@3.5.40(typescript@5.9.3))
+      vue: 3.5.40(typescript@5.9.3)
 
   '@algolia/autocomplete-core@1.17.7(@algolia/client-search@5.15.0)(algoliasearch@5.15.0)(search-insights@2.17.2)':
     dependencies:
@@ -21869,10 +21873,6 @@ snapshots:
   qs@6.14.0:
     dependencies:
       side-channel: 1.1.0
-
-  qs@6.15.0:
-    dependencies:
-      side-channel: 1.1.1
 
   qs@6.15.3:
     dependencies:
