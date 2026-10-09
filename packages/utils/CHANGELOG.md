@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.65 (2026-10-09)
+
+### ✨ Features
+
+- 单包仓 release 列表回退根 `package.json` &nbsp;-&nbsp; by **chufan** [<samp>(39ad9)</samp>](https://github.com/142vip/core-x/commit/39ad999a)
+- Commit scope 扫描可选关闭单包仓根包回退 &nbsp;-&nbsp; by **chufan** [<samp>(73e7b)</samp>](https://github.com/142vip/core-x/commit/73e7b823)
+
+**Release New Version v0.0.1-alpha.65 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/utils)**
+
 ## v0.0.1-alpha.64 (2026-10-08)
 
 **No Significant Changes**
