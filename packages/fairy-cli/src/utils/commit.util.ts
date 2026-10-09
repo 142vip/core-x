@@ -19,8 +19,18 @@ const commitConfigRequire = createRequire(__filename)
 /** 未在配置 / CLI 指定时的 Monorepo 扫描路径（与内置 default-commit-linter 一致） */
 export const DEFAULT_COMMIT_SCOPE_GLOBS: string[] = ['./apps/*', './packages/*']
 
+/**
+ * 解析用于 `pnpm ls --filter` 的 glob 列表。
+ * 单包仓库（cwd 下无 `pnpm-workspace.yaml`）返回空数组，无需在 `fairy.config` 写 `scopeGlobs: []`。
+ */
 export function resolveCommitScopeGlobs(scopeGlobs: string[]): string[] {
-  return scopeGlobs.length > 0 ? scopeGlobs : DEFAULT_COMMIT_SCOPE_GLOBS
+  if (scopeGlobs.length > 0) {
+    return scopeGlobs
+  }
+  if (!VipNodeJS.existPath('pnpm-workspace.yaml')) {
+    return []
+  }
+  return DEFAULT_COMMIT_SCOPE_GLOBS
 }
 
 /** 按 glob 收集 npm 包名（scope 白名单） */
@@ -149,6 +159,9 @@ function withMergedScopes(
 ): CommitLinterOptions {
   const extraScopes = base.scopes ?? []
   if (extraScopes.length === 0) {
+    if (pkgScopes.length === 0) {
+      return base
+    }
     return {
       types: base.types,
       scopes: pkgScopes,
@@ -172,13 +185,25 @@ function withMergedScopes(
 /**
  * 合并 cosmiconfig 与用户 CLI：`-s` 或配置 `scopeGlobs` 时扫描 Monorepo 包名写入 `scopes`。
  * CLI `-s` 优先于配置文件中的 `scopeGlobs`。
+ * 单包仓库自动跳过内置 Monorepo `scopeGlobs`，只做 Conventional Commits 格式校验（除非配置了 `types` / `scopes` / `verify`）。
  */
 export function buildCommitLinterOptions(
   fileConfig: VipCommitLinterConfig,
   options: { scopeGlobs: string[] },
 ): CommitLinterOptions {
   const configGlobs = fileConfig.scopeGlobs ?? []
-  const globs = options.scopeGlobs.length > 0 ? options.scopeGlobs : configGlobs
+  const cliGlobs = options.scopeGlobs
+  let globs: string[]
+  if (cliGlobs.length > 0) {
+    globs = cliGlobs
+  }
+  else if (!VipNodeJS.existPath('pnpm-workspace.yaml')) {
+    // 单包文档站等：不扫描内置 ./apps/*、./packages/*
+    globs = []
+  }
+  else {
+    globs = configGlobs
+  }
   const base = toCommitLinterOptions(fileConfig)
 
   if (globs.length === 0) {
@@ -186,6 +211,9 @@ export function buildCommitLinterOptions(
   }
 
   const pkgScopes = VipMonorepo.getPkgNames(globs)
+  if (pkgScopes.length === 0) {
+    return base
+  }
   return withMergedScopes(base, pkgScopes)
 }
 

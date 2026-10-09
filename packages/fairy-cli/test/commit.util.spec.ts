@@ -1,5 +1,5 @@
 import path from 'node:path'
-import { vipConfig, VipMonorepo } from '@142vip/utils'
+import { vipConfig, VipMonorepo, VipNodeJS } from '@142vip/utils'
 import { afterEach, beforeEach, describe, expect, it, jest } from '@jest/globals'
 
 import {
@@ -155,14 +155,30 @@ describe('commit.util 配置路径', () => {
 
 describe('commit.util 校验与 scope', () => {
   const getPkgNames = jest.mocked(VipMonorepo.getPkgNames)
+  let existPathSpy: jest.SpiedFunction<typeof VipNodeJS.existPath>
 
   beforeEach(() => {
     getPkgNames.mockClear()
+    existPathSpy = jest.spyOn(VipNodeJS, 'existPath').mockImplementation((filePath) => {
+      if (filePath === 'pnpm-workspace.yaml') {
+        return true
+      }
+      return false
+    })
   })
 
-  it('resolveCommitScopeGlobs 空数组回退默认 glob', () => {
+  afterEach(() => {
+    existPathSpy.mockRestore()
+  })
+
+  it('resolveCommitScopeGlobs Monorepo 空数组回退默认 glob', () => {
     expect(resolveCommitScopeGlobs([])).toEqual(DEFAULT_COMMIT_SCOPE_GLOBS)
     expect(resolveCommitScopeGlobs(['./packages/foo'])).toEqual(['./packages/foo'])
+  })
+
+  it('resolveCommitScopeGlobs 单包仓库空数组不回退 Monorepo 默认', () => {
+    existPathSpy.mockImplementation(() => false)
+    expect(resolveCommitScopeGlobs([])).toEqual([])
   })
 
   it('resolveCommitScopes 将 glob 传给 VipMonorepo.getPkgNames', () => {
@@ -184,6 +200,26 @@ describe('commit.util 校验与 scope', () => {
     expect(getPkgNames).toHaveBeenCalledWith(DEFAULT_COMMIT_SCOPE_GLOBS)
     expect(linterOptions.scopes).toEqual(['@142vip/utils'])
     expect('scopeGlobs' in linterOptions).toBe(false)
+  })
+
+  it('buildCommitLinterOptions 扫描无包名时不写入空 scopes', () => {
+    getPkgNames.mockReturnValueOnce([])
+    const file = { scopes: ['README'], verify: () => true }
+    const linterOptions = buildCommitLinterOptions(
+      { scopeGlobs: DEFAULT_COMMIT_SCOPE_GLOBS, ...file },
+      { scopeGlobs: [] },
+    )
+    expect(linterOptions).toEqual(file)
+  })
+
+  it('buildCommitLinterOptions 单包仓库忽略内置 scopeGlobs', () => {
+    existPathSpy.mockImplementation(() => false)
+    const linterOptions = buildCommitLinterOptions(
+      { scopeGlobs: DEFAULT_COMMIT_SCOPE_GLOBS },
+      { scopeGlobs: [] },
+    )
+    expect(getPkgNames).not.toHaveBeenCalled()
+    expect(linterOptions).toEqual({})
   })
 
   it('buildCommitLinterOptions 合并文件 scopes 与 Monorepo 包名', () => {

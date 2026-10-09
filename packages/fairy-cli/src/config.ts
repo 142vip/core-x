@@ -26,6 +26,7 @@ export type FairyScriptsConfig = Record<string, FairyHookCommand>
  * `fairy.config` → `commit`：`fa commit` 的默认参数。
  * 命令行显式传入的同名参数优先；Commander 未传入时的内置默认值不会挡住这里。
  * `types` / `scopes` / `scopeGlobs` / `verify` 仍是校验规则：写了其中任一字段就不再读 `commit-linter.config`。
+ * 单包仓库（无 `pnpm-workspace.yaml`）一般只需 `quiet` 等命令参数，不必配置 `scopeGlobs`。
  */
 export interface FairyCommitConfig extends Omit<VipCommitLinterConfig, 'commit'> {
   /** `-f,--config`：`commit-linter` 配置文件。有此字段时优先于本对象里的校验字段 */
