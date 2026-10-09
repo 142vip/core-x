@@ -115,8 +115,12 @@ async function getTurboPackApps(): Promise<string[]> {
  */
 function getPackageJSONByPnpm(pnpmLsCommand: string): Array<PackageJSONWithPath> {
   try {
-    const packageStr = VipExecutor.execCommandSync(pnpmLsCommand)
-    return JSON.parse(packageStr) as Array<PackageJSONWithPath>
+    const packageStr = VipExecutor.execCommandSync(pnpmLsCommand)?.trim()
+    if (packageStr == null || packageStr === '') {
+      return []
+    }
+    const parsed = JSON.parse(packageStr) as Array<PackageJSONWithPath> | PackageJSONWithPath
+    return Array.isArray(parsed) ? parsed : [parsed]
   }
   catch (error) {
     VipConsole.log('Failed to get the release package name, in function getPackageJSONByPnpm')

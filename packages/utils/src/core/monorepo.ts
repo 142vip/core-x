@@ -2,6 +2,21 @@ import type { PackageJSONWithPath } from './package-json'
 import { VipYaml } from '../pkgs'
 import { VipNodeJS } from './nodejs'
 import { VipNpm } from './npm'
+import { VipPackageJSON } from './package-json'
+
+/** 单包仓库：用根 package.json 构造与 `pnpm ls --json` 一致的结构 */
+function getRootPackageJSONWithPath(): PackageJSONWithPath[] {
+  if (!VipNodeJS.existPath('package.json')) {
+    return []
+  }
+  const manifest = VipPackageJSON.getPackageJSON<PackageJSONWithPath>()
+  return [{
+    name: manifest.name,
+    version: manifest.version ?? '',
+    private: Boolean(manifest.private),
+    path: VipNodeJS.getProcessCwd(),
+  }]
+}
 
 /**
  * 获取monorepo下所有包的package.json，返回所有包的路径列表
@@ -55,7 +70,15 @@ function getReleasePkgJSON(filter?: string | string[]): PackageJSONWithPath[] {
     }
   }
   const command = `pnpm ls --json --only-projects ${filterRgx} --depth -1`
-  return VipNpm.getPackageJSONByPnpm(command)
+  const packages = VipNpm.getPackageJSONByPnpm(command)
+  if (packages.length > 0) {
+    return packages
+  }
+  // filter 未命中且 cwd 下无 pnpm-workspace.yaml：单包文档站等，回退根 package.json（`fa release --vip` 等）
+  if (!VipNodeJS.existPath('pnpm-workspace.yaml')) {
+    return getRootPackageJSONWithPath()
+  }
+  return []
 }
 
 /**
