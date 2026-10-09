@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 
+## v0.0.3-alpha.41 (2026-10-09)
+
+### ✨ Features
+
+- 单包仓跳过内置 `scopeGlobs` 与空 scope 白名单 &nbsp;-&nbsp; by **chufan** [<samp>(eea91)</samp>](https://github.com/142vip/core-x/commit/eea9151a)
+- 优化 `fa commit` trace 与 scope 聚合展示 &nbsp;-&nbsp; by **chufan** [<samp>(55923)</samp>](https://github.com/142vip/core-x/commit/559237a3)
+
+**Release New Version v0.0.3-alpha.41 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/fairy-cli)**
+
 ## v0.0.3-alpha.40 (2026-10-08)
 
 ### ✨ Features
