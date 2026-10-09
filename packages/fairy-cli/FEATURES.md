@@ -170,11 +170,11 @@ src/
 - 校验配置优先级：命令行 `-f` > `fairy.config` → `commit.config` > `commit` 的 `types` / `scopes` / `scopeGlobs` / `verify` > `commit-linter.config` > 内置默认
 - 命令参数优先级：命令行显式 `-q` / `-p` / `-m` / `-s` / `--dry-run` / `--vip` > `fairy.config` → `commit` 同名字段 > 命令内置默认
 - `-f, --config <path>`：`commit-linter` 配置文件路径（与 `fa lint -f` 一致）
-- `-q, --quiet`：仅校验 commit 首行（`commit-msg` / `pnpm check:commit`）。与 `--dry-run` 同用时不校验，只打印生效参数（`source`、`scopeGlobs`、`scopes`、`types`、`verify`、`effectiveScopes`）
+- `-q, --quiet`：仅校验 commit 首行（`commit-msg` / `pnpm check:commit`）。与 `--dry-run` 同用时不校验，只打印生效参数（`workspace`、`scopes` / `scopesFromScan` / `effectiveScopes`、校验白名单等，见 `formatCommitConfigTrace` / `formatCommitValidationTrace`）
 - `-p, --push`：交互提交后推送远程
 - `-s, --scope <glob>`：Monorepo glob（可多次），扫描 npm 包名写入 scope 白名单；**优先于** `scopeGlobs`。未传 `-s` 时使用配置 `scope`
 - `-m, --message <msg>`：`--quiet` 时待校验首行；默认读 `.git/COMMIT_EDITMSG`
-- `--trace`：action 入口输出 `commit: 解析` 与业务选项，并再打 `commit: 配置`（与 dry-run 参数相同）
+- `--trace`：输出 `commit: 解析`、`commit: 配置`（解析后仍相关的 scope 来源与聚合）、`commit: 校验`（`allowedTypes` / `allowedScopes`）。单包仓不展示配置里的 Monorepo `scopeGlobs`；scope 扫描不把根 `package.json` 名并入白名单
 
 | CLI `-s` | 配置 `scopeGlobs` | 行为 |
 |---|---|---|

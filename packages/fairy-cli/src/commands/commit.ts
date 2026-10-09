@@ -18,8 +18,9 @@ import {
 import { loadFairyConfig, resolveFairyCommandDefaults } from '../config'
 import { CommandEnum, FairyCommandOptions } from '../constant'
 import {
-  buildCommitLinterOptions,
+  formatCommitConfigTrace,
   formatCommitRuntimeParams,
+  formatCommitValidationTrace,
   loadCommitLinterConfigForCli,
   logDryRunSteps,
   logFairyCliTrace,
@@ -27,6 +28,7 @@ import {
   printCommitVerifyResult,
   registerFairySubcommand,
   resolveCommitLinterConfigSource,
+  resolveCommitLinterRuntime,
   runCommitMessageVerify,
   runOrDryRun,
 } from '../utils'
@@ -71,22 +73,31 @@ export async function commitMain(program: VipPackageCliCommander): Promise<void>
     ])
     logFairyEquivalentCommand('commit', args, fromConfig, COMMIT_EQUIVALENT_FLAGS)
     const fileConfig = loadCommitLinterConfigForCli(args.config)
-    const linterOptions = buildCommitLinterOptions(fileConfig, {
+    const commitRuntime = resolveCommitLinterRuntime(fileConfig, {
       scopeGlobs: args.scope,
     })
+    const linterOptions = commitRuntime.linterOptions
+    const configSource = resolveCommitLinterConfigSource(args.config)
     const runtimeParams = formatCommitRuntimeParams({
-      source: resolveCommitLinterConfigSource(args.config),
+      source: configSource,
+      runtime: commitRuntime,
       fileConfig,
-      linterOptions,
       cliScopeGlobs: args.scope,
       quiet: args.quiet,
       push: args.push,
       message: args.message,
     })
     // 根程序上的 `--trace` 不会写进子命令 `args.trace`，以全局开关为准
-    logFairyCliTrace('commit: 配置', Object.fromEntries(
-      runtimeParams.map(param => [param.label, param.value]),
-    ))
+    logFairyCliTrace('commit: 配置', formatCommitConfigTrace({
+      source: configSource,
+      runtime: commitRuntime,
+      cliScopeGlobs: args.scope,
+      quiet: args.quiet,
+      push: args.push,
+      message: args.message,
+      fileCommit: fileConfig.commit,
+    }))
+    logFairyCliTrace('commit: 校验', formatCommitValidationTrace(linterOptions))
     if (args.quiet) {
       // dry-run 只展示参数，不读 COMMIT_EDITMSG、不因校验失败挡住调试
       if (args.dryRun) {
