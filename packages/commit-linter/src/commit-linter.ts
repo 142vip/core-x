@@ -124,8 +124,9 @@ function assertCommitRules(
 /**
  * 校验 Git Commit 信息（Conventional Commits）。
  *
- * 传入 `options` 时启用 type / scope / subject 白名单与 `verify`；
- * 仅省略 `options` 时只做首行格式解析。
+ * - 省略 `options`：仅解析首行格式；
+ * - 传入 `options` 且配置了 `types` / `scopes` / `verify` 之一：启用对应白名单校验；
+ * - 仅传入 `commit` 等、未配置上述白名单字段：仍只做格式解析（单包仓 `fa commit --quiet` 等场景）。
  */
 export function commitLinter(options?: CommitLinterOptions): GitCommitLinter {
   const commit = resolveCommitFirstLine(options)
@@ -146,7 +147,11 @@ export function commitLinter(options?: CommitLinterOptions): GitCommitLinter {
     commit,
   }
 
-  if (options != null) {
+  // 未配置 type / scope / verify 白名单时，只做格式解析（与旧版 `commitLiner()` 一致）
+  if (
+    options != null
+    && (options.types != null || options.scopes != null || options.verify != null)
+  ) {
     assertCommitRules(options, gitCommit)
   }
 

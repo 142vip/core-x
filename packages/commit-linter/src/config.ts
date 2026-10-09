@@ -9,8 +9,8 @@ export const CONFIG_DEFAULT_NAME = 'commit-linter' as const
  */
 export interface VipCommitLinterConfig extends CommitLinterOptions {
   /**
-   * Monorepo 包路径 glob；由 fairy-cli 扫描 npm 包名并写入运行时 `scopes`。
-   * 不传入 `commitLinter`。
+   * Monorepo 包路径 glob；由 fairy-cli 在存在 `pnpm-workspace.yaml` 时扫描 npm 包名并写入运行时 `scopes`。
+   * 不传入 `commitLinter`。单包仓库可省略。
    */
   scopeGlobs?: string[]
 }
