@@ -57,6 +57,8 @@ const headers = AxiosHeaders.from({ Accept: 'application/json' })
 
 发请求用 `vipAxios` / `createVipAxios`。`export *` 不会带上这两个依赖的默认导出。
 
+包本身是 `"type": "module"`。CommonJS 下游（例如 Nest 的 `nodenext`）因此仍能从 ESM 声明里拿到 `isAxiosError`、`AxiosRequestConfig` 等具名符号；若声明被当成 CJS，这些名字会消失。
+
 ## 升级
 
 ```shell
