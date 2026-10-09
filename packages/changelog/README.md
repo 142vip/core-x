@@ -18,12 +18,12 @@ pnpm add @142vip/changelog
 
 ## 功能
 
-- ✅ CLI 从 Git 提交生成 CHANGELOG Markdown
-- ✅ 可选写入 `CHANGELOG.md` 并创建 GitHub Release
-- ✅ API：`changelogApi` · `parseCliOptions` · `defineChangelogConfig`
-- ✅ `fa changelog` 直连本包，无需 `npx changelog`
-- ✅ Monorepo `scopeName` 支持
-- ✅ 贡献者解析（GitHub API，Node 18+ 原生 `fetch`）
+- CLI 从 Git 提交生成 CHANGELOG Markdown
+- 可选写入 `CHANGELOG.md` 并创建 GitHub Release
+- API：`changelogApi` · `parseCliOptions` · `defineChangelogConfig`
+- `fa changelog` 直连本包，无需 `npx changelog`
+- Monorepo `scopeName` 支持
+- 贡献者解析（GitHub API，Node 18+ 原生 `fetch`）
 
 ## 配置
 

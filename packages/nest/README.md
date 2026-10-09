@@ -18,13 +18,13 @@ pnpm add @142vip/nest
 
 ## 功能
 
-- ✅ 统一响应拦截器 `ResponseInterceptor`（`{ success, data }`）
-- ✅ 请求头传播 `PropagationInterceptor` 与 `propagationContext`
-- ✅ 全局异常过滤器 `GlobalFilter`
-- ✅ Swagger 响应装饰器：`ApiResponseObject` / `ApiResponseList` / `ApiResponsePagination` / `ApiResponseNull` / `ApiResponseSkip`
-- ✅ DTO / VO 基类与分页：`PaginationDto`、`PaginationVo`、`BaseEntityVo`
-- ✅ 属性转换装饰器：`TransformToBoolean`、`Trim`、`StrDesensitize`（完整列表见 `FEATURES.md`）
-- ✅ 模块类型别名 `NestModule`
+- 统一响应拦截器 `ResponseInterceptor`（`{ success, data }`）
+- 请求头传播 `PropagationInterceptor` 与 `propagationContext`
+- 全局异常过滤器 `GlobalFilter`
+- Swagger 响应装饰器：`ApiResponseObject` / `ApiResponseList` / `ApiResponsePagination` / `ApiResponseNull` / `ApiResponseSkip`
+- DTO / VO 基类与分页：`PaginationDto`、`PaginationVo`、`BaseEntityVo`
+- 属性转换装饰器：`TransformToBoolean`、`Trim`、`StrDesensitize`（完整列表见 `FEATURES.md`）
+- 模块类型别名 `NestModule`
 
 ## 配置
 

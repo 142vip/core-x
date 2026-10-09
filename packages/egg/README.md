@@ -16,15 +16,15 @@ pnpm add @142vip/egg
 
 ## 功能
 
-- ✅ `EggPluginBoot`：子插件生命周期与 `didLoad` 时注册实例
-- ✅ `EggPluginManager`：单实例 / 多实例挂载到 `app[pluginName]`
-- ✅ `defaultPluginConfig` / `mergeConfig`：插件默认配置合并
-- ✅ `RegisterEggPluginName` / `PluginLoader`：插件名与加载时机枚举
-- ✅ `VipEggPluginLogger`：基于 `app.coreLogger` 的插件日志
-- ✅ `VipMySQLPool`：mysql2 连接池封装
-- ✅ `SequelizeORM` / `VipSequelize`：Sequelize 连接与实体约定
-- ✅ `IORedis` / `RedisMode`：ioredis 客户端工厂
-- ✅ `registerPlugin`：基于 Egg `addSingleton` 的简易注册（旧路径）
+- `EggPluginBoot`：子插件生命周期与 `didLoad` 时注册实例
+- `EggPluginManager`：单实例 / 多实例挂载到 `app[pluginName]`
+- `defaultPluginConfig` / `mergeConfig`：插件默认配置合并
+- `RegisterEggPluginName` / `PluginLoader`：插件名与加载时机枚举
+- `VipEggPluginLogger`：基于 `app.coreLogger` 的插件日志
+- `VipMySQLPool`：mysql2 连接池封装
+- `SequelizeORM` / `VipSequelize`：Sequelize 连接与实体约定
+- `IORedis` / `RedisMode`：ioredis 客户端工厂
+- `registerPlugin`：基于 Egg `addSingleton` 的简易注册（旧路径）
 
 ## 配置
 

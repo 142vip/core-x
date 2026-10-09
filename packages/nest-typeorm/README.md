@@ -16,10 +16,10 @@ pnpm add @142vip/nest-typeorm @142vip/nest @nestjs/typeorm typeorm
 
 ## 功能
 
-- ✅ `NestTypeOrmModule`：委托 `@nestjs/typeorm`，避免多余包装破坏 DataSource 注入
-- ✅ `forRoot` / `forRootAsync` / `forFeature` / `register`（等同 `forRoot`）
-- ✅ `DataType` 枚举：`mysql` / `postgres`
-- ✅ re-export `@nestjs/typeorm` 与 `typeorm` 常用 API（`pkgs.ts`）
+- `NestTypeOrmModule`：委托 `@nestjs/typeorm`，避免多余包装破坏 DataSource 注入
+- `forRoot` / `forRootAsync` / `forFeature` / `register`（等同 `forRoot`）
+- `DataType` 枚举：`mysql` / `postgres`
+- re-export `@nestjs/typeorm` 与 `typeorm` 常用 API（`pkgs.ts`）
 
 ## 配置
 

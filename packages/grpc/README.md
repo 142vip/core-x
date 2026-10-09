@@ -16,12 +16,12 @@ pnpm add @142vip/grpc
 
 ## 功能
 
-- ✅ `GrpcProtoLoader` 加载 proto 并解析 service
-- ✅ `GrpcClient` 注册/获取 gRPC 服务客户端
-- ✅ `GrpcServer` 注册服务、监听端口、内置健康检查
-- ✅ `grpcSimpleHandler` / `grpcStreamHandler` 服务端方法包装
-- ✅ 示例：`GrpcExampleService` `GrpcExampleServerManager`
-- ✅ 包内 `pnpm dev:client` / `dev:server` 示例脚本
+- `GrpcProtoLoader` 加载 proto 并解析 service
+- `GrpcClient` 注册/获取 gRPC 服务客户端
+- `GrpcServer` 注册服务、监听端口、内置健康检查
+- `grpcSimpleHandler` / `grpcStreamHandler` 服务端方法包装
+- 示例：`GrpcExampleService` `GrpcExampleServerManager`
+- 包内 `pnpm dev:client` / `dev:server` 示例脚本
 
 ## 配置
 

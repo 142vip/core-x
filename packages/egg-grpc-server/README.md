@@ -16,13 +16,13 @@ pnpm add @142vip/egg-grpc-server @142vip/grpc @142vip/egg
 
 ## 功能
 
-- ✅ `GrpcServer` 注册 proto 服务与方法 handler
-- ✅ 从 `app/grpc`（可配置 `grpcServicePath`）加载 Egg `Service` 实现类
-- ✅ 默认**仅在 `agent.js` 加载**（`loaders: ['agent']`），避免端口冲突
-- ✅ `app.beforeStart` 监听 `connectUri`；`beforeClose` 调用 `forceShutdown`
-- ✅ `app.grpcServer.getInstance()` 返回 `GrpcServer`
-- ✅ `example/example-grpc.js` 提供示例 proto 与 handler 工具
-- ✅ `core/base-grpc.service.js`：`BaseGrpcService` 基类
+- `GrpcServer` 注册 proto 服务与方法 handler
+- 从 `app/grpc`（可配置 `grpcServicePath`）加载 Egg `Service` 实现类
+- 默认**仅在 `agent.js` 加载**（`loaders: ['agent']`），避免端口冲突
+- `app.beforeStart` 监听 `connectUri`；`beforeClose` 调用 `forceShutdown`
+- `app.grpcServer.getInstance()` 返回 `GrpcServer`
+- `example/example-grpc.js` 提供示例 proto 与 handler 工具
+- `core/base-grpc.service.js`：`BaseGrpcService` 基类
 
 ## 配置
 

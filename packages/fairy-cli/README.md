@@ -22,27 +22,27 @@ pnpm add -D @142vip/fairy-cli
 
 ## 功能
 
-- ✅ 命令入口别名：`fan` / `ffr` / `fa` / `fairy` / `ff`；未知子命令时提示全部入口与子命令列表
-- ✅ 子命令通用选项：`--dry-run`（打印生效参数，以及将执行的命令/HTTP 步骤）、`--trace`（调试日志）、`--vip`（@142vip 多包仓库专用，见 `release` / `sync`）
-- ✅ 登录 Docker / npm（`login`）
-- ✅ 依赖安装（`install` / `i`，默认 pnpm，`--ignore-scripts`）；`fa ci` 执行 `pnpm i --frozen-lockfile --force`
-- ✅ `fairy.config.*`：`hooks`、`scripts`（`fa run`）、`install`。默认含 `precommit`、`commitmsg`、`preinstall`（有 `scripts/` 时 `chmod +x`）以及 `lint` / `clean*` / `sync`
-- ✅ `fa run <name>`：内置 → `fairy.config` → `scripts` → `package.json` → `scripts`（后者优先）；`fa -h` / `fa run -h` 列出
-- ✅ `fa i` / `fa ci` 执行 `preinstall` 与 `postinstall`；`postinstall` 末尾安装 git 钩子。`fa install --hook-only <name>` 只跑指定钩子
-- ✅ 多包版本发布（`release`）
-- ✅ CHANGELOG 生成（`changelog`）
-- ✅ npm 镜像推送（`publish`）
-- ✅ CNPM 包同步（`sync`）
-- ✅ 项目部署（`deploy`）
-- ✅ ESLint 检查与格式化（`lint`）
-- ✅ 清理构建产物（`clean`）
-- ✅ 软著源代码文档生成（`copyright`）
-- ✅ Git Commit 规范提交（`commit`）
-- ✅ Agent Skills 同步与校验（`fa ai` 同步 / `fa ai --check` 校验，集成 `@142vip/agent-skills`）
-- ✅ 编程式 API：`fairyCliMain`、`releasePackage`、`buildReleaseVersionOptions`、`printPreCheckRelease`
-- ✅ `commit`：`-f` 指定 `commit-linter.config.*`，也可在 `fairy.config` 的 `commit` 里写校验字段与 `-q` / `-s` / `-m` / `-p`；命令行显式参数优先；内置 `config/default-commit-linter.config.cjs`
-- ✅ `lint`：自动发现 `eslint.config.*` 或内置 `config/default-eslint.config.mjs`，`-f` 指定配置
-- ✅ 与专用包同源的编程式导出：`commitLinter`、`defineVipCommitLinterConfig`、`loadCommitLinterConfigForCli`（ESLint 配置请从 `@142vip/eslint-config` 引入 `defineVipEslintConfig`）
+- 命令入口别名：`fan` / `ffr` / `fa` / `fairy` / `ff`；未知子命令时提示全部入口与子命令列表
+- 子命令通用选项：`--dry-run`（打印生效参数，以及将执行的命令/HTTP 步骤）、`--trace`（调试日志）、`--vip`（@142vip 多包仓库专用，见 `release` / `sync`）
+- 登录 Docker / npm（`login`）
+- 依赖安装（`install` / `i`，默认 pnpm，`--ignore-scripts`）；`fa ci` 执行 `pnpm i --frozen-lockfile --force`
+- `fairy.config.*`：`hooks`、`scripts`（`fa run`）、`install`。默认含 `precommit`、`commitmsg`、`preinstall`（有 `scripts/` 时 `chmod +x`）以及 `lint` / `clean*` / `sync`
+- `fa run <name>`：内置 → `fairy.config` → `scripts` → `package.json` → `scripts`（后者优先）；`fa -h` / `fa run -h` 列出
+- `fa i` / `fa ci` 执行 `preinstall` 与 `postinstall`；`postinstall` 末尾安装 git 钩子。`fa install --hook-only <name>` 只跑指定钩子
+- 多包版本发布（`release`）
+- CHANGELOG 生成（`changelog`）
+- npm 镜像推送（`publish`）
+- CNPM 包同步（`sync`）
+- 项目部署（`deploy`）
+- ESLint 检查与格式化（`lint`）
+- 清理构建产物（`clean`）
+- 软著源代码文档生成（`copyright`）
+- Git Commit 规范提交（`commit`）
+- Agent Skills 同步与校验（`fa ai` 同步 / `fa ai --check` 校验，集成 `@142vip/agent-skills`）
+- 编程式 API：`fairyCliMain`、`releasePackage`、`buildReleaseVersionOptions`、`printPreCheckRelease`
+- `commit`：`-f` 指定 `commit-linter.config.*`，也可在 `fairy.config` 的 `commit` 里写校验字段与 `-q` / `-s` / `-m` / `-p`；命令行显式参数优先；内置 `config/default-commit-linter.config.cjs`
+- `lint`：自动发现 `eslint.config.*` 或内置 `config/default-eslint.config.mjs`，`-f` 指定配置
+- 与专用包同源的编程式导出：`commitLinter`、`defineVipCommitLinterConfig`、`loadCommitLinterConfigForCli`（ESLint 配置请从 `@142vip/eslint-config` 引入 `defineVipEslintConfig`）
 
 ## 配置
 

@@ -16,11 +16,11 @@ pnpm add @142vip/egg-redis @142vip/egg ioredis
 
 ## 功能
 
-- ✅ ioredis 客户端（可配置 `Redis` 构造器覆盖）
-- ✅ `RedisMode`：`standard`（默认）、`cluster`、`sentinel`
-- ✅ 单实例 / 多实例挂载
-- ✅ `app.redis.getInstance()` 返回 ioredis 客户端
-- ✅ `EggRedisAppBoot` / `EggRedisAgentBoot`
+- ioredis 客户端（可配置 `Redis` 构造器覆盖）
+- `RedisMode`：`standard`（默认）、`cluster`、`sentinel`
+- 单实例 / 多实例挂载
+- `app.redis.getInstance()` 返回 ioredis 客户端
+- `EggRedisAppBoot` / `EggRedisAgentBoot`
 
 ## 配置
 

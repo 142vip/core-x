@@ -16,11 +16,11 @@ pnpm add @142vip/egg-axios @142vip/axios @142vip/egg
 
 ## 功能
 
-- ✅ 基于 `@142vip/axios` 的 `createVipAxios` 创建实例
-- ✅ 默认请求/响应拦截器（`defaultRequestInterceptor` / `defaultResponseInterceptor`）
-- ✅ 单实例（`client`）与多实例（`clients`）挂载
-- ✅ `app.axios.getInstance()` / `getInstances()` / `getInstanceNames()`
-- ✅ 支持 `app.js` 与 `agent.js` 加载（`EggAxiosAgentBoot`）
+- 基于 `@142vip/axios` 的 `createVipAxios` 创建实例
+- 默认请求/响应拦截器（`defaultRequestInterceptor` / `defaultResponseInterceptor`）
+- 单实例（`client`）与多实例（`clients`）挂载
+- `app.axios.getInstance()` / `getInstances()` / `getInstanceNames()`
+- 支持 `app.js` 与 `agent.js` 加载（`EggAxiosAgentBoot`）
 
 ## 配置
 

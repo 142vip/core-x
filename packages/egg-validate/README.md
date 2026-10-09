@@ -16,10 +16,10 @@ pnpm add @142vip/egg-validate @142vip/egg joi
 
 ## 功能
 
-- ✅ 插件注册与 `EggPluginBoot` 生命周期
-- ✅ 依赖 `joi@17`
-- ⬜ **骨架状态**：`createEggValidateInstance` 使用空 `Joi.object({})`，未提供可用的校验 API
-- ⬜ **配置键不一致**：`eggPlugin.name` 为 `validate`，但包内 `config/config.default.js` 顶层键误写为 `swagger`（历史拷贝），运行时读取 `config.validate`，需在应用内自行提供 `validate` 配置
+- 插件注册与 `EggPluginBoot` 生命周期
+- 依赖 `joi@17`
+- **骨架状态**：`createEggValidateInstance` 使用空 `Joi.object({})`，未提供可用的校验 API
+- **配置键不一致**：`eggPlugin.name` 为 `validate`，但包内 `config/config.default.js` 顶层键误写为 `swagger`（历史拷贝），运行时读取 `config.validate`，需在应用内自行提供 `validate` 配置
 
 ## 配置
 

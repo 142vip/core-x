@@ -16,9 +16,9 @@ pnpm add @142vip/redis ioredis
 
 ## 功能
 
-- ✅ `RedisFactory` 创建单机/哨兵/集群客户端
-- ✅ `RedisMode` 连接模式枚举
-- ✅ `RedisConfig` / `RedisClientConfig` / `RedisClusterConfig` 类型
+- `RedisFactory` 创建单机/哨兵/集群客户端
+- `RedisMode` 连接模式枚举
+- `RedisConfig` / `RedisClientConfig` / `RedisClusterConfig` 类型
 
 ## 配置
 

@@ -18,13 +18,13 @@ pnpm add @142vip/release-version
 
 ## 功能
 
-- ✅ 交互式或编程式更新 `package.json` 版本
-- ✅ 可选生成 CHANGELOG、git commit / tag / push
-- ✅ `releaseApi`（`releaseVersion` / `releaseVersionDryRun` / `releaseVersionInfo`）
-- ✅ `ReleaseVersionOperation` 发版流程状态机（OOP 编排 commit / tag / CHANGELOG）
-- ✅ cosmiconfig 配置名 `releasex`
-- ✅ Monorepo `--scopeName` 与 `--vip` 专用能力
-- ✅ 基于 `VipCommander`，与 `fa` / `changelog` CLI 体验一致
+- 交互式或编程式更新 `package.json` 版本
+- 可选生成 CHANGELOG、git commit / tag / push
+- `releaseApi`（`releaseVersion` / `releaseVersionDryRun` / `releaseVersionInfo`）
+- `ReleaseVersionOperation` 发版流程状态机（OOP 编排 commit / tag / CHANGELOG）
+- cosmiconfig 配置名 `releasex`
+- Monorepo `--scopeName` 与 `--vip` 专用能力
+- 基于 `VipCommander`，与 `fa` / `changelog` CLI 体验一致
 
 ## 配置
 

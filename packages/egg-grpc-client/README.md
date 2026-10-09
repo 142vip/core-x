@@ -16,11 +16,11 @@ pnpm add @142vip/egg-grpc-client @142vip/grpc @142vip/egg
 
 ## 功能
 
-- ✅ 按 `protoPaths` 加载 proto 并 `registerService`
-- ✅ 单实例 / 多实例挂载到 `app.grpcClient`
-- ✅ `app.grpcClient.getInstance()` 返回 `GrpcClient`
-- ✅ 通过 `grpcClient.getService(servicePath)` 获取 RPC 客户端
-- ✅ `EggGrpcClientAppBoot` / `EggGrpcClientAgentBoot`
+- 按 `protoPaths` 加载 proto 并 `registerService`
+- 单实例 / 多实例挂载到 `app.grpcClient`
+- `app.grpcClient.getInstance()` 返回 `GrpcClient`
+- 通过 `grpcClient.getService(servicePath)` 获取 RPC 客户端
+- `EggGrpcClientAppBoot` / `EggGrpcClientAgentBoot`
 
 ## 配置
 
