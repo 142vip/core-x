@@ -68,20 +68,20 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
         with:
           persist-credentials: false
           fetch-depth: 0
 
       # 安装PNPM
       - name: PNPM Install
-        uses: pnpm/action-setup@v5
+        uses: pnpm/action-setup@v6
         with:
           version: 9.6.0
 
       # 安装Node环境
       - name: Install Node.js
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v7
         with:
           node-version: 22.10.0
           cache: pnpm
@@ -106,7 +106,7 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
         with:
           persist-credentials: false
           # “最近更新时间” 等 git 日志相关信息，需要拉取全部提交记录
@@ -114,13 +114,13 @@ jobs:
 
       # 安装PNPM
       - name: PNPM Install
-        uses: pnpm/action-setup@v5
+        uses: pnpm/action-setup@v6
         with:
           version: 9.6.0
 
       # 安装Node环境
       - name: Install Node.js
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v7
         with:
           node-version: 22.10.0
           # npm包上传地址，用于注册，参考：https://github.com/actions/setup-node
@@ -168,19 +168,19 @@ jobs:
     steps:
       # 拉取代码
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0 # 如果未启用 lastUpdated，则不需要
 
       # 安装pnpm
       - name: PNPM Install
-        uses: pnpm/action-setup@v5
+        uses: pnpm/action-setup@v6
         with:
           version: 9.6.0
 
       # 安装Node
       - name: Setup Node
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v7
         with:
           node-version: 22.10.0
           cache: pnpm
@@ -222,7 +222,7 @@ jobs:
     if: github.event_name == 'push' && github.repository == '142vip/core-x' && startsWith(github.event.head_commit.message, 'chore(release):')
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
         with:
           persist-credentials: false
           fetch-depth: 0
