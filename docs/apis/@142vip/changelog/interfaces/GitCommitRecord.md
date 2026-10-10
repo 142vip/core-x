@@ -2,7 +2,7 @@
 
 # 接口: GitCommitRecord
 
-定义于: [changelog/src/core/changelog.interface.ts:56](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L56)
+定义于: [changelog/src/core/changelog.interface.ts:56](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/changelog.interface.ts#L56)
 
 经 Conventional Commits 规则解析后的提交记录
 
@@ -20,7 +20,7 @@
 
 > **author**: [`GitCommitAuthor`](GitCommitAuthor.md)
 
-定义于: [changelog/src/core/changelog.interface.ts:22](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L22)
+定义于: [changelog/src/core/changelog.interface.ts:22](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/changelog.interface.ts#L22)
 
 主作者信息
 
@@ -34,7 +34,7 @@
 
 > **authors**: [`GitCommitAuthor`](GitCommitAuthor.md)[]
 
-定义于: [changelog/src/core/changelog.interface.ts:66](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L66)
+定义于: [changelog/src/core/changelog.interface.ts:66](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/changelog.interface.ts#L66)
 
 主作者 + `Co-authored-by` 合并后的作者列表
 
@@ -44,7 +44,7 @@
 
 > **body**: `string`
 
-定义于: [changelog/src/core/changelog.interface.ts:18](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L18)
+定义于: [changelog/src/core/changelog.interface.ts:18](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/changelog.interface.ts#L18)
 
 提交正文（首行之后的 body）
 
@@ -58,7 +58,7 @@
 
 > **description**: `string`
 
-定义于: [changelog/src/core/changelog.interface.ts:58](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L58)
+定义于: [changelog/src/core/changelog.interface.ts:58](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/changelog.interface.ts#L58)
 
 去除引用后的描述文本
 
@@ -68,7 +68,7 @@
 
 > **isBreaking**: `boolean`
 
-定义于: [changelog/src/core/changelog.interface.ts:68](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L68)
+定义于: [changelog/src/core/changelog.interface.ts:68](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/changelog.interface.ts#L68)
 
 是否含 breaking change（`!` 或 body 中的 BREAKING CHANGE）
 
@@ -78,7 +78,7 @@
 
 > **message**: `string`
 
-定义于: [changelog/src/core/changelog.interface.ts:16](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L16)
+定义于: [changelog/src/core/changelog.interface.ts:16](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/changelog.interface.ts#L16)
 
 提交标题（Conventional Commits 首行）
 
@@ -92,7 +92,7 @@
 
 > **references**: [`GitCommitReference`](GitCommitReference.md)[]
 
-定义于: [changelog/src/core/changelog.interface.ts:64](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L64)
+定义于: [changelog/src/core/changelog.interface.ts:64](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/changelog.interface.ts#L64)
 
 从描述与 hash 提取的引用列表
 
@@ -102,7 +102,7 @@
 
 > **scope**: `string`
 
-定义于: [changelog/src/core/changelog.interface.ts:62](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L62)
+定义于: [changelog/src/core/changelog.interface.ts:62](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/changelog.interface.ts#L62)
 
 scope（括号内，可能经 `scopeMap` 映射）
 
@@ -112,7 +112,7 @@ scope（括号内，可能经 `scopeMap` 映射）
 
 > **shortHash**: `string`
 
-定义于: [changelog/src/core/changelog.interface.ts:20](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L20)
+定义于: [changelog/src/core/changelog.interface.ts:20](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/changelog.interface.ts#L20)
 
 短 hash（`%h`）
 
@@ -126,6 +126,6 @@ scope（括号内，可能经 `scopeMap` 映射）
 
 > **type**: `string`
 
-定义于: [changelog/src/core/changelog.interface.ts:60](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L60)
+定义于: [changelog/src/core/changelog.interface.ts:60](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/changelog.interface.ts#L60)
 
 commit type（如 `feat` / `fix`）

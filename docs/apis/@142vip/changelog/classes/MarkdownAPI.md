@@ -2,7 +2,7 @@
 
 # 类: MarkdownAPI
 
-定义于: [changelog/src/core/apis/markdown.api.ts:198](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/apis/markdown.api.ts#L198)
+定义于: [changelog/src/core/apis/markdown.api.ts:198](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/apis/markdown.api.ts#L198)
 
 CHANGELOG Markdown 片段格式化
 
@@ -22,7 +22,7 @@ CHANGELOG Markdown 片段格式化
 
 > **formatSection**: (`commits`, `options`) => `string`[]
 
-定义于: [changelog/src/core/apis/markdown.api.ts:199](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/apis/markdown.api.ts#L199)
+定义于: [changelog/src/core/apis/markdown.api.ts:199](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/apis/markdown.api.ts#L199)
 
 将一组 commit 格式化为 Markdown 章节
 
@@ -76,7 +76,7 @@ CHANGELOG Markdown 片段格式化
 
 > **getGithubVersionDescription**: (`__namedParameters`) => `string`
 
-定义于: [changelog/src/core/apis/markdown.api.ts:202](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/apis/markdown.api.ts#L202)
+定义于: [changelog/src/core/apis/markdown.api.ts:202](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/apis/markdown.api.ts#L202)
 
 仓库根发版时的 GitHub compare 说明行
 
@@ -110,7 +110,7 @@ CHANGELOG Markdown 片段格式化
 
 > **getNoSignificantChanges**: () => `string`
 
-定义于: [changelog/src/core/apis/markdown.api.ts:200](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/apis/markdown.api.ts#L200)
+定义于: [changelog/src/core/apis/markdown.api.ts:200](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/apis/markdown.api.ts#L200)
 
 无有效变更时的占位文案
 
@@ -124,7 +124,7 @@ CHANGELOG Markdown 片段格式化
 
 > **getNPMVersionDescription**: (`pkgName`, `pkgVersion`) => `string`
 
-定义于: [changelog/src/core/apis/markdown.api.ts:201](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/apis/markdown.api.ts#L201)
+定义于: [changelog/src/core/apis/markdown.api.ts:201](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/apis/markdown.api.ts#L201)
 
 Monorepo 子包发版时的 NPM 版本说明行
 

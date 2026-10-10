@@ -73,14 +73,14 @@ cd packages/<pkg> && pnpm test        # 逻辑变更时
 
 ```bash
 # 默认
-npx eslint packages/<pkg> --fix
-npx eslint apps/<demo> --fix
+npx fa lint -f packages/<pkg>
+npx fa lint -f apps/<demo>
 
 # 改根 ESLint/TS、跨多顶层目录、用户将 commit
-pnpm lint:fix
+npx fa lint --fix
 ```
 
-| 可跳过 | 须局部 lint | 须全仓 `pnpm lint:fix` |
+| 可跳过 | 须局部 lint | 须全仓 `npx fa lint --fix` |
 |--------|-------------|------------------------|
 | 纯问答、仅 rules | 单包 / demo / 指定文件 | 根 `eslint.config.js`、根 TS 配置 |
 

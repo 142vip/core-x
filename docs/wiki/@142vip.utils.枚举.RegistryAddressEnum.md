@@ -2,7 +2,7 @@
 
 # 枚举: RegistryAddressEnum
 
-定义于: [packages/utils/src/enums/registry-address.enum.ts:1](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/enums/registry-address.enum.ts#L1)
+定义于: [packages/utils/src/enums/registry-address.enum.ts:1](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/enums/registry-address.enum.ts#L1)
 
 ## 枚举成员
 
@@ -10,7 +10,7 @@
 
 > **DOCKER**: `"https://registry.cn-hangzhou.aliyuncs.com"`
 
-定义于: [packages/utils/src/enums/registry-address.enum.ts:2](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/enums/registry-address.enum.ts#L2)
+定义于: [packages/utils/src/enums/registry-address.enum.ts:2](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/enums/registry-address.enum.ts#L2)
 
 ***
 
@@ -18,7 +18,23 @@
 
 > **NPM**: `"https://registry.npmjs.org"`
 
-定义于: [packages/utils/src/enums/registry-address.enum.ts:3](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/enums/registry-address.enum.ts#L3)
+定义于: [packages/utils/src/enums/registry-address.enum.ts:3](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/enums/registry-address.enum.ts#L3)
+
+***
+
+### NPM\_ALIBABA
+
+> **NPM\_ALIBABA**: `"https://registry.npmmirror.com"`
+
+定义于: [packages/utils/src/enums/registry-address.enum.ts:5](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/enums/registry-address.enum.ts#L5)
+
+***
+
+### NPM\_TENCENT
+
+> **NPM\_TENCENT**: `"https://mirrors.tencent.com/npm/"`
+
+定义于: [packages/utils/src/enums/registry-address.enum.ts:6](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/enums/registry-address.enum.ts#L6)
 
 ***
 
@@ -26,28 +42,4 @@
 
 > **VIP\_DOCKER**: `"registry.cn-hangzhou.aliyuncs.com"`
 
-定义于: [packages/utils/src/enums/registry-address.enum.ts:4](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/enums/registry-address.enum.ts#L4)
-
-***
-
-### VIP\_NPM
-
-> **VIP\_NPM**: `"https://registry.142vip.com"`
-
-定义于: [packages/utils/src/enums/registry-address.enum.ts:5](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/enums/registry-address.enum.ts#L5)
-
-***
-
-### VIP\_NPM\_ALIBABA
-
-> **VIP\_NPM\_ALIBABA**: `"https://registry.npmmirror.com"`
-
-定义于: [packages/utils/src/enums/registry-address.enum.ts:6](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/enums/registry-address.enum.ts#L6)
-
-***
-
-### VIP\_NPM\_TENCENT
-
-> **VIP\_NPM\_TENCENT**: `"https://mirrors.tencent.com/npm/"`
-
-定义于: [packages/utils/src/enums/registry-address.enum.ts:7](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/enums/registry-address.enum.ts#L7)
+定义于: [packages/utils/src/enums/registry-address.enum.ts:4](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/enums/registry-address.enum.ts#L4)

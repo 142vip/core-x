@@ -1,0 +1,15 @@
+[API 参考](../../../index.md) / [@142vip/fairy-cli](../index.md) / FairyInstallConfig
+
+# 接口: FairyInstallConfig
+
+定义于: [packages/fairy-cli/src/config.ts:4](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/fairy-cli/src/config.ts#L4)
+
+## 属性
+
+### ignoreScripts?
+
+> `optional` **ignoreScripts?**: `boolean`
+
+定义于: [packages/fairy-cli/src/config.ts:6](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/fairy-cli/src/config.ts#L6)
+
+默认是否在 `fa i` / `fa ci` 时追加 `--ignore-scripts`

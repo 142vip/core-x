@@ -16,10 +16,10 @@ pnpm add @142vip/nest-redis @142vip/nest @142vip/redis
 
 ## 功能
 
-- ✅ 全局动态模块 `NestRedisModule.register`
-- ✅ `RedisService`：JSON 序列化的 `setEx` / `getEx` / `del`（延迟双删）
-- ✅ `@InjectRedisClient()` 注入底层 `RedisClient`（`@142vip/redis`）
-- ✅ `RedisKeyManager` 统一 key 前缀
+- 全局动态模块 `NestRedisModule.register`
+- `RedisService`：JSON 序列化的 `setEx` / `getEx` / `del`（延迟双删）
+- `@InjectRedisClient()` 注入底层 `RedisClient`（`@142vip/redis`）
+- `RedisKeyManager` 统一 key 前缀
 
 ## 配置
 

@@ -2,7 +2,7 @@
 
 # 枚举: GrpcExampleServiceMethod
 
-定义于: [example.ts:110](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/grpc/src/example.ts#L110)
+定义于: [example.ts:110](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/grpc/src/example.ts#L110)
 
 Grpc 示例服务方法
 
@@ -12,7 +12,7 @@ Grpc 示例服务方法
 
 > **ClientStreamToServer**: `"ClientStreamToServer"`
 
-定义于: [example.ts:112](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/grpc/src/example.ts#L112)
+定义于: [example.ts:112](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/grpc/src/example.ts#L112)
 
 ***
 
@@ -20,7 +20,7 @@ Grpc 示例服务方法
 
 > **ClientStreamToServerStream**: `"ClientStreamToServerStream"`
 
-定义于: [example.ts:114](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/grpc/src/example.ts#L114)
+定义于: [example.ts:114](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/grpc/src/example.ts#L114)
 
 ***
 
@@ -28,7 +28,7 @@ Grpc 示例服务方法
 
 > **ClientToServer**: `"ClientToServer"`
 
-定义于: [example.ts:111](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/grpc/src/example.ts#L111)
+定义于: [example.ts:111](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/grpc/src/example.ts#L111)
 
 ***
 
@@ -36,4 +36,4 @@ Grpc 示例服务方法
 
 > **ClientToServerStream**: `"ClientToServerStream"`
 
-定义于: [example.ts:113](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/grpc/src/example.ts#L113)
+定义于: [example.ts:113](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/grpc/src/example.ts#L113)

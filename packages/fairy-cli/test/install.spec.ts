@@ -63,7 +63,7 @@ describe('installMain', () => {
       registry: RegistryAddressEnum.NPM,
     }))
     expect(installForCi).not.toHaveBeenCalled()
-    expect(jest.mocked(runFairyHook).mock.calls.map(call => call[0])).toEqual(['preinstall', 'postinstall'])
+    expect(jest.mocked(runFairyHook).mock.calls.map(call => call[0])).toEqual(['preinstall'])
   })
 
   it('--npm-ali-registry 使用阿里源', async () => {
@@ -110,7 +110,17 @@ describe('installMain', () => {
     expect(logInstallToolchain).not.toHaveBeenCalled()
   })
 
-  it('fa ci 始终执行 preinstall / postinstall', async () => {
+  it('fa ci 默认只跑 preinstall（postinstall 由 @142vip/fairy-cli npm lifecycle 执行）', async () => {
+    const runHook = jest.mocked(runFairyHook)
+    runHook.mockClear()
+    const program = new VipPackageCliCommander('fa', '1.0.0')
+    await installMain(program)
+    await runCliArgv(program, ['ci'])
+
+    expect(runHook.mock.calls.map(call => call[0])).toEqual(['preinstall'])
+  })
+
+  it('fa ci --ignore-scripts 末尾补跑 postinstall hook', async () => {
     const runHook = jest.mocked(runFairyHook)
     runHook.mockClear()
     const program = new VipPackageCliCommander('fa', '1.0.0')

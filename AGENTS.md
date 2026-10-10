@@ -62,11 +62,13 @@
 
 ## 验证与构建
 
-- **Lint（局部）**：`npx eslint --fix --max-warnings 0 <paths>`，零 error 零 warning；**禁止**默认全仓 `pnpm lint:fix`
-- **Build（受影响）**：`cd packages/<dir> && pnpm build`（unbuild / tsc 按包配置；Egg 插件包无 build）
-- **测试**：`cd packages/<dir> && pnpm test`
-- **文档站**：`pnpm build:docs`（零死链校验）
-- 详细命令见 `.cursor/rules/engineering/08-常用命令手册` 与 `15-scripts脚本手册`
+- **工程基座**：`@142vip/fairy-cli`。克隆后安装任选 `pnpm i`、`npx fa ci`、`npx fa i -f`（都会触发包内 postinstall 编译）。`hooks` 见根 `fairy.config.ts`（根 `package.json` 不写 lifecycle `postinstall`）
+- **入库上下文**：`.agents/README.md`
+- **Lint**：全仓 `npx fa lint` / `npx fa lint --fix`（子命令，不写进根 `package.json`，也不进 `fa run` 默认脚本）；局部 `npx fa lint -f <paths>`
+- **清理**：`npx fa run clean:cache` 或 `npx fa run clean`
+- **Build（受影响）**：`cd packages/<dir> && pnpm build`
+- **测试**：牵连包 `pnpm test`；全仓 `pnpm test`（Turbo `^build`）；覆盖率本地 `pnpm test:coverage`；PR `pnpm verify`（`npx fa lint` + `pnpm test` + `pnpm build:docs`）
+- **文档站**：`pnpm build:docs`
 
 ## Git 与提交
 
@@ -82,17 +84,18 @@
 
 1. **Rules 抽查**：改动路径对照本文档编码规范
 2. **死代码清理**：删除未使用 import / 变量 / 函数
-3. **局部 Lint**：`npx eslint --fix --max-warnings 0 <paths>`（零 error、零 warning）
+3. **局部 Lint**：`npx fa lint -f <paths>`（零 error、零 warning）
 4. **受影响 Build**：只编改动波及的包 / demo
-5. **文档同步**：改了 README / docs 时同步更新
+5. **测试**：逻辑变更跑牵连包 `pnpm test`；交付前可 `pnpm verify`
+6. **文档同步**：改了 README / docs 时同步更新
 
 详细流程见 `self-check` skill。
 
 ## 高效默认路径（单次任务）
 
 ```
-codegraph sync → 16 全仓清单 → 任务路由 → 读代码小改
-→ 局部 lint（0 error）→ 牵连包 build → 09 文档自检 → 交付
+AGENTS.md → .agents/README.md → workflow skill
+→ 读代码小改 → 局部 lint → 牵连 build/test → 文档同步 → 交付
 ```
 
 - 不知道改哪 → `business/任务路由索引`；不知道有哪些包 → `engineering/16-全仓资产清单`

@@ -30,7 +30,8 @@ export class VipSqlServer implements DataSourceConnector<SqlServerOptions> {
           idleTimeoutMillis: 30000,
         },
         options: {
-          // encrypt: true, //使用windows azure，需要设置次配置。
+          // tedious 默认 encrypt:true；Node 不允许把 IP 当作 TLS ServerName
+          encrypt: false,
           trustServerCertificate: true, // 新版要设为true，否则会报“ConnectionError: Failed to connect to localhost:1433 - self signed certificate”错误。
           // issues: https://github.com/tediousjs/tedious/issues/1449
           cryptoCredentialsDetails: {

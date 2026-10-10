@@ -115,14 +115,13 @@ that a "possible EventEmitter memory leak" has been detected. For any single
 temporarily avoid this warning:
 
 ```js
-import { EventEmitter } from 'node:events'
-
-const emitter = new EventEmitter()
-emitter.setMaxListeners(emitter.getMaxListeners() + 1)
+import { EventEmitter } from 'node:events';
+const emitter = new EventEmitter();
+emitter.setMaxListeners(emitter.getMaxListeners() + 1);
 emitter.once('event', () => {
   // do stuff
-  emitter.setMaxListeners(Math.max(emitter.getMaxListeners() - 1, 0))
-})
+  emitter.setMaxListeners(Math.max(emitter.getMaxListeners() - 1, 0));
+});
 ```
 
 The `--trace-warnings` command-line flag can be used to display the
@@ -513,27 +512,26 @@ to each.
 Returns `true` if the event had listeners, `false` otherwise.
 
 ```js
-import { EventEmitter } from 'node:events'
-
-const myEmitter = new EventEmitter()
+import { EventEmitter } from 'node:events';
+const myEmitter = new EventEmitter();
 
 // First listener
-myEmitter.on('event', () => {
-  console.log('Helloooo! first listener')
-})
+myEmitter.on('event', function firstListener() {
+  console.log('Helloooo! first listener');
+});
 // Second listener
-myEmitter.on('event', (arg1, arg2) => {
-  console.log(`event with parameters ${arg1}, ${arg2} in second listener`)
-})
+myEmitter.on('event', function secondListener(arg1, arg2) {
+  console.log(`event with parameters ${arg1}, ${arg2} in second listener`);
+});
 // Third listener
-myEmitter.on('event', (...args) => {
-  const parameters = args.join(', ')
-  console.log(`event with parameters ${parameters} in third listener`)
-})
+myEmitter.on('event', function thirdListener(...args) {
+  const parameters = args.join(', ');
+  console.log(`event with parameters ${parameters} in third listener`);
+});
 
-console.log(myEmitter.listeners('event'))
+console.log(myEmitter.listeners('event'));
 
-myEmitter.emit('event', 1, 2, 3, 4, 5)
+myEmitter.emit('event', 1, 2, 3, 4, 5);
 
 // Prints:
 // [
@@ -586,16 +584,16 @@ Returns an array listing the events for which the emitter has registered
 listeners. The values in the array are strings or `Symbol`s.
 
 ```js
-import { EventEmitter } from 'node:events'
+import { EventEmitter } from 'node:events';
 
-const myEE = new EventEmitter()
-myEE.on('foo', () => {})
-myEE.on('bar', () => {})
+const myEE = new EventEmitter();
+myEE.on('foo', () => {});
+myEE.on('bar', () => {});
 
-const sym = Symbol('symbol')
-myEE.on(sym, () => {})
+const sym = Symbol('symbol');
+myEE.on(sym, () => {});
 
-console.log(myEE.eventNames())
+console.log(myEE.eventNames());
 // Prints: [ 'foo', 'bar', Symbol(symbol) ]
 ```
 
@@ -718,9 +716,9 @@ Returns a copy of the array of listeners for the event named `eventName`.
 
 ```js
 server.on('connection', (stream) => {
-  console.log('someone connected!')
-})
-console.log(util.inspect(server.listeners('connection')))
+  console.log('someone connected!');
+});
+console.log(util.inspect(server.listeners('connection')));
 // Prints: [ [Function] ]
 ```
 
@@ -785,20 +783,20 @@ function that maps values to `null` will result in the cursor closing itself bef
 all documents.  This will **not** result in a memory leak, just surprising behavior.  For example:
 
 ```typescript
-const cursor = collection.find({})
-cursor.map(() => null)
+const cursor = collection.find({});
+cursor.map(() => null);
 
-const documents = await cursor.toArray()
+const documents = await cursor.toArray();
 // documents is always [], regardless of how many documents are in the collection.
 ```
 
 Other falsey values are allowed:
 
 ```typescript
-const cursor = collection.find({})
-cursor.map(() => '')
+const cursor = collection.find({});
+cursor.map(() => '');
 
-const documents = await cursor.toArray()
+const documents = await cursor.toArray();
 // documents is now an array of empty strings
 ```
 
@@ -810,9 +808,9 @@ Take note of the following example:
 #### 示例
 
 ```typescript
-const cursor: FindCursor<Document> = coll.find()
-const mappedCursor: FindCursor<number> = cursor.map(doc => Object.keys(doc).length)
-const keyCounts: number[] = await mappedCursor.toArray() // cursor.toArray() still returns Document[]
+const cursor: FindCursor<Document> = coll.find();
+const mappedCursor: FindCursor<number> = cursor.map(doc => Object.keys(doc).length);
+const keyCounts: number[] = await mappedCursor.toArray(); // cursor.toArray() still returns Document[]
 ```
 
 ***
@@ -968,8 +966,8 @@ been added. Multiple calls passing the same combination of `eventName` and
 
 ```js
 server.on('connection', (stream) => {
-  console.log('someone connected!')
-})
+  console.log('someone connected!');
+});
 ```
 
 Returns a reference to the `EventEmitter`, so that calls can be chained.
@@ -978,12 +976,11 @@ By default, event listeners are invoked in the order they are added. The `emitte
 event listener to the beginning of the listeners array.
 
 ```js
-import { EventEmitter } from 'node:events'
-
-const myEE = new EventEmitter()
-myEE.on('foo', () => console.log('a'))
-myEE.prependListener('foo', () => console.log('b'))
-myEE.emit('foo')
+import { EventEmitter } from 'node:events';
+const myEE = new EventEmitter();
+myEE.on('foo', () => console.log('a'));
+myEE.prependListener('foo', () => console.log('b'));
+myEE.emit('foo');
 // Prints:
 //   b
 //   a
@@ -1032,8 +1029,8 @@ been added. Multiple calls passing the same combination of `eventName` and
 
 ```js
 server.on('connection', (stream) => {
-  console.log('someone connected!')
-})
+  console.log('someone connected!');
+});
 ```
 
 Returns a reference to the `EventEmitter`, so that calls can be chained.
@@ -1042,12 +1039,11 @@ By default, event listeners are invoked in the order they are added. The `emitte
 event listener to the beginning of the listeners array.
 
 ```js
-import { EventEmitter } from 'node:events'
-
-const myEE = new EventEmitter()
-myEE.on('foo', () => console.log('a'))
-myEE.prependListener('foo', () => console.log('b'))
-myEE.emit('foo')
+import { EventEmitter } from 'node:events';
+const myEE = new EventEmitter();
+myEE.on('foo', () => console.log('a'));
+myEE.prependListener('foo', () => console.log('b'));
+myEE.emit('foo');
 // Prints:
 //   b
 //   a
@@ -1090,8 +1086,8 @@ been added. Multiple calls passing the same combination of `eventName` and
 
 ```js
 server.on('connection', (stream) => {
-  console.log('someone connected!')
-})
+  console.log('someone connected!');
+});
 ```
 
 Returns a reference to the `EventEmitter`, so that calls can be chained.
@@ -1100,12 +1096,11 @@ By default, event listeners are invoked in the order they are added. The `emitte
 event listener to the beginning of the listeners array.
 
 ```js
-import { EventEmitter } from 'node:events'
-
-const myEE = new EventEmitter()
-myEE.on('foo', () => console.log('a'))
-myEE.prependListener('foo', () => console.log('b'))
-myEE.emit('foo')
+import { EventEmitter } from 'node:events';
+const myEE = new EventEmitter();
+myEE.on('foo', () => console.log('a'));
+myEE.prependListener('foo', () => console.log('b'));
+myEE.emit('foo');
 // Prints:
 //   b
 //   a
@@ -1150,8 +1145,8 @@ next time `eventName` is triggered, this listener is removed and then invoked.
 
 ```js
 server.once('connection', (stream) => {
-  console.log('Ah, we have our first user!')
-})
+  console.log('Ah, we have our first user!');
+});
 ```
 
 Returns a reference to the `EventEmitter`, so that calls can be chained.
@@ -1160,12 +1155,11 @@ By default, event listeners are invoked in the order they are added. The `emitte
 event listener to the beginning of the listeners array.
 
 ```js
-import { EventEmitter } from 'node:events'
-
-const myEE = new EventEmitter()
-myEE.once('foo', () => console.log('a'))
-myEE.prependOnceListener('foo', () => console.log('b'))
-myEE.emit('foo')
+import { EventEmitter } from 'node:events';
+const myEE = new EventEmitter();
+myEE.once('foo', () => console.log('a'));
+myEE.prependOnceListener('foo', () => console.log('b'));
+myEE.emit('foo');
 // Prints:
 //   b
 //   a
@@ -1212,8 +1206,8 @@ next time `eventName` is triggered, this listener is removed and then invoked.
 
 ```js
 server.once('connection', (stream) => {
-  console.log('Ah, we have our first user!')
-})
+  console.log('Ah, we have our first user!');
+});
 ```
 
 Returns a reference to the `EventEmitter`, so that calls can be chained.
@@ -1222,12 +1216,11 @@ By default, event listeners are invoked in the order they are added. The `emitte
 event listener to the beginning of the listeners array.
 
 ```js
-import { EventEmitter } from 'node:events'
-
-const myEE = new EventEmitter()
-myEE.once('foo', () => console.log('a'))
-myEE.prependOnceListener('foo', () => console.log('b'))
-myEE.emit('foo')
+import { EventEmitter } from 'node:events';
+const myEE = new EventEmitter();
+myEE.once('foo', () => console.log('a'));
+myEE.prependOnceListener('foo', () => console.log('b'));
+myEE.emit('foo');
 // Prints:
 //   b
 //   a
@@ -1268,8 +1261,8 @@ next time `eventName` is triggered, this listener is removed and then invoked.
 
 ```js
 server.once('connection', (stream) => {
-  console.log('Ah, we have our first user!')
-})
+  console.log('Ah, we have our first user!');
+});
 ```
 
 Returns a reference to the `EventEmitter`, so that calls can be chained.
@@ -1278,12 +1271,11 @@ By default, event listeners are invoked in the order they are added. The `emitte
 event listener to the beginning of the listeners array.
 
 ```js
-import { EventEmitter } from 'node:events'
-
-const myEE = new EventEmitter()
-myEE.once('foo', () => console.log('a'))
-myEE.prependOnceListener('foo', () => console.log('b'))
-myEE.emit('foo')
+import { EventEmitter } from 'node:events';
+const myEE = new EventEmitter();
+myEE.once('foo', () => console.log('a'));
+myEE.prependOnceListener('foo', () => console.log('b'));
+myEE.emit('foo');
 // Prints:
 //   b
 //   a
@@ -1330,8 +1322,8 @@ and `listener` will result in the `listener` being added, and called, multiple t
 
 ```js
 server.prependListener('connection', (stream) => {
-  console.log('someone connected!')
-})
+  console.log('someone connected!');
+});
 ```
 
 Returns a reference to the `EventEmitter`, so that calls can be chained.
@@ -1379,8 +1371,8 @@ and `listener` will result in the `listener` being added, and called, multiple t
 
 ```js
 server.prependListener('connection', (stream) => {
-  console.log('someone connected!')
-})
+  console.log('someone connected!');
+});
 ```
 
 Returns a reference to the `EventEmitter`, so that calls can be chained.
@@ -1422,8 +1414,8 @@ and `listener` will result in the `listener` being added, and called, multiple t
 
 ```js
 server.prependListener('connection', (stream) => {
-  console.log('someone connected!')
-})
+  console.log('someone connected!');
+});
 ```
 
 Returns a reference to the `EventEmitter`, so that calls can be chained.
@@ -1467,8 +1459,8 @@ listener is removed, and then invoked.
 
 ```js
 server.prependOnceListener('connection', (stream) => {
-  console.log('Ah, we have our first user!')
-})
+  console.log('Ah, we have our first user!');
+});
 ```
 
 Returns a reference to the `EventEmitter`, so that calls can be chained.
@@ -1514,8 +1506,8 @@ listener is removed, and then invoked.
 
 ```js
 server.prependOnceListener('connection', (stream) => {
-  console.log('Ah, we have our first user!')
-})
+  console.log('Ah, we have our first user!');
+});
 ```
 
 Returns a reference to the `EventEmitter`, so that calls can be chained.
@@ -1555,8 +1547,8 @@ listener is removed, and then invoked.
 
 ```js
 server.prependOnceListener('connection', (stream) => {
-  console.log('Ah, we have our first user!')
-})
+  console.log('Ah, we have our first user!');
+});
 ```
 
 Returns a reference to the `EventEmitter`, so that calls can be chained.
@@ -1597,29 +1589,28 @@ Returns a copy of the array of listeners for the event named `eventName`,
 including any wrappers (such as those created by `.once()`).
 
 ```js
-import { EventEmitter } from 'node:events'
-
-const emitter = new EventEmitter()
-emitter.once('log', () => console.log('log once'))
+import { EventEmitter } from 'node:events';
+const emitter = new EventEmitter();
+emitter.once('log', () => console.log('log once'));
 
 // Returns a new Array with a function `onceWrapper` which has a property
 // `listener` which contains the original listener bound above
-const listeners = emitter.rawListeners('log')
-const logFnWrapper = listeners[0]
+const listeners = emitter.rawListeners('log');
+const logFnWrapper = listeners[0];
 
 // Logs "log once" to the console and does not unbind the `once` event
-logFnWrapper.listener()
+logFnWrapper.listener();
 
 // Logs "log once" to the console and removes the listener
-logFnWrapper()
+logFnWrapper();
 
-emitter.on('log', () => console.log('log persistently'))
+emitter.on('log', () => console.log('log persistently'));
 // Will return a new Array with a single function bound by `.on()` above
-const newListeners = emitter.rawListeners('log')
+const newListeners = emitter.rawListeners('log');
 
 // Logs "log persistently" twice
-newListeners[0]()
-emitter.emit('log')
+newListeners[0]();
+emitter.emit('log');
 ```
 
 #### 类型参数
@@ -1719,12 +1710,12 @@ v0.1.26
 Removes the specified `listener` from the listener array for the event named `eventName`.
 
 ```js
-function callback(stream) {
-  console.log('someone connected!')
-}
-server.on('connection', callback)
+const callback = (stream) => {
+  console.log('someone connected!');
+};
+server.on('connection', callback);
 // ...
-server.removeListener('connection', callback)
+server.removeListener('connection', callback);
 ```
 
 `removeListener()` will remove, at most, one instance of a listener from the
@@ -1737,34 +1728,33 @@ time of emitting are called in order. This implies that any `removeListener()` o
 will not remove them from`emit()` in progress. Subsequent events behave as expected.
 
 ```js
-import { EventEmitter } from 'node:events'
-
+import { EventEmitter } from 'node:events';
 class MyEmitter extends EventEmitter {}
-const myEmitter = new MyEmitter()
+const myEmitter = new MyEmitter();
 
-function callbackA() {
-  console.log('A')
-  myEmitter.removeListener('event', callbackB)
-}
+const callbackA = () => {
+  console.log('A');
+  myEmitter.removeListener('event', callbackB);
+};
 
-function callbackB() {
-  console.log('B')
-}
+const callbackB = () => {
+  console.log('B');
+};
 
-myEmitter.on('event', callbackA)
+myEmitter.on('event', callbackA);
 
-myEmitter.on('event', callbackB)
+myEmitter.on('event', callbackB);
 
 // callbackA removes listener callbackB but it will still be called.
 // Internal listener array at time of emit [callbackA, callbackB]
-myEmitter.emit('event')
+myEmitter.emit('event');
 // Prints:
 //   A
 //   B
 
 // callbackB is now removed.
 // Internal listener array [callbackA]
-myEmitter.emit('event')
+myEmitter.emit('event');
 // Prints:
 //   A
 ```
@@ -1780,20 +1770,19 @@ event (as in the example below), `removeListener()` will remove the most
 recently added instance. In the example the `once('ping')` listener is removed:
 
 ```js
-import { EventEmitter } from 'node:events'
-
-const ee = new EventEmitter()
+import { EventEmitter } from 'node:events';
+const ee = new EventEmitter();
 
 function pong() {
-  console.log('pong')
+  console.log('pong');
 }
 
-ee.on('ping', pong)
-ee.once('ping', pong)
-ee.removeListener('ping', pong)
+ee.on('ping', pong);
+ee.once('ping', pong);
+ee.removeListener('ping', pong);
 
-ee.emit('ping')
-ee.emit('ping')
+ee.emit('ping');
+ee.emit('ping');
 ```
 
 Returns a reference to the `EventEmitter`, so that calls can be chained.
@@ -1835,12 +1824,12 @@ v0.1.26
 Removes the specified `listener` from the listener array for the event named `eventName`.
 
 ```js
-function callback(stream) {
-  console.log('someone connected!')
-}
-server.on('connection', callback)
+const callback = (stream) => {
+  console.log('someone connected!');
+};
+server.on('connection', callback);
 // ...
-server.removeListener('connection', callback)
+server.removeListener('connection', callback);
 ```
 
 `removeListener()` will remove, at most, one instance of a listener from the
@@ -1853,34 +1842,33 @@ time of emitting are called in order. This implies that any `removeListener()` o
 will not remove them from`emit()` in progress. Subsequent events behave as expected.
 
 ```js
-import { EventEmitter } from 'node:events'
-
+import { EventEmitter } from 'node:events';
 class MyEmitter extends EventEmitter {}
-const myEmitter = new MyEmitter()
+const myEmitter = new MyEmitter();
 
-function callbackA() {
-  console.log('A')
-  myEmitter.removeListener('event', callbackB)
-}
+const callbackA = () => {
+  console.log('A');
+  myEmitter.removeListener('event', callbackB);
+};
 
-function callbackB() {
-  console.log('B')
-}
+const callbackB = () => {
+  console.log('B');
+};
 
-myEmitter.on('event', callbackA)
+myEmitter.on('event', callbackA);
 
-myEmitter.on('event', callbackB)
+myEmitter.on('event', callbackB);
 
 // callbackA removes listener callbackB but it will still be called.
 // Internal listener array at time of emit [callbackA, callbackB]
-myEmitter.emit('event')
+myEmitter.emit('event');
 // Prints:
 //   A
 //   B
 
 // callbackB is now removed.
 // Internal listener array [callbackA]
-myEmitter.emit('event')
+myEmitter.emit('event');
 // Prints:
 //   A
 ```
@@ -1896,20 +1884,19 @@ event (as in the example below), `removeListener()` will remove the most
 recently added instance. In the example the `once('ping')` listener is removed:
 
 ```js
-import { EventEmitter } from 'node:events'
-
-const ee = new EventEmitter()
+import { EventEmitter } from 'node:events';
+const ee = new EventEmitter();
 
 function pong() {
-  console.log('pong')
+  console.log('pong');
 }
 
-ee.on('ping', pong)
-ee.once('ping', pong)
-ee.removeListener('ping', pong)
+ee.on('ping', pong);
+ee.once('ping', pong);
+ee.removeListener('ping', pong);
 
-ee.emit('ping')
-ee.emit('ping')
+ee.emit('ping');
+ee.emit('ping');
 ```
 
 Returns a reference to the `EventEmitter`, so that calls can be chained.
@@ -1945,12 +1932,12 @@ v0.1.26
 Removes the specified `listener` from the listener array for the event named `eventName`.
 
 ```js
-function callback(stream) {
-  console.log('someone connected!')
-}
-server.on('connection', callback)
+const callback = (stream) => {
+  console.log('someone connected!');
+};
+server.on('connection', callback);
 // ...
-server.removeListener('connection', callback)
+server.removeListener('connection', callback);
 ```
 
 `removeListener()` will remove, at most, one instance of a listener from the
@@ -1963,34 +1950,33 @@ time of emitting are called in order. This implies that any `removeListener()` o
 will not remove them from`emit()` in progress. Subsequent events behave as expected.
 
 ```js
-import { EventEmitter } from 'node:events'
-
+import { EventEmitter } from 'node:events';
 class MyEmitter extends EventEmitter {}
-const myEmitter = new MyEmitter()
+const myEmitter = new MyEmitter();
 
-function callbackA() {
-  console.log('A')
-  myEmitter.removeListener('event', callbackB)
-}
+const callbackA = () => {
+  console.log('A');
+  myEmitter.removeListener('event', callbackB);
+};
 
-function callbackB() {
-  console.log('B')
-}
+const callbackB = () => {
+  console.log('B');
+};
 
-myEmitter.on('event', callbackA)
+myEmitter.on('event', callbackA);
 
-myEmitter.on('event', callbackB)
+myEmitter.on('event', callbackB);
 
 // callbackA removes listener callbackB but it will still be called.
 // Internal listener array at time of emit [callbackA, callbackB]
-myEmitter.emit('event')
+myEmitter.emit('event');
 // Prints:
 //   A
 //   B
 
 // callbackB is now removed.
 // Internal listener array [callbackA]
-myEmitter.emit('event')
+myEmitter.emit('event');
 // Prints:
 //   A
 ```
@@ -2006,20 +1992,19 @@ event (as in the example below), `removeListener()` will remove the most
 recently added instance. In the example the `once('ping')` listener is removed:
 
 ```js
-import { EventEmitter } from 'node:events'
-
-const ee = new EventEmitter()
+import { EventEmitter } from 'node:events';
+const ee = new EventEmitter();
 
 function pong() {
-  console.log('pong')
+  console.log('pong');
 }
 
-ee.on('ping', pong)
-ee.once('ping', pong)
-ee.removeListener('ping', pong)
+ee.on('ping', pong);
+ee.once('ping', pong);
+ee.removeListener('ping', pong);
 
-ee.emit('ping')
-ee.emit('ping')
+ee.emit('ping');
+ee.emit('ping');
 ```
 
 Returns a reference to the `EventEmitter`, so that calls can be chained.
@@ -2211,18 +2196,17 @@ not prevent the listener from running.
 Returns a disposable so that it may be unsubscribed from more easily.
 
 ```js
-import { addAbortListener } from 'node:events'
+import { addAbortListener } from 'node:events';
 
 function example(signal) {
-  let disposable
+  let disposable;
   try {
-    signal.addEventListener('abort', e => e.stopImmediatePropagation())
+    signal.addEventListener('abort', (e) => e.stopImmediatePropagation());
     disposable = addAbortListener(signal, (e) => {
       // Do something when signal is aborted.
-    })
-  }
-  finally {
-    disposable?.[Symbol.dispose]()
+    });
+  } finally {
+    disposable?.[Symbol.dispose]();
   }
 }
 ```
@@ -2268,19 +2252,19 @@ For `EventTarget`s this is the only way to get the event listeners for the
 event target. This is useful for debugging and diagnostic purposes.
 
 ```js
-import { EventEmitter, getEventListeners } from 'node:events'
+import { getEventListeners, EventEmitter } from 'node:events';
 
 {
-  const ee = new EventEmitter()
-  const listener = () => console.log('Events are fun')
-  ee.on('foo', listener)
-  console.log(getEventListeners(ee, 'foo')) // [ [Function: listener] ]
+  const ee = new EventEmitter();
+  const listener = () => console.log('Events are fun');
+  ee.on('foo', listener);
+  console.log(getEventListeners(ee, 'foo')); // [ [Function: listener] ]
 }
 {
-  const et = new EventTarget()
-  const listener = () => console.log('Events are fun')
-  et.addEventListener('foo', listener)
-  console.log(getEventListeners(et, 'foo')) // [ [Function: listener] ]
+  const et = new EventTarget();
+  const listener = () => console.log('Events are fun');
+  et.addEventListener('foo', listener);
+  console.log(getEventListeners(et, 'foo')); // [ [Function: listener] ]
 }
 ```
 
@@ -2324,19 +2308,19 @@ event target. If the number of event handlers on a single EventTarget exceeds
 the max set, the EventTarget will print a warning.
 
 ```js
-import { EventEmitter, getMaxListeners, setMaxListeners } from 'node:events'
+import { getMaxListeners, setMaxListeners, EventEmitter } from 'node:events';
 
 {
-  const ee = new EventEmitter()
-  console.log(getMaxListeners(ee)) // 10
-  setMaxListeners(11, ee)
-  console.log(getMaxListeners(ee)) // 11
+  const ee = new EventEmitter();
+  console.log(getMaxListeners(ee)); // 10
+  setMaxListeners(11, ee);
+  console.log(getMaxListeners(ee)); // 11
 }
 {
-  const et = new EventTarget()
-  console.log(getMaxListeners(et)) // 10
-  setMaxListeners(11, et)
-  console.log(getMaxListeners(et)) // 11
+  const et = new EventTarget();
+  console.log(getMaxListeners(et)); // 10
+  setMaxListeners(11, et);
+  console.log(getMaxListeners(et)); // 11
 }
 ```
 
@@ -2369,12 +2353,12 @@ v19.9.0
 A class method that returns the number of listeners for the given `eventName` registered on the given `emitter`.
 
 ```js
-import { EventEmitter, listenerCount } from 'node:events'
+import { EventEmitter, listenerCount } from 'node:events';
 
-const myEmitter = new EventEmitter()
-myEmitter.on('event', () => {})
-myEmitter.on('event', () => {})
-console.log(listenerCount(myEmitter, 'event'))
+const myEmitter = new EventEmitter();
+myEmitter.on('event', () => {});
+myEmitter.on('event', () => {});
+console.log(listenerCount(myEmitter, 'event'));
 // Prints: 2
 ```
 
@@ -2419,22 +2403,22 @@ Since v3.2.0 - Use `listenerCount` instead.
 定义于: node\_modules/.pnpm/@types+node@22.10.7/node\_modules/@types/node/events.d.ts:303
 
 ```js
-import { EventEmitter, on } from 'node:events'
-import process from 'node:process'
+import { on, EventEmitter } from 'node:events';
+import process from 'node:process';
 
-const ee = new EventEmitter()
+const ee = new EventEmitter();
 
 // Emit later on
 process.nextTick(() => {
-  ee.emit('foo', 'bar')
-  ee.emit('foo', 42)
-})
+  ee.emit('foo', 'bar');
+  ee.emit('foo', 42);
+});
 
 for await (const event of on(ee, 'foo')) {
   // The execution of this inner block is synchronous and it
   // processes one event at a time (even with await). Do not use
   // if concurrent execution is required.
-  console.log(event) // prints ['bar'] [42]
+  console.log(event); // prints ['bar'] [42]
 }
 // Unreachable here
 ```
@@ -2447,52 +2431,52 @@ composed of the emitted event arguments.
 An `AbortSignal` can be used to cancel waiting on events:
 
 ```js
-import { EventEmitter, on } from 'node:events'
-import process from 'node:process'
+import { on, EventEmitter } from 'node:events';
+import process from 'node:process';
 
 const ac = new AbortController();
 
 (async () => {
-  const ee = new EventEmitter()
+  const ee = new EventEmitter();
 
   // Emit later on
   process.nextTick(() => {
-    ee.emit('foo', 'bar')
-    ee.emit('foo', 42)
-  })
+    ee.emit('foo', 'bar');
+    ee.emit('foo', 42);
+  });
 
   for await (const event of on(ee, 'foo', { signal: ac.signal })) {
     // The execution of this inner block is synchronous and it
     // processes one event at a time (even with await). Do not use
     // if concurrent execution is required.
-    console.log(event) // prints ['bar'] [42]
+    console.log(event); // prints ['bar'] [42]
   }
   // Unreachable here
-})()
+})();
 
-process.nextTick(() => ac.abort())
+process.nextTick(() => ac.abort());
 ```
 
 Use the `close` option to specify an array of event names that will end the iteration:
 
 ```js
-import { EventEmitter, on } from 'node:events'
-import process from 'node:process'
+import { on, EventEmitter } from 'node:events';
+import process from 'node:process';
 
-const ee = new EventEmitter()
+const ee = new EventEmitter();
 
 // Emit later on
 process.nextTick(() => {
-  ee.emit('foo', 'bar')
-  ee.emit('foo', 42)
-  ee.emit('close')
-})
+  ee.emit('foo', 'bar');
+  ee.emit('foo', 42);
+  ee.emit('close');
+});
 
 for await (const event of on(ee, 'foo', { close: ['close'] })) {
-  console.log(event) // prints ['bar'] [42]
+  console.log(event); // prints ['bar'] [42]
 }
 // the loop will exit after 'close' is emitted
-console.log('done') // prints 'done'
+console.log('done'); // prints 'done'
 ```
 
 ##### 参数
@@ -2530,22 +2514,22 @@ v13.6.0, v12.16.0
 定义于: node\_modules/.pnpm/@types+node@22.10.7/node\_modules/@types/node/events.d.ts:308
 
 ```js
-import { EventEmitter, on } from 'node:events'
-import process from 'node:process'
+import { on, EventEmitter } from 'node:events';
+import process from 'node:process';
 
-const ee = new EventEmitter()
+const ee = new EventEmitter();
 
 // Emit later on
 process.nextTick(() => {
-  ee.emit('foo', 'bar')
-  ee.emit('foo', 42)
-})
+  ee.emit('foo', 'bar');
+  ee.emit('foo', 42);
+});
 
 for await (const event of on(ee, 'foo')) {
   // The execution of this inner block is synchronous and it
   // processes one event at a time (even with await). Do not use
   // if concurrent execution is required.
-  console.log(event) // prints ['bar'] [42]
+  console.log(event); // prints ['bar'] [42]
 }
 // Unreachable here
 ```
@@ -2558,52 +2542,52 @@ composed of the emitted event arguments.
 An `AbortSignal` can be used to cancel waiting on events:
 
 ```js
-import { EventEmitter, on } from 'node:events'
-import process from 'node:process'
+import { on, EventEmitter } from 'node:events';
+import process from 'node:process';
 
 const ac = new AbortController();
 
 (async () => {
-  const ee = new EventEmitter()
+  const ee = new EventEmitter();
 
   // Emit later on
   process.nextTick(() => {
-    ee.emit('foo', 'bar')
-    ee.emit('foo', 42)
-  })
+    ee.emit('foo', 'bar');
+    ee.emit('foo', 42);
+  });
 
   for await (const event of on(ee, 'foo', { signal: ac.signal })) {
     // The execution of this inner block is synchronous and it
     // processes one event at a time (even with await). Do not use
     // if concurrent execution is required.
-    console.log(event) // prints ['bar'] [42]
+    console.log(event); // prints ['bar'] [42]
   }
   // Unreachable here
-})()
+})();
 
-process.nextTick(() => ac.abort())
+process.nextTick(() => ac.abort());
 ```
 
 Use the `close` option to specify an array of event names that will end the iteration:
 
 ```js
-import { EventEmitter, on } from 'node:events'
-import process from 'node:process'
+import { on, EventEmitter } from 'node:events';
+import process from 'node:process';
 
-const ee = new EventEmitter()
+const ee = new EventEmitter();
 
 // Emit later on
 process.nextTick(() => {
-  ee.emit('foo', 'bar')
-  ee.emit('foo', 42)
-  ee.emit('close')
-})
+  ee.emit('foo', 'bar');
+  ee.emit('foo', 42);
+  ee.emit('close');
+});
 
 for await (const event of on(ee, 'foo', { close: ['close'] })) {
-  console.log(event) // prints ['bar'] [42]
+  console.log(event); // prints ['bar'] [42]
 }
 // the loop will exit after 'close' is emitted
-console.log('done') // prints 'done'
+console.log('done'); // prints 'done'
 ```
 
 ##### 参数
@@ -2653,28 +2637,27 @@ This method is intentionally generic and works with the web platform [EventTarge
 semantics and does not listen to the `'error'` event.
 
 ```js
-import { EventEmitter, once } from 'node:events'
-import process from 'node:process'
+import { once, EventEmitter } from 'node:events';
+import process from 'node:process';
 
-const ee = new EventEmitter()
+const ee = new EventEmitter();
 
 process.nextTick(() => {
-  ee.emit('myevent', 42)
-})
+  ee.emit('myevent', 42);
+});
 
-const [value] = await once(ee, 'myevent')
-console.log(value)
+const [value] = await once(ee, 'myevent');
+console.log(value);
 
-const err = new Error('kaboom')
+const err = new Error('kaboom');
 process.nextTick(() => {
-  ee.emit('error', err)
-})
+  ee.emit('error', err);
+});
 
 try {
-  await once(ee, 'myevent')
-}
-catch (err) {
-  console.error('error happened', err)
+  await once(ee, 'myevent');
+} catch (err) {
+  console.error('error happened', err);
 }
 ```
 
@@ -2683,15 +2666,15 @@ The special handling of the `'error'` event is only used when `events.once()` is
 special handling:
 
 ```js
-import { EventEmitter, once } from 'node:events'
+import { EventEmitter, once } from 'node:events';
 
-const ee = new EventEmitter()
+const ee = new EventEmitter();
 
 once(ee, 'error')
   .then(([err]) => console.log('ok', err.message))
-  .catch(err => console.error('error', err.message))
+  .catch((err) => console.error('error', err.message));
 
-ee.emit('error', new Error('boom'))
+ee.emit('error', new Error('boom'));
 
 // Prints: ok boom
 ```
@@ -2699,29 +2682,27 @@ ee.emit('error', new Error('boom'))
 An `AbortSignal` can be used to cancel waiting for the event:
 
 ```js
-import { EventEmitter, once } from 'node:events'
+import { EventEmitter, once } from 'node:events';
 
-const ee = new EventEmitter()
-const ac = new AbortController()
+const ee = new EventEmitter();
+const ac = new AbortController();
 
 async function foo(emitter, event, signal) {
   try {
-    await once(emitter, event, { signal })
-    console.log('event emitted!')
-  }
-  catch (error) {
+    await once(emitter, event, { signal });
+    console.log('event emitted!');
+  } catch (error) {
     if (error.name === 'AbortError') {
-      console.error('Waiting for the event was canceled!')
-    }
-    else {
-      console.error('There was an error', error.message)
+      console.error('Waiting for the event was canceled!');
+    } else {
+      console.error('There was an error', error.message);
     }
   }
 }
 
-foo(ee, 'foo', ac.signal)
-ac.abort() // Abort waiting for the event
-ee.emit('foo') // Prints: Waiting for the event was canceled!
+foo(ee, 'foo', ac.signal);
+ac.abort(); // Abort waiting for the event
+ee.emit('foo'); // Prints: Waiting for the event was canceled!
 ```
 
 ##### 参数
@@ -2765,28 +2746,27 @@ This method is intentionally generic and works with the web platform [EventTarge
 semantics and does not listen to the `'error'` event.
 
 ```js
-import { EventEmitter, once } from 'node:events'
-import process from 'node:process'
+import { once, EventEmitter } from 'node:events';
+import process from 'node:process';
 
-const ee = new EventEmitter()
+const ee = new EventEmitter();
 
 process.nextTick(() => {
-  ee.emit('myevent', 42)
-})
+  ee.emit('myevent', 42);
+});
 
-const [value] = await once(ee, 'myevent')
-console.log(value)
+const [value] = await once(ee, 'myevent');
+console.log(value);
 
-const err = new Error('kaboom')
+const err = new Error('kaboom');
 process.nextTick(() => {
-  ee.emit('error', err)
-})
+  ee.emit('error', err);
+});
 
 try {
-  await once(ee, 'myevent')
-}
-catch (err) {
-  console.error('error happened', err)
+  await once(ee, 'myevent');
+} catch (err) {
+  console.error('error happened', err);
 }
 ```
 
@@ -2795,15 +2775,15 @@ The special handling of the `'error'` event is only used when `events.once()` is
 special handling:
 
 ```js
-import { EventEmitter, once } from 'node:events'
+import { EventEmitter, once } from 'node:events';
 
-const ee = new EventEmitter()
+const ee = new EventEmitter();
 
 once(ee, 'error')
   .then(([err]) => console.log('ok', err.message))
-  .catch(err => console.error('error', err.message))
+  .catch((err) => console.error('error', err.message));
 
-ee.emit('error', new Error('boom'))
+ee.emit('error', new Error('boom'));
 
 // Prints: ok boom
 ```
@@ -2811,29 +2791,27 @@ ee.emit('error', new Error('boom'))
 An `AbortSignal` can be used to cancel waiting for the event:
 
 ```js
-import { EventEmitter, once } from 'node:events'
+import { EventEmitter, once } from 'node:events';
 
-const ee = new EventEmitter()
-const ac = new AbortController()
+const ee = new EventEmitter();
+const ac = new AbortController();
 
 async function foo(emitter, event, signal) {
   try {
-    await once(emitter, event, { signal })
-    console.log('event emitted!')
-  }
-  catch (error) {
+    await once(emitter, event, { signal });
+    console.log('event emitted!');
+  } catch (error) {
     if (error.name === 'AbortError') {
-      console.error('Waiting for the event was canceled!')
-    }
-    else {
-      console.error('There was an error', error.message)
+      console.error('Waiting for the event was canceled!');
+    } else {
+      console.error('There was an error', error.message);
     }
   }
 }
 
-foo(ee, 'foo', ac.signal)
-ac.abort() // Abort waiting for the event
-ee.emit('foo') // Prints: Waiting for the event was canceled!
+foo(ee, 'foo', ac.signal);
+ac.abort(); // Abort waiting for the event
+ee.emit('foo'); // Prints: Waiting for the event was canceled!
 ```
 
 ##### 参数
@@ -2871,12 +2849,12 @@ v11.13.0, v10.16.0
 定义于: node\_modules/.pnpm/@types+node@22.10.7/node\_modules/@types/node/events.d.ts:402
 
 ```js
-import { EventEmitter, setMaxListeners } from 'node:events'
+import { setMaxListeners, EventEmitter } from 'node:events';
 
-const target = new EventTarget()
-const emitter = new EventEmitter()
+const target = new EventTarget();
+const emitter = new EventEmitter();
 
-setMaxListeners(5, target, emitter)
+setMaxListeners(5, target, emitter);
 ```
 
 #### 参数

@@ -2,7 +2,7 @@
 
 # 接口: RegisterVipCommanderCommandOptions\<TArgs\>
 
-定义于: [packages/utils/src/pkgs/commander.ts:83](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/commander.ts#L83)
+定义于: [packages/utils/src/pkgs/commander.ts:78](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/commander.ts#L78)
 
 ## 类型参数
 
@@ -16,7 +16,7 @@
 
 > **action**: (...`args`) => `void` \| `Promise`\<`void`\>
 
-定义于: [packages/utils/src/pkgs/commander.ts:86](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/commander.ts#L86)
+定义于: [packages/utils/src/pkgs/commander.ts:81](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/commander.ts#L81)
 
 #### 参数
 
@@ -34,7 +34,7 @@
 
 > **registerBusinessOptions**: (`command`) => `void`
 
-定义于: [packages/utils/src/pkgs/commander.ts:85](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/commander.ts#L85)
+定义于: [packages/utils/src/pkgs/commander.ts:80](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/commander.ts#L80)
 
 注册业务参数（仅 `.option` / `.argument`，不含 action）
 

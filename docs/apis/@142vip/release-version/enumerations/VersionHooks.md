@@ -2,7 +2,7 @@
 
 # 枚举: VersionHooks
 
-定义于: [release-version/src/releasex.interface.ts:12](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/release-version/src/releasex.interface.ts#L12)
+定义于: [release-version/src/releasex.interface.ts:12](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/release-version/src/releasex.interface.ts#L12)
 
 `package.json` scripts 生命周期钩子
 
@@ -12,7 +12,7 @@
 
 > **PostVersion**: `"postversion"`
 
-定义于: [release-version/src/releasex.interface.ts:15](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/release-version/src/releasex.interface.ts#L15)
+定义于: [release-version/src/releasex.interface.ts:15](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/release-version/src/releasex.interface.ts#L15)
 
 ***
 
@@ -20,7 +20,7 @@
 
 > **PreVersion**: `"preversion"`
 
-定义于: [release-version/src/releasex.interface.ts:13](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/release-version/src/releasex.interface.ts#L13)
+定义于: [release-version/src/releasex.interface.ts:13](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/release-version/src/releasex.interface.ts#L13)
 
 ***
 
@@ -28,4 +28,4 @@
 
 > **Version**: `"version"`
 
-定义于: [release-version/src/releasex.interface.ts:14](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/release-version/src/releasex.interface.ts#L14)
+定义于: [release-version/src/releasex.interface.ts:14](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/release-version/src/releasex.interface.ts#L14)

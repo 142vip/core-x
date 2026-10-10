@@ -16,12 +16,12 @@ pnpm add @142vip/nest-logger @142vip/nest
 
 ## 功能
 
-- ✅ 基于 `nestjs-pino` + `pino` 的 Nest 日志模块
-- ✅ `NestLoggerModule.register` 注册多路输出（终端 / 文件）
-- ✅ `NestLoggerModule.useLogger` 替换 Nest 内置 Logger
-- ✅ `@InjectLogger()` 注入 `PinoLogger`（封装 `InjectPinoLogger`）
-- ✅ 终端美化输出 `ConsoleLogger`（`pino-pretty`）
-- ✅ HTTP 请求 `x-request-id` 作为 `genReqId`
+- 基于 `nestjs-pino` + `pino` 的 Nest 日志模块
+- `NestLoggerModule.register` 注册多路输出（终端 / 文件）
+- `NestLoggerModule.useLogger` 替换 Nest 内置 Logger
+- `@InjectLogger()` 注入 `PinoLogger`（封装 `InjectPinoLogger`）
+- 终端美化输出 `ConsoleLogger`（`pino-pretty`）
+- HTTP 请求 `x-request-id` 作为 `genReqId`
 
 ## 配置
 

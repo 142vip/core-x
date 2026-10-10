@@ -140,6 +140,7 @@ vipConfig.mergeCommanderConfig(cliConfig, commanderConfig) // 后者覆盖前者
 // VipInquirer：promptList / promptInput / promptInputRequired / promptNumber /
 // promptPassword / promptSelect / promptCheckBox / promptConfirm /
 // promptConfirmWithSuccessExit / promptSearch / handleSimpleSearchSource
+// Ctrl+C 抛出 ExitPromptError 后结束进程（退出码 0）。串联的后续 prompt 不再出现。
 ```
 
 #### 其它 `pkgs/`（索引 → 源文件）
@@ -199,6 +200,8 @@ cd packages/utils && pnpm build
 ## 验证
 
 ```shell
+cd packages/utils && pnpm test
+cd packages/utils && pnpm test:coverage
 cd packages/utils && pnpm build && pnpm typecheck
 ```
 

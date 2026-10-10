@@ -25,12 +25,12 @@ alwaysApply: true
 | `docs/media.md` | 自媒体 | 手改 |
 | `docs/apis/`、`docs/wiki/` | TypeDoc | 生成，勿手改 |
 | `scripts/` | 见 `15-scripts脚本手册` |
-| `.github/workflows/` | `CI.yml`（PR lint + build:docs）、`CD.yaml`（next 发版 + Pages） |
+| `.github/workflows/` | `CI.yml`（PR lint + test + build:docs）、`CD.yaml`（next 发版 + Pages） |
 | `Dockerfile` / `nginx.conf` | 文档站容器部署 |
 | `spider/` | **非 workspace**：离线爬虫 `.cjs`（文件头 `eslint-disable no-console`） |
 | `.codegraph/` | CodeGraph 索引（任务前 `codegraph sync`） |
 | `AGENTS.md` | **L0 真源**：Agent 项目开发指南（边界 · 栈 · Git · 高效路径） |
-| `.agents/README.md` | Agent 治理入口（架构 · 层级 · 真源回写 · 维护） |
+| `.agents/README.md` | Agent 治理 + 本仓上下文（fa 基座 · 安装 · `pnpm verify` · 记忆分层） |
 | `.agents/skills/` | agent-skills 下游镜像（`fa ai` 生成；**随仓库提交**，供编辑器/Agent 读取） |
 | `.codex/README.md` | Codex 薄入口 |
 | `.cursor/README.md` | Cursor 工作入口（rules 索引；规则本体在 `.cursor/rules/**`） |
@@ -117,8 +117,8 @@ alwaysApply: true
 
 | 工作流 | 触发 | 主要步骤 |
 |--------|------|----------|
-| `CI.yml` | PR → `next` | `pnpm exec fa ci` → `pnpm lint` → `build:docs` → `build:docs-proxy` |
-| `CD.yaml` | push `next` | GitHub Release、npm 发布（`workflow_dispatch` 选手动包）、GitHub Pages |
+| `CI.yml` | PR → `next` | `pnpm i --frozen-lockfile --force` → `npx fa lint` → `pnpm test` → `build:docs` → `build:docs-proxy`（`services.redis`；不跑 `test:coverage`） |
+| `CD.yaml` | push `next` | GitHub Release、npm 发布（`workflow_dispatch` 选手动包）、GitHub Pages（`build:docs-proxy` 后 `pnpm typedoc:api`，再上传 `dist`） |
 
 发布分支：`next`（`.npmrc` → `publish-branch=next`）。CD 可选包列表与上表 31 包一致。
 

@@ -41,7 +41,9 @@ scripts/
 - 默认 registry：`https://registry.npmmirror.com`
 - 执行 `fairy.config` 的 `preinstall` / `postinstall`（core-x 的 `postinstall` 为 `pnpm build:packages`）
 - `CI=true` 时不写 git hooks；本地安装仍写入 `.git/hooks`
-- 根 `package.json` 不再写 `preinstall` / `postinstall` / `clean*`
+- 根 `package.json` 不写 lifecycle `postinstall`（`bin/fairy-postinstall.cjs`：发布物只跑 hooks；源码仓才编译 fa）
+- CI / CD 安装：`pnpm i --frozen-lockfile --force`（触发 `fairy-postinstall.cjs`）
+- 根 `package.json` 不写 `preinstall` / `clean*`（清理由 `fa run clean*`）
 - 回退：`pnpm install`（网络、corepack、镜像失败，或只需增量安装时）
 
 ## scripts/build
@@ -138,7 +140,7 @@ scripts/
 pnpm check:commit   # → npx fa commit --quiet -s './apps/*' -s './packages/*'（`@142vip/fairy-cli`）
 ```
 
-配置：`fairy.config` 的可选 `commitLinter` 覆盖 `commit-linter.config.*`（未写则仍走 cosmiconfig）；`fa commit -f` 优先。`fa commit` 默认交互，`--quiet --vip` 校验 Monorepo scope；`-s` 覆盖 glob。
+配置：`fairy.config` 可选 `commit` / `release` / `ai`，对应这三条命令的参数；命令行显式传入优先于配置。配置补过参数时打印 `等价命令：fa ...`（可复制）。`commit` 的 `types` / `scopes` / `scopeGlobs` / `verify` 覆盖 `commit-linter.config.*`（只写命令参数时仍走 cosmiconfig）；`fa commit -f` 优先。`fa commit` 默认交互；`-s` 与 `commit.scope` 覆盖 `scopeGlobs`。本仓 `commit.scope` 对齐 `check:commit` 的 `-s`，`release` 对齐 `pnpm release` 的 `--vip` / `-F` / `--check-branch`；`--quiet` 与 `--check-release` 仍由对应脚本显式传入。
 
 ## 模型选用原则
 

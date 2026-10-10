@@ -2,7 +2,7 @@
 
 # 类: VipConfig
 
-定义于: [packages/utils/src/pkgs/config.ts:8](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/config.ts#L8)
+定义于: [packages/utils/src/pkgs/config.ts:8](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/config.ts#L8)
 
 配置加载
 
@@ -22,7 +22,7 @@
 
 > **loadCliConfig**\<`T`\>(`configName`, `defaultValue`, `cosmiconfigOptions?`): `T`
 
-定义于: [packages/utils/src/pkgs/config.ts:14](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/config.ts#L14)
+定义于: [packages/utils/src/pkgs/config.ts:14](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/config.ts#L14)
 
 加载配置
 - 本地配置，形如：xxx.config.ts
@@ -58,7 +58,7 @@
 
 > **loadConfig**\<`T`\>(`configName`, `cosmiconfigOptions?`): `T` \| `undefined`
 
-定义于: [packages/utils/src/pkgs/config.ts:27](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/config.ts#L27)
+定义于: [packages/utils/src/pkgs/config.ts:27](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/config.ts#L27)
 
 加载cli配置
 
@@ -84,11 +84,41 @@
 
 ***
 
+### loadConfigAtPath()
+
+> **loadConfigAtPath**\<`T`\>(`configName`, `filepath`): `T` \| `undefined`
+
+定义于: [packages/utils/src/pkgs/config.ts:37](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/config.ts#L37)
+
+从指定配置文件路径加载（`fa lint -f` / `fa commit -f` 等 CLI 显式 `-f`）
+
+#### 类型参数
+
+##### T
+
+`T`
+
+#### 参数
+
+##### configName
+
+`string`
+
+##### filepath
+
+`string`
+
+#### 返回
+
+`T` \| `undefined`
+
+***
+
 ### mergeCommanderConfig()
 
 > **mergeCommanderConfig**\<`T`\>(`cliConfig`, `commanderConfig`): `T`
 
-定义于: [packages/utils/src/pkgs/config.ts:43](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/config.ts#L43)
+定义于: [packages/utils/src/pkgs/config.ts:66](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/config.ts#L66)
 
 合并配置
 
@@ -115,3 +145,27 @@ cli自定义配置
 #### 返回
 
 `T`
+
+***
+
+### searchConfigFilePath()
+
+> **searchConfigFilePath**(`configName`, `cosmiconfigOptions?`): `string` \| `undefined`
+
+定义于: [packages/utils/src/pkgs/config.ts:47](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/config.ts#L47)
+
+已发现的配置文件绝对路径（供 ESLint 等需要 `--config` 路径的 CLI）
+
+#### 参数
+
+##### configName
+
+`string`
+
+##### cosmiconfigOptions?
+
+`Partial`\<`OptionsSync`\>
+
+#### 返回
+
+`string` \| `undefined`

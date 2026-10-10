@@ -1,6 +1,7 @@
 {
   "name": "@142vip/axios",
-  "version": "0.0.1-alpha.11",
+  "type": "module",
+  "version": "0.0.1-alpha.13",
   "private": false,
   "description": "Http请求工具，支持通用化的自定义拦截器、自定义参数、自定义配置",
   "author": "mmdapl <mmdapl@163.com>",
@@ -45,7 +46,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "axios": "1.17.0",
+    "axios": "1.20.0",
     "axios-retry": "4.5.0"
   },
   "publishConfig": {

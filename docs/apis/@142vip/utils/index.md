@@ -45,9 +45,15 @@
 - [RegisterVipCommanderCommandOptions](interfaces/RegisterVipCommanderCommandOptions.md)
 - [ShellCommand](interfaces/ShellCommand.md)
 - [StandardExecutorResponse](interfaces/StandardExecutorResponse.md)
+- [VipCliCommandHelpRow](interfaces/VipCliCommandHelpRow.md)
+- [VipCliDryRunParam](interfaces/VipCliDryRunParam.md)
+- [VipCliIdentity](interfaces/VipCliIdentity.md)
 - [VipCommanderDetailOptions](interfaces/VipCommanderDetailOptions.md)
+- [VipCommanderExitError](interfaces/VipCommanderExitError.md)
 - [VipCommanderOptions](interfaces/VipCommanderOptions.md)
 - [VipLoggerOptions](interfaces/VipLoggerOptions.md)
+- [VipNpmCiInstallOptions](interfaces/VipNpmCiInstallOptions.md)
+- [VipPackageCliErrorPresentation](interfaces/VipPackageCliErrorPresentation.md)
 
 ## 类型别名
 
@@ -62,6 +68,11 @@
 
 - [prereleaseTypes](variables/prereleaseTypes.md)
 - [releaseTypes](variables/releaseTypes.md)
+- [VIP\_COMMANDER\_EXIT\_EXCESS\_ARGUMENTS](variables/VIP_COMMANDER_EXIT_EXCESS_ARGUMENTS.md)
+- [VIP\_COMMANDER\_EXIT\_HELP](variables/VIP_COMMANDER_EXIT_HELP.md)
+- [VIP\_COMMANDER\_EXIT\_HELP\_DISPLAYED](variables/VIP_COMMANDER_EXIT_HELP_DISPLAYED.md)
+- [VIP\_COMMANDER\_EXIT\_UNKNOWN\_COMMAND](variables/VIP_COMMANDER_EXIT_UNKNOWN_COMMAND.md)
+- [VIP\_COMMANDER\_EXIT\_VERSION](variables/VIP_COMMANDER_EXIT_VERSION.md)
 - [VipColor](variables/VipColor.md)
 - [vipCommanderDefaultOptions](variables/vipCommanderDefaultOptions.md)
 - [vipCommanderSubcommandOptions](variables/vipCommanderSubcommandOptions.md)
@@ -90,7 +101,19 @@
 
 ## 函数
 
+- [formatVipCliAlignedCommands](functions/formatVipCliAlignedCommands.md)
+- [formatVipCliBanner](functions/formatVipCliBanner.md)
+- [formatVipCliHelpExample](functions/formatVipCliHelpExample.md)
+- [formatVipCliTraceLabel](functions/formatVipCliTraceLabel.md)
 - [getLastMatchingTag](functions/getLastMatchingTag.md)
+- [isVipCommanderExitError](functions/isVipCommanderExitError.md)
 - [isVipConsoleTraceEnabled](functions/isVipConsoleTraceEnabled.md)
+- [logVipCliBanner](functions/logVipCliBanner.md)
+- [logVipCliDryRun](functions/logVipCliDryRun.md)
+- [logVipCliMetaLines](functions/logVipCliMetaLines.md)
+- [logVipCliTrace](functions/logVipCliTrace.md)
+- [registerVipCommanderExitOverrideTree](functions/registerVipCommanderExitOverrideTree.md)
+- [registerVipPackageCliErrorHandling](functions/registerVipPackageCliErrorHandling.md)
 - [setVipConsoleTraceEnabled](functions/setVipConsoleTraceEnabled.md)
+- [vipCliVisibleLength](functions/vipCliVisibleLength.md)
 - [VipInquirerDefaultArrayParser](functions/VipInquirerDefaultArrayParser.md)

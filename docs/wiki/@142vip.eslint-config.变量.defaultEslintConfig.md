@@ -4,7 +4,7 @@
 
 > `const` **defaultEslintConfig**: `EslintConfigOptions`
 
-定义于: [eslint.config.ts:47](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/eslint-config/src/eslint.config.ts#L47)
+定义于: [eslint.config.ts:51](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/eslint-config/src/eslint.config.ts#L51)
 
 默认的 Eslint 配置。
 
@@ -13,3 +13,7 @@
 等在「教学示例」上误报。
 
 调用方仍可通过 `options.markdown = false` 显式关闭（向后兼容设计）。
+
+@antfu/eslint-config v9 新增 `@e18e/eslint-plugin`、`eslint-plugin-pnpm` 等集成；此处显式关闭，
+避免升级依赖后全仓突然出现大量与 v4 时代不一致的 error（非本次升级的语义变更范围）。
+参考：https://www.npmjs.com/package/@antfu/eslint-config

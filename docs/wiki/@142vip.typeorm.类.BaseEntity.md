@@ -2,7 +2,7 @@
 
 # 类: BaseEntity
 
-定义于: [base.entity.ts:6](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/typeorm/src/base.entity.ts#L6)
+定义于: [base.entity.ts:6](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/typeorm/src/base.entity.ts#L6)
 
 基础实体
 
@@ -26,7 +26,7 @@
 
 > **createTime**: `Date`
 
-定义于: [base.entity.ts:18](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/typeorm/src/base.entity.ts#L18)
+定义于: [base.entity.ts:18](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/typeorm/src/base.entity.ts#L18)
 
 ***
 
@@ -34,7 +34,7 @@
 
 > **id**: `number`
 
-定义于: [base.entity.ts:13](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/typeorm/src/base.entity.ts#L13)
+定义于: [base.entity.ts:13](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/typeorm/src/base.entity.ts#L13)
 
 自增主键
 
@@ -44,6 +44,6 @@
 
 > **updateTime**: `Date`
 
-定义于: [base.entity.ts:26](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/typeorm/src/base.entity.ts#L26)
+定义于: [base.entity.ts:26](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/typeorm/src/base.entity.ts#L26)
 
 更新时间

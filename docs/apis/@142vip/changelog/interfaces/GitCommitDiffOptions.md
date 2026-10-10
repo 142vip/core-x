@@ -2,7 +2,7 @@
 
 # 接口: GitCommitDiffOptions
 
-定义于: [changelog/src/core/changelog.interface.ts:72](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L72)
+定义于: [changelog/src/core/changelog.interface.ts:72](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/changelog.interface.ts#L72)
 
 `git log` 范围查询参数
 
@@ -12,7 +12,7 @@
 
 > `optional` **from?**: `string`
 
-定义于: [changelog/src/core/changelog.interface.ts:74](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L74)
+定义于: [changelog/src/core/changelog.interface.ts:74](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/changelog.interface.ts#L74)
 
 起始 tag / commit；省略时从仓库最早记录开始
 
@@ -22,6 +22,6 @@
 
 > `optional` **to?**: `string`
 
-定义于: [changelog/src/core/changelog.interface.ts:76](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/changelog.interface.ts#L76)
+定义于: [changelog/src/core/changelog.interface.ts:76](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/changelog.interface.ts#L76)
 
 结束 tag / commit；默认 `HEAD`

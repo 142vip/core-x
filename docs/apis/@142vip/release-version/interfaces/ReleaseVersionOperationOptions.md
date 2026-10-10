@@ -2,7 +2,7 @@
 
 # 接口: ReleaseVersionOperationOptions
 
-定义于: [release-version/src/releasex.interface.ts:78](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/release-version/src/releasex.interface.ts#L78)
+定义于: [release-version/src/releasex.interface.ts:78](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/release-version/src/releasex.interface.ts#L78)
 
 `ReleaseVersionOperation` 归一化后的运行选项
 
@@ -12,7 +12,7 @@
 
 > `optional` **changelog?**: `boolean`
 
-定义于: [release-version/src/releasex.interface.ts:92](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/release-version/src/releasex.interface.ts#L92)
+定义于: [release-version/src/releasex.interface.ts:92](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/release-version/src/releasex.interface.ts#L92)
 
 ***
 
@@ -20,7 +20,7 @@
 
 > `optional` **changelogPrerelease?**: `boolean`
 
-定义于: [release-version/src/releasex.interface.ts:93](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/release-version/src/releasex.interface.ts#L93)
+定义于: [release-version/src/releasex.interface.ts:93](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/release-version/src/releasex.interface.ts#L93)
 
 ***
 
@@ -28,7 +28,7 @@
 
 > `optional` **commit?**: `object`
 
-定义于: [release-version/src/releasex.interface.ts:79](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/release-version/src/releasex.interface.ts#L79)
+定义于: [release-version/src/releasex.interface.ts:79](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/release-version/src/releasex.interface.ts#L79)
 
 #### all
 
@@ -48,7 +48,7 @@
 
 > `optional` **currentVersion?**: `string`
 
-定义于: [release-version/src/releasex.interface.ts:91](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/release-version/src/releasex.interface.ts#L91)
+定义于: [release-version/src/releasex.interface.ts:91](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/release-version/src/releasex.interface.ts#L91)
 
 ***
 
@@ -56,7 +56,7 @@
 
 > **cwd**: `string`
 
-定义于: [release-version/src/releasex.interface.ts:88](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/release-version/src/releasex.interface.ts#L88)
+定义于: [release-version/src/releasex.interface.ts:88](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/release-version/src/releasex.interface.ts#L88)
 
 ***
 
@@ -64,7 +64,7 @@
 
 > `optional` **execute?**: `string`
 
-定义于: [release-version/src/releasex.interface.ts:90](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/release-version/src/releasex.interface.ts#L90)
+定义于: [release-version/src/releasex.interface.ts:90](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/release-version/src/releasex.interface.ts#L90)
 
 ***
 
@@ -72,7 +72,7 @@
 
 > **ignoreScripts**: `boolean`
 
-定义于: [release-version/src/releasex.interface.ts:89](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/release-version/src/releasex.interface.ts#L89)
+定义于: [release-version/src/releasex.interface.ts:89](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/release-version/src/releasex.interface.ts#L89)
 
 ***
 
@@ -80,7 +80,7 @@
 
 > **push**: `boolean`
 
-定义于: [release-version/src/releasex.interface.ts:87](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/release-version/src/releasex.interface.ts#L87)
+定义于: [release-version/src/releasex.interface.ts:87](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/release-version/src/releasex.interface.ts#L87)
 
 ***
 
@@ -88,7 +88,7 @@
 
 > `optional` **scopeName?**: `string`
 
-定义于: [release-version/src/releasex.interface.ts:94](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/release-version/src/releasex.interface.ts#L94)
+定义于: [release-version/src/releasex.interface.ts:94](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/release-version/src/releasex.interface.ts#L94)
 
 ***
 
@@ -96,7 +96,7 @@
 
 > `optional` **tag?**: `object`
 
-定义于: [release-version/src/releasex.interface.ts:84](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/release-version/src/releasex.interface.ts#L84)
+定义于: [release-version/src/releasex.interface.ts:84](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/release-version/src/releasex.interface.ts#L84)
 
 #### name
 

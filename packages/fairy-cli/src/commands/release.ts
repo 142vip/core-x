@@ -1,5 +1,5 @@
 import type { ReleaseVersionOptions } from '@142vip/release-version'
-import type { VipCommanderOptions, VipPackageCliCommander } from '@142vip/utils'
+import type { VipCommander, VipCommanderOptions, VipPackageCliCommander } from '@142vip/utils'
 import { releaseApi } from '@142vip/release-version'
 import {
   GitGeneralBranch,
@@ -14,8 +14,10 @@ import {
   VipPackageJSON,
 } from '@142vip/utils'
 import { name } from '../../package.json'
+import { loadFairyConfig, resolveFairyCommandDefaults } from '../config'
 import { CommandEnum } from '../constant'
 import {
+  logFairyEquivalentCommand,
   printPreCheckRelease,
   registerFairySubcommand,
   releasePackage,
@@ -98,9 +100,47 @@ async function execVipRelease(
   }
 }
 
-/** 注册 `fa release` 子命令 */
+const RELEASE_EQUIVALENT_FLAGS = [
+  { key: 'preid', flag: '--preid', kind: 'value' },
+  { key: 'tag', flag: '--tag', kind: 'value' },
+  { key: 'commit', flag: '--commit', kind: 'value' },
+  { key: 'push', flag: '--push', kind: 'boolean', defaultValue: true, offFlag: '--no-push' },
+  { key: 'skipConfirm', flag: '--skip-confirm', kind: 'boolean', defaultValue: false, offFlag: '--no-skip-confirm' },
+  { key: 'recursive', flag: '-r', kind: 'boolean', defaultValue: false, offFlag: '--no-recursive' },
+  { key: 'execute', flag: '--execute', kind: 'value' },
+  { key: 'package', flag: '--package', kind: 'value' },
+  { key: 'branch', flag: '--branch', kind: 'value', defaultValue: 'next' },
+  { key: 'checkRelease', flag: '--check-release', kind: 'boolean', defaultValue: false, offFlag: '--no-check-release' },
+  { key: 'checkBranch', flag: '--check-branch', kind: 'repeat' },
+  { key: 'filter', flag: '-F', kind: 'repeat' },
+  { key: 'prerelease', flag: '--prerelease', kind: 'boolean', defaultValue: false, offFlag: '--no-prerelease' },
+  { key: 'vip', flag: '--vip', kind: 'boolean', defaultValue: false, offFlag: '--no-vip' },
+  { key: 'dryRun', flag: '--dry-run', kind: 'boolean', defaultValue: false, offFlag: '--no-dry-run' },
+] as const
+
+const RELEASE_CONFIG_KEYS = [
+  'preid',
+  'tag',
+  'commit',
+  'push',
+  'skipConfirm',
+  'recursive',
+  'execute',
+  'package',
+  'branch',
+  'checkRelease',
+  'checkBranch',
+  'filter',
+  'prerelease',
+  'vip',
+  'dryRun',
+] as const
+
+/** 注册 `fa release` 子命令。未在命令行写出的参数使用 `fairy.config` → `release` */
 export async function releaseMain(program: VipPackageCliCommander): Promise<void> {
-  registerFairySubcommand(program, CommandEnum.RELEASE, async (args: ReleaseMainOptions) => {
+  registerFairySubcommand(program, CommandEnum.RELEASE, async (raw: ReleaseMainOptions, command: VipCommander) => {
+    const { args, fromConfig } = resolveFairyCommandDefaults(command, raw, loadFairyConfig().release, RELEASE_CONFIG_KEYS)
+    logFairyEquivalentCommand('release', args, fromConfig, RELEASE_EQUIVALENT_FLAGS)
     if (args.checkBranch.length > 0) {
       VipGit.validateBranch(args.checkBranch)
     }
@@ -121,6 +161,11 @@ export async function releaseMain(program: VipPackageCliCommander): Promise<void
       .option('--check-branch [checkBranch]', '发布版本时，是否校验分支', VipInquirerDefaultArrayParser, [])
       .option('-F,--filter <filter>', '模块的路径，例如："./package/*"', VipInquirerDefaultArrayParser, [])
       .option('--prerelease', 'GitHub Release 标记为 Pre-release（默认 Latest）', false)
+      .option('--no-push', '不推送到远程')
+      .option('--no-skip-confirm', '保留确认框')
+      .option('--no-recursive', '不递归更新 version')
+      .option('--no-check-release', '不校验子模块版本')
+      .option('--no-prerelease', 'GitHub Release 标记为 Latest')
   })
 }
 

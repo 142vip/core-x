@@ -16,10 +16,10 @@ pnpm add @142vip/copyright
 
 ## 功能
 
-- ✅ `VipCopyright` 扫描源码目录生成 docx
-- ✅ 输出前 30 页、后 30 页、连续 60 页源代码文档
-- ✅ `CopyrightFileType` 多语言扩展名支持
-- ✅ `quickGenerateDocx` 一行调用
+- `VipCopyright` 扫描源码目录生成 docx
+- 输出前 30 页、后 30 页、连续 60 页源代码文档
+- `CopyrightFileType` 多语言扩展名支持
+- `quickGenerateDocx` 一行调用
 
 ## 配置
 

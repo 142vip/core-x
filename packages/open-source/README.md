@@ -16,9 +16,9 @@ pnpm add @142vip/open-source
 
 ## 功能
 
-- ✅ `OPEN_SOURCE_ADDRESS` 枚举：仓库、主页、域名、Docker、备案等地址常量
-- ✅ `OPEN_SOURCE_AUTHOR` 作者信息对象
-- ✅ `VipAuthorInfo` 类型
+- `OPEN_SOURCE_ADDRESS` 枚举：仓库、主页、域名、Docker、备案等地址常量
+- `OPEN_SOURCE_AUTHOR` 作者信息对象
+- `VipAuthorInfo` 类型
 
 ## 配置
 

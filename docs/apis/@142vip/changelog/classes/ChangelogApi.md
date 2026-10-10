@@ -2,7 +2,7 @@
 
 # 类: ChangelogApi
 
-定义于: [changelog/src/core/apis/changelog.api.ts:15](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/apis/changelog.api.ts#L15)
+定义于: [changelog/src/core/apis/changelog.api.ts:15](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/apis/changelog.api.ts#L15)
 
 CHANGELOG 生成、写盘与 GitHub Release 流程。
 对外由 `changelogApi` 单例导出；`fa changelog` 与独立 bin 共用。
@@ -23,7 +23,7 @@ CHANGELOG 生成、写盘与 GitHub Release 流程。
 
 > **changelogCoreHandler**(`cliOptions`): `Promise`\<`void`\>
 
-定义于: [changelog/src/core/apis/changelog.api.ts:74](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/apis/changelog.api.ts#L74)
+定义于: [changelog/src/core/apis/changelog.api.ts:74](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/apis/changelog.api.ts#L74)
 
 CLI 主流程：生成内容 →（可选）写文件 →（可选）发布 GitHub Release
 
@@ -43,7 +43,7 @@ CLI 主流程：生成内容 →（可选）写文件 →（可选）发布 GitH
 
 > **generateChangelogInfo**(`config`): `Promise`\<[`GenerateChangelogResult`](../interfaces/GenerateChangelogResult.md)\>
 
-定义于: [changelog/src/core/apis/changelog.api.ts:17](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/apis/changelog.api.ts#L17)
+定义于: [changelog/src/core/apis/changelog.api.ts:17](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/apis/changelog.api.ts#L17)
 
 生成 CHANGELOG 正文与 Release 元数据（不写文件、不创建 GitHub Release）
 
@@ -63,7 +63,7 @@ CLI 主流程：生成内容 →（可选）写文件 →（可选）发布 GitH
 
 > **upsertChangelogDoc**(`outputPath`, `markdown`, `releaseVersionName`, `markdownHeader`): `Promise`\<`void`\>
 
-定义于: [changelog/src/core/apis/changelog.api.ts:43](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/apis/changelog.api.ts#L43)
+定义于: [changelog/src/core/apis/changelog.api.ts:43](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/apis/changelog.api.ts#L43)
 
 在已有 CHANGELOG.md 顶部插入新版本节
 
@@ -95,7 +95,7 @@ CLI 主流程：生成内容 →（可选）写文件 →（可选）发布 GitH
 
 > **writeChangelogFile**(`cliOptions`): `Promise`\<[`GenerateChangelogResult`](../interfaces/GenerateChangelogResult.md)\>
 
-定义于: [changelog/src/core/apis/changelog.api.ts:140](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/apis/changelog.api.ts#L140)
+定义于: [changelog/src/core/apis/changelog.api.ts:140](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/apis/changelog.api.ts#L140)
 
 仅写入 CHANGELOG.md，不触发 GitHub Release（`fa release` / `release-version` 集成）
 

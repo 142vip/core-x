@@ -9,7 +9,7 @@ describe('vip-ibm-db', () => {
     username: 'DB2INST1',
     password: 'Easyv.cloud',
     database: 'easyvdb',
-    querySql: 'select 1',
+    querySql: 'select 1 from sysibm.sysdummy1',
   }
   const vipIbmDB = new VipIbmDB()
 
@@ -18,7 +18,7 @@ describe('vip-ibm-db', () => {
 
     console.log('连接数据库成功，返回查询结果：', response)
     expect(response.success).toBe(true)
-    expect(response.data).toEqual([{ '?column?': 1 }])
+    expect(response.data).toEqual([{ 1: 1 }])
   })
 
   it('连接数据库失败，返回失败信息', async () => {

@@ -36,6 +36,14 @@ describe('commitLinter', () => {
     expect(getCommitFirstLineMsg).not.toHaveBeenCalled()
   })
 
+  it('仅传入 commit 时不校验 scope 白名单（单包仓 fa commit --quiet）', () => {
+    const gitCommit = commitLinter({
+      commit: 'chore(ci): lock node version',
+    })
+    expect(gitCommit.scope).toBe('ci')
+    expect(gitCommit.type).toBe('chore')
+  })
+
   it('省略 commit 时读取 git 首行', () => {
     const gitCommit = commitLinter()
     expect(getCommitFirstLineMsg).toHaveBeenCalled()

@@ -31,9 +31,9 @@
 
 ### `RedisService`
 
-构造时保存 `config` 并调用 `getClient()` 创建 `client`（`register` 时 `getClient()` 与注入 token 为同一实例逻辑）。
+构造时用 `RedisFactory` 创建并缓存 `client`。`register` 注入的 token 与 `getClient()` 是同一实例。
 
-- `getClient(): RedisClient` — `new RedisFactory().getClient(this.config)`（每次调用会新建 Factory；构造器内已缓存 `this.client`）
+- `getClient(): RedisClient` — 返回缓存实例，不会每次新建连接
 - `setEx<T>(key, data, expiredTime): Promise<void>` — `JSON.stringify(data)` + `client.set(key, json, 'EX', expiredTime)`；**`expiredTime` 单位为秒**（JSDoc 写「分钟」与实现不一致，以 `EX` 为准）
 - `getEx<T>(key): Promise<T | null>` — `GET` + `JSON.parse`；`null` 或解析失败返回 `null`
 - `del(key): Promise<void>` — 立即 `del`，`setTimeout` 1s 后再 `del` 一次（延迟双删）
@@ -110,6 +110,8 @@ cd packages/nest-redis && pnpm build
 ```shell
 cd packages/nest-redis && pnpm build && pnpm typecheck && pnpm test
 ```
+
+集成测连 `127.0.0.1:6379`；未启动 Redis 时对应用例自动跳过（CI 通过 `services.redis` 提供实例）。
 
 ## 演示
 

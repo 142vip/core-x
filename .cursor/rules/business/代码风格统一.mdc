@@ -11,7 +11,7 @@ alwaysApply: true
 
 - 配置：全仓 `fa lint` 内置 `defineVipEslintConfig`（`@142vip/fairy-cli` → `@142vip/eslint-config`）；自定义路径用 `fa lint -f`
 - **Nest 特例**：`ts/consistent-type-imports` 关闭，Injectable 类用值导入
-- 任务结束：`pnpm lint:fix`，**零 error**（warning 允许）
+- 任务结束：`npx fa lint --fix`，**零 error**（warning 允许）
 - 随后对牵连模块执行局部 `build`（见 `01`、`02`）；范围不明则 `pnpm build`
 - **禁止**用 `console.log` 调试遗留；CLI 可用 `vipLogger` / `console.warn|error`
 
@@ -64,7 +64,7 @@ packages/<name>/test/           # 测试（有则建，无则不建空目录）
 ```
 □ 已 Read 同模块相邻文件？
 □ 命名、导出、目录与模块一致？
-□ pnpm lint:fix 无 error？
+□ npx fa lint --fix 无 error？
 □ 牵连模块 build 通过？
 □ 未引入模块外的格式化/抽象风格？
 ```

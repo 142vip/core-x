@@ -42,9 +42,9 @@ describe('scripts.util', () => {
     writeFileSync(join(workDir, 'package.json'), JSON.stringify({ name: 'tmp', scripts: {} }))
     process.chdir(workDir)
 
-    expect(resolveFairyRunCommands('lint')).toEqual(['npx fa lint'])
-    expect(listFairyRunCommandNames()).toContain('lint')
-    expect(resolveFairyRunCommands('build')).toEqual([])
+    expect(resolveFairyRunCommands('clean:dist')).toEqual(['npx fa clean --dist --quiet --all'])
+    expect(listFairyRunCommandNames()).toContain('clean')
+    expect(resolveFairyRunCommands('lint')).toEqual([])
   })
 
   it('fairy.config scripts 覆盖默认同名项', () => {
@@ -87,10 +87,10 @@ describe('scripts.util', () => {
 })
 
 describe('formatFairyRunScriptsHelpSection', () => {
-  it('包含 Run scripts 与 lint 项', () => {
+  it('包含 Run scripts 与 clean 项', () => {
     const text = formatFairyRunScriptsHelpSection()
     expect(text).toContain('Run scripts')
-    expect(text).toContain('lint')
+    expect(text).toContain('clean')
     expect(text).toContain('package.json')
   })
 })

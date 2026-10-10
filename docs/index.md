@@ -89,11 +89,11 @@ sequenceDiagram
   participant CD as GitHub CD
   participant NPM as npm
 
-  Dev->>Dev: build / test / lint:fix
+  Dev->>Dev: build / test / fa lint --fix
   Dev->>Hook: git commit
-  Hook->>Hook: lint:fix · check:commit
+  Hook->>Hook: fa lint --fix · check:commit
   Dev->>CI: PR
-  CI->>CI: lint · build:docs
+  CI->>CI: fa lint · test · build:docs
   CI->>CD: merge next/main
   CD->>NPM: release @142vip/*
   CD->>CD: GitHub Pages
@@ -103,9 +103,9 @@ sequenceDiagram
 
 ```mermaid
 flowchart TD
-  A["pnpm install"] --> B["改 packages / apps"]
-  B --> C["pnpm --filter @142vip/xxx build"]
-  C --> D["pnpm lint:fix"]
+  A["pnpm i / npx fa ci / npx fa i -f"] --> B["改 packages / apps"]
+  B --> C["cd 模块 && pnpm build"]
+  C --> D["npx fa lint --fix"]
   D --> E{"文档?"}
   E -->|根站| F["pnpm dev :8080"]
   E -->|demo| G["pnpm --filter vitepress-demo dev :3080"]

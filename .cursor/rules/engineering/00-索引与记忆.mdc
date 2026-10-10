@@ -13,7 +13,7 @@ alwaysApply: true
 |----|-----|
 | 安装 | `npx fa ci` 首选；失败 → `pnpm install` |
 | build | `cd packages/<dir>` 或 `cd apps/<demo>` 后 `pnpm build` |
-| 结束 | `lint:fix`（0 error）→ 牵连 build → **`09` 文档自检** |
+| 结束 | `npx fa lint --fix`（0 error）→ 牵连 build → **`09` 文档自检** |
 | 文档 | 根 README + `docs/` + `.vitepress/` + 包 README，与代码同步 |
 | 图表 | 根 README ↔ `07` 五段同构；变更见 `10` 同步铁律 |
 | 对外 | **不引用** `.cursor/rules`（`14`） |

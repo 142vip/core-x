@@ -2,7 +2,7 @@
 
 # 类: ReleaseApi
 
-定义于: [release-version/src/release.api.ts:8](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/release-version/src/release.api.ts#L8)
+定义于: [release-version/src/release.api.ts:8](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/release-version/src/release.api.ts#L8)
 
 `@142vip/release-version` 对外 API。
 `releasex` CLI 与 `fa release` 编排层通过 `releaseApi` 调用。
@@ -23,7 +23,7 @@
 
 > **releaseVersion**(`options`): `Promise`\<[`ReleaseVersionResults`](../interfaces/ReleaseVersionResults.md)\>
 
-定义于: [release-version/src/release.api.ts:24](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/release-version/src/release.api.ts#L24)
+定义于: [release-version/src/release.api.ts:24](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/release-version/src/release.api.ts#L24)
 
 完整发版：准备 → commit → tag → postversion → push
 
@@ -43,7 +43,7 @@
 
 > **releaseVersionDryRun**(`options`): `Promise`\<[`ReleaseVersionOperation`](ReleaseVersionOperation.md)\>
 
-定义于: [release-version/src/release.api.ts:17](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/release-version/src/release.api.ts#L17)
+定义于: [release-version/src/release.api.ts:17](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/release-version/src/release.api.ts#L17)
 
 发版准备：写版本号、CHANGELOG、脚本（不含 git commit / push）
 
@@ -63,7 +63,7 @@
 
 > **releaseVersionInfo**(`options`): `Promise`\<[`ReleaseVersionOperation`](ReleaseVersionOperation.md)\>
 
-定义于: [release-version/src/release.api.ts:10](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/release-version/src/release.api.ts#L10)
+定义于: [release-version/src/release.api.ts:10](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/release-version/src/release.api.ts#L10)
 
 解析发版上下文：当前版本、目标版本（不写盘）
 

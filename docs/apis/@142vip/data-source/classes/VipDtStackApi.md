@@ -2,7 +2,7 @@
 
 # 类: VipDtStackApi
 
-定义于: [packages/data-source/src/core/apis/vip-dtstack-api.ts:30](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/data-source/src/core/apis/vip-dtstack-api.ts#L30)
+定义于: [packages/data-source/src/core/apis/vip-dtstack-api.ts:30](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/data-source/src/core/apis/vip-dtstack-api.ts#L30)
 
 数栈API
 
@@ -26,7 +26,7 @@
 
 > **getConnectionData**(`options`): `Promise`\<[`DataSourceParseResponse`](../interfaces/DataSourceParseResponse.md)\<`unknown`\>\>
 
-定义于: [packages/data-source/src/core/apis/vip-dtstack-api.ts:34](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/data-source/src/core/apis/vip-dtstack-api.ts#L34)
+定义于: [packages/data-source/src/core/apis/vip-dtstack-api.ts:34](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/data-source/src/core/apis/vip-dtstack-api.ts#L34)
 
 获取连接数据
 

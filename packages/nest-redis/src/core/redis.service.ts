@@ -17,14 +17,15 @@ export class RedisService {
 
   constructor(config: RedisConfig) {
     this.config = config
-    this.client = this.getClient()
+    this.client = new RedisFactory().getClient(config)
   }
 
   /**
-   * 获取客户端
+   * 返回构造时缓存的客户端。
+   * 重复 new 会留下未关闭的连接，Jest 与进程退出都会被占住。
    */
   public getClient(): RedisClient {
-    return new RedisFactory().getClient(this.config)
+    return this.client
   }
 
   /**

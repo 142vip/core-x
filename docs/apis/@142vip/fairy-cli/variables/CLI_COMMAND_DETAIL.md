@@ -2,8 +2,270 @@
 
 # 变量: CLI\_COMMAND\_DETAIL
 
-> `const` **CLI\_COMMAND\_DETAIL**: [`VipCommanderDetailRecord`](../../utils/type-aliases/VipCommanderDetailRecord.md)\<[`CommandEnum`](../enumerations/CommandEnum.md)\>
+> `const` **CLI\_COMMAND\_DETAIL**: `object`
 
-定义于: [packages/fairy-cli/src/fairy.interface.ts:32](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/fairy-cli/src/fairy.interface.ts#L32)
+定义于: [packages/fairy-cli/src/constant.ts:51](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/fairy-cli/src/constant.ts#L51)
 
 子命令注册元数据，供 `registerFairySubcommand` / `initCommand` 使用
+
+## 类型声明
+
+### ai
+
+> **ai**: `object`
+
+#### ai.aliases
+
+> **aliases**: `string`[]
+
+#### ai.command
+
+> **command**: [`CommandEnum`](../enumerations/CommandEnum.md) = `CommandEnum.AI`
+
+#### ai.description
+
+> **description**: `string` = `'fa ai 同步 / fa ai --check 校验 .agents/skills/'`
+
+#### ai.summary
+
+> **summary**: `string` = `'Agent Skills 管理'`
+
+### changelog
+
+> **changelog**: `object`
+
+#### changelog.aliases
+
+> **aliases**: `string`[]
+
+#### changelog.command
+
+> **command**: [`CommandEnum`](../enumerations/CommandEnum.md) = `CommandEnum.CHANGELOG`
+
+#### changelog.description
+
+> **description**: `string` = `'基于 Git 提交生成 CHANGELOG 文档'`
+
+#### changelog.summary
+
+> **summary**: `string` = `'生成 CHANGELOG'`
+
+### clean
+
+> **clean**: `object`
+
+#### clean.aliases
+
+> **aliases**: `string`[]
+
+#### clean.command
+
+> **command**: [`CommandEnum`](../enumerations/CommandEnum.md) = `CommandEnum.CLEAN`
+
+#### clean.description
+
+> **description**: `string` = `'删除构建产物、缓存等无用文件'`
+
+#### clean.summary
+
+> **summary**: `string` = `'清理项目文件'`
+
+### commit
+
+> **commit**: `object`
+
+#### commit.aliases
+
+> **aliases**: `string`[]
+
+#### commit.command
+
+> **command**: [`CommandEnum`](../enumerations/CommandEnum.md) = `CommandEnum.COMMIT`
+
+#### commit.description
+
+> **description**: `string` = `'默认交互式规范提交；--quiet 校验 commit 信息（commit-msg）'`
+
+#### commit.summary
+
+> **summary**: `string` = `'Git 提交与校验'`
+
+### copyright
+
+> **copyright**: `object`
+
+#### copyright.aliases
+
+> **aliases**: `string`[]
+
+#### copyright.command
+
+> **command**: [`CommandEnum`](../enumerations/CommandEnum.md) = `CommandEnum.COPYRIGHT`
+
+#### copyright.description
+
+> **description**: `string` = `'生成著作权登记用源代码前 30 / 后 30 页文档'`
+
+#### copyright.summary
+
+> **summary**: `string` = `'软著源代码文档'`
+
+### deploy
+
+> **deploy**: `object`
+
+#### deploy.aliases
+
+> **aliases**: `string`[]
+
+#### deploy.command
+
+> **command**: [`CommandEnum`](../enumerations/CommandEnum.md) = `CommandEnum.DEPLOY`
+
+#### deploy.description
+
+> **description**: `string` = `'GitHub Pages 等项目部署'`
+
+#### deploy.summary
+
+> **summary**: `string` = `'项目部署'`
+
+### install
+
+> **install**: `object`
+
+#### install.aliases
+
+> **aliases**: `string`[]
+
+#### install.command
+
+> **command**: [`CommandEnum`](../enumerations/CommandEnum.md) = `CommandEnum.INSTALL`
+
+#### install.description
+
+> **description**: `string` = `` '默认 pnpm 更新 lock；`fa ci` 别名按 lock 安装；源开关见 `--npm-registry` / `--npm-ali-registry`' ``
+
+#### install.summary
+
+> **summary**: `string` = `'安装依赖'`
+
+### lint
+
+> **lint**: `object`
+
+#### lint.aliases
+
+> **aliases**: `string`[]
+
+#### lint.command
+
+> **command**: [`CommandEnum`](../enumerations/CommandEnum.md) = `CommandEnum.LINT`
+
+#### lint.description
+
+> **description**: `string` = `'按仓库 ESLint 规则检查并修复代码'`
+
+#### lint.summary
+
+> **summary**: `string` = `'ESLint 检查与格式化'`
+
+### login
+
+> **login**: `object`
+
+#### login.aliases
+
+> **aliases**: `string`[]
+
+#### login.command
+
+> **command**: [`CommandEnum`](../enumerations/CommandEnum.md) = `CommandEnum.LOGIN`
+
+#### login.description
+
+> **description**: `string` = `'Docker / npm 登录'`
+
+#### login.summary
+
+> **summary**: `string` = `'登录平台'`
+
+### publish
+
+> **publish**: `object`
+
+#### publish.aliases
+
+> **aliases**: `string`[]
+
+#### publish.command
+
+> **command**: [`CommandEnum`](../enumerations/CommandEnum.md) = `CommandEnum.PUBLISH`
+
+#### publish.description
+
+> **description**: `string` = `'发布到 npm 远程仓库'`
+
+#### publish.summary
+
+> **summary**: `string` = `'推送 npm 包'`
+
+### release
+
+> **release**: `object`
+
+#### release.aliases
+
+> **aliases**: `string`[]
+
+#### release.command
+
+> **command**: [`CommandEnum`](../enumerations/CommandEnum.md) = `CommandEnum.RELEASE`
+
+#### release.description
+
+> **description**: `string` = `'release 版本，可选 CHANGELOG、git commit / tag / push'`
+
+#### release.summary
+
+> **summary**: `string` = `'发布新版本'`
+
+### run
+
+> **run**: `object`
+
+#### run.aliases
+
+> **aliases**: `string`[]
+
+#### run.command
+
+> **command**: [`CommandEnum`](../enumerations/CommandEnum.md) = `CommandEnum.RUN`
+
+#### run.description
+
+> **description**: `string` = `'运行内置 / fairy.config / package.json 聚合脚本（package.json 优先）'`
+
+#### run.summary
+
+> **summary**: `string` = `'执行自定义命令'`
+
+### sync
+
+> **sync**: `object`
+
+#### sync.aliases
+
+> **aliases**: `string`[]
+
+#### sync.command
+
+> **command**: [`CommandEnum`](../enumerations/CommandEnum.md) = `CommandEnum.SYNC`
+
+#### sync.description
+
+> **description**: `string` = `'将 npm 包同步到 CNPM 镜像'`
+
+#### sync.summary
+
+> **summary**: `string` = `'同步 npm 包'`

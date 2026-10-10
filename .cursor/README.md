@@ -17,11 +17,12 @@ codegraph sync → 16 全仓清单 → 任务路由 → 读代码小改
 | `engineering/` | 流程 00~17、命令、文档同步、Mermaid、scripts |
 | `business/` | 包职责、任务路由、风格、ESM、技术栈专项 |
 
-## 首读三件套
+## 首读
 
-1. `engineering/00-索引与记忆` — 速查
-2. `engineering/16-全仓资产清单` — 31 包 / 4 demo / CI
-3. `business/任务路由索引` — 改哪、怎么验证
+1. 根 `AGENTS.md` + `.agents/README.md` — L0 与入库上下文（fa 基座、验证、CI）
+2. `engineering/00-索引与记忆` — 速查
+3. `engineering/16-全仓资产清单` — 31 包 / 4 demo / CI
+4. `business/任务路由索引` — 改哪、怎么验证
 
 ## 关键文件（按场景）
 

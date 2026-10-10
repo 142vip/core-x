@@ -18,8 +18,8 @@ pnpm add @142vip/oauth2.0
 
 ## 功能
 
-- ✅ 导出 `StandardOauthV2` 类骨架
-- ⬜ `authorize` / `getToken` / `authenticate` / `refreshToken` **当前为空实现（stub）**
+- 导出 `StandardOauthV2` 类骨架
+- `authorize` / `getToken` / `authenticate` / `refreshToken` **当前为空实现（stub）**
 
 ## 配置
 

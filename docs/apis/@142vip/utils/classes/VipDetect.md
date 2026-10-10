@@ -2,7 +2,7 @@
 
 # 类: VipDetect
 
-定义于: [packages/utils/src/pkgs/detect.ts:15](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/detect.ts#L15)
+定义于: [packages/utils/src/pkgs/detect.ts:15](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/detect.ts#L15)
 
 ## 构造函数
 
@@ -20,7 +20,7 @@
 
 > **detectIndent**(`str`): `DetectIndent`
 
-定义于: [packages/utils/src/pkgs/detect.ts:30](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/detect.ts#L30)
+定义于: [packages/utils/src/pkgs/detect.ts:30](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/detect.ts#L30)
 
 #### 参数
 
@@ -38,7 +38,7 @@
 
 > **detectNewLine**(`str`): "\n" \| "\r\n" \| `undefined`
 
-定义于: [packages/utils/src/pkgs/detect.ts:34](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/detect.ts#L34)
+定义于: [packages/utils/src/pkgs/detect.ts:34](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/detect.ts#L34)
 
 #### 参数
 
@@ -56,7 +56,7 @@
 
 > **detectPort**(`port`): `Promise`\<`boolean`\>
 
-定义于: [packages/utils/src/pkgs/detect.ts:19](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/detect.ts#L19)
+定义于: [packages/utils/src/pkgs/detect.ts:19](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/detect.ts#L19)
 
 检测端口
 
@@ -76,7 +76,7 @@
 
 > **getAddress**(): `Promise`\<[`Address`](../interfaces/Address.md)\>
 
-定义于: [packages/utils/src/pkgs/detect.ts:41](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/detect.ts#L41)
+定义于: [packages/utils/src/pkgs/detect.ts:41](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/detect.ts#L41)
 
 获取地址
 

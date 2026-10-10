@@ -9,15 +9,15 @@ The **Db** class is a class that represents a MongoDB Database.
 ## 示例
 
 ```ts
-import { MongoClient } from 'mongodb'
+import { MongoClient } from 'mongodb';
 
 interface Pet {
-  name: string
-  kind: 'dog' | 'cat' | 'fish'
+  name: string;
+  kind: 'dog' | 'cat' | 'fish';
 }
 
-const client = new MongoClient('mongodb://localhost:27017')
-const db = client.db()
+const client = new MongoClient('mongodb://localhost:27017');
+const db = client.db();
 
 // Create a collection that validates our union
 await db.createCollection<Pet>('pets', {

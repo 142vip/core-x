@@ -87,13 +87,8 @@ jobs:
           cache: pnpm
           package-manager-cache: false
 
-      # 编译本地 fa 后执行 fa ci（postinstall 会 pnpm build:packages；CI 不写 git hooks）
       - name: Install Dependencies
-        run: |
-          NPM_REGISTRY="${NPM_REGISTRY:-https://registry.npmmirror.com}"
-          pnpm i --registry "$NPM_REGISTRY" --frozen-lockfile --force
-          pnpm --filter @142vip/fairy-cli... build
-          pnpm exec fa ci
+        run: pnpm i --frozen-lockfile --force
 
       # Github发布版本，并更新Release信息
       - name: Release New Version
@@ -133,13 +128,8 @@ jobs:
           cache: pnpm
           package-manager-cache: false
 
-      # 编译本地 fa 后执行 fa ci（postinstall 会 pnpm build:packages；CI 不写 git hooks）
       - name: Install Dependencies
-        run: |
-          NPM_REGISTRY="${NPM_REGISTRY:-https://registry.npmmirror.com}"
-          pnpm i --registry "$NPM_REGISTRY" --frozen-lockfile --force
-          pnpm --filter @142vip/fairy-cli... build
-          pnpm exec fa ci
+        run: pnpm i --frozen-lockfile --force
 
       - name: Resolve Package Name
         id: getPkgName
@@ -200,21 +190,14 @@ jobs:
         uses: actions/configure-pages@v6
 
       - name: Install dependencies
-        run: |
-          NPM_REGISTRY="${NPM_REGISTRY:-https://registry.npmmirror.com}"
-          pnpm i --registry "$NPM_REGISTRY" --frozen-lockfile --force
-          pnpm --filter @142vip/fairy-cli... build
-          pnpm exec fa ci
+        run: pnpm i --frozen-lockfile --force
 
-      # 编译 打包成dist，支持代理
+      # 编译文档站（代理 base），再生成 API 文档，最后才上传 dist
       - name: Build with VitePress
-        run: |
-          pnpm build:docs-proxy
+        run: pnpm build:docs-proxy
 
-      # 编译，typedoc生成api文档
-      #      - name: Build with Typedoc API
-      #        run: |
-      #          pnpm typedoc:api
+      - name: Build Typedoc API
+        run: pnpm typedoc:api
 
       # 产物名带上 run_attempt：重跑 job 会在同一次 run 里再上传一份。
       # deploy-pages 按名称精确匹配，固定名 github-pages 重名会直接失败

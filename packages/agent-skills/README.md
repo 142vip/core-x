@@ -16,12 +16,12 @@ pnpm add -D @142vip/agent-skills
 
 ## 功能
 
-- ✅ 内置 4 个通用 Skill：`workflow`、`code-dev`、`self-check`、`commit`
-- ✅ `syncAgentSkills` API：将包内 skills 同步到下游 `.agents/skills/`
-- ✅ `check` 模式：比对下游镜像与包内 skills 是否一致
-- ✅ 永不创建 / 覆盖 / 删除下游本地 `business-map`
-- ✅ CLI：`vip-agent-skills`（亦可通过 `fa ai` 调用）
-- ✅ 同步后写入基线文件 `.agents/skills/agent-skills.json`
+- 内置 4 个通用 Skill：`workflow`、`code-dev`、`self-check`、`commit`
+- `syncAgentSkills` API：将包内 skills 同步到下游 `.agents/skills/`
+- `check` 模式：比对下游镜像与包内 skills 是否一致
+- 永不创建 / 覆盖 / 删除下游本地 `business-map`
+- CLI：`vip-agent-skills`（亦可通过 `fa ai` 调用）
+- 同步后写入基线文件 `.agents/skills/agent-skills.json`
 
 ## 配置
 

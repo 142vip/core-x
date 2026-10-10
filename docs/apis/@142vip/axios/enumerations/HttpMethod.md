@@ -2,7 +2,7 @@
 
 # 枚举: HttpMethod
 
-定义于: [packages/axios/src/enum/http-method.enum.ts:5](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/axios/src/enum/http-method.enum.ts#L5)
+定义于: [packages/axios/src/enum/http-method.enum.ts:5](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/axios/src/enum/http-method.enum.ts#L5)
 
 适用于Axios的请求类型
  - 全大写
@@ -13,7 +13,7 @@
 
 > **DELETE**: `"DELETE"`
 
-定义于: [packages/axios/src/enum/http-method.enum.ts:9](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/axios/src/enum/http-method.enum.ts#L9)
+定义于: [packages/axios/src/enum/http-method.enum.ts:9](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/axios/src/enum/http-method.enum.ts#L9)
 
 ***
 
@@ -21,7 +21,7 @@
 
 > **GET**: `"GET"`
 
-定义于: [packages/axios/src/enum/http-method.enum.ts:6](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/axios/src/enum/http-method.enum.ts#L6)
+定义于: [packages/axios/src/enum/http-method.enum.ts:6](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/axios/src/enum/http-method.enum.ts#L6)
 
 ***
 
@@ -29,7 +29,7 @@
 
 > **HEAD**: `"HEAD"`
 
-定义于: [packages/axios/src/enum/http-method.enum.ts:11](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/axios/src/enum/http-method.enum.ts#L11)
+定义于: [packages/axios/src/enum/http-method.enum.ts:11](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/axios/src/enum/http-method.enum.ts#L11)
 
 ***
 
@@ -37,7 +37,7 @@
 
 > **OPTIONS**: `"OPTIONS"`
 
-定义于: [packages/axios/src/enum/http-method.enum.ts:12](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/axios/src/enum/http-method.enum.ts#L12)
+定义于: [packages/axios/src/enum/http-method.enum.ts:12](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/axios/src/enum/http-method.enum.ts#L12)
 
 ***
 
@@ -45,7 +45,7 @@
 
 > **PATCH**: `"PATCH"`
 
-定义于: [packages/axios/src/enum/http-method.enum.ts:10](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/axios/src/enum/http-method.enum.ts#L10)
+定义于: [packages/axios/src/enum/http-method.enum.ts:10](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/axios/src/enum/http-method.enum.ts#L10)
 
 ***
 
@@ -53,7 +53,7 @@
 
 > **POST**: `"POST"`
 
-定义于: [packages/axios/src/enum/http-method.enum.ts:7](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/axios/src/enum/http-method.enum.ts#L7)
+定义于: [packages/axios/src/enum/http-method.enum.ts:7](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/axios/src/enum/http-method.enum.ts#L7)
 
 ***
 
@@ -61,4 +61,4 @@
 
 > **PUT**: `"PUT"`
 
-定义于: [packages/axios/src/enum/http-method.enum.ts:8](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/axios/src/enum/http-method.enum.ts#L8)
+定义于: [packages/axios/src/enum/http-method.enum.ts:8](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/axios/src/enum/http-method.enum.ts#L8)

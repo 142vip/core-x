@@ -118,14 +118,14 @@ cd packages/<pkg> && pnpm build && pnpm typecheck   # 有 typecheck 时
 
 | 步骤 | 默认 | 全仓保底（少用） |
 |------|------|------------------|
-| Lint | `npx eslint <改动路径> --fix` | `pnpm lint:fix` |
+| Lint | `npx fa lint -f <改动路径>` | `npx fa lint --fix` |
 | Build | `cd packages/<pkg> && pnpm build` | `pnpm build` |
 
 **可跳过 lint + build**：纯问答、仅 `.cursor/rules/**`、仅 `.md` 且未动 TS/JS。
 
 - 改动路径 **零 ESLint error**；warning 允许，勿新增 error
 - 牵连包 `build` exit 0
-- **强约束**：禁止无必要时跑全仓 `pnpm lint:fix` / `pnpm build`
+- **强约束**：禁止无必要时跑全仓 `npx fa lint --fix` / `pnpm build`
 
 ## 沟通
 

@@ -2,25 +2,27 @@
 
 # 函数: defineVipEslintConfig()
 
-> **defineVipEslintConfig**(`options?`): `Promise`\<`TypedFlatConfigItem`[]\>
+> **defineVipEslintConfig**(`options?`, ...`userConfigs`): `Promise`\<`TypedFlatConfigItem`[]\>
 
-定义于: [eslint.config.ts:81](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/eslint-config/src/eslint.config.ts#L81)
+定义于: [eslint.config.ts:107](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/eslint-config/src/eslint.config.ts#L107)
 
 定义 Eslint 配置
 
 参考：https://github.com/antfu/eslint-config
 
-实现要点：
-- `antfu(options, ...userConfigs)` 第一参是 antfu 全局 options；第二参起是 userConfigs（flat config 数组项）
-- 旧实现把 `defaultEslintConfig` 写死作为第一参，导致 `options.markdown` 等覆盖不生效
-- 新实现 `antfu({ ...defaultEslintConfig, ...options }, ...)` —— 调用方可通过 options 覆盖 default 字段（向后兼容）
-- 末尾追加 `markdownCodeBlockOverrides`：针对 markdown 内 ts/js 代码块的规则降级
+第一参只传 antfu 全局选项。`files` 不能放进 antfu 第一参，否则会直接抛错。
+无 `files` 的 `rules` 作为全局覆盖，插在 antfu 之后、markdown 代码块降级之前。
+带 `files` 的规则，以及第二参起的配置，排在整份配置最后，避免 Vue 等插件规则把用户配置盖回去。
 
 ## 参数
 
 ### options?
 
 `EslintConfigOptions` = `{}`
+
+### userConfigs
+
+...`Awaitable`\<`TypedFlatConfigItem` \| `TypedFlatConfigItem`[]\>[]
 
 ## 返回
 

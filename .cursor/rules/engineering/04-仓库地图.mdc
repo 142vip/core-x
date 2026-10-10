@@ -54,7 +54,7 @@ npx fa ci                              # 安装依赖（首选）
 cd packages/<pkg> && pnpm build
 cd packages/<pkg> && pnpm test
 cd apps/vitepress-demo && pnpm dev
-pnpm lint:fix                            # 零 error（warning 允许）
+npx fa lint --fix                      # 零 error（warning 允许）
 pnpm test                                # turbo 全量（根目录）
 ```
 

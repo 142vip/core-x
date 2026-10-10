@@ -2,7 +2,7 @@
 
 # 接口: ExampleResponseDataType
 
-定义于: [example.ts:11](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/grpc/src/example.ts#L11)
+定义于: [example.ts:11](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/grpc/src/example.ts#L11)
 
 响应 数据格式 简单演示
 
@@ -12,7 +12,7 @@
 
 > **message**: `string`
 
-定义于: [example.ts:13](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/grpc/src/example.ts#L13)
+定义于: [example.ts:13](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/grpc/src/example.ts#L13)
 
 ***
 
@@ -20,4 +20,4 @@
 
 > **methodName**: `string`
 
-定义于: [example.ts:12](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/grpc/src/example.ts#L12)
+定义于: [example.ts:12](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/grpc/src/example.ts#L12)

@@ -2,7 +2,7 @@
 
 # 接口: Address
 
-定义于: [packages/utils/src/pkgs/detect.ts:8](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/detect.ts#L8)
+定义于: [packages/utils/src/pkgs/detect.ts:8](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/detect.ts#L8)
 
 ## 属性
 
@@ -10,7 +10,7 @@
 
 > `optional` **ip?**: `string`
 
-定义于: [packages/utils/src/pkgs/detect.ts:10](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/detect.ts#L10)
+定义于: [packages/utils/src/pkgs/detect.ts:10](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/detect.ts#L10)
 
 ***
 
@@ -18,7 +18,7 @@
 
 > `optional` **ipv6?**: `string`
 
-定义于: [packages/utils/src/pkgs/detect.ts:11](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/detect.ts#L11)
+定义于: [packages/utils/src/pkgs/detect.ts:11](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/detect.ts#L11)
 
 ***
 
@@ -26,7 +26,7 @@
 
 > `optional` **local?**: `string`
 
-定义于: [packages/utils/src/pkgs/detect.ts:9](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/detect.ts#L9)
+定义于: [packages/utils/src/pkgs/detect.ts:9](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/detect.ts#L9)
 
 ***
 
@@ -34,4 +34,4 @@
 
 > `optional` **mac?**: `string`
 
-定义于: [packages/utils/src/pkgs/detect.ts:12](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/pkgs/detect.ts#L12)
+定义于: [packages/utils/src/pkgs/detect.ts:12](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/pkgs/detect.ts#L12)

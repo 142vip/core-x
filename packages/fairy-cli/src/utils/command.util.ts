@@ -1,5 +1,4 @@
 import type { VipCommander, VipPackageCliCommander } from '@142vip/utils'
-import type { CommandEnum } from '../constant'
 import {
   formatVipCliAlignedCommands,
   logVipCliTrace,
@@ -11,6 +10,7 @@ import {
 import { name, version } from '../../package.json'
 import {
   CLI_COMMAND_DETAIL,
+  CommandEnum,
   formatFairyCliBinAliases,
   formatFairyCliExample,
 } from '../constant'
@@ -44,6 +44,13 @@ export function registerFairySubcommand<TArgs extends unknown[]>(
   const command = program.initCommand(CLI_COMMAND_DETAIL[commandKey])
   setup?.(command)
   program.appendSubcommandOptions(command)
+  // 配置可以把 dry-run / vip 写成 true；补上否定参数，命令行才能改回 false
+  if (commandKey === CommandEnum.COMMIT || commandKey === CommandEnum.RELEASE || commandKey === CommandEnum.AI) {
+    command.option('--no-dry-run', '关闭试运行')
+  }
+  if (commandKey === CommandEnum.COMMIT || commandKey === CommandEnum.RELEASE) {
+    command.option('--no-vip', '关闭 vip 模式')
+  }
   command.action(async (...args: TArgs) => {
     traceFairySubcommand(commandKey, args[0])
     await action(...args)

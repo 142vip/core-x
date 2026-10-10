@@ -2,7 +2,7 @@
 
 # 类: AxiosFactory
 
-定义于: [packages/axios/src/core/axios.factory.ts:20](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/axios/src/core/axios.factory.ts#L20)
+定义于: [packages/axios/src/core/axios.factory.ts:20](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/axios/src/core/axios.factory.ts#L20)
 
 axios
 - 参考：https://www.npmjs.com/package/axios#features
@@ -13,13 +13,13 @@ axios
 
 > **new AxiosFactory**(`config?`): `AxiosFactory`
 
-定义于: [packages/axios/src/core/axios.factory.ts:23](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/axios/src/core/axios.factory.ts#L23)
+定义于: [packages/axios/src/core/axios.factory.ts:23](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/axios/src/core/axios.factory.ts#L23)
 
 #### 参数
 
 ##### config?
 
-`CreateAxiosDefaults`\<`any`\>
+[`CreateAxiosDefaults`](../interfaces/CreateAxiosDefaults.md)\<`any`\>
 
 #### 返回
 
@@ -31,7 +31,7 @@ axios
 
 > **clearInterceptor**(`type?`): `void`
 
-定义于: [packages/axios/src/core/axios.factory.ts:48](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/axios/src/core/axios.factory.ts#L48)
+定义于: [packages/axios/src/core/axios.factory.ts:48](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/axios/src/core/axios.factory.ts#L48)
 
 清除拦截器，支持同时清理请求拦截器和响应拦截器
 
@@ -51,7 +51,7 @@ axios
 
 > **createAxiosInstance**(): [`VipAxiosInstance`](../interfaces/VipAxiosInstance.md)
 
-定义于: [packages/axios/src/core/axios.factory.ts:31](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/axios/src/core/axios.factory.ts#L31)
+定义于: [packages/axios/src/core/axios.factory.ts:31](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/axios/src/core/axios.factory.ts#L31)
 
 创建vipAxios实例
 
@@ -63,12 +63,12 @@ axios
 
 ### getConfig()
 
-> **getConfig**(): `CreateAxiosDefaults`\<`any`\> \| `undefined`
+> **getConfig**(): [`CreateAxiosDefaults`](../interfaces/CreateAxiosDefaults.md)\<`any`\> \| `undefined`
 
-定义于: [packages/axios/src/core/axios.factory.ts:41](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/axios/src/core/axios.factory.ts#L41)
+定义于: [packages/axios/src/core/axios.factory.ts:41](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/axios/src/core/axios.factory.ts#L41)
 
 获取用户初始化的axios实例的默认配置
 
 #### 返回
 
-`CreateAxiosDefaults`\<`any`\> \| `undefined`
+[`CreateAxiosDefaults`](../interfaces/CreateAxiosDefaults.md)\<`any`\> \| `undefined`

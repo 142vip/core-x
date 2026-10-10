@@ -4,7 +4,7 @@
 
 > **ApiResponseSkip**(): \<`TFunction`, `Y`\>(`target`, `propertyKey?`, `descriptor?`) => `void`
 
-定义于: [decorators/swagger.decorator.ts:148](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/nest/src/decorators/swagger.decorator.ts#L148)
+定义于: [decorators/swagger.decorator.ts:148](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/nest/src/decorators/swagger.decorator.ts#L148)
 
 响应装饰器 - 跳过拦截器
 

@@ -2,7 +2,7 @@
 
 # 接口: VipAxiosInstance()
 
-定义于: [packages/axios/src/core/axios.factory.ts:11](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/axios/src/core/axios.factory.ts#L11)
+定义于: [packages/axios/src/core/axios.factory.ts:11](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/axios/src/core/axios.factory.ts#L11)
 
 VipAxios实例类型
 - 继承自AxiosInstance，添加了自定义方法
@@ -11,13 +11,13 @@ VipAxios实例类型
 
 ## theme_extends
 
-- `AxiosInstance`
+- [`AxiosInstance`](AxiosInstance.md)
 
 ## 调用签名
 
 > **VipAxiosInstance**\<`T`, `R`, `D`\>(`config`): `Promise`\<`R`\>
 
-定义于: [packages/axios/src/core/axios.factory.ts:11](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/axios/src/core/axios.factory.ts#L11)
+定义于: [packages/axios/src/core/axios.factory.ts:11](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/axios/src/core/axios.factory.ts#L11)
 
 VipAxios实例类型
 - 继承自AxiosInstance，添加了自定义方法
@@ -32,7 +32,7 @@ VipAxios实例类型
 
 #### R
 
-`R` = `AxiosResponse`\<`T`, `any`, \{ \}\>
+`R` = [`AxiosResponse`](AxiosResponse.md)\<`T`, `any`, \{ \}\>
 
 #### D
 
@@ -42,7 +42,7 @@ VipAxios实例类型
 
 #### config
 
-`AxiosRequestConfig`\<`D`\>
+[`AxiosRequestConfig`](AxiosRequestConfig.md)\<`D`\>
 
 ### 返回
 
@@ -52,7 +52,7 @@ VipAxios实例类型
 
 > **VipAxiosInstance**\<`T`, `R`, `D`\>(`url`, `config?`): `Promise`\<`R`\>
 
-定义于: [packages/axios/src/core/axios.factory.ts:11](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/axios/src/core/axios.factory.ts#L11)
+定义于: [packages/axios/src/core/axios.factory.ts:11](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/axios/src/core/axios.factory.ts#L11)
 
 VipAxios实例类型
 - 继承自AxiosInstance，添加了自定义方法
@@ -67,7 +67,7 @@ VipAxios实例类型
 
 #### R
 
-`R` = `AxiosResponse`\<`T`, `any`, \{ \}\>
+`R` = [`AxiosResponse`](AxiosResponse.md)\<`T`, `any`, \{ \}\>
 
 #### D
 
@@ -81,7 +81,7 @@ VipAxios实例类型
 
 #### config?
 
-`AxiosRequestConfig`\<`D`\>
+[`AxiosRequestConfig`](AxiosRequestConfig.md)\<`D`\>
 
 ### 返回
 
@@ -93,7 +93,7 @@ VipAxios实例类型
 
 > **clearInterceptor**: (`type`) => `void`
 
-定义于: [packages/axios/src/core/axios.factory.ts:12](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/axios/src/core/axios.factory.ts#L12)
+定义于: [packages/axios/src/core/axios.factory.ts:12](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/axios/src/core/axios.factory.ts#L12)
 
 #### 参数
 
@@ -121,19 +121,19 @@ VipAxios实例类型
 
 #### 继承自
 
-`AxiosInstance.defaults`
+[`AxiosInstance`](AxiosInstance.md).[`defaults`](AxiosInstance.md#defaults)
 
 ***
 
 ### getConfig
 
-> **getConfig**: () => `CreateAxiosDefaults`\<`any`\> \| `undefined`
+> **getConfig**: () => [`CreateAxiosDefaults`](CreateAxiosDefaults.md)\<`any`\> \| `undefined`
 
-定义于: [packages/axios/src/core/axios.factory.ts:13](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/axios/src/core/axios.factory.ts#L13)
+定义于: [packages/axios/src/core/axios.factory.ts:13](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/axios/src/core/axios.factory.ts#L13)
 
 #### 返回
 
-`CreateAxiosDefaults`\<`any`\> \| `undefined`
+[`CreateAxiosDefaults`](CreateAxiosDefaults.md)\<`any`\> \| `undefined`
 
 ***
 
@@ -145,21 +145,21 @@ VipAxios实例类型
 
 #### request
 
-> **request**: `AxiosInterceptorManager`\<`InternalAxiosRequestConfig`\<`any`\>\>
+> **request**: `AxiosInterceptorManager`\<[`InternalAxiosRequestConfig`](InternalAxiosRequestConfig.md)\<`any`\>\>
 
 #### response
 
-> **response**: `AxiosInterceptorManager`\<`AxiosResponse`\<`any`, `any`, \{ \}\>\>
+> **response**: `AxiosInterceptorManager`\<[`AxiosResponse`](AxiosResponse.md)\<`any`, `any`, \{ \}\>\>
 
 #### 继承自
 
-`AxiosInstance.interceptors`
+[`AxiosInstance`](AxiosInstance.md).[`interceptors`](AxiosInstance.md#interceptors)
 
 ## 方法
 
 ### create()
 
-> **create**(`config?`): `AxiosInstance`
+> **create**(`config?`): [`AxiosInstance`](AxiosInstance.md)
 
 定义于: node\_modules/.pnpm/axios@1.17.0/node\_modules/axios/index.d.ts:671
 
@@ -167,15 +167,15 @@ VipAxios实例类型
 
 ##### config?
 
-`CreateAxiosDefaults`\<`any`\>
+[`CreateAxiosDefaults`](CreateAxiosDefaults.md)\<`any`\>
 
 #### 返回
 
-`AxiosInstance`
+[`AxiosInstance`](AxiosInstance.md)
 
 #### 继承自
 
-`AxiosInstance.create`
+[`AxiosInstance`](AxiosInstance.md).[`create`](AxiosInstance.md#create)
 
 ***
 
@@ -193,7 +193,7 @@ VipAxios实例类型
 
 ##### R
 
-`R` = `AxiosResponse`\<`T`, `any`, \{ \}\>
+`R` = [`AxiosResponse`](AxiosResponse.md)\<`T`, `any`, \{ \}\>
 
 ##### D
 
@@ -207,7 +207,7 @@ VipAxios实例类型
 
 ##### config?
 
-`AxiosRequestConfig`\<`D`\>
+[`AxiosRequestConfig`](AxiosRequestConfig.md)\<`D`\>
 
 #### 返回
 
@@ -215,7 +215,7 @@ VipAxios实例类型
 
 #### 继承自
 
-`AxiosInstance.delete`
+[`AxiosInstance`](AxiosInstance.md).[`delete`](AxiosInstance.md#delete)
 
 ***
 
@@ -233,7 +233,7 @@ VipAxios实例类型
 
 ##### R
 
-`R` = `AxiosResponse`\<`T`, `any`, \{ \}\>
+`R` = [`AxiosResponse`](AxiosResponse.md)\<`T`, `any`, \{ \}\>
 
 ##### D
 
@@ -247,7 +247,7 @@ VipAxios实例类型
 
 ##### config?
 
-`AxiosRequestConfig`\<`D`\>
+[`AxiosRequestConfig`](AxiosRequestConfig.md)\<`D`\>
 
 #### 返回
 
@@ -255,7 +255,7 @@ VipAxios实例类型
 
 #### 继承自
 
-`AxiosInstance.get`
+[`AxiosInstance`](AxiosInstance.md).[`get`](AxiosInstance.md#get)
 
 ***
 
@@ -269,7 +269,7 @@ VipAxios实例类型
 
 ##### config?
 
-`AxiosRequestConfig`\<`any`\>
+[`AxiosRequestConfig`](AxiosRequestConfig.md)\<`any`\>
 
 #### 返回
 
@@ -277,7 +277,7 @@ VipAxios实例类型
 
 #### 继承自
 
-`AxiosInstance.getUri`
+[`AxiosInstance`](AxiosInstance.md).[`getUri`](AxiosInstance.md#geturi)
 
 ***
 
@@ -295,7 +295,7 @@ VipAxios实例类型
 
 ##### R
 
-`R` = `AxiosResponse`\<`T`, `any`, \{ \}\>
+`R` = [`AxiosResponse`](AxiosResponse.md)\<`T`, `any`, \{ \}\>
 
 ##### D
 
@@ -309,7 +309,7 @@ VipAxios实例类型
 
 ##### config?
 
-`AxiosRequestConfig`\<`D`\>
+[`AxiosRequestConfig`](AxiosRequestConfig.md)\<`D`\>
 
 #### 返回
 
@@ -317,7 +317,7 @@ VipAxios实例类型
 
 #### 继承自
 
-`AxiosInstance.head`
+[`AxiosInstance`](AxiosInstance.md).[`head`](AxiosInstance.md#head)
 
 ***
 
@@ -335,7 +335,7 @@ VipAxios实例类型
 
 ##### R
 
-`R` = `AxiosResponse`\<`T`, `any`, \{ \}\>
+`R` = [`AxiosResponse`](AxiosResponse.md)\<`T`, `any`, \{ \}\>
 
 ##### D
 
@@ -349,7 +349,7 @@ VipAxios实例类型
 
 ##### config?
 
-`AxiosRequestConfig`\<`D`\>
+[`AxiosRequestConfig`](AxiosRequestConfig.md)\<`D`\>
 
 #### 返回
 
@@ -357,7 +357,7 @@ VipAxios实例类型
 
 #### 继承自
 
-`AxiosInstance.options`
+[`AxiosInstance`](AxiosInstance.md).[`options`](AxiosInstance.md#options)
 
 ***
 
@@ -375,7 +375,7 @@ VipAxios实例类型
 
 ##### R
 
-`R` = `AxiosResponse`\<`T`, `any`, \{ \}\>
+`R` = [`AxiosResponse`](AxiosResponse.md)\<`T`, `any`, \{ \}\>
 
 ##### D
 
@@ -393,7 +393,7 @@ VipAxios实例类型
 
 ##### config?
 
-`AxiosRequestConfig`\<`D`\>
+[`AxiosRequestConfig`](AxiosRequestConfig.md)\<`D`\>
 
 #### 返回
 
@@ -401,7 +401,7 @@ VipAxios实例类型
 
 #### 继承自
 
-`AxiosInstance.patch`
+[`AxiosInstance`](AxiosInstance.md).[`patch`](AxiosInstance.md#patch)
 
 ***
 
@@ -419,7 +419,7 @@ VipAxios实例类型
 
 ##### R
 
-`R` = `AxiosResponse`\<`T`, `any`, \{ \}\>
+`R` = [`AxiosResponse`](AxiosResponse.md)\<`T`, `any`, \{ \}\>
 
 ##### D
 
@@ -437,7 +437,7 @@ VipAxios实例类型
 
 ##### config?
 
-`AxiosRequestConfig`\<`D`\>
+[`AxiosRequestConfig`](AxiosRequestConfig.md)\<`D`\>
 
 #### 返回
 
@@ -445,7 +445,7 @@ VipAxios实例类型
 
 #### 继承自
 
-`AxiosInstance.patchForm`
+[`AxiosInstance`](AxiosInstance.md).[`patchForm`](AxiosInstance.md#patchform)
 
 ***
 
@@ -463,7 +463,7 @@ VipAxios实例类型
 
 ##### R
 
-`R` = `AxiosResponse`\<`T`, `any`, \{ \}\>
+`R` = [`AxiosResponse`](AxiosResponse.md)\<`T`, `any`, \{ \}\>
 
 ##### D
 
@@ -481,7 +481,7 @@ VipAxios实例类型
 
 ##### config?
 
-`AxiosRequestConfig`\<`D`\>
+[`AxiosRequestConfig`](AxiosRequestConfig.md)\<`D`\>
 
 #### 返回
 
@@ -489,7 +489,7 @@ VipAxios实例类型
 
 #### 继承自
 
-`AxiosInstance.post`
+[`AxiosInstance`](AxiosInstance.md).[`post`](AxiosInstance.md#post)
 
 ***
 
@@ -507,7 +507,7 @@ VipAxios实例类型
 
 ##### R
 
-`R` = `AxiosResponse`\<`T`, `any`, \{ \}\>
+`R` = [`AxiosResponse`](AxiosResponse.md)\<`T`, `any`, \{ \}\>
 
 ##### D
 
@@ -525,7 +525,7 @@ VipAxios实例类型
 
 ##### config?
 
-`AxiosRequestConfig`\<`D`\>
+[`AxiosRequestConfig`](AxiosRequestConfig.md)\<`D`\>
 
 #### 返回
 
@@ -533,7 +533,7 @@ VipAxios实例类型
 
 #### 继承自
 
-`AxiosInstance.postForm`
+[`AxiosInstance`](AxiosInstance.md).[`postForm`](AxiosInstance.md#postform)
 
 ***
 
@@ -551,7 +551,7 @@ VipAxios实例类型
 
 ##### R
 
-`R` = `AxiosResponse`\<`T`, `any`, \{ \}\>
+`R` = [`AxiosResponse`](AxiosResponse.md)\<`T`, `any`, \{ \}\>
 
 ##### D
 
@@ -569,7 +569,7 @@ VipAxios实例类型
 
 ##### config?
 
-`AxiosRequestConfig`\<`D`\>
+[`AxiosRequestConfig`](AxiosRequestConfig.md)\<`D`\>
 
 #### 返回
 
@@ -577,7 +577,7 @@ VipAxios实例类型
 
 #### 继承自
 
-`AxiosInstance.put`
+[`AxiosInstance`](AxiosInstance.md).[`put`](AxiosInstance.md#put)
 
 ***
 
@@ -595,7 +595,7 @@ VipAxios实例类型
 
 ##### R
 
-`R` = `AxiosResponse`\<`T`, `any`, \{ \}\>
+`R` = [`AxiosResponse`](AxiosResponse.md)\<`T`, `any`, \{ \}\>
 
 ##### D
 
@@ -613,7 +613,7 @@ VipAxios实例类型
 
 ##### config?
 
-`AxiosRequestConfig`\<`D`\>
+[`AxiosRequestConfig`](AxiosRequestConfig.md)\<`D`\>
 
 #### 返回
 
@@ -621,7 +621,7 @@ VipAxios实例类型
 
 #### 继承自
 
-`AxiosInstance.putForm`
+[`AxiosInstance`](AxiosInstance.md).[`putForm`](AxiosInstance.md#putform)
 
 ***
 
@@ -639,7 +639,7 @@ VipAxios实例类型
 
 ##### R
 
-`R` = `AxiosResponse`\<`T`, `any`, \{ \}\>
+`R` = [`AxiosResponse`](AxiosResponse.md)\<`T`, `any`, \{ \}\>
 
 ##### D
 
@@ -657,7 +657,7 @@ VipAxios实例类型
 
 ##### config?
 
-`AxiosRequestConfig`\<`D`\>
+[`AxiosRequestConfig`](AxiosRequestConfig.md)\<`D`\>
 
 #### 返回
 
@@ -665,7 +665,7 @@ VipAxios实例类型
 
 #### 继承自
 
-`AxiosInstance.query`
+[`AxiosInstance`](AxiosInstance.md).[`query`](AxiosInstance.md#query)
 
 ***
 
@@ -683,7 +683,7 @@ VipAxios实例类型
 
 ##### R
 
-`R` = `AxiosResponse`\<`T`, `any`, \{ \}\>
+`R` = [`AxiosResponse`](AxiosResponse.md)\<`T`, `any`, \{ \}\>
 
 ##### D
 
@@ -693,7 +693,7 @@ VipAxios实例类型
 
 ##### config
 
-`AxiosRequestConfig`\<`D`\>
+[`AxiosRequestConfig`](AxiosRequestConfig.md)\<`D`\>
 
 #### 返回
 
@@ -701,4 +701,4 @@ VipAxios实例类型
 
 #### 继承自
 
-`AxiosInstance.request`
+[`AxiosInstance`](AxiosInstance.md).[`request`](AxiosInstance.md#request)

@@ -7,7 +7,7 @@ alwaysApply: true
 
 **全部 relevant 项通过方可交付。** 配合 `01-执行流程` 使用。顺序：**局部 lint → 局部 build → 文档自检**。
 
-> **强约束**：自检**默认局部**；与本次改动无关的包 / 目录**跳过**；全仓 `pnpm lint:fix` / `pnpm build` **仅作最后保底**。
+> **强约束**：自检**默认局部**；与本次改动无关的包 / 目录**跳过**；全仓 `npx fa lint --fix` / `pnpm build` **仅作最后保底**。
 
 ## A. 通用验收（每次必做）
 
@@ -19,14 +19,14 @@ alwaysApply: true
 ## B. ESLint 与编辑器（**局部 lint 优先**）
 
 ```bash
-npx eslint packages/<pkg> --fix
-npx eslint apps/<demo> --fix
+npx fa lint -f packages/<pkg>
+npx fa lint -f apps/<demo>
 
 # 改根 ESLint/TS、跨多顶层目录、用户将 commit
-pnpm lint:fix
+npx fa lint --fix
 ```
 
-| 可跳过 | 须局部 lint | 须全仓 `pnpm lint:fix` |
+| 可跳过 | 须局部 lint | 须全仓 `npx fa lint --fix` |
 |--------|-------------|------------------------|
 | 纯问答、仅 `.cursor/rules/**` | 单包 / demo / 指定文件 | 根 `eslint.config.js`、根 TS 配置 |
 | 仅 `.md` 无 TS/JS | | 跨 `packages/` + `apps/` + 根配置 |
@@ -65,14 +65,19 @@ pnpm build
 
 ## D. 测试
 
-有逻辑变更时，**仅跑牵连包**：
+有逻辑变更时，**优先跑牵连包**；交付 / PR 前可用根目录 Turbo（`turbo.json` 中 `test` / `test:coverage` 均 `dependsOn: ["^build"]`，先编依赖再各包 jest，包间并行、coverage 写入各包 `coverage/`）：
 
 ```bash
 cd packages/<pkg> && pnpm test
+# 根目录（与 CI 一致）
+pnpm test
+pnpm test:coverage
+pnpm verify                 # 根脚本：npx fa lint + pnpm test + pnpm build:docs
 ```
 
 - [ ] 相关 `test/*.spec.ts` 通过
 - [ ] bug 修复优先补 repro 测试
+- [ ] 全仓回归：`pnpm test` exit 0（CI 不跑 `test:coverage`；覆盖率本地 `pnpm test:coverage`）
 
 ## E. 文档与站点自检（代码变更后必做 · 见 `09`）
 

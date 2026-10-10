@@ -2,7 +2,7 @@
 
 # 类: GithubAPI
 
-定义于: [changelog/src/core/apis/github.api.ts:288](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/apis/github.api.ts#L288)
+定义于: [changelog/src/core/apis/github.api.ts:288](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/apis/github.api.ts#L288)
 
 GitHub REST 与 Release 相关 API
 
@@ -22,7 +22,7 @@ GitHub REST 与 Release 相关 API
 
 > **buildGithubReleaseRequestBody**: (`options`) => `Record`\<`string`, `unknown`\>
 
-定义于: [changelog/src/core/apis/github.api.ts:292](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/apis/github.api.ts#L292)
+定义于: [changelog/src/core/apis/github.api.ts:292](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/apis/github.api.ts#L292)
 
 构建 GitHub Release API 请求体
 - 非预发布时附带 `make_latest: true`
@@ -67,7 +67,7 @@ GitHub REST 与 Release 相关 API
 
 > **createGithubRelease**: (`options`) => `Promise`\<`void`\>
 
-定义于: [changelog/src/core/apis/github.api.ts:297](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/apis/github.api.ts#L297)
+定义于: [changelog/src/core/apis/github.api.ts:297](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/apis/github.api.ts#L297)
 
 创建或更新 GitHub Release
 
@@ -117,7 +117,7 @@ GitHub REST 与 Release 相关 API
 
 > **fetchGitHubJson**: \<`T`\>(`url`, `init`) => `Promise`\<`T`\>
 
-定义于: [changelog/src/core/apis/github.api.ts:293](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/apis/github.api.ts#L293)
+定义于: [changelog/src/core/apis/github.api.ts:293](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/apis/github.api.ts#L293)
 
 GitHub REST 请求（Node 18+ 原生 fetch）
 
@@ -157,7 +157,7 @@ GitHub REST 请求（Node 18+ 原生 fetch）
 
 > **generateReleaseUrl**: (`markdown`, `config`) => `string`
 
-定义于: [changelog/src/core/apis/github.api.ts:291](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/apis/github.api.ts#L291)
+定义于: [changelog/src/core/apis/github.api.ts:291](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/apis/github.api.ts#L291)
 
 生成 GitHub Web「新建 Release」链接（token 缺失时手动发布）
 
@@ -199,7 +199,7 @@ GitHub REST 请求（Node 18+ 原生 fetch）
 
 > **getAuthorInfo**: (`options`, `info`) => `Promise`\<[`GitAuthorInfo`](../interfaces/GitAuthorInfo.md)\>
 
-定义于: [changelog/src/core/apis/github.api.ts:289](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/apis/github.api.ts#L289)
+定义于: [changelog/src/core/apis/github.api.ts:289](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/apis/github.api.ts#L289)
 
 #### 参数
 
@@ -231,7 +231,7 @@ GitHub REST 请求（Node 18+ 原生 fetch）
 
 > **getHeaders**: (`token`) => `object`
 
-定义于: [changelog/src/core/apis/github.api.ts:295](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/apis/github.api.ts#L295)
+定义于: [changelog/src/core/apis/github.api.ts:295](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/apis/github.api.ts#L295)
 
 #### 参数
 
@@ -257,7 +257,7 @@ GitHub REST 请求（Node 18+ 原生 fetch）
 
 > **isExistTag**: (`tag`, `options`) => `Promise`\<`boolean`\>
 
-定义于: [changelog/src/core/apis/github.api.ts:290](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/apis/github.api.ts#L290)
+定义于: [changelog/src/core/apis/github.api.ts:290](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/apis/github.api.ts#L290)
 
 检查远程 tag 是否存在
 
@@ -291,7 +291,7 @@ GitHub REST 请求（Node 18+ 原生 fetch）
 
 > **printReleaseUrl**: (`webUrl`, `success`) => `void`
 
-定义于: [changelog/src/core/apis/github.api.ts:294](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/apis/github.api.ts#L294)
+定义于: [changelog/src/core/apis/github.api.ts:294](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/apis/github.api.ts#L294)
 
 #### 参数
 
@@ -313,7 +313,7 @@ GitHub REST 请求（Node 18+ 原生 fetch）
 
 > **resolveAuthors**: (`commits`, `options`) => `Promise`\<[`GitAuthorInfo`](../interfaces/GitAuthorInfo.md)[]\>
 
-定义于: [changelog/src/core/apis/github.api.ts:296](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/changelog/src/core/apis/github.api.ts#L296)
+定义于: [changelog/src/core/apis/github.api.ts:296](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/changelog/src/core/apis/github.api.ts#L296)
 
 为 commit 列表解析 GitHub 贡献者 login
 

@@ -1,0 +1,27 @@
+[API 参考](../../../index.md) / [@142vip/axios](../index.md) / isAxiosError
+
+# 函数: isAxiosError()
+
+> **isAxiosError**\<`T`, `D`\>(`payload`): `payload is AxiosError<T, D>`
+
+定义于: node\_modules/.pnpm/axios@1.17.0/node\_modules/axios/index.d.ts:701
+
+## 类型参数
+
+### T
+
+`T` = `any`
+
+### D
+
+`D` = `any`
+
+## 参数
+
+### payload
+
+`any`
+
+## 返回
+
+`payload is AxiosError<T, D>`

@@ -2,7 +2,7 @@
 
 # 类: VipLogger
 
-定义于: [packages/utils/src/core/logger.ts:22](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/core/logger.ts#L22)
+定义于: [packages/utils/src/core/logger.ts:23](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/core/logger.ts#L23)
 
 日志输出
 - 用于终端
@@ -14,7 +14,7 @@
 
 > **new VipLogger**(`_opts?`): `VipLogger`
 
-定义于: [packages/utils/src/core/logger.ts:24](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/core/logger.ts#L24)
+定义于: [packages/utils/src/core/logger.ts:25](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/core/logger.ts#L25)
 
 #### 参数
 
@@ -32,7 +32,7 @@
 
 > **error**(`msg`, `opts?`): `void`
 
-定义于: [packages/utils/src/core/logger.ts:38](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/core/logger.ts#L38)
+定义于: [packages/utils/src/core/logger.ts:39](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/core/logger.ts#L39)
 
 #### 参数
 
@@ -54,7 +54,7 @@
 
 > **log**(`msg`, `opts?`): `void`
 
-定义于: [packages/utils/src/core/logger.ts:33](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/core/logger.ts#L33)
+定义于: [packages/utils/src/core/logger.ts:34](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/core/logger.ts#L34)
 
 #### 参数
 
@@ -76,7 +76,7 @@
 
 > **logByBlank**(`message`): `void`
 
-定义于: [packages/utils/src/core/logger.ts:53](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/core/logger.ts#L53)
+定义于: [packages/utils/src/core/logger.ts:54](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/core/logger.ts#L54)
 
 上下空行输出
 
@@ -96,7 +96,7 @@
 
 > **println**(): `void`
 
-定义于: [packages/utils/src/core/logger.ts:46](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/core/logger.ts#L46)
+定义于: [packages/utils/src/core/logger.ts:47](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/core/logger.ts#L47)
 
 打印空行
 
@@ -110,7 +110,7 @@
 
 > `static` **getInstance**(`opts?`): `VipLogger`
 
-定义于: [packages/utils/src/core/logger.ts:26](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/core/logger.ts#L26)
+定义于: [packages/utils/src/core/logger.ts:27](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/core/logger.ts#L27)
 
 #### 参数
 

@@ -3,8 +3,8 @@
  *
  * 类型前缀 `VipAgentSkill*`，便于 core-x 等下游 extends。
  */
+/** CLI 类型供下游 extends；`runCli` 见 `dist/cli` / `vip-agent-skills` bin，避免主入口加载 commander */
 export type { VipAgentSkillCliOptions } from './cli'
-export { runCli } from './cli'
 export {
   AGENT_SKILLS_BASELINE_FILE_NAME,
   BUSINESS_MAP_SKILL_NAME,

@@ -18,10 +18,10 @@ Monorepo 推荐 `fa commit`（默认交互）与 `fa commit --quiet -s './apps/*
 
 ## 功能
 
-- ✅ `commitLinter` 校验 Conventional Commits 格式
-- ✅ `defineVipCommitLinterConfig` + cosmiconfig（`commit-linter.config.*`）
-- ✅ 可配置 `types` / `scopes` 与 `verify` 自定义校验
-- ✅ `printStandardCommitMessage` 打印规范模板
+- `commitLinter` 校验 Conventional Commits 格式
+- `defineVipCommitLinterConfig` + cosmiconfig（`commit-linter.config.*`）
+- 可配置 `types` / `scopes` 与 `verify` 自定义校验
+- `printStandardCommitMessage` 打印规范模板
 
 ## 配置
 

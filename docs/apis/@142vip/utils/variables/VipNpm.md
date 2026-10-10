@@ -4,9 +4,36 @@
 
 > `const` **VipNpm**: `object`
 
-定义于: [packages/utils/src/core/npm.ts:162](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/core/npm.ts#L162)
+定义于: [packages/utils/src/core/npm.ts:354](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/core/npm.ts#L354)
 
 ## 类型声明
+
+### formatCiPnpmInstallCommand
+
+> **formatCiPnpmInstallCommand**: (`args`) => `string`
+
+`fa ci` 的安装命令：始终 `--frozen-lockfile --force`。
+`pnpm i --registry <url> --frozen-lockfile --force [--ignore-scripts] [extra]`
+
+#### 参数
+
+##### args
+
+###### extraArgs?
+
+`string` \| readonly `string`[]
+
+###### ignoreScripts?
+
+`boolean`
+
+###### registry
+
+`string`
+
+#### 返回
+
+`string`
 
 ### formatVersionStr
 
@@ -29,6 +56,14 @@
 #### 返回
 
 `string`
+
+### getCorepackVersion
+
+> **getCorepackVersion**: () => `Promise`\<`string` \| `null`\>
+
+#### 返回
+
+`Promise`\<`string` \| `null`\>
 
 ### getNodeVersion
 
@@ -99,8 +134,6 @@
 
 > **installByNpm**: (`args`) => `Promise`\<`void`\>
 
-基于npm安装依赖
-
 #### 参数
 
 ##### args
@@ -110,6 +143,10 @@
 `string`
 
 ###### force?
+
+`boolean`
+
+###### ignoreScripts?
 
 `boolean`
 
@@ -125,11 +162,15 @@
 
 > **installByPnpm**: (`args`) => `Promise`\<`void`\>
 
-基于pnpm安装依赖
-
 #### 参数
 
 ##### args
+
+###### corepackNpmRegistry?
+
+`string`
+
+无 pnpm 时经 corepack 启用
 
 ###### cwd?
 
@@ -139,9 +180,30 @@
 
 `boolean`
 
+###### ignoreScripts?
+
+`boolean`
+
 ###### registry?
 
 `string`
+
+#### 返回
+
+`Promise`\<`void`\>
+
+### installForCi
+
+> **installForCi**: (`options`) => `Promise`\<`void`\>
+
+对齐 `fa ci`：打印命令与 `COREPACK_REGISTRY`，确保 corepack / pnpm，再执行
+`pnpm i --registry <url> --frozen-lockfile --force`。
+
+#### 参数
+
+##### options?
+
+[`VipNpmCiInstallOptions`](../interfaces/VipNpmCiInstallOptions.md) = `{}`
 
 #### 返回
 
@@ -178,6 +240,16 @@
 #### 返回
 
 `Promise`\<`boolean`\>
+
+### logInstallToolchain
+
+> **logInstallToolchain**: () => `Promise`\<`void`\>
+
+本地 `fa i` 前输出工具链版本（Node / npm / corepack / pnpm）。
+
+#### 返回
+
+`Promise`\<`void`\>
 
 ### userLogin
 

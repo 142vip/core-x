@@ -1,8 +1,12 @@
 import type { OracleOptions } from '@142vip/data-source'
+import { arch } from 'node:os'
 import { VipOracle } from '@142vip/data-source'
 import { describe, expect, it } from '@jest/globals'
 
-describe('vip-oracle', () => {
+// 非 x64 不加载 Instant Client，Thin 模式连不上这台旧版本 Oracle（NJS-138）
+const describeOracle = arch() === 'x64' ? describe : describe.skip
+
+describeOracle('vip-oracle', () => {
   const options: OracleOptions = {
     host: '172.16.202.232',
     port: 1521,

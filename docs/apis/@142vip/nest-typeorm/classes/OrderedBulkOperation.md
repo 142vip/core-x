@@ -172,33 +172,33 @@ Returns a builder object used to complete the definition of the operation.
 #### 示例
 
 ```ts
-const bulkOp = collection.initializeOrderedBulkOp()
+const bulkOp = collection.initializeOrderedBulkOp();
 
 // Add an updateOne to the bulkOp
-bulkOp.find({ a: 1 }).updateOne({ $set: { b: 2 } })
+bulkOp.find({ a: 1 }).updateOne({ $set: { b: 2 } });
 
 // Add an updateMany to the bulkOp
-bulkOp.find({ c: 3 }).update({ $set: { d: 4 } })
+bulkOp.find({ c: 3 }).update({ $set: { d: 4 } });
 
 // Add an upsert
-bulkOp.find({ e: 5 }).upsert().updateOne({ $set: { f: 6 } })
+bulkOp.find({ e: 5 }).upsert().updateOne({ $set: { f: 6 } });
 
 // Add a deletion
-bulkOp.find({ g: 7 }).deleteOne()
+bulkOp.find({ g: 7 }).deleteOne();
 
 // Add a multi deletion
-bulkOp.find({ h: 8 }).delete()
+bulkOp.find({ h: 8 }).delete();
 
 // Add a replaceOne
-bulkOp.find({ i: 9 }).replaceOne({ writeConcern: { j: 10 } })
+bulkOp.find({ i: 9 }).replaceOne({writeConcern: { j: 10 }});
 
 // Update using a pipeline (requires Mongodb 4.2 or higher)
 bulk.find({ k: 11, y: { $exists: true }, z: { $exists: true } }).updateOne([
-  { $set: { total: { $sum: ['$y', '$z'] } } }
-])
+  { $set: { total: { $sum: [ '$y', '$z' ] } } }
+]);
 
 // All of the ops will now be executed
-await bulkOp.execute()
+await bulkOp.execute();
 ```
 
 #### 继承自
@@ -228,14 +228,14 @@ Add a single insert document to the bulk operation
 #### 示例
 
 ```ts
-const bulkOp = collection.initializeOrderedBulkOp()
+const bulkOp = collection.initializeOrderedBulkOp();
 
 // Adds three inserts to the bulkOp.
 bulkOp
   .insert({ a: 1 })
   .insert({ b: 2 })
-  .insert({ c: 3 })
-await bulkOp.execute()
+  .insert({ c: 3 });
+await bulkOp.execute();
 ```
 
 #### 继承自

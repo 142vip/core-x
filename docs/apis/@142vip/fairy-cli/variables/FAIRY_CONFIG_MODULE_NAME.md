@@ -1,0 +1,9 @@
+[API 参考](../../../index.md) / [@142vip/fairy-cli](../index.md) / FAIRY\_CONFIG\_MODULE\_NAME
+
+# 变量: FAIRY\_CONFIG\_MODULE\_NAME
+
+> `const` **FAIRY\_CONFIG\_MODULE\_NAME**: `"fairy"`
+
+定义于: [packages/fairy-cli/src/config.ts:107](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/fairy-cli/src/config.ts#L107)
+
+cosmiconfig 模块名（`fairy.config.ts` / `.fairrc` 等）

@@ -81,13 +81,41 @@ pnpm exec vip-agent-skills --target . --check # 校验
 | WorkBuddy | `.workbuddy/README.md` |
 | Cursor | `.cursor/README.md` + `.cursor/rules/**` |
 
+## 本仓上下文（入库）
+
+稳定事实写在本文件与根 `AGENTS.md`。会话笔记不入库（如 `.workbuddy/memory/`）。
+
+### 工程基座 `@142vip/fairy-cli`
+
+- 安装：`pnpm i`、`npx fa ci`、`npx fa i -f`（CI / CD：`pnpm i --frozen-lockfile --force`）。都会跑 `fairy-postinstall.cjs`
+- 钩子：根 `fairy.config.ts`；根 `package.json` **不写** lifecycle `postinstall`
+- Lint / 清理：`npx fa lint`、`npx fa lint --fix`、`npx fa run clean`、`npx fa run clean:cache`（不写进根 `package.json`）
+- 下游仓库：依赖已发布的 `@142vip/fairy-cli`（自带 `dist`）。`pnpm i` 只执行 `hooks.postinstall`，不按 workspace 再编译 fa
+- Agent Skills：`fa ai` / `fa ai --check`；真源 `packages/agent-skills/skills/**`
+
+### 验证
+
+1. 局部：`npx fa lint -f <paths>`
+2. 牵连：`cd packages/<pkg> && pnpm build` / `pnpm test`
+3. PR：`pnpm verify`（根脚本：`npx fa lint` + `pnpm test` + `pnpm build:docs`）
+4. 覆盖率仅本地：`pnpm test:coverage`（GitHub CI 不跑）
+
+### 记忆分层
+
+| 层 | 路径 | 用途 |
+|----|------|------|
+| L0 | `AGENTS.md` | 编码纪律、Git、自检 |
+| L1 | 本文件 + `.agents/skills/*` | 本仓事实与通用流程 |
+| L2 | `.cursor/` · `.codex/` · `.workbuddy/` | 工具薄入口 |
+| 会话 | `.workbuddy/memory/` | 不入库 |
+
 ## 高效默认路径
 
 ```
-意图 → workflow（定场景策略）→ 16 清单 / 任务路由 → 读代码小改
-     → self-check（局部 lint + 受影响 build）
-     → 09 文档自检 → 交付
-     → commit?（仅用户明确要求）
+AGENTS.md → .agents/README.md（本节上下文）
+→ workflow → 读代码小改
+→ self-check（局部 lint + 受影响 build + 牵连 test）
+→ 文档同步 → 交付 → commit?（仅用户明确要求）
 ```
 
 ## 维护
@@ -103,7 +131,7 @@ pnpm exec vip-agent-skills --target . --check # 校验
 ```
 AGENTS.md
 packages/agent-skills/              # @142vip/agent-skills（通用 skill 真源 + CLI）
-.agents/README.md                   # 本文件 · 治理入口
+.agents/README.md                   # 本文件 · 治理入口 + 本仓上下文
 .agents/skills/{workflow,code-dev,self-check,commit}/   # 镜像
 .agents/skills/agent-skills.json    # 同步基线
 .codex/README.md · .workbuddy/README.md · .cursor/README.md

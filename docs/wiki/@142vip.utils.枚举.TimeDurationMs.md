@@ -2,7 +2,7 @@
 
 # 枚举: TimeDurationMs
 
-定义于: [packages/utils/src/enums/time-duration.enum.ts:7](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/enums/time-duration.enum.ts#L7)
+定义于: [packages/utils/src/enums/time-duration.enum.ts:7](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/enums/time-duration.enum.ts#L7)
 
 常用时间跨度（毫秒）。
 纯数值枚举，无 Node 依赖，浏览器 / 服务端均可通过
@@ -15,7 +15,7 @@
 
 > **FIVE\_DAY**: `432000000`
 
-定义于: [packages/utils/src/enums/time-duration.enum.ts:23](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/enums/time-duration.enum.ts#L23)
+定义于: [packages/utils/src/enums/time-duration.enum.ts:23](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/enums/time-duration.enum.ts#L23)
 
 5 天
 
@@ -25,7 +25,7 @@
 
 > **FIVE\_MINUTE**: `300000`
 
-定义于: [packages/utils/src/enums/time-duration.enum.ts:13](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/enums/time-duration.enum.ts#L13)
+定义于: [packages/utils/src/enums/time-duration.enum.ts:13](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/enums/time-duration.enum.ts#L13)
 
 5 分钟
 
@@ -35,7 +35,7 @@
 
 > **ONE\_DAY**: `86400000`
 
-定义于: [packages/utils/src/enums/time-duration.enum.ts:19](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/enums/time-duration.enum.ts#L19)
+定义于: [packages/utils/src/enums/time-duration.enum.ts:19](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/enums/time-duration.enum.ts#L19)
 
 1 天
 
@@ -45,7 +45,7 @@
 
 > **ONE\_HOUR**: `3600000`
 
-定义于: [packages/utils/src/enums/time-duration.enum.ts:17](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/enums/time-duration.enum.ts#L17)
+定义于: [packages/utils/src/enums/time-duration.enum.ts:17](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/enums/time-duration.enum.ts#L17)
 
 1 小时
 
@@ -55,7 +55,7 @@
 
 > **ONE\_MINUTE**: `60000`
 
-定义于: [packages/utils/src/enums/time-duration.enum.ts:11](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/enums/time-duration.enum.ts#L11)
+定义于: [packages/utils/src/enums/time-duration.enum.ts:11](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/enums/time-duration.enum.ts#L11)
 
 1 分钟
 
@@ -65,7 +65,7 @@
 
 > **ONE\_MONTH**: `2592000000`
 
-定义于: [packages/utils/src/enums/time-duration.enum.ts:29](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/enums/time-duration.enum.ts#L29)
+定义于: [packages/utils/src/enums/time-duration.enum.ts:29](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/enums/time-duration.enum.ts#L29)
 
 1 月（按 30 天近似）
 
@@ -75,7 +75,7 @@
 
 > **ONE\_SECOND**: `1000`
 
-定义于: [packages/utils/src/enums/time-duration.enum.ts:9](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/enums/time-duration.enum.ts#L9)
+定义于: [packages/utils/src/enums/time-duration.enum.ts:9](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/enums/time-duration.enum.ts#L9)
 
 1 秒
 
@@ -85,7 +85,7 @@
 
 > **ONE\_WEEK**: `604800000`
 
-定义于: [packages/utils/src/enums/time-duration.enum.ts:25](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/enums/time-duration.enum.ts#L25)
+定义于: [packages/utils/src/enums/time-duration.enum.ts:25](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/enums/time-duration.enum.ts#L25)
 
 1 周（7 天）
 
@@ -95,7 +95,7 @@
 
 > **THIRTY\_MINUTE**: `1800000`
 
-定义于: [packages/utils/src/enums/time-duration.enum.ts:15](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/enums/time-duration.enum.ts#L15)
+定义于: [packages/utils/src/enums/time-duration.enum.ts:15](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/enums/time-duration.enum.ts#L15)
 
 30 分钟
 
@@ -105,7 +105,7 @@
 
 > **THREE\_DAY**: `259200000`
 
-定义于: [packages/utils/src/enums/time-duration.enum.ts:21](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/enums/time-duration.enum.ts#L21)
+定义于: [packages/utils/src/enums/time-duration.enum.ts:21](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/enums/time-duration.enum.ts#L21)
 
 3 天
 
@@ -115,7 +115,7 @@
 
 > **THREE\_MONTH**: `7776000000`
 
-定义于: [packages/utils/src/enums/time-duration.enum.ts:31](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/enums/time-duration.enum.ts#L31)
+定义于: [packages/utils/src/enums/time-duration.enum.ts:31](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/enums/time-duration.enum.ts#L31)
 
 3 月（按 90 天近似）
 
@@ -125,6 +125,6 @@
 
 > **TWO\_WEEK**: `1209600000`
 
-定义于: [packages/utils/src/enums/time-duration.enum.ts:27](https://github.com/142vip/core-x/blob/62c7d1d986dbb5f12ff446de0788198e0aad92cc/packages/utils/src/enums/time-duration.enum.ts#L27)
+定义于: [packages/utils/src/enums/time-duration.enum.ts:27](https://github.com/142vip/core-x/blob/07b411873b9c06c2202845e56f8d11a93f1c33fe/packages/utils/src/enums/time-duration.enum.ts#L27)
 
 2 周

@@ -1,4 +1,5 @@
 {
+  "agentGuidance": false,
   "tasks": {
     "build": {
       "dependsOn": [
@@ -12,7 +13,19 @@
       "cache": false
     },
     "test": {
+      "dependsOn": [
+        "^build"
+      ],
       "cache": false
+    },
+    "test:coverage": {
+      "dependsOn": [
+        "^build"
+      ],
+      "cache": false,
+      "outputs": [
+        "coverage/**"
+      ]
     },
     "start": {
       "cache": false

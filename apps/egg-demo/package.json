@@ -15,8 +15,8 @@
     "dev:grpc-server-multiple": "EGG_SERVER_ENV=grpc-server-multiple egg-bin dev",
     "start": "egg-scripts start --daemon --title=egg-demo",
     "stop": "egg-scripts stop --title=egg-server-go",
-    "test": "npx jest",
-    "test:coverage": "npx jest --coverage"
+    "test": "npx jest --runInBand --forceExit",
+    "test:coverage": "npx jest --coverage --runInBand --forceExit"
   },
   "egg": {
     "declarations": true

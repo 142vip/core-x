@@ -6,8 +6,9 @@
 ## 入口
 
 1. 读根 `AGENTS.md`（L0 真源，含本仓栈与 Git 纪律）
-2. 按意图加载通用 skill：`.agents/skills/<name>/SKILL.md`（`workflow` / `code-dev` / `self-check` / `commit`）
-3. 详细命令与资产：`.cursor/rules/engineering/16-全仓资产清单`、`08-常用命令手册`
+2. 读 `.agents/README.md`（本仓 fa 基座、验证、`pnpm verify`、记忆分层）
+3. 按意图加载通用 skill：`.agents/skills/<name>/SKILL.md`（`workflow` / `code-dev` / `self-check` / `commit`）
+4. 命令速查：`.agents/README.md` 与根 `README`「使用」
 
 ## Codex 专有约定
 
