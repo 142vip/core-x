@@ -2,6 +2,58 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.46 (2026-11-19)
+
+### ✨ Features
+
+- **@142vip/agent-skills**:
+  - 写代码前先走最小完整改动 &nbsp;-&nbsp; by **chufan** [<samp>(8e805)</samp>](https://github.com/142vip/core-x/commit/8e8053bc)
+- **@142vip/axios**:
+  - 用 `export *` 转发 `axios` 与 `axios-retry` 具名导出 &nbsp;-&nbsp; by **chufan** [<samp>(75328)</samp>](https://github.com/142vip/core-x/commit/75328b81)
+- **@142vip/data-source**:
+  - HTTP 请求改用 `@142vip/axios` &nbsp;-&nbsp; by **chufan** [<samp>(e0c4a)</samp>](https://github.com/142vip/core-x/commit/e0c4ab8e)
+- **@142vip/fairy-cli**:
+  - 单包仓跳过内置 `scopeGlobs` 与空 scope 白名单 &nbsp;-&nbsp; by **chufan** [<samp>(eea91)</samp>](https://github.com/142vip/core-x/commit/eea9151a)
+  - 优化 `fa commit` trace 与 scope 聚合展示 &nbsp;-&nbsp; by **chufan** [<samp>(55923)</samp>](https://github.com/142vip/core-x/commit/559237a3)
+- **@142vip/utils**:
+  - 单包仓 release 列表回退根 `package.json` &nbsp;-&nbsp; by **chufan** [<samp>(39ad9)</samp>](https://github.com/142vip/core-x/commit/39ad999a)
+  - Commit scope 扫描可选关闭单包仓根包回退 &nbsp;-&nbsp; by **chufan** [<samp>(73e7b)</samp>](https://github.com/142vip/core-x/commit/73e7b823)
+
+### 🐛 Bug Fixes
+
+- **@142vip/axios**:
+  - 显式 `type: module`，保证 CJS 下游能解析具名再导出 &nbsp;-&nbsp; by **chufan** [<samp>(ef796)</samp>](https://github.com/142vip/core-x/commit/ef796d8d)
+- **@142vip/commit-linter**:
+  - 未配置白名单时仅解析 commit 格式 &nbsp;-&nbsp; by **chufan** [<samp>(7bdbe)</samp>](https://github.com/142vip/core-x/commit/7bdbed1e)
+
+### 📖 Documentation
+
+- 包 README「功能」列表去掉勾选符号 &nbsp;-&nbsp; by **chufan** [<samp>(fe4e1)</samp>](https://github.com/142vip/core-x/commit/fe4e1b31)
+
+### 📦 Build
+
+- **@142vip/axios**:
+  - 将依赖 `axios` 升到 `1.20.0` &nbsp;-&nbsp; by **chufan** [<samp>(722f9)</samp>](https://github.com/142vip/core-x/commit/722f9b91)
+
+### 😏 Release Packages
+
+- **@142vip/agent-skills**:
+  - Publish `v0.0.1-alpha.12` &nbsp;-&nbsp; by **chufan** [<samp>(8b0e6)</samp>](https://github.com/142vip/core-x/commit/8b0e6d76)
+- **@142vip/axios**:
+  - Publish `v0.0.1-alpha.12` &nbsp;-&nbsp; by **chufan** [<samp>(39b81)</samp>](https://github.com/142vip/core-x/commit/39b81bc4)
+  - Publish `v0.0.1-alpha.13` &nbsp;-&nbsp; by **chufan** [<samp>(acfe6)</samp>](https://github.com/142vip/core-x/commit/acfe67ab)
+- **@142vip/commit-linter**:
+  - Publish `v0.0.1-alpha.4` &nbsp;-&nbsp; by **chufan** [<samp>(b0c31)</samp>](https://github.com/142vip/core-x/commit/b0c31840)
+- **@142vip/data-source**:
+  - Publish `v0.0.1-alpha.7` &nbsp;-&nbsp; by **chufan** [<samp>(258a3)</samp>](https://github.com/142vip/core-x/commit/258a3055)
+- **@142vip/fairy-cli**:
+  - Publish `v0.0.3-alpha.41` &nbsp;-&nbsp; by **chufan** [<samp>(8b38d)</samp>](https://github.com/142vip/core-x/commit/8b38d153)
+  - Publish `v0.0.3-alpha.42` &nbsp;-&nbsp; by **chufan** [<samp>(82a22)</samp>](https://github.com/142vip/core-x/commit/82a22914)
+- **@142vip/utils**:
+  - Publish `v0.0.1-alpha.65` &nbsp;-&nbsp; by **chufan** [<samp>(d5caf)</samp>](https://github.com/142vip/core-x/commit/d5caf6e6)
+
+**Release New Version v0.0.1-alpha.46 [👉 View Changes On GitHub](https://github.com/142vip/core-x/compare/v0.0.1-alpha.45...v0.0.1-alpha.46)**
+
 ## v0.0.1-alpha.45 (2026-10-08)
 
 ### ✨ Features
