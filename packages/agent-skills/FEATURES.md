@@ -20,6 +20,8 @@
 - `self-check/SKILL.md`
 - `commit/SKILL.md`
 
+`code-dev` 在写代码前先列必须到达的调用方、测试、配置与导出，再按序取第一个能完整工作的方案：不做没人要的能力、复用本仓已有实现、标准库或平台能力、已安装依赖（不为几行新增依赖）、一眼能懂的一行、否则最少能工作的代码。非平凡新逻辑留一个小测试。信任边界校验、防数据丢失的错误处理、安全与无障碍不删。`workflow` 回复末尾用一两句写明跳过项与风险。
+
 ### 常量（`src/core/constants.ts`）
 
 - `CORE_SKILL_NAMES`：`['workflow', 'code-dev', 'self-check', 'commit']`（`as const`）

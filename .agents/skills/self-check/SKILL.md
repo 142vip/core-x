@@ -27,7 +27,7 @@ description: 代码修改后的质量验证与 TODO 迭代流程（跨项目）�
 ## 全工具补充
 
 - 仅改 Agent 规范文档（`AGENTS.md`、`.agents/**`、工具薄入口、编辑器 rules）：可不跑应用 build，用 `git diff --check`
-- 本轮若启动了 dev / docs 长进程：回复前关闭并确认端口释放（若环境允许）
+- 本轮若启动了 dev / docs 长进程：回复前关闭并确认端口释放（若环境允许）。**只关「本轮自己启动且记录过 PID」的进程**，禁止按端口 `kill` / `pkill -f vite` 这类写法——端口是共享资源，会误伤开发者常驻实例。回收后 `curl` 原端口确认开发者实例仍正常响应。
 
 ### 通用 skill 维护
 
@@ -186,8 +186,8 @@ npx eslint --fix --max-warnings 0 path/to/a.ts path/to/b.vue
 | Build | 交付脚本 exit 0 |
 | 注释 | 模块职责与复杂分支可读 |
 | TODO | 存在则已更新；无则跳过 |
-| 收尾 | 临时进程/文件清理；后台进程已 `TaskStop` / `pkill`；端口偏移后已同步 README |
-| 端口 | 复用已声明端口，未擅自偏移到 `+1`（vite / nest 等） |
+| 收尾 | 临时进程/文件清理；后台进程已 `TaskStop` / 按记录的 PID `kill`；端口偏移后已同步 README |
+| 端口 | 复用开发者已声明端口或起 `--strictPort` 并行实例（记录 PID，验完即关），未擅自偏移到失控的 `+1` |
 
 具体命令组写在 build-map 或 `AGENTS.md`，本 skill 只定义流程。
 
@@ -245,6 +245,9 @@ npx eslint --fix --max-warnings 0 path/to/a.ts path/to/b.vue
 ## TODO（若本轮维护了 TODO.md）
 - 移除：…
 - 新增/调整：…（优先级）
+
+## 未覆盖
+一两句：跳过或未检查的内容，以及用户必须知道的风险。没有则写「无」。
 ```
 
 > 提交：未获用户指令不 commit；**push 由用户手动操作**；用户要求提交时按 `commit` skill 执行。
