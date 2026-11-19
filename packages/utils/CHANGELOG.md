@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.1-alpha.66 (2026-11-19)
+
+### ✨ Features
+
+- `vipLodash` 补上嵌套对象读取和随机数 &nbsp;-&nbsp; by **chufan** [<samp>(1ddb0)</samp>](https://github.com/142vip/core-x/commit/1ddb0a60)
+
+**Release New Version v0.0.1-alpha.66 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/utils)**
+
 ## v0.0.1-alpha.65 (2026-10-09)
 
 ### ✨ Features
