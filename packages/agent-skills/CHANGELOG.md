@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## v0.0.1-alpha.12 (2026-11-19)
+
+### ✨ Features
+
+- 写代码前先走最小完整改动 &nbsp;-&nbsp; by **chufan** [<samp>(8e805)</samp>](https://github.com/142vip/core-x/commit/8e8053bc)
+
+**Release New Version v0.0.1-alpha.12 [👉 View New Package On NPM](https://www.npmjs.com/package/@142vip/agent-skills)**
+
 ## v0.0.1-alpha.11 (2026-10-08)
 
 ### ✨ Features
