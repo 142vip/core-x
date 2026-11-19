@@ -13,6 +13,44 @@ function toJsonRecord(value: unknown): JsonRecord {
   return isJsonRecord(value) ? value : {}
 }
 
+/**
+ * 从未知 JSON 里取出下一层对象。
+ * `isJsonRecord` 只回答「这一层是不是平面对象」，不按字段往下读。
+ * 外层或该字段是数组、`null`、字符串时返回 `null`。
+ * 各平台解析 `data` / `article_info` 用它，不要再写本地 `readRecord`。
+ */
+function readJsonRecord(value: unknown, key: string): JsonRecord | null {
+  if (!isJsonRecord(value)) {
+    return null
+  }
+  const nested = value[key]
+  return isJsonRecord(nested) ? nested : null
+}
+
+/**
+ * `[0, 1)` 均匀随机小数，对应 `Math.random()`。
+ * 用于请求抖动、缓存打散、演示数据。
+ * 不要用来生成令牌、密码或会话密钥，那些用 `vipNanoId` / `crypto`。
+ */
+function randomUnit(): number {
+  return Math.random()
+}
+
+/**
+ * `[min, max]` 闭区间上的均匀随机整数。
+ * 两端先取整（较小端向上、较大端向下），顺序反了会交换。
+ * 用来替换 `Math.floor(Math.random() * (max - min + 1)) + min`，避免各处手写边界。
+ * 与 lodash 自带的 `random` 分开命名，避免覆盖它的浮点模式。
+ */
+function randomInt(min: number, max: number): number {
+  const start = Math.ceil(Math.min(min, max))
+  const end = Math.floor(Math.max(min, max))
+  if (end < start) {
+    return start
+  }
+  return start + Math.floor(randomUnit() * (end - start + 1))
+}
+
 function compactMap<T, R>(
   collection: readonly T[] | null | undefined,
   iteratee: (item: T, index: number) => R,
@@ -80,6 +118,9 @@ const lodashBase = _.omit(_, ['VERSION'])
 const vipLodashExtensions = {
   isJsonRecord,
   toJsonRecord,
+  readJsonRecord,
+  randomUnit,
+  randomInt,
   compactMap,
   pickDiffFields,
   omitUndefined,
